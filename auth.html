@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>BodyReset | تسجيل الدخول</title>
 
   <style>
@@ -119,7 +120,8 @@
 
     <form id="authForm">
 
-      <label for="email">Email</label>
+      <label for="email">البريد الإلكتروني</label>
+
       <input
         id="email"
         type="email"
@@ -127,7 +129,8 @@
         required
       >
 
-      <label for="password">Password</label>
+      <label for="password">كلمة المرور</label>
+
       <input
         id="password"
         type="password"
@@ -143,90 +146,157 @@
     </form>
 
     <div class="switch">
-      <span id="switchText">لديك حساب بالفعل؟</span>
+
+      <span id="switchText">
+        لديك حساب بالفعل؟
+      </span>
+
       <button type="button" id="switchBtn">
         تسجيل الدخول
       </button>
+
     </div>
 
     <div class="message" id="message"></div>
 
   </div>
-<script type="module">
-  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-  const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
+  <script type="module">
 
-   const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92
-  const supabase = createClient
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+    import { createClient }
+      from "https://esm.sh/@supabase/supabase-js@2";
 
-  const form = document.getElementById("authForm");
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
-  const message = document.getElementById("message");
-let isLogin = false;
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
 
-const switchBtn = document.getElementById("switchBtn");
-const title = document.getElementById("title");
-const submitBtn = document.getElementById("submitBtn");
-const switchText = document.getElementById("switchText");
+    const SUPABASE_PUBLISHABLE_KEY =
+  "";
+      
 
-switchBtn.addEventListener("click", () => {
-  isLogin = !isLogin;
+    const supabase = createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-  if (isLogin) {
-    title.textContent = "تسجيل الدخول";
-    submitBtn.textContent = "تسجيل الدخول";
-    switchText.textContent = "ليس لديك حساب؟";
-    switchBtn.textContent = "إنشاء حساب";
-  } else {
-    title.textContent = "إنشاء حساب";
-    submitBtn.textContent = "إنشاء حساب";
-    switchText.textContent = "لديك حساب بالفعل؟";
-    switchBtn.textContent = "تسجيل الدخول";
-  }
+    const form =
+      document.getElementById("authForm");
 
-  message.textContent = "";
-});
+    const email =
+      document.getElementById("email");
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+    const password =
+      document.getElementById("password");
 
-  message.textContent = "جاري المعالجة...";
+    const message =
+      document.getElementById("message");
 
-  let result;
+    const switchBtn =
+      document.getElementById("switchBtn");
 
-  if (isLogin) {
-    result = await supabase.auth.signInWithPassword({
-      email: email.value.trim(),
-      password: password.value
+    const title =
+      document.getElementById("title");
+
+    const submitBtn =
+      document.getElementById("submitBtn");
+
+    const switchText =
+      document.getElementById("switchText");
+
+    let isLogin = false;
+
+    switchBtn.addEventListener("click", () => {
+
+      isLogin = !isLogin;
+
+      if (isLogin) {
+
+        title.textContent = "تسجيل الدخول";
+
+        submitBtn.textContent = "تسجيل الدخول";
+
+        switchText.textContent =
+          "ليس لديك حساب؟";
+
+        switchBtn.textContent =
+          "إنشاء حساب";
+
+      } else {
+
+        title.textContent = "إنشاء حساب";
+
+        submitBtn.textContent = "إنشاء حساب";
+
+        switchText.textContent =
+          "لديك حساب بالفعل؟";
+
+        switchBtn.textContent =
+          "تسجيل الدخول";
+      }
+
+      message.textContent = "";
+
     });
-  } else {
-    result = await supabase.auth.signUp({
-      email: email.value.trim(),
-      password: password.value
+
+    form.addEventListener("submit", async (event) => {
+
+      event.preventDefault();
+
+      message.textContent =
+        "جاري المعالجة...";
+
+      const userEmail =
+        email.value.trim();
+
+      const userPassword =
+        password.value;
+
+      let result;
+
+      if (isLogin) {
+
+        result =
+          await supabase.auth.signInWithPassword({
+            email: userEmail,
+            password: userPassword
+          });
+
+      } else {
+
+        result =
+          await supabase.auth.signUp({
+            email: userEmail,
+            password: userPassword
+          });
+
+      }
+
+      if (result.error) {
+
+        message.textContent =
+          result.error.message;
+
+        return;
+      }
+
+      if (isLogin) {
+
+        message.textContent =
+          "تم تسجيل الدخول بنجاح ✅";
+
+        window.location.href =
+          "dashboard.html";
+
+      } else {
+
+        message.textContent =
+          "تم إنشاء الحساب بنجاح. راجع بريدك الإلكتروني لتأكيد الحساب.";
+
+        form.reset();
+      }
+
     });
-  }
 
-  if (result.error) {
-    message.textContent = result.error.message;
-    return;
-  }
+  </script>
 
-  if (isLogin) {
-    message.textContent = "تم تسجيل الدخول بنجاح ✅";
-    window.location.href = "dashboard.html";
-  } else {
-    message.textContent =
-      "تم إنشاء الحساب بنجاح. راجع بريدك الإلكتروني لتأكيد الحساب.";
-    form.reset();
-  }
-});
-  
-</script>
 </body>
-        </html>
+</html>
