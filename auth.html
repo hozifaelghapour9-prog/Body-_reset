@@ -119,7 +119,7 @@
       </button>
 
     </form>
-
+<button type="button" id="loginBtn">تسجيل الدخول</button>
     <div id="message"></div>
 
   </div>
@@ -182,7 +182,25 @@
       }
 
     });
+const loginBtn = document.getElementById("loginBtn");
 
+loginBtn.addEventListener("click", async () => {
+  message.textContent = "جاري تسجيل الدخول...";
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.value.trim(),
+    password: password.value
+  });
+
+  if (error) {
+    message.textContent = error.message;
+    return;
+  }
+
+  message.textContent = "تم تسجيل الدخول بنجاح ✅";
+
+  window.location.href = "dashboard.html";
+});
   </script>
 
 </body>
