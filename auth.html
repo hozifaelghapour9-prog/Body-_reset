@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset | تسجيل الدخول</title>
+  <title>BodyReset | إنشاء حساب</title>
 
   <style>
     * {
@@ -13,22 +13,22 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: white;
     }
 
     .box {
       width: 100%;
       max-width: 420px;
+      padding: 30px;
       background: #131a22;
       border: 1px solid #26313c;
       border-radius: 24px;
-      padding: 30px;
     }
 
     .logo {
@@ -66,35 +66,19 @@
     button {
       width: 100%;
       padding: 14px;
-      margin-top: 20px;
+      margin-top: 22px;
       border: 0;
-      border-radius: 25px;
+      border-radius: 30px;
       background: #39e75f;
       color: #07100a;
       font-size: 17px;
       font-weight: bold;
-      cursor: pointer;
-    }
-
-    .switch {
-      text-align: center;
-      margin-top: 20px;
-      color: #aeb8c2;
-    }
-
-    #switchBtn {
-      width: auto;
-      margin: 0;
-      padding: 0;
-      background: none;
-      color: #39e75f;
-      font-size: 16px;
     }
 
     #message {
-      min-height: 25px;
-      margin-top: 18px;
+      margin-top: 20px;
       text-align: center;
+      min-height: 25px;
     }
   </style>
 </head>
@@ -107,9 +91,9 @@
       <span>Body</span>Reset
     </div>
 
-    <h1 id="title">إنشاء حساب</h1>
+    <h1>إنشاء حساب</h1>
 
-    <form id="authForm">
+    <form id="signupForm">
 
       <label for="email">البريد الإلكتروني</label>
 
@@ -125,24 +109,16 @@
       <input
         id="password"
         type="password"
-        placeholder="••••••••"
         minlength="6"
+        placeholder="••••••••"
         required
       >
 
-      <button id="submitBtn" type="submit">
+      <button type="submit">
         إنشاء حساب
       </button>
 
     </form>
-
-    <div class="switch">
-      <span id="switchText">لديك حساب بالفعل؟</span>
-
-      <button id="switchBtn" type="button">
-        تسجيل الدخول
-      </button>
-    </div>
 
     <div id="message"></div>
 
@@ -157,7 +133,7 @@
       "https://byodeoaluspphqduxmlh.supabase.co";
 
     const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+      "";
 
     const supabase = createClient(
       SUPABASE_URL,
@@ -165,7 +141,7 @@
     );
 
     const form =
-      document.getElementById("authForm");
+      document.getElementById("signupForm");
 
     const email =
       document.getElementById("email");
@@ -176,111 +152,33 @@
     const message =
       document.getElementById("message");
 
-    const title =
-      document.getElementById("title");
-
-    const submitBtn =
-      document.getElementById("submitBtn");
-
-    const switchBtn =
-      document.getElementById("switchBtn");
-
-    const switchText =
-      document.getElementById("switchText");
-
-    let loginMode = false;
-
-    switchBtn.addEventListener("click", () => {
-
-      loginMode = !loginMode;
-
-      message.textContent = "";
-
-      if (loginMode) {
-
-        title.textContent = "تسجيل الدخول";
-
-        submitBtn.textContent = "تسجيل الدخول";
-
-        switchText.textContent =
-          "ليس لديك حساب؟";
-
-        switchBtn.textContent =
-          "إنشاء حساب";
-
-      } else {
-
-        title.textContent = "إنشاء حساب";
-
-        submitBtn.textContent = "إنشاء حساب";
-
-        switchText.textContent =
-          "لديك حساب بالفعل؟";
-
-        switchBtn.textContent =
-          "تسجيل الدخول";
-      }
-
-    });
-
     form.addEventListener("submit", async (event) => {
 
       event.preventDefault();
 
-      message.textContent = "جاري المعالجة...";
+      message.textContent =
+        "جاري إنشاء الحساب...";
 
-      const userEmail =
-        email.value.trim();
+      const { data, error } =
+        await supabase.auth.signUp({
+          email: email.value.trim(),
+          password: password.value
+        });
 
-      const userPassword =
-        password.value;
-
-      if (loginMode) {
-
-        const { error } =
-          await supabase.auth.signInWithPassword({
-            email: userEmail,
-            password: userPassword
-          });
-
-        if (error) {
-
-          message.textContent =
-            error.message;
-
-          return;
-        }
+      if (error) {
 
         message.textContent =
-          "تم تسجيل الدخول بنجاح ✅";
+          error.message;
 
-        window.location.href =
-          "dashboard.html";
+        return;
+      }
 
-      } else {
+      if (data.user) {
 
-        const { data, error } =
-          await supabase.auth.signUp({
-            email: userEmail,
-            password: userPassword
-          });
+        message.textContent =
+          "تم إنشاء الحساب بنجاح. راجع بريدك الإلكتروني لتأكيد الحساب.";
 
-        if (error) {
-
-          message.textContent =
-            error.message;
-
-          return;
-        }
-
-        if (data.user) {
-
-          message.textContent =
-            "تم إنشاء الحساب بنجاح. راجع بريدك الإلكتروني لتأكيد الحساب.";
-
-          form.reset();
-        }
-
+        form.reset();
       }
 
     });
@@ -288,4 +186,4 @@
   </script>
 
 </body>
-</html>ر            
+</html>
