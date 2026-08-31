@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BodyReset | Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: white;
+      min-height: 100vh;
+      padding: 25px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    header {
+      background: #131a22;
+      border: 1px solid #26313c;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #39e75f;
+    }
+
+    button {
+      border: 0;
+      border-radius: 25px;
+      padding: 11px 20px;
+      background: #39e75f;
+      color: #07100a;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .welcome {
+      background: linear-gradient(135deg, #14251a, #10161d);
+      border-radius: 25px;
+      padding: 35px;
+      margin-bottom: 25px;
+    }
+
+    .welcome h1 {
+      margin-bottom: 10px;
+    }
+
+    .email {
+      color: #39e75f;
+      word-break: break-word;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #131a22;
+      border: 1px solid #26313c;
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aeb8c2;
+      margin-top: 8px;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 25px;
+      color: #39e75f;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <div class="logo">
+        <span>Body</span>Reset
+      </div>
+
+      <button id="logoutBtn">تسجيل الخروج</button>
+    </header>
+
+    <section class="welcome">
+      <h1>أهلاً بك في BodyReset 👋</h1>
+      <p>حسابك الشخصي</p>
+      <p class="email" id="userEmail">جاري التحميل...</p>
+    </section>
+
+    <section class="cards">
+
+      <div class="card">
+        <div class="icon">🏋️</div>
+        <h2>Workout</h2>
+        <p>برنامج التمرين الخاص بك سيظهر هنا.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🥗</div>
+        <h2>Nutrition</h2>
+        <p>خطة التغذية الخاصة بك ستظهر هنا.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h2>Progress</h2>
+        <p>متابعة تقدمك ونتائجك ستظهر هنا.</p>
+      </div>
+
+    </section>
+
+    <div id="message"></div>
+
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+    const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY = "";
+
+    const supabase = createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const userEmail = document.getElementById("userEmail");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const message = document.getElementById("message");
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      window.location.href = "auth.html";
+    } else {
+      userEmail.textContent = user.email;
+    }
+
+    logoutBtn.addEventListener("click", async () => {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        message.textContent = error.message;
+        return;
+      }
+
+      window.location.href = "auth.html";
+    });
+  </script>
+
+</body>
+      </html>
