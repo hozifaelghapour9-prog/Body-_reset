@@ -159,11 +159,13 @@
       message.textContent =
         "جاري إنشاء الحساب...";
 
-      const { data, error } =
-        await supabase.auth.signUp({
-          email: email.value.trim(),
-          password: password.value
-        });
+      const { data, error } = await supabase.auth.signUp({
+  email: email.value.trim(),
+  password: password.value,
+  options: {
+    emailRedirectTo: "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html"
+  }
+});
 
       if (error) {
 
