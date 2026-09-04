@@ -4,252 +4,227 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BodyReset | لياقة وتخسيس وتغذية</title>
+  <title>BodyReset | غيّر جسمك. غيّر حياتك.</title>
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: white;
-      line-height: 1.7;
+      background: #f5f5f5;
+      color: #222;
     }
 
     header {
+      background: #ffffff;
+      padding: 20px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 7%;
-      background: #10161d;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      border-bottom: 1px solid #ddd;
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 25px;
       font-weight: bold;
-      color: white;
-      text-decoration: none;
+      color: #222;
     }
 
     .logo span {
-      color: #39e75f;
+      color: #777;
     }
 
     nav {
       display: flex;
-      gap: 25px;
+      gap: 20px;
+      align-items: center;
     }
 
     nav a {
-      color: white;
+      color: #333;
       text-decoration: none;
+      font-size: 15px;
+    }
+
+    .login {
+      border: 1px solid #333;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #eeeeee 50%,
+        #d6d6d6 100%
+      );
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .small-title {
+      color: #777;
+      font-size: 15px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #666;
+    }
+
+    .hero p {
+      color: #666;
+      font-size: 18px;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-block;
-      background: #39e75f;
-      color: #07100a;
-      padding: 12px 25px;
-      border-radius: 30px;
+      padding: 14px 25px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
     }
 
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      padding: 80px 7%;
-      background: linear-gradient(135deg, #0b0f14, #15221a);
+    .primary {
+      background: #222;
+      color: white;
     }
 
-    .hero-text {
-      max-width: 650px;
+    .secondary {
+      border: 1px solid #555;
+      color: #222;
+      background: white;
     }
 
-    .hero small {
-      color: #39e75f;
-      font-weight: bold;
-      letter-spacing: 2px;
+    .features {
+      padding: 70px 7%;
+      background: white;
     }
 
-    h1 {
-      font-size: clamp(45px, 7vw, 80px);
-      line-height: 1.1;
-      margin: 20px 0;
-    }
-
-    h1 span {
-      color: #39e75f;
-    }
-
-    .hero p {
-      color: #b9c2cc;
-      font-size: 19px;
-      margin-bottom: 30px;
-    }
-
-    .hero-box {
-      width: 360px;
-      height: 420px;
-      border-radius: 30px;
-      background: linear-gradient(145deg, #39e75f, #14251a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 110px;
-      box-shadow: 0 20px 80px rgba(57, 231, 95, .15);
-    }
-
-    section {
-      padding: 80px 7%;
-    }
-
-    .title {
+    .section-title {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
-    .title small {
-      color: #39e75f;
-      font-weight: bold;
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
     }
 
-    .title h2 {
-      font-size: 40px;
-      margin-top: 10px;
+    .section-title p {
+      color: #777;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .card {
-      background: #131a22;
-      padding: 35px;
-      border-radius: 25px;
-      border: 1px solid #26313c;
-      transition: .3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #39e75f;
-    }
-
-    .icon {
-      font-size: 50px;
-      margin-bottom: 15px;
+      background: #f5f5f5;
+      padding: 35px 25px;
+      border-radius: 18px;
+      border: 1px solid #ddd;
     }
 
     .card h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 22px;
+      margin-bottom: 12px;
     }
 
     .card p {
-      color: #aeb8c2;
+      color: #777;
+      line-height: 1.8;
     }
 
     .about {
-      background: #10161d;
+      padding: 70px 7%;
+      background: #e5e5e5;
       text-align: center;
     }
 
-    .about p {
-      max-width: 750px;
-      margin: auto;
-      color: #b9c2cc;
-      font-size: 18px;
-    }
-
-    .plans .card {
-      text-align: center;
-    }
-
-    .price {
+    .about h2 {
       font-size: 35px;
-      color: #39e75f;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-
-    .popular {
-      border: 2px solid #39e75f;
-      transform: scale(1.03);
-    }
-
-    .contact {
-      text-align: center;
-      background: linear-gradient(135deg, #14251a, #0b0f14);
-    }
-
-    .contact h2 {
-      font-size: 42px;
       margin-bottom: 15px;
     }
 
-    .contact p {
-      color: #b9c2cc;
-      margin-bottom: 30px;
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      color: #555;
+      line-height: 2;
     }
 
     footer {
-      padding: 30px 7%;
-      background: #080b0f;
-      display: flex;
-      justify-content: space-between;
-      color: #8e99a5;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 30px;
     }
 
-    @media (max-width: 800px) {
+    footer span {
+      color: #aaa;
+    }
+
+    @media (max-width: 700px) {
+
       header {
-        flex-wrap: wrap;
-        gap: 15px;
+        padding: 18px 5%;
       }
 
-      nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 15px;
-        font-size: 14px;
+      nav a:not(.login) {
+        display: none;
       }
 
       .hero {
-        flex-direction: column;
-        text-align: center;
+        min-height: 550px;
+        padding: 55px 5%;
       }
 
-      .hero-box {
-        width: 100%;
-        max-width: 350px;
-        height: 300px;
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 16px;
       }
 
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .popular {
-        transform: none;
-      }
-
-      footer {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+      .section-title h2,
+      .about h2 {
+        font-size: 28px;
       }
     }
   </style>
@@ -258,178 +233,102 @@
 <body>
 
   <header>
-    <a href="#" class="logo">
-      <span>Body</span>Reset
-    </a>
+
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
 
     <nav>
-      <a href="#home">الرئيسية</a>
-      <a href="#programs">البرامج</a>
-      <a href="#about">عن الكوتش</a>
-      <a href="#plans">الباقات</a>
+      <a href="#features">المميزات</a>
+      <a href="#about">عن BodyReset</a>
+      <a class="login" href="auth.html">تسجيل الدخول</a>
     </nav>
 
-    <a href="#contact" class="btn">ابدأ الآن</a>
   </header>
 
-  <main>
+  <section class="hero">
 
-    <section class="hero" id="home">
+    <div class="hero-content">
 
-      <div class="hero-text">
-        <small>ONLINE FITNESS COACHING</small>
+      <div class="small-title">
+        BODYRESET FITNESS
+      </div>
 
-        <h1>
-          غيّر جسمك.<br>
-          <span>غيّر حياتك.</span>
-        </h1>
+      <h1>
+        غيّر جسمك.
+        <br>
+        <span>غيّر حياتك.</span>
+      </h1>
 
-        <p>
-          تمارين ولياقة وتخسيس وخطط دايت مصممة
-          لمساعدتك على الوصول لأفضل نسخة من نفسك.
-        </p>
+      <p>
+        ابدأ رحلة جديدة نحو جسم أقوى وحياة أفضل.
+        تمارين، تغذية، ومتابعة تساعدك توصل لهدفك.
+      </p>
 
-        <a href="#plans" class="btn">
-          ابدأ رحلتك 💪
+      <div class="buttons">
+        <a class="btn primary" href="auth.html">
+          ابدأ رحلتك
+        </a>
+
+        <a class="btn secondary" href="#features">
+          اكتشف BodyReset
         </a>
       </div>
 
-      <div class="hero-box">
-        🏋️
+    </div>
+
+  </section>
+
+  <section class="features" id="features">
+
+    <div class="section-title">
+      <h2>كل اللي تحتاجه في مكان واحد</h2>
+      <p>نظام متكامل يساعدك تبني نسخة أفضل من نفسك.</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Workout</h3>
+        <p>
+          برامج وتمارين منظمة تناسب مستواك وتساعدك تحقق هدفك.
+        </p>
       </div>
 
-    </section>
-
-
-    <section id="programs">
-
-      <div class="title">
-        <small>PROGRAMS</small>
-        <h2>برامجنا</h2>
+      <div class="card">
+        <h3>Nutrition</h3>
+        <p>
+          نظام غذائي منظم يساعدك تختار الأكل المناسب لهدفك.
+        </p>
       </div>
 
-      <div class="cards">
-
-        <div class="card">
-          <div class="icon">🏋️</div>
-          <h3>تمارين ولياقة</h3>
-          <p>
-            برامج تدريب للجيم أو البيت حسب مستواك وهدفك.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🔥</div>
-          <h3>تخسيس</h3>
-          <p>
-            خطة تساعدك على خسارة الدهون بطريقة تدريجية وصحية.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🥗</div>
-          <h3>دايت وتغذية</h3>
-          <p>
-            خطة غذائية مرنة تناسب يومك واحتياجاتك وأهدافك.
-          </p>
-        </div>
-
+      <div class="card">
+        <h3>Progress</h3>
+        <p>
+          تابع تقدمك وشوف الفرق اللي بتحققه مع الوقت.
+        </p>
       </div>
 
-    </section>
+    </div>
 
+  </section>
 
-    <section class="about" id="about">
+  <section class="about" id="about">
 
-      <div class="title">
-        <small>ABOUT COACH</small>
-        <h2>مش مجرد تمرين</h2>
-      </div>
+    <h2>BodyReset</h2>
 
-      <p>
-        BodyReset هي رحلة تغيير كاملة تجمع بين التدريب،
-        التغذية والمتابعة لمساعدتك على بناء جسم أقوى
-        وعادات أفضل.
-      </p>
+    <p>
+      مش مجرد موقع تمارين.
+      BodyReset هو مكان تبدأ فيه رحلة تغيير حقيقية،
+      خطوة بخطوة، وبطريقة منظمة.
+    </p>
 
-    </section>
-
-
-    <section class="plans" id="plans">
-
-      <div class="title">
-        <small>PLANS</small>
-        <h2>الباقات</h2>
-      </div>
-
-      <div class="cards">
-
-        <div class="card">
-          <h3>Starter</h3>
-          <div class="price">499 ج.م</div>
-          <p>
-            خطة تمارين<br>
-            خطة تغذية<br>
-            متابعة أسبوعية
-          </p>
-          <br>
-          <a href="#contact" class="btn">اشترك</a>
-        </div>
-
-        <div class="card popular">
-          <h3>Transformation</h3>
-          <div class="price">799 ج.م</div>
-          <p>
-            خطة تمارين مخصصة<br>
-            نظام غذائي مخصص<br>
-            متابعة مستمرة
-          </p>
-          <br>
-          <a href="#contact" class="btn">ابدأ الآن</a>
-        </div>
-
-        <div class="card">
-          <h3>Premium</h3>
-          <div class="price">1,199 ج.م</div>
-          <p>
-            متابعة مكثفة<br>
-            خطة كاملة<br>
-            دعم مباشر
-          </p>
-          <br>
-          <a href="#contact" class="btn">اشترك</a>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="contact" id="contact">
-
-      <h2>جاهز تبدأ؟ 🔥</h2>
-
-      <p>
-        خُد أول خطوة نحو جسم أقوى وحياة أفضل.
-      </p>
-
-      <a
-        href="https://wa.me/201000000000"
-        class="btn"
-        target="_blank"
-      >
-        تواصل على WhatsApp
-      </a>
-
-    </section>
-
-  </main>
-
+  </section>
 
   <footer>
-    <strong>BodyReset</strong>
-    <span>© 2026 جميع الحقوق محفوظة</span>
+    Body<span>Reset</span> © 2026
   </footer>
 
 </body>
-  </html>
+    </html>      
+        
