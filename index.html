@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -147,8 +147,7 @@
     }
 
     .cards,
-    .why-grid,
-    .reviews {
+    .why-grid {
       max-width: 1200px;
       margin: auto;
       display: grid;
@@ -315,29 +314,6 @@
       font-size: 18px;
     }
 
-    .reviews {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .review {
-      background: #f8fafc;
-      border: 1px solid #dbe4ee;
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(7,17,31,.06);
-    }
-
-    .review p {
-      color: #334155;
-      font-size: 18px;
-      margin-bottom: 18px;
-    }
-
-    .review strong {
-      color: #07111f;
-      font-size: 17px;
-    }
-
     .pricing {
       background: #eef3f8;
     }
@@ -356,13 +332,6 @@
     .price-box h3 {
       color: #07111f;
       font-size: 30px;
-    }
-
-    .price {
-      color: #2f80ed;
-      font-size: 48px;
-      font-weight: 900;
-      margin: 15px 0;
     }
 
     .price-box p {
@@ -408,18 +377,13 @@
       font-size: 16px;
     }
 
-    .footer-links a:hover {
-      color: #4da3ff;
-    }
-
     footer p {
       font-size: 15px;
     }
 
     @media (max-width: 850px) {
       .cards,
-      .why-grid,
-      .reviews {
+      .why-grid {
         grid-template-columns: 1fr;
       }
 
@@ -454,8 +418,7 @@
       .nutrition-text p,
       .nutrition-list li,
       .section-title p,
-      .why-card p,
-      .review p {
+      .why-card p {
         font-size: 17px;
       }
 
@@ -501,36 +464,7 @@
 
     <div class="cards">
 
-      <div class="card">
-        <img class="card-image"
-          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-          alt="معدات وتمارين الجيم">
-
-        <div class="card-content">
-          <h3>Strength</h3>
-          <p>
-            برنامج لبناء القوة والعضلات باستخدام معدات الجيم
-            والتمارين الأساسية.
-          </p>
-          <a href="auth.html" class="card-link">ابدأ البرنامج ←</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img class="card-image"
-          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
-          alt="تمارين لياقة">
-
-        <div class="card-content">
-          <h3>Fat Loss</h3>
-          <p>
-            تمارين تساعدك على حرق الدهون وتحسين اللياقة
-            مع خطة تدريجية.
-          </p>
-          <a href="auth.html" class="card-link">ابدأ البرنامج ←</a>
-        </div>
-      </div>
-
+      <!-- Fitness الأول -->
       <div class="card">
         <img class="card-image"
           src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
@@ -546,10 +480,42 @@
         </div>
       </div>
 
+      <!-- Strength الثاني -->
+      <div class="card">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+          alt="معدات وتمارين الجيم">
+
+        <div class="card-content">
+          <h3>Strength</h3>
+          <p>
+            برنامج لبناء القوة والعضلات باستخدام معدات الجيم
+            والتمارين الأساسية.
+          </p>
+          <a href="auth.html" class="card-link">ابدأ البرنامج ←</a>
+        </div>
+      </div>
+
+      <!-- Fat Loss الثالث -->
+      <div class="card">
+        <img class="card-image"
+          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+          alt="تمارين لياقة">
+
+        <div class="card-content">
+          <h3>Fat Loss</h3>
+          <p>
+            تمارين تساعدك على حرق الدهون وتحسين اللياقة
+            مع خطة تدريجية.
+          </p>
+          <a href="auth.html" class="card-link">ابدأ البرنامج ←</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="nutrition">
+  <section class="nutrition" id="nutrition">
 
     <div class="nutrition-box">
 
@@ -644,36 +610,6 @@
 
   </section>
 
-  <section class="reviews">
-
-    <div class="section-title" style="grid-column:1/-1;">
-      <h2>آراء المستخدمين</h2>
-      <p>تجارب بسيطة من ناس بدأت رحلتها</p>
-    </div>
-
-    <div class="review">
-      <p>
-        "التنظيم خلاني أعرف أتمرن وأتابع تقدمي من غير ما أتوه."
-      </p>
-      <strong>— أحمد</strong>
-    </div>
-
-    <div class="review">
-      <p>
-        "أكتر حاجة عجبتني إن التمرين والتغذية موجودين مع بعض."
-      </p>
-      <strong>— محمد</strong>
-    </div>
-
-    <div class="review">
-      <p>
-        "التجربة بسيطة وواضحة، وده خلاني أقدر أستمر."
-      </p>
-      <strong>— عمر</strong>
-    </div>
-
-  </section>
-
   <section class="pricing">
 
     <div class="section-title">
@@ -684,8 +620,6 @@
     <div class="price-box">
 
       <h3>BodyReset</h3>
-
-      <div class="price">Free</div>
 
       <p>
         ابدأ ببناء عادات أفضل وخلي جسمك هو مشروعك الجديد.
@@ -717,4 +651,4 @@
   </footer>
 
 </body>
-</html> 
+                                                                </html>
