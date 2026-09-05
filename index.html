@@ -17,7 +17,7 @@ html{
 }
 
 body{
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
   background:#eef3f8;
   color:#071a33;
   line-height:1.8;
@@ -29,41 +29,17 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:25px;
-  position:sticky;
-  top:0;
-  z-index:1000;
+  gap:20px;
 }
 
 .logo{
   color:white;
   font-size:28px;
   font-weight:bold;
-  white-space:nowrap;
 }
 
 .logo span{
   color:#2563eb;
-}
-
-nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:28px;
-  flex:1;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:17px;
-  font-weight:bold;
-  transition:.2s;
-}
-
-nav a:hover{
-  color:#60a5fa;
 }
 
 .login{
@@ -73,7 +49,6 @@ nav a:hover{
   padding:10px 20px;
   border-radius:8px;
   font-weight:bold;
-  white-space:nowrap;
 }
 
 .hero{
@@ -82,9 +57,9 @@ nav a:hover{
   align-items:center;
   padding:80px 7%;
   background:
-    linear-gradient(rgba(7,26,51,.72),rgba(7,26,51,.72)),
-    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85")
-    center/cover;
+  linear-gradient(rgba(7,26,51,.72),rgba(7,26,51,.72)),
+  url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85")
+  center/cover;
 }
 
 .hero-content{
@@ -349,40 +324,6 @@ footer p{
 
   header{
     flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .logo{
-    width:100%;
-    text-align:center;
-  }
-
-  nav{
-    order:3;
-    width:100%;
-    gap:15px;
-    flex-wrap:wrap;
-  }
-
-  .login{
-    order:2;
-  }
-
-  .hero{
-    min-height:550px;
-    text-align:center;
-  }
-
-  .hero-content{
-    margin:auto;
-  }
-
-  .hero h1{
-    font-size:44px;
-  }
-
-  .hero-buttons{
-    justify-content:center;
   }
 
   .workout-grid,
@@ -395,13 +336,13 @@ footer p{
   .nutrition img{
     height:300px;
   }
+
+  .hero h1{
+    font-size:44px;
+  }
 }
 
 @media(max-width:500px){
-
-  nav a{
-    font-size:15px;
-  }
 
   .hero h1{
     font-size:38px;
@@ -427,247 +368,341 @@ footer p{
 
 <header>
 
-  <div class="logo">
-    Body<span>Reset</span>
-  </div>
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#workouts">التمارين</a>
-    <a href="#nutrition">التغذية</a>
-    <a href="#progress">التقدم</a>
-  </nav>
-
-  <a class="login" href="auth.html">تسجيل الدخول</a>
+<a class="login" href="auth.html">
+تسجيل الدخول
+</a>
 
 </header>
 
 
-<section class="hero" id="home">
+<section class="hero">
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <h1>
-      غيّر جسمك<br>
-      غيّر حياتك
-    </h1>
+<h1>
+غيّر جسمك<br>
+غيّر حياتك
+</h1>
 
-    <p>
-      BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
-      من التمارين والتغذية إلى متابعة تقدمك خطوة بخطوة.
-    </p>
+<p>
+BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
+من التمارين والتغذية إلى متابعة تقدمك خطوة بخطوة.
+</p>
 
-    <div class="hero-buttons">
-      <a class="start" href="auth.html">ابدأ رحلتك</a>
-      <a class="more" href="#workouts">استكشاف المزيد</a>
-    </div>
+<div class="hero-buttons">
 
-  </div>
+<a class="start" href="auth.html">
+ابدأ رحلتك
+</a>
+
+<a class="more" href="#workouts">
+استكشاف المزيد
+</a>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section id="workouts">
 
-  <h2 class="section-title">اختيارات تناسب هدفك</h2>
+<h2 class="section-title">
+اختيارات تناسب هدفك
+</h2>
 
-  <p class="section-subtitle">
-    اختار البرنامج المناسب لهدفك وخلي كل تمرينة تقربك من النتيجة اللي عايزها
-  </p>
+<p class="section-subtitle">
+اختار البرنامج المناسب لهدفك وخلي كل تمرينة تقربك من النتيجة اللي عايزها
+</p>
 
-  <div class="workout-grid">
+<div class="workout-grid">
 
-    <div class="workout-card">
+<div class="workout-card">
 
-      <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85">
+<img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85">
 
-      <div class="workout-card-content">
-        <h3>Fitness</h3>
-        <p>
-          تمارين تساعدك تحسن لياقتك وتخلي جسمك أكثر نشاطًا.
-        </p>
-      </div>
+<div class="workout-card-content">
 
-    </div>
+<h3>Fitness</h3>
 
+<p>
+تمارين تساعدك تحسن لياقتك وتخلي جسمك أكثر نشاطًا.
+</p>
 
-    <div class="workout-card">
+</div>
 
-      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85">
-
-      <div class="workout-card-content">
-        <h3>Strength</h3>
-        <p>
-          ركز على القوة وبناء جسم أقوى مع التزامك بالتمرين.
-        </p>
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="workout-card">
+<div class="workout-card">
 
-      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85">
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85">
 
-      <div class="workout-card-content">
-        <h3>Fat Loss</h3>
-        <p>
-          تمارين مناسبة لهدف خسارة الدهون وتحسين شكل الجسم.
-        </p>
-      </div>
+<div class="workout-card-content">
 
-    </div>
+<h3>Strength</h3>
 
-  </div>
+<p>
+ركز على القوة وبناء جسم أقوى مع التزامك بالتمرين.
+</p>
 
-</section>
+</div>
+
+</div>
 
 
-<section class="nutrition" id="nutrition">
+<div class="workout-card">
 
-  <div class="nutrition-box">
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85">
 
-    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85">
+<div class="workout-card-content">
 
-    <div>
+<h3>Fat Loss</h3>
 
-      <h2>تغذية تناسب جسمك</h2>
+<p>
+تمارين مناسبة لهدف خسارة الدهون وتحسين شكل الجسم.
+</p>
 
-      <p>
-        الأكل جزء أساسي من رحلتك. اختار وجبات مناسبة لهدفك
-        وخلي تغذيتك تساعدك توصل لنتيجتك.
-      </p>
+</div>
 
-      <ul>
-        <li>وجبات متوازنة</li>
-        <li>اختيارات أكل صحية</li>
-        <li>اهتمام بالبروتين والعناصر الغذائية</li>
-        <li>نظام يناسب هدفك</li>
-      </ul>
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<section id="progress">
+<section class="nutrition">
 
-  <h2 class="section-title">تابع تقدمك</h2>
+<div class="nutrition-box">
 
-  <p class="section-subtitle">
-    شوف تطورك وحافظ على استمراريتك خطوة بخطوة
-  </p>
+<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85">
 
-  <div class="progress-grid">
+<div>
 
-    <div class="progress-card">
-      <div class="progress-number">01</div>
-      <h3>حدد هدفك</h3>
-      <p>
-        اختار الهدف اللي عايز توصله وحدد الاتجاه المناسب ليك.
-      </p>
-    </div>
+<h2>
+تغذية تناسب جسمك
+</h2>
 
-    <div class="progress-card">
-      <div class="progress-number">02</div>
-      <h3>التزم بخطتك</h3>
-      <p>
-        حافظ على تمارينك وأكلك وخلي الاستمرارية عادة.
-      </p>
-    </div>
+<p>
+الأكل جزء أساسي من رحلتك. اختار وجبات مناسبة لهدفك
+وخلي تغذيتك تساعدك توصل لنتيجتك.
+</p>
 
-    <div class="progress-card">
-      <div class="progress-number">03</div>
-      <h3>شوف النتيجة</h3>
-      <p>
-        تابع تطورك واستمر في رحلتك لحد ما توصل لهدفك.
-      </p>
-    </div>
+<ul>
 
-  </div>
+<li>وجبات متوازنة</li>
+
+<li>اختيارات أكل صحية</li>
+
+<li>اهتمام بالبروتين والعناصر الغذائية</li>
+
+<li>نظام يناسب هدفك</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2 class="section-title">
+تابع تقدمك
+</h2>
+
+<p class="section-subtitle">
+شوف تطورك وحافظ على استمراريتك خطوة بخطوة
+</p>
+
+<div class="progress-grid">
+
+<div class="progress-card">
+
+<div class="progress-number">
+01
+</div>
+
+<h3>
+حدد هدفك
+</h3>
+
+<p>
+اختار الهدف اللي عايز توصله وحدد الاتجاه المناسب ليك.
+</p>
+
+</div>
+
+
+<div class="progress-card">
+
+<div class="progress-number">
+02
+</div>
+
+<h3>
+التزم بخطتك
+</h3>
+
+<p>
+حافظ على تمارينك وأكلك وخلي الاستمرارية عادة.
+</p>
+
+</div>
+
+
+<div class="progress-card">
+
+<div class="progress-number">
+03
+</div>
+
+<h3>
+شوف النتيجة
+</h3>
+
+<p>
+تابع تطورك واستمر في رحلتك لحد ما توصل لهدفك.
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section class="why">
 
-  <h2 class="section-title">ليه BodyReset؟</h2>
+<h2 class="section-title">
+ليه BodyReset؟
+</h2>
 
-  <p class="section-subtitle">
-    لأن تغيير جسمك محتاج نظام واضح واستمرارية
-  </p>
+<p class="section-subtitle">
+لأن تغيير جسمك محتاج نظام واضح واستمرارية
+</p>
 
-  <div class="why-grid">
+<div class="why-grid">
 
-    <div class="why-card">
-      <h3>خطة واضحة</h3>
-      <p>
-        خطوات منظمة تساعدك تعرف تعمل إيه وتوصل لهدفك.
-      </p>
-    </div>
+<div class="why-card">
 
-    <div class="why-card">
-      <h3>تغذية أفضل</h3>
-      <p>
-        اختيارات غذائية تساعدك تبني نظام صحي يناسبك.
-      </p>
-    </div>
+<h3>
+خطة واضحة
+</h3>
 
-    <div class="why-card">
-      <h3>متابعة مستمرة</h3>
-      <p>
-        تابع تقدمك وحافظ على الاستمرارية في رحلتك.
-      </p>
-    </div>
+<p>
+خطوات منظمة تساعدك تعرف تعمل إيه وتوصل لهدفك.
+</p>
 
-  </div>
+</div>
+
+
+<div class="why-card">
+
+<h3>
+تغذية أفضل
+</h3>
+
+<p>
+اختيارات غذائية تساعدك تبني نظام صحي يناسبك.
+</p>
+
+</div>
+
+
+<div class="why-card">
+
+<h3>
+متابعة مستمرة
+</h3>
+
+<p>
+تابع تقدمك وحافظ على الاستمرارية في رحلتك.
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section class="pricing">
 
-  <div class="price-box">
+<div class="price-box">
 
-    <h2>ابدأ رحلتك اليوم</h2>
+<h2>
+ابدأ رحلتك اليوم
+</h2>
 
-    <p>
-      ابدأ بناء نظام صحي يناسب هدفك وخليك ملتزم بخطتك.
-    </p>
+<p>
+ابدأ بناء نظام صحي يناسب هدفك وخليك ملتزم بخطتك.
+</p>
 
-    <a class="start-bottom" href="auth.html">ابدأ</a>
+<a class="start-bottom" href="auth.html">
+ابدأ
+</a>
 
-  </div>
+</div>
 
 </section>
 
 
 <footer>
 
-  <div class="footer-content">
+<div class="footer-content">
 
-    <div>
-      <h3>BodyReset</h3>
-      <p>
-        طريقك لبناء جسم أقوى وحياة صحية أفضل.
-      </p>
-    </div>
+<div>
 
-    <div class="footer-links">
-      <a href="#home">الرئيسية</a>
-      <a href="#workouts">التمارين</a>
-      <a href="#nutrition">التغذية</a>
-      <a href="#progress">التقدم</a>
-      <a href="auth.html">تسجيل الدخول</a>
-    </div>
+<h3>
+BodyReset
+</h3>
 
-  </div>
+<p>
+طريقك لبناء جسم أقوى وحياة صحية أفضل.
+</p>
 
-  <div class="copyright">
-    © 2026 BodyReset - جميع الحقوق محفوظة
-  </div>
+</div>
+
+
+<div class="footer-links">
+
+<a href="#">
+الرئيسية
+</a>
+
+<a href="#workouts">
+التمارين
+</a>
+
+<a href="#nutrition">
+التغذية
+</a>
+
+<a href="#progress">
+التقدم
+</a>
+
+<a href="auth.html">
+تسجيل الدخول
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+© 2026 BodyReset - جميع الحقوق محفوظة
+</div>
 
 </footer>
 
