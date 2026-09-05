@@ -6,869 +6,719 @@
 <title>BodyReset | غيّر جسمك، غيّر حياتك</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
-  font-family:Arial,Tahoma,sans-serif;
-  background:#eef3f8;
-  color:#07111f;
-  line-height:1.8;
+font-family:Arial,Tahoma,sans-serif;
+background:#eef3f8;
+color:#07111f;
+line-height:1.8;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
+a{text-decoration:none;color:inherit}
+.container{width:92%;max-width:1200px;margin:auto}
 
-.container{
-  width:92%;
-  max-width:1200px;
-  margin:auto;
-}
-
-/* Header */
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(7,17,31,.97);
-  border-bottom:1px solid rgba(255,255,255,.08);
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(7,17,31,.97);
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .nav{
-  min-height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+min-height:75px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
 .logo{
-  color:white;
-  font-size:27px;
-  font-weight:900;
+color:white;
+font-size:27px;
+font-weight:900;
 }
 
 .nav-links{
-  display:flex;
-  align-items:center;
-  gap:22px;
+display:flex;
+align-items:center;
+gap:22px;
 }
 
 .nav-links a{
-  color:#dce8f5;
-  font-size:16px;
-  font-weight:700;
+color:#dce8f5;
+font-size:16px;
+font-weight:700;
 }
 
-.nav-links a:hover{
-  color:#4da3ff;
-}
+.nav-links a:hover{color:#4da3ff}
 
 .login-btn{
-  background:#2f80ed;
-  color:white!important;
-  padding:11px 18px;
-  border-radius:10px;
+background:#2f80ed;
+color:white!important;
+padding:11px 18px;
+border-radius:10px;
 }
 
 /* Hero */
 .hero{
-  min-height:720px;
-  display:flex;
-  align-items:center;
-  background:
-  linear-gradient(rgba(7,17,31,.68),rgba(7,17,31,.82)),
-  url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85")
-  center/cover no-repeat;
+min-height:720px;
+display:flex;
+align-items:center;
+background:
+linear-gradient(rgba(7,17,31,.68),rgba(7,17,31,.82)),
+url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85")
+center/cover no-repeat;
 }
 
 .hero-content{
-  max-width:760px;
-  color:white;
-  padding:100px 0;
+max-width:760px;
+color:white;
+padding:100px 0;
 }
 
 .hero h1{
-  font-size:clamp(42px,7vw,76px);
-  line-height:1.15;
-  margin-bottom:25px;
-  font-weight:900;
+font-size:clamp(42px,7vw,76px);
+line-height:1.15;
+margin-bottom:25px;
+font-weight:900;
 }
 
-.hero h1 span{
-  color:#4da3ff;
-}
+.hero h1 span{color:#4da3ff}
 
 .hero p{
-  font-size:23px;
-  line-height:1.9;
-  color:#e5edf7;
-  margin-bottom:35px;
+font-size:23px;
+line-height:1.9;
+color:#e5edf7;
+margin-bottom:35px;
 }
 
 .hero-buttons{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .btn{
-  display:inline-block;
-  padding:15px 27px;
-  border-radius:12px;
-  font-size:17px;
-  font-weight:800;
-  transition:.3s;
+display:inline-block;
+padding:15px 27px;
+border-radius:12px;
+font-size:17px;
+font-weight:800;
+transition:.3s;
 }
 
 .btn-primary{
-  background:#2f80ed;
-  color:white;
+background:#2f80ed;
+color:white;
 }
 
 .btn-primary:hover{
-  background:#1769cf;
-  transform:translateY(-2px);
+background:#1769cf;
+transform:translateY(-2px);
 }
 
 .btn-secondary{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.35);
-  color:white;
+background:rgba(255,255,255,.1);
+border:1px solid rgba(255,255,255,.35);
+color:white;
 }
 
 /* Sections */
-section{
-  padding:90px 0;
-}
+section{padding:90px 0}
 
 .section-title{
-  text-align:center;
-  margin-bottom:55px;
+text-align:center;
+margin-bottom:55px;
 }
 
 .section-title h2{
-  font-size:40px;
-  font-weight:900;
-  margin-bottom:15px;
-  color:#07111f;
+font-size:40px;
+font-weight:900;
+margin-bottom:15px;
+color:#07111f;
 }
 
 .section-title p{
-  font-size:21px;
-  color:#334155;
-  font-weight:600;
+font-size:21px;
+color:#334155;
+font-weight:600;
 }
 
 /* Workouts */
-.workouts{
-  background:#eef3f8;
-}
+.workouts{background:#eef3f8}
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
 }
 
 .card{
-  background:#f8fafc;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #d8e1eb;
-  box-shadow:0 10px 30px rgba(7,17,31,.07);
-  transition:.3s;
+background:#f8fafc;
+border-radius:18px;
+overflow:hidden;
+border:1px solid #d8e1eb;
+box-shadow:0 10px 30px rgba(7,17,31,.07);
+transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-7px);
+transform:translateY(-7px);
+box-shadow:0 18px 40px rgba(7,17,31,.12);
 }
 
 .card-image{
-  width:100%;
-  height:245px;
-  object-fit:cover;
-  display:block;
+width:100%;
+height:245px;
+object-fit:cover;
+display:block;
 }
 
-.card-content{
-  padding:27px;
-}
+.card-content{padding:27px}
 
 .card-content h3{
-  font-size:25px;
-  margin-bottom:12px;
+font-size:25px;
+margin-bottom:12px;
 }
 
 .card-content p{
-  font-size:19px;
-  line-height:1.9;
-  color:#334155;
-  font-weight:600;
+font-size:19px;
+line-height:1.9;
+color:#334155;
+font-weight:600;
 }
 
 /* Nutrition */
-.nutrition{
-  background:#f8fafc;
-}
+.nutrition{background:#f8fafc}
 
 .nutrition-box{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:45px;
-  align-items:center;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:45px;
+align-items:center;
 }
 
 .nutrition-image{
-  width:100%;
-  height:430px;
-  object-fit:cover;
-  border-radius:22px;
+width:100%;
+height:430px;
+object-fit:cover;
+border-radius:22px;
 }
 
 .nutrition-text h2{
-  font-size:40px;
-  margin-bottom:18px;
+font-size:40px;
+margin-bottom:18px;
 }
 
 .nutrition-text p{
-  font-size:21px;
-  line-height:2;
-  color:#334155;
-  font-weight:600;
-  margin-bottom:25px;
+font-size:21px;
+line-height:2;
+color:#334155;
+font-weight:600;
+margin-bottom:25px;
 }
 
-.nutrition-list{
-  list-style:none;
-}
+.nutrition-list{list-style:none}
 
 .nutrition-list li{
-  background:#eef3f8;
-  border:1px solid #d8e1eb;
-  padding:15px 18px;
-  border-radius:12px;
-  margin-bottom:12px;
-  font-size:19px;
-  color:#334155;
-  font-weight:700;
+background:#eef3f8;
+border:1px solid #d8e1eb;
+padding:15px 18px;
+border-radius:12px;
+margin-bottom:12px;
+font-size:19px;
+color:#334155;
+font-weight:700;
 }
 
 /* Progress */
 .progress{
-  background:#07111f;
-  color:white;
+background:#07111f;
+color:white;
 }
 
-.progress .section-title h2{
-  color:white;
-}
-
-.progress .section-title p{
-  color:#cbd8e7;
-}
+.progress .section-title h2{color:white}
+.progress .section-title p{color:#cbd8e7}
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
 }
 
 .stat{
-  background:#0e1d31;
-  border:1px solid #20354f;
-  border-radius:18px;
-  padding:35px 25px;
-  text-align:center;
+background:#0e1d31;
+border:1px solid #20354f;
+border-radius:18px;
+padding:35px 25px;
+text-align:center;
 }
 
 .stat-number{
-  font-size:42px;
-  font-weight:900;
-  color:#4da3ff;
-  margin-bottom:8px;
+font-size:42px;
+font-weight:900;
+color:#4da3ff;
+margin-bottom:8px;
 }
 
 .stat h3{
-  font-size:22px;
-  margin-bottom:8px;
+font-size:22px;
+margin-bottom:8px;
 }
 
 .stat p{
-  font-size:19px;
-  color:#cbd8e7;
-  font-weight:600;
+font-size:19px;
+color:#cbd8e7;
+font-weight:600;
 }
 
 /* Why */
-.why{
-  background:#eef3f8;
-}
+.why{background:#eef3f8}
 
 .why-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
 }
 
 .why-card{
-  background:#f8fafc;
-  border:1px solid #d8e1eb;
-  border-radius:18px;
-  padding:32px;
+background:#f8fafc;
+border:1px solid #d8e1eb;
+border-radius:18px;
+padding:32px;
 }
 
 .why-card h3{
-  font-size:24px;
-  margin-bottom:12px;
+font-size:24px;
+margin-bottom:12px;
 }
 
 .why-card p{
-  font-size:19px;
-  line-height:1.9;
-  color:#334155;
-  font-weight:600;
+font-size:19px;
+line-height:1.9;
+color:#334155;
+font-weight:600;
 }
 
 /* Pricing */
-.pricing{
-  background:#eef3f8;
-}
+.pricing{background:#eef3f8}
 
 .pricing-box{
-  max-width:600px;
-  margin:auto;
-  background:#07111f;
-  color:white;
-  border-radius:25px;
-  padding:45px 35px;
-  text-align:center;
-  box-shadow:0 20px 50px rgba(7,17,31,.18);
+max-width:600px;
+margin:auto;
+background:#07111f;
+color:white;
+border-radius:25px;
+padding:45px 35px;
+text-align:center;
+box-shadow:0 20px 50px rgba(7,17,31,.18);
 }
 
 .pricing-box h2{
-  font-size:38px;
-  margin-bottom:15px;
+font-size:38px;
+margin-bottom:15px;
 }
 
 .pricing-box p{
-  color:#d3deea;
-  font-size:21px;
-  line-height:1.9;
-  margin-bottom:25px;
-  font-weight:600;
+color:#d3deea;
+font-size:21px;
+line-height:1.9;
+margin-bottom:25px;
+font-weight:600;
 }
 
 /* Footer */
 footer{
-  background:#07111f;
-  color:white;
-  padding:45px 0 25px;
+background:#07111f;
+color:white;
+padding:45px 0 25px;
 }
 
 .footer-content{
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-  flex-wrap:wrap;
-  padding-bottom:30px;
+display:flex;
+justify-content:space-between;
+gap:30px;
+flex-wrap:wrap;
+padding-bottom:30px;
 }
 
 .footer-brand h3{
-  font-size:27px;
-  margin-bottom:10px;
+font-size:27px;
+margin-bottom:10px;
 }
 
 .footer-brand p{
-  color:#b8c7d8;
-  font-size:18px;
+color:#b8c7d8;
+font-size:18px;
 }
 
 .footer-links{
-  display:flex;
-  gap:22px;
-  flex-wrap:wrap;
+display:flex;
+gap:22px;
+flex-wrap:wrap;
 }
 
 .footer-links a{
-  color:#dbe7f3;
-  font-size:17px;
-  font-weight:600;
+color:#dbe7f3;
+font-size:17px;
+font-weight:600;
 }
 
+.footer-links a:hover{color:#4da3ff}
+
 .copyright{
-  border-top:1px solid #20354f;
-  padding-top:20px;
-  text-align:center;
-  color:#9fb0c3;
-  font-size:15px;
+border-top:1px solid #20354f;
+padding-top:20px;
+text-align:center;
+color:#9fb0c3;
+font-size:15px;
 }
 
 /* Mobile */
 @media(max-width:850px){
 
-  .nav{
-    min-height:68px;
-  }
+.nav{min-height:68px}
 
-  .nav-links{
-    gap:10px;
-  }
+.nav-links{gap:10px}
 
-  .nav-links a:not(.login-btn){
-    display:none;
-  }
+.nav-links a:not(.login-btn){display:none}
 
-  .hero{
-    min-height:650px;
-  }
+.hero{min-height:650px}
 
-  .hero-content{
-    padding:80px 0;
-  }
+.hero-content{padding:80px 0}
 
-  .hero p{
-    font-size:20px;
-  }
+.hero p{font-size:20px}
 
-  .cards,
-  .stats,
-  .why-grid,
-  .nutrition-box{
-    grid-template-columns:1fr;
-  }
+.cards,
+.stats,
+.why-grid,
+.nutrition-box{
+grid-template-columns:1fr;
+}
 
-  .nutrition-image{
-    height:320px;
-  }
+.nutrition-image{height:320px}
 
-  section{
-    padding:70px 0;
-  }
+section{padding:70px 0}
 
-  .section-title h2,
-  .nutrition-text h2{
-    font-size:32px;
-  }
+.section-title h2,
+.nutrition-text h2{
+font-size:32px;
+}
 
-  .section-title p{
-    font-size:19px;
-  }
+.section-title p{font-size:19px}
 }
 
 @media(max-width:500px){
 
-  .container{
-    width:90%;
-  }
+.container{width:90%}
 
-  .logo{
-    font-size:23px;
-  }
+.logo{font-size:23px}
 
-  .hero h1{
-    font-size:42px;
-  }
+.hero h1{font-size:42px}
 
-  .hero p{
-    font-size:19px;
-  }
+.hero p{font-size:19px}
 
-  .btn{
-    width:100%;
-    text-align:center;
-  }
+.btn{
+width:100%;
+text-align:center;
+}
 
-  .card-content p,
-  .why-card p,
-  .nutrition-list li{
-    font-size:18px;
-  }
+.card-content p,
+.why-card p,
+.nutrition-list li{
+font-size:18px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Header -->
 <header>
-  <div class="container nav">
+<div class="container nav">
 
-    <a href="index.html" class="logo">BodyReset</a>
+<a href="index.html" class="logo">BodyReset</a>
 
-    <nav class="nav-links">
-      <a href="#workouts">التمارين</a>
-      <a href="#nutrition">التغذية</a>
-      <a href="#progress">التقدم</a>
-      <a href="auth.html" class="login-btn">تسجيل الدخول</a>
-    </nav>
+<nav class="nav-links">
+<a href="#workouts">التمارين</a>
+<a href="#nutrition">التغذية</a>
+<a href="#progress">التقدم</a>
+<a href="auth.html" class="login-btn">تسجيل الدخول</a>
+</nav>
 
-  </div>
+</div>
 </header>
 
-
-<!-- Hero -->
 <section class="hero">
+<div class="container">
 
-  <div class="container">
+<div class="hero-content">
 
-    <div class="hero-content">
+<h1>
+غيّر جسمك<br>
+<span>غيّر حياتك</span>
+</h1>
 
-      <h1>
-        غيّر جسمك<br>
-        <span>غيّر حياتك</span>
-      </h1>
+<p>
+BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
+من التمارين والتغذية إلى متابعة تقدمك خطوة بخطوة.
+</p>
 
-      <p>
-        BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
-        من التمارين والتغذية إلى متابعة تقدمك خطوة بخطوة.
-      </p>
+<div class="hero-buttons">
 
-      <div class="hero-buttons">
+<a href="auth.html" class="btn btn-primary">
+ابدأ رحلتك
+</a>
 
-        <a href="auth.html" class="btn btn-primary">
-          ابدأ رحلتك
-        </a>
+<a href="#workouts" class="btn btn-secondary">
+اكتشف المزيد
+</a>
 
-        <a href="#workouts" class="btn btn-secondary">
-          اكتشف المزيد
-        </a>
+</div>
 
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
-
-<!-- Workouts -->
 <section class="workouts" id="workouts">
+<div class="container">
 
-  <div class="container">
+<div class="section-title">
 
-    <div class="section-title">
+<h2>اختيارات تناسب هدفك</h2>
 
-      <h2>اختيارات تناسب هدفك</h2>
+<p>
+اختار البرنامج المناسب لهدفك وخلي كل تمرينة تقربك من النتيجة اللي عايزها
+</p>
 
-      <p>
-        اختار التمرين المناسب لهدفك وخلي كل تمرينة تقربك من النتيجة اللي عايزها
-      </p>
+</div>
 
-    </div>
+<div class="cards">
 
+<div class="card">
 
-    <div class="cards">
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
+alt="تمارين اللياقة">
 
-      <div class="card">
+<div class="card-content">
 
-        <img
-          class="card-image"
-          src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
-          alt="تمارين اللياقة"
-        >
+<h3>اللياقة</h3>
 
-        <div class="card-content">
+<p>
+تمارين متنوعة تساعدك تحسن لياقتك،
+ترفع نشاطك وتحافظ على جسم قوي وصحي.
+</p>
 
-          <h3>اللياقة</h3>
+</div>
+</div>
 
-          <p>
-            تمارين متنوعة تساعدك تحسن لياقتك،
-            ترفع نشاطك وتحافظ على جسم قوي وصحي.
-          </p>
+<div class="card">
 
-        </div>
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+alt="تمارين القوة">
 
-      </div>
+<div class="card-content">
 
+<h3>القوة وبناء العضلات</h3>
 
-      <div class="card">
+<p>
+تمارين قوة تساعدك تبني عضلاتك،
+وتطور أداءك وتحصل على جسم أقوى.
+</p>
 
-        <img
-          class="card-image"
-          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-          alt="تمارين القوة"
-        >
+</div>
+</div>
 
-        <div class="card-content">
+<div class="card">
 
-          <h3>القوة وبناء العضلات</h3>
+<img
+class="card-image"
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+alt="تمارين خسارة الدهون">
 
-          <p>
-            تمارين قوة تساعدك تبني عضلاتك،
-            وتطور أداءك وتحصل على جسم أقوى.
-          </p>
+<div class="card-content">
 
-        </div>
+<h3>خسارة الدهون</h3>
 
-      </div>
+<p>
+تمارين تساعدك تحرق سعرات أكثر،
+وتحسن لياقتك وتوصل لشكل جسم أفضل.
+</p>
 
+</div>
+</div>
 
-      <div class="card">
-
-        <img
-          class="card-image"
-          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
-          alt="تمارين خسارة الدهون"
-        >
-
-        <div class="card-content">
-
-          <h3>خسارة الدهون</h3>
-
-          <p>
-            تمارين تساعدك تحرق سعرات أكثر،
-            وتحسن لياقتك وتوصل لشكل جسم أفضل.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
-
-<!-- Nutrition -->
 <section class="nutrition" id="nutrition">
+<div class="container">
 
-  <div class="container">
+<div class="nutrition-box">
 
-    <div class="nutrition-box">
+<img
+class="nutrition-image"
+src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85"
+alt="تغذية صحية">
 
-      <img
-        class="nutrition-image"
-        src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85"
-        alt="تغذية صحية"
-      >
+<div class="nutrition-text">
 
-      <div class="nutrition-text">
+<h2>تغذية تناسب جسمك</h2>
 
-        <h2>تغذية تناسب جسمك</h2>
+<p>
+مش كل جسم محتاج نفس النظام.
+BodyReset يساعدك تفهم احتياجات جسمك
+وتختار الأكل المناسب لهدفك.
+</p>
 
-        <p>
-          مش كل جسم محتاج نفس الأكل.
-          BodyReset يساعدك تفهم احتياجات جسمك
-          وتختار الأكل المناسب لهدفك.
-        </p>
+<ul class="nutrition-list">
 
-        <ul class="nutrition-list">
+<li>وجبات متوازنة</li>
+<li>اختيارات أكل صحية</li>
+<li>اهتمام بالبروتين والعناصر الغذائية</li>
+<li>نظام يناسب هدفك</li>
 
-          <li>وجبات متوازنة</li>
-          <li>اختيارات أكل صحية</li>
-          <li>اهتمام بالبروتين والعناصر الغذائية</li>
-          <li>نظام يناسب هدفك</li>
+</ul>
 
-        </ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
+</div>
 </section>
 
-
-<!-- Progress -->
 <section class="progress" id="progress">
+<div class="container">
 
-  <div class="container">
+<div class="section-title">
 
-    <div class="section-title">
+<h2>تابع تقدمك</h2>
 
-      <h2>تابع تقدمك</h2>
+<p>
+شوف تطورك وحافظ على استمراريتك خطوة بخطوة
+</p>
 
-      <p>
-        شوف تطورك وحافظ على استمراريتك خطوة بخطوة
-      </p>
+</div>
 
-    </div>
+<div class="stats">
 
+<div class="stat">
+<div class="stat-number">01</div>
+<h3>حدد هدفك</h3>
+<p>اختار الهدف اللي عايز توصله</p>
+</div>
 
-    <div class="stats">
+<div class="stat">
+<div class="stat-number">02</div>
+<h3>التزم بخطتك</h3>
+<p>حافظ على تمارينك وأكلك</p>
+</div>
 
-      <div class="stat">
+<div class="stat">
+<div class="stat-number">03</div>
+<h3>شوف النتيجة</h3>
+<p>تابع تطورك واستمر في رحلتك</p>
+</div>
 
-        <div class="stat-number">01</div>
-
-        <h3>حدد هدفك</h3>
-
-        <p>
-          اختار الهدف اللي عايز توصله
-        </p>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-number">02</div>
-
-        <h3>التزم بخطتك</h3>
-
-        <p>
-          حافظ على تمارينك وأكلك
-        </p>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-number">03</div>
-
-        <h3>شوف النتيجة</h3>
-
-        <p>
-          تابع تطورك واستمر في رحلتك
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
-
-<!-- Why BodyReset -->
 <section class="why">
+<div class="container">
 
-  <div class="container">
+<div class="section-title">
 
-    <div class="section-title">
+<h2>ليه BodyReset؟</h2>
 
-      <h2>ليه BodyReset؟</h2>
+<p>
+لأن تغيير جسمك محتاج نظام واضح واستمرارية
+</p>
 
-      <p>
-        لأن تغيير جسمك محتاج نظام واضح واستمرارية
-      </p>
+</div>
 
-    </div>
+<div class="why-grid">
 
+<div class="why-card">
+<h3>خطة واضحة</h3>
+<p>
+كل خطوة عندك بشكل بسيط وواضح عشان تعرف تعمل إيه
+وتتحرك ناحية هدفك.
+</p>
+</div>
 
-    <div class="why-grid">
+<div class="why-card">
+<h3>تغذية أفضل</h3>
+<p>
+اتعلم تختار الأطعمة المناسبة وتبني عادات غذائية
+أفضل على المدى الطويل.
+</p>
+</div>
 
-      <div class="why-card">
+<div class="why-card">
+<h3>متابعة مستمرة</h3>
+<p>
+تابع تقدمك واعرف أنت وصلت لفين وإيه اللي محتاج
+تطوره في رحلتك.
+</p>
+</div>
 
-        <h3>خطة واضحة</h3>
-
-        <p>
-          كل خطوة عندك بشكل بسيط وواضح عشان تعرف تعمل إيه
-          وتتحرك ناحية هدفك.
-        </p>
-
-      </div>
-
-
-      <div class="why-card">
-
-        <h3>تغذية أفضل</h3>
-
-        <p>
-          اتعلم تختار الأطعمة المناسبة وتبني عادات غذائية
-          أفضل على المدى الطويل.
-        </p>
-
-      </div>
-
-
-      <div class="why-card">
-
-        <h3>متابعة مستمرة</h3>
-
-        <p>
-          تابع تقدمك واعرف أنت وصلت لفين وإيه اللي محتاج
-          تطوره في رحلتك.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
-
-<!-- Pricing -->
 <section class="pricing">
+<div class="container">
 
-  <div class="container">
+<div class="pricing-box">
 
-    <div class="pricing-box">
+<h2>ابدأ رحلتك اليوم</h2>
 
-      <h2>ابدأ رحلتك اليوم</h2>
+<p>
+سجل حسابك وابدأ بناء نظام صحي يناسب هدفك
+وخليك ملتزم بخطتك.
+</p>
 
-      <p>
-        سجل حسابك وابدأ بناء نظام صحي يناسب هدفك
-        وخليك ملتزم بخطتك.
-      </p>
+<a href="auth.html" class="btn btn-primary">
+إنشاء حساب
+</a>
 
-      <a href="auth.html" class="btn btn-primary">
-        إنشاء حساب
-      </a>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
-
-<!-- Footer -->
 <footer>
+<div class="container">
 
-  <div class="container">
+<div class="footer-content">
 
-    <div class="footer-content">
+<div class="footer-brand">
+<h3>BodyReset</h3>
+<p>طريقك لحياة أكثر صحة ولياقة.</p>
+</div>
 
-      <div class="footer-brand">
+<div class="footer-links">
+<a href="index.html">الرئيسية</a>
+<a href="#workouts">التمارين</a>
+<a href="#nutrition">التغذية</a>
+<a href="#progress">التقدم</a>
+<a href="auth.html">تسجيل الدخول</a>
+</div>
 
-        <h3>BodyReset</h3>
+</div>
 
-        <p>
-          طريقك لحياة أكثر صحة ولياقة.
-        </p>
+<div class="copyright">
+© 2026 BodyReset — جميع الحقوق محفوظة
+</div>
 
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="index.html">الرئيسية</a>
-        <a href="#workouts">التمارين</a>
-        <a href="#nutrition">التغذية</a>
-        <a href="#progress">التقدم</a>
-        <a href="auth.html">تسجيل الدخول</a>
-
-      </div>
-
-    </div>
-
-
-    <div class="copyright">
-      © 2026 BodyReset — جميع الحقوق محفوظة
-    </div>
-
-  </div>
-
+</div>
 </footer>
 
 </body>
-        </html>
+  </html>
