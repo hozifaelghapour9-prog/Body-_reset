@@ -2,1122 +2,1163 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>BodyReset - Login</title>
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family:Arial, sans-serif;
-      background:#f1f5f9;
-      color:#071a33;
-      min-height:100vh;
-    }
-
-    /* HEADER */
-
-    header{
-      width:100%;
-      height:82px;
-      background:#071a33;
-      padding:0 6%;
-      display:flex;
-      align-items:center;
-    }
-
-    .header-inner{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      direction:ltr;
-    }
-
-    .logo{
-      color:white;
-      font-size:30px;
-      font-weight:800;
-    }
-
-    .logo span{
-      color:#2563eb;
-    }
-
-    /* HOME - TEXT ONLY */
-
-    .home{
-      color:#071a33;
-      background:transparent;
-      text-decoration:none;
-      font-size:17px;
-      font-weight:bold;
-      padding:0;
-      border:0;
-      outline:0;
-    }
-
-    /* MAIN */
-
-    main{
-      width:100%;
-      min-height:calc(100vh - 82px);
-      padding:0;
-      margin:0;
-    }
-
-    .container{
-      width:100%;
-      min-height:calc(100vh - 82px);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BodyReset - Login</title>
 
-      display:grid;
-      grid-template-columns:1fr 1fr;
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-      background:white;
+body{
+  font-family:Arial,sans-serif;
+  background:#f1f5f9;
+  color:#071a33;
+  min-height:100vh;
+}
 
-      border-radius:0;
-      overflow:hidden;
 
-      box-shadow:none;
-    }
+/* HEADER */
 
-    /* IMAGE */
+header{
+  width:100%;
+  background:#071a33;
+  padding:20px 6%;
+}
 
-    .left{
-      position:relative;
+.header-inner{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  direction:ltr;
+}
 
-      min-height:calc(100vh - 82px);
+.logo{
+  color:white;
+  font-size:30px;
+  font-weight:800;
+}
 
-      background-image:
-        linear-gradient(
-          rgba(7,26,51,.25),
-          rgba(7,26,51,.58)
-        ),
-        url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1600&q=85");
+.logo span{
+  color:#2563eb;
+}
 
-      background-size:cover;
-      background-position:center;
+.home{
+  color:white;
+  background:transparent;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:bold;
+  padding:0;
+}
 
-      display:flex;
-      align-items:flex-end;
 
-      padding:55px;
-    }
+/* MAIN */
 
-    .hero-text{
-      width:100%;
+main{
+  width:100%;
+  padding:35px 20px;
+  min-height:calc(100vh - 80px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-      direction:rtl;
-      text-align:right;
+.container{
+  width:100%;
+  max-width:1050px;
+  min-height:620px;
 
-      color:white;
-    }
+  display:grid;
+  grid-template-columns:1fr 1fr;
 
-    .hero-text p{
-      font-size:32px;
-      line-height:1.5;
-      font-weight:800;
-      margin-bottom:5px;
-    }
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
 
-    /* FORM */
+  box-shadow:0 15px 45px rgba(7,26,51,.12);
+}
 
-    .right{
-      min-height:calc(100vh - 82px);
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+/* IMAGE */
 
-      padding:50px;
-      background:white;
-    }
+.left{
+  position:relative;
 
-    .form-box{
-      width:100%;
-      max-width:400px;
-    }
+  min-height:620px;
 
-    h1{
-      color:#071a33;
-      font-size:36px;
-      margin-bottom:30px;
-      text-align:left;
-    }
+  background-image:
+    linear-gradient(
+      rgba(7,26,51,.25),
+      rgba(7,26,51,.55)
+    ),
+    url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=85");
 
-    /* INPUTS */
+  background-size:cover;
+  background-position:center;
 
-    label{
-      display:block;
+  display:flex;
+  align-items:flex-end;
 
-      color:#071a33;
+  padding:45px;
+}
 
-      font-size:16px;
-      font-weight:bold;
+.hero-text{
+  width:100%;
 
-      margin-top:18px;
-      margin-bottom:8px;
-    }
+  direction:rtl;
+  text-align:right;
 
-    input,
-    select{
-      width:100%;
-      height:49px;
+  color:white;
+}
 
-      background:white;
+.hero-text p{
+  font-size:30px;
+  line-height:1.5;
+  font-weight:800;
+}
 
-      border:1px solid #cbd5e1;
-      border-radius:8px;
 
-      padding:0 14px;
+/* FORM */
 
-      color:#071a33;
-      font-size:16px;
+.right{
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-      outline:none;
-    }
+  padding:45px;
+  background:white;
+}
 
-    input:focus,
-    select:focus{
-      border-color:#2563eb;
+.form-box{
+  width:100%;
+  max-width:400px;
+}
 
-      box-shadow:
-        0 0 0 3px rgba(37,99,235,.10);
-    }
+h1{
+  color:#071a33;
+  font-size:36px;
+  margin-bottom:28px;
+  text-align:left;
+}
 
-    /* PASSWORD */
 
-    .password-wrap{
-      position:relative;
-    }
+/* LABELS */
 
-    .password-wrap input{
-      padding-right:70px;
-    }
+label{
+  display:block;
 
-    .show-btn{
-      position:absolute;
+  color:#071a33;
 
-      right:10px;
-      top:50%;
+  font-size:16px;
+  font-weight:bold;
 
-      transform:translateY(-50%);
+  margin-top:18px;
+  margin-bottom:8px;
+}
 
-      border:0;
-      background:none;
 
-      color:#2563eb;
+/* INPUT */
 
-      font-size:13px;
-      font-weight:bold;
+input,
+select{
+  width:100%;
+  height:49px;
 
-      cursor:pointer;
-    }
+  background:white;
 
-    /* MAIN BUTTON */
+  border:1px solid #cbd5e1;
+  border-radius:8px;
 
-    .main-btn{
-      width:100%;
-      height:50px;
+  padding:0 14px;
 
-      margin-top:25px;
+  color:#071a33;
+  font-size:16px;
 
-      border:0;
-      border-radius:8px;
+  outline:none;
+}
 
-      background:#071a33;
-      color:white;
+input:focus,
+select:focus{
+  border-color:#2563eb;
 
-      font-size:17px;
-      font-weight:bold;
+  box-shadow:
+    0 0 0 3px rgba(37,99,235,.10);
+}
 
-      cursor:pointer;
-    }
 
-    .main-btn:hover{
-      opacity:.94;
-    }
+/* PASSWORD */
 
-    /* SIGN UP */
+.password-wrap{
+  position:relative;
+}
 
-    .switch{
-      text-align:center;
+.password-wrap input{
+  padding-right:70px;
+}
 
-      margin-top:18px;
+.show-btn{
+  position:absolute;
 
-      font-size:15px;
+  right:10px;
+  top:50%;
 
-      color:#475569;
+  transform:translateY(-50%);
 
-      transform:translateX(20px);
-    }
+  border:0;
+  background:none;
 
-    .switch span{
-      color:#2563eb;
+  color:#2563eb;
 
-      font-weight:bold;
+  font-size:13px;
+  font-weight:bold;
 
-      cursor:pointer;
-    }
+  cursor:pointer;
+}
 
-    /* OR */
 
-    .or{
-      text-align:center;
+/* LOGIN BUTTON */
 
-      margin:24px 0 18px;
+.main-btn{
+  width:100%;
+  height:50px;
 
-      color:#94a3b8;
+  margin-top:25px;
 
-      font-size:14px;
-      font-weight:bold;
-    }
+  border:0;
+  border-radius:8px;
 
-    /* GOOGLE / APPLE */
+  background:#071a33;
+  color:white;
 
-    .social-btn{
-      width:100%;
-      height:48px;
+  font-size:17px;
+  font-weight:bold;
 
-      margin-top:10px;
+  cursor:pointer;
+}
 
-      border:0;
-      border-radius:8px;
+.main-btn:hover{
+  opacity:.94;
+}
 
-      background:#071a33;
-      color:white;
 
-      font-size:15px;
-      font-weight:bold;
+/* SIGN UP TEXT */
 
-      cursor:pointer;
-    }
+.switch{
+  width:115%;
 
-    .social-btn:hover{
-      opacity:.94;
-    }
+  margin-top:20px;
 
-    /* SIGN UP FORM */
+  text-align:center;
 
-    .signup-form{
-      display:none;
-    }
+  font-size:18px;
 
-    .signup-form h1{
-      margin-bottom:20px;
-    }
+  color:#475569;
 
-    .signup-grid{
-      display:grid;
+  transform:translateX(7%);
+  white-space:nowrap;
+}
 
-      grid-template-columns:1fr 1fr;
+.switch span{
+  color:#2563eb;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-      gap:0 14px;
-    }
 
-    .signup-grid .full{
-      grid-column:1 / -1;
-    }
+/* OR */
 
-    /* MESSAGE */
+.or{
+  text-align:center;
 
-    #message{
-      margin-top:18px;
+  margin:24px 0 16px;
 
-      text-align:center;
+  color:#94a3b8;
 
-      font-size:14px;
-      font-weight:bold;
+  font-size:14px;
+  font-weight:bold;
+}
 
-      color:#071a33;
-    }
 
-    /* TABLET */
+/* SOCIAL BUTTONS */
 
-    @media(max-width:800px){
+.social-btn{
+  width:100%;
+  height:50px;
 
-      .container{
-        grid-template-columns:1fr;
-      }
+  margin-top:10px;
 
-      .left{
-        min-height:350px;
-      }
+  border:0;
+  border-radius:8px;
 
-      .right{
-        min-height:auto;
+  background:#071a33;
+  color:white;
 
-        padding:40px 25px;
-      }
+  font-size:15px;
+  font-weight:bold;
 
-      .signup-grid{
-        grid-template-columns:1fr 1fr;
-      }
+  cursor:pointer;
 
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
 
-    /* MOBILE */
+.social-btn:hover{
+  opacity:.94;
+}
 
-    @media(max-width:500px){
 
-      header{
-        height:70px;
-        padding:0 5%;
-      }
+/* SOCIAL ICON */
 
-      .logo{
-        font-size:25px;
-      }
+.social-icon{
+  width:20px;
+  height:20px;
 
-      .home{
-        font-size:16px;
-      }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-      main{
-        min-height:calc(100vh - 70px);
-      }
+.google-icon{
+  background:white;
+  color:#4285F4;
 
-      .container{
-        min-height:calc(100vh - 70px);
-      }
+  border-radius:50%;
 
-      .left{
-        min-height:270px;
+  font-size:14px;
+  font-weight:900;
+}
 
-        padding:28px 22px;
+.apple-icon{
+  color:white;
+  font-size:21px;
+}
 
-        background-position:center;
-      }
 
-      .hero-text p{
-        font-size:23px;
-      }
+/* SIGNUP */
 
-      .right{
-        padding:32px 20px;
-      }
+.signup-form{
+  display:none;
+}
 
-      h1{
-        font-size:31px;
-      }
+.signup-form h1{
+  margin-bottom:20px;
+}
 
-      .signup-grid{
-        grid-template-columns:1fr;
-      }
+.signup-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 14px;
+}
 
-      .signup-grid .full{
-        grid-column:auto;
-      }
+.signup-grid .full{
+  grid-column:1 / -1;
+}
 
-      .switch{
-        transform:translateX(15px);
-      }
 
-    }
+/* MESSAGE */
 
-  </style>
+#message{
+  margin-top:18px;
+
+  text-align:center;
+
+  font-size:14px;
+  font-weight:bold;
+
+  color:#071a33;
+}
+
+
+/* TABLET */
+
+@media(max-width:800px){
+
+  main{
+    padding:20px 12px;
+    align-items:flex-start;
+  }
+
+  .container{
+    grid-template-columns:1fr;
+  }
+
+  .left{
+    min-height:330px;
+  }
+
+  .right{
+    padding:40px 25px;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+  header{
+    padding:18px 5%;
+  }
+
+  .logo{
+    font-size:25px;
+  }
+
+  .home{
+    font-size:16px;
+  }
+
+  main{
+    padding:15px 10px 25px;
+  }
+
+  .left{
+    min-height:270px;
+    padding:25px 22px;
+  }
+
+  .hero-text p{
+    font-size:22px;
+  }
+
+  .right{
+    padding:30px 20px;
+  }
+
+  h1{
+    font-size:31px;
+  }
+
+  .switch{
+    width:110%;
+    font-size:16px;
+    transform:translateX(5%);
+  }
+
+  .signup-grid{
+    grid-template-columns:1fr;
+  }
+
+  .signup-grid .full{
+    grid-column:auto;
+  }
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-  <!-- HEADER -->
 
-  <header>
+<header>
 
-    <div class="header-inner">
+  <div class="header-inner">
 
-      <div class="logo">
-        Body<span>Reset</span>
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
+
+    <a
+      class="home"
+      href="index.html"
+    >
+      Home
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <div class="container">
+
+
+    <!-- IMAGE -->
+
+    <div class="left">
+
+      <div class="hero-text">
+
+        <p>
+          ابنِ جسمًا أقوى.
+        </p>
+
+        <p>
+          ابنِ حياة صحية أفضل.
+        </p>
+
       </div>
-
-      <a
-        class="home"
-        href="index.html"
-      >
-        Home
-      </a>
 
     </div>
 
-  </header>
+
+    <!-- FORM -->
+
+    <div class="right">
+
+      <div class="form-box">
 
 
-  <!-- MAIN -->
+        <!-- LOGIN -->
 
-  <main>
+        <div id="loginBox">
 
-    <div class="container">
-
-      <!-- IMAGE SIDE -->
-
-      <div class="left">
-
-        <div class="hero-text">
-
-          <p>
-            ابنِ جسمًا أقوى.
-          </p>
-
-          <p>
-            ابنِ حياة صحية أفضل.
-          </p>
-
-        </div>
-
-      </div>
+          <h1>
+            Login
+          </h1>
 
 
-      <!-- FORM SIDE -->
+          <label for="loginUsername">
+            Username
+          </label>
 
-      <div class="right">
-
-        <div class="form-box">
-
-          <!-- LOGIN -->
-
-          <div id="loginBox">
-
-            <h1>
-              Login
-            </h1>
-
-            <label for="loginUsername">
-              Username
-            </label>
-
-            <input
-              type="text"
-              id="loginUsername"
-              placeholder="Enter your username"
-            >
-
-            <label for="loginPassword">
-              Password
-            </label>
-
-            <div class="password-wrap">
-
-              <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter your password"
-              >
-
-              <button
-                type="button"
-                class="show-btn"
-                onclick="togglePassword('loginPassword', this)"
-              >
-                Show
-              </button>
-
-            </div>
-
-            <button
-              class="main-btn"
-              onclick="loginUser()"
-            >
-              Login
-            </button>
-
-            <div class="switch">
-
-              Don't have an account?
-
-              <span onclick="showSignup()">
-                Sign up
-              </span>
-
-            </div>
-
-            <div class="or">
-              OR
-            </div>
-
-            <button
-              class="social-btn"
-              onclick="loginGoogle()"
-            >
-              Continue with Google
-            </button>
-
-            <button
-              class="social-btn"
-              onclick="loginApple()"
-            >
-              Continue with Apple
-            </button>
-
-          </div>
-
-
-          <!-- SIGN UP -->
-
-          <div
-            id="signupBox"
-            class="signup-form"
+          <input
+            type="text"
+            id="loginUsername"
+            placeholder="Enter your username"
           >
 
-            <h1>
-              Create Account
-            </h1>
 
-            <div class="signup-grid">
+          <label for="loginPassword">
+            Password
+          </label>
 
-              <div class="full">
+          <div class="password-wrap">
 
-                <label>
-                  Full Name
-                </label>
-
-                <input
-                  type="text"
-                  id="fullName"
-                  placeholder="Enter your full name"
-                >
-
-              </div>
-
-              <div>
-
-                <label>
-                  Username
-                </label>
-
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="Username"
-                >
-
-              </div>
-
-              <div>
-
-                <label>
-                  Age
-                </label>
-
-                <input
-                  type="number"
-                  id="age"
-                  placeholder="Age"
-                >
-
-              </div>
-
-              <div>
-
-                <label>
-                  Gender
-                </label>
-
-                <select id="gender">
-
-                  <option value="">
-                    Select
-                  </option>
-
-                  <option value="Male">
-                    Male
-                  </option>
-
-                  <option value="Female">
-                    Female
-                  </option>
-
-                </select>
-
-              </div>
-
-              <div>
-
-                <label>
-                  Height
-                </label>
-
-                <input
-                  type="number"
-                  id="height"
-                  placeholder="Height (cm)"
-                >
-
-              </div>
-
-              <div>
-
-                <label>
-                  Weight
-                </label>
-
-                <input
-                  type="number"
-                  id="weight"
-                  placeholder="Weight (kg)"
-                >
-
-              </div>
-
-              <div class="full">
-
-                <label>
-                  Email
-                </label>
-
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email"
-                >
-
-              </div>
-
-              <div class="full">
-
-                <label>
-                  Password
-                </label>
-
-                <div class="password-wrap">
-
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Create a password"
-                  >
-
-                  <button
-                    type="button"
-                    class="show-btn"
-                    onclick="togglePassword('password', this)"
-                  >
-                    Show
-                  </button>
-
-                </div>
-
-              </div>
-
-              <div class="full">
-
-                <label>
-                  Confirm Password
-                </label>
-
-                <div class="password-wrap">
-
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Confirm your password"
-                  >
-
-                  <button
-                    type="button"
-                    class="show-btn"
-                    onclick="togglePassword('confirmPassword', this)"
-                  >
-                    Show
-                  </button>
-
-                </div>
-
-              </div>
-
-            </div>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Enter your password"
+            >
 
             <button
-              class="main-btn"
-              onclick="createAccount()"
+              type="button"
+              class="show-btn"
+              onclick="togglePassword('loginPassword',this)"
             >
-              Create Account
+              Show
             </button>
-
-            <div class="switch">
-
-              Already have an account?
-
-              <span onclick="showLogin()">
-                Login
-              </span>
-
-            </div>
 
           </div>
 
-          <div id="message"></div>
+
+          <button
+            class="main-btn"
+            onclick="loginUser()"
+          >
+            Login
+          </button>
+
+
+          <div class="switch">
+
+            Don't have an account?
+
+            <span onclick="showSignup()">
+              Sign up
+            </span>
+
+          </div>
+
+
+          <div class="or">
+            OR
+          </div>
+
+
+          <button
+            class="social-btn"
+            onclick="loginGoogle()"
+          >
+
+            <span class="social-icon google-icon">
+              G
+            </span>
+
+            Continue with Google
+
+          </button>
+
+
+          <button
+            class="social-btn"
+            onclick="loginApple()"
+          >
+
+            <span class="social-icon apple-icon">
+              
+            </span>
+
+            Continue with Apple
+
+          </button>
 
         </div>
+
+
+        <!-- SIGN UP -->
+
+        <div
+          id="signupBox"
+          class="signup-form"
+        >
+
+          <h1>
+            Create Account
+          </h1>
+
+
+          <div class="signup-grid">
+
+
+            <div class="full">
+
+              <label>
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Username
+              </label>
+
+              <input
+                type="text"
+                id="username"
+                placeholder="Username"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Age
+              </label>
+
+              <input
+                type="number"
+                id="age"
+                placeholder="Age"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Gender
+              </label>
+
+              <select id="gender">
+
+                <option value="">
+                  Select
+                </option>
+
+                <option value="Male">
+                  Male
+                </option>
+
+                <option value="Female">
+                  Female
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Height
+              </label>
+
+              <input
+                type="number"
+                id="height"
+                placeholder="Height (cm)"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Weight
+              </label>
+
+              <input
+                type="number"
+                id="weight"
+                placeholder="Weight (kg)"
+              >
+
+            </div>
+
+
+            <div class="full">
+
+              <label>
+                Email
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+              >
+
+            </div>
+
+
+            <div class="full">
+
+              <label>
+                Password
+              </label>
+
+              <div class="password-wrap">
+
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Create a password"
+                >
+
+                <button
+                  type="button"
+                  class="show-btn"
+                  onclick="togglePassword('password',this)"
+                >
+                  Show
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="full">
+
+              <label>
+                Confirm Password
+              </label>
+
+              <div class="password-wrap">
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Confirm your password"
+                >
+
+                <button
+                  type="button"
+                  class="show-btn"
+                  onclick="togglePassword('confirmPassword',this)"
+                >
+                  Show
+                </button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <button
+            class="main-btn"
+            onclick="createAccount()"
+          >
+            Create Account
+          </button>
+
+
+          <div class="switch">
+
+            Already have an account?
+
+            <span onclick="showLogin()">
+              Login
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div id="message"></div>
+
 
       </div>
 
     </div>
 
-  </main>
+
+  </div>
+
+</main>
 
 
-  <!-- SUPABASE -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-
-    const SUPABASE_URL =
-      "https://byodeoaluspphqduxmlh.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
-
-    const DASHBOARD_URL =
-      "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
-
-    const AUTH_URL =
-      "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-    const supabaseClient =
-      supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
+<script>
+
+const SUPABASE_URL =
+"https://byodeoaluspphqduxmlh.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
+
+const DASHBOARD_URL =
+"https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
+
+const AUTH_URL =
+"https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
 
 
-    function showMessage(text){
-
-      document.getElementById("message").textContent =
-        text;
-
-    }
-
-
-    function showSignup(){
-
-      document.getElementById("loginBox").style.display =
-        "none";
-
-      document.getElementById("signupBox").style.display =
-        "block";
-
-      showMessage("");
-
-    }
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 
-    function showLogin(){
+function showMessage(text){
 
-      document.getElementById("signupBox").style.display =
-        "none";
+  document.getElementById("message").textContent =
+  text;
 
-      document.getElementById("loginBox").style.display =
-        "block";
-
-      showMessage("");
-
-    }
+}
 
 
-    function togglePassword(id, button){
+function showSignup(){
 
-      const input =
-        document.getElementById(id);
+  document.getElementById("loginBox").style.display =
+  "none";
 
-      if(input.type === "password"){
+  document.getElementById("signupBox").style.display =
+  "block";
 
-        input.type = "text";
+  showMessage("");
 
-        button.textContent = "Hide";
+}
 
-      }else{
 
-        input.type = "password";
+function showLogin(){
 
-        button.textContent = "Show";
+  document.getElementById("signupBox").style.display =
+  "none";
+
+  document.getElementById("loginBox").style.display =
+  "block";
+
+  showMessage("");
+
+}
+
+
+function togglePassword(id,button){
+
+  const input =
+  document.getElementById(id);
+
+  if(input.type === "password"){
+
+    input.type = "text";
+
+    button.textContent = "Hide";
+
+  }else{
+
+    input.type = "password";
+
+    button.textContent = "Show";
+
+  }
+
+}
+
+
+async function loginUser(){
+
+  const username =
+  document
+  .getElementById("loginUsername")
+  .value
+  .trim();
+
+  const password =
+  document
+  .getElementById("loginPassword")
+  .value;
+
+
+  if(!username || !password){
+
+    showMessage(
+      "Please enter your username and password."
+    );
+
+    return;
+
+  }
+
+
+  showMessage("Logging in...");
+
+
+  const {data,error} =
+  await supabaseClient.auth.signInWithPassword({
+
+    email:username,
+    password:password
+
+  });
+
+
+  if(error){
+
+    showMessage(error.message);
+
+    return;
+
+  }
+
+
+  if(data.user){
+
+    window.location.href =
+    DASHBOARD_URL;
+
+  }
+
+}
+
+
+async function createAccount(){
+
+  const fullName =
+  document.getElementById("fullName").value.trim();
+
+  const username =
+  document.getElementById("username").value.trim();
+
+  const age =
+  document.getElementById("age").value;
+
+  const gender =
+  document.getElementById("gender").value;
+
+  const height =
+  document.getElementById("height").value;
+
+  const weight =
+  document.getElementById("weight").value;
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const password =
+  document.getElementById("password").value;
+
+  const confirmPassword =
+  document.getElementById("confirmPassword").value;
+
+
+  if(
+    !fullName ||
+    !username ||
+    !age ||
+    !gender ||
+    !height ||
+    !weight ||
+    !email ||
+    !password ||
+    !confirmPassword
+  ){
+
+    showMessage(
+      "Please complete all fields."
+    );
+
+    return;
+
+  }
+
+
+  if(password !== confirmPassword){
+
+    showMessage(
+      "Passwords do not match."
+    );
+
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    showMessage(
+      "Password must be at least 6 characters."
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "Creating account..."
+  );
+
+
+  const {data,error} =
+  await supabaseClient.auth.signUp({
+
+    email:email,
+
+    password:password,
+
+    options:{
+
+      emailRedirectTo:AUTH_URL,
+
+      data:{
+
+        full_name:fullName,
+        username:username,
+        age:Number(age),
+        gender:gender,
+        height:Number(height),
+        weight:Number(weight)
 
       }
 
     }
 
-
-    async function loginUser(){
-
-      const username =
-        document
-          .getElementById("loginUsername")
-          .value
-          .trim();
-
-      const password =
-        document
-          .getElementById("loginPassword")
-          .value;
+  });
 
 
-      if(!username || !password){
+  if(error){
 
-        showMessage(
-          "Please enter your username and password."
-        );
+    showMessage(error.message);
 
-        return;
+    return;
 
-      }
+  }
 
 
-      showMessage("Logging in...");
+  if(data.user){
 
+    if(data.session){
 
-      const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
+      window.location.href =
+      DASHBOARD_URL;
 
-          email:username,
-
-          password:password
-
-        });
-
-
-      if(error){
-
-        showMessage(error.message);
-
-        return;
-
-      }
-
-
-      if(data.user){
-
-        window.location.href =
-          DASHBOARD_URL;
-
-      }
-
-    }
-
-
-    async function createAccount(){
-
-      const fullName =
-        document
-          .getElementById("fullName")
-          .value
-          .trim();
-
-      const username =
-        document
-          .getElementById("username")
-          .value
-          .trim();
-
-      const age =
-        document.getElementById("age").value;
-
-      const gender =
-        document.getElementById("gender").value;
-
-      const height =
-        document.getElementById("height").value;
-
-      const weight =
-        document.getElementById("weight").value;
-
-      const email =
-        document
-          .getElementById("email")
-          .value
-          .trim();
-
-      const password =
-        document.getElementById("password").value;
-
-      const confirmPassword =
-        document
-          .getElementById("confirmPassword")
-          .value;
-
-
-      if(
-        !fullName ||
-        !username ||
-        !age ||
-        !gender ||
-        !height ||
-        !weight ||
-        !email ||
-        !password ||
-        !confirmPassword
-      ){
-
-        showMessage(
-          "Please complete all fields."
-        );
-
-        return;
-
-      }
-
-
-      if(password !== confirmPassword){
-
-        showMessage(
-          "Passwords do not match."
-        );
-
-        return;
-
-      }
-
-
-      if(password.length < 6){
-
-        showMessage(
-          "Password must be at least 6 characters."
-        );
-
-        return;
-
-      }
-
+    }else{
 
       showMessage(
-        "Creating account..."
+        "Account created. Please confirm your email."
       );
-
-
-      const { data, error } =
-        await supabaseClient.auth.signUp({
-
-          email:email,
-
-          password:password,
-
-          options:{
-
-            emailRedirectTo:AUTH_URL,
-
-            data:{
-
-              full_name:fullName,
-
-              username:username,
-
-              age:Number(age),
-
-              gender:gender,
-
-              height:Number(height),
-
-              weight:Number(weight)
-
-            }
-
-          }
-
-        });
-
-
-      if(error){
-
-        showMessage(error.message);
-
-        return;
-
-      }
-
-
-      if(data.user){
-
-        if(data.session){
-
-          window.location.href =
-            DASHBOARD_URL;
-
-        }else{
-
-          showMessage(
-            "Account created. Please confirm your email."
-          );
-
-        }
-
-      }
 
     }
 
+  }
 
-    async function loginGoogle(){
-
-      showMessage(
-        "Connecting to Google..."
-      );
+}
 
 
-      const { error } =
-        await supabaseClient.auth.signInWithOAuth({
+async function loginGoogle(){
 
-          provider:"google",
-
-          options:{
-
-            redirectTo:DASHBOARD_URL
-
-          }
-
-        });
+  showMessage(
+    "Connecting to Google..."
+  );
 
 
-      if(error){
+  const {error} =
+  await supabaseClient.auth.signInWithOAuth({
 
-        showMessage(
-          error.message
-        );
+    provider:"google",
 
-      }
-
+    options:{
+      redirectTo:DASHBOARD_URL
     }
 
-
-    async function loginApple(){
-
-      showMessage(
-        "Connecting to Apple..."
-      );
+  });
 
 
-      const { error } =
-        await supabaseClient.auth.signInWithOAuth({
+  if(error){
 
-          provider:"apple",
+    showMessage(error.message);
 
-          options:{
+  }
 
-            redirectTo:DASHBOARD_URL
-
-          }
-
-        });
+}
 
 
-      if(error){
+async function loginApple(){
 
-        showMessage(
-          error.message
-        );
+  showMessage(
+    "Connecting to Apple..."
+  );
 
-      }
 
+  const {error} =
+  await supabaseClient.auth.signInWithOAuth({
+
+    provider:"apple",
+
+    options:{
+      redirectTo:DASHBOARD_URL
     }
 
-  </script>
+  });
+
+
+  if(error){
+
+    showMessage(error.message);
+
+  }
+
+}
+
+</script>
 
 </body>
-
   </html>
