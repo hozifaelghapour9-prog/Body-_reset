@@ -19,8 +19,6 @@
       min-height:100vh;
     }
 
-    /* HEADER */
-
     header{
       background:#071a33;
       padding:22px 7%;
@@ -49,8 +47,6 @@
       font-weight:bold;
     }
 
-    /* AUTH SECTION */
-
     .auth-section{
       min-height:calc(100vh - 85px);
       display:flex;
@@ -70,22 +66,24 @@
       box-shadow:0 15px 45px rgba(7,26,51,.15);
     }
 
-    /* IMAGE */
+    /* الصورة ملتصقة بالعمود بالكامل */
 
     .auth-image{
       min-height:620px;
+      width:100%;
+      height:100%;
+      padding:45px;
+      color:white;
+      display:flex;
+      align-items:flex-end;
+
       background:
         linear-gradient(
           rgba(7,26,51,.35),
           rgba(7,26,51,.55)
         ),
-        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=85")
-        center/cover;
-
-      display:flex;
-      align-items:flex-end;
-      padding:45px;
-      color:white;
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85")
+        center center / cover no-repeat;
     }
 
     .image-content h2{
@@ -99,8 +97,6 @@
       line-height:1.8;
       max-width:400px;
     }
-
-    /* FORM */
 
     .auth-form{
       padding:45px;
@@ -133,8 +129,6 @@
       position:relative;
     }
 
-    /* NAVY INPUTS */
-
     .input-wrapper input,
     .input-wrapper select{
       width:100%;
@@ -163,8 +157,6 @@
       color:white;
     }
 
-    /* PASSWORD */
-
     .password-toggle{
       position:absolute;
       right:14px;
@@ -177,8 +169,6 @@
       font-size:13px;
       font-weight:bold;
     }
-
-    /* BUTTON */
 
     .main-btn{
       width:100%;
@@ -197,8 +187,6 @@
       background:#102a4a;
     }
 
-    /* SWITCH */
-
     .switch-account{
       text-align:center;
       margin:18px 0 4px;
@@ -214,8 +202,6 @@
       font-size:15px;
       cursor:pointer;
     }
-
-    /* DIVIDER */
 
     .divider{
       display:flex;
@@ -233,8 +219,6 @@
       height:1px;
       background:#cbd5e1;
     }
-
-    /* SOCIAL BUTTONS */
 
     .social-btn{
       width:100%;
@@ -263,15 +247,11 @@
       background:#102a4a;
     }
 
-    /* GOOGLE REAL COLORS */
-
     .google-logo{
       width:20px;
       height:20px;
       flex-shrink:0;
     }
-
-    /* APPLE */
 
     .apple-logo{
       width:21px;
@@ -279,8 +259,6 @@
       fill:white;
       flex-shrink:0;
     }
-
-    /* MESSAGE */
 
     .message{
       min-height:24px;
@@ -298,8 +276,6 @@
       color:#dc2626;
     }
 
-    /* SIGN UP */
-
     #signupForm{
       display:none;
     }
@@ -310,16 +286,21 @@
       gap:12px;
     }
 
-    /* TABLET */
+    /* الموبايل */
 
     @media(max-width:800px){
+
+      .auth-section{
+        padding:25px 12px;
+      }
 
       .auth-box{
         grid-template-columns:1fr;
       }
 
       .auth-image{
-        min-height:260px;
+        min-height:300px;
+        height:300px;
         padding:30px;
       }
 
@@ -336,8 +317,6 @@
       }
     }
 
-    /* MOBILE */
-
     @media(max-width:500px){
 
       header{
@@ -353,7 +332,7 @@
       }
 
       .auth-section{
-        padding:25px 12px;
+        padding:20px 10px;
       }
 
       .auth-form{
@@ -370,7 +349,8 @@
       }
 
       .auth-image{
-        min-height:220px;
+        min-height:230px;
+        height:230px;
       }
     }
 
@@ -379,10 +359,7 @@
 
 <body>
 
-  <!-- HEADER -->
-
   <header>
-
     <div class="top-header">
 
       <div class="logo">
@@ -394,25 +371,20 @@
       </a>
 
     </div>
-
   </header>
 
-
-  <!-- AUTH -->
 
   <section class="auth-section">
 
     <div class="auth-box">
 
-      <!-- IMAGE -->
+      <!-- الصورة -->
 
       <div class="auth-image">
 
         <div class="image-content">
 
-          <h2>
-            ابدأ تغيير جسمك
-          </h2>
+          <h2>ابدأ تغيير جسمك</h2>
 
           <p>
             التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
@@ -423,10 +395,9 @@
       </div>
 
 
-      <!-- FORM -->
+      <!-- الفورم -->
 
       <div class="auth-form">
-
 
         <!-- LOGIN -->
 
@@ -436,8 +407,6 @@
             Login
           </div>
 
-
-          <!-- USERNAME -->
 
           <div class="input-group">
 
@@ -457,8 +426,6 @@
 
           </div>
 
-
-          <!-- PASSWORD -->
 
           <div class="input-group">
 
@@ -488,8 +455,6 @@
           </div>
 
 
-          <!-- LOGIN BUTTON -->
-
           <button
             class="main-btn"
             onclick="loginUser()"
@@ -497,8 +462,6 @@
             Login
           </button>
 
-
-          <!-- SIGN UP -->
 
           <div class="switch-account">
 
@@ -510,8 +473,6 @@
 
           </div>
 
-
-          <!-- OR -->
 
           <div class="divider">
             <span>OR</span>
@@ -588,7 +549,7 @@
         </div>
 
 
-        <!-- SIGN UP FORM -->
+        <!-- SIGN UP -->
 
         <div id="signupForm">
 
@@ -597,13 +558,9 @@
           </div>
 
 
-          <!-- FULL NAME -->
-
           <div class="input-group">
 
-            <label>
-              Full Name
-            </label>
+            <label>Full Name</label>
 
             <div class="input-wrapper">
 
@@ -618,13 +575,9 @@
           </div>
 
 
-          <!-- USERNAME -->
-
           <div class="input-group">
 
-            <label>
-              Username
-            </label>
+            <label>Username</label>
 
             <div class="input-wrapper">
 
@@ -639,15 +592,11 @@
           </div>
 
 
-          <!-- AGE + GENDER -->
-
           <div class="two-fields">
 
             <div class="input-group">
 
-              <label>
-                Age
-              </label>
+              <label>Age</label>
 
               <div class="input-wrapper">
 
@@ -664,9 +613,7 @@
 
             <div class="input-group">
 
-              <label>
-                Gender
-              </label>
+              <label>Gender</label>
 
               <div class="input-wrapper">
 
@@ -693,15 +640,11 @@
           </div>
 
 
-          <!-- HEIGHT + WEIGHT -->
-
           <div class="two-fields">
 
             <div class="input-group">
 
-              <label>
-                Height (cm)
-              </label>
+              <label>Height (cm)</label>
 
               <div class="input-wrapper">
 
@@ -718,9 +661,7 @@
 
             <div class="input-group">
 
-              <label>
-                Weight (kg)
-              </label>
+              <label>Weight (kg)</label>
 
               <div class="input-wrapper">
 
@@ -737,13 +678,9 @@
           </div>
 
 
-          <!-- EMAIL -->
-
           <div class="input-group">
 
-            <label>
-              Email
-            </label>
+            <label>Email</label>
 
             <div class="input-wrapper">
 
@@ -758,13 +695,9 @@
           </div>
 
 
-          <!-- PASSWORD -->
-
           <div class="input-group">
 
-            <label>
-              Password
-            </label>
+            <label>Password</label>
 
             <div class="input-wrapper">
 
@@ -788,13 +721,9 @@
           </div>
 
 
-          <!-- CONFIRM PASSWORD -->
-
           <div class="input-group">
 
-            <label>
-              Confirm Password
-            </label>
+            <label>Confirm Password</label>
 
             <div class="input-wrapper">
 
@@ -818,8 +747,6 @@
           </div>
 
 
-          <!-- CREATE ACCOUNT -->
-
           <button
             class="main-btn"
             onclick="createAccount()"
@@ -827,8 +754,6 @@
             Create Account
           </button>
 
-
-          <!-- LOGIN -->
 
           <div class="switch-account">
 
@@ -855,8 +780,6 @@
   </section>
 
 
-  <!-- SUPABASE -->
-
   <script type="module">
 
     import { createClient }
@@ -871,7 +794,7 @@
 
     /* SHOW / HIDE PASSWORD */
 
-    window.togglePassword = function(id, button){
+    window.togglePassword = function(id,button){
 
       const input =
         document.getElementById(id);
@@ -879,13 +802,11 @@
       if(input.type === "password"){
 
         input.type = "text";
-
         button.textContent = "Hide";
 
       }else{
 
         input.type = "password";
-
         button.textContent = "Show";
 
       }
@@ -955,7 +876,6 @@
 
 
       message.textContent = "";
-
       message.className = "message";
 
 
@@ -978,7 +898,6 @@
           "message error";
 
         return;
-
       }
 
 
@@ -991,7 +910,6 @@
           "message error";
 
         return;
-
       }
 
 
@@ -1004,7 +922,6 @@
           "message error";
 
         return;
-
       }
 
 
@@ -1045,7 +962,6 @@
           "message error";
 
         return;
-
       }
 
 
@@ -1071,15 +987,8 @@
 
     window.loginUser = async function(){
 
-      const username =
-        document.getElementById("loginUsername").value.trim();
-
-      const password =
-        document.getElementById("loginPassword").value;
-
       const message =
         document.getElementById("loginMessage");
-
 
       message.textContent =
         "Username login will be connected to the database next.";
@@ -1130,4 +1039,36 @@
     window.appleLogin = async function(){
 
       const { error } =
-    
+        await supabase.auth.signInWithOAuth({
+
+          provider:"apple",
+
+          options:{
+
+            redirectTo:
+              "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+
+          }
+
+        });
+
+
+      if(error){
+
+        const message =
+          document.getElementById("loginMessage");
+
+        message.textContent =
+          error.message;
+
+        message.className =
+          "message error";
+
+      }
+
+    };
+
+  </script>
+
+</body>
+              </html>
