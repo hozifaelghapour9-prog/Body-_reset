@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+
     *{
       box-sizing:border-box;
       margin:0;
@@ -37,11 +39,12 @@
       box-shadow:0 20px 60px rgba(0,0,0,.3);
     }
 
-    /* LEFT IMAGE */
+    /* IMAGE */
 
     .left{
       position:relative;
       min-height:650px;
+
       background-image:
         linear-gradient(
           rgba(7,26,51,.25),
@@ -51,10 +54,13 @@
 
       background-size:cover;
       background-position:center;
+
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
+
       padding:50px;
+
       color:white;
     }
 
@@ -85,35 +91,38 @@
       background:white;
     }
 
+    /* TOP HEADER */
+
+    .top-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      direction:rtl;
+      margin-bottom:45px;
+    }
+
     .logo{
       font-size:32px;
       font-weight:800;
       color:#071a33;
-      margin-bottom:35px;
     }
 
     .logo span{
       color:#2563eb;
     }
 
-    .title{
-      font-size:34px;
+    .home{
       color:#071a33;
-      margin-bottom:10px;
-    }
-
-    .switch{
-      margin-bottom:30px;
-      font-size:16px;
-      color:#64748b;
-    }
-
-    .switch a{
-      color:#2563eb;
-      font-weight:bold;
-      cursor:pointer;
       text-decoration:none;
+      font-size:18px;
+      font-weight:bold;
     }
+
+    .home:hover{
+      color:#2563eb;
+    }
+
+    /* FORM */
 
     .form-group{
       margin-bottom:20px;
@@ -167,6 +176,8 @@
       cursor:pointer;
     }
 
+    /* LOGIN BUTTON */
+
     .main-btn{
       width:100%;
       height:52px;
@@ -183,6 +194,25 @@
     .main-btn:hover{
       background:#0d2a50;
     }
+
+    /* SIGN UP TEXT */
+
+    .switch{
+      margin-top:16px;
+      margin-bottom:30px;
+      font-size:16px;
+      color:#64748b;
+      text-align:center;
+    }
+
+    .switch a{
+      color:#2563eb;
+      font-weight:bold;
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    /* DIVIDER */
 
     .divider{
       display:flex;
@@ -201,6 +231,8 @@
       flex:1;
     }
 
+    /* SOCIAL */
+
     .social-btn{
       width:100%;
       height:50px;
@@ -211,9 +243,11 @@
       font-size:16px;
       font-weight:bold;
       cursor:pointer;
+
       display:flex;
       justify-content:center;
       align-items:center;
+
       gap:12px;
       margin-bottom:12px;
     }
@@ -287,7 +321,7 @@
       }
 
       .left p{
-        font-size:17px;
+        font-size:18px;
       }
 
       .right{
@@ -302,6 +336,7 @@
       .full-width{
         grid-column:auto;
       }
+
     }
 
     @media(max-width:500px){
@@ -328,57 +363,69 @@
         font-size:28px;
       }
 
-      .title{
-        font-size:30px;
+      .home{
+        font-size:16px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
   <div class="container">
 
-    <!-- IMAGE + TEXT -->
+
+    <!-- IMAGE -->
 
     <div class="left">
 
       <h1>
-        <span class="brand">BodyReset</span>
+        <span class="brand">
+          BodyReset
+        </span>
       </h1>
 
       <p>
-        Build a stronger body.
+        ابنِ جسمًا أقوى.
       </p>
 
       <p>
-        Build a healthier life.
+        ابنِ حياة صحية أفضل.
       </p>
 
     </div>
 
 
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT -->
 
     <div class="right">
 
-      <div class="logo">
-        Body<span>Reset</span>
+
+      <!-- TOP HEADER -->
+
+      <div class="top-header">
+
+        <div class="logo">
+          Body<span>Reset</span>
+        </div>
+
+        <a
+          class="home"
+          href="index.html"
+        >
+          Home
+        </a>
+
       </div>
 
 
       <!-- LOGIN -->
 
       <div id="loginForm">
-
-        <h2 class="title">
-          Login
-        </h2>
-
-        <div class="switch">
-          Don't have an account?
-          <a onclick="showSignup()">Sign up</a>
-        </div>
 
 
         <div class="form-group">
@@ -431,6 +478,17 @@
         </button>
 
 
+        <div class="switch">
+
+          Don't have an account?
+
+          <a onclick="showSignup()">
+            Sign up
+          </a>
+
+        </div>
+
+
         <div class="divider">
           OR
         </div>
@@ -462,12 +520,15 @@
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
+
             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.01-1.26-10.01a4.9 4.9 0 0 1 4.14-2.51c1.29-.02 2.51.87 3.28.87.77 0 2.22-1.08 3.74-.92.64.03 2.44.26 3.59 1.94-.09.06-2.14 1.24-2.12 3.69.03 2.93 2.57 3.91 2.6 3.92-.02.07-.4 1.37-1.31 2.71zM15.53 4.25c.68-.83 1.14-1.99 1.01-3.15-.98.04-2.17.65-2.88 1.48-.63.73-1.18 1.9-1.03 3.03 1.1.08 2.22-.56 2.9-1.36z"/>
+
           </svg>
 
           Continue with Apple
 
         </button>
+
 
       </div>
 
@@ -476,20 +537,25 @@
 
       <div id="signupForm">
 
+
         <h2 class="title">
           Create Account
         </h2>
 
+
         <div class="switch">
+
           Already have an account?
-          <a onclick="showLogin()">Login</a>
+
+          <a onclick="showLogin()">
+            Login
+          </a>
+
         </div>
 
 
         <div class="signup-grid">
 
-
-          <!-- FULL NAME -->
 
           <div class="form-group full-width">
 
@@ -506,8 +572,6 @@
           </div>
 
 
-          <!-- USERNAME -->
-
           <div class="form-group">
 
             <label for="username">
@@ -522,8 +586,6 @@
 
           </div>
 
-
-          <!-- AGE -->
 
           <div class="form-group">
 
@@ -541,8 +603,6 @@
 
           </div>
 
-
-          <!-- GENDER -->
 
           <div class="form-group">
 
@@ -569,8 +629,6 @@
           </div>
 
 
-          <!-- HEIGHT -->
-
           <div class="form-group">
 
             <label for="height">
@@ -585,8 +643,6 @@
 
           </div>
 
-
-          <!-- WEIGHT -->
 
           <div class="form-group">
 
@@ -603,8 +659,6 @@
           </div>
 
 
-          <!-- EMAIL -->
-
           <div class="form-group full-width">
 
             <label for="email">
@@ -619,8 +673,6 @@
 
           </div>
 
-
-          <!-- PASSWORD -->
 
           <div class="form-group">
 
@@ -648,8 +700,6 @@
 
           </div>
 
-
-          <!-- CONFIRM PASSWORD -->
 
           <div class="form-group">
 
@@ -696,6 +746,7 @@
         class="message"
       ></div>
 
+
     </div>
 
   </div>
@@ -727,6 +778,45 @@
       "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
 
 
+    /* MESSAGE */
+
+    function showMessage(text, success=false){
+
+      const message =
+        document.getElementById("message");
+
+      message.textContent = text;
+
+      message.style.color =
+        success ? "#16a34a" : "#dc2626";
+
+    }
+
+
+    /* PASSWORD */
+
+    function togglePassword(id, button){
+
+      const input =
+        document.getElementById(id);
+
+      if(input.type === "password"){
+
+        input.type = "text";
+
+        button.textContent = "Hide";
+
+      }else{
+
+        input.type = "password";
+
+        button.textContent = "Show";
+
+      }
+
+    }
+
+
     /* SHOW LOGIN */
 
     function showLogin(){
@@ -737,7 +827,9 @@
       document.getElementById("signupForm").style.display =
         "none";
 
-      clearMessage();
+      document.getElementById("message").textContent =
+        "";
+
     }
 
 
@@ -751,56 +843,9 @@
       document.getElementById("signupForm").style.display =
         "block";
 
-      clearMessage();
-    }
-
-
-    /* SHOW / HIDE PASSWORD */
-
-    function togglePassword(
-      inputId,
-      button
-    ){
-
-      const input =
-        document.getElementById(inputId);
-
-      if(input.type === "password"){
-
-        input.type = "text";
-
-        button.textContent = "Hide";
-
-      }else{
-
-        input.type = "password";
-
-        button.textContent = "Show";
-      }
-    }
-
-
-    /* MESSAGE */
-
-    function showMessage(
-      text,
-      success = false
-    ){
-
-      const message =
-        document.getElementById("message");
-
-      message.textContent = text;
-
-      message.style.color =
-        success ? "#16a34a" : "#dc2626";
-    }
-
-
-    function clearMessage(){
-
       document.getElementById("message").textContent =
         "";
+
     }
 
 
@@ -809,15 +854,10 @@
     async function loginUser(){
 
       const username =
-        document
-          .getElementById("loginUsername")
-          .value
-          .trim();
+        document.getElementById("loginUsername").value.trim();
 
       const password =
-        document
-          .getElementById("loginPassword")
-          .value;
+        document.getElementById("loginPassword").value;
 
       if(!username || !password){
 
@@ -828,22 +868,7 @@
         return;
       }
 
-
-      showMessage(
-        "Logging in...",
-        true
-      );
-
-
-      /*
-        Currently the Username field
-        is used as the Supabase email.
-      */
-
-      const {
-        data,
-        error
-      } =
+      const { error } =
         await supabaseClient.auth.signInWithPassword({
 
           email: username,
@@ -855,18 +880,64 @@
 
       if(error){
 
-        showMessage(
-          error.message
-        );
+        showMessage(error.message);
 
         return;
+
       }
 
 
-      if(data.user){
+      window.location.href =
+        DASHBOARD_URL;
 
-        window.location.href =
-          DASHBOARD_URL;
+    }
+
+
+    /* GOOGLE */
+
+    async function loginGoogle(){
+
+      const { error } =
+        await supabaseClient.auth.signInWithOAuth({
+
+          provider:"google",
+
+          options:{
+            redirectTo:DASHBOARD_URL
+          }
+
+        });
+
+
+      if(error){
+
+        showMessage(error.message);
+
+      }
+
+    }
+
+
+    /* APPLE */
+
+    async function loginApple(){
+
+      const { error } =
+        await supabaseClient.auth.signInWithOAuth({
+
+          provider:"apple",
+
+          options:{
+            redirectTo:DASHBOARD_URL
+          }
+
+        });
+
+
+      if(error){
+
+        showMessage(error.message);
+
       }
 
     }
@@ -877,55 +948,32 @@
     async function createAccount(){
 
       const fullName =
-        document
-          .getElementById("fullName")
-          .value
-          .trim();
+        document.getElementById("fullName").value.trim();
 
       const username =
-        document
-          .getElementById("username")
-          .value
-          .trim();
+        document.getElementById("username").value.trim();
 
       const age =
-        document
-          .getElementById("age")
-          .value;
+        document.getElementById("age").value;
 
       const gender =
-        document
-          .getElementById("gender")
-          .value;
+        document.getElementById("gender").value;
 
       const height =
-        document
-          .getElementById("height")
-          .value;
+        document.getElementById("height").value;
 
       const weight =
-        document
-          .getElementById("weight")
-          .value;
+        document.getElementById("weight").value;
 
       const email =
-        document
-          .getElementById("email")
-          .value
-          .trim();
+        document.getElementById("email").value.trim();
 
       const password =
-        document
-          .getElementById("signupPassword")
-          .value;
+        document.getElementById("signupPassword").value;
 
       const confirmPassword =
-        document
-          .getElementById("confirmPassword")
-          .value;
+        document.getElementById("confirmPassword").value;
 
-
-      /* VALIDATION */
 
       if(
         !fullName ||
@@ -940,10 +988,11 @@
       ){
 
         showMessage(
-          "Please complete all fields."
+          "Please fill in all fields."
         );
 
         return;
+
       }
 
 
@@ -954,60 +1003,34 @@
         );
 
         return;
+
       }
 
 
-      if(password.length < 6){
-
-        showMessage(
-          "Password must be at least 6 characters."
-        );
-
-        return;
-      }
-
-
-      showMessage(
-        "Creating your account...",
-        true
-      );
-
-
-      /* SUPABASE SIGN UP */
-
-      const {
-        data,
-        error
-      } =
+      const { data, error } =
         await supabaseClient.auth.signUp({
 
-          email: email,
+          email:email,
 
-          password: password,
+          password:password,
 
           options:{
 
-            emailRedirectTo: AUTH_URL,
+            emailRedirectTo:AUTH_URL,
 
             data:{
 
-              full_name:
-                fullName,
+              full_name:fullName,
 
-              username:
-                username,
+              username:username,
 
-              age:
-                Number(age),
+              age:Number(age),
 
-              gender:
-                gender,
+              gender:gender,
 
-              height:
-                Number(height),
+              height:Number(height),
 
-              weight:
-                Number(weight)
+              weight:Number(weight)
 
             }
 
@@ -1018,150 +1041,26 @@
 
       if(error){
 
-        showMessage(
-          error.message
-        );
+        showMessage(error.message);
 
         return;
+
       }
 
 
-      /*
-        If email confirmation is enabled,
-        Supabase will send a confirmation email.
-      */
-
-      if(
-        data.user &&
-        !data.session
-      ){
+      if(data.user){
 
         showMessage(
-          "Account created. Please check your email to confirm your account.",
+          "Account created successfully. Please confirm your email.",
           true
         );
 
-        return;
-      }
-
-
-      /* DIRECT LOGIN */
-
-      if(data.session){
-
-        window.location.href =
-          DASHBOARD_URL;
-
       }
 
     }
-
-
-    /* GOOGLE LOGIN */
-
-    async function loginGoogle(){
-
-      showMessage(
-        "Connecting to Google...",
-        true
-      );
-
-
-      const {
-        error
-      } =
-        await supabaseClient.auth.signInWithOAuth({
-
-          provider:"google",
-
-          options:{
-
-            redirectTo:
-              DASHBOARD_URL
-
-          }
-
-        });
-
-
-      if(error){
-
-        showMessage(
-          error.message
-        );
-
-      }
-
-    }
-
-
-    /* APPLE LOGIN */
-
-    async function loginApple(){
-
-      showMessage(
-        "Connecting to Apple...",
-        true
-      );
-
-
-      const {
-        error
-      } =
-        await supabaseClient.auth.signInWithOAuth({
-
-          provider:"apple",
-
-          options:{
-
-            redirectTo:
-              DASHBOARD_URL
-
-          }
-
-        });
-
-
-      if(error){
-
-        showMessage(
-          error.message
-        );
-
-      }
-
-    }
-
-
-    /* CHECK EXISTING SESSION */
-
-    async function checkSession(){
-
-      const {
-        data
-      } =
-        await supabaseClient.auth.getSession();
-
-
-      if(
-        data &&
-        data.session
-      ){
-
-        /*
-          Don't automatically redirect
-          while user is opening the auth page
-          if they want to login again.
-        */
-
-      }
-
-    }
-
-
-    checkSession();
 
   </script>
 
 </body>
+
   </html>
