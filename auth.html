@@ -1,209 +1,710 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset | إنشاء حساب</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: white;
-    }
+<title>تسجيل الدخول - BodyReset</title>
 
-    .box {
-      width: 100%;
-      max-width: 420px;
-      padding: 30px;
-      background: #131a22;
-      border: 1px solid #26313c;
-      border-radius: 24px;
-    }
+<style>
 
-    .logo {
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 25px;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    .logo span {
-      color: #39e75f;
-    }
+body{
+font-family:Arial,sans-serif;
+background:#eef3f8;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px 15px;
+color:#071a33;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
+.auth-container{
+width:100%;
+max-width:1050px;
+min-height:650px;
+background:white;
+border-radius:20px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1fr 1fr;
+box-shadow:0 15px 50px rgba(7,26,51,.15);
+}
 
-    label {
-      display: block;
-      margin: 15px 0 7px;
-      color: #b9c2cc;
-    }
+/* LEFT */
 
-    input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #34404d;
-      border-radius: 12px;
-      background: #0b0f14;
-      color: white;
-      font-size: 16px;
-    }
+.auth-image{
+background:
+linear-gradient(rgba(7,26,51,.65),rgba(7,26,51,.65)),
+url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85")
+center/cover;
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 22px;
-      border: 0;
-      border-radius: 30px;
-      background: #39e75f;
-      color: #07100a;
-      font-size: 17px;
-      font-weight: bold;
-    }
+display:flex;
+align-items:center;
+justify-content:center;
+padding:50px;
+color:white;
+}
 
-    #message {
-      margin-top: 20px;
-      text-align: center;
-      min-height: 25px;
-    }
-  </style>
+.image-content{
+text-align:center;
+max-width:400px;
+}
+
+.image-content h2{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.image-content p{
+font-size:19px;
+color:#e2e8f0;
+}
+
+/* RIGHT */
+
+.auth-box{
+padding:55px 50px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#071a33;
+margin-bottom:35px;
+}
+
+.logo span{
+color:#2563eb;
+}
+
+.auth-box h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#64748b;
+font-size:16px;
+margin-bottom:28px;
+}
+
+/* SOCIAL */
+
+.social-buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-bottom:25px;
+}
+
+.social-btn{
+height:48px;
+border:1px solid #dbe3ec;
+background:white;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+color:#071a33;
+transition:.2s;
+}
+
+.social-btn:hover{
+background:#f1f5f9;
+}
+
+.google-icon{
+font-size:20px;
+color:#4285f4;
+font-weight:bold;
+}
+
+.apple-icon{
+font-size:20px;
+color:#000;
+}
+
+/* DIVIDER */
+
+.divider{
+display:flex;
+align-items:center;
+gap:12px;
+color:#94a3b8;
+font-size:14px;
+margin-bottom:22px;
+}
+
+.divider::before,
+.divider::after{
+content:"";
+height:1px;
+background:#e2e8f0;
+flex:1;
+}
+
+/* FORM */
+
+label{
+display:block;
+font-size:15px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+input{
+width:100%;
+height:50px;
+border:1px solid #cbd5e1;
+border-radius:8px;
+padding:0 15px;
+font-size:16px;
+margin-bottom:17px;
+outline:none;
+}
+
+input:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+
+.password-row{
+position:relative;
+}
+
+.password-row input{
+padding-left:55px;
+}
+
+.show-password{
+position:absolute;
+left:15px;
+top:14px;
+border:none;
+background:none;
+cursor:pointer;
+color:#64748b;
+font-size:13px;
+}
+
+/* MAIN BUTTON */
+
+.submit-btn{
+width:100%;
+height:50px;
+border:none;
+border-radius:8px;
+background:#2563eb;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+margin-top:5px;
+}
+
+.submit-btn:hover{
+background:#1d4ed8;
+}
+
+/* SWITCH */
+
+.switch{
+text-align:center;
+margin-top:22px;
+font-size:15px;
+color:#64748b;
+}
+
+.switch button{
+border:none;
+background:none;
+color:#2563eb;
+font-weight:bold;
+cursor:pointer;
+font-size:15px;
+}
+
+/* MESSAGE */
+
+.message{
+margin-top:15px;
+text-align:center;
+font-size:14px;
+min-height:20px;
+}
+
+/* BACK */
+
+.back-home{
+display:block;
+text-align:center;
+margin-top:18px;
+color:#64748b;
+text-decoration:none;
+font-size:14px;
+}
+
+.back-home:hover{
+color:#2563eb;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+body{
+padding:15px;
+}
+
+.auth-container{
+grid-template-columns:1fr;
+max-width:500px;
+}
+
+.auth-image{
+display:none;
+}
+
+.auth-box{
+padding:40px 25px;
+}
+
+}
+
+@media(max-width:500px){
+
+.auth-box h1{
+font-size:29px;
+}
+
+.logo{
+font-size:27px;
+}
+
+.social-buttons{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <div class="box">
+<div class="auth-container">
 
-    <div class="logo">
-      <span>Body</span>Reset
-    </div>
+<!-- IMAGE -->
 
-    <h1>إنشاء حساب</h1>
+<div class="auth-image">
 
-    <form id="signupForm">
+<div class="image-content">
 
-      <label for="email">البريد الإلكتروني</label>
+<h2>
+غيّر جسمك<br>
+غيّر حياتك
+</h2>
 
-      <input
-        id="email"
-        type="email"
-        placeholder="example@email.com"
-        required
-      >
+<p>
+ابدأ رحلتك مع BodyReset
+وابني نظام حياة يناسب هدفك.
+</p>
 
-      <label for="password">كلمة المرور</label>
+</div>
 
-      <input
-        id="password"
-        type="password"
-        minlength="6"
-        placeholder="••••••••"
-        required
-      >
+</div>
 
-      <button type="submit">
-        إنشاء حساب
-      </button>
 
-    </form>
-<button type="button" id="loginBtn">تسجيل الدخول</button>
-    <div id="message"></div>
+<!-- AUTH -->
 
-  </div>
+<div class="auth-box">
 
-  <script type="module">
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
-    import { createClient }
-      from "https://esm.sh/@supabase/supabase-js@2";
+<h1 id="title">
+تسجيل الدخول
+</h1>
 
-    const SUPABASE_URL =
-      "https://byodeoaluspphqduxmlh.supabase.co";
+<p class="subtitle" id="subtitle">
+ادخل لحسابك وكمل رحلتك مع BodyReset
+</p>
 
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
-    const supabase = createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
+<!-- SOCIAL -->
 
-    const form =
-      document.getElementById("signupForm");
+<div class="social-buttons">
 
-    const email =
-      document.getElementById("email");
+<button class="social-btn" id="googleBtn">
 
-    const password =
-      document.getElementById("password");
+<span class="google-icon">G</span>
 
-    const message =
-      document.getElementById("message");
+Google
 
-    form.addEventListener("submit", async (event) => {
+</button>
 
-      event.preventDefault();
 
-      message.textContent =
-        "جاري إنشاء الحساب...";
+<button class="social-btn" id="appleBtn">
 
-      const { data, error } = await supabase.auth.signUp({
-  email: email.value.trim(),
-  password: password.value,
-  options: {
-    emailRedirectTo: "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html"
-  }
+<span class="apple-icon">●</span>
+
+Apple
+
+</button>
+
+</div>
+
+
+<!-- DIVIDER -->
+
+<div class="divider">
+أو باستخدام البريد الإلكتروني
+</div>
+
+
+<!-- FORM -->
+
+<form id="authForm">
+
+<label for="email">
+البريد الإلكتروني
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="example@email.com"
+required
+>
+
+
+<label for="password">
+كلمة المرور
+</label>
+
+<div class="password-row">
+
+<input
+type="password"
+id="password"
+placeholder="••••••••"
+required
+>
+
+<button
+type="button"
+class="show-password"
+id="showPassword">
+إظهار
+</button>
+
+</div>
+
+
+<button
+type="submit"
+class="submit-btn"
+id="submitBtn">
+
+تسجيل الدخول
+
+</button>
+
+</form>
+
+
+<div class="message" id="message"></div>
+
+
+<div class="switch">
+
+<span id="switchText">
+ليس لديك حساب؟
+</span>
+
+<button id="switchBtn">
+إنشاء حساب
+</button>
+
+</div>
+
+
+<a class="back-home" href="index.html">
+العودة إلى الصفحة الرئيسية
+</a>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import { createClient }
+from "https://esm.sh/@supabase/supabase-js@2";
+
+
+const supabaseUrl =
+"https://byodeoaluspphqduxmlh.supabase.co";
+
+
+const supabaseKey =
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
+
+
+const supabase =
+createClient(
+supabaseUrl,
+supabaseKey
+);
+
+
+/* ELEMENTS */
+
+const authForm =
+document.getElementById("authForm");
+
+const email =
+document.getElementById("email");
+
+const password =
+document.getElementById("password");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const title =
+document.getElementById("title");
+
+const subtitle =
+document.getElementById("subtitle");
+
+const switchBtn =
+document.getElementById("switchBtn");
+
+const switchText =
+document.getElementById("switchText");
+
+const message =
+document.getElementById("message");
+
+const showPassword =
+document.getElementById("showPassword");
+
+const googleBtn =
+document.getElementById("googleBtn");
+
+const appleBtn =
+document.getElementById("appleBtn");
+
+
+let isSignup = false;
+
+
+/* SHOW PASSWORD */
+
+showPassword.addEventListener("click",()=>{
+
+if(password.type === "password"){
+
+password.type = "text";
+showPassword.textContent = "إخفاء";
+
+}else{
+
+password.type = "password";
+showPassword.textContent = "إظهار";
+
+}
+
 });
 
-      if (error) {
 
-        message.textContent =
-          error.message;
+/* SWITCH LOGIN / SIGNUP */
 
-        return;
-      }
+switchBtn.addEventListener("click",()=>{
 
-      if (data.user) {
+isSignup = !isSignup;
 
-        message.textContent =
-          "تم إنشاء الحساب بنجاح. راجع بريدك الإلكتروني لتأكيد الحساب.";
+message.textContent = "";
 
-        form.reset();
-      }
+if(isSignup){
 
-    });
-const loginBtn = document.getElementById("loginBtn");
+title.textContent =
+"إنشاء حساب";
 
-loginBtn.addEventListener("click", async () => {
-  message.textContent = "جاري تسجيل الدخول...";
+subtitle.textContent =
+"أنشئ حسابك وابدأ رحلتك مع BodyReset";
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email: email.value.trim(),
-    password: password.value
-  });
+submitBtn.textContent =
+"إنشاء حساب";
 
-  if (error) {
-    message.textContent = error.message;
-    return;
-  }
+switchText.textContent =
+"لديك حساب بالفعل؟";
 
-  message.textContent = "تم تسجيل الدخول بنجاح ✅";
+switchBtn.textContent =
+"تسجيل الدخول";
 
-  window.location.href = "dashboard.html";
+}else{
+
+title.textContent =
+"تسجيل الدخول";
+
+subtitle.textContent =
+"ادخل لحسابك وكمل رحلتك مع BodyReset";
+
+submitBtn.textContent =
+"تسجيل الدخول";
+
+switchText.textContent =
+"ليس لديك حساب؟";
+
+switchBtn.textContent =
+"إنشاء حساب";
+
+}
+
 });
-  </script>
+
+
+/* EMAIL AUTH */
+
+authForm.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+message.textContent = "";
+submitBtn.disabled = true;
+
+try{
+
+if(isSignup){
+
+const { data,error } =
+await supabase.auth.signUp({
+
+email:email.value,
+password:password.value,
+
+options:{
+emailRedirectTo:
+"https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html"
+}
+
+});
+
+if(error) throw error;
+
+
+if(data.user){
+
+message.textContent =
+"تم إنشاء الحساب. راجع بريدك الإلكتروني لتأكيد الحساب.";
+
+}
+
+}else{
+
+const {error} =
+await supabase.auth.signInWithPassword({
+
+email:email.value,
+password:password.value
+
+});
+
+if(error) throw error;
+
+window.location.href =
+"dashboard.html";
+
+}
+
+}catch(error){
+
+message.textContent =
+error.message;
+
+}finally{
+
+submitBtn.disabled = false;
+
+}
+
+});
+
+
+/* GOOGLE */
+
+googleBtn.addEventListener("click",async()=>{
+
+const {error} =
+await supabase.auth.signInWithOAuth({
+
+provider:"google",
+
+options:{
+redirectTo:
+"https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+}
+
+});
+
+if(error){
+
+message.textContent =
+error.message;
+
+}
+
+});
+
+
+/* APPLE */
+
+appleBtn.addEventListener("click",async()=>{
+
+const {error} =
+await supabase.auth.signInWithOAuth({
+
+provider:"apple",
+
+options:{
+redirectTo:
+"https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+}
+
+});
+
+if(error){
+
+message.textContent =
+error.message;
+
+}
+
+});
+
+</script>
 
 </body>
-</html>
+
+  </html>
