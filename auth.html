@@ -1,419 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyReset - Login</title>
 
-  <title>BodyReset - Login</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-  <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+body{
+  min-height:100vh;
+  background:#071a33;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
 
-    body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:#071a33;
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:30px;
-    }
+.container{
+  width:100%;
+  max-width:1050px;
+  min-height:650px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
 
-    .container{
-      width:100%;
-      max-width:1100px;
-      min-height:650px;
-      background:white;
-      border-radius:20px;
-      overflow:hidden;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      box-shadow:0 20px 60px rgba(0,0,0,.3);
-    }
+/* الصورة والكلام */
+.left{
+  width:50%;
+  min-height:650px;
+  background:
+    linear-gradient(rgba(7,26,51,.15),rgba(7,26,51,.65)),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85")
+    center/cover no-repeat;
+  display:flex;
+  align-items:flex-end;
+  padding:45px;
+}
 
-    /* LEFT IMAGE */
+.left-content{
+  color:white;
+}
 
-    .left{
-      position:relative;
-      min-height:650px;
-      background-image:
-        linear-gradient(
-          rgba(7,26,51,.25),
-          rgba(7,26,51,.8)
-        ),
-        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85");
+.left-content h2{
+  font-size:40px;
+  margin-bottom:12px;
+  font-weight:800;
+}
 
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:50px;
-      color:white;
-    }
+.left-content p{
+  font-size:19px;
+  line-height:1.7;
+}
 
-    .left h1{
-      font-size:42px;
-      margin-bottom:12px;
-      font-weight:800;
-    }
+/* الفورم */
+.right{
+  width:50%;
+  padding:45px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 
-    .left p{
-      font-size:21px;
-      line-height:1.5;
-      margin-bottom:5px;
-    }
+.logo{
+  color:#071a33;
+  font-size:30px;
+  font-weight:bold;
+  margin-bottom:28px;
+}
 
-    .left .brand{
-      color:#2563eb;
-      font-weight:bold;
-    }
+.logo span{
+  color:#2563eb;
+}
 
-    /* RIGHT */
+.title{
+  color:#071a33;
+  font-size:32px;
+  margin-bottom:9px;
+}
 
-    .right{
-      padding:50px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:white;
-    }
+.switch{
+  color:#64748b;
+  font-size:15px;
+  margin-bottom:25px;
+}
 
-    .logo{
-      font-size:32px;
-      font-weight:800;
-      color:#071a33;
-      margin-bottom:35px;
-    }
+.switch button{
+  border:0;
+  background:none;
+  color:#2563eb;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .logo span{
-      color:#2563eb;
-    }
+.group{
+  margin-bottom:16px;
+}
 
-    .title{
-      font-size:34px;
-      color:#071a33;
-      margin-bottom:10px;
-    }
+label{
+  display:block;
+  color:#071a33;
+  font-size:15px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
 
-    .switch{
-      margin-bottom:30px;
-      font-size:16px;
-      color:#64748b;
-    }
+input,
+select{
+  width:100%;
+  height:47px;
+  background:white;
+  color:#071a33;
+  border:1px solid #cbd5e1;
+  border-radius:9px;
+  padding:0 14px;
+  font-size:15px;
+  outline:none;
+}
 
-    .switch a{
-      color:#2563eb;
-      font-weight:bold;
-      cursor:pointer;
-      text-decoration:none;
-    }
+input:focus,
+select:focus{
+  border-color:#2563eb;
+}
 
-    .form-group{
-      margin-bottom:20px;
-    }
+.password{
+  position:relative;
+}
 
-    label{
-      display:block;
-      font-size:16px;
-      font-weight:bold;
-      color:#071a33;
-      margin-bottom:8px;
-    }
+.password input{
+  padding-right:70px;
+}
 
-    input,
-    select{
-      width:100%;
-      height:50px;
-      border:1px solid #cbd5e1;
-      border-radius:9px;
-      padding:0 15px;
-      font-size:16px;
-      color:#071a33;
-      background:white;
-      outline:none;
-    }
+.show-btn{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  border:0;
+  background:none;
+  color:#2563eb;
+  font-size:13px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    input:focus,
-    select:focus{
-      border-color:#2563eb;
-      box-shadow:0 0 0 3px rgba(37,99,235,.1);
-    }
+.main-btn{
+  width:100%;
+  height:50px;
+  margin-top:6px;
+  border:0;
+  border-radius:9px;
+  background:#071a33;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .password-box{
-      position:relative;
-    }
+.main-btn:hover{
+  background:#0d294d;
+}
 
-    .password-box input{
-      padding-right:85px;
-    }
+.divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#94a3b8;
+  font-size:13px;
+  margin:21px 0;
+}
 
-    .show-password{
-      position:absolute;
-      right:12px;
-      top:50%;
-      transform:translateY(-50%);
-      border:0;
-      background:none;
-      color:#2563eb;
-      font-size:14px;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.divider:before,
+.divider:after{
+  content:"";
+  height:1px;
+  background:#e2e8f0;
+  flex:1;
+}
 
-    .main-btn{
-      width:100%;
-      height:52px;
-      border:0;
-      border-radius:9px;
-      background:#071a33;
-      color:white;
-      font-size:17px;
-      font-weight:bold;
-      cursor:pointer;
-      margin-top:5px;
-    }
+/* Google و Apple */
+.social{
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+}
 
-    .main-btn:hover{
-      background:#0d2a50;
-    }
+.social-btn{
+  width:100%;
+  height:49px;
+  border:0;
+  border-radius:9px;
+  background:#071a33;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .divider{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin:25px 0;
-      color:#94a3b8;
-      font-size:14px;
-    }
+.social-btn:hover{
+  background:#0d294d;
+}
 
-    .divider::before,
-    .divider::after{
-      content:"";
-      height:1px;
-      background:#e2e8f0;
-      flex:1;
-    }
+.google-icon{
+  width:21px;
+  height:21px;
+}
 
-    .social-btn{
-      width:100%;
-      height:50px;
-      border:0;
-      border-radius:9px;
-      background:#071a33;
-      color:white;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      margin-bottom:12px;
-    }
+.apple-icon{
+  width:21px;
+  height:21px;
+}
 
-    .social-btn:hover{
-      background:#0d2a50;
-    }
+/* التسجيل */
+.signup{
+  display:none;
+}
 
-    .google-icon{
-      width:20px;
-      height:20px;
-      background:white;
-      border-radius:50%;
-      padding:2px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 14px;
+}
 
-    .apple-icon{
-      width:20px;
-      height:20px;
-      fill:white;
-    }
+.message{
+  min-height:20px;
+  margin-top:14px;
+  text-align:center;
+  color:#2563eb;
+  font-size:14px;
+}
 
-    .message{
-      margin-top:18px;
-      text-align:center;
-      font-size:15px;
-      font-weight:bold;
-      min-height:20px;
-    }
+@media(max-width:800px){
 
-    /* SIGN UP */
+  .container{
+    max-width:520px;
+  }
 
-    #signupForm{
-      display:none;
-    }
+  .left{
+    display:none;
+  }
 
-    .signup-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:15px;
-    }
+  .right{
+    width:100%;
+    padding:40px 30px;
+  }
+}
 
-    .signup-grid .form-group{
-      margin-bottom:15px;
-    }
+@media(max-width:500px){
 
-    .full-width{
-      grid-column:1 / -1;
-    }
+  body{
+    padding:15px;
+  }
 
-    /* MOBILE */
+  .right{
+    padding:30px 22px;
+  }
 
-    @media(max-width:800px){
+  .logo{
+    font-size:27px;
+  }
 
-      body{
-        padding:15px;
-      }
+  .title{
+    font-size:28px;
+  }
 
-      .container{
-        grid-template-columns:1fr;
-        max-width:550px;
-      }
-
-      .left{
-        min-height:300px;
-        padding:30px;
-      }
-
-      .left h1{
-        font-size:32px;
-      }
-
-      .left p{
-        font-size:17px;
-      }
-
-      .right{
-        padding:35px 25px;
-      }
-
-      .signup-grid{
-        grid-template-columns:1fr;
-        gap:0;
-      }
-
-      .full-width{
-        grid-column:auto;
-      }
-    }
-
-    @media(max-width:500px){
-
-      body{
-        padding:0;
-        align-items:flex-start;
-      }
-
-      .container{
-        border-radius:0;
-        min-height:100vh;
-      }
-
-      .left{
-        min-height:260px;
-      }
-
-      .right{
-        padding:30px 20px;
-      }
-
-      .logo{
-        font-size:28px;
-      }
-
-      .title{
-        font-size:30px;
-      }
-    }
-  </style>
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- IMAGE + TEXT -->
+  <!-- الصورة والكلام -->
+  <div class="left">
 
-    <div class="left">
+    <div class="left-content">
 
-      <h1>
-        <span class="brand">BodyReset</span>
-      </h1>
-
-      <p>
-        Build a stronger body.
-      </p>
+      <h2>BodyReset</h2>
 
       <p>
+        Build a stronger body.<br>
         Build a healthier life.
       </p>
 
     </div>
 
+  </div>
 
-    <!-- RIGHT SIDE -->
 
-    <div class="right">
+  <!-- تسجيل الدخول -->
+  <div class="right">
 
-      <div class="logo">
-        Body<span>Reset</span>
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
+
+
+    <!-- LOGIN -->
+    <div id="loginSection">
+
+      <h1 class="title">Login</h1>
+
+      <div class="switch">
+        Don't have an account?
+        <button onclick="showSignup()">Sign up</button>
       </div>
 
 
-      <!-- LOGIN -->
+      <form id="loginForm">
 
-      <div id="loginForm">
+        <div class="group">
 
-        <h2 class="title">
-          Login
-        </h2>
-
-        <div class="switch">
-          Don't have an account?
-          <a onclick="showSignup()">Sign up</a>
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="loginUsername">
-            Username
-          </label>
+          <label>Username</label>
 
           <input
             type="text"
             id="loginUsername"
             placeholder="Enter your username"
+            required
           >
 
         </div>
 
 
-        <div class="form-group">
+        <div class="group">
 
-          <label for="loginPassword">
-            Password
-          </label>
+          <label>Password</label>
 
-          <div class="password-box">
+          <div class="password">
 
             <input
               type="password"
               id="loginPassword"
               placeholder="Enter your password"
+              required
             >
 
             <button
               type="button"
-              class="show-password"
-              onclick="togglePassword('loginPassword', this)"
+              class="show-btn"
+              onclick="togglePassword('loginPassword',this)"
             >
               Show
             </button>
@@ -424,19 +369,25 @@
 
 
         <button
+          type="submit"
           class="main-btn"
-          onclick="loginUser()"
         >
           Login
         </button>
 
-
-        <div class="divider">
-          OR
-        </div>
+      </form>
 
 
+      <div class="divider">
+        OR
+      </div>
+
+
+      <div class="social">
+
+        <!-- GOOGLE -->
         <button
+          type="button"
           class="social-btn"
           onclick="loginGoogle()"
         >
@@ -447,12 +398,14 @@
             alt="Google"
           >
 
-          Continue with Google
+          <span>Continue with Google</span>
 
         </button>
 
 
+        <!-- APPLE -->
         <button
+          type="button"
           class="social-btn"
           onclick="loginApple()"
         >
@@ -460,78 +413,494 @@
           <svg
             class="apple-icon"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.01-1.26-10.01a4.9 4.9 0 0 1 4.14-2.51c1.29-.02 2.51.87 3.28.87.77 0 2.22-1.08 3.74-.92.64.03 2.44.26 3.59 1.94-.09.06-2.14 1.24-2.12 3.69.03 2.93 2.57 3.91 2.6 3.92-.02.07-.4 1.37-1.31 2.71zM15.53 4.25c.68-.83 1.14-1.99 1.01-3.15-.98.04-2.17.65-2.88 1.48-.63.73-1.18 1.9-1.03 3.03 1.1.08 2.22-.56 2.9-1.36z"/>
+
+            <path
+              fill="white"
+              d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.39 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.96-2.52 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25z"
+            />
+
           </svg>
 
-          Continue with Apple
+          <span>Continue with Apple</span>
 
         </button>
 
       </div>
 
-
-      <!-- SIGN UP -->
-
-      <div id="signupForm">
-
-        <h2 class="title">
-          Create Account
-        </h2>
-
-        <div class="switch">
-          Already have an account?
-          <a onclick="showLogin()">Login</a>
-        </div>
+    </div>
 
 
-        <div class="signup-grid">
+    <!-- SIGN UP -->
+    <div id="signupSection" class="signup">
+
+      <h1 class="title">Create Account</h1>
+
+      <div class="switch">
+        Already have an account?
+        <button onclick="showLogin()">Login</button>
+      </div>
 
 
-          <!-- FULL NAME -->
+      <form id="signupForm">
 
-          <div class="form-group full-width">
+        <div class="grid">
 
-            <label for="fullName">
-              Full Name
-            </label>
-
+          <div class="group">
+            <label>Full Name</label>
             <input
               type="text"
               id="fullName"
-              placeholder="Enter your full name"
+              placeholder="Full Name"
+              required
             >
-
           </div>
 
-
-          <!-- USERNAME -->
-
-          <div class="form-group">
-
-            <label for="username">
-              Username
-            </label>
-
+          <div class="group">
+            <label>Username</label>
             <input
               type="text"
               id="username"
               placeholder="Username"
+              required
             >
-
           </div>
 
-
-          <!-- AGE -->
-
-          <div class="form-group">
-
-            <label for="age">
-              Age
-            </label>
-
+          <div class="group">
+            <label>Age</label>
             <input
               type="number"
               id="age"
-              placeholder
+              placeholder="Age"
+              min="10"
+              max="100"
+              required
+            >
+          </div>
+
+          <div class="group">
+            <label>Gender</label>
+
+            <select id="gender" required>
+
+              <option value="">
+                Select Gender
+              </option>
+
+              <option value="Male">
+                Male
+              </option>
+
+              <option value="Female">
+                Female
+              </option>
+
+            </select>
+          </div>
+
+          <div class="group">
+            <label>Height</label>
+            <input
+              type="number"
+              id="height"
+              placeholder="Height (cm)"
+              required
+            >
+          </div>
+
+          <div class="group">
+            <label>Weight</label>
+            <input
+              type="number"
+              id="weight"
+              placeholder="Weight (kg)"
+              required
+            >
+          </div>
+
+          <div class="group">
+            <label>Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              required
+            >
+          </div>
+
+          <div class="group">
+
+            <label>Password</label>
+
+            <div class="password">
+
+              <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password"
+                required
+              >
+
+              <button
+                type="button"
+                class="show-btn"
+                onclick="togglePassword('signupPassword',this)"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="group">
+
+            <label>Confirm Password</label>
+
+            <div class="password">
+
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+                required
+              >
+
+              <button
+                type="button"
+                class="show-btn"
+                onclick="togglePassword('confirmPassword',this)"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="main-btn"
+        >
+          Create Account
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <div id="message" class="message"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://byodeoaluspphqduxmlh.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
+
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const DASHBOARD_URL =
+"https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
+
+const AUTH_URL =
+"https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
+
+
+function showSignup(){
+
+  document.getElementById("loginSection").style.display="none";
+
+  document.getElementById("signupSection").style.display="block";
+
+  document.getElementById("message").textContent="";
+
+}
+
+
+function showLogin(){
+
+  document.getElementById("signupSection").style.display="none";
+
+  document.getElementById("loginSection").style.display="block";
+
+  document.getElementById("message").textContent="";
+
+}
+
+
+function togglePassword(id,button){
+
+  const input =
+  document.getElementById(id);
+
+  if(input.type==="password"){
+
+    input.type="text";
+
+    button.textContent="Hide";
+
+  }else{
+
+    input.type="password";
+
+    button.textContent="Show";
+
+  }
+
+}
+
+
+/* LOGIN */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",async function(e){
+
+  e.preventDefault();
+
+  const username =
+  document.getElementById("loginUsername").value.trim();
+
+  const password =
+  document.getElementById("loginPassword").value;
+
+  const message =
+  document.getElementById("message");
+
+  message.textContent="Logging in...";
+
+
+  const {data,error} =
+  await supabaseClient.auth.signInWithPassword({
+
+    email:username,
+
+    password:password
+
+  });
+
+
+  if(error){
+
+    message.textContent=error.message;
+
+    return;
+
+  }
+
+
+  window.location.href=DASHBOARD_URL;
+
+});
+
+
+/* SIGN UP */
+
+document
+.getElementById("signupForm")
+.addEventListener("submit",async function(e){
+
+  e.preventDefault();
+
+  const fullName =
+  document.getElementById("fullName").value.trim();
+
+  const username =
+  document.getElementById("username").value.trim();
+
+  const age =
+  document.getElementById("age").value;
+
+  const gender =
+  document.getElementById("gender").value;
+
+  const height =
+  document.getElementById("height").value;
+
+  const weight =
+  document.getElementById("weight").value;
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const password =
+  document.getElementById("signupPassword").value;
+
+  const confirmPassword =
+  document.getElementById("confirmPassword").value;
+
+  const message =
+  document.getElementById("message");
+
+
+  if(password !== confirmPassword){
+
+    message.textContent="Passwords do not match.";
+
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    message.textContent=
+    "Password must be at least 6 characters.";
+
+    return;
+
+  }
+
+
+  message.textContent="Creating account...";
+
+
+  const {data,error} =
+  await supabaseClient.auth.signUp({
+
+    email:email,
+
+    password:password,
+
+    options:{
+
+      emailRedirectTo:AUTH_URL,
+
+      data:{
+
+        full_name:fullName,
+
+        username:username,
+
+        age:Number(age),
+
+        gender:gender,
+
+        height:Number(height),
+
+        weight:Number(weight)
+
+      }
+
+    }
+
+  });
+
+
+  if(error){
+
+    message.textContent=error.message;
+
+    return;
+
+  }
+
+
+  if(!data.session){
+
+    message.textContent=
+    "Account created. Check your email to confirm your account.";
+
+    return;
+
+  }
+
+
+  window.location.href=DASHBOARD_URL;
+
+});
+
+
+/* GOOGLE */
+
+async function loginGoogle(){
+
+  const {error} =
+  await supabaseClient.auth.signInWithOAuth({
+
+    provider:"google",
+
+    options:{
+
+      redirectTo:DASHBOARD_URL
+
+    }
+
+  });
+
+
+  if(error){
+
+    document.getElementById("message").textContent=
+    error.message;
+
+  }
+
+}
+
+
+/* APPLE */
+
+async function loginApple(){
+
+  const {error} =
+  await supabaseClient.auth.signInWithOAuth({
+
+    provider:"apple",
+
+    options:{
+
+      redirectTo:DASHBOARD_URL
+
+    }
+
+  });
+
+
+  if(error){
+
+    document.getElementById("message").textContent=
+    error.message;
+
+  }
+
+}
+
+
+/* SESSION */
+
+async function checkSession(){
+
+  const {data} =
+  await supabaseClient.auth.getSession();
+
+  if(data.session){
+
+    window.location.href=DASHBOARD_URL;
+
+  }
+
+}
+
+checkSession();
+
+</script>
+
+</body>
+  </html>
