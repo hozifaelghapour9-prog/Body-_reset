@@ -2,11 +2,10 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تسجيل الدخول - BodyReset</title>
+<title>BodyReset | تسجيل الدخول</title>
 
 <style>
 
@@ -16,128 +15,180 @@ margin:0;
 padding:0;
 }
 
-body{
+html{
 font-family:Arial,sans-serif;
+}
+
+body{
 background:#eef3f8;
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:30px 15px;
 color:#071a33;
+min-height:100vh;
 }
 
-.auth-container{
-width:100%;
-max-width:1050px;
-min-height:650px;
-background:white;
-border-radius:20px;
-overflow:hidden;
-display:grid;
-grid-template-columns:1fr 1fr;
-box-shadow:0 15px 50px rgba(7,26,51,.15);
-}
+/* HEADER */
 
-/* LEFT */
-
-.auth-image{
-background:
-linear-gradient(rgba(7,26,51,.65),rgba(7,26,51,.65)),
-url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85")
-center/cover;
-
+header{
+height:80px;
+background:#071a33;
 display:flex;
 align-items:center;
-justify-content:center;
-padding:50px;
-color:white;
-}
-
-.image-content{
-text-align:center;
-max-width:400px;
-}
-
-.image-content h2{
-font-size:42px;
-margin-bottom:15px;
-}
-
-.image-content p{
-font-size:19px;
-color:#e2e8f0;
-}
-
-/* RIGHT */
-
-.auth-box{
-padding:55px 50px;
-display:flex;
-flex-direction:column;
-justify-content:center;
+justify-content:space-between;
+padding:0 7%;
 }
 
 .logo{
 font-size:30px;
 font-weight:bold;
-color:#071a33;
-margin-bottom:35px;
+color:white;
 }
 
 .logo span{
 color:#2563eb;
 }
 
-.auth-box h1{
-font-size:34px;
+.home-link{
+color:white;
+text-decoration:none;
+font-size:16px;
+font-weight:bold;
+}
+
+.home-link:hover{
+color:#60a5fa;
+}
+
+/* MAIN */
+
+.auth-page{
+min-height:calc(100vh - 80px);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:50px 20px;
+}
+
+.auth-wrapper{
+width:100%;
+max-width:1000px;
+background:white;
+border-radius:18px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1fr 1fr;
+box-shadow:0 20px 60px rgba(7,26,51,.14);
+}
+
+/* IMAGE SIDE */
+
+.auth-visual{
+min-height:650px;
+
+background:
+linear-gradient(
+rgba(7,26,51,.58),
+rgba(7,26,51,.78)
+),
+url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85")
+center/cover;
+
+display:flex;
+align-items:flex-end;
+padding:45px;
+color:white;
+}
+
+.visual-content{
+max-width:420px;
+}
+
+.visual-content .small-title{
+color:#60a5fa;
+font-size:15px;
+font-weight:bold;
 margin-bottom:10px;
 }
 
-.subtitle{
+.visual-content h2{
+font-size:42px;
+line-height:1.25;
+margin-bottom:15px;
+}
+
+.visual-content p{
+font-size:18px;
+color:#e2e8f0;
+line-height:1.8;
+}
+
+/* FORM SIDE */
+
+.auth-content{
+padding:50px 45px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.auth-heading{
+margin-bottom:28px;
+}
+
+.auth-heading h1{
+font-size:34px;
+margin-bottom:8px;
+}
+
+.auth-heading p{
 color:#64748b;
 font-size:16px;
-margin-bottom:28px;
 }
 
 /* SOCIAL */
 
-.social-buttons{
-display:grid;
-grid-template-columns:1fr 1fr;
+.social-login{
+display:flex;
+flex-direction:column;
 gap:12px;
 margin-bottom:25px;
 }
 
 .social-btn{
-height:48px;
+width:100%;
+height:50px;
 border:1px solid #dbe3ec;
-background:white;
 border-radius:8px;
-font-size:15px;
-font-weight:bold;
-cursor:pointer;
+background:white;
 display:flex;
 align-items:center;
 justify-content:center;
-gap:9px;
+gap:12px;
+font-size:16px;
+font-weight:bold;
 color:#071a33;
+cursor:pointer;
 transition:.2s;
 }
 
 .social-btn:hover{
-background:#f1f5f9;
+background:#f8fafc;
+border-color:#94a3b8;
 }
 
 .google-icon{
-font-size:20px;
-color:#4285f4;
+width:20px;
+height:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:19px;
 font-weight:bold;
+color:#4285f4;
 }
 
 .apple-icon{
-font-size:20px;
+font-size:21px;
 color:#000;
+line-height:1;
 }
 
 /* DIVIDER */
@@ -146,9 +197,9 @@ color:#000;
 display:flex;
 align-items:center;
 gap:12px;
+margin:5px 0 23px;
 color:#94a3b8;
-font-size:14px;
-margin-bottom:22px;
+font-size:13px;
 }
 
 .divider::before,
@@ -161,127 +212,144 @@ flex:1;
 
 /* FORM */
 
-label{
+.form-group{
+margin-bottom:18px;
+}
+
+.form-group label{
 display:block;
-font-size:15px;
+font-size:14px;
 font-weight:bold;
 margin-bottom:7px;
 }
 
-input{
+.form-group input{
 width:100%;
 height:50px;
 border:1px solid #cbd5e1;
 border-radius:8px;
 padding:0 15px;
 font-size:16px;
-margin-bottom:17px;
 outline:none;
+direction:ltr;
+text-align:left;
 }
 
-input:focus{
+.form-group input:focus{
 border-color:#2563eb;
-box-shadow:0 0 0 3px rgba(37,99,235,.1);
+box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
 
-.password-row{
+/* PASSWORD */
+
+.password-box{
 position:relative;
 }
 
-.password-row input{
-padding-left:55px;
+.password-box input{
+padding-left:65px;
 }
 
-.show-password{
+.password-toggle{
 position:absolute;
-left:15px;
-top:14px;
-border:none;
+left:12px;
+top:50%;
+transform:translateY(-50%);
+border:0;
 background:none;
-cursor:pointer;
 color:#64748b;
+cursor:pointer;
 font-size:13px;
 }
 
-/* MAIN BUTTON */
+/* SUBMIT */
 
 .submit-btn{
 width:100%;
 height:50px;
-border:none;
+border:0;
 border-radius:8px;
 background:#2563eb;
 color:white;
 font-size:17px;
 font-weight:bold;
 cursor:pointer;
-margin-top:5px;
+transition:.2s;
 }
 
 .submit-btn:hover{
 background:#1d4ed8;
 }
 
+.submit-btn:disabled{
+opacity:.7;
+cursor:not-allowed;
+}
+
 /* SWITCH */
 
 .switch{
 text-align:center;
-margin-top:22px;
-font-size:15px;
+margin-top:20px;
 color:#64748b;
+font-size:15px;
 }
 
 .switch button{
-border:none;
+border:0;
 background:none;
 color:#2563eb;
+font-size:15px;
 font-weight:bold;
 cursor:pointer;
-font-size:15px;
 }
 
 /* MESSAGE */
 
 .message{
-margin-top:15px;
+min-height:22px;
+margin-top:14px;
 text-align:center;
 font-size:14px;
-min-height:20px;
+color:#dc2626;
 }
 
-/* BACK */
+/* FOOTER TEXT */
 
-.back-home{
-display:block;
+.security-text{
 text-align:center;
 margin-top:18px;
-color:#64748b;
-text-decoration:none;
-font-size:14px;
-}
-
-.back-home:hover{
-color:#2563eb;
+color:#94a3b8;
+font-size:12px;
 }
 
 /* MOBILE */
 
 @media(max-width:800px){
 
-body{
-padding:15px;
+header{
+height:70px;
+padding:0 5%;
 }
 
-.auth-container{
+.logo{
+font-size:25px;
+}
+
+.auth-page{
+padding:25px 15px;
+}
+
+.auth-wrapper{
 grid-template-columns:1fr;
 max-width:500px;
 }
 
-.auth-image{
+.auth-visual{
 display:none;
 }
 
-.auth-box{
+.auth-content{
 padding:40px 25px;
 }
 
@@ -289,16 +357,16 @@ padding:40px 25px;
 
 @media(max-width:500px){
 
-.auth-box h1{
+.auth-heading h1{
 font-size:29px;
 }
 
-.logo{
-font-size:27px;
+.auth-content{
+padding:35px 20px;
 }
 
-.social-buttons{
-grid-template-columns:1fr;
+.social-btn{
+height:48px;
 }
 
 }
@@ -309,22 +377,40 @@ grid-template-columns:1fr;
 
 <body>
 
-<div class="auth-container">
+<header>
 
-<!-- IMAGE -->
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
-<div class="auth-image">
+<a class="home-link" href="index.html">
+الرئيسية
+</a>
 
-<div class="image-content">
+</header>
+
+
+<main class="auth-page">
+
+<div class="auth-wrapper">
+
+
+<!-- VISUAL -->
+
+<div class="auth-visual">
+
+<div class="visual-content">
+
+<div class="small-title">
+BODYRESET
+</div>
 
 <h2>
-غيّر جسمك<br>
-غيّر حياتك
+ابدأ رحلتك نحو جسم أقوى
 </h2>
 
 <p>
-ابدأ رحلتك مع BodyReset
-وابني نظام حياة يناسب هدفك.
+خطتك تبدأ من هنا. سجّل دخولك وابدأ بناء نظام يناسب هدفك.
 </p>
 
 </div>
@@ -334,39 +420,53 @@ grid-template-columns:1fr;
 
 <!-- AUTH -->
 
-<div class="auth-box">
+<div class="auth-content">
 
-<div class="logo">
-Body<span>Reset</span>
-</div>
+<div class="auth-heading">
 
 <h1 id="title">
 تسجيل الدخول
 </h1>
 
-<p class="subtitle" id="subtitle">
-ادخل لحسابك وكمل رحلتك مع BodyReset
+<p id="subtitle">
+سجّل دخولك وكمل رحلتك مع BodyReset
 </p>
+
+</div>
 
 
 <!-- SOCIAL -->
 
-<div class="social-buttons">
+<div class="social-login">
 
-<button class="social-btn" id="googleBtn">
+<button
+class="social-btn"
+id="googleBtn"
+type="button">
 
-<span class="google-icon">G</span>
+<span class="google-icon">
+G
+</span>
 
-Google
+<span>
+المتابعة باستخدام Google
+</span>
 
 </button>
 
 
-<button class="social-btn" id="appleBtn">
+<button
+class="social-btn"
+id="appleBtn"
+type="button">
 
-<span class="apple-icon">●</span>
+<span class="apple-icon">
+●
+</span>
 
-Apple
+<span>
+المتابعة باستخدام Apple
+</span>
 
 </button>
 
@@ -384,45 +484,56 @@ Apple
 
 <form id="authForm">
 
+
+<div class="form-group">
+
 <label for="email">
 البريد الإلكتروني
 </label>
 
 <input
-type="email"
 id="email"
+type="email"
 placeholder="example@email.com"
-required
->
+autocomplete="email"
+required>
 
+</div>
+
+
+<div class="form-group">
 
 <label for="password">
 كلمة المرور
 </label>
 
-<div class="password-row">
+<div class="password-box">
 
 <input
-type="password"
 id="password"
-placeholder="••••••••"
-required
->
+type="password"
+placeholder="أدخل كلمة المرور"
+autocomplete="current-password"
+required>
 
 <button
-type="button"
-class="show-password"
-id="showPassword">
+class="password-toggle"
+id="passwordToggle"
+type="button">
+
 إظهار
+
 </button>
+
+</div>
 
 </div>
 
 
 <button
-type="submit"
 class="submit-btn"
-id="submitBtn">
+id="submitBtn"
+type="submit">
 
 تسجيل الدخول
 
@@ -431,7 +542,10 @@ id="submitBtn">
 </form>
 
 
-<div class="message" id="message"></div>
+<div
+class="message"
+id="message">
+</div>
 
 
 <div class="switch">
@@ -440,20 +554,26 @@ id="submitBtn">
 ليس لديك حساب؟
 </span>
 
-<button id="switchBtn">
+<button
+id="switchBtn"
+type="button">
+
 إنشاء حساب
+
 </button>
 
 </div>
 
 
-<a class="back-home" href="index.html">
-العودة إلى الصفحة الرئيسية
-</a>
-
+<div class="security-text">
+بياناتك محمية ويتم تسجيل الدخول بأمان.
 </div>
 
 </div>
+
+</div>
+
+</main>
 
 
 <script type="module">
@@ -477,8 +597,6 @@ supabaseKey
 );
 
 
-/* ELEMENTS */
-
 const authForm =
 document.getElementById("authForm");
 
@@ -497,17 +615,17 @@ document.getElementById("title");
 const subtitle =
 document.getElementById("subtitle");
 
-const switchBtn =
-document.getElementById("switchBtn");
-
 const switchText =
 document.getElementById("switchText");
+
+const switchBtn =
+document.getElementById("switchBtn");
 
 const message =
 document.getElementById("message");
 
-const showPassword =
-document.getElementById("showPassword");
+const passwordToggle =
+document.getElementById("passwordToggle");
 
 const googleBtn =
 document.getElementById("googleBtn");
@@ -519,32 +637,34 @@ document.getElementById("appleBtn");
 let isSignup = false;
 
 
-/* SHOW PASSWORD */
+/* PASSWORD */
 
-showPassword.addEventListener("click",()=>{
+passwordToggle.addEventListener("click",()=>{
 
 if(password.type === "password"){
 
 password.type = "text";
-showPassword.textContent = "إخفاء";
+passwordToggle.textContent = "إخفاء";
 
 }else{
 
 password.type = "password";
-showPassword.textContent = "إظهار";
+passwordToggle.textContent = "إظهار";
 
 }
 
 });
 
 
-/* SWITCH LOGIN / SIGNUP */
+/* LOGIN / SIGNUP */
 
 switchBtn.addEventListener("click",()=>{
 
 isSignup = !isSignup;
 
 message.textContent = "";
+
+password.value = "";
 
 if(isSignup){
 
@@ -563,13 +683,18 @@ switchText.textContent =
 switchBtn.textContent =
 "تسجيل الدخول";
 
+password.setAttribute(
+"autocomplete",
+"new-password"
+);
+
 }else{
 
 title.textContent =
 "تسجيل الدخول";
 
 subtitle.textContent =
-"ادخل لحسابك وكمل رحلتك مع BodyReset";
+"سجّل دخولك وكمل رحلتك مع BodyReset";
 
 submitBtn.textContent =
 "تسجيل الدخول";
@@ -580,6 +705,11 @@ switchText.textContent =
 switchBtn.textContent =
 "إنشاء حساب";
 
+password.setAttribute(
+"autocomplete",
+"current-password"
+);
+
 }
 
 });
@@ -587,34 +717,58 @@ switchBtn.textContent =
 
 /* EMAIL AUTH */
 
-authForm.addEventListener("submit",async(e)=>{
+authForm.addEventListener(
+"submit",
+async(event)=>{
 
-e.preventDefault();
+event.preventDefault();
 
 message.textContent = "";
+
 submitBtn.disabled = true;
+
+if(isSignup){
+
+submitBtn.textContent =
+"جاري إنشاء الحساب...";
+
+}else{
+
+submitBtn.textContent =
+"جاري تسجيل الدخول...";
+
+}
+
 
 try{
 
 if(isSignup){
 
-const { data,error } =
+const {data,error} =
 await supabase.auth.signUp({
 
-email:email.value,
+email:email.value.trim(),
+
 password:password.value,
 
 options:{
+
 emailRedirectTo:
 "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html"
+
 }
 
 });
 
-if(error) throw error;
+if(error){
+throw error;
+}
 
 
 if(data.user){
+
+message.style.color =
+"#16a34a";
 
 message.textContent =
 "تم إنشاء الحساب. راجع بريدك الإلكتروني لتأكيد الحساب.";
@@ -626,12 +780,15 @@ message.textContent =
 const {error} =
 await supabase.auth.signInWithPassword({
 
-email:email.value,
+email:email.value.trim(),
+
 password:password.value
 
 });
 
-if(error) throw error;
+if(error){
+throw error;
+}
 
 window.location.href =
 "dashboard.html";
@@ -640,12 +797,27 @@ window.location.href =
 
 }catch(error){
 
+message.style.color =
+"#dc2626";
+
 message.textContent =
 error.message;
 
 }finally{
 
 submitBtn.disabled = false;
+
+if(isSignup){
+
+submitBtn.textContent =
+"إنشاء حساب";
+
+}else{
+
+submitBtn.textContent =
+"تسجيل الدخول";
+
+}
 
 }
 
@@ -654,7 +826,15 @@ submitBtn.disabled = false;
 
 /* GOOGLE */
 
-googleBtn.addEventListener("click",async()=>{
+googleBtn.addEventListener(
+"click",
+async()=>{
+
+message.style.color =
+"#64748b";
+
+message.textContent =
+"جاري فتح Google...";
 
 const {error} =
 await supabase.auth.signInWithOAuth({
@@ -662,13 +842,18 @@ await supabase.auth.signInWithOAuth({
 provider:"google",
 
 options:{
+
 redirectTo:
 "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+
 }
 
 });
 
 if(error){
+
+message.style.color =
+"#dc2626";
 
 message.textContent =
 error.message;
@@ -680,7 +865,15 @@ error.message;
 
 /* APPLE */
 
-appleBtn.addEventListener("click",async()=>{
+appleBtn.addEventListener(
+"click",
+async()=>{
+
+message.style.color =
+"#64748b";
+
+message.textContent =
+"جاري فتح Apple...";
 
 const {error} =
 await supabase.auth.signInWithOAuth({
@@ -688,13 +881,18 @@ await supabase.auth.signInWithOAuth({
 provider:"apple",
 
 options:{
+
 redirectTo:
 "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+
 }
 
 });
 
 if(error){
+
+message.style.color =
+"#dc2626";
 
 message.textContent =
 error.message;
