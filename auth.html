@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>BodyReset - Login</title>
 
   <style>
+
     *{
       box-sizing:border-box;
       margin:0;
@@ -21,17 +23,19 @@
     /* HEADER */
 
     header{
-      background:#071a33;
       width:100%;
+      background:#071a33;
       padding:22px 7%;
     }
 
     .header-inner{
       max-width:1200px;
       margin:auto;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
+
       direction:rtl;
     }
 
@@ -46,314 +50,452 @@
     }
 
     .home{
-      color:white;
+      color:#071a33;
+      background:white;
       text-decoration:none;
-      font-size:18px;
+
+      padding:10px 20px;
+      border-radius:8px;
+
+      font-size:17px;
       font-weight:bold;
     }
 
     /* MAIN */
 
     main{
+      width:100%;
+
       min-height:calc(100vh - 82px);
+
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:45px 25px;
+
+      padding:40px 25px;
     }
+
+    /* WHITE CARD */
 
     .container{
       width:100%;
       max-width:1050px;
+
       min-height:620px;
+
       background:white;
+
       border-radius:18px;
+
       overflow:hidden;
+
       display:grid;
       grid-template-columns:1fr 1fr;
+
       box-shadow:0 15px 40px rgba(7,26,51,.12);
     }
 
-    /* IMAGE SIDE */
+    /* IMAGE */
 
     .left{
+
       position:relative;
+
+      min-height:620px;
+
       background:
         linear-gradient(
-          rgba(7,26,51,.25),
-          rgba(7,26,51,.68)
+          rgba(7,26,51,.20),
+          rgba(7,26,51,.65)
         ),
         url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=90");
+
       background-size:cover;
       background-position:center;
-      color:white;
-      padding:35px;
+
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
+
+      padding:35px;
     }
 
-    .image-logo{
-      position:absolute;
-      top:28px;
-      left:35px;
-      color:white;
-      font-size:31px;
-      font-weight:bold;
-    }
-
-    .image-logo span{
-      color:#2563eb;
-    }
+    /* TEXT ON IMAGE */
 
     .hero-text{
-      margin-top:auto;
+
       direction:rtl;
       text-align:right;
+
+      margin-top:auto;
     }
 
     .hero-text p{
+
+      color:white;
+
       font-size:27px;
+
       font-weight:bold;
+
       margin-top:9px;
-      text-shadow:0 2px 8px rgba(0,0,0,.5);
+
+      text-shadow:
+        0 2px 8px rgba(0,0,0,.5);
     }
 
-    /* FORM SIDE */
+    /* FORM */
 
     .right{
-      padding:55px 55px;
+
+      padding:55px;
+
       display:flex;
+
       align-items:center;
       justify-content:center;
     }
 
     .form-box{
+
       width:100%;
       max-width:420px;
     }
 
     .form-box h1{
+
       color:#071a33;
+
       font-size:36px;
+
       margin-bottom:18px;
     }
 
     .switch-text{
+
       color:#64748b;
+
       font-size:14px;
+
       margin-bottom:25px;
     }
 
     .switch-text span{
+
       color:#2563eb;
+
       font-weight:bold;
+
       cursor:pointer;
     }
 
+    /* FIELDS */
+
     .field{
+
       margin-bottom:17px;
     }
 
     .field label{
+
       display:block;
+
       color:#071a33;
+
       font-size:16px;
+
       font-weight:bold;
+
       margin-bottom:7px;
     }
 
     .field input,
     .field select{
+
       width:100%;
+
       height:48px;
+
       border:1px solid #cbd5e1;
+
       border-radius:8px;
+
       padding:0 14px;
+
       font-size:16px;
+
       outline:none;
+
       background:white;
     }
 
     .field input:focus,
     .field select:focus{
+
       border-color:#2563eb;
     }
 
+    /* PASSWORD */
+
     .password-wrap{
+
       position:relative;
     }
 
     .password-wrap input{
+
       padding-right:70px;
     }
 
     .show-password{
+
       position:absolute;
+
       right:12px;
+
       top:50%;
+
       transform:translateY(-50%);
+
       border:none;
+
       background:none;
+
       color:#2563eb;
+
       font-size:13px;
+
       font-weight:bold;
+
       cursor:pointer;
     }
 
+    /* MAIN BUTTON */
+
     .main-btn{
+
       width:100%;
+
       height:50px;
+
       border:none;
+
       border-radius:8px;
+
       background:#071a33;
+
       color:white;
+
       font-size:17px;
+
       font-weight:bold;
+
       cursor:pointer;
+
       margin-top:4px;
     }
 
     .main-btn:hover{
+
       background:#0d2a50;
     }
 
+    /* DIVIDER */
+
     .divider{
+
       display:flex;
+
       align-items:center;
+
       gap:12px;
+
       margin:21px 0;
+
       color:#94a3b8;
+
       font-size:13px;
     }
 
     .divider::before,
     .divider::after{
+
       content:"";
+
       height:1px;
+
       background:#e2e8f0;
+
       flex:1;
     }
 
+    /* SOCIAL BUTTONS */
+
     .social-btn{
+
       width:100%;
+
       height:48px;
+
       border:none;
+
       border-radius:8px;
+
       background:#071a33;
+
       color:white;
+
       display:flex;
+
       align-items:center;
+
       justify-content:center;
+
       gap:11px;
+
       font-size:15px;
+
       font-weight:bold;
+
       cursor:pointer;
+
       margin-bottom:11px;
     }
 
     .social-btn img{
+
       width:20px;
+
       height:20px;
+
       object-fit:contain;
     }
 
     .apple-icon{
+
       width:20px;
       height:20px;
+
       fill:white;
     }
 
+    /* SIGN UP */
+
     .signup-form{
+
       display:none;
     }
 
+    /* MESSAGE */
+
     .message{
+
       margin-top:14px;
+
       text-align:center;
+
       font-size:13px;
+
       font-weight:bold;
     }
 
     .success{
+
       color:#16a34a;
     }
 
     .error{
+
       color:#dc2626;
     }
 
-    /* MOBILE */
+    /* TABLET */
 
     @media(max-width:850px){
 
       main{
+
         padding:30px 18px;
       }
 
       .container{
+
         max-width:650px;
+
         grid-template-columns:1fr;
       }
 
       .left{
+
         min-height:320px;
       }
 
       .right{
+
         padding:45px 35px;
       }
     }
 
+    /* MOBILE */
+
     @media(max-width:500px){
 
       header{
+
         padding:19px 5%;
       }
 
       .logo{
+
         font-size:25px;
       }
 
       .home{
+
         font-size:15px;
+
+        padding:9px 15px;
       }
 
       main{
+
         padding:20px 10px;
       }
 
       .container{
+
         border-radius:14px;
       }
 
       .left{
+
         min-height:270px;
+
         padding:25px;
       }
 
-      .image-logo{
-        top:22px;
-        left:25px;
-        font-size:25px;
-      }
-
       .hero-text p{
+
         font-size:21px;
       }
 
       .right{
+
         padding:35px 22px;
       }
 
       .form-box h1{
+
         font-size:31px;
       }
     }
+
   </style>
 </head>
 
+
 <body>
+
 
   <!-- HEADER -->
 
@@ -362,10 +504,16 @@
     <div class="header-inner">
 
       <div class="logo">
+
         Body<span>Reset</span>
+
       </div>
 
-      <a class="home" href="index.html">
+
+      <a
+        class="home"
+        href="index.html"
+      >
         Home
       </a>
 
@@ -378,23 +526,27 @@
 
   <main>
 
+
     <div class="container">
+
 
       <!-- IMAGE -->
 
       <div class="left">
 
-        <div class="image-logo">
-          Body<span>Reset</span>
-        </div>
 
         <div class="hero-text">
 
-          <p>ابنِ جسمًا أقوى.</p>
+          <p>
+            ابنِ جسمًا أقوى.
+          </p>
 
-          <p>ابنِ حياة صحية أفضل.</p>
+          <p>
+            ابنِ حياة صحية أفضل.
+          </p>
 
         </div>
+
 
       </div>
 
@@ -403,17 +555,25 @@
 
       <div class="right">
 
+
         <div class="form-box">
+
 
           <!-- LOGIN -->
 
           <div id="loginBox">
 
-            <h1>Login</h1>
+
+            <h1>
+              Login
+            </h1>
+
 
             <div class="field">
 
-              <label>Username</label>
+              <label>
+                Username
+              </label>
 
               <input
                 type="text"
@@ -426,7 +586,10 @@
 
             <div class="field">
 
-              <label>Password</label>
+              <label>
+                Password
+              </label>
+
 
               <div class="password-wrap">
 
@@ -435,6 +598,7 @@
                   id="loginPassword"
                   placeholder="Enter password"
                 >
+
 
                 <button
                   type="button"
@@ -472,9 +636,13 @@
 
 
             <div class="divider">
+
               OR
+
             </div>
 
+
+            <!-- GOOGLE -->
 
             <button
               class="social-btn"
@@ -491,6 +659,8 @@
             </button>
 
 
+            <!-- APPLE -->
+
             <button
               class="social-btn"
               onclick="loginApple()"
@@ -505,9 +675,11 @@
 
               </svg>
 
+
               Continue with Apple
 
             </button>
+
 
           </div>
 
@@ -519,7 +691,10 @@
             class="signup-form"
           >
 
-            <h1>Create Account</h1>
+
+            <h1>
+              Create Account
+            </h1>
 
 
             <div class="switch-text">
@@ -535,7 +710,9 @@
 
             <div class="field">
 
-              <label>Full Name</label>
+              <label>
+                Full Name
+              </label>
 
               <input
                 type="text"
@@ -548,7 +725,9 @@
 
             <div class="field">
 
-              <label>Username</label>
+              <label>
+                Username
+              </label>
 
               <input
                 type="text"
@@ -561,7 +740,9 @@
 
             <div class="field">
 
-              <label>Age</label>
+              <label>
+                Age
+              </label>
 
               <input
                 type="number"
@@ -574,7 +755,9 @@
 
             <div class="field">
 
-              <label>Gender</label>
+              <label>
+                Gender
+              </label>
 
               <select id="gender">
 
@@ -597,7 +780,9 @@
 
             <div class="field">
 
-              <label>Height</label>
+              <label>
+                Height
+              </label>
 
               <input
                 type="number"
@@ -610,7 +795,9 @@
 
             <div class="field">
 
-              <label>Weight</label>
+              <label>
+                Weight
+              </label>
 
               <input
                 type="number"
@@ -623,7 +810,9 @@
 
             <div class="field">
 
-              <label>Email</label>
+              <label>
+                Email
+              </label>
 
               <input
                 type="email"
@@ -636,7 +825,10 @@
 
             <div class="field">
 
-              <label>Password</label>
+              <label>
+                Password
+              </label>
+
 
               <div class="password-wrap">
 
@@ -645,6 +837,7 @@
                   id="signupPassword"
                   placeholder="Create password"
                 >
+
 
                 <button
                   type="button"
@@ -661,7 +854,10 @@
 
             <div class="field">
 
-              <label>Confirm Password</label>
+              <label>
+                Confirm Password
+              </label>
+
 
               <div class="password-wrap">
 
@@ -670,6 +866,7 @@
                   id="confirmPassword"
                   placeholder="Confirm password"
                 >
+
 
                 <button
                   type="button"
@@ -691,6 +888,7 @@
               Create Account
             </button>
 
+
           </div>
 
 
@@ -698,6 +896,7 @@
             id="message"
             class="message"
           ></div>
+
 
         </div>
 
@@ -708,18 +907,24 @@
   </main>
 
 
+  <!-- SUPABASE -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
   <script>
 
     const SUPABASE_URL =
       "https://byodeoaluspphqduxmlh.supabase.co";
 
+
     const SUPABASE_KEY =
       "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
 
+
     const DASHBOARD_URL =
       "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
+
 
     const AUTH_URL =
       "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
@@ -778,17 +983,20 @@
       const input =
         document.getElementById(id);
 
+
       if(input.type === "password"){
 
         input.type = "text";
 
-        button.textContent = "Hide";
+        button.textContent =
+          "Hide";
 
       }else{
 
         input.type = "password";
 
-        button.textContent = "Show";
+        button.textContent =
+          "Show";
 
       }
 
@@ -798,10 +1006,16 @@
     async function loginUser(){
 
       const username =
-        document.getElementById("loginUsername").value.trim();
+        document
+          .getElementById("loginUsername")
+          .value
+          .trim();
+
 
       const password =
-        document.getElementById("loginPassword").value;
+        document
+          .getElementById("loginPassword")
+          .value;
 
 
       if(!username || !password){
@@ -826,6 +1040,7 @@
         await supabaseClient.auth.signInWithPassword({
 
           email:username,
+
           password:password
 
         });
@@ -852,31 +1067,60 @@
     async function createAccount(){
 
       const fullName =
-        document.getElementById("fullName").value.trim();
+        document
+          .getElementById("fullName")
+          .value
+          .trim();
+
 
       const username =
-        document.getElementById("signupUsername").value.trim();
+        document
+          .getElementById("signupUsername")
+          .value
+          .trim();
+
 
       const age =
-        document.getElementById("age").value;
+        document
+          .getElementById("age")
+          .value;
+
 
       const gender =
-        document.getElementById("gender").value;
+        document
+          .getElementById("gender")
+          .value;
+
 
       const height =
-        document.getElementById("height").value;
+        document
+          .getElementById("height")
+          .value;
+
 
       const weight =
-        document.getElementById("weight").value;
+        document
+          .getElementById("weight")
+          .value;
+
 
       const email =
-        document.getElementById("signupEmail").value.trim();
+        document
+          .getElementById("signupEmail")
+          .value
+          .trim();
+
 
       const password =
-        document.getElementById("signupPassword").value;
+        document
+          .getElementById("signupPassword")
+          .value;
+
 
       const confirmPassword =
-        document.getElementById("confirmPassword").value;
+        document
+          .getElementById("confirmPassword")
+          .value;
 
 
       if(
