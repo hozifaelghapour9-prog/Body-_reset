@@ -14,73 +14,96 @@
     }
 
     body{
-      background:#071a33;
+      background:#f1f5f9;
       min-height:100vh;
+    }
+
+    /* HEADER */
+
+    header{
+      background:#071a33;
+      width:100%;
+      padding:22px 7%;
+    }
+
+    .header-inner{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      direction:rtl;
+    }
+
+    .logo{
+      color:white;
+      font-size:30px;
+      font-weight:bold;
+    }
+
+    .logo span{
+      color:#2563eb;
+    }
+
+    .home{
+      color:white;
+      text-decoration:none;
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    /* MAIN */
+
+    main{
+      min-height:calc(100vh - 82px);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:20px;
+      padding:45px 25px;
     }
 
     .container{
       width:100%;
-      max-width:1250px;
-      min-height:760px;
+      max-width:1050px;
+      min-height:620px;
       background:white;
-      border-radius:20px;
+      border-radius:18px;
       overflow:hidden;
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      box-shadow:0 25px 60px rgba(0,0,0,.3);
+      grid-template-columns:1fr 1fr;
+      box-shadow:0 15px 40px rgba(7,26,51,.12);
     }
 
-    /* IMAGE */
+    /* IMAGE SIDE */
 
     .left{
       position:relative;
       background:
         linear-gradient(
-          rgba(7,26,51,.30),
+          rgba(7,26,51,.25),
           rgba(7,26,51,.68)
         ),
         url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=90");
       background-size:cover;
       background-position:center;
       color:white;
-      padding:40px;
+      padding:35px;
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
     }
 
-    .image-header{
-      position:absolute;
-      top:32px;
-      left:40px;
-      right:40px;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      direction:rtl;
-    }
-
     .image-logo{
+      position:absolute;
+      top:28px;
+      left:35px;
       color:white;
-      font-size:34px;
+      font-size:31px;
       font-weight:bold;
     }
 
     .image-logo span{
       color:#2563eb;
-    }
-
-    .image-home{
-      color:white;
-      text-decoration:none;
-      font-size:19px;
-      font-weight:bold;
     }
 
     .hero-text{
@@ -90,16 +113,16 @@
     }
 
     .hero-text p{
-      font-size:30px;
+      font-size:27px;
       font-weight:bold;
-      margin-top:10px;
-      text-shadow:0 3px 10px rgba(0,0,0,.5);
+      margin-top:9px;
+      text-shadow:0 2px 8px rgba(0,0,0,.5);
     }
 
-    /* FORM */
+    /* FORM SIDE */
 
     .right{
-      padding:70px 65px;
+      padding:55px 55px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -107,19 +130,19 @@
 
     .form-box{
       width:100%;
-      max-width:470px;
+      max-width:420px;
     }
 
     .form-box h1{
       color:#071a33;
-      font-size:40px;
-      margin-bottom:25px;
+      font-size:36px;
+      margin-bottom:18px;
     }
 
     .switch-text{
       color:#64748b;
-      font-size:17px;
-      margin-bottom:28px;
+      font-size:14px;
+      margin-bottom:25px;
     }
 
     .switch-text span{
@@ -129,25 +152,25 @@
     }
 
     .field{
-      margin-bottom:20px;
+      margin-bottom:17px;
     }
 
     .field label{
       display:block;
       color:#071a33;
-      font-size:17px;
+      font-size:16px;
       font-weight:bold;
-      margin-bottom:9px;
+      margin-bottom:7px;
     }
 
     .field input,
     .field select{
       width:100%;
-      height:54px;
+      height:48px;
       border:1px solid #cbd5e1;
-      border-radius:9px;
-      padding:0 15px;
-      font-size:17px;
+      border-radius:8px;
+      padding:0 14px;
+      font-size:16px;
       outline:none;
       background:white;
     }
@@ -162,30 +185,30 @@
     }
 
     .password-wrap input{
-      padding-right:75px;
+      padding-right:70px;
     }
 
     .show-password{
       position:absolute;
-      right:13px;
+      right:12px;
       top:50%;
       transform:translateY(-50%);
       border:none;
       background:none;
       color:#2563eb;
-      font-size:14px;
+      font-size:13px;
       font-weight:bold;
       cursor:pointer;
     }
 
     .main-btn{
       width:100%;
-      height:54px;
+      height:50px;
       border:none;
-      border-radius:9px;
+      border-radius:8px;
       background:#071a33;
       color:white;
-      font-size:18px;
+      font-size:17px;
       font-weight:bold;
       cursor:pointer;
       margin-top:4px;
@@ -198,10 +221,10 @@
     .divider{
       display:flex;
       align-items:center;
-      gap:14px;
-      margin:25px 0;
+      gap:12px;
+      margin:21px 0;
       color:#94a3b8;
-      font-size:14px;
+      font-size:13px;
     }
 
     .divider::before,
@@ -214,33 +237,30 @@
 
     .social-btn{
       width:100%;
-      height:52px;
+      height:48px;
       border:none;
-      border-radius:9px;
+      border-radius:8px;
       background:#071a33;
       color:white;
-
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:12px;
-
-      font-size:16px;
+      gap:11px;
+      font-size:15px;
       font-weight:bold;
       cursor:pointer;
-
-      margin-bottom:13px;
+      margin-bottom:11px;
     }
 
     .social-btn img{
-      width:21px;
-      height:21px;
+      width:20px;
+      height:20px;
       object-fit:contain;
     }
 
     .apple-icon{
-      width:21px;
-      height:21px;
+      width:20px;
+      height:20px;
       fill:white;
     }
 
@@ -249,9 +269,9 @@
     }
 
     .message{
-      margin-top:16px;
+      margin-top:14px;
       text-align:center;
-      font-size:14px;
+      font-size:13px;
       font-weight:bold;
     }
 
@@ -263,53 +283,59 @@
       color:#dc2626;
     }
 
-    /* TABLET */
+    /* MOBILE */
 
-    @media(max-width:900px){
+    @media(max-width:850px){
+
+      main{
+        padding:30px 18px;
+      }
 
       .container{
-        max-width:760px;
+        max-width:650px;
         grid-template-columns:1fr;
       }
 
       .left{
-        min-height:380px;
+        min-height:320px;
       }
 
       .right{
-        padding:55px 45px;
+        padding:45px 35px;
       }
     }
 
-    /* MOBILE */
-
     @media(max-width:500px){
 
-      body{
-        padding:10px;
+      header{
+        padding:19px 5%;
       }
 
-      .container{
-        border-radius:15px;
-      }
-
-      .left{
-        min-height:300px;
-        padding:25px;
-      }
-
-      .image-header{
-        top:22px;
-        left:25px;
-        right:25px;
-      }
-
-      .image-logo{
+      .logo{
         font-size:25px;
       }
 
-      .image-home{
+      .home{
         font-size:15px;
+      }
+
+      main{
+        padding:20px 10px;
+      }
+
+      .container{
+        border-radius:14px;
+      }
+
+      .left{
+        min-height:270px;
+        padding:25px;
+      }
+
+      .image-logo{
+        top:22px;
+        left:25px;
+        font-size:25px;
       }
 
       .hero-text p{
@@ -317,20 +343,11 @@
       }
 
       .right{
-        padding:40px 22px;
+        padding:35px 22px;
       }
 
       .form-box h1{
-        font-size:32px;
-      }
-
-      .field input,
-      .field select{
-        height:50px;
-      }
-
-      .main-btn{
-        height:50px;
+        font-size:31px;
       }
     }
   </style>
@@ -338,319 +355,357 @@
 
 <body>
 
-  <div class="container">
+  <!-- HEADER -->
 
-    <!-- IMAGE SIDE -->
+  <header>
 
-    <div class="left">
+    <div class="header-inner">
 
-      <div class="image-header">
+      <div class="logo">
+        Body<span>Reset</span>
+      </div>
+
+      <a class="home" href="index.html">
+        Home
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <div class="container">
+
+      <!-- IMAGE -->
+
+      <div class="left">
 
         <div class="image-logo">
           Body<span>Reset</span>
         </div>
 
-        <a class="image-home" href="index.html">
-          Home
-        </a>
+        <div class="hero-text">
+
+          <p>ابنِ جسمًا أقوى.</p>
+
+          <p>ابنِ حياة صحية أفضل.</p>
+
+        </div>
 
       </div>
 
-      <div class="hero-text">
 
-        <p>ابنِ جسمًا أقوى.</p>
-        <p>ابنِ حياة صحية أفضل.</p>
+      <!-- FORM -->
 
-      </div>
+      <div class="right">
 
-    </div>
+        <div class="form-box">
 
+          <!-- LOGIN -->
 
-    <!-- FORM SIDE -->
+          <div id="loginBox">
 
-    <div class="right">
+            <h1>Login</h1>
 
-      <div class="form-box">
+            <div class="field">
 
-        <!-- LOGIN -->
-
-        <div id="loginBox">
-
-          <!-- Login heading removed as requested -->
-
-          <div class="field">
-            <label>Username</label>
-
-            <input
-              type="text"
-              id="loginUsername"
-              placeholder="Enter username"
-            >
-          </div>
-
-
-          <div class="field">
-
-            <label>Password</label>
-
-            <div class="password-wrap">
+              <label>Username</label>
 
               <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter password"
+                type="text"
+                id="loginUsername"
+                placeholder="Enter username"
               >
-
-              <button
-                type="button"
-                class="show-password"
-                onclick="togglePassword('loginPassword',this)"
-              >
-                Show
-              </button>
 
             </div>
 
+
+            <div class="field">
+
+              <label>Password</label>
+
+              <div class="password-wrap">
+
+                <input
+                  type="password"
+                  id="loginPassword"
+                  placeholder="Enter password"
+                >
+
+                <button
+                  type="button"
+                  class="show-password"
+                  onclick="togglePassword('loginPassword',this)"
+                >
+                  Show
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="main-btn"
+              onclick="loginUser()"
+            >
+              Login
+            </button>
+
+
+            <div
+              class="switch-text"
+              style="margin-top:16px;"
+            >
+
+              Don't have an account?
+
+              <span onclick="showSignup()">
+                Sign up
+              </span>
+
+            </div>
+
+
+            <div class="divider">
+              OR
+            </div>
+
+
+            <button
+              class="social-btn"
+              onclick="loginGoogle()"
+            >
+
+              <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+              >
+
+              Continue with Google
+
+            </button>
+
+
+            <button
+              class="social-btn"
+              onclick="loginApple()"
+            >
+
+              <svg
+                class="apple-icon"
+                viewBox="0 0 24 24"
+              >
+
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.08-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.39 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.96-2.52 4.08zM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25z"/>
+
+              </svg>
+
+              Continue with Apple
+
+            </button>
+
           </div>
 
 
-          <button
-            class="main-btn"
-            onclick="loginUser()"
+          <!-- SIGN UP -->
+
+          <div
+            id="signupBox"
+            class="signup-form"
           >
-            Login
-          </button>
+
+            <h1>Create Account</h1>
+
+
+            <div class="switch-text">
+
+              Already have an account?
+
+              <span onclick="showLogin()">
+                Login
+              </span>
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Full Name</label>
+
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Enter full name"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Username</label>
+
+              <input
+                type="text"
+                id="signupUsername"
+                placeholder="Enter username"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Age</label>
+
+              <input
+                type="number"
+                id="age"
+                placeholder="Enter age"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Gender</label>
+
+              <select id="gender">
+
+                <option value="">
+                  Select gender
+                </option>
+
+                <option value="male">
+                  Male
+                </option>
+
+                <option value="female">
+                  Female
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Height</label>
+
+              <input
+                type="number"
+                id="height"
+                placeholder="Height in cm"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Weight</label>
+
+              <input
+                type="number"
+                id="weight"
+                placeholder="Weight in kg"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Email</label>
+
+              <input
+                type="email"
+                id="signupEmail"
+                placeholder="Enter email"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Password</label>
+
+              <div class="password-wrap">
+
+                <input
+                  type="password"
+                  id="signupPassword"
+                  placeholder="Create password"
+                >
+
+                <button
+                  type="button"
+                  class="show-password"
+                  onclick="togglePassword('signupPassword',this)"
+                >
+                  Show
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <label>Confirm Password</label>
+
+              <div class="password-wrap">
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Confirm password"
+                >
+
+                <button
+                  type="button"
+                  class="show-password"
+                  onclick="togglePassword('confirmPassword',this)"
+                >
+                  Show
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="main-btn"
+              onclick="createAccount()"
+            >
+              Create Account
+            </button>
+
+          </div>
 
 
           <div
-            class="switch-text"
-            style="margin-top:18px;"
-          >
-            Don't have an account?
-            <span onclick="showSignup()">
-              Sign up
-            </span>
-          </div>
-
-
-          <div class="divider">
-            OR
-          </div>
-
-
-          <button
-            class="social-btn"
-            onclick="loginGoogle()"
-          >
-
-            <img
-              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-              alt="Google"
-            >
-
-            Continue with Google
-
-          </button>
-
-
-          <button
-            class="social-btn"
-            onclick="loginApple()"
-          >
-
-            <svg
-              class="apple-icon"
-              viewBox="0 0 24 24"
-            >
-              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.08-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.39 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.96-2.52 4.08zM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25z"/>
-            </svg>
-
-            Continue with Apple
-
-          </button>
+            id="message"
+            class="message"
+          ></div>
 
         </div>
-
-
-        <!-- SIGN UP -->
-
-        <div
-          id="signupBox"
-          class="signup-form"
-        >
-
-          <h1>Create Account</h1>
-
-
-          <div class="switch-text">
-
-            Already have an account?
-
-            <span onclick="showLogin()">
-              Login
-            </span>
-
-          </div>
-
-
-          <div class="field">
-            <label>Full Name</label>
-
-            <input
-              type="text"
-              id="fullName"
-              placeholder="Enter full name"
-            >
-          </div>
-
-
-          <div class="field">
-            <label>Username</label>
-
-            <input
-              type="text"
-              id="signupUsername"
-              placeholder="Enter username"
-            >
-          </div>
-
-
-          <div class="field">
-            <label>Age</label>
-
-            <input
-              type="number"
-              id="age"
-              placeholder="Enter age"
-            >
-          </div>
-
-
-          <div class="field">
-            <label>Gender</label>
-
-            <select id="gender">
-
-              <option value="">
-                Select gender
-              </option>
-
-              <option value="male">
-                Male
-              </option>
-
-              <option value="female">
-                Female
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-            <label>Height</label>
-
-            <input
-              type="number"
-              id="height"
-              placeholder="Height in cm"
-            >
-          </div>
-
-
-          <div class="field">
-            <label>Weight</label>
-
-            <input
-              type="number"
-              id="weight"
-              placeholder="Weight in kg"
-            >
-          </div>
-
-
-          <div class="field">
-            <label>Email</label>
-
-            <input
-              type="email"
-              id="signupEmail"
-              placeholder="Enter email"
-            >
-          </div>
-
-
-          <div class="field">
-
-            <label>Password</label>
-
-            <div class="password-wrap">
-
-              <input
-                type="password"
-                id="signupPassword"
-                placeholder="Create password"
-              >
-
-              <button
-                type="button"
-                class="show-password"
-                onclick="togglePassword('signupPassword',this)"
-              >
-                Show
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Confirm Password</label>
-
-            <div class="password-wrap">
-
-              <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirm password"
-              >
-
-              <button
-                type="button"
-                class="show-password"
-                onclick="togglePassword('confirmPassword',this)"
-              >
-                Show
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <button
-            class="main-btn"
-            onclick="createAccount()"
-          >
-            Create Account
-          </button>
-
-        </div>
-
-
-        <div
-          id="message"
-          class="message"
-        ></div>
 
       </div>
 
     </div>
 
-  </div>
+  </main>
 
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -983,4 +1038,4 @@
   </script>
 
 </body>
-</html>
+  </html>
