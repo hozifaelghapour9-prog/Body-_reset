@@ -1,30 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>BodyReset - Login</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <style>
-
     *{
       box-sizing:border-box;
       margin:0;
       padding:0;
+      font-family:Arial, sans-serif;
     }
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
       background:#071a33;
       min-height:100vh;
       display:flex;
-      justify-content:center;
       align-items:center;
-      padding:30px;
+      justify-content:center;
+      padding:25px;
     }
 
     .container{
@@ -32,135 +27,138 @@
       max-width:1100px;
       min-height:650px;
       background:white;
-      border-radius:20px;
+      border-radius:18px;
       overflow:hidden;
       display:grid;
       grid-template-columns:1fr 1fr;
-      box-shadow:0 20px 60px rgba(0,0,0,.3);
+      box-shadow:0 20px 50px rgba(0,0,0,.25);
     }
 
-    /* IMAGE */
+    /* IMAGE SIDE */
 
     .left{
       position:relative;
-      min-height:650px;
-
-      background-image:
-        linear-gradient(
-          rgba(7,26,51,.25),
-          rgba(7,26,51,.8)
-        ),
+      background:
+        linear-gradient(rgba(7,26,51,.35),rgba(7,26,51,.65)),
         url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85");
-
       background-size:cover;
       background-position:center;
-
+      color:white;
+      padding:30px;
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
+    }
 
-      padding:50px;
+    .image-header{
+      position:absolute;
+      top:25px;
+      left:30px;
+      right:30px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      direction:rtl;
+    }
 
+    .image-logo{
       color:white;
-    }
-
-    .left h1{
-      font-size:42px;
-      margin-bottom:12px;
-      font-weight:800;
-    }
-
-    .left p{
-      font-size:21px;
-      line-height:1.5;
-      margin-bottom:5px;
-    }
-
-    .left .brand{
-      color:#2563eb;
+      font-size:30px;
       font-weight:bold;
     }
 
-    /* RIGHT */
-
-    .right{
-      padding:50px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:white;
-    }
-
-    /* TOP HEADER */
-
-    .top-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      direction:rtl;
-      margin-bottom:45px;
-    }
-
-    .logo{
-      font-size:32px;
-      font-weight:800;
-      color:#071a33;
-    }
-
-    .logo span{
+    .image-logo span{
       color:#2563eb;
     }
 
-    .home{
-      color:#071a33;
+    .image-home{
+      color:white;
       text-decoration:none;
       font-size:18px;
       font-weight:bold;
     }
 
-    .home:hover{
+    .hero-text{
+      margin-top:auto;
+      direction:rtl;
+      text-align:right;
+    }
+
+    .hero-text p{
+      font-size:25px;
+      font-weight:bold;
+      margin-top:8px;
+      text-shadow:0 2px 8px rgba(0,0,0,.4);
+    }
+
+    /* FORM SIDE */
+
+    .right{
+      padding:55px 50px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .form-box{
+      width:100%;
+      max-width:420px;
+      margin:auto;
+    }
+
+    .form-box h1{
+      color:#071a33;
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    .switch-text{
+      color:#64748b;
+      font-size:16px;
+      margin-bottom:30px;
+    }
+
+    .switch-text span{
       color:#2563eb;
+      font-weight:bold;
+      cursor:pointer;
     }
 
-    /* FORM */
-
-    .form-group{
-      margin-bottom:20px;
+    .field{
+      margin-bottom:18px;
     }
 
-    label{
+    .field label{
       display:block;
+      color:#071a33;
       font-size:16px;
       font-weight:bold;
-      color:#071a33;
       margin-bottom:8px;
     }
 
-    input,
-    select{
+    .field input,
+    .field select{
       width:100%;
-      height:50px;
+      height:48px;
       border:1px solid #cbd5e1;
-      border-radius:9px;
-      padding:0 15px;
+      border-radius:8px;
+      padding:0 14px;
       font-size:16px;
-      color:#071a33;
-      background:white;
       outline:none;
+      background:white;
     }
 
-    input:focus,
-    select:focus{
+    .field input:focus,
+    .field select:focus{
       border-color:#2563eb;
-      box-shadow:0 0 0 3px rgba(37,99,235,.1);
     }
 
-    .password-box{
+    .password-wrap{
       position:relative;
     }
 
-    .password-box input{
-      padding-right:85px;
+    .password-wrap input{
+      padding-right:75px;
     }
 
     .show-password{
@@ -168,7 +166,7 @@
       right:12px;
       top:50%;
       transform:translateY(-50%);
-      border:0;
+      border:none;
       background:none;
       color:#2563eb;
       font-size:14px;
@@ -176,13 +174,11 @@
       cursor:pointer;
     }
 
-    /* LOGIN BUTTON */
-
     .main-btn{
       width:100%;
-      height:52px;
-      border:0;
-      border-radius:9px;
+      height:50px;
+      border:none;
+      border-radius:8px;
       background:#071a33;
       color:white;
       font-size:17px;
@@ -195,30 +191,11 @@
       background:#0d2a50;
     }
 
-    /* SIGN UP TEXT */
-
-    .switch{
-      margin-top:16px;
-      margin-bottom:30px;
-      font-size:16px;
-      color:#64748b;
-      text-align:center;
-    }
-
-    .switch a{
-      color:#2563eb;
-      font-weight:bold;
-      cursor:pointer;
-      text-decoration:none;
-    }
-
-    /* DIVIDER */
-
     .divider{
       display:flex;
       align-items:center;
       gap:12px;
-      margin:25px 0;
+      margin:22px 0;
       color:#94a3b8;
       font-size:14px;
     }
@@ -231,37 +208,27 @@
       flex:1;
     }
 
-    /* SOCIAL */
-
     .social-btn{
       width:100%;
-      height:50px;
-      border:0;
-      border-radius:9px;
+      height:48px;
+      border:none;
+      border-radius:8px;
       background:#071a33;
       color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
       font-size:16px;
       font-weight:bold;
       cursor:pointer;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      gap:12px;
       margin-bottom:12px;
     }
 
-    .social-btn:hover{
-      background:#0d2a50;
-    }
-
-    .google-icon{
+    .social-btn img{
       width:20px;
       height:20px;
-      background:white;
-      border-radius:50%;
-      padding:2px;
+      object-fit:contain;
     }
 
     .apple-icon{
@@ -270,428 +237,283 @@
       fill:white;
     }
 
-    .message{
-      margin-top:18px;
-      text-align:center;
-      font-size:15px;
-      font-weight:bold;
-      min-height:20px;
-    }
-
-    /* SIGN UP */
-
-    #signupForm{
+    .signup-form{
       display:none;
     }
 
-    .signup-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:15px;
+    .message{
+      margin-top:15px;
+      text-align:center;
+      font-size:14px;
+      font-weight:bold;
     }
 
-    .signup-grid .form-group{
-      margin-bottom:15px;
+    .success{
+      color:#16a34a;
     }
 
-    .full-width{
-      grid-column:1 / -1;
+    .error{
+      color:#dc2626;
     }
-
-    /* MOBILE */
 
     @media(max-width:800px){
-
       body{
         padding:15px;
       }
 
       .container{
         grid-template-columns:1fr;
-        max-width:550px;
+        min-height:auto;
       }
 
       .left{
-        min-height:300px;
-        padding:30px;
-      }
-
-      .left h1{
-        font-size:32px;
-      }
-
-      .left p{
-        font-size:18px;
+        min-height:330px;
       }
 
       .right{
-        padding:35px 25px;
+        padding:40px 25px;
       }
-
-      .signup-grid{
-        grid-template-columns:1fr;
-        gap:0;
-      }
-
-      .full-width{
-        grid-column:auto;
-      }
-
     }
 
     @media(max-width:500px){
-
-      body{
-        padding:0;
-        align-items:flex-start;
-      }
-
-      .container{
-        border-radius:0;
-        min-height:100vh;
-      }
-
       .left{
-        min-height:260px;
+        min-height:280px;
+        padding:25px;
+      }
+
+      .image-logo{
+        font-size:25px;
+      }
+
+      .image-home{
+        font-size:15px;
+      }
+
+      .hero-text p{
+        font-size:20px;
       }
 
       .right{
-        padding:30px 20px;
+        padding:35px 20px;
       }
 
-      .logo{
-        font-size:28px;
+      .form-box h1{
+        font-size:30px;
       }
-
-      .home{
-        font-size:16px;
-      }
-
     }
-
   </style>
-
 </head>
-
 
 <body>
 
   <div class="container">
 
-
-    <!-- IMAGE -->
+    <!-- LEFT IMAGE -->
 
     <div class="left">
 
-      <h1>
-        <span class="brand">
-          BodyReset
-        </span>
-      </h1>
+      <div class="image-header">
 
-      <p>
-        ابنِ جسمًا أقوى.
-      </p>
-
-      <p>
-        ابنِ حياة صحية أفضل.
-      </p>
-
-    </div>
-
-
-    <!-- RIGHT -->
-
-    <div class="right">
-
-
-      <!-- TOP HEADER -->
-
-      <div class="top-header">
-
-        <div class="logo">
+        <div class="image-logo">
           Body<span>Reset</span>
         </div>
 
-        <a
-          class="home"
-          href="index.html"
-        >
+        <a class="image-home" href="index.html">
           Home
         </a>
 
       </div>
 
+      <div class="hero-text">
 
-      <!-- LOGIN -->
+        <p>ابنِ جسمًا أقوى.</p>
 
-      <div id="loginForm">
-
-
-        <div class="form-group">
-
-          <label for="loginUsername">
-            Username
-          </label>
-
-          <input
-            type="text"
-            id="loginUsername"
-            placeholder="Enter your username"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="loginPassword">
-            Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder="Enter your password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('loginPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="main-btn"
-          onclick="loginUser()"
-        >
-          Login
-        </button>
-
-
-        <div class="switch">
-
-          Don't have an account?
-
-          <a onclick="showSignup()">
-            Sign up
-          </a>
-
-        </div>
-
-
-        <div class="divider">
-          OR
-        </div>
-
-
-        <button
-          class="social-btn"
-          onclick="loginGoogle()"
-        >
-
-          <img
-            class="google-icon"
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-            alt="Google"
-          >
-
-          Continue with Google
-
-        </button>
-
-
-        <button
-          class="social-btn"
-          onclick="loginApple()"
-        >
-
-          <svg
-            class="apple-icon"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.01-1.26-10.01a4.9 4.9 0 0 1 4.14-2.51c1.29-.02 2.51.87 3.28.87.77 0 2.22-1.08 3.74-.92.64.03 2.44.26 3.59 1.94-.09.06-2.14 1.24-2.12 3.69.03 2.93 2.57 3.91 2.6 3.92-.02.07-.4 1.37-1.31 2.71zM15.53 4.25c.68-.83 1.14-1.99 1.01-3.15-.98.04-2.17.65-2.88 1.48-.63.73-1.18 1.9-1.03 3.03 1.1.08 2.22-.56 2.9-1.36z"/>
-
-          </svg>
-
-          Continue with Apple
-
-        </button>
-
+        <p>ابنِ حياة صحية أفضل.</p>
 
       </div>
 
-
-      <!-- SIGN UP -->
-
-      <div id="signupForm">
+    </div>
 
 
-        <h2 class="title">
-          Create Account
-        </h2>
+    <!-- RIGHT SIDE -->
 
+    <div class="right">
 
-        <div class="switch">
+      <div class="form-box">
 
-          Already have an account?
+        <!-- LOGIN -->
 
-          <a onclick="showLogin()">
+        <div id="loginBox">
+
+          <h1>Login</h1>
+
+          <div class="field">
+            <label>Username</label>
+            <input
+              type="text"
+              id="loginUsername"
+              placeholder="Enter username"
+            >
+          </div>
+
+          <div class="field">
+
+            <label>Password</label>
+
+            <div class="password-wrap">
+
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter password"
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                onclick="togglePassword('loginPassword',this)"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+          <button
+            class="main-btn"
+            onclick="loginUser()"
+          >
             Login
-          </a>
+          </button>
+
+          <div class="switch-text" style="margin-top:18px;">
+            Don't have an account?
+            <span onclick="showSignup()">Sign up</span>
+          </div>
+
+          <div class="divider">
+            OR
+          </div>
+
+          <button
+            class="social-btn"
+            onclick="loginGoogle()"
+          >
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google"
+            >
+            Continue with Google
+          </button>
+
+          <button
+            class="social-btn"
+            onclick="loginApple()"
+          >
+            <svg
+              class="apple-icon"
+              viewBox="0 0 24 24"
+            >
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.08-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.39 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.96-2.52 4.08zM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
+
+            Continue with Apple
+          </button>
 
         </div>
 
 
-        <div class="signup-grid">
+        <!-- SIGN UP -->
 
+        <div id="signupBox" class="signup-form">
 
-          <div class="form-group full-width">
+          <h1>Create Account</h1>
 
-            <label for="fullName">
-              Full Name
-            </label>
+          <div class="switch-text">
+            Already have an account?
+            <span onclick="showLogin()">Login</span>
+          </div>
 
+          <div class="field">
+            <label>Full Name</label>
             <input
               type="text"
               id="fullName"
-              placeholder="Enter your full name"
+              placeholder="Enter full name"
             >
-
           </div>
 
-
-          <div class="form-group">
-
-            <label for="username">
-              Username
-            </label>
-
+          <div class="field">
+            <label>Username</label>
             <input
               type="text"
-              id="username"
-              placeholder="Username"
+              id="signupUsername"
+              placeholder="Enter username"
             >
-
           </div>
 
-
-          <div class="form-group">
-
-            <label for="age">
-              Age
-            </label>
-
+          <div class="field">
+            <label>Age</label>
             <input
               type="number"
               id="age"
-              placeholder="Age"
-              min="10"
-              max="100"
+              placeholder="Enter age"
             >
-
           </div>
 
-
-          <div class="form-group">
-
-            <label for="gender">
-              Gender
-            </label>
-
+          <div class="field">
+            <label>Gender</label>
             <select id="gender">
-
-              <option value="">
-                Select Gender
-              </option>
-
-              <option value="Male">
-                Male
-              </option>
-
-              <option value="Female">
-                Female
-              </option>
-
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
-
           </div>
 
-
-          <div class="form-group">
-
-            <label for="height">
-              Height
-            </label>
-
+          <div class="field">
+            <label>Height</label>
             <input
               type="number"
               id="height"
-              placeholder="Height (cm)"
+              placeholder="Height in cm"
             >
-
           </div>
 
-
-          <div class="form-group">
-
-            <label for="weight">
-              Weight
-            </label>
-
+          <div class="field">
+            <label>Weight</label>
             <input
               type="number"
               id="weight"
-              placeholder="Weight (kg)"
+              placeholder="Weight in kg"
             >
-
           </div>
 
-
-          <div class="form-group full-width">
-
-            <label for="email">
-              Email
-            </label>
-
+          <div class="field">
+            <label>Email</label>
             <input
               type="email"
-              id="email"
-              placeholder="Enter your email"
+              id="signupEmail"
+              placeholder="Enter email"
             >
-
           </div>
 
+          <div class="field">
 
-          <div class="form-group">
+            <label>Password</label>
 
-            <label for="signupPassword">
-              Password
-            </label>
-
-            <div class="password-box">
+            <div class="password-wrap">
 
               <input
                 type="password"
                 id="signupPassword"
-                placeholder="Create a password"
+                placeholder="Create password"
               >
 
               <button
                 type="button"
                 class="show-password"
-                onclick="togglePassword('signupPassword', this)"
+                onclick="togglePassword('signupPassword',this)"
               >
                 Show
               </button>
@@ -700,25 +522,22 @@
 
           </div>
 
+          <div class="field">
 
-          <div class="form-group">
+            <label>Confirm Password</label>
 
-            <label for="confirmPassword">
-              Confirm Password
-            </label>
-
-            <div class="password-box">
+            <div class="password-wrap">
 
               <input
                 type="password"
                 id="confirmPassword"
-                placeholder="Confirm your password"
+                placeholder="Confirm password"
               >
 
               <button
                 type="button"
                 class="show-password"
-                onclick="togglePassword('confirmPassword', this)"
+                onclick="togglePassword('confirmPassword',this)"
               >
                 Show
               </button>
@@ -727,40 +546,39 @@
 
           </div>
 
+          <button
+            class="main-btn"
+            onclick="createAccount()"
+          >
+            Create Account
+          </button>
 
         </div>
 
-
-        <button
-          class="main-btn"
-          onclick="createAccount()"
-        >
-          Create Account
-        </button>
+        <div id="message" class="message"></div>
 
       </div>
-
-
-      <div
-        id="message"
-        class="message"
-      ></div>
-
 
     </div>
 
   </div>
 
 
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    /* SUPABASE */
+  <script>
 
     const SUPABASE_URL =
       "https://byodeoaluspphqduxmlh.supabase.co";
 
     const SUPABASE_KEY =
       "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
+
+    const DASHBOARD_URL =
+      "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
+
+    const AUTH_URL =
+      "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
 
     const supabaseClient =
       supabase.createClient(
@@ -769,33 +587,48 @@
       );
 
 
-    /* URLS */
-
-    const AUTH_URL =
-      "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
-
-    const DASHBOARD_URL =
-      "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
-
-
-    /* MESSAGE */
-
-    function showMessage(text, success=false){
+    function showMessage(text,type){
 
       const message =
         document.getElementById("message");
 
       message.textContent = text;
 
-      message.style.color =
-        success ? "#16a34a" : "#dc2626";
+      message.className =
+        "message " + type;
 
     }
 
 
-    /* PASSWORD */
+    function showSignup(){
 
-    function togglePassword(id, button){
+      document.getElementById("loginBox").style.display =
+        "none";
+
+      document.getElementById("signupBox").style.display =
+        "block";
+
+      document.getElementById("message").textContent =
+        "";
+
+    }
+
+
+    function showLogin(){
+
+      document.getElementById("signupBox").style.display =
+        "none";
+
+      document.getElementById("loginBox").style.display =
+        "block";
+
+      document.getElementById("message").textContent =
+        "";
+
+    }
+
+
+    function togglePassword(id,button){
 
       const input =
         document.getElementById(id);
@@ -817,40 +650,6 @@
     }
 
 
-    /* SHOW LOGIN */
-
-    function showLogin(){
-
-      document.getElementById("loginForm").style.display =
-        "block";
-
-      document.getElementById("signupForm").style.display =
-        "none";
-
-      document.getElementById("message").textContent =
-        "";
-
-    }
-
-
-    /* SHOW SIGNUP */
-
-    function showSignup(){
-
-      document.getElementById("loginForm").style.display =
-        "none";
-
-      document.getElementById("signupForm").style.display =
-        "block";
-
-      document.getElementById("message").textContent =
-        "";
-
-    }
-
-
-    /* LOGIN */
-
     async function loginUser(){
 
       const username =
@@ -862,30 +661,34 @@
       if(!username || !password){
 
         showMessage(
-          "Please enter your username and password."
+          "Please enter username and password.",
+          "error"
         );
 
         return;
+
       }
 
-      const { error } =
+      showMessage("Logging in...","");
+
+      const {data,error} =
         await supabaseClient.auth.signInWithPassword({
 
-          email: username,
-
-          password: password
+          email:username,
+          password:password
 
         });
 
-
       if(error){
 
-        showMessage(error.message);
+        showMessage(
+          error.message,
+          "error"
+        );
 
         return;
 
       }
-
 
       window.location.href =
         DASHBOARD_URL;
@@ -893,65 +696,13 @@
     }
 
 
-    /* GOOGLE */
-
-    async function loginGoogle(){
-
-      const { error } =
-        await supabaseClient.auth.signInWithOAuth({
-
-          provider:"google",
-
-          options:{
-            redirectTo:DASHBOARD_URL
-          }
-
-        });
-
-
-      if(error){
-
-        showMessage(error.message);
-
-      }
-
-    }
-
-
-    /* APPLE */
-
-    async function loginApple(){
-
-      const { error } =
-        await supabaseClient.auth.signInWithOAuth({
-
-          provider:"apple",
-
-          options:{
-            redirectTo:DASHBOARD_URL
-          }
-
-        });
-
-
-      if(error){
-
-        showMessage(error.message);
-
-      }
-
-    }
-
-
-    /* CREATE ACCOUNT */
-
     async function createAccount(){
 
       const fullName =
         document.getElementById("fullName").value.trim();
 
       const username =
-        document.getElementById("username").value.trim();
+        document.getElementById("signupUsername").value.trim();
 
       const age =
         document.getElementById("age").value;
@@ -966,7 +717,7 @@
         document.getElementById("weight").value;
 
       const email =
-        document.getElementById("email").value.trim();
+        document.getElementById("signupEmail").value.trim();
 
       const password =
         document.getElementById("signupPassword").value;
@@ -988,7 +739,8 @@
       ){
 
         showMessage(
-          "Please fill in all fields."
+          "Please fill in all fields.",
+          "error"
         );
 
         return;
@@ -999,7 +751,8 @@
       if(password !== confirmPassword){
 
         showMessage(
-          "Passwords do not match."
+          "Passwords do not match.",
+          "error"
         );
 
         return;
@@ -1007,7 +760,13 @@
       }
 
 
-      const { data, error } =
+      showMessage(
+        "Creating account...",
+        ""
+      );
+
+
+      const {data,error} =
         await supabaseClient.auth.signUp({
 
           email:email,
@@ -1041,18 +800,82 @@
 
       if(error){
 
-        showMessage(error.message);
+        showMessage(
+          error.message,
+          "error"
+        );
 
         return;
 
       }
 
 
-      if(data.user){
+      if(data.session){
+
+        window.location.href =
+          DASHBOARD_URL;
+
+      }else{
 
         showMessage(
-          "Account created successfully. Please confirm your email.",
-          true
+          "Account created. Please confirm your email.",
+          "success"
+        );
+
+      }
+
+    }
+
+
+    async function loginGoogle(){
+
+      const {error} =
+        await supabaseClient.auth.signInWithOAuth({
+
+          provider:"google",
+
+          options:{
+
+            redirectTo:DASHBOARD_URL
+
+          }
+
+        });
+
+
+      if(error){
+
+        showMessage(
+          error.message,
+          "error"
+        );
+
+      }
+
+    }
+
+
+    async function loginApple(){
+
+      const {error} =
+        await supabaseClient.auth.signInWithOAuth({
+
+          provider:"apple",
+
+          options:{
+
+            redirectTo:DASHBOARD_URL
+
+          }
+
+        });
+
+
+      if(error){
+
+        showMessage(
+          error.message,
+          "error"
         );
 
       }
@@ -1062,5 +885,4 @@
   </script>
 
 </body>
-
   </html>
