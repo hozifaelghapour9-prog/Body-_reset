@@ -1,559 +1,425 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BodyReset - Login</title>
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  background:#f1f5f9;
-  color:#071a33;
-  min-height:100vh;
-}
-
-
-/* HEADER */
-
-header{
-  width:100%;
-  background:#071a33;
-  padding:20px 6%;
-}
-
-.header-inner{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  direction:ltr;
-}
-
-.logo{
-  color:white;
-  font-size:30px;
-  font-weight:800;
-}
-
-.logo span{
-  color:#2563eb;
-}
-
-.home{
-  color:white;
-  background:transparent;
-  text-decoration:none;
-  font-size:18px;
-  font-weight:bold;
-  padding:0;
-}
-
-
-/* MAIN */
-
-main{
-  width:100%;
-  padding:35px 20px;
-  min-height:calc(100vh - 80px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.container{
-  width:100%;
-  max-width:1050px;
-  min-height:620px;
-
-  display:grid;
-  grid-template-columns:1fr 1fr;
-
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-
-  box-shadow:0 15px 45px rgba(7,26,51,.12);
-}
-
-
-/* IMAGE */
-
-.left{
-  position:relative;
-
-  min-height:620px;
-
-  background-image:
-    linear-gradient(
-      rgba(7,26,51,.25),
-      rgba(7,26,51,.55)
-    ),
-    url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=85");
-
-  background-size:cover;
-  background-position:center;
-
-  display:flex;
-  align-items:flex-end;
-
-  padding:45px;
-}
-
-.hero-text{
-  width:100%;
-
-  direction:rtl;
-  text-align:right;
-
-  color:white;
-}
-
-.hero-text p{
-  font-size:30px;
-  line-height:1.5;
-  font-weight:800;
-}
-
-
-/* FORM */
-
-.right{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:45px;
-  background:white;
-}
-
-.form-box{
-  width:100%;
-  max-width:400px;
-}
-
-h1{
-  color:#071a33;
-  font-size:36px;
-  margin-bottom:28px;
-  text-align:left;
-}
-
-
-/* LABELS */
-
-label{
-  display:block;
-
-  color:#071a33;
-
-  font-size:16px;
-  font-weight:bold;
-
-  margin-top:18px;
-  margin-bottom:8px;
-}
-
-
-/* INPUT */
-
-input,
-select{
-  width:100%;
-  height:49px;
-
-  background:white;
-
-  border:1px solid #cbd5e1;
-  border-radius:8px;
-
-  padding:0 14px;
-
-  color:#071a33;
-  font-size:16px;
-
-  outline:none;
-}
-
-input:focus,
-select:focus{
-  border-color:#2563eb;
-
-  box-shadow:
-    0 0 0 3px rgba(37,99,235,.10);
-}
-
-
-/* PASSWORD */
-
-.password-wrap{
-  position:relative;
-}
-
-.password-wrap input{
-  padding-right:70px;
-}
-
-.show-btn{
-  position:absolute;
-
-  right:10px;
-  top:50%;
-
-  transform:translateY(-50%);
-
-  border:0;
-  background:none;
-
-  color:#2563eb;
-
-  font-size:13px;
-  font-weight:bold;
-
-  cursor:pointer;
-}
-
-
-/* LOGIN BUTTON */
-
-.main-btn{
-  width:100%;
-  height:50px;
-
-  margin-top:25px;
-
-  border:0;
-  border-radius:8px;
-
-  background:#071a33;
-  color:white;
-
-  font-size:17px;
-  font-weight:bold;
-
-  cursor:pointer;
-}
-
-.main-btn:hover{
-  opacity:.94;
-}
-
-
-/* SIGN UP TEXT */
-
-.switch{
-  width:115%;
-
-  margin-top:20px;
-
-  text-align:center;
-
-  font-size:18px;
-
-  color:#475569;
-
-  transform:translateX(7%);
-  white-space:nowrap;
-}
-
-.switch span{
-  color:#2563eb;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-
-/* OR */
-
-.or{
-  text-align:center;
-
-  margin:24px 0 16px;
-
-  color:#94a3b8;
-
-  font-size:14px;
-  font-weight:bold;
-}
-
-
-/* SOCIAL BUTTONS */
-
-.social-btn{
-  width:100%;
-  height:50px;
-
-  margin-top:10px;
-
-  border:0;
-  border-radius:8px;
-
-  background:#071a33;
-  color:white;
-
-  font-size:15px;
-  font-weight:bold;
-
-  cursor:pointer;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-
-.social-btn:hover{
-  opacity:.94;
-}
-
-
-/* SOCIAL ICON */
-
-.social-icon{
-  width:20px;
-  height:20px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.google-icon{
-  background:white;
-  color:#4285F4;
-
-  border-radius:50%;
-
-  font-size:14px;
-  font-weight:900;
-}
-
-.apple-icon{
-  color:white;
-  font-size:21px;
-}
-
-
-/* SIGNUP */
-
-.signup-form{
-  display:none;
-}
-
-.signup-form h1{
-  margin-bottom:20px;
-}
-
-.signup-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0 14px;
-}
-
-.signup-grid .full{
-  grid-column:1 / -1;
-}
-
-
-/* MESSAGE */
-
-#message{
-  margin-top:18px;
-
-  text-align:center;
-
-  font-size:14px;
-  font-weight:bold;
-
-  color:#071a33;
-}
-
-
-/* TABLET */
-
-@media(max-width:800px){
-
-  main{
-    padding:20px 12px;
-    align-items:flex-start;
-  }
-
-  .container{
-    grid-template-columns:1fr;
-  }
-
-  .left{
-    min-height:330px;
-  }
-
-  .right{
-    padding:40px 25px;
-  }
-
-}
-
-
-/* MOBILE */
-
-@media(max-width:500px){
-
-  header{
-    padding:18px 5%;
-  }
-
-  .logo{
-    font-size:25px;
-  }
-
-  .home{
-    font-size:16px;
-  }
-
-  main{
-    padding:15px 10px 25px;
-  }
-
-  .left{
-    min-height:270px;
-    padding:25px 22px;
-  }
-
-  .hero-text p{
-    font-size:22px;
-  }
-
-  .right{
-    padding:30px 20px;
-  }
-
-  h1{
-    font-size:31px;
-  }
-
-  .switch{
-    width:110%;
-    font-size:16px;
-    transform:translateX(5%);
-  }
-
-  .signup-grid{
-    grid-template-columns:1fr;
-  }
-
-  .signup-grid .full{
-    grid-column:auto;
-  }
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BodyReset - Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #071a33;
+    }
+
+    /* HEADER */
+    header {
+      background: #071a33;
+      padding: 20px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: rtl;
+    }
+
+    .logo {
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .home {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    /* MAIN */
+    main {
+      padding: 0 7% 40px;
+    }
+
+    .auth-container {
+      max-width: 1050px;
+      min-height: 620px;
+      margin: 0 auto;
+      background: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      direction: ltr;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(7, 26, 51, 0.12);
+    }
+
+    /* IMAGE */
+    .image-side {
+      position: relative;
+      width: 100%;
+      min-height: 620px;
+      overflow: hidden;
+    }
+
+    .image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(7, 26, 51, 0.78),
+        rgba(7, 26, 51, 0.05)
+      );
+    }
+
+    .image-text {
+      position: absolute;
+      bottom: 55px;
+      left: 35px;
+      right: 35px;
+      color: white;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .image-text h2 {
+      font-size: 34px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .image-text p {
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    /* FORM */
+    .form-side {
+      padding: 55px 45px;
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-side h1 {
+      font-size: 36px;
+      margin-bottom: 12px;
+      color: #071a33;
+      direction: ltr;
+      text-align: left;
+    }
+
+    /* SWITCH */
+    .switch {
+      font-size: 18px;
+      margin-bottom: 30px;
+      width: 115%;
+      transform: translateX(-7%);
+      text-align: center;
+      direction: ltr;
+    }
+
+    .switch a {
+      color: #2563eb;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* INPUTS */
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #071a33;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+      background: white;
+      color: #071a33;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #2563eb;
+    }
+
+    /* PASSWORD */
+    .password-box {
+      position: relative;
+    }
+
+    .password-box input {
+      padding-left: 65px;
+    }
+
+    .show-password {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      direction: ltr;
+    }
+
+    /* MAIN BUTTON */
+    .main-btn {
+      width: 100%;
+      border: none;
+      background: #071a33;
+      color: white;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .main-btn:hover {
+      background: #0b274b;
+    }
+
+    /* SOCIAL */
+    .social-buttons {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .social-btn {
+      width: 100%;
+      border: none;
+      background: #071a33;
+      color: white;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      direction: ltr;
+    }
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+
+    .google-icon {
+      color: #4285f4;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    .apple-icon {
+      color: #071a33;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* SIGN UP */
+    .signup-form {
+      display: none;
+    }
+
+    .signup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 14px;
+    }
+
+    .signup-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    /* MOBILE */
+    @media (max-width: 750px) {
+
+      header {
+        padding: 18px 5%;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .home {
+        font-size: 15px;
+        padding: 8px 14px;
+      }
+
+      main {
+        padding: 0 4% 25px;
+      }
+
+      .auth-container {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+      }
+
+      .image-side {
+        min-height: 360px;
+        height: 360px;
+      }
+
+      .form-side {
+        padding: 40px 25px;
+      }
+
+      .image-text {
+        bottom: 35px;
+      }
+
+      .image-text h2 {
+        font-size: 28px;
+      }
+
+      .image-text p {
+        font-size: 18px;
+      }
+
+      .signup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .signup-grid .full {
+        grid-column: auto;
+      }
+
+      .switch {
+        width: 115%;
+        transform: translateX(-7%);
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-
-<header>
-
-  <div class="header-inner">
-
+  <!-- HEADER -->
+  <header>
     <div class="logo">
       Body<span>Reset</span>
     </div>
 
-    <a
-      class="home"
-      href="index.html"
-    >
+    <a class="home" href="index.html">
       Home
     </a>
-
-  </div>
-
-</header>
+  </header>
 
 
-<main>
+  <main>
 
-  <div class="container">
+    <div class="auth-container">
 
+      <!-- IMAGE -->
+      <div class="image-side">
 
-    <!-- IMAGE -->
+        <img
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85"
+          alt="Fitness"
+        >
 
-    <div class="left">
+        <div class="image-overlay"></div>
 
-      <div class="hero-text">
-
-        <p>
-          ابنِ جسمًا أقوى.
-        </p>
-
-        <p>
-          ابنِ حياة صحية أفضل.
-        </p>
+        <div class="image-text">
+          <h2>ابنِ جسمًا أقوى.</h2>
+          <p>ابنِ حياة صحية أفضل.</p>
+        </div>
 
       </div>
 
-    </div>
+
+      <!-- FORMS -->
+      <div class="form-side">
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm">
+
+          <h1>Login</h1>
+
+          <div class="switch">
+            Don't have an account?
+            <a onclick="showSignup()">Sign up</a>
+          </div>
 
 
-    <!-- FORM -->
-
-    <div class="right">
-
-      <div class="form-box">
-
-
-        <!-- LOGIN -->
-
-        <div id="loginBox">
-
-          <h1>
-            Login
-          </h1>
-
-
-          <label for="loginUsername">
-            Username
-          </label>
-
-          <input
-            type="text"
-            id="loginUsername"
-            placeholder="Enter your username"
-          >
-
-
-          <label for="loginPassword">
-            Password
-          </label>
-
-          <div class="password-wrap">
+          <div class="form-group">
+            <label>Username</label>
 
             <input
-              type="password"
-              id="loginPassword"
-              placeholder="Enter your password"
+              id="loginUsername"
+              type="text"
+              placeholder="Enter your username"
             >
+          </div>
 
-            <button
-              type="button"
-              class="show-btn"
-              onclick="togglePassword('loginPassword',this)"
-            >
-              Show
-            </button>
 
+          <div class="form-group">
+            <label>Password</label>
+
+            <div class="password-box">
+
+              <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter your password"
+              >
+
+              <span
+                class="show-password"
+                onclick="togglePassword('loginPassword', this)"
+              >
+                Show
+              </span>
+
+            </div>
           </div>
 
 
@@ -565,117 +431,88 @@ select:focus{
           </button>
 
 
-          <div class="switch">
+          <!-- GOOGLE + APPLE -->
+          <div class="social-buttons">
 
-            Don't have an account?
+            <button
+              class="social-btn"
+              onclick="googleLogin()"
+            >
+              <span class="social-icon google-icon">
+                G
+              </span>
 
-            <span onclick="showSignup()">
-              Sign up
-            </span>
+              Continue with Google
+            </button>
+
+
+            <button
+              class="social-btn"
+              onclick="appleLogin()"
+            >
+              <span class="social-icon apple-icon">
+                
+              </span>
+
+              Continue with Apple
+            </button>
 
           </div>
-
-
-          <div class="or">
-            OR
-          </div>
-
-
-          <button
-            class="social-btn"
-            onclick="loginGoogle()"
-          >
-
-            <span class="social-icon google-icon">
-              G
-            </span>
-
-            Continue with Google
-
-          </button>
-
-
-          <button
-            class="social-btn"
-            onclick="loginApple()"
-          >
-
-            <span class="social-icon apple-icon">
-              
-            </span>
-
-            Continue with Apple
-
-          </button>
 
         </div>
 
 
-        <!-- SIGN UP -->
-
+        <!-- SIGN UP FORM -->
         <div
-          id="signupBox"
+          id="signupForm"
           class="signup-form"
         >
 
-          <h1>
-            Create Account
-          </h1>
+          <h1>Create Account</h1>
+
+          <div class="switch">
+            Already have an account?
+            <a onclick="showLogin()">Login</a>
+          </div>
 
 
           <div class="signup-grid">
 
-
-            <div class="full">
-
-              <label>
-                Full Name
-              </label>
+            <div class="form-group full">
+              <label>Full Name</label>
 
               <input
-                type="text"
                 id="fullName"
+                type="text"
                 placeholder="Enter your full name"
               >
-
             </div>
 
 
-            <div>
-
-              <label>
-                Username
-              </label>
+            <div class="form-group">
+              <label>Username</label>
 
               <input
-                type="text"
                 id="username"
+                type="text"
                 placeholder="Username"
               >
-
             </div>
 
 
-            <div>
-
-              <label>
-                Age
-              </label>
+            <div class="form-group">
+              <label>Age</label>
 
               <input
-                type="number"
                 id="age"
+                type="number"
                 placeholder="Age"
               >
-
             </div>
 
 
-            <div>
-
-              <label>
-                Gender
-              </label>
+            <div class="form-group">
+              <label>Gender</label>
 
               <select id="gender">
 
@@ -683,482 +520,425 @@ select:focus{
                   Select
                 </option>
 
-                <option value="Male">
+                <option value="male">
                   Male
                 </option>
 
-                <option value="Female">
+                <option value="female">
                   Female
                 </option>
 
               </select>
-
             </div>
 
 
-            <div>
-
-              <label>
-                Height
-              </label>
+            <div class="form-group">
+              <label>Height</label>
 
               <input
-                type="number"
                 id="height"
+                type="number"
                 placeholder="Height (cm)"
               >
-
             </div>
 
 
-            <div>
-
-              <label>
-                Weight
-              </label>
+            <div class="form-group">
+              <label>Weight</label>
 
               <input
-                type="number"
                 id="weight"
+                type="number"
                 placeholder="Weight (kg)"
               >
-
             </div>
 
 
-            <div class="full">
-
-              <label>
-                Email
-              </label>
+            <div class="form-group">
+              <label>Email</label>
 
               <input
-                type="email"
                 id="email"
-                placeholder="Enter your email"
+                type="email"
+                placeholder="Email"
               >
-
             </div>
 
 
-            <div class="full">
+            <div class="form-group">
+              <label>Password</label>
 
-              <label>
-                Password
-              </label>
-
-              <div class="password-wrap">
+              <div class="password-box">
 
                 <input
-                  type="password"
                   id="password"
-                  placeholder="Create a password"
+                  type="password"
+                  placeholder="Password"
                 >
 
-                <button
-                  type="button"
-                  class="show-btn"
-                  onclick="togglePassword('password',this)"
+                <span
+                  class="show-password"
+                  onclick="togglePassword('password', this)"
                 >
                   Show
-                </button>
+                </span>
 
               </div>
-
             </div>
 
 
-            <div class="full">
+            <div class="form-group full">
+              <label>Confirm Password</label>
 
-              <label>
-                Confirm Password
-              </label>
-
-              <div class="password-wrap">
+              <div class="password-box">
 
                 <input
-                  type="password"
                   id="confirmPassword"
-                  placeholder="Confirm your password"
+                  type="password"
+                  placeholder="Confirm Password"
                 >
 
-                <button
-                  type="button"
-                  class="show-btn"
-                  onclick="togglePassword('confirmPassword',this)"
+                <span
+                  class="show-password"
+                  onclick="togglePassword('confirmPassword', this)"
                 >
                   Show
-                </button>
+                </span>
 
               </div>
-
             </div>
-
 
           </div>
 
 
           <button
             class="main-btn"
-            onclick="createAccount()"
+            onclick="signupUser()"
           >
             Create Account
           </button>
 
-
-          <div class="switch">
-
-            Already have an account?
-
-            <span onclick="showLogin()">
-              Login
-            </span>
-
-          </div>
-
         </div>
-
-
-        <div id="message"></div>
-
 
       </div>
 
     </div>
 
+  </main>
 
-  </div>
 
-</main>
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
 
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
 
-<script>
+    const SUPABASE_KEY =
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
 
-const SUPABASE_URL =
-"https://byodeoaluspphqduxmlh.supabase.co";
+    const AUTH_URL =
+      "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
 
-const SUPABASE_KEY =
-"sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92";
+    const DASHBOARD_URL =
+      "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
 
-const DASHBOARD_URL =
-"https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html";
 
-const AUTH_URL =
-"https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html";
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
 
-const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+    /* SHOW SIGN UP */
 
+    function showSignup() {
 
-function showMessage(text){
+      document.getElementById("loginForm").style.display =
+        "none";
 
-  document.getElementById("message").textContent =
-  text;
+      document.getElementById("signupForm").style.display =
+        "block";
 
-}
+    }
 
 
-function showSignup(){
+    /* SHOW LOGIN */
 
-  document.getElementById("loginBox").style.display =
-  "none";
+    function showLogin() {
 
-  document.getElementById("signupBox").style.display =
-  "block";
+      document.getElementById("signupForm").style.display =
+        "none";
 
-  showMessage("");
+      document.getElementById("loginForm").style.display =
+        "block";
 
-}
+    }
 
 
-function showLogin(){
+    /* SHOW / HIDE PASSWORD */
 
-  document.getElementById("signupBox").style.display =
-  "none";
+    function togglePassword(id, element) {
 
-  document.getElementById("loginBox").style.display =
-  "block";
+      const input =
+        document.getElementById(id);
 
-  showMessage("");
+      if (input.type === "password") {
 
-}
+        input.type = "text";
 
+        element.textContent = "Hide";
 
-function togglePassword(id,button){
+      } else {
 
-  const input =
-  document.getElementById(id);
+        input.type = "password";
 
-  if(input.type === "password"){
-
-    input.type = "text";
-
-    button.textContent = "Hide";
-
-  }else{
-
-    input.type = "password";
-
-    button.textContent = "Show";
-
-  }
-
-}
-
-
-async function loginUser(){
-
-  const username =
-  document
-  .getElementById("loginUsername")
-  .value
-  .trim();
-
-  const password =
-  document
-  .getElementById("loginPassword")
-  .value;
-
-
-  if(!username || !password){
-
-    showMessage(
-      "Please enter your username and password."
-    );
-
-    return;
-
-  }
-
-
-  showMessage("Logging in...");
-
-
-  const {data,error} =
-  await supabaseClient.auth.signInWithPassword({
-
-    email:username,
-    password:password
-
-  });
-
-
-  if(error){
-
-    showMessage(error.message);
-
-    return;
-
-  }
-
-
-  if(data.user){
-
-    window.location.href =
-    DASHBOARD_URL;
-
-  }
-
-}
-
-
-async function createAccount(){
-
-  const fullName =
-  document.getElementById("fullName").value.trim();
-
-  const username =
-  document.getElementById("username").value.trim();
-
-  const age =
-  document.getElementById("age").value;
-
-  const gender =
-  document.getElementById("gender").value;
-
-  const height =
-  document.getElementById("height").value;
-
-  const weight =
-  document.getElementById("weight").value;
-
-  const email =
-  document.getElementById("email").value.trim();
-
-  const password =
-  document.getElementById("password").value;
-
-  const confirmPassword =
-  document.getElementById("confirmPassword").value;
-
-
-  if(
-    !fullName ||
-    !username ||
-    !age ||
-    !gender ||
-    !height ||
-    !weight ||
-    !email ||
-    !password ||
-    !confirmPassword
-  ){
-
-    showMessage(
-      "Please complete all fields."
-    );
-
-    return;
-
-  }
-
-
-  if(password !== confirmPassword){
-
-    showMessage(
-      "Passwords do not match."
-    );
-
-    return;
-
-  }
-
-
-  if(password.length < 6){
-
-    showMessage(
-      "Password must be at least 6 characters."
-    );
-
-    return;
-
-  }
-
-
-  showMessage(
-    "Creating account..."
-  );
-
-
-  const {data,error} =
-  await supabaseClient.auth.signUp({
-
-    email:email,
-
-    password:password,
-
-    options:{
-
-      emailRedirectTo:AUTH_URL,
-
-      data:{
-
-        full_name:fullName,
-        username:username,
-        age:Number(age),
-        gender:gender,
-        height:Number(height),
-        weight:Number(weight)
+        element.textContent = "Show";
 
       }
 
     }
 
-  });
+
+    /* LOGIN */
+
+    async function loginUser() {
+
+      const username =
+        document
+          .getElementById("loginUsername")
+          .value
+          .trim();
+
+      const password =
+        document
+          .getElementById("loginPassword")
+          .value;
 
 
-  if(error){
+      if (!username || !password) {
 
-    showMessage(error.message);
+        alert(
+          "Please enter username and password."
+        );
 
-    return;
+        return;
+      }
 
-  }
+
+      const { error } =
+        await supabaseClient.auth.signInWithPassword({
+
+          email: username,
+
+          password: password
+
+        });
 
 
-  if(data.user){
+      if (error) {
 
-    if(data.session){
+        alert(error.message);
+
+        return;
+      }
+
 
       window.location.href =
-      DASHBOARD_URL;
+        DASHBOARD_URL;
 
-    }else{
+    }
 
-      showMessage(
-        "Account created. Please confirm your email."
+
+    /* SIGN UP */
+
+    async function signupUser() {
+
+      const fullName =
+        document
+          .getElementById("fullName")
+          .value
+          .trim();
+
+      const username =
+        document
+          .getElementById("username")
+          .value
+          .trim();
+
+      const age =
+        document.getElementById("age").value;
+
+      const gender =
+        document.getElementById("gender").value;
+
+      const height =
+        document.getElementById("height").value;
+
+      const weight =
+        document.getElementById("weight").value;
+
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      const confirmPassword =
+        document
+          .getElementById("confirmPassword")
+          .value;
+
+
+      if (
+        !fullName ||
+        !username ||
+        !age ||
+        !gender ||
+        !height ||
+        !weight ||
+        !email ||
+        !password ||
+        !confirmPassword
+      ) {
+
+        alert(
+          "Please complete all fields."
+        );
+
+        return;
+      }
+
+
+      if (password !== confirmPassword) {
+
+        alert(
+          "Passwords do not match."
+        );
+
+        return;
+      }
+
+
+      const { data, error } =
+        await supabaseClient.auth.signUp({
+
+          email: email,
+
+          password: password,
+
+          options: {
+
+            emailRedirectTo:
+              AUTH_URL,
+
+            data: {
+
+              full_name:
+                fullName,
+
+              username:
+                username,
+
+              age:
+                Number(age),
+
+              gender:
+                gender,
+
+              height:
+                Number(height),
+
+              weight:
+                Number(weight)
+
+            }
+
+          }
+
+        });
+
+
+      if (error) {
+
+        alert(error.message);
+
+        return;
+      }
+
+
+      alert(
+        "Account created successfully. Please check your email to confirm your account."
       );
 
+
+      showLogin();
+
     }
 
-  }
 
-}
+    /* GOOGLE */
+
+    async function googleLogin() {
+
+      const { error } =
+        await supabaseClient.auth.signInWithOAuth({
+
+          provider: "google",
+
+          options: {
+
+            redirectTo:
+              DASHBOARD_URL
+
+          }
+
+        });
 
 
-async function loginGoogle(){
+      if (error) {
 
-  showMessage(
-    "Connecting to Google..."
-  );
+        alert(error.message);
 
+      }
 
-  const {error} =
-  await supabaseClient.auth.signInWithOAuth({
-
-    provider:"google",
-
-    options:{
-      redirectTo:DASHBOARD_URL
     }
 
-  });
+
+    /* APPLE */
+
+    async function appleLogin() {
+
+      const { error } =
+        await supabaseClient.auth.signInWithOAuth({
+
+          provider: "apple",
+
+          options: {
+
+            redirectTo:
+              DASHBOARD_URL
+
+          }
+
+        });
 
 
-  if(error){
+      if (error) {
 
-    showMessage(error.message);
+        alert(error.message);
 
-  }
+      }
 
-}
-
-
-async function loginApple(){
-
-  showMessage(
-    "Connecting to Apple..."
-  );
-
-
-  const {error} =
-  await supabaseClient.auth.signInWithOAuth({
-
-    provider:"apple",
-
-    options:{
-      redirectTo:DASHBOARD_URL
     }
 
-  });
-
-
-  if(error){
-
-    showMessage(error.message);
-
-  }
-
-}
-
-</script>
+  </script>
 
 </body>
-  </html>
+            </html>
