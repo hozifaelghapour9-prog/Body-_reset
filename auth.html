@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>BodyReset</title>
+  <title>BodyReset - Auth</title>
 
   <style>
     *{
       box-sizing:border-box;
       margin:0;
       padding:0;
-      font-family:Arial, sans-serif;
+      font-family:Arial,sans-serif;
     }
 
     body{
@@ -20,7 +19,6 @@
       min-height:100vh;
     }
 
-    /* Header */
     header{
       background:#071a33;
       padding:22px 7%;
@@ -30,7 +28,6 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      direction:rtl;
     }
 
     .logo{
@@ -50,7 +47,6 @@
       font-weight:bold;
     }
 
-    /* Main */
     .auth-section{
       min-height:calc(100vh - 85px);
       display:flex;
@@ -70,10 +66,8 @@
       box-shadow:0 15px 45px rgba(7,26,51,.15);
     }
 
-    /* Image */
     .auth-image{
       min-height:620px;
-
       background:
         linear-gradient(
           rgba(7,26,51,.35),
@@ -81,7 +75,6 @@
         ),
         url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=85")
         center/cover;
-
       display:flex;
       align-items:flex-end;
       padding:45px;
@@ -100,7 +93,6 @@
       max-width:400px;
     }
 
-    /* Form */
     .auth-form{
       padding:45px;
       display:flex;
@@ -108,18 +100,27 @@
       justify-content:center;
     }
 
-    /* Inputs */
+    .form-title{
+      font-size:32px;
+      font-weight:bold;
+      margin-bottom:25px;
+      color:#071a33;
+    }
+
+    .signup-title{
+      display:none;
+    }
+
     .input-group{
-      margin-bottom:20px;
+      margin-bottom:17px;
     }
 
     .input-group label{
       display:block;
-      margin-bottom:9px;
-      font-size:17px;
+      margin-bottom:8px;
+      font-size:16px;
       font-weight:bold;
       color:#071a33;
-      direction:ltr;
       text-align:left;
     }
 
@@ -127,82 +128,92 @@
       position:relative;
     }
 
-    .input-wrapper input{
+    .input-wrapper input,
+    .input-wrapper select{
       width:100%;
-      height:54px;
-
+      height:52px;
       background:white;
       color:#071a33;
-
       border:2px solid #071a33;
       border-radius:9px;
-
       padding:0 15px;
-
       font-size:16px;
       outline:none;
-
-      direction:ltr;
       text-align:left;
     }
 
-    .input-wrapper input::placeholder{
-      color:#94a3b8;
-    }
-
-    .input-wrapper input:focus{
+    .input-wrapper input:focus,
+    .input-wrapper select:focus{
       border-color:#2563eb;
       box-shadow:0 0 0 3px rgba(37,99,235,.12);
     }
 
     .password-toggle{
       position:absolute;
-      left:14px;
+      right:14px;
+      left:auto;
       top:50%;
       transform:translateY(-50%);
-
       border:none;
       background:transparent;
-
       color:#071a33;
-
       cursor:pointer;
       font-size:13px;
       font-weight:bold;
     }
 
-    /* Create Account */
+    .signup-fields{
+      display:none;
+    }
+
+    .signup-fields.active{
+      display:block;
+    }
+
+    .two-fields{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
     .main-btn{
       width:100%;
       height:54px;
-
       border:none;
       border-radius:9px;
-
       background:#071a33;
       color:white;
-
       font-size:17px;
       font-weight:bold;
-
       cursor:pointer;
-      margin-top:4px;
-
-      transition:.2s;
+      margin-top:5px;
     }
 
     .main-btn:hover{
       background:#102a4a;
     }
 
-    /* Divider */
+    .switch-account{
+      text-align:center;
+      margin:18px 0 4px;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .switch-account button{
+      border:none;
+      background:none;
+      color:#2563eb;
+      font-weight:bold;
+      font-size:15px;
+      cursor:pointer;
+    }
+
     .divider{
       display:flex;
       align-items:center;
       gap:12px;
-
-      margin:27px 0 18px;
-
+      margin:23px 0 17px;
       color:#94a3b8;
       font-size:14px;
     }
@@ -215,48 +226,36 @@
       background:#cbd5e1;
     }
 
-    /* Social Buttons */
     .social-btn{
       width:100%;
-      height:54px;
-
+      height:52px;
       border-radius:9px;
-
       font-size:16px;
       font-weight:bold;
-
       cursor:pointer;
-
       display:flex;
       align-items:center;
       justify-content:center;
       gap:12px;
-
       margin-bottom:12px;
-
       transition:.2s;
     }
 
-    /* Google */
-    .google-btn{
-      background:#071a33;
-      color:white;
-      border:2px solid #071a33;
-    }
-
-    .google-btn:hover{
-      background:#102a4a;
-    }
-
-    /* Apple */
+    .google-btn,
     .apple-btn{
       background:#071a33;
       color:white;
       border:2px solid #071a33;
     }
 
+    .google-btn:hover,
     .apple-btn:hover{
       background:#102a4a;
+    }
+
+    .google-logo{
+      width:20px;
+      height:20px;
     }
 
     .apple-logo{
@@ -265,18 +264,10 @@
       fill:white;
     }
 
-    .google-logo{
-      width:20px;
-      height:20px;
-    }
-
-    /* Message */
     .message{
       min-height:24px;
       text-align:center;
-
-      margin-top:15px;
-
+      margin-top:10px;
       font-size:14px;
       line-height:1.6;
     }
@@ -289,7 +280,6 @@
       color:#dc2626;
     }
 
-    /* Mobile */
     @media(max-width:800px){
 
       .auth-box{
@@ -336,6 +326,15 @@
         padding:28px 20px;
       }
 
+      .form-title{
+        font-size:27px;
+      }
+
+      .two-fields{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+
       .auth-image{
         min-height:220px;
       }
@@ -345,62 +344,62 @@
 
 <body>
 
-  <!-- Header -->
-  <header>
+<header>
+  <div class="top-header">
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
 
-    <div class="top-header">
+    <a href="index.html" class="home-link">
+      Home
+    </a>
+  </div>
+</header>
 
-      <div class="logo">
-        Body<span>Reset</span>
+
+<main class="auth-section">
+
+  <div class="auth-box">
+
+    <!-- IMAGE -->
+    <div class="auth-image">
+
+      <div class="image-content">
+
+        <h2>
+          ابدأ تغيير جسمك
+        </h2>
+
+        <p>
+          التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
+        </p>
+
       </div>
-
-      <a href="index.html" class="home-link">
-        الرئيسية
-      </a>
 
     </div>
 
-  </header>
 
+    <!-- FORM -->
+    <div class="auth-form">
 
-  <!-- Main -->
-  <main class="auth-section">
+      <!-- LOGIN -->
+      <div id="loginForm">
 
-    <div class="auth-box">
-
-      <!-- Image -->
-      <div class="auth-image">
-
-        <div class="image-content">
-
-          <h2>
-            ابدأ تغيير جسمك
-          </h2>
-
-          <p>
-            التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-          </p>
-
+        <div class="form-title">
+          Login
         </div>
 
-      </div>
 
-
-      <!-- Form -->
-      <div class="auth-form">
-
-
-        <!-- Username -->
         <div class="input-group">
 
-          <label for="username">
+          <label for="loginUsername">
             Username
           </label>
 
           <div class="input-wrapper">
 
             <input
-              id="username"
+              id="loginUsername"
               type="text"
               placeholder="Enter your username"
               autocomplete="username">
@@ -410,17 +409,16 @@
         </div>
 
 
-        <!-- Password -->
         <div class="input-group">
 
-          <label for="password">
+          <label for="loginPassword">
             Password
           </label>
 
           <div class="input-wrapper">
 
             <input
-              id="password"
+              id="loginPassword"
               type="password"
               placeholder="Enter your password"
               autocomplete="current-password">
@@ -428,8 +426,8 @@
             <button
               type="button"
               class="password-toggle"
-              onclick="togglePassword()"
-              id="passwordToggle">
+              onclick="togglePassword('loginPassword','loginShow')"
+              id="loginShow">
 
               Show
 
@@ -440,25 +438,36 @@
         </div>
 
 
-        <!-- Create Account -->
         <button
           class="main-btn"
-          id="mainBtn"
           type="button"
-          onclick="handleAuth()">
+          onclick="loginUser()">
 
-          Create Account
+          Login
 
         </button>
 
 
-        <!-- Divider -->
+        <div class="switch-account">
+
+          Don't have an account?
+
+          <button
+            type="button"
+            onclick="showSignup()">
+
+            Sign up
+
+          </button>
+
+        </div>
+
+
         <div class="divider">
           OR
         </div>
 
 
-        <!-- Google -->
         <button
           class="social-btn google-btn"
           type="button"
@@ -466,8 +475,7 @@
 
           <svg
             class="google-logo"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
+            viewBox="0 0 24 24">
 
             <path
               fill="white"
@@ -492,7 +500,6 @@
         </button>
 
 
-        <!-- Apple -->
         <button
           class="social-btn apple-btn"
           type="button"
@@ -500,8 +507,7 @@
 
           <svg
             class="apple-logo"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
+            viewBox="0 0 24 24">
 
             <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.39 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.52 4.09zM12.03 7.25C11.88 5.02 13.69 3.18 15.75 3c.29 2.58-2.34 4.5-3.72 4.25z"/>
 
@@ -511,217 +517,597 @@
 
         </button>
 
+      </div>
 
-        <!-- Message -->
-        <div
-          id="message"
-          class="message">
+
+      <!-- SIGN UP -->
+      <div id="signupForm" style="display:none;">
+
+        <div class="form-title">
+          Create Account
         </div>
 
 
+        <div class="signup-fields active">
+
+          <!-- Full Name -->
+          <div class="input-group">
+
+            <label for="fullName">
+              Full Name
+            </label>
+
+            <div class="input-wrapper">
+
+              <input
+                id="fullName"
+                type="text"
+                placeholder="Enter your full name">
+
+            </div>
+
+          </div>
+
+
+          <!-- Username -->
+          <div class="input-group">
+
+            <label for="username">
+              Username
+            </label>
+
+            <div class="input-wrapper">
+
+              <input
+                id="username"
+                type="text"
+                placeholder="Choose a username">
+
+            </div>
+
+          </div>
+
+
+          <!-- Age + Gender -->
+          <div class="two-fields">
+
+            <div class="input-group">
+
+              <label for="age">
+                Age
+              </label>
+
+              <div class="input-wrapper">
+
+                <input
+                  id="age"
+                  type="number"
+                  min="13"
+                  max="100"
+                  placeholder="Age">
+
+              </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="gender">
+                Gender
+              </label>
+
+              <div class="input-wrapper">
+
+                <select id="gender">
+
+                  <option value="">
+                    Select
+                  </option>
+
+                  <option value="male">
+                    Male
+                  </option>
+
+                  <option value="female">
+                    Female
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Height + Weight -->
+          <div class="two-fields">
+
+            <div class="input-group">
+
+              <label for="height">
+                Height (cm)
+              </label>
+
+              <div class="input-wrapper">
+
+                <input
+                  id="height"
+                  type="number"
+                  placeholder="Height">
+
+              </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="weight">
+                Weight (kg)
+              </label>
+
+              <div class="input-wrapper">
+
+                <input
+                  id="weight"
+                  type="number"
+                  placeholder="Weight">
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Email -->
+          <div class="input-group">
+
+            <label for="signupEmail">
+              Email
+            </label>
+
+            <div class="input-wrapper">
+
+              <input
+                id="signupEmail"
+                type="email"
+                placeholder="Enter your email"
+                autocomplete="email">
+
+            </div>
+
+          </div>
+
+
+          <!-- Password -->
+          <div class="input-group">
+
+            <label for="signupPassword">
+              Password
+            </label>
+
+            <div class="input-wrapper">
+
+              <input
+                id="signupPassword"
+                type="password"
+                placeholder="Create a password"
+                autocomplete="new-password">
+
+              <button
+                type="button"
+                class="password-toggle"
+                onclick="togglePassword('signupPassword','signupShow')"
+                id="signupShow">
+
+                Show
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Confirm Password -->
+          <div class="input-group">
+
+            <label for="confirmPassword">
+              Confirm Password
+            </label>
+
+            <div class="input-wrapper">
+
+              <input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm your password"
+                autocomplete="new-password">
+
+              <button
+                type="button"
+                class="password-toggle"
+                onclick="togglePassword('confirmPassword','confirmShow')"
+                id="confirmShow">
+
+                Show
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="main-btn"
+          type="button"
+          onclick="createAccount()">
+
+          Create Account
+
+        </button>
+
+
+        <div class="switch-account">
+
+          Already have an account?
+
+          <button
+            type="button"
+            onclick="showLogin()">
+
+            Login
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="message"
+        class="message">
       </div>
 
     </div>
 
-  </main>
+  </div>
+
+</main>
 
 
-  <!-- Supabase -->
-  <script type="module">
+<script type="module">
 
-    import {
-      createClient
-    } from "https://esm.sh/@supabase/supabase-js@2";
-
-
-    const supabase = createClient(
-      "https://byodeoaluspphqduxmlh.supabase.co",
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92"
-    );
+  import {
+    createClient
+  } from "https://esm.sh/@supabase/supabase-js@2";
 
 
-    function showMessage(text, type){
+  const supabase = createClient(
+    "https://byodeoaluspphqduxmlh.supabase.co",
+    "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92"
+  );
 
-      const message =
-        document.getElementById("message");
 
-      message.textContent = text;
+  function showMessage(text,type){
 
-      message.className =
-        "message " + type;
+    const message =
+      document.getElementById("message");
+
+    message.textContent = text;
+
+    message.className =
+      "message " + type;
+
+  }
+
+
+  function clearMessage(){
+
+    const message =
+      document.getElementById("message");
+
+    message.textContent = "";
+
+    message.className = "message";
+
+  }
+
+
+  window.showSignup = function(){
+
+    document.getElementById("loginForm").style.display =
+      "none";
+
+    document.getElementById("signupForm").style.display =
+      "block";
+
+    clearMessage();
+
+  };
+
+
+  window.showLogin = function(){
+
+    document.getElementById("signupForm").style.display =
+      "none";
+
+    document.getElementById("loginForm").style.display =
+      "block";
+
+    clearMessage();
+
+  };
+
+
+  window.togglePassword = function(inputId,buttonId){
+
+    const input =
+      document.getElementById(inputId);
+
+    const button =
+      document.getElementById(buttonId);
+
+
+    if(input.type === "password"){
+
+      input.type = "text";
+
+      button.textContent = "Hide";
+
+    }else{
+
+      input.type = "password";
+
+      button.textContent = "Show";
 
     }
 
-
-    function clearMessage(){
-
-      const message =
-        document.getElementById("message");
-
-      message.textContent = "";
-
-      message.className = "message";
-
-    }
+  };
 
 
-    window.togglePassword = function(){
+  window.createAccount = async function(){
 
-      const password =
-        document.getElementById("password");
+    const fullName =
+      document.getElementById("fullName").value.trim();
 
-      const toggle =
-        document.getElementById("passwordToggle");
+    const username =
+      document.getElementById("username").value.trim();
 
+    const age =
+      document.getElementById("age").value;
 
-      if(password.type === "password"){
+    const gender =
+      document.getElementById("gender").value;
 
-        password.type = "text";
+    const height =
+      document.getElementById("height").value;
 
-        toggle.textContent = "Hide";
+    const weight =
+      document.getElementById("weight").value;
 
-      }else{
+    const email =
+      document.getElementById("signupEmail").value.trim();
 
-        password.type = "password";
+    const password =
+      document.getElementById("signupPassword").value;
 
-        toggle.textContent = "Show";
-
-      }
-
-    };
-
-
-    window.handleAuth = async function(){
-
-      const username =
-        document.getElementById("username").value.trim();
-
-      const password =
-        document.getElementById("password").value;
+    const confirmPassword =
+      document.getElementById("confirmPassword").value;
 
 
-      if(!username || !password){
-
-        showMessage(
-          "Please enter your username and password.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      if(password.length < 6){
-
-        showMessage(
-          "Password must be at least 6 characters.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      const button =
-        document.getElementById("mainBtn");
-
-
-      button.disabled = true;
-
-      button.textContent =
-        "Creating Account...";
-
-
-      /*
-        ملاحظة:
-        Supabase Auth يحتاج Email + Password.
-        لذلك Username هنا حاليًا واجهة فقط.
-      */
+    if(
+      !fullName ||
+      !username ||
+      !age ||
+      !gender ||
+      !height ||
+      !weight ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ){
 
       showMessage(
-        "Username login يحتاج ربط قاعدة البيانات أولًا.",
+        "Please fill in all fields.",
         "error"
       );
 
+      return;
 
-      button.disabled = false;
-
-      button.textContent =
-        "Create Account";
-
-    };
+    }
 
 
-    window.loginWithGoogle = async function(){
+    if(password.length < 6){
 
-      clearMessage();
+      showMessage(
+        "Password must be at least 6 characters.",
+        "error"
+      );
 
-      try{
+      return;
 
-        const { error } =
-          await supabase.auth.signInWithOAuth({
+    }
 
-            provider:"google",
 
-            options:{
-              redirectTo:
-                "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+    if(password !== confirmPassword){
+
+      showMessage(
+        "Passwords do not match.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      const { data, error } =
+        await supabase.auth.signUp({
+
+          email:email,
+
+          password:password,
+
+          options:{
+            emailRedirectTo:
+              "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html",
+
+            data:{
+              full_name:fullName,
+              username:username,
+              age:Number(age),
+              gender:gender,
+              height:Number(height),
+              weight:Number(weight)
             }
 
-          });
+          }
+
+        });
 
 
-        if(error) throw error;
+      if(error) throw error;
 
-      }catch(error){
+
+      if(data.user && !data.session){
 
         showMessage(
-          error.message ||
-          "Unable to continue with Google.",
-          "error"
+          "Account created. Check your email to confirm your account.",
+          "success"
         );
+
+      }else{
+
+        window.location.href =
+          "dashboard.html";
 
       }
 
-    };
+
+    }catch(error){
+
+      showMessage(
+        error.message ||
+        "Something went wrong. Please try again.",
+        "error"
+      );
+
+    }
+
+  };
 
 
-    window.loginWithApple = async function(){
+  window.loginUser = async function(){
 
-      clearMessage();
+    const username =
+      document.getElementById("loginUsername").value.trim();
 
-      try{
-
-        const { error } =
-          await supabase.auth.signInWithOAuth({
-
-            provider:"apple",
-
-            options:{
-              redirectTo:
-                "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
-            }
-
-          });
+    const password =
+      document.getElementById("loginPassword").value;
 
 
-        if(error) throw error;
+    if(!username || !password){
 
-      }catch(error){
+      showMessage(
+        "Please enter your username and password.",
+        "error"
+      );
 
-        showMessage(
-          error.message ||
-          "Unable to continue with Apple.",
-          "error"
-        );
+      return;
 
-      }
+    }
 
-    };
 
-  </script>
+    /*
+      مؤقتًا:
+      Supabase Auth يحتاج Email للدخول.
+      لذلك Username هنا لن يتمكن من تسجيل الدخول
+      حتى نربطه بقاعدة البيانات.
+    */
+
+    showMessage(
+      "Username login will be connected to the database next.",
+      "error"
+    );
+
+  };
+
+
+  window.loginWithGoogle = async function(){
+
+    try{
+
+      const { error } =
+        await supabase.auth.signInWithOAuth({
+
+          provider:"google",
+
+          options:{
+            redirectTo:
+              "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+          }
+
+        });
+
+
+      if(error) throw error;
+
+    }catch(error){
+
+      showMessage(
+        error.message ||
+        "Unable to continue with Google.",
+        "error"
+      );
+
+    }
+
+  };
+
+
+  window.loginWithApple = async function(){
+
+    try{
+
+      const { error } =
+        await supabase.auth.signInWithOAuth({
+
+          provider:"apple",
+
+          options:{
+            redirectTo:
+              "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+          }
+
+        });
+
+
+      if(error) throw error;
+
+    }catch(error){
+
+      showMessage(
+        error.message ||
+        "Unable to continue with Apple.",
+        "error"
+      );
+
+    }
+
+  };
+
+</script>
 
 </body>
-  </html>
+            </html>
