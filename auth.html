@@ -24,8 +24,6 @@
       color: #071a33;
     }
 
-    /* HEADER */
-
     header {
       width: 100%;
       height: 85px;
@@ -60,8 +58,6 @@
       font-weight: bold;
     }
 
-    /* AUTH SECTION */
-
     .auth-section {
       width: 100%;
       min-height: calc(100vh - 85px);
@@ -84,8 +80,6 @@
       grid-template-columns: 1fr 1fr;
       box-shadow: 0 15px 45px rgba(7, 26, 51, 0.15);
     }
-
-    /* IMAGE */
 
     .auth-image {
       width: 100%;
@@ -123,8 +117,6 @@
       color: white;
     }
 
-    /* FORM */
-
     .auth-form {
       width: 100%;
       padding: 50px 45px;
@@ -146,8 +138,6 @@
       margin-bottom: 30px;
       line-height: 1.6;
     }
-
-    /* INPUTS */
 
     .input-group {
       margin-bottom: 18px;
@@ -187,8 +177,6 @@
       color: white;
     }
 
-    /* PASSWORD */
-
     .password-box {
       position: relative;
       width: 100%;
@@ -205,20 +193,18 @@
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: #60a5fa;
+      color: #071a33;
       cursor: pointer;
       font-weight: bold;
       font-size: 14px;
     }
-
-    /* MAIN BUTTON */
 
     .main-btn {
       width: 100%;
       padding: 14px;
       border: none;
       border-radius: 9px;
-      background: #2563eb;
+      background: #071a33;
       color: white;
       font-size: 17px;
       font-weight: bold;
@@ -227,10 +213,8 @@
     }
 
     .main-btn:hover {
-      background: #1d4ed8;
+      background: #0b2547;
     }
-
-    /* SWITCH */
 
     .switch {
       text-align: center;
@@ -248,8 +232,6 @@
       font-size: 15px;
     }
 
-    /* DIVIDER */
-
     .divider {
       display: flex;
       align-items: center;
@@ -266,8 +248,6 @@
       height: 1px;
       background: #e2e8f0;
     }
-
-    /* SOCIAL BUTTONS */
 
     .social-btn {
       width: 100%;
@@ -296,16 +276,12 @@
       flex-shrink: 0;
     }
 
-    /* MESSAGE */
-
     .message {
       margin-top: 15px;
       text-align: center;
       font-size: 14px;
       line-height: 1.6;
     }
-
-    /* SIGN UP */
 
     #signupForm {
       display: none;
@@ -316,8 +292,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 15px;
     }
-
-    /* TABLET */
 
     @media (max-width: 750px) {
 
@@ -353,8 +327,6 @@
         padding: 35px 25px;
       }
     }
-
-    /* MOBILE */
 
     @media (max-width: 500px) {
 
@@ -407,10 +379,7 @@
 
 <body>
 
-  <!-- HEADER -->
-
   <header>
-
     <div class="header-content">
 
       <a href="index.html" class="home-link">
@@ -422,18 +391,12 @@
       </div>
 
     </div>
-
   </header>
 
-
-  <!-- AUTH -->
 
   <section class="auth-section">
 
     <div class="auth-box">
-
-
-      <!-- IMAGE -->
 
       <div class="auth-image">
 
@@ -452,12 +415,7 @@
       </div>
 
 
-      <!-- FORM -->
-
       <div class="auth-form">
-
-
-        <!-- LOGIN -->
 
         <div id="loginForm">
 
@@ -469,8 +427,6 @@
             Sign in to continue your BodyReset journey.
           </p>
 
-
-          <!-- USERNAME -->
 
           <div class="input-group">
 
@@ -486,8 +442,6 @@
 
           </div>
 
-
-          <!-- PASSWORD -->
 
           <div class="input-group">
 
@@ -516,8 +470,6 @@
           </div>
 
 
-          <!-- LOGIN BUTTON -->
-
           <button
             class="main-btn"
             onclick="loginUser()"
@@ -525,8 +477,6 @@
             Login
           </button>
 
-
-          <!-- SIGN UP LINK -->
 
           <div class="switch">
 
@@ -539,21 +489,20 @@
           </div>
 
 
-          <!-- DIVIDER -->
-
           <div class="divider">
             OR
           </div>
 
-
-          <!-- GOOGLE -->
 
           <button
             class="social-btn"
             onclick="googleLogin()"
           >
 
-            <svg viewBox="0 0 24 24">
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
 
               <path
                 fill="#4285F4"
@@ -572,7 +521,7 @@
 
               <path
                 fill="#EA4335"
-                d="M12 6.18c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.22 14.63 2.3 12 2.3a9.74 9.74 0 0 0-8.7 5.38l3.24 2.53c.77.96 1.45 2.07 1.87 3.27z"
+                d="M12 6.18c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.22 14.63 2.3 12 2.3a9.74 9.74 0 0 0-8.7 5.38l3.24 2.53 3.24 2.53c.77-2.31 2.92-4.03 5.46-4.03z"
               />
 
             </svg>
@@ -581,8 +530,6 @@
 
           </button>
 
-
-          <!-- APPLE -->
 
           <button
             class="social-btn"
@@ -616,8 +563,6 @@
         </div>
 
 
-        <!-- SIGN UP -->
-
         <div id="signupForm">
 
           <h1>
@@ -630,9 +575,6 @@
 
 
           <div class="signup-grid">
-
-
-            <!-- FULL NAME -->
 
             <div class="input-group">
 
@@ -649,8 +591,6 @@
             </div>
 
 
-            <!-- USERNAME -->
-
             <div class="input-group">
 
               <label>
@@ -666,8 +606,6 @@
             </div>
 
 
-            <!-- AGE -->
-
             <div class="input-group">
 
               <label>
@@ -682,8 +620,6 @@
 
             </div>
 
-
-            <!-- GENDER -->
 
             <div class="input-group">
 
@@ -710,8 +646,6 @@
             </div>
 
 
-            <!-- HEIGHT -->
-
             <div class="input-group">
 
               <label>
@@ -726,8 +660,6 @@
 
             </div>
 
-
-            <!-- WEIGHT -->
 
             <div class="input-group">
 
@@ -746,8 +678,6 @@
           </div>
 
 
-          <!-- EMAIL -->
-
           <div class="input-group">
 
             <label>
@@ -762,8 +692,6 @@
 
           </div>
 
-
-          <!-- PASSWORD -->
 
           <div class="input-group">
 
@@ -792,8 +720,6 @@
           </div>
 
 
-          <!-- CONFIRM PASSWORD -->
-
           <div class="input-group">
 
             <label>
@@ -821,8 +747,6 @@
           </div>
 
 
-          <!-- CREATE ACCOUNT -->
-
           <button
             class="main-btn"
             onclick="createAccount()"
@@ -830,8 +754,6 @@
             Create Account
           </button>
 
-
-          <!-- LOGIN LINK -->
 
           <div class="switch">
 
@@ -858,8 +780,6 @@
   </section>
 
 
-  <!-- SUPABASE -->
-
   <script type="module">
 
     import {
@@ -868,15 +788,10 @@
 
 
     const supabase = createClient(
-
       "https://byodeoaluspphqduxmlh.supabase.co",
-
       "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92"
-
     );
 
-
-    /* SHOW SIGN UP */
 
     window.showSignup = function() {
 
@@ -887,8 +802,6 @@
     };
 
 
-    /* SHOW LOGIN */
-
     window.showLogin = function() {
 
       document.getElementById("signupForm").style.display = "none";
@@ -897,8 +810,6 @@
 
     };
 
-
-    /* SHOW / HIDE PASSWORD */
 
     window.togglePassword = function(id, button) {
 
@@ -922,8 +833,6 @@
 
     };
 
-
-    /* CREATE ACCOUNT */
 
     window.createAccount = async function() {
 
@@ -1062,8 +971,6 @@
     };
 
 
-    /* LOGIN */
-
     window.loginUser = async function() {
 
       const username =
@@ -1091,8 +998,6 @@
 
     };
 
-
-    /* GOOGLE */
 
     window.googleLogin = async function() {
 
@@ -1122,8 +1027,6 @@
     };
 
 
-    /* APPLE */
-
     window.appleLogin = async function() {
 
       const {
@@ -1135,4 +1038,23 @@
         options: {
 
           redirectTo:
-            "https://ho
+            "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+
+        }
+
+      });
+
+
+      if (error) {
+
+        document.getElementById("loginMessage").textContent =
+          error.message;
+
+      }
+
+    };
+
+  </script>
+
+</body>
+            </html>
