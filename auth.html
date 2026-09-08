@@ -73,6 +73,7 @@
       max-width: 1050px;
       margin: 0;
       padding: 0;
+      
       border-radius: 0 0 20px 20px;
       overflow: hidden;
       display: grid;
@@ -399,6 +400,7 @@
     </div>
   </header>
 
+
   <section class="auth-section">
 
     <div class="auth-box">
@@ -419,17 +421,10 @@
 
       </div>
 
+
       <div class="auth-form">
 
         <div id="loginForm">
-
-          <h1>
-            Login
-          </h1>
-
-          <p class="subtitle">
-            Sign in to continue your BodyReset journey.
-          </p>
 
           <div class="input-group">
 
@@ -444,6 +439,7 @@
             >
 
           </div>
+
 
           <div class="input-group">
 
@@ -471,12 +467,14 @@
 
           </div>
 
+
           <button
             class="main-btn"
             onclick="loginUser()"
           >
             Login
           </button>
+
 
           <div class="switch">
 
@@ -488,9 +486,11 @@
 
           </div>
 
+
           <div class="divider">
             OR
           </div>
+
 
           <button
             class="social-btn"
@@ -528,6 +528,7 @@
 
           </button>
 
+
           <button
             class="social-btn"
             onclick="appleLogin()"
@@ -551,12 +552,14 @@
 
           </button>
 
+
           <div
             id="loginMessage"
             class="message"
           ></div>
 
         </div>
+
 
         <div id="signupForm">
 
@@ -567,6 +570,7 @@
           <p class="subtitle">
             Create your BodyReset account.
           </p>
+
 
           <div class="signup-grid">
 
@@ -584,6 +588,7 @@
 
             </div>
 
+
             <div class="input-group">
 
               <label>
@@ -598,6 +603,7 @@
 
             </div>
 
+
             <div class="input-group">
 
               <label>
@@ -611,6 +617,7 @@
               >
 
             </div>
+
 
             <div class="input-group">
 
@@ -636,6 +643,7 @@
 
             </div>
 
+
             <div class="input-group">
 
               <label>
@@ -649,6 +657,7 @@
               >
 
             </div>
+
 
             <div class="input-group">
 
@@ -666,6 +675,7 @@
 
           </div>
 
+
           <div class="input-group">
 
             <label>
@@ -679,6 +689,7 @@
             >
 
           </div>
+
 
           <div class="input-group">
 
@@ -706,6 +717,7 @@
 
           </div>
 
+
           <div class="input-group">
 
             <label>
@@ -732,12 +744,14 @@
 
           </div>
 
+
           <button
             class="main-btn"
             onclick="createAccount()"
           >
             Create Account
           </button>
+
 
           <div class="switch">
 
@@ -748,6 +762,7 @@
             </button>
 
           </div>
+
 
           <div
             id="signupMessage"
@@ -762,16 +777,19 @@
 
   </section>
 
+
   <script type="module">
 
     import {
       createClient
     } from "https://esm.sh/@supabase/supabase-js@2";
 
+
     const supabase = createClient(
       "https://byodeoaluspphqduxmlh.supabase.co",
       "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92"
     );
+
 
     window.showSignup = function() {
 
@@ -781,6 +799,7 @@
 
     };
 
+
     window.showLogin = function() {
 
       document.getElementById("signupForm").style.display = "none";
@@ -789,10 +808,12 @@
 
     };
 
+
     window.togglePassword = function(id, button) {
 
       const input =
         document.getElementById(id);
+
 
       if (input.type === "password") {
 
@@ -809,6 +830,7 @@
       }
 
     };
+
 
     window.createAccount = async function() {
 
@@ -842,6 +864,7 @@
       const message =
         document.getElementById("signupMessage");
 
+
       if (
         !fullName ||
         !username ||
@@ -861,6 +884,7 @@
 
       }
 
+
       if (password !== confirmPassword) {
 
         message.textContent =
@@ -869,6 +893,7 @@
         return;
 
       }
+
 
       if (password.length < 6) {
 
@@ -879,8 +904,10 @@
 
       }
 
+
       message.textContent =
         "Creating account...";
+
 
       const {
         data,
@@ -916,6 +943,7 @@
 
       });
 
+
       if (error) {
 
         message.textContent =
@@ -924,6 +952,7 @@
         return;
 
       }
+
 
       if (data.session) {
 
@@ -939,6 +968,7 @@
 
     };
 
+
     window.loginUser = async function() {
 
       const username =
@@ -950,6 +980,7 @@
       const message =
         document.getElementById("loginMessage");
 
+
       if (!username || !password) {
 
         message.textContent =
@@ -959,10 +990,12 @@
 
       }
 
+
       message.textContent =
         "Username login will be connected to the database next.";
 
     };
+
 
     window.googleLogin = async function() {
 
@@ -981,6 +1014,7 @@
 
       });
 
+
       if (error) {
 
         document.getElementById("loginMessage").textContent =
@@ -989,6 +1023,7 @@
       }
 
     };
+
 
     window.appleLogin = async function() {
 
@@ -1007,6 +1042,7 @@
 
       });
 
+
       if (error) {
 
         document.getElementById("loginMessage").textContent =
@@ -1019,4 +1055,4 @@
   </script>
 
 </body>
-</html>
+  </html>
