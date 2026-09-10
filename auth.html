@@ -73,7 +73,6 @@
       max-width: 1050px;
       margin: 0;
       padding: 0;
-      
       border-radius: 0 0 20px 20px;
       overflow: hidden;
       display: grid;
@@ -429,13 +428,13 @@
           <div class="input-group">
 
             <label>
-              User&nbsp;name
+              Email
             </label>
 
             <input
-              type="text"
-              id="loginUsername"
-              placeholder="Enter your username"
+              type="email"
+              id="loginEmail"
+              placeholder="Enter your email"
             >
 
           </div>
@@ -947,8 +946,8 @@
 
     window.loginUser = async function() {
 
-      const username =
-        document.getElementById("loginUsername").value.trim();
+      const email =
+        document.getElementById("loginEmail").value.trim();
 
       const password =
         document.getElementById("loginPassword").value;
@@ -957,10 +956,10 @@
         document.getElementById("loginMessage");
 
 
-      if (!username || !password) {
+      if (!email || !password) {
 
         message.textContent =
-          "Please enter your username and password.";
+          "Please enter your email and password.";
 
         return;
 
@@ -968,7 +967,37 @@
 
 
       message.textContent =
-        "Username login will be connected to the database next.";
+        "Logging in...";
+
+
+      const {
+        data,
+        error
+      } = await supabase.auth.signInWithPassword({
+
+        email: email,
+
+        password: password
+
+      });
+
+
+      if (error) {
+
+        message.textContent =
+          error.message;
+
+        return;
+
+      }
+
+
+      if (data.session) {
+
+        window.location.href =
+          "dashboard.html";
+
+      }
 
     };
 
@@ -1003,4 +1032,4 @@
   </script>
 
 </body>
-            </html>
+  </html>
