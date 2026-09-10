@@ -180,6 +180,11 @@
 
     .password-box input {
       padding-right: 75px;
+
+      /* Allow long press, text selection and copy/paste */
+      user-select: text;
+      -webkit-user-select: text;
+      -webkit-touch-callout: default;
     }
 
     .show-password {
@@ -443,6 +448,7 @@
           <input
             type="email"
             id="loginEmail"
+            autocomplete="username"
             placeholder="Enter your email"
           >
 
@@ -460,6 +466,7 @@
             <input
               type="password"
               id="loginPassword"
+              autocomplete="current-password"
               placeholder="Enter your password"
             >
 
@@ -655,6 +662,7 @@
           <input
             type="email"
             id="signupEmail"
+            autocomplete="username"
             placeholder="Email address"
           >
 
@@ -672,6 +680,7 @@
             <input
               type="password"
               id="signupPassword"
+              autocomplete="new-password"
               placeholder="Password"
             >
 
@@ -699,6 +708,7 @@
             <input
               type="password"
               id="confirmPassword"
+              autocomplete="new-password"
               placeholder="Confirm password"
             >
 
@@ -1122,4 +1132,4 @@
 </script>
 
 </body>
-            </html>
+              </html>
