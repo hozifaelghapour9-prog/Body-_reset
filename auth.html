@@ -194,6 +194,12 @@
       font-weight: bold;
       font-size: 14px;
       padding: 3px 5px;
+      z-index: 2;
+    }
+
+    /* لو المتصفح حوّل خانة الباسورد للأبيض */
+    .password-box:has(input:-webkit-autofill) .show-password {
+      color: #071a33;
     }
 
     .main-btn {
@@ -394,7 +400,6 @@
 <section class="auth-section">
 
   <div class="auth-box">
-
 
     <div class="auth-image">
 
@@ -807,7 +812,68 @@
 
     }
 
+
+    updateShowColor(input, button);
+
   };
+
+
+  function updateShowColor(input, button) {
+
+    const background =
+      window.getComputedStyle(input).backgroundColor;
+
+
+    if (
+      background === "rgb(7, 26, 51)" ||
+      background === "rgb(11, 37, 71)"
+    ) {
+
+      button.style.color = "white";
+
+    } else {
+
+      button.style.color = "#071a33";
+
+    }
+
+  }
+
+
+  document.querySelectorAll(".password-box input").forEach(function(input) {
+
+    const button =
+      input.parentElement.querySelector(".show-password");
+
+
+    updateShowColor(input, button);
+
+
+    input.addEventListener("input", function() {
+
+      updateShowColor(input, button);
+
+    });
+
+
+    input.addEventListener("change", function() {
+
+      updateShowColor(input, button);
+
+    });
+
+
+    input.addEventListener("focus", function() {
+
+      setTimeout(function() {
+
+        updateShowColor(input, button);
+
+      }, 100);
+
+    });
+
+  });
 
 
   window.createAccount = async function() {
@@ -1056,4 +1122,4 @@
 </script>
 
 </body>
-    </html>
+            </html>
