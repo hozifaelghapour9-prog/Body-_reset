@@ -12,7 +12,8 @@
       padding: 0;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100%;
     }
@@ -28,6 +29,8 @@
       height: 85px;
       background: #071a33;
       padding: 22px 7%;
+      position: relative;
+      z-index: 10;
     }
 
     .header-content {
@@ -58,36 +61,44 @@
     .auth-section {
       width: 100%;
       min-height: calc(100vh - 85px);
+      padding: 0;
+      margin: 0;
       display: flex;
+      align-items: flex-start;
       justify-content: center;
     }
 
     .auth-box {
       width: 100%;
       max-width: 1050px;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      overflow: hidden;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 15px 45px rgba(7,26,51,.15);
+      box-shadow: 0 15px 45px rgba(7, 26, 51, 0.15);
     }
 
     .auth-image {
+      width: 100%;
       min-height: 620px;
+      height: 100%;
       padding: 45px;
+      color: white;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
       text-align: right;
-      color: white;
+      margin: 0;
 
       background:
         linear-gradient(
-          rgba(7,26,51,.30),
-          rgba(7,26,51,.60)
+          rgba(7, 26, 51, 0.30),
+          rgba(7, 26, 51, 0.60)
         ),
         url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=90")
-        center/cover no-repeat;
+        center center / cover no-repeat;
     }
 
     .image-content {
@@ -111,11 +122,25 @@
     }
 
     .auth-form {
+      width: 100%;
       padding: 50px 45px;
       background: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
+    }
+
+    .auth-form h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+      color: #071a33;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 16px;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .input-group {
@@ -151,8 +176,14 @@
       border-color: #2563eb;
     }
 
+    .input-group select option {
+      background: #071a33;
+      color: white;
+    }
+
     .password-box {
       position: relative;
+      width: 100%;
     }
 
     .password-box input {
@@ -170,6 +201,8 @@
       cursor: pointer;
       font-weight: bold;
       font-size: 14px;
+      padding: 3px 5px;
+      border-radius: 4px;
     }
 
     .main-btn {
@@ -235,12 +268,18 @@
       cursor: pointer;
       font-size: 15px;
       font-weight: bold;
+      margin-bottom: 12px;
       color: #071a33;
+    }
+
+    .social-btn:hover {
+      background: #f8fafc;
     }
 
     .social-btn svg {
       width: 20px;
       height: 20px;
+      flex-shrink: 0;
     }
 
     .message {
@@ -261,6 +300,16 @@
     }
 
     @media (max-width: 750px) {
+
+      header {
+        height: 75px;
+        padding: 18px 5%;
+      }
+
+      .auth-section {
+        min-height: calc(100vh - 75px);
+      }
+
       .auth-box {
         grid-template-columns: 1fr;
         border-radius: 0;
@@ -272,12 +321,21 @@
         padding: 30px;
       }
 
+      .image-content h2 {
+        font-size: 30px;
+      }
+
+      .image-content p {
+        font-size: 17px;
+      }
+
       .auth-form {
         padding: 35px 25px;
       }
     }
 
     @media (max-width: 500px) {
+
       header {
         height: 68px;
         padding: 16px 5%;
@@ -289,6 +347,10 @@
 
       .home-link {
         font-size: 15px;
+      }
+
+      .auth-section {
+        min-height: calc(100vh - 68px);
       }
 
       .auth-image {
@@ -309,6 +371,10 @@
         padding: 30px 20px;
       }
 
+      .auth-form h1 {
+        font-size: 29px;
+      }
+
       .signup-grid {
         grid-template-columns: 1fr;
         gap: 0;
@@ -319,533 +385,509 @@
 
 <body>
 
-<header>
-  <div class="header-content">
+  <header>
+    <div class="header-content">
 
-    <a href="index.html" class="home-link">
-      Home
-    </a>
+      <a href="index.html" class="home-link">
+        Home
+      </a>
 
-    <div class="logo">
-      Body<span>Reset</span>
-    </div>
-
-  </div>
-</header>
-
-<section class="auth-section">
-
-  <div class="auth-box">
-
-    <div class="auth-image">
-      <div class="image-content">
-        <h2>ابدأ تغيير جسمك</h2>
-
-        <p>
-          التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-        </p>
+      <div class="logo">
+        Body<span>Reset</span>
       </div>
+
     </div>
+  </header>
 
 
-    <div class="auth-form">
+  <section class="auth-section">
 
-      <!-- LOGIN -->
+    <div class="auth-box">
 
-      <div id="loginForm">
+      <div class="auth-image">
 
-        <div class="input-group">
-          <label>Email</label>
+        <div class="image-content">
 
-          <input
-            type="email"
-            id="loginEmail"
-            placeholder="Enter your email"
-          >
+          <h2>
+            ابدأ تغيير جسمك
+          </h2>
+
+          <p>
+            التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
+          </p>
+
         </div>
-
-
-        <div class="input-group">
-          <label>Password</label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder="Enter your password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('loginPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-        </div>
-
-
-        <button
-          class="main-btn"
-          onclick="loginUser()"
-        >
-          Login
-        </button>
-
-
-        <div class="switch">
-          Don't have an account?
-
-          <button onclick="showSignup()">
-            Sign up
-          </button>
-        </div>
-
-
-        <div class="divider">
-          OR
-        </div>
-
-
-        <button
-          class="social-btn"
-          onclick="googleLogin()"
-        >
-
-          <svg viewBox="0 0 48 48">
-
-            <path
-              fill="#FFC107"
-              d="M43.61 20.08H42V20H24v8h11.3C33.65 32.66 29.28 36 24 36c-6.63 0-12-5.37-12-12s5.37-12 12-12c3.06 0 5.84 1.15 7.96 3.04l5.66-5.66C34.05 6.06 29.3 4 24 4 12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20c0-1.34-.14-2.65-.39-3.92z"
-            />
-
-            <path
-              fill="#FF3D00"
-              d="M6.31 14.69l6.57 4.82C14.56 16.15 18.92 12 24 12c3.06 0 5.84 1.15 7.96 3.04l5.66-5.66C34.05 6.06 29.3 4 24 4 16.32 4 9.66 8.34 6.31 14.69z"
-            />
-
-            <path
-              fill="#4CAF50"
-              d="M24 44c5.2 0 9.86-1.99 13.4-5.23l-6.19-5.24C29.1 35.09 26.7 36 24 36c-5.25 0-9.59-3.35-11.19-8.03l-6.52 5.02C9.62 39.53 16.29 44 24 44z"
-            />
-
-            <path
-              fill="#1976D2"
-              d="M43.61 20.08H42V20H24v8h11.3a12.02 12.02 0 0 1-4.09 5.54l6.19 5.24C36.97 39.09 44 34 44 24c0-1.34-.14-2.65-.39-3.92z"
-            />
-
-          </svg>
-
-          Continue with Google
-
-        </button>
-
-
-        <div
-          id="loginMessage"
-          class="message"
-        ></div>
 
       </div>
 
 
-      <!-- SIGN UP -->
+      <div class="auth-form">
 
-      <div id="signupForm">
+        <div id="loginForm">
 
-        <div class="input-group">
-          <label>Full Name</label>
-          <input
-            type="text"
-            id="fullName"
-            placeholder="Full name"
+          <div class="input-group">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Enter your email"
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Password
+            </label>
+
+            <div class="password-box">
+
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                onclick="togglePassword('loginPassword', this)"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="main-btn"
+            onclick="loginUser()"
           >
-        </div>
-
-
-        <div class="input-group">
-          <label>Username</label>
-          <input
-            type="text"
-            id="username"
-            placeholder="Username"
-          >
-        </div>
-
-
-        <div class="signup-grid">
-
-          <div class="input-group">
-            <label>Age</label>
-            <input
-              type="number"
-              id="age"
-              placeholder="Age"
-            >
-          </div>
-
-
-          <div class="input-group">
-            <label>Gender</label>
-
-            <select id="gender">
-
-              <option value="">
-                Select gender
-              </option>
-
-              <option value="male">
-                Male
-              </option>
-
-              <option value="female">
-                Female
-              </option>
-
-            </select>
-          </div>
-
-
-          <div class="input-group">
-            <label>Height (cm)</label>
-
-            <input
-              type="number"
-              id="height"
-              placeholder="Height"
-            >
-          </div>
-
-
-          <div class="input-group">
-            <label>Weight (kg)</label>
-
-            <input
-              type="number"
-              id="weight"
-              placeholder="Weight"
-            >
-          </div>
-
-        </div>
-
-
-        <div class="input-group">
-          <label>Email</label>
-
-          <input
-            type="email"
-            id="signupEmail"
-            placeholder="Email"
-          >
-        </div>
-
-
-        <div class="input-group">
-          <label>Password</label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="signupPassword"
-              placeholder="Password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('signupPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-        </div>
-
-
-        <div class="input-group">
-          <label>Confirm Password</label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="Confirm password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('confirmPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-        </div>
-
-
-        <button
-          class="main-btn"
-          onclick="createAccount()"
-        >
-          Create Account
-        </button>
-
-
-        <div class="switch">
-
-          Already have an account?
-
-          <button onclick="showLogin()">
             Login
           </button>
 
+
+          <div class="switch">
+
+            Don't have an account?
+
+            <button onclick="showSignup()">
+              Sign up
+            </button>
+
+          </div>
+
+
+          <div class="divider">
+            OR
+          </div>
+
+
+          <button
+            class="social-btn"
+            onclick="googleLogin()"
+          >
+
+            <svg
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+            >
+
+              <path
+                fill="#FFC107"
+                d="M43.61 20.08H42V20H24v8h11.3C33.65 32.66 29.28 36 24 36c-6.63 0-12-5.37-12-12s5.37-12 12-12c3.06 0 5.84 1.15 7.96 3.04l5.66-5.66C34.05 6.06 29.3 4 24 4 12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20c0-1.34-.14-2.65-.39-3.92z"
+              />
+
+              <path
+                fill="#FF3D00"
+                d="M6.31 14.69l6.57 4.82C14.56 16.15 18.92 12 24 12c3.06 0 5.84 1.15 7.96 3.04l5.66-5.66C34.05 6.06 29.3 4 24 4 16.32 4 9.66 8.34 6.31 14.69z"
+              />
+
+              <path
+                fill="#4CAF50"
+                d="M24 44c5.2 0 9.86-1.99 13.4-5.23l-6.19-5.24C29.1 35.09 26.7 36 24 36c-5.25 0-9.59-3.35-11.19-8.03l-6.52 5.02C9.62 39.53 16.29 44 24 44z"
+              />
+
+              <path
+                fill="#1976D2"
+                d="M43.61 20.08H42V20H24v8h11.3a12.02 12.02 0 0 1-4.09 5.54l6.19 5.24C36.97 39.09 44 34 44 24c0-1.34-.14-2.65-.39-3.92z"
+              />
+
+            </svg>
+
+            Continue with Google
+
+          </button>
+
+
+          <div
+            id="loginMessage"
+            class="message"
+          ></div>
+
         </div>
 
 
-        <div
-          id="signupMessage"
-          class="message"
-        ></div>
+        <div id="signupForm">
+
+          <h1>
+            Create Account
+          </h1>
+
+          <p class="subtitle">
+            Create your BodyReset account.
+          </p>
+
+
+          <div class="signup-grid">
+
+            <div class="input-group">
+
+              <label>
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Full name"
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Username
+              </label>
+
+              <input
+                type="text"
+                id="username"
+                placeholder="Username"
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Age
+              </label>
+
+              <input
+                type="number"
+                id="age"
+                placeholder="Age"
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Gender
+              </label>
+
+              <select id="gender">
+
+                <option value="">
+                  Select gender
+                </option>
+
+                <option value="male">
+                  Male
+                </option>
+
+                <option value="female">
+                  Female
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Height (cm)
+              </label>
+
+              <input
+                type="number"
+                id="height"
+                placeholder="Height"
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Weight (kg)
+              </label>
+
+              <input
+                type="number"
+                id="weight"
+                placeholder="Weight"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="signupEmail"
+              placeholder="Email address"
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Password
+            </label>
+
+            <div class="password-box">
+
+              <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password"
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                onclick="togglePassword('signupPassword', this)"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Confirm Password
+            </label>
+
+            <div class="password-box">
+
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm password"
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                onclick="togglePassword('confirmPassword', this)"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="main-btn"
+            onclick="createAccount()"
+          >
+            Create Account
+          </button>
+
+
+          <div class="switch">
+
+            Already have an account?
+
+            <button onclick="showLogin()">
+              Login
+            </button>
+
+          </div>
+
+
+          <div
+            id="signupMessage"
+            class="message"
+          ></div>
+
+        </div>
 
       </div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
 
-<script>
+    import {
+      createClient
+    } from "https://esm.sh/@supabase/supabase-js@2";
 
-  const SUPABASE_URL =
-    "https://byodeoaluspphqduxmlh.supabase.co";
 
-  const SUPABASE_KEY =
-    "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-
-  const supabase =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
+    const supabase = createClient(
+      "https://byodeoaluspphqduxmlh.supabase.co",
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtUOzKvg92"
     );
 
 
-  window.togglePassword = function(id, button) {
+    window.showSignup = function() {
 
-    const input =
-      document.getElementById(id);
+      document.getElementById("loginForm").style.display = "none";
 
-    if (input.type === "password") {
+      document.getElementById("signupForm").style.display = "block";
 
-      input.type = "text";
-      button.textContent = "Hide";
-
-    } else {
-
-      input.type = "password";
-      button.textContent = "Show";
-
-    }
-  };
+    };
 
 
-  window.showSignup = function() {
+    window.showLogin = function() {
 
-    document.getElementById("loginForm").style.display =
-      "none";
+      document.getElementById("signupForm").style.display = "none";
 
-    document.getElementById("signupForm").style.display =
-      "block";
+      document.getElementById("loginForm").style.display = "block";
 
-  };
+    };
 
 
-  window.showLogin = function() {
+    window.togglePassword = function(id, button) {
 
-    document.getElementById("signupForm").style.display =
-      "none";
-
-    document.getElementById("loginForm").style.display =
-      "block";
-
-  };
+      const input =
+        document.getElementById(id);
 
 
-  window.loginUser = async function() {
+      if (input.type === "password") {
 
-    const email =
-      document.getElementById("loginEmail")
-      .value
-      .trim();
+        input.type = "text";
 
-    const password =
-      document.getElementById("loginPassword")
-      .value;
+        button.textContent = "Hide";
 
-    const message =
-      document.getElementById("loginMessage");
+      } else {
+
+        input.type = "password";
+
+        button.textContent = "Show";
+
+      }
+
+    };
 
 
-    if (!email || !password) {
+    window.createAccount = async function() {
+
+      const fullName =
+        document.getElementById("fullName").value.trim();
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const age =
+        document.getElementById("age").value;
+
+      const gender =
+        document.getElementById("gender").value;
+
+      const height =
+        document.getElementById("height").value;
+
+      const weight =
+        document.getElementById("weight").value;
+
+      const email =
+        document.getElementById("signupEmail").value.trim();
+
+      const password =
+        document.getElementById("signupPassword").value;
+
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+      const message =
+        document.getElementById("signupMessage");
+
+
+      if (
+        !fullName ||
+        !username ||
+        !age ||
+        !gender ||
+        !height ||
+        !weight ||
+        !email ||
+        !password ||
+        !confirmPassword
+      ) {
+
+        message.textContent =
+          "Please complete all fields.";
+
+        return;
+
+      }
+
+
+      if (password !== confirmPassword) {
+
+        message.textContent =
+          "Passwords do not match.";
+
+        return;
+
+      }
+
+
+      if (password.length < 6) {
+
+        message.textContent =
+          "Password must be at least 6 characters.";
+
+        return;
+
+      }
+
 
       message.textContent =
-        "Please enter your email and password.";
-
-      return;
-    }
+        "Creating account...";
 
 
-    message.textContent =
-      "Logging in...";
-
-
-    const {
-      data,
-      error
-    } =
-      await supabase.auth.signInWithPassword({
-
-        email: email,
-
-        password: password
-
-      });
-
-
-    if (error) {
-
-      message.textContent =
-        error.message;
-
-      return;
-    }
-
-
-    if (data.session) {
-
-      window.location.href =
-        "dashboard.html";
-
-    }
-
-  };
-
-
-  window.googleLogin = async function() {
-
-    const {
-      error
-    } =
-      await supabase.auth.signInWithOAuth({
-
-        provider: "google",
-
-        options: {
-
-          redirectTo:
-            "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
-
-        }
-
-      });
-
-
-    if (error) {
-
-      document.getElementById(
-        "loginMessage"
-      ).textContent =
-        error.message;
-
-    }
-
-  };
-
-
-  window.createAccount = async function() {
-
-    const fullName =
-      document.getElementById("fullName").value.trim();
-
-    const username =
-      document.getElementById("username").value.trim();
-
-    const age =
-      document.getElementById("age").value;
-
-    const gender =
-      document.getElementById("gender").value;
-
-    const height =
-      document.getElementById("height").value;
-
-    const weight =
-      document.getElementById("weight").value;
-
-    const email =
-      document.getElementById("signupEmail")
-      .value
-      .trim();
-
-    const password =
-      document.getElementById("signupPassword")
-      .value;
-
-    const confirmPassword =
-      document.getElementById("confirmPassword")
-      .value;
-
-    const message =
-      document.getElementById("signupMessage");
-
-
-    if (
-      !fullName ||
-      !username ||
-      !age ||
-      !gender ||
-      !height ||
-      !weight ||
-      !email ||
-      !password ||
-      !confirmPassword
-    ) {
-
-      message.textContent =
-        "Please complete all fields.";
-
-      return;
-    }
-
-
-    if (password !== confirmPassword) {
-
-      message.textContent =
-        "Passwords do not match.";
-
-      return;
-    }
-
-
-    message.textContent =
-      "Creating account...";
-
-
-    const {
-      data,
-      error
-    } =
-      await supabase.auth.signUp({
+      const {
+        data,
+        error
+      } = await supabase.auth.signUp({
 
         email: email,
 
@@ -859,10 +901,15 @@
           data: {
 
             full_name: fullName,
+
             username: username,
+
             age: age,
+
             gender: gender,
+
             height: height,
+
             weight: weight
 
           }
@@ -872,21 +919,117 @@
       });
 
 
-    if (error) {
+      if (error) {
+
+        message.textContent =
+          error.message;
+
+        return;
+
+      }
+
+
+      if (data.session) {
+
+        window.location.href =
+          "dashboard.html";
+
+      } else {
+
+        message.textContent =
+          "Account created. Please check your email to confirm your account.";
+
+      }
+
+    };
+
+
+    window.loginUser = async function() {
+
+      const email =
+        document.getElementById("loginEmail").value.trim();
+
+      const password =
+        document.getElementById("loginPassword").value;
+
+      const message =
+        document.getElementById("loginMessage");
+
+
+      if (!email || !password) {
+
+        message.textContent =
+          "Please enter your email and password.";
+
+        return;
+
+      }
+
 
       message.textContent =
-        error.message;
-
-      return;
-    }
+        "Logging in...";
 
 
-    message.textContent =
-      "Account created. Please check your email to confirm your account.";
+      const {
+        data,
+        error
+      } = await supabase.auth.signInWithPassword({
 
-  };
+        email: email,
 
-</script>
+        password: password
+
+      });
+
+
+      if (error) {
+
+        message.textContent =
+          error.message;
+
+        return;
+
+      }
+
+
+      if (data.session) {
+
+        window.location.href =
+          "dashboard.html";
+
+      }
+
+    };
+
+
+    window.googleLogin = async function() {
+
+      const {
+        error
+      } = await supabase.auth.signInWithOAuth({
+
+        provider: "google",
+
+        options: {
+
+          redirectTo:
+            "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
+
+        }
+
+      });
+
+
+      if (error) {
+
+        document.getElementById("loginMessage").textContent =
+          error.message;
+
+      }
+
+    };
+
+  </script>
 
 </body>
   </html>
