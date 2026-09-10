@@ -556,21 +556,6 @@
           <div class="input-group">
 
             <label>
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              id="fullName"
-              placeholder="Full name"
-            >
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
               Username
             </label>
 
@@ -827,9 +812,6 @@
 
   window.createAccount = async function() {
 
-    const fullName =
-      document.getElementById("fullName").value.trim();
-
     const username =
       document.getElementById("username").value.trim();
 
@@ -862,7 +844,6 @@
 
 
     if (
-      !fullName ||
       !username ||
       !age ||
       !gender ||
@@ -928,8 +909,6 @@
           "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html",
 
         data: {
-
-          full_name: fullName,
 
           username: username,
 
@@ -1077,4 +1056,4 @@
 </script>
 
 </body>
-  </html>
+    </html>
