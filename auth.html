@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>BodyReset - Login</title>  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BodyReset - Login</title>
+
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -313,246 +318,251 @@
         gap: 0;
       }
     }
-  </style></head><body><header>
-  <div class="header-content"><a href="index.html" class="home-link">
-  Home
-</a>
+  </style>
+</head>
 
-<div class="logo">
-  Body<span>Reset</span>
-</div>
+<body>
 
-  </div>
-</header><section class="auth-section">  <div class="auth-box"><div class="auth-image">
+<header>
+  <div class="header-content">
 
-  <div class="image-content">
+    <a href="index.html" class="home-link">
+      Home
+    </a>
 
-    <h2>
-      ابدأ تغيير جسمك
-    </h2>
-
-    <p>
-      التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-    </p>
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
 
   </div>
+</header>
 
-</div>
+<section class="auth-section">
 
+  <div class="auth-box">
 
-<div class="auth-form">
+    <div class="auth-image">
 
-  <!-- LOGIN -->
+      <div class="image-content">
 
-  <div id="loginForm">
+        <h2>
+          ابدأ تغيير جسمك
+        </h2>
 
-    <div class="input-group">
+        <p>
+          التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
+        </p>
 
-      <label>
-        Username
-      </label>
-
-      <input
-        type="text"
-        id="loginUsername"
-        autocomplete="username"
-        placeholder="Enter your username"
-      >
+      </div>
 
     </div>
 
+    <div class="auth-form">
 
-    <div class="input-group">
+      <!-- LOGIN -->
 
-      <label>
-        Password
-      </label>
+      <div id="loginForm">
 
-      <div class="password-box">
+        <div class="input-group">
 
-        <input
-          type="password"
-          id="loginPassword"
-          autocomplete="current-password"
-          placeholder="Enter your password"
-        >
+          <label>
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="loginUsername"
+            autocomplete="username"
+            placeholder="Enter your username"
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <label>
+            Password
+          </label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="loginPassword"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+            >
+
+            <button
+              type="button"
+              class="show-password"
+              onclick="togglePassword('loginPassword', this)"
+            >
+              Show
+            </button>
+
+          </div>
+
+        </div>
 
         <button
-          type="button"
-          class="show-password"
-          onclick="togglePassword('loginPassword', this)"
+          class="main-btn"
+          onclick="loginUser()"
         >
-          Show
+          Login
         </button>
 
-      </div>
+        <div class="switch">
 
-    </div>
+          Don't have an account?
 
+          <button onclick="showSignup()">
+            Sign up
+          </button>
 
-    <button
-      class="main-btn"
-      onclick="loginUser()"
-    >
-      Login
-    </button>
+        </div>
 
-
-    <div class="switch">
-
-      Don't have an account?
-
-      <button onclick="showSignup()">
-        Sign up
-      </button>
-
-    </div>
-
-
-    <div
-      id="loginMessage"
-      class="message"
-    ></div>
-
-  </div>
-
-
-  <!-- SIGNUP -->
-
-  <div id="signupForm">
-
-    <div class="signup-grid">
-
-      <div class="input-group">
-
-        <label>
-          Username
-        </label>
-
-        <input
-          type="text"
-          id="username"
-          placeholder="Username"
-        >
+        <div
+          id="loginMessage"
+          class="message"
+        ></div>
 
       </div>
 
 
-      <div class="input-group">
+      <!-- SIGNUP -->
 
-        <label>
-          Email Address
-        </label>
+      <div id="signupForm">
 
-        <input
-          type="email"
-          id="signupEmail"
-          autocomplete="email"
-          placeholder="Email address"
-        >
+        <div class="signup-grid">
 
-      </div>
+          <div class="input-group">
 
+            <label>
+              Username
+            </label>
 
-      <div class="input-group">
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+            >
 
-        <label>
-          Age
-        </label>
+          </div>
 
-        <input
-          type="number"
-          id="age"
-          placeholder="Age"
-        >
+          <div class="input-group">
 
-      </div>
+            <label>
+              Email Address
+            </label>
 
+            <input
+              type="email"
+              id="signupEmail"
+              autocomplete="email"
+              placeholder="Email address"
+            >
 
-      <div class="input-group">
+          </div>
 
-        <label>
-          Gender
-        </label>
+          <div class="input-group">
 
-        <select id="gender">
+            <label>
+              Age
+            </label>
 
-          <option value="">
-            Select gender
-          </option>
+            <input
+              type="number"
+              id="age"
+              placeholder="Age"
+            >
 
-          <option value="male">
-            Male
-          </option>
+          </div>
 
-          <option value="female">
-            Female
-          </option>
+          <div class="input-group">
 
-        </select>
+            <label>
+              Gender
+            </label>
 
-      </div>
+            <select id="gender">
 
-    </div>
+              <option value="">
+                Select gender
+              </option>
 
+              <option value="male">
+                Male
+              </option>
 
-    <div class="input-group">
+              <option value="female">
+                Female
+              </option>
 
-      <label>
-        Create Password
-      </label>
+            </select>
 
-      <div class="password-box">
+          </div>
 
-        <input
-          type="password"
-          id="signupPassword"
-          autocomplete="new-password"
-          placeholder="Create password"
-        >
+        </div>
+
+        <div class="input-group">
+
+          <label>
+            Create Password
+          </label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="signupPassword"
+              autocomplete="new-password"
+              placeholder="Create password"
+            >
+
+            <button
+              type="button"
+              class="show-password"
+              onclick="togglePassword('signupPassword', this)"
+            >
+              Show
+            </button>
+
+          </div>
+
+        </div>
 
         <button
-          type="button"
-          class="show-password"
-          onclick="togglePassword('signupPassword', this)"
+          class="main-btn"
+          onclick="createAccount()"
         >
-          Show
+          Create Account
         </button>
+
+        <div class="switch">
+
+          Already have an account?
+
+          <button onclick="showLogin()">
+            Login
+          </button>
+
+        </div>
+
+        <div
+          id="signupMessage"
+          class="message"
+        ></div>
 
       </div>
 
     </div>
 
-
-    <button
-      class="main-btn"
-      onclick="createAccount()"
-    >
-      Create Account
-    </button>
-
-
-    <div class="switch">
-
-      Already have an account?
-
-      <button onclick="showLogin()">
-        Login
-      </button>
-
-    </div>
-
-
-    <div
-      id="signupMessage"
-      class="message"
-    ></div>
-
   </div>
 
-</div>
+</section>
 
-  </div></section><script type="module">
+<script type="module">
 
   import {
     createClient
@@ -778,11 +788,6 @@
     }
 
 
-    /*
-      Confirm email مقفول في Supabase،
-      لذلك المفروض يكون عندنا Session مباشرة.
-    */
-
     if (data.session) {
 
       window.location.href =
@@ -792,11 +797,6 @@
 
     }
 
-
-    /*
-      احتياطًا: لو الـSession ما ظهرتش مباشرة،
-      نحاول نجيب المستخدم الحالي.
-    */
 
     const {
       data: currentUser
@@ -866,12 +866,25 @@
     );
 
 
-    if (usernameError || !email) {
+    if (usernameError) {
 
       message.style.color = "#dc2626";
 
       message.textContent =
-        "Username or password is incorrect.";
+        "Username lookup error: " +
+        usernameError.message;
+
+      return;
+
+    }
+
+
+    if (!email) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Username not found.";
 
       return;
 
@@ -895,7 +908,9 @@
       message.style.color = "#dc2626";
 
       message.textContent =
-        "Username or password is incorrect.";
+        "Login error: " +
+        error.message +
+        (error.code ? " (" + error.code + ")" : "");
 
       return;
 
@@ -907,9 +922,19 @@
       window.location.href =
         "dashboard.html";
 
+      return;
+
     }
+
+
+    message.style.color = "#dc2626";
+
+    message.textContent =
+      "Login succeeded but no session was returned.";
 
   };
 
-</script></body>
-                         </html>
+</script>
+
+</body>
+</html>
