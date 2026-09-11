@@ -122,19 +122,6 @@
       justify-content: center;
     }
 
-    .auth-form h1 {
-      font-size: 34px;
-      margin-bottom: 10px;
-      color: #071a33;
-    }
-
-    .subtitle {
-      color: #64748b;
-      font-size: 16px;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
     .input-group {
       margin-bottom: 18px;
     }
@@ -326,10 +313,6 @@
         padding: 30px 20px;
       }
 
-      .auth-form h1 {
-        font-size: 29px;
-      }
-
       .signup-grid {
         grid-template-columns: 1fr;
         gap: 0;
@@ -341,6 +324,7 @@
 <body>
 
 <header>
+
   <div class="header-content">
 
     <a href="index.html" class="home-link">
@@ -352,6 +336,7 @@
     </div>
 
   </div>
+
 </header>
 
 
@@ -382,14 +367,6 @@
       <!-- LOGIN -->
 
       <div id="loginForm">
-
-        <h1>
-          Login
-        </h1>
-
-        <p class="subtitle">
-          Login to continue your BodyReset journey.
-        </p>
 
 
         <div class="input-group">
@@ -978,12 +955,6 @@
       "Logging in...";
 
 
-    /*
-      Username login will be connected
-      to the Supabase profiles table
-      in the next step.
-    */
-
     const {
       data: profile,
       error: profileError
@@ -1042,4 +1013,5 @@
 </script>
 
 </body>
-                </html>
+
+</html>
