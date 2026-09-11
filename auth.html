@@ -841,16 +841,17 @@
 
 
     const {
-      data: profile,
-      error: profileError
-    } = await supabase
-      .from("profiles")
-      .select("email")
-      .eq("username", username)
-      .single();
+      data: email,
+      error: usernameError
+    } = await supabase.rpc(
+      "get_email_by_username",
+      {
+        username_input: username
+      }
+    );
 
 
-    if (profileError || !profile) {
+    if (usernameError || !email) {
 
       message.style.color = "#dc2626";
 
@@ -867,7 +868,7 @@
       error
     } = await supabase.auth.signInWithPassword({
 
-      email: profile.email,
+      email: email,
 
       password: password
 
@@ -898,4 +899,4 @@
 </script>
 
 </body>
-  </html>
+            </html>
