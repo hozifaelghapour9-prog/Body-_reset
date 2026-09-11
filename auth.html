@@ -1,8 +1,7 @@
 <!DOCTYPE html><html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset - Login</title>  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>BodyReset - Login</title>  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -340,6 +339,7 @@
 
 </div>
 
+
 <div class="auth-form">
 
   <!-- LOGIN -->
@@ -360,6 +360,7 @@
       >
 
     </div>
+
 
     <div class="input-group">
 
@@ -388,12 +389,14 @@
 
     </div>
 
+
     <button
       class="main-btn"
       onclick="loginUser()"
     >
       Login
     </button>
+
 
     <div class="switch">
 
@@ -404,6 +407,7 @@
       </button>
 
     </div>
+
 
     <div
       id="loginMessage"
@@ -433,6 +437,7 @@
 
       </div>
 
+
       <div class="input-group">
 
         <label>
@@ -448,6 +453,7 @@
 
       </div>
 
+
       <div class="input-group">
 
         <label>
@@ -461,6 +467,7 @@
         >
 
       </div>
+
 
       <div class="input-group">
 
@@ -487,6 +494,7 @@
       </div>
 
     </div>
+
 
     <div class="input-group">
 
@@ -515,12 +523,14 @@
 
     </div>
 
+
     <button
       class="main-btn"
       onclick="createAccount()"
     >
       Create Account
     </button>
+
 
     <div class="switch">
 
@@ -531,6 +541,7 @@
       </button>
 
     </div>
+
 
     <div
       id="signupMessage"
@@ -740,9 +751,6 @@
 
       options: {
 
-        emailRedirectTo:
-          "https://hozifaelghapour9-prog.github.io/Body-_reset/auth.html",
-
         data: {
 
           username: username,
@@ -770,6 +778,11 @@
     }
 
 
+    /*
+      Confirm email مقفول في Supabase،
+      لذلك المفروض يكون عندنا Session مباشرة.
+    */
+
     if (data.session) {
 
       window.location.href =
@@ -780,10 +793,31 @@
     }
 
 
-    message.style.color = "#16a34a";
+    /*
+      احتياطًا: لو الـSession ما ظهرتش مباشرة،
+      نحاول نجيب المستخدم الحالي.
+    */
+
+    const {
+      data: currentUser
+    } =
+      await supabase.auth.getUser();
+
+
+    if (currentUser?.user) {
+
+      window.location.href =
+        "dashboard.html";
+
+      return;
+
+    }
+
+
+    message.style.color = "#dc2626";
 
     message.textContent =
-      "Account created. Please check your email to confirm your account.";
+      "Account created, but automatic login did not start. Please try logging in.";
 
   };
 
@@ -878,5 +912,4 @@
   };
 
 </script></body>
-</html>
-
+                         </html>
