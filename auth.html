@@ -208,6 +208,19 @@
       background: #0b2547;
     }
 
+    .forgot-password {
+      display: block;
+      width: 100%;
+      margin-top: 13px;
+      text-align: center;
+      background: none;
+      border: none;
+      color: #2563eb;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     .switch {
       text-align: center;
       margin-top: 20px;
@@ -412,6 +425,14 @@
           Login
         </button>
 
+        <button
+          type="button"
+          class="forgot-password"
+          onclick="forgotPassword()"
+        >
+          Forgot password?
+        </button>
+
         <div class="switch">
 
           Don't have an account?
@@ -574,7 +595,7 @@
 
 
   const SUPABASE_KEY =
-    "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+    "sb_publishable_uB0eFh3HfRwUI9eWS73AtU_uOzKvg92";
 
 
   const supabase =
@@ -688,6 +709,104 @@
     });
 
   });
+
+
+  window.forgotPassword = async function() {
+
+    const username =
+      document.getElementById("loginUsername").value.trim();
+
+    const message =
+      document.getElementById("loginMessage");
+
+
+    message.textContent = "";
+
+
+    if (!username) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Please enter your username first.";
+
+      return;
+
+    }
+
+
+    message.style.color = "#071a33";
+
+    message.textContent =
+      "Sending password reset email...";
+
+
+    const {
+      data: email,
+      error: usernameError
+    } = await supabase.rpc(
+      "get_email_by_username",
+      {
+        username_input: username
+      }
+    );
+
+
+    if (usernameError) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Username lookup error: " +
+        usernameError.message;
+
+      return;
+
+    }
+
+
+    if (!email) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Username not found.";
+
+      return;
+
+    }
+
+
+    const {
+      error
+    } = await supabase.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo:
+          "https://hozifaelghapour9-prog.github.io/Body-_reset/reset-password.html"
+      }
+    );
+
+
+    if (error) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Reset error: " +
+        error.message;
+
+      return;
+
+    }
+
+
+    message.style.color = "#16a34a";
+
+    message.textContent =
+      "Password reset email sent. Check your email.";
+
+  };
 
 
   window.createAccount = async function() {
@@ -937,4 +1056,4 @@
 </script>
 
 </body>
-</html>
+          </html>
