@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset - Login</title>
-
-  <style>
+  <title>BodyReset - Login</title>  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -331,259 +326,242 @@
         gap: 0;
       }
     }
-  </style>
-</head>
+  </style></head><body><header>
+  <div class="header-content"><a href="index.html" class="home-link">
+  Home
+</a>
 
-<body>
-
-<header>
-  <div class="header-content">
-
-    <a href="index.html" class="home-link">
-      Home
-    </a>
-
-    <div class="logo">
-      Body<span>Reset</span>
-    </div>
+<div class="logo">
+  Body<span>Reset</span>
+</div>
 
   </div>
-</header>
+</header><section class="auth-section">  <div class="auth-box"><div class="auth-image">
 
-<section class="auth-section">
+  <div class="image-content">
 
-  <div class="auth-box">
+    <h2>
+      ابدأ تغيير جسمك
+    </h2>
 
-    <div class="auth-image">
+    <p>
+      التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
+    </p>
 
-      <div class="image-content">
+  </div>
 
-        <h2>
-          ابدأ تغيير جسمك
-        </h2>
+</div>
 
-        <p>
-          التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-        </p>
+<div class="auth-form">
 
-      </div>
+  <!-- LOGIN -->
+
+  <div id="loginForm">
+
+    <div class="input-group">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        type="text"
+        id="loginUsername"
+        autocomplete="username"
+        placeholder="Enter your username"
+      >
 
     </div>
 
-    <div class="auth-form">
+    <div class="input-group">
 
-      <!-- LOGIN -->
+      <label>
+        Password
+      </label>
 
-      <div id="loginForm">
+      <div class="password-box">
 
-        <div class="input-group">
-
-          <label>
-            Username
-          </label>
-
-          <input
-            type="text"
-            id="loginUsername"
-            autocomplete="username"
-            placeholder="Enter your username"
-          >
-
-        </div>
-
-        <div class="input-group">
-
-          <label>
-            Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="loginPassword"
-              autocomplete="current-password"
-              placeholder="Enter your password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('loginPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-
-        </div>
-
-        <button
-          class="main-btn"
-          onclick="loginUser()"
+        <input
+          type="password"
+          id="loginPassword"
+          autocomplete="current-password"
+          placeholder="Enter your password"
         >
-          Login
-        </button>
 
         <button
           type="button"
-          class="forgot-password"
-          onclick="forgotPassword()"
+          class="show-password"
+          onclick="togglePassword('loginPassword', this)"
         >
-          Forgot password?
+          Show
         </button>
-
-        <div class="switch">
-
-          Don't have an account?
-
-          <button onclick="showSignup()">
-            Sign up
-          </button>
-
-        </div>
-
-        <div
-          id="loginMessage"
-          class="message"
-        ></div>
-
-      </div>
-
-
-      <!-- SIGNUP -->
-
-      <div id="signupForm">
-
-        <div class="signup-grid">
-
-          <div class="input-group">
-
-            <label>
-              Username
-            </label>
-
-            <input
-              type="text"
-              id="username"
-              placeholder="Username"
-            >
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              Email Address
-            </label>
-
-            <input
-              type="email"
-              id="signupEmail"
-              autocomplete="email"
-              placeholder="Email address"
-            >
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              Age
-            </label>
-
-            <input
-              type="number"
-              id="age"
-              placeholder="Age"
-            >
-
-          </div>
-
-          <div class="input-group">
-
-            <label>
-              Gender
-            </label>
-
-            <select id="gender">
-
-              <option value="">
-                Select gender
-              </option>
-
-              <option value="male">
-                Male
-              </option>
-
-              <option value="female">
-                Female
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-        <div class="input-group">
-
-          <label>
-            Create Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="signupPassword"
-              autocomplete="new-password"
-              placeholder="Create password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('signupPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-
-        </div>
-
-        <button
-          class="main-btn"
-          onclick="createAccount()"
-        >
-          Create Account
-        </button>
-
-        <div class="switch">
-
-          Already have an account?
-
-          <button onclick="showLogin()">
-            Login
-          </button>
-
-        </div>
-
-        <div
-          id="signupMessage"
-          class="message"
-        ></div>
 
       </div>
 
     </div>
 
+    <button
+      class="main-btn"
+      onclick="loginUser()"
+    >
+      Login
+    </button>
+
+    <button
+      type="button"
+      class="forgot-password"
+      onclick="forgotPassword()"
+    >
+      Forgot password?
+    </button>
+
+    <div class="switch">
+
+      Don't have an account?
+
+      <button onclick="showSignup()">
+        Sign up
+      </button>
+
+    </div>
+
+    <div
+      id="loginMessage"
+      class="message"
+    ></div>
+
   </div>
 
-</section>
 
-<script type="module">
+  <!-- SIGNUP -->
+
+  <div id="signupForm">
+
+    <div class="signup-grid">
+
+      <div class="input-group">
+
+        <label>
+          Username
+        </label>
+
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+        >
+
+      </div>
+
+      <div class="input-group">
+
+        <label>
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="signupEmail"
+          autocomplete="email"
+          placeholder="Email address"
+        >
+
+      </div>
+
+      <div class="input-group">
+
+        <label>
+          Age
+        </label>
+
+        <input
+          type="number"
+          id="age"
+          placeholder="Age"
+        >
+
+      </div>
+
+      <div class="input-group">
+
+        <label>
+          Gender
+        </label>
+
+        <select id="gender">
+
+          <option value="">
+            Select gender
+          </option>
+
+          <option value="male">
+            Male
+          </option>
+
+          <option value="female">
+            Female
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <div class="input-group">
+
+      <label>
+        Create Password
+      </label>
+
+      <div class="password-box">
+
+        <input
+          type="password"
+          id="signupPassword"
+          autocomplete="new-password"
+          placeholder="Create password"
+        >
+
+        <button
+          type="button"
+          class="show-password"
+          onclick="togglePassword('signupPassword', this)"
+        >
+          Show
+        </button>
+
+      </div>
+
+    </div>
+
+    <button
+      class="main-btn"
+      onclick="createAccount()"
+    >
+      Create Account
+    </button>
+
+    <div class="switch">
+
+      Already have an account?
+
+      <button onclick="showLogin()">
+        Login
+      </button>
+
+    </div>
+
+    <div
+      id="signupMessage"
+      class="message"
+    ></div>
+
+  </div>
+
+</div>
+
+  </div></section><script type="module">
 
   import {
     createClient
@@ -595,7 +573,7 @@
 
 
   const SUPABASE_KEY =
-    "sb_publishable_uB0eFh3HfRwUI9eWS73AtU_uOzKvg92";
+    "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
 
   const supabase =
@@ -1053,7 +1031,5 @@
 
   };
 
-</script>
-
-</body>
-          </html>
+</script></body>
+</html>
