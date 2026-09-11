@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>BodyReset | لوحة التحكم</title>
-
-  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>BodyReset | لوحة التحكم</title>  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -120,39 +115,6 @@
       font-weight: bold;
     }
 
-    .google-box {
-      margin-top: 30px;
-      background: #121816;
-      border: 1px solid #242c28;
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .google-box h3 {
-      margin-bottom: 8px;
-    }
-
-    .google-box p {
-      color: #999;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    #googleBtn {
-      background: #ffffff;
-      color: #111111;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    #googleBtn:hover {
-      background: #e5e7eb;
-    }
-
     .stats {
       margin-top: 30px;
       display: grid;
@@ -204,188 +166,149 @@
       }
 
     }
-  </style>
-</head>
+  </style></head><body>  <header><div class="logo">
+  Body<span>Reset</span>
+</div>
 
-<body>
+<button id="logoutBtn">
+  تسجيل الخروج
+</button>
 
-  <header>
+  </header>  <section class="hero"><div class="container">
 
-    <div class="logo">
-      Body<span>Reset</span>
+  <h1>
+    أهلاً بيك في BodyReset 👋
+  </h1>
+
+  <p>
+    جاهز تبدأ رحلة تغيير جسمك؟
+    <br>
+    حسابك:
+    <strong id="userEmail">
+      جاري التحميل...
+    </strong>
+  </p>
+
+</div>
+
+  </section>  <main class="container"><h2 class="section-title">
+  ابدأ رحلتك 💪
+</h2>
+
+
+<div class="cards">
+
+  <div class="card">
+
+    <div class="icon">
+      💪
     </div>
 
-    <button id="logoutBtn">
-      تسجيل الخروج
-    </button>
+    <h3>
+      Workout
+    </h3>
 
-  </header>
+    <p>
+      تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
+    </p>
+
+    <a href="workout.html">
+      ابدأ التمرين
+    </a>
+
+  </div>
 
 
-  <section class="hero">
+  <div class="card">
 
-    <div class="container">
-
-      <h1>
-        أهلاً بيك في BodyReset 👋
-      </h1>
-
-      <p>
-        جاهز تبدأ رحلة تغيير جسمك؟
-        <br>
-        حسابك:
-        <strong id="userEmail">
-          جاري التحميل...
-        </strong>
-      </p>
-
+    <div class="icon">
+      🥗
     </div>
 
-  </section>
+    <h3>
+      Nutrition
+    </h3>
+
+    <p>
+      خطط غذائية تساعدك تختار أكلك حسب هدفك.
+    </p>
+
+    <a href="#">
+      خطة التغذية
+    </a>
+
+  </div>
 
 
-  <main class="container">
+  <div class="card">
 
-    <h2 class="section-title">
-      ابدأ رحلتك 💪
-    </h2>
-
-
-    <div class="cards">
-
-      <div class="card">
-
-        <div class="icon">
-          💪
-        </div>
-
-        <h3>
-          Workout
-        </h3>
-
-        <p>
-          تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-        </p>
-
-        <a href="workout.html">
-          ابدأ التمرين
-        </a>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="icon">
-          🥗
-        </div>
-
-        <h3>
-          Nutrition
-        </h3>
-
-        <p>
-          خطط غذائية تساعدك تختار أكلك حسب هدفك.
-        </p>
-
-        <a href="#">
-          خطة التغذية
-        </a>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="icon">
-          📊
-        </div>
-
-        <h3>
-          Progress
-        </h3>
-
-        <p>
-          تابع تقدمك وشوف تطورك مع الوقت.
-        </p>
-
-        <a href="#">
-          متابعة التقدم
-        </a>
-
-      </div>
-
+    <div class="icon">
+      📊
     </div>
 
+    <h3>
+      Progress
+    </h3>
 
-    <!-- ربط Google بالحساب الحالي -->
+    <p>
+      تابع تقدمك وشوف تطورك مع الوقت.
+    </p>
 
-    <div class="google-box">
+    <a href="#">
+      متابعة التقدم
+    </a>
 
-      <h3>
-        ربط حساب Google
-      </h3>
+  </div>
 
-      <p>
-        اربط حساب Google بحساب BodyReset الحالي.
-      </p>
-
-      <button id="googleBtn">
-        ربط حساب Google
-      </button>
-
-    </div>
+</div>
 
 
-    <div class="stats">
+<div class="stats">
 
-      <div class="stat">
+  <div class="stat">
 
-        <strong>
-          0
-        </strong>
+    <strong>
+      0
+    </strong>
 
-        <span>
-          تمارين مكتملة
-        </span>
+    <span>
+      تمارين مكتملة
+    </span>
 
-      </div>
-
-
-      <div class="stat">
-
-        <strong>
-          0
-        </strong>
-
-        <span>
-          أيام متتالية
-        </span>
-
-      </div>
+  </div>
 
 
-      <div class="stat">
+  <div class="stat">
 
-        <strong>
-          0%
-        </strong>
+    <strong>
+      0
+    </strong>
 
-        <span>
-          نسبة الإنجاز
-        </span>
+    <span>
+      أيام متتالية
+    </span>
 
-      </div>
-
-    </div>
+  </div>
 
 
-    <div id="message"></div>
+  <div class="stat">
 
-  </main>
+    <strong>
+      0%
+    </strong>
+
+    <span>
+      نسبة الإنجاز
+    </span>
+
+  </div>
+
+</div>
 
 
-  <script type="module">
+<div id="message"></div>
+
+  </main>  <script type="module">
 
     import { createClient } from
       "https://esm.sh/@supabase/supabase-js@2";
@@ -414,10 +337,6 @@
       document.getElementById("logoutBtn");
 
 
-    const googleBtn =
-      document.getElementById("googleBtn");
-
-
     const message =
       document.getElementById("message");
 
@@ -440,52 +359,13 @@
       }
 
 
+      const username =
+        user.user_metadata?.username;
+
+
       userEmail.textContent =
-        user.email;
+        username || user.email;
     }
-
-
-    googleBtn.addEventListener(
-      "click",
-      async () => {
-
-        message.style.color =
-          "#aaa";
-
-        message.textContent =
-          "جاري فتح Google...";
-
-
-        const {
-          error
-        } =
-          await supabase.auth.linkIdentity({
-
-            provider: "google",
-
-            options: {
-
-              redirectTo:
-                "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
-
-            }
-
-          });
-
-
-        if (error) {
-
-          message.style.color =
-            "#ff7777";
-
-          message.textContent =
-            error.message;
-
-          return;
-        }
-
-      }
-    );
 
 
     logoutBtn.addEventListener(
@@ -516,7 +396,5 @@
 
     loadUser();
 
-  </script>
-
-</body>
-      </html>
+  </script></body>
+</html>
