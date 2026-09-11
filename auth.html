@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset - Login</title>
-
-  <style>
+  <title>BodyReset - Login</title>  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -318,337 +313,256 @@
         gap: 0;
       }
     }
-  </style>
-</head>
+  </style></head><body><header>  <div class="header-content"><a href="index.html" class="home-link">
+  Home
+</a>
 
-<body>
+<div class="logo">
+  Body<span>Reset</span>
+</div>
 
-<header>
+  </div></header><section class="auth-section">  <div class="auth-box"><div class="auth-image">
 
-  <div class="header-content">
+  <div class="image-content">
 
-    <a href="index.html" class="home-link">
-      Home
-    </a>
+    <h2>
+      ابدأ تغيير جسمك
+    </h2>
 
-    <div class="logo">
-      Body<span>Reset</span>
-    </div>
+    <p>
+      التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
+    </p>
 
   </div>
 
-</header>
+</div>
 
 
-<section class="auth-section">
+<div class="auth-form">
 
-  <div class="auth-box">
 
-    <div class="auth-image">
+  <!-- LOGIN -->
 
-      <div class="image-content">
+  <div id="loginForm">
 
-        <h2>
-          ابدأ تغيير جسمك
-        </h2>
 
-        <p>
-          التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-        </p>
+    <div class="input-group">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        type="text"
+        id="loginUsername"
+        autocomplete="username"
+        placeholder="Enter your username"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Password
+      </label>
+
+      <div class="password-box">
+
+        <input
+          type="password"
+          id="loginPassword"
+          autocomplete="current-password"
+          placeholder="Enter your password"
+        >
+
+        <button
+          type="button"
+          class="show-password"
+          onclick="togglePassword('loginPassword', this)"
+        >
+          Show
+        </button>
 
       </div>
 
     </div>
 
 
-    <div class="auth-form">
+    <button
+      class="main-btn"
+      onclick="loginUser()"
+    >
+      Login
+    </button>
 
 
-      <!-- LOGIN -->
+    <div class="switch">
 
-      <div id="loginForm">
+      Don't have an account?
 
-
-        <div class="input-group">
-
-          <label>
-            Username
-          </label>
-
-          <input
-            type="text"
-            id="loginUsername"
-            autocomplete="username"
-            placeholder="Enter your username"
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>
-            Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="loginPassword"
-              autocomplete="current-password"
-              placeholder="Enter your password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('loginPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="main-btn"
-          onclick="loginUser()"
-        >
-          Login
-        </button>
-
-
-        <div class="switch">
-
-          Don't have an account?
-
-          <button onclick="showSignup()">
-            Sign up
-          </button>
-
-        </div>
-
-
-        <div
-          id="loginMessage"
-          class="message"
-        ></div>
-
-      </div>
-
-
-      <!-- SIGNUP -->
-
-      <div id="signupForm">
-
-        <h1>
-          Create Account
-        </h1>
-
-        <p class="subtitle">
-          Create your BodyReset account.
-        </p>
-
-
-        <div class="signup-grid">
-
-
-          <div class="input-group">
-
-            <label>
-              Username
-            </label>
-
-            <input
-              type="text"
-              id="username"
-              placeholder="Username"
-            >
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              Age
-            </label>
-
-            <input
-              type="number"
-              id="age"
-              placeholder="Age"
-            >
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              Gender
-            </label>
-
-            <select id="gender">
-
-              <option value="">
-                Select gender
-              </option>
-
-              <option value="male">
-                Male
-              </option>
-
-              <option value="female">
-                Female
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              Height (cm)
-            </label>
-
-            <input
-              type="number"
-              id="height"
-              placeholder="Height"
-            >
-
-          </div>
-
-
-          <div class="input-group">
-
-            <label>
-              Weight (kg)
-            </label>
-
-            <input
-              type="number"
-              id="weight"
-              placeholder="Weight"
-            >
-
-          </div>
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>
-            Email
-          </label>
-
-          <input
-            type="email"
-            id="signupEmail"
-            autocomplete="email"
-            placeholder="Email address"
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>
-            Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="signupPassword"
-              autocomplete="new-password"
-              placeholder="Password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('signupPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>
-            Confirm Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="confirmPassword"
-              autocomplete="new-password"
-              placeholder="Confirm password"
-            >
-
-            <button
-              type="button"
-              class="show-password"
-              onclick="togglePassword('confirmPassword', this)"
-            >
-              Show
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="main-btn"
-          onclick="createAccount()"
-        >
-          Create Account
-        </button>
-
-
-        <div class="switch">
-
-          Already have an account?
-
-          <button onclick="showLogin()">
-            Login
-          </button>
-
-        </div>
-
-
-        <div
-          id="signupMessage"
-          class="message"
-        ></div>
-
-      </div>
+      <button onclick="showSignup()">
+        Sign up
+      </button>
 
     </div>
+
+
+    <div
+      id="loginMessage"
+      class="message"
+    ></div>
 
   </div>
 
-</section>
+
+  <!-- SIGNUP -->
+
+  <div id="signupForm">
+
+    <h1>
+      Create Account
+    </h1>
+
+    <p class="subtitle">
+      Create your BodyReset account.
+    </p>
 
 
-<script type="module">
+    <div class="signup-grid">
+
+
+      <div class="input-group">
+
+        <label>
+          Username
+        </label>
+
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+        >
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="signupEmail"
+          autocomplete="email"
+          placeholder="Email address"
+        >
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Age
+        </label>
+
+        <input
+          type="number"
+          id="age"
+          placeholder="Age"
+        >
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Gender
+        </label>
+
+        <select id="gender">
+
+          <option value="">
+            Select gender
+          </option>
+
+          <option value="male">
+            Male
+          </option>
+
+          <option value="female">
+            Female
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Create Password
+      </label>
+
+      <div class="password-box">
+
+        <input
+          type="password"
+          id="signupPassword"
+          autocomplete="new-password"
+          placeholder="Create password"
+        >
+
+        <button
+          type="button"
+          class="show-password"
+          onclick="togglePassword('signupPassword', this)"
+        >
+          Show
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="main-btn"
+      onclick="createAccount()"
+    >
+      Create Account
+    </button>
+
+
+    <div class="switch">
+
+      Already have an account?
+
+      <button onclick="showLogin()">
+        Login
+      </button>
+
+    </div>
+
+
+    <div
+      id="signupMessage"
+      class="message"
+    ></div>
+
+  </div>
+
+</div>
+
+  </div></section><script type="module">
 
   import {
     createClient
@@ -781,26 +695,17 @@
     const username =
       document.getElementById("username").value.trim();
 
+    const email =
+      document.getElementById("signupEmail").value.trim();
+
     const age =
       document.getElementById("age").value.trim();
 
     const gender =
       document.getElementById("gender").value;
 
-    const height =
-      document.getElementById("height").value.trim();
-
-    const weight =
-      document.getElementById("weight").value.trim();
-
-    const email =
-      document.getElementById("signupEmail").value.trim();
-
     const password =
       document.getElementById("signupPassword").value;
-
-    const confirmPassword =
-      document.getElementById("confirmPassword").value;
 
     const message =
       document.getElementById("signupMessage");
@@ -811,31 +716,16 @@
 
     if (
       !username ||
+      !email ||
       !age ||
       !gender ||
-      !height ||
-      !weight ||
-      !email ||
-      !password ||
-      !confirmPassword
+      !password
     ) {
 
       message.style.color = "#dc2626";
 
       message.textContent =
         "Please complete all fields.";
-
-      return;
-
-    }
-
-
-    if (password !== confirmPassword) {
-
-      message.style.color = "#dc2626";
-
-      message.textContent =
-        "Passwords do not match.";
 
       return;
 
@@ -880,11 +770,7 @@
 
           age: age,
 
-          gender: gender,
-
-          height: height,
-
-          weight: weight
+          gender: gender
 
         }
 
@@ -1010,8 +896,4 @@
 
   };
 
-</script>
-
-</body>
-
-</html>
+</script></body></html>
