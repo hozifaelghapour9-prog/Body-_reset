@@ -180,8 +180,6 @@
 
     .password-box input {
       padding-right: 75px;
-
-      /* Allow long press, text selection and copy/paste */
       user-select: text;
       -webkit-user-select: text;
       -webkit-touch-callout: default;
@@ -202,7 +200,6 @@
       z-index: 2;
     }
 
-    /* لو المتصفح حوّل خانة الباسورد للأبيض */
     .password-box:has(input:-webkit-autofill) .show-password {
       color: #071a33;
     }
@@ -238,48 +235,6 @@
       font-weight: bold;
       cursor: pointer;
       font-size: 15px;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 25px 0;
-      color: #94a3b8;
-      font-size: 14px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: #e2e8f0;
-    }
-
-    .social-btn {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #cbd5e1;
-      border-radius: 9px;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-      color: #071a33;
-    }
-
-    .social-btn:hover {
-      background: #f8fafc;
-    }
-
-    .social-btn svg {
-      width: 20px;
-      height: 20px;
     }
 
     .message {
@@ -386,7 +341,6 @@
 <body>
 
 <header>
-
   <div class="header-content">
 
     <a href="index.html" class="home-link">
@@ -398,7 +352,6 @@
     </div>
 
   </div>
-
 </header>
 
 
@@ -442,14 +395,14 @@
         <div class="input-group">
 
           <label>
-            Email
+            Username
           </label>
 
           <input
-            type="email"
-            id="loginEmail"
+            type="text"
+            id="loginUsername"
             autocomplete="username"
-            placeholder="Enter your email"
+            placeholder="Enter your username"
           >
 
         </div>
@@ -500,45 +453,6 @@
           </button>
 
         </div>
-
-
-        <div class="divider">
-          OR
-        </div>
-
-
-        <button
-          class="social-btn"
-          onclick="googleLogin()"
-        >
-
-          <svg viewBox="0 0 48 48">
-
-            <path
-              fill="#FFC107"
-              d="M43.61 20.08H42V20H24v8h11.3C33.65 32.66 29.28 36 24 36c-6.63 0-12-5.37-12-12s5.37-12 12-12c3.06 0 5.84 1.15 7.96 3.04l5.66-5.66C34.05 6.06 29.3 4 24 4 12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20c0-1.34-.14-2.65-.39-3.92z"
-            />
-
-            <path
-              fill="#FF3D00"
-              d="M6.31 14.69l6.57 4.82C14.56 16.15 18.92 12 24 12c3.06 0 5.84 1.15 7.96 3.04l5.66-5.66C34.05 6.06 29.3 4 24 4 16.32 4 9.66 8.34 6.31 14.69z"
-            />
-
-            <path
-              fill="#4CAF50"
-              d="M24 44c5.2 0 9.86-1.99 13.4-5.23l-6.19-5.24C29.1 35.09 26.7 36 24 36c-5.25 0-9.59-3.35-11.19-8.03l-6.52 5.02C9.62 39.53 16.29 44 24 44z"
-            />
-
-            <path
-              fill="#1976D2"
-              d="M43.61 20.08H42V20H24v8h11.3a12.02 12.02 0 0 1-4.09 5.54l6.19 5.24C36.97 39.09 44 34 44 24c0-1.34-.14-2.65-.39-3.92z"
-            />
-
-          </svg>
-
-          Continue with Google
-
-        </button>
 
 
         <div
@@ -649,7 +563,6 @@
 
           </div>
 
-
         </div>
 
 
@@ -662,7 +575,7 @@
           <input
             type="email"
             id="signupEmail"
-            autocomplete="username"
+            autocomplete="email"
             placeholder="Email address"
           >
 
@@ -1034,8 +947,8 @@
 
   window.loginUser = async function() {
 
-    const email =
-      document.getElementById("loginEmail").value.trim();
+    const username =
+      document.getElementById("loginUsername").value.trim();
 
     const password =
       document.getElementById("loginPassword").value;
@@ -1047,12 +960,12 @@
     message.textContent = "";
 
 
-    if (!email || !password) {
+    if (!username || !password) {
 
       message.style.color = "#dc2626";
 
       message.textContent =
-        "Please enter your email and password.";
+        "Please enter your username and password.";
 
       return;
 
@@ -1065,12 +978,40 @@
       "Logging in...";
 
 
+    /*
+      Username login will be connected
+      to the Supabase profiles table
+      in the next step.
+    */
+
+    const {
+      data: profile,
+      error: profileError
+    } = await supabase
+      .from("profiles")
+      .select("email")
+      .eq("username", username)
+      .single();
+
+
+    if (profileError || !profile) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Username or password is incorrect.";
+
+      return;
+
+    }
+
+
     const {
       data,
       error
     } = await supabase.auth.signInWithPassword({
 
-      email: email,
+      email: profile.email,
 
       password: password
 
@@ -1082,7 +1023,7 @@
       message.style.color = "#dc2626";
 
       message.textContent =
-        error.message;
+        "Username or password is incorrect.";
 
       return;
 
@@ -1098,38 +1039,7 @@
 
   };
 
-
-  window.googleLogin = async function() {
-
-    const {
-      error
-    } = await supabase.auth.signInWithOAuth({
-
-      provider: "google",
-
-      options: {
-
-        redirectTo:
-          "https://hozifaelghapour9-prog.github.io/Body-_reset/dashboard.html"
-
-      }
-
-    });
-
-
-    if (error) {
-
-      document.getElementById("loginMessage").style.color =
-        "#dc2626";
-
-      document.getElementById("loginMessage").textContent =
-        error.message;
-
-    }
-
-  };
-
 </script>
 
 </body>
-              </html>
+                </html>
