@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<!DOCTYPE html><html lang="en" dir="ltr">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BodyReset - Login</title>  <style>
@@ -689,100 +690,17 @@
   });
 
 
-  window.forgotPassword = async function() {
+  /*
+    FORGOT PASSWORD
 
-    const username =
-      document.getElementById("loginUsername").value.trim();
+    بدل إرسال الريست من صفحة تسجيل الدخول،
+    يتم فتح صفحة forgot-password.html
+  */
 
-    const message =
-      document.getElementById("loginMessage");
+  window.forgotPassword = function() {
 
-
-    message.textContent = "";
-
-
-    if (!username) {
-
-      message.style.color = "#dc2626";
-
-      message.textContent =
-        "Please enter your username first.";
-
-      return;
-
-    }
-
-
-    message.style.color = "#071a33";
-
-    message.textContent =
-      "Sending password reset email...";
-
-
-    const {
-      data: email,
-      error: usernameError
-    } = await supabase.rpc(
-      "get_email_by_username",
-      {
-        username_input: username
-      }
-    );
-
-
-    if (usernameError) {
-
-      message.style.color = "#dc2626";
-
-      message.textContent =
-        "Username lookup error: " +
-        usernameError.message;
-
-      return;
-
-    }
-
-
-    if (!email) {
-
-      message.style.color = "#dc2626";
-
-      message.textContent =
-        "Username not found.";
-
-      return;
-
-    }
-
-
-    const {
-      error
-    } = await supabase.auth.resetPasswordForEmail(
-      email,
-      {
-        redirectTo:
-          "https://hozifaelghapour9-prog.github.io/Body-_reset/reset-password.html"
-      }
-    );
-
-
-    if (error) {
-
-      message.style.color = "#dc2626";
-
-      message.textContent =
-        "Reset error: " +
-        error.message;
-
-      return;
-
-    }
-
-
-    message.style.color = "#16a34a";
-
-    message.textContent =
-      "Password reset email sent. Check your email.";
+    window.location.href =
+      "forgot-password.html";
 
   };
 
@@ -1032,4 +950,4 @@
   };
 
 </script></body>
-</html>
+          </html>
