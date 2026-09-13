@@ -1,8 +1,13 @@
-<!DOCTYPE html><html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset - Login</title>  <style>
+  <title>BodyReset - Login</title>
+
+  <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -327,242 +332,300 @@
         gap: 0;
       }
     }
-  </style></head><body><header>
-  <div class="header-content"><a href="index.html" class="home-link">
-  Home
-</a>
 
-<div class="logo">
-  Body<span>Reset</span>
-</div>
+  </style>
+</head>
 
-  </div>
-</header><section class="auth-section">  <div class="auth-box"><div class="auth-image">
+<body>
 
-  <div class="image-content">
+<header>
 
-    <h2>
-      ابدأ تغيير جسمك
-    </h2>
+  <div class="header-content">
 
-    <p>
-      التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-    </p>
+    <a href="index.html" class="home-link">
+      Home
+    </a>
+
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
 
   </div>
 
-</div>
+</header>
 
-<div class="auth-form">
 
-  <!-- LOGIN -->
+<section class="auth-section">
 
-  <div id="loginForm">
+  <div class="auth-box">
 
-    <div class="input-group">
 
-      <label>
-        Username
-      </label>
+    <div class="auth-image">
 
-      <input
-        type="text"
-        id="loginUsername"
-        autocomplete="username"
-        placeholder="Enter your username"
-      >
+      <div class="image-content">
+
+        <h2>
+          ابدأ تغيير جسمك
+        </h2>
+
+        <p>
+          التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
+        </p>
+
+      </div>
 
     </div>
 
-    <div class="input-group">
 
-      <label>
-        Password
-      </label>
+    <div class="auth-form">
 
-      <div class="password-box">
 
-        <input
-          type="password"
-          id="loginPassword"
-          autocomplete="current-password"
-          placeholder="Enter your password"
+      <!-- LOGIN -->
+
+      <div id="loginForm">
+
+        <div class="input-group">
+
+          <label>
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="loginUsername"
+            autocomplete="username"
+            placeholder="Enter your username"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            Password
+          </label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="loginPassword"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+            >
+
+            <button
+              type="button"
+              class="show-password"
+              onclick="togglePassword('loginPassword', this)"
+            >
+              Show
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="main-btn"
+          onclick="loginUser()"
         >
+          Login
+        </button>
+
 
         <button
           type="button"
-          class="show-password"
-          onclick="togglePassword('loginPassword', this)"
+          class="forgot-password"
+          onclick="forgotPassword()"
         >
-          Show
+          Forgot password?
         </button>
 
-      </div>
 
-    </div>
+        <div class="switch">
 
-    <button
-      class="main-btn"
-      onclick="loginUser()"
-    >
-      Login
-    </button>
+          Don't have an account?
 
-    <button
-      type="button"
-      class="forgot-password"
-      onclick="forgotPassword()"
-    >
-      Forgot password?
-    </button>
+          <button onclick="showSignup()">
+            Sign up
+          </button>
 
-    <div class="switch">
-
-      Don't have an account?
-
-      <button onclick="showSignup()">
-        Sign up
-      </button>
-
-    </div>
-
-    <div
-      id="loginMessage"
-      class="message"
-    ></div>
-
-  </div>
+        </div>
 
 
-  <!-- SIGNUP -->
-
-  <div id="signupForm">
-
-    <div class="signup-grid">
-
-      <div class="input-group">
-
-        <label>
-          Username
-        </label>
-
-        <input
-          type="text"
-          id="username"
-          placeholder="Username"
-        >
+        <div
+          id="loginMessage"
+          class="message"
+        ></div>
 
       </div>
 
-      <div class="input-group">
 
-        <label>
-          Email Address
-        </label>
+      <!-- SIGNUP -->
 
-        <input
-          type="email"
-          id="signupEmail"
-          autocomplete="email"
-          placeholder="Email address"
-        >
+      <div id="signupForm">
 
-      </div>
+        <div class="signup-grid">
 
-      <div class="input-group">
 
-        <label>
-          Age
-        </label>
+          <div class="input-group">
 
-        <input
-          type="number"
-          id="age"
-          placeholder="Age"
-        >
+            <label>
+              Username
+            </label>
 
-      </div>
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              autocomplete="username"
+            >
 
-      <div class="input-group">
+          </div>
 
-        <label>
-          Gender
-        </label>
 
-        <select id="gender">
+          <div class="input-group">
 
-          <option value="">
-            Select gender
-          </option>
+            <label>
+              Email Address
+            </label>
 
-          <option value="male">
-            Male
-          </option>
+            <input
+              type="email"
+              id="signupEmail"
+              autocomplete="email"
+              placeholder="Email address"
+            >
 
-          <option value="female">
-            Female
-          </option>
+          </div>
 
-        </select>
 
-      </div>
+          <div class="input-group">
 
-    </div>
+            <label>
+              Phone Number
+            </label>
 
-    <div class="input-group">
+            <input
+              type="tel"
+              id="signupPhone"
+              autocomplete="tel"
+              placeholder="Phone number"
+            >
 
-      <label>
-        Create Password
-      </label>
+          </div>
 
-      <div class="password-box">
 
-        <input
-          type="password"
-          id="signupPassword"
-          autocomplete="new-password"
-          placeholder="Create password"
-        >
+          <div class="input-group">
+
+            <label>
+              Age
+            </label>
+
+            <input
+              type="number"
+              id="age"
+              placeholder="Age"
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Gender
+            </label>
+
+            <select id="gender">
+
+              <option value="">
+                Select gender
+              </option>
+
+              <option value="male">
+                Male
+              </option>
+
+              <option value="female">
+                Female
+              </option>
+
+            </select>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            Create Password
+          </label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="signupPassword"
+              autocomplete="new-password"
+              placeholder="Create password"
+            >
+
+            <button
+              type="button"
+              class="show-password"
+              onclick="togglePassword('signupPassword', this)"
+            >
+              Show
+            </button>
+
+          </div>
+
+        </div>
+
 
         <button
-          type="button"
-          class="show-password"
-          onclick="togglePassword('signupPassword', this)"
+          class="main-btn"
+          onclick="createAccount()"
         >
-          Show
+          Create Account
         </button>
+
+
+        <div class="switch">
+
+          Already have an account?
+
+          <button onclick="showLogin()">
+            Login
+          </button>
+
+        </div>
+
+
+        <div
+          id="signupMessage"
+          class="message"
+        ></div>
+
 
       </div>
 
-    </div>
-
-    <button
-      class="main-btn"
-      onclick="createAccount()"
-    >
-      Create Account
-    </button>
-
-    <div class="switch">
-
-      Already have an account?
-
-      <button onclick="showLogin()">
-        Login
-      </button>
 
     </div>
-
-    <div
-      id="signupMessage"
-      class="message"
-    ></div>
 
   </div>
 
-</div>
+</section>
 
-  </div></section><script type="module">
+
+<script type="module">
 
   import {
     createClient
@@ -584,6 +647,8 @@
     );
 
 
+  /* SHOW SIGNUP */
+
   window.showSignup = function() {
 
     document.getElementById("loginForm").style.display =
@@ -595,6 +660,8 @@
   };
 
 
+  /* SHOW LOGIN */
+
   window.showLogin = function() {
 
     document.getElementById("signupForm").style.display =
@@ -605,6 +672,8 @@
 
   };
 
+
+  /* SHOW / HIDE PASSWORD */
 
   window.togglePassword = function(id, button) {
 
@@ -654,48 +723,45 @@
   }
 
 
-  document.querySelectorAll(".password-box input").forEach(function(input) {
+  document
+    .querySelectorAll(".password-box input")
+    .forEach(function(input) {
 
-    const button =
-      input.parentElement.querySelector(".show-password");
+      const button =
+        input.parentElement.querySelector(".show-password");
 
-
-    updateShowColor(input, button);
-
-
-    input.addEventListener("input", function() {
 
       updateShowColor(input, button);
 
-    });
 
-
-    input.addEventListener("change", function() {
-
-      updateShowColor(input, button);
-
-    });
-
-
-    input.addEventListener("focus", function() {
-
-      setTimeout(function() {
+      input.addEventListener("input", function() {
 
         updateShowColor(input, button);
 
-      }, 100);
+      });
+
+
+      input.addEventListener("change", function() {
+
+        updateShowColor(input, button);
+
+      });
+
+
+      input.addEventListener("focus", function() {
+
+        setTimeout(function() {
+
+          updateShowColor(input, button);
+
+        }, 100);
+
+      });
 
     });
 
-  });
 
-
-  /*
-    FORGOT PASSWORD
-
-    بدل إرسال الريست من صفحة تسجيل الدخول،
-    يتم فتح صفحة forgot-password.html
-  */
+  /* FORGOT PASSWORD */
 
   window.forgotPassword = function() {
 
@@ -705,22 +771,33 @@
   };
 
 
+  /* CREATE ACCOUNT */
+
   window.createAccount = async function() {
 
     const username =
       document.getElementById("username").value.trim();
 
+
     const email =
       document.getElementById("signupEmail").value.trim();
+
+
+    const phone =
+      document.getElementById("signupPhone").value.trim();
+
 
     const age =
       document.getElementById("age").value.trim();
 
+
     const gender =
       document.getElementById("gender").value;
 
+
     const password =
       document.getElementById("signupPassword").value;
+
 
     const message =
       document.getElementById("signupMessage");
@@ -729,9 +806,12 @@
     message.textContent = "";
 
 
+    /* CHECK FIELDS */
+
     if (
       !username ||
       !email ||
+      !phone ||
       !age ||
       !gender ||
       !password
@@ -747,6 +827,8 @@
     }
 
 
+    /* CHECK PASSWORD */
+
     if (password.length < 6) {
 
       message.style.color = "#dc2626";
@@ -759,11 +841,27 @@
     }
 
 
+    /* CHECK PHONE */
+
+    if (phone.length < 8) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "Please enter a valid phone number.";
+
+      return;
+
+    }
+
+
     message.style.color = "#071a33";
 
     message.textContent =
       "Creating account...";
 
+
+    /* SIGN UP */
 
     const {
       data,
@@ -780,6 +878,8 @@
 
           username: username,
 
+          phone: phone,
+
           age: age,
 
           gender: gender
@@ -790,6 +890,8 @@
 
     });
 
+
+    /* ERROR */
 
     if (error) {
 
@@ -803,6 +905,8 @@
     }
 
 
+    /* SESSION EXISTS */
+
     if (data.session) {
 
       window.location.href =
@@ -812,6 +916,8 @@
 
     }
 
+
+    /* CHECK CURRENT USER */
 
     const {
       data: currentUser
@@ -829,21 +935,27 @@
     }
 
 
-    message.style.color = "#dc2626";
+    /* EMAIL CONFIRMATION */
+
+    message.style.color = "#16a34a";
 
     message.textContent =
-      "Account created, but automatic login did not start. Please try logging in.";
+      "Account created successfully. Please check your email to continue.";
 
   };
 
+
+  /* LOGIN */
 
   window.loginUser = async function() {
 
     const username =
       document.getElementById("loginUsername").value.trim();
 
+
     const password =
       document.getElementById("loginPassword").value;
+
 
     const message =
       document.getElementById("loginMessage");
@@ -869,6 +981,8 @@
     message.textContent =
       "Logging in...";
 
+
+    /* GET EMAIL BY USERNAME */
 
     const {
       data: email,
@@ -905,6 +1019,8 @@
 
     }
 
+
+    /* LOGIN */
 
     const {
       data,
@@ -949,5 +1065,7 @@
 
   };
 
-</script></body>
+</script>
+
+</body>
   </html>
