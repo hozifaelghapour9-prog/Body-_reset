@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Verification Code - BodyReset</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      padding: 35px 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #071a33;
+      margin-bottom: 25px;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: #071a33;
+      text-align: center;
+      font-size: 25px;
+    }
+
+    p {
+      text-align: center;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .email {
+      direction: ltr;
+      text-align: center;
+      color: #071a33;
+      font-weight: bold;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 15px;
+      border: 2px solid #071a33;
+      border-radius: 9px;
+      background: #071a33;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 8px;
+      outline: none;
+      direction: ltr;
+      text-align: center;
+    }
+
+    input::placeholder {
+      color: #cbd5e1;
+      letter-spacing: 3px;
+      font-size: 18px;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 9px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 18px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <div class="logo">
+      Body<span>Reset</span>
+    </div>
+
+    <h1>
+      Verification Code
+    </h1>
+
+    <p>
+      اكتب رمز التحقق المكون من 6 أرقام
+    </p>
+
+    <div class="email" id="emailText">
+      Loading...
+    </div>
+
+    <input
+      type="text"
+      id="otp"
+      placeholder="000000"
+      inputmode="numeric"
+      maxlength="6"
+      autocomplete="one-time-code"
+    >
+
+    <button onclick="verifyCode()">
+      Verify Code
+    </button>
+
+    <div id="message"></div>
+
+    <a class="back" href="forgot-method.html">
+      Back
+    </a>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+    const email =
+      sessionStorage.getItem("reset_email");
+
+    const emailText =
+      document.getElementById("emailText");
+
+    const message =
+      document.getElementById("message");
+
+
+    if (!email) {
+
+      emailText.textContent =
+        "Email not found";
+
+      message.style.color =
+        "#dc2626";
+
+      message.textContent =
+        "بيانات الاستعادة غير موجودة.";
+
+    } else {
+
+      emailText.textContent =
+        email;
+
+    }
+
+
+    async function verifyCode() {
+
+      const otp =
+        document.getElementById("otp").value.trim();
+
+
+      message.textContent = "";
+
+
+      if (!otp) {
+
+        message.style.color =
+          "#dc2626";
+
+        message.textContent =
+          "اكتب رمز التحقق.";
+
+        return;
+
+      }
+
+
+      if (!/^\d{6}$/.test(otp)) {
+
+        message.style.color =
+          "#dc2626";
+
+        message.textContent =
+          "رمز التحقق يجب أن يكون 6 أرقام.";
+
+        return;
+
+      }
+
+
+      message.style.color =
+        "#64748b";
+
+      message.textContent =
+        "جاري التحقق...";
+
+
+      const { data, error } =
+        await supabaseClient.auth.verifyOtp({
+
+          email: email,
+
+          token: otp,
+
+          type: "email"
+
+        });
+
+
+      if (error) {
+
+        message.style.color =
+          "#dc2626";
+
+        message.textContent =
+          "رمز التحقق غير صحيح أو منتهي الصلاحية.";
+
+        return;
+
+      }
+
+
+      if (!data.session) {
+
+        message.style.color =
+          "#dc2626";
+
+        message.textContent =
+          "تعذر إنشاء جلسة آمنة. حاول مرة أخرى.";
+
+        return;
+
+      }
+
+
+      sessionStorage.setItem(
+        "reset_verified",
+        "true"
+      );
+
+
+      window.location.href =
+        "new-password.html";
+
+    }
+
+  </script>
+
+</body>
+</html>
