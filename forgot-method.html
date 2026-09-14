@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Forgot Password - BodyReset</title>
+  <title>Reset Password - BodyReset</title>
 
   <style>
     * {
@@ -57,42 +57,47 @@
       margin-bottom: 25px;
     }
 
-    input {
+    .method {
       width: 100%;
-      padding: 14px;
+      padding: 18px;
       margin-bottom: 15px;
       border: 2px solid #071a33;
-      border-radius: 9px;
+      border-radius: 10px;
       background: #071a33;
       color: white;
-      font-size: 16px;
-      outline: none;
+      cursor: pointer;
+      text-align: right;
+      transition: .2s;
+    }
+
+    .method:hover {
+      background: #0b2547;
+      border-color: #2563eb;
+    }
+
+    .method-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .method-text {
+      font-size: 14px;
+      color: #cbd5e1;
       direction: ltr;
       text-align: left;
     }
 
-    input::placeholder {
-      color: #cbd5e1;
+    .disabled {
+      opacity: .55;
+      cursor: not-allowed;
     }
 
-    input:focus {
-      border-color: #2563eb;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      border: 0;
-      border-radius: 9px;
-      background: #2563eb;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #1d4ed8;
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     .back {
@@ -102,13 +107,6 @@
       color: #2563eb;
       text-decoration: none;
       font-weight: bold;
-    }
-
-    #message {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 15px;
-      line-height: 1.7;
     }
   </style>
 </head>
@@ -122,67 +120,142 @@
     </div>
 
     <h1>
-      Find your account
+      Choose a method
     </h1>
 
     <p>
-      اكتب الإيميل أو رقم الهاتف المرتبط بحسابك
+      اختر المكان الذي تريد استلام رمز التحقق عليه
     </p>
 
-    <input
-      type="text"
-      id="phoneEmail"
-      placeholder="Phone/Email"
-      autocomplete="email"
-    >
+    <div class="method" onclick="sendEmailCode()">
 
-    <button onclick="continueReset()">
-      Continue
-    </button>
+      <div class="method-title">
+        📧 Send code to Email
+      </div>
+
+      <div class="method-text" id="emailText">
+        Loading...
+      </div>
+
+    </div>
+
+    <div class="method disabled" onclick="sendPhoneCode()">
+
+      <div class="method-title">
+        📱 Send code to Phone
+      </div>
+
+      <div class="method-text" id="phoneText">
+        SMS verification
+      </div>
+
+    </div>
 
     <div id="message"></div>
 
-    <a class="back" href="auth.html">
-      Back to login
+    <a class="back" href="forgot-password.html">
+      Back
     </a>
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
 
-    function continueReset() {
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
 
-      const phoneEmail =
-        document.getElementById("phoneEmail").value.trim();
+    const SUPABASE_KEY =
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
-      const message =
-        document.getElementById("message");
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+    const email =
+      sessionStorage.getItem("reset_email");
+
+    const phone =
+      sessionStorage.getItem("reset_phone");
+
+    const emailText =
+      document.getElementById("emailText");
+
+    const phoneText =
+      document.getElementById("phoneText");
+
+    const message =
+      document.getElementById("message");
 
 
-      message.textContent = "";
+    if (!email || !phone) {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "بيانات الاستعادة غير موجودة. ارجع وحاول مرة أخرى.";
+
+    } else {
+
+      emailText.textContent =
+        email;
+
+      phoneText.textContent =
+        phone;
+
+    }
 
 
-      if (!phoneEmail) {
+    async function sendEmailCode() {
+
+      if (!email) {
+        return;
+      }
+
+      message.style.color = "#64748b";
+
+      message.textContent =
+        "جاري إرسال رمز التحقق...";
+
+      const { error } =
+        await supabaseClient.auth.signInWithOtp({
+          email: email,
+          options: {
+            shouldCreateUser: false
+          }
+        });
+
+      if (error) {
 
         message.style.color = "#dc2626";
 
         message.textContent =
-          "اكتب الإيميل أو رقم الهاتف أولاً.";
+          "حصل خطأ أثناء إرسال الرمز: " +
+          error.message;
 
         return;
       }
 
-
-      // Save the entered information
       sessionStorage.setItem(
-        "reset_phone_email",
-        phoneEmail
+        "reset_method",
+        "email"
       );
 
-
-      // Go to the next page
       window.location.href =
-        "forgot-method.html";
+        "reset-otp.html";
+
+    }
+
+
+    function sendPhoneCode() {
+
+      message.style.color = "#dc2626";
+
+      message.textContent =
+        "إرسال رمز SMS يحتاج ربط خدمة التحقق بالهاتف أولاً.";
 
     }
 
