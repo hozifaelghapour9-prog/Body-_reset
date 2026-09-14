@@ -86,6 +86,7 @@
       color: #cbd5e1;
       direction: ltr;
       text-align: left;
+      word-break: break-word;
     }
 
     .disabled {
@@ -124,13 +125,13 @@
     </h1>
 
     <p>
-      اختر المكان الذي تريد استلام رمز التحقق عليه
+      اختر طريقة استلام رمز التحقق
     </p>
 
-    <div class="method" onclick="sendEmailCode()">
+    <div class="method" id="emailMethod" onclick="sendEmailCode()">
 
       <div class="method-title">
-        📧 Send code to Email
+        Send code to Email
       </div>
 
       <div class="method-text" id="emailText">
@@ -139,10 +140,10 @@
 
     </div>
 
-    <div class="method disabled" onclick="sendPhoneCode()">
+    <div class="method disabled" id="phoneMethod" onclick="sendPhoneCode()">
 
       <div class="method-title">
-        📱 Send code to Phone
+        Send code to Phone
       </div>
 
       <div class="method-text" id="phoneText">
@@ -175,11 +176,16 @@
         SUPABASE_KEY
       );
 
-    const email =
-      sessionStorage.getItem("reset_email");
 
-    const phone =
-      sessionStorage.getItem("reset_phone");
+    const phoneEmail =
+      sessionStorage.getItem("reset_phone_email");
+
+
+    const emailMethod =
+      document.getElementById("emailMethod");
+
+    const phoneMethod =
+      document.getElementById("phoneMethod");
 
     const emailText =
       document.getElementById("emailText");
@@ -191,42 +197,69 @@
       document.getElementById("message");
 
 
-    if (!email || !phone) {
+    if (!phoneEmail) {
 
       message.style.color = "#dc2626";
 
       message.textContent =
         "بيانات الاستعادة غير موجودة. ارجع وحاول مرة أخرى.";
 
+      emailMethod.style.display = "none";
+      phoneMethod.style.display = "none";
+
     } else {
 
-      emailText.textContent =
-        email;
+      const isEmail =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(phoneEmail);
 
-      phoneText.textContent =
-        phone;
+
+      if (isEmail) {
+
+        emailText.textContent =
+          phoneEmail;
+
+        phoneMethod.style.display =
+          "none";
+
+      } else {
+
+        phoneMethod.classList.remove("disabled");
+
+        phoneText.textContent =
+          phoneEmail;
+
+        emailMethod.style.display =
+          "none";
+
+      }
 
     }
 
 
     async function sendEmailCode() {
 
-      if (!email) {
+      if (!phoneEmail) {
         return;
       }
+
 
       message.style.color = "#64748b";
 
       message.textContent =
         "جاري إرسال رمز التحقق...";
 
+
       const { error } =
         await supabaseClient.auth.signInWithOtp({
-          email: email,
+
+          email: phoneEmail,
+
           options: {
             shouldCreateUser: false
           }
+
         });
+
 
       if (error) {
 
@@ -237,12 +270,21 @@
           error.message;
 
         return;
+
       }
+
 
       sessionStorage.setItem(
         "reset_method",
         "email"
       );
+
+
+      sessionStorage.setItem(
+        "reset_email",
+        phoneEmail
+      );
+
 
       window.location.href =
         "reset-otp.html";
@@ -255,7 +297,7 @@
       message.style.color = "#dc2626";
 
       message.textContent =
-        "إرسال رمز SMS يحتاج ربط خدمة التحقق بالهاتف أولاً.";
+        "إرسال رمز SMS سيتم تفعيله بعد ربط خدمة التحقق بالهاتف.";
 
     }
 
