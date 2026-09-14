@@ -126,21 +126,14 @@
     </h1>
 
     <p>
-      اكتب الإيميل ورقم الهاتف المرتبطين بحسابك
+      اكتب الإيميل أو رقم الهاتف المرتبط بحسابك
     </p>
 
     <input
-      type="email"
-      id="email"
-      placeholder="Email"
+      type="text"
+      id="phoneEmail"
+      placeholder="Phone/Email"
       autocomplete="email"
-    >
-
-    <input
-      type="tel"
-      id="phone"
-      placeholder="Phone Number"
-      autocomplete="tel"
     >
 
     <button onclick="continueReset()">
@@ -159,11 +152,8 @@
 
     function continueReset() {
 
-      const email =
-        document.getElementById("email").value.trim();
-
-      const phone =
-        document.getElementById("phone").value.trim();
+      const phoneEmail =
+        document.getElementById("phoneEmail").value.trim();
 
       const message =
         document.getElementById("message");
@@ -172,23 +162,12 @@
       message.textContent = "";
 
 
-      if (!email) {
+      if (!phoneEmail) {
 
         message.style.color = "#dc2626";
 
         message.textContent =
-          "اكتب الإيميل أولاً.";
-
-        return;
-      }
-
-
-      if (!phone) {
-
-        message.style.color = "#dc2626";
-
-        message.textContent =
-          "اكتب رقم الهاتف أولاً.";
+          "اكتب الإيميل أو رقم الهاتف أولاً.";
 
         return;
       }
@@ -196,13 +175,8 @@
 
       // Save the entered information
       sessionStorage.setItem(
-        "reset_email",
-        email
-      );
-
-      sessionStorage.setItem(
-        "reset_phone",
-        phone
+        "reset_phone_email",
+        phoneEmail
       );
 
 
@@ -215,4 +189,4 @@
   </script>
 
 </body>
-  </html>
+</html>
