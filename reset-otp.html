@@ -139,7 +139,7 @@
     </h1>
 
     <p>
-      اكتب رمز التحقق المكون من 6 أرقام
+      اكتب رمز التحقق المكون من 8 أرقام
     </p>
 
     <div class="email" id="emailText">
@@ -149,9 +149,9 @@
     <input
       type="text"
       id="otp"
-      placeholder="000000"
+      placeholder="00000000"
       inputmode="numeric"
-      maxlength="6"
+      maxlength="8"
       autocomplete="one-time-code"
     >
 
@@ -235,13 +235,13 @@
       }
 
 
-      if (!/^\d{6}$/.test(otp)) {
+      if (!/^\d{8}$/.test(otp)) {
 
         message.style.color =
           "#dc2626";
 
         message.textContent =
-          "رمز التحقق يجب أن يكون 6 أرقام.";
+          "رمز التحقق يجب أن يكون 8 أرقام.";
 
         return;
 
