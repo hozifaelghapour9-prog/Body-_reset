@@ -107,8 +107,8 @@
     }
 
     .image-content p {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 21px;
+      line-height: 1.8;
       max-width: 430px;
       margin-left: auto;
       color: white;
@@ -210,7 +210,7 @@
     }
 
     .forgot-password {
-      display: block;
+      display: none;
       width: 100%;
       margin-top: 13px;
       text-align: center;
@@ -282,7 +282,7 @@
       }
 
       .image-content p {
-        font-size: 17px;
+        font-size: 19px;
       }
 
       .auth-form {
@@ -320,7 +320,7 @@
       }
 
       .image-content p {
-        font-size: 16px;
+        font-size: 18px;
       }
 
       .auth-form {
@@ -438,10 +438,11 @@
 
         <button
           type="button"
+          id="forgotPasswordButton"
           class="forgot-password"
           onclick="forgotPassword()"
         >
-          Forgot password?
+          Forget password?
         </button>
 
 
@@ -761,7 +762,7 @@
     });
 
 
-  /* FORGOT PASSWORD */
+  /* FORGET PASSWORD */
 
   window.forgotPassword = function() {
 
@@ -960,8 +961,13 @@
     const message =
       document.getElementById("loginMessage");
 
+    const forgotButton =
+      document.getElementById("forgotPasswordButton");
+
 
     message.textContent = "";
+
+    forgotButton.style.display = "none";
 
 
     if (!username || !password) {
@@ -1042,6 +1048,8 @@
         "Login error: " +
         error.message +
         (error.code ? " (" + error.code + ")" : "");
+
+      forgotButton.style.display = "block";
 
       return;
 
