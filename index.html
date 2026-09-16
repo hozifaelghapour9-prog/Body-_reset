@@ -138,9 +138,9 @@ font-weight:bold;
 display:inline-block;
 }
 
-/* FLOATING CONTACT */
+/* FLOATING BUTTONS */
 
-.contact-float{
+.floating-buttons{
 position:fixed;
 left:18px;
 bottom:25px;
@@ -149,32 +149,50 @@ z-index:9999;
 display:flex;
 align-items:center;
 gap:10px;
+direction:ltr;
+}
 
-background:#2563eb;
-color:white;
+.contact-float,
+.subscribe-float{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+
+text-decoration:none;
+font-weight:bold;
 
 padding:12px 18px;
 border-radius:30px;
-
-text-decoration:none;
-font-size:16px;
-font-weight:bold;
 
 box-shadow:0 6px 18px rgba(7,26,51,.25);
 
 transition:
 transform .25s ease,
-box-shadow .25s ease,
-background .25s ease;
+box-shadow .25s ease;
+}
+
+.contact-float{
+background:#2563eb;
+color:white;
 }
 
 .contact-float:hover{
-background:#1d4ed8;
+transform:translateY(-3px);
+box-shadow:0 9px 24px rgba(37,99,235,.35);
+}
+
+.subscribe-float{
+background:#071a33;
+color:white;
+}
+
+.subscribe-float:hover{
 transform:translateY(-3px);
 box-shadow:0 9px 24px rgba(7,26,51,.35);
 }
 
-.contact-icon{
+.whatsapp-icon{
 width:27px;
 height:27px;
 
@@ -183,11 +201,11 @@ align-items:center;
 justify-content:center;
 
 background:white;
-color:#2563eb;
+color:#25D366;
 
 border-radius:50%;
 
-font-size:17px;
+font-size:18px;
 font-weight:bold;
 }
 
@@ -513,20 +531,25 @@ padding:60px 5%;
 font-size:31px;
 }
 
-/* FLOATING CONTACT MOBILE */
+/* FLOATING BUTTONS MOBILE */
 
-.contact-float{
-left:12px;
+.floating-buttons{
+left:10px;
 bottom:18px;
-padding:10px 14px;
-font-size:14px;
-gap:8px;
+gap:6px;
 }
 
-.contact-icon{
+.contact-float,
+.subscribe-float{
+padding:10px 12px;
+font-size:13px;
+gap:6px;
+}
+
+.whatsapp-icon{
 width:25px;
 height:25px;
-font-size:15px;
+font-size:16px;
 }
 
 }
@@ -564,7 +587,9 @@ Body<span>Reset</span>
 
 </header>
 
-<!-- FLOATING CONTACT -->
+<!-- FLOATING BUTTONS -->
+
+<div class="floating-buttons">
 
 <a
 class="contact-float"
@@ -573,13 +598,27 @@ target="_blank"
 aria-label="تواصل معنا عبر واتساب"
 >
 
-<span class="contact-icon">✉</span>
+<span class="whatsapp-icon">◉</span>
 
 <span>
 تواصل معنا
 </span>
 
 </a>
+
+<a
+class="subscribe-float"
+href="auth.html"
+aria-label="اشترك الآن"
+>
+
+<span>
+اشترك الآن
+</span>
+
+</a>
+
+</div>
 
 <!-- HERO -->
 
