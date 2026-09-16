@@ -145,7 +145,6 @@ position:fixed;
 left:18px;
 right:18px;
 bottom:25px;
-
 z-index:9999;
 
 display:flex;
@@ -153,7 +152,6 @@ align-items:center;
 justify-content:space-between;
 
 direction:ltr;
-
 pointer-events:none;
 }
 
@@ -166,7 +164,6 @@ gap:8px;
 
 text-decoration:none;
 font-weight:bold;
-
 border-radius:30px;
 
 box-shadow:0 6px 18px rgba(7,26,51,.25);
@@ -178,12 +175,9 @@ box-shadow .25s ease;
 pointer-events:auto;
 }
 
-/* تواصل معنا */
-
 .contact-float{
 background:#2563eb;
 color:white;
-
 padding:9px 13px;
 font-size:14px;
 }
@@ -192,8 +186,6 @@ font-size:14px;
 transform:translateY(-3px);
 box-shadow:0 9px 24px rgba(37,99,235,.35);
 }
-
-/* أيقونة واتساب */
 
 .whatsapp-icon{
 width:24px;
@@ -207,17 +199,11 @@ background:white;
 color:#25D366;
 
 border-radius:50%;
-
-font-size:15px;
-font-weight:bold;
 }
-
-/* اشترك الآن */
 
 .subscribe-float{
 background:#071a33;
 color:white;
-
 padding:12px 20px;
 font-size:16px;
 }
@@ -323,6 +309,69 @@ padding:13px 18px;
 border-radius:8px;
 margin-bottom:10px;
 font-size:17px;
+}
+
+/* CALORIES */
+
+.calories{
+background:#eef3f8;
+}
+
+.calories-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:45px;
+align-items:center;
+}
+
+.calories img{
+width:100%;
+height:430px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.calories-content h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.calories-content p{
+color:#334155;
+font-size:19px;
+margin-bottom:22px;
+}
+
+.macro-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.macro-item{
+background:#071a33;
+color:white;
+padding:15px 18px;
+border-radius:9px;
+font-size:17px;
+font-weight:bold;
+}
+
+.calories-button{
+display:inline-block;
+margin-top:25px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+padding:13px 26px;
+border-radius:8px;
+font-weight:bold;
+transition:.25s;
+}
+
+.calories-button:hover{
+background:#1d4ed8;
+transform:translateY(-2px);
 }
 
 /* PROGRESS */
@@ -451,10 +500,6 @@ header{
 padding:22px 5% 18px;
 }
 
-.top-header{
-margin-bottom:20px;
-}
-
 .logo{
 font-size:28px;
 }
@@ -475,11 +520,13 @@ font-size:17px;
 .workout-grid,
 .progress-grid,
 .why-grid,
-.nutrition-box{
+.nutrition-box,
+.calories-box{
 grid-template-columns:1fr;
 }
 
-.nutrition img{
+.nutrition img,
+.calories img{
 height:300px;
 }
 
@@ -545,11 +592,16 @@ padding:60px 5%;
 }
 
 .section-title,
-.nutrition h2{
+.nutrition h2,
+.calories-content h2{
 font-size:31px;
 }
 
-/* FLOATING BUTTONS MOBILE */
+.macro-list{
+grid-template-columns:1fr;
+}
+
+/* FLOATING BUTTONS */
 
 .floating-buttons{
 left:10px;
@@ -566,7 +618,6 @@ gap:5px;
 .whatsapp-icon{
 width:22px;
 height:22px;
-font-size:14px;
 }
 
 .subscribe-float{
@@ -601,19 +652,23 @@ Body<span>Reset</span>
 <nav>
 
 <a href="#home">الرئيسية</a>
+
 <a href="#workouts">التمارين</a>
+
 <a href="#nutrition">التغذية</a>
+
+<a href="#calories">السعرات والماكروز</a>
+
 <a href="#progress">التقدم</a>
 
 </nav>
 
 </header>
 
+
 <!-- FLOATING BUTTONS -->
 
 <div class="floating-buttons">
-
-<!-- تواصل معنا -->
 
 <a
 class="contact-float"
@@ -639,7 +694,7 @@ transform="scale(.88) translate(1.6 1.6)"
 />
 
 <path
-d="M17.2 14.1C16.9 13.9 15.2 13.1 14.9 13C14.6 12.9 14.4 12.9 14.2 13.2C14 13.5 13.5 14.1 13.3 14.3C13.1 14.5 12.9 14.6 12.6 14.5C12.3 14.4 11.3 14.1 10.2 13.2C9.3 12.4 8.7 11.4 8.5 11.1C8.3 10.8 8.5 10.6 8.7 10.4C8.9 10.2 9.1 9.9 9.2 9.7C9.3 9.5 9.3 9.3 9.2 9C9.1 8.7 8.5 7 8.2 6.3C8 5.7 7.7 5.8 7.5 5.8H6.8C6.6 5.8 6.3 5.9 6.1 6.2C5.8 6.5 5.1 7.2 5.1 8.9C5.1 10.6 6.2 12.2 6.4 12.4C6.6 12.6 8.6 15.7 11.7 17C12.4 17.3 13 17.5 13.4 17.6C14.1 17.8 14.7 17.8 15.2 17.7C15.8 17.6 17 17 17.2 16.4C17.5 15.8 17.5 15.2 17.4 15.1C17.4 14.8 17.3 14.6 17.2 14.1Z"
+d="M17.2 14.1C16.9 13.9 15.2 13.1 14.9 13C14.6 12.9 14.4 12.9 14.2 13.2C14 13.5 13.5 14.1 13.3 14.3C13.1 14.5 12.9 14.6 12.6 14.5C12.3 14.4 11.3 14.1 10.2 13.2C9.3 12.4 8.7 11.4 8.5 11.1C8.3 10.8 8.5 10.6 8.7 10.4C8.9 10.2 9.1 9.9 9.2 9.7C9.3 9.5 9.3 9.3 9.2 9C9.1 8.7 8.5 5.7 8.2 6.3C8 5.7 7.7 5.8 7.5 5.8H6.8C6.6 5.8 6.3 5.9 6.1 6.2C5.8 6.5 5.1 7.2 5.1 8.9C5.1 10.6 6.2 12.2 6.4 12.4C6.6 12.6 8.6 15.7 11.7 17C12.4 17.3 13 17.5 13.4 17.6C14.1 17.8 14.7 17.8 15.2 17.7C15.8 17.6 17 17 17.2 16.4C17.5 15.8 17.5 15.2 17.4 15.1C17.4 14.8 17.3 14.6 17.2 14.1Z"
 fill="white"
 transform="scale(.88) translate(1.6 1.6)"
 />
@@ -648,27 +703,22 @@ transform="scale(.88) translate(1.6 1.6)"
 
 </span>
 
-<span>
 تواصل معنا
-</span>
 
 </a>
 
-<!-- اشترك الآن -->
 
 <a
 class="subscribe-float"
 href="auth.html"
-aria-label="اشترك الآن"
 >
 
-<span>
 اشترك الآن
-</span>
 
 </a>
 
 </div>
+
 
 <!-- HERO -->
 
@@ -702,6 +752,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </section>
 
+
 <!-- WORKOUTS -->
 
 <section id="workouts">
@@ -715,6 +766,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 </p>
 
 <div class="workout-grid">
+
 
 <div class="workout-card">
 
@@ -732,6 +784,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </div>
 
+
 <div class="workout-card">
 
 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85">
@@ -747,6 +800,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 </div>
 
 </div>
+
 
 <div class="workout-card">
 
@@ -764,9 +818,11 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </div>
 
+
 </div>
 
 </section>
+
 
 <!-- NUTRITION -->
 
@@ -805,6 +861,63 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </section>
 
+
+<!-- CALORIES & MACROS -->
+
+<section class="calories" id="calories">
+
+<div class="calories-box">
+
+<img
+src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1000&q=85"
+alt="حساب السعرات والماكروز"
+>
+
+<div class="calories-content">
+
+<h2>
+احسب سعراتك وماكروزك
+</h2>
+
+<p>
+اعرف احتياجك اليومي من السعرات والعناصر الغذائية
+وساعد نفسك تختار نظام يناسب هدفك.
+</p>
+
+<div class="macro-list">
+
+<div class="macro-item">
+السعرات اليومية
+</div>
+
+<div class="macro-item">
+البروتين
+</div>
+
+<div class="macro-item">
+الكربوهيدرات
+</div>
+
+<div class="macro-item">
+الدهون
+</div>
+
+</div>
+
+<a
+class="calories-button"
+href="calculator.html"
+>
+ابدأ حسابك
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
 <!-- PROGRESS -->
 
 <section id="progress">
@@ -818,6 +931,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 </p>
 
 <div class="progress-grid">
+
 
 <div class="progress-card">
 
@@ -835,6 +949,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </div>
 
+
 <div class="progress-card">
 
 <div class="progress-number">
@@ -850,6 +965,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 </p>
 
 </div>
+
 
 <div class="progress-card">
 
@@ -867,9 +983,11 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </div>
 
+
 </div>
 
 </section>
+
 
 <!-- WHY -->
 
@@ -885,6 +1003,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <div class="why-grid">
 
+
 <div class="why-card">
 
 <h3>
@@ -896,6 +1015,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 </p>
 
 </div>
+
 
 <div class="why-card">
 
@@ -909,6 +1029,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </div>
 
+
 <div class="why-card">
 
 <h3>
@@ -921,9 +1042,11 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 </div>
 
+
 </div>
 
 </section>
+
 
 <!-- PRICING -->
 
@@ -946,6 +1069,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 </div>
 
 </section>
+
 
 <!-- FOOTER -->
 
@@ -974,4 +1098,4 @@ BodyReset
 </footer>
 
 </body>
-</html>
+  </html>
