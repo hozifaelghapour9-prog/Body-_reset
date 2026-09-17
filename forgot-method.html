@@ -25,76 +25,85 @@
       width: 100%;
       min-height: 100vh;
       background: #ffffff;
-      padding: 70px 25px 40px;
+      padding: 45px 20px 30px;
     }
 
     .content {
       width: 100%;
-      max-width: 500px;
+      max-width: 430px;
       margin: 0 auto;
     }
 
     .title {
       text-align: center;
-      margin-bottom: 45px;
+      margin-bottom: 32px;
     }
 
     .title h1 {
-      margin: 0 0 12px;
+      margin: 0;
       color: #071a33;
-      font-size: 30px;
+      font-size: 26px;
       font-weight: 700;
-    }
-
-    .title-line {
-      width: 55px;
-      height: 4px;
-      background: #2563eb;
-      border-radius: 10px;
-      margin: 0 auto;
     }
 
     .method {
       width: 100%;
-      padding: 22px;
-      margin-bottom: 18px;
+      padding: 16px;
+      margin-bottom: 14px;
       border: 1px solid #dbe3ee;
-      border-radius: 16px;
+      border-radius: 13px;
       background: #ffffff;
       color: #071a33;
       cursor: pointer;
       text-align: right;
       transition: .2s ease;
-      box-shadow: 0 6px 18px rgba(7, 26, 51, .07);
+      box-shadow: 0 5px 15px rgba(7, 26, 51, .06);
     }
 
     .method:hover {
       border-color: #2563eb;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, .12);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .10);
     }
 
     .method-top {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 13px;
       direction: rtl;
     }
 
     .icon {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 10px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gmail-logo {
+      width: 31px;
+      height: 24px;
+      display: block;
+    }
+
+    .phone-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 10px;
       background: #071a33;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .icon svg {
-      width: 24px;
-      height: 24px;
+    .phone-icon svg {
+      width: 21px;
+      height: 21px;
       fill: none;
       stroke: white;
       stroke-width: 2;
@@ -104,17 +113,18 @@
 
     .method-info {
       flex: 1;
+      min-width: 0;
     }
 
     .method-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: bold;
       color: #071a33;
-      margin-bottom: 7px;
+      margin-bottom: 5px;
     }
 
     .method-text {
-      font-size: 14px;
+      font-size: 13px;
       color: #64748b;
       direction: ltr;
       text-align: left;
@@ -123,7 +133,7 @@
 
     .arrow {
       color: #2563eb;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
     }
 
@@ -135,24 +145,24 @@
     .disabled:hover {
       transform: none;
       border-color: #dbe3ee;
-      box-shadow: 0 6px 18px rgba(7, 26, 51, .07);
+      box-shadow: 0 5px 15px rgba(7, 26, 51, .06);
     }
 
     #message {
       text-align: center;
-      margin-top: 20px;
-      font-size: 15px;
+      margin-top: 16px;
+      font-size: 14px;
       line-height: 1.7;
     }
 
     .back {
       display: block;
       width: fit-content;
-      margin: 30px auto 0;
+      margin: 24px auto 0;
       color: #2563eb;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .back:hover {
@@ -162,39 +172,53 @@
     @media (max-width: 500px) {
 
       .box {
-        padding: 55px 18px 35px;
+        padding: 40px 17px 25px;
       }
 
       .title {
-        margin-bottom: 35px;
+        margin-bottom: 28px;
       }
 
       .title h1 {
-        font-size: 27px;
+        font-size: 24px;
       }
 
       .method {
-        padding: 18px;
-        border-radius: 14px;
+        padding: 15px;
+        border-radius: 12px;
       }
 
-      .icon {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
+      .method-top {
+        gap: 11px;
       }
 
-      .icon svg {
-        width: 22px;
+      .icon,
+      .phone-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+      }
+
+      .gmail-logo {
+        width: 29px;
         height: 22px;
       }
 
+      .phone-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
       .method-title {
-        font-size: 17px;
+        font-size: 16px;
       }
 
       .method-text {
-        font-size: 13px;
+        font-size: 12px;
+      }
+
+      .arrow {
+        font-size: 20px;
       }
     }
   </style>
@@ -208,7 +232,6 @@
 
       <div class="title">
         <h1>اختر طريقة التحقق</h1>
-        <div class="title-line"></div>
       </div>
 
 
@@ -222,9 +245,29 @@
 
           <div class="icon">
 
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-              <path d="M3 7l9 6 9-6"></path>
+            <!-- Gmail logo -->
+            <svg
+              class="gmail-logo"
+              viewBox="0 0 48 36"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="Gmail"
+            >
+              <path
+                fill="#EA4335"
+                d="M4 30V6l20 15L44 6v24h-7V15L24 26 11 15v15z"
+              />
+              <path
+                fill="#4285F4"
+                d="M4 6l7 5v19H4z"
+              />
+              <path
+                fill="#34A853"
+                d="M44 6l-7 5v19h7z"
+              />
+              <path
+                fill="#FBBC04"
+                d="M4 6l20 15L44 6l-4.5-3.5L24 14 8.5 2.5z"
+              />
             </svg>
 
           </div>
@@ -261,7 +304,7 @@
 
         <div class="method-top">
 
-          <div class="icon">
+          <div class="phone-icon">
 
             <svg viewBox="0 0 24 24">
               <rect x="7" y="3" width="10" height="18" rx="2"></rect>
@@ -474,4 +517,4 @@
   </script>
 
 </body>
-</html>
+              </html>
