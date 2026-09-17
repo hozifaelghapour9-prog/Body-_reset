@@ -15,46 +15,24 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      background: #071a33;
+      padding: 0;
     }
 
     .box {
       width: 100%;
-      max-width: 430px;
+      min-height: 100vh;
       background: white;
-      padding: 35px 25px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-    }
-
-    .logo {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      color: #071a33;
-      margin-bottom: 25px;
-    }
-
-    .logo span {
-      color: #2563eb;
+      padding: 55px 25px 35px;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     h1 {
-      margin: 0 0 10px;
+      margin: 0 0 25px;
       color: #071a33;
       text-align: center;
       font-size: 25px;
-    }
-
-    p {
-      text-align: center;
-      color: #64748b;
-      line-height: 1.7;
-      margin-bottom: 25px;
     }
 
     .method {
@@ -116,17 +94,9 @@
 
   <div class="box">
 
-    <div class="logo">
-      Body<span>Reset</span>
-    </div>
-
     <h1>
-      Choose a method
+      اختر طريقة
     </h1>
-
-    <p>
-      اختر طريقة استلام رمز التحقق
-    </p>
 
     <div class="method" id="emailMethod" onclick="sendEmailCode()">
 
