@@ -408,6 +408,78 @@ color:#dbeafe;
 font-size:17px;
 }
 
+/* SUBSCRIPTIONS */
+
+.subscriptions{
+background:#eef3f8;
+}
+
+.subscription-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+max-width:1100px;
+margin:auto;
+}
+
+.subscription-card{
+background:#071a33;
+color:white;
+padding:35px 25px;
+border-radius:16px;
+text-align:center;
+}
+
+.subscription-card h3{
+font-size:27px;
+margin-bottom:15px;
+}
+
+.subscription-price{
+font-size:38px;
+font-weight:bold;
+color:#60a5fa;
+margin-bottom:5px;
+}
+
+.subscription-duration{
+color:#cbd5e1;
+font-size:16px;
+margin-bottom:22px;
+}
+
+.subscription-card ul{
+list-style:none;
+text-align:right;
+margin-bottom:25px;
+}
+
+.subscription-card li{
+color:#dbeafe;
+font-size:17px;
+padding:8px 0;
+border-bottom:1px solid #1e3a5f;
+}
+
+.subscription-card li:last-child{
+border-bottom:none;
+}
+
+.subscription-button{
+display:inline-block;
+background:#2563eb;
+color:white;
+text-decoration:none;
+padding:12px 28px;
+border-radius:8px;
+font-weight:bold;
+font-size:17px;
+}
+
+.subscription-button:hover{
+background:#1d4ed8;
+}
+
 /* PRICING */
 
 .pricing{
@@ -493,7 +565,8 @@ font-size:17px;
 .progress-grid,
 .why-grid,
 .nutrition-box,
-.calories-box{
+.calories-box,
+.subscription-grid{
 grid-template-columns:1fr;
 }
 
@@ -568,6 +641,18 @@ font-size:31px;
 grid-template-columns:1fr;
 }
 
+.subscription-card{
+padding:30px 20px;
+}
+
+.subscription-card h3{
+font-size:25px;
+}
+
+.subscription-price{
+font-size:34px;
+}
+
 /* FLOATING BUTTONS MOBILE */
 
 .floating-buttons{
@@ -623,6 +708,8 @@ Body<span>Reset</span>
 <a href="#calories">السعرات والماكروز</a>
 
 <a href="#progress">التقدم</a>
+
+<a href="#subscriptions">الاشتراكات</a>
 
 </nav>
 
@@ -989,6 +1076,123 @@ alt="حساب السعرات والماكروز"
 <p>
 تابع تقدمك وحافظ على الاستمرارية في رحلتك.
 </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SUBSCRIPTIONS -->
+
+<section class="subscriptions" id="subscriptions">
+
+<h2 class="section-title">
+الاشتراكات
+</h2>
+
+<p class="section-subtitle">
+اختار الباقة المناسبة ليك وابدأ رحلتك مع BodyReset
+</p>
+
+<div class="subscription-grid">
+
+<div class="subscription-card">
+
+<h3>
+شهري
+</h3>
+
+<div class="subscription-price">
+500 جنيه
+</div>
+
+<div class="subscription-duration">
+اشتراك لمدة شهر
+</div>
+
+<ul>
+
+<li>خطة تمارين</li>
+
+<li>خطة تغذية</li>
+
+<li>حساب السعرات والماكروز</li>
+
+<li>متابعة التقدم</li>
+
+</ul>
+
+<a class="subscription-button" href="auth.html">
+اشترك الآن
+</a>
+
+</div>
+
+
+<div class="subscription-card">
+
+<h3>
+3 شهور
+</h3>
+
+<div class="subscription-price">
+1000 جنيه
+</div>
+
+<div class="subscription-duration">
+اشتراك لمدة 3 شهور
+</div>
+
+<ul>
+
+<li>خطة تمارين</li>
+
+<li>خطة تغذية</li>
+
+<li>حساب السعرات والماكروز</li>
+
+<li>متابعة التقدم</li>
+
+</ul>
+
+<a class="subscription-button" href="auth.html">
+اشترك الآن
+</a>
+
+</div>
+
+
+<div class="subscription-card">
+
+<h3>
+سنوي
+</h3>
+
+<div class="subscription-price">
+3000 جنيه
+</div>
+
+<div class="subscription-duration">
+اشتراك لمدة سنة
+</div>
+
+<ul>
+
+<li>خطة تمارين</li>
+
+<li>خطة تغذية</li>
+
+<li>حساب السعرات والماكروز</li>
+
+<li>متابعة التقدم</li>
+
+</ul>
+
+<a class="subscription-button" href="auth.html">
+اشترك الآن
+</a>
 
 </div>
 
