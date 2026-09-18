@@ -51,6 +51,167 @@ font-weight:bold;
 color:#2563eb;
 }
 
+.menu-button{
+background:none;
+border:none;
+cursor:pointer;
+padding:5px;
+}
+
+.menu-icon{
+display:flex;
+flex-direction:column;
+gap:5px;
+}
+
+.menu-icon span{
+display:block;
+width:25px;
+height:3px;
+background:white;
+border-radius:3px;
+}
+
+.menu{
+position:fixed;
+top:0;
+right:-320px;
+width:300px;
+height:100vh;
+background:#071a33;
+z-index:10000;
+padding:25px;
+box-shadow:-8px 0 25px rgba(0,0,0,.25);
+transition:right .3s ease;
+overflow-y:auto;
+}
+
+.menu.active{
+right:0;
+}
+
+.menu-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+direction:rtl;
+margin-bottom:30px;
+}
+
+.menu-logo{
+color:white;
+font-size:27px;
+font-weight:bold;
+}
+
+.menu-logo span{
+color:#2563eb;
+}
+
+.menu-close{
+background:none;
+border:none;
+color:white;
+font-size:32px;
+line-height:1;
+cursor:pointer;
+padding:0 5px;
+}
+
+.home-menu{
+display:flex;
+align-items:center;
+justify-content:flex-start;
+gap:8px;
+padding:12px 5px;
+direction:rtl;
+}
+
+.home-title{
+color:white;
+font-size:19px;
+font-weight:bold;
+}
+
+.home-arrow{
+background:none;
+border:none;
+color:white;
+font-size:30px;
+line-height:1;
+cursor:pointer;
+padding:0;
+width:44px;
+min-width:44px;
+transition:transform .3s ease;
+}
+
+.home-arrow.active{
+transform:rotate(180deg);
+}
+
+.home-sub-menu{
+display:none;
+padding-right:15px;
+}
+
+.home-sub-menu.active{
+display:block;
+}
+
+.home-sub-menu a{
+display:block;
+color:#dbeafe;
+text-decoration:none;
+font-size:17px;
+font-weight:bold;
+padding:11px 10px;
+border-bottom:1px solid #1e3a5f;
+}
+
+.home-sub-menu a:hover{
+color:#60a5fa;
+}
+
+.basic-menu{
+margin-top:3px;
+}
+
+.basic-menu a{
+display:block;
+color:white;
+text-decoration:none;
+font-size:17px;
+font-weight:bold;
+padding:11px 10px;
+border-bottom:1px solid #1e3a5f;
+}
+
+.basic-menu a:hover{
+color:#60a5fa;
+}
+
+.language-link{
+display:flex !important;
+align-items:center;
+gap:8px;
+}
+
+.language-icon{
+width:22px;
+height:22px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+}
+
+.language-icon svg{
+width:22px;
+height:22px;
+display:block;
+}
+
 nav{
 display:flex;
 justify-content:center;
@@ -695,25 +856,117 @@ font-size:13px;
 Body<span>Reset</span>
 </div>
 
+<button class="menu-button" onclick="openMenu()" aria-label="فتح القائمة">
+
+<span class="menu-icon">
+<span></span>
+<span></span>
+<span></span>
+</span>
+
+</button>
+
 </div>
 
-<nav>
-
-<a href="#home">الرئيسية</a>
-
-<a href="#workouts">التمارين</a>
-
-<a href="#nutrition">التغذية</a>
-
-<a href="#calories">السعرات والماكروز</a>
-
-<a href="#progress">التقدم</a>
-
-<a href="#subscriptions">الاشتراكات</a>
-
-</nav>
-
 </header>
+
+<!-- SIDE MENU -->
+
+<div class="menu" id="menu">
+
+<div class="menu-header">
+
+<div class="menu-logo">
+Body<span>Reset</span>
+</div>
+
+<button class="menu-close" onclick="closeMenu()" aria-label="إغلاق القائمة">
+×
+</button>
+
+</div>
+
+<div class="home-menu">
+
+<span class="home-title">
+الصفحة الرئيسية
+</span>
+
+<button
+class="home-arrow"
+id="homeArrow"
+onclick="toggleHomeMenu()"
+aria-label="فتح القائمة الرئيسية"
+>
+▾
+</button>
+
+</div>
+
+<div class="home-sub-menu" id="homeSubMenu">
+
+<a href="#subscriptions" onclick="closeMenu()">
+الاشتراكات
+</a>
+
+<a href="#workouts" onclick="closeMenu()">
+التمارين
+</a>
+
+<a href="#nutrition" onclick="closeMenu()">
+التغذية
+</a>
+
+</div>
+
+<div class="basic-menu">
+
+<a href="auth.html">
+تسجيل الدخول
+</a>
+
+<a href="https://wa.me/201090232528" target="_blank">
+تواصل معنا
+</a>
+
+<a class="language-link" href="index-en.html">
+
+<span class="language-icon" aria-hidden="true">
+<svg
+viewBox="0 0 24 24"
+fill="none"
+xmlns="http://www.w3.org/2000/svg"
+>
+<circle
+cx="12"
+cy="12"
+r="9.5"
+stroke="white"
+stroke-width="1.7"
+/>
+
+<path
+d="M2.5 12H21.5"
+stroke="white"
+stroke-width="1.7"
+/>
+
+<path
+d="M12 2.5C14.7 5.1 16 8.2 16 12C16 15.8 14.7 18.9 12 21.5C9.3 18.9 8 15.8 8 12C8 8.2 9.3 5.1 12 2.5Z"
+stroke="white"
+stroke-width="1.7"
+/>
+
+</svg>
+</span>
+
+English
+
+</a>
+
+</div>
+
+</div>
 
 
 <!-- FLOATING BUTTONS -->
@@ -1249,6 +1502,25 @@ Body<span>Reset</span>
 </div>
 
 </footer>
+
+<script>
+
+function openMenu(){
+document.getElementById("menu").classList.add("active");
+}
+
+function closeMenu(){
+document.getElementById("menu").classList.remove("active");
+document.getElementById("homeSubMenu").classList.remove("active");
+document.getElementById("homeArrow").classList.remove("active");
+}
+
+function toggleHomeMenu(){
+document.getElementById("homeSubMenu").classList.toggle("active");
+document.getElementById("homeArrow").classList.toggle("active");
+}
+
+</script>
 
 </body>
   </html>
