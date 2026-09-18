@@ -55,21 +55,29 @@ color:#2563eb;
 background:none;
 border:none;
 cursor:pointer;
-padding:5px;
+padding:8px;
+position:relative;
+z-index:10001;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .menu-icon{
 display:flex;
 flex-direction:column;
 gap:5px;
+width:25px;
+height:17px;
 }
 
 .menu-icon span{
 display:block;
 width:25px;
-height:3px;
+height:2px;
 background:white;
 border-radius:3px;
+transition:.2s ease;
 }
 
 .menu{
@@ -297,11 +305,9 @@ left:18px;
 right:18px;
 bottom:25px;
 z-index:9999;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 direction:ltr;
 pointer-events:none;
 }
@@ -312,17 +318,13 @@ display:flex;
 align-items:center;
 justify-content:center;
 gap:8px;
-
 text-decoration:none;
 font-weight:bold;
 border-radius:30px;
-
 box-shadow:0 6px 18px rgba(7,26,51,.25);
-
 transition:
 transform .25s ease,
 box-shadow .25s ease;
-
 pointer-events:auto;
 }
 
@@ -341,14 +343,11 @@ box-shadow:0 9px 24px rgba(37,99,235,.35);
 .whatsapp-icon{
 width:24px;
 height:24px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 background:white;
 color:#25D366;
-
 border-radius:50%;
 }
 
@@ -462,50 +461,6 @@ margin-bottom:10px;
 font-size:17px;
 }
 
-/* SPORTS INJURIES */
-
-.injuries{
-background:#eef3f8;
-}
-
-.injuries-box{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:45px;
-align-items:center;
-}
-
-.injuries img{
-width:100%;
-height:430px;
-object-fit:cover;
-border-radius:14px;
-}
-
-.injuries-content h2{
-font-size:38px;
-margin-bottom:15px;
-}
-
-.injuries-content p{
-color:#334155;
-font-size:19px;
-margin-bottom:20px;
-}
-
-.injuries-list{
-list-style:none;
-}
-
-.injuries-list li{
-background:#071a33;
-color:white;
-padding:13px 18px;
-border-radius:8px;
-margin-bottom:10px;
-font-size:17px;
-}
-
 /* CALORIES & MACROS */
 
 .calories{
@@ -552,6 +507,50 @@ font-size:17px;
 font-weight:bold;
 }
 
+/* SPORTS INJURIES */
+
+.injuries{
+background:#eef3f8;
+}
+
+.injuries-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:45px;
+align-items:center;
+}
+
+.injuries img{
+width:100%;
+height:430px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.injuries-content h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.injuries-content p{
+color:#334155;
+font-size:18px;
+margin-bottom:20px;
+}
+
+.injuries-list{
+list-style:none;
+}
+
+.injuries-list li{
+background:#071a33;
+color:white;
+padding:13px 18px;
+border-radius:8px;
+margin-bottom:10px;
+font-size:17px;
+}
+
 /* PROGRESS */
 
 .progress-grid{
@@ -591,8 +590,8 @@ background:white;
 
 .why-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
 }
 
 .why-card{
@@ -604,13 +603,13 @@ text-align:center;
 }
 
 .why-card h3{
-font-size:24px;
+font-size:23px;
 margin-bottom:10px;
 }
 
 .why-card p{
 color:#dbeafe;
-font-size:17px;
+font-size:16px;
 }
 
 /* SUBSCRIPTIONS */
@@ -768,12 +767,15 @@ font-size:17px;
 
 .workout-grid,
 .progress-grid,
-.why-grid,
 .nutrition-box,
 .injuries-box,
 .calories-box,
 .subscription-grid{
 grid-template-columns:1fr;
+}
+
+.why-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
 .nutrition img,
@@ -802,6 +804,16 @@ margin-bottom:18px;
 
 .logo{
 font-size:25px;
+}
+
+.menu-icon{
+width:23px;
+height:16px;
+}
+
+.menu-icon span{
+width:23px;
+height:2px;
 }
 
 nav{
@@ -846,6 +858,10 @@ font-size:31px;
 }
 
 .macro-list{
+grid-template-columns:1fr;
+}
+
+.why-grid{
 grid-template-columns:1fr;
 }
 
@@ -903,7 +919,12 @@ font-size:13px;
 Body<span>Reset</span>
 </div>
 
-<button class="menu-button" onclick="openMenu()" aria-label="فتح القائمة">
+<button
+class="menu-button"
+type="button"
+onclick="openMenu()"
+aria-label="فتح القائمة"
+>
 
 <span class="menu-icon">
 <span></span>
@@ -927,7 +948,12 @@ Body<span>Reset</span>
 Body<span>Reset</span>
 </div>
 
-<button class="menu-close" onclick="closeMenu()" aria-label="إغلاق القائمة">
+<button
+class="menu-close"
+type="button"
+onclick="closeMenu()"
+aria-label="إغلاق القائمة"
+>
 ×
 </button>
 
@@ -942,6 +968,7 @@ Body<span>Reset</span>
 <button
 class="home-arrow"
 id="homeArrow"
+type="button"
 onclick="toggleHomeMenu()"
 aria-label="فتح القائمة الرئيسية"
 >
@@ -976,18 +1003,29 @@ aria-label="فتح القائمة الرئيسية"
 تسجيل الدخول
 </a>
 
-<a href="https://wa.me/201090232528" target="_blank">
+<a
+href="https://wa.me/201090232528"
+target="_blank"
+>
 تواصل معنا
 </a>
 
-<a class="language-link" href="index-en.html">
+<a
+class="language-link"
+href="index-en.html"
+>
 
-<span class="language-icon" aria-hidden="true">
+<span
+class="language-icon"
+aria-hidden="true"
+>
+
 <svg
 viewBox="0 0 24 24"
 fill="none"
 xmlns="http://www.w3.org/2000/svg"
 >
+
 <circle
 cx="12"
 cy="12"
@@ -1009,6 +1047,7 @@ stroke-width="1.7"
 />
 
 </svg>
+
 </span>
 
 English
@@ -1076,7 +1115,10 @@ href="#subscriptions"
 
 <!-- HERO -->
 
-<section class="hero" id="home">
+<section
+class="hero"
+id="home"
+>
 
 <div class="hero-content">
 
@@ -1092,11 +1134,17 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <div class="hero-buttons">
 
-<a class="start" href="auth.html">
+<a
+class="start"
+href="auth.html"
+>
 ابدأ رحلتك
 </a>
 
-<a class="more" href="#workouts">
+<a
+class="more"
+href="#workouts"
+>
 استكشاف المزيد
 </a>
 
@@ -1123,11 +1171,15 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <div class="workout-card">
 
-<img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85">
+<img
+src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
+>
 
 <div class="workout-card-content">
 
-<h3>Fitness</h3>
+<h3>
+Fitness
+</h3>
 
 <p>
 تمارين تساعدك تحسن لياقتك وتخلي جسمك أكثر نشاطًا.
@@ -1140,11 +1192,15 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <div class="workout-card">
 
-<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85">
+<img
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+>
 
 <div class="workout-card-content">
 
-<h3>Strength</h3>
+<h3>
+Strength
+</h3>
 
 <p>
 ركز على القوة وبناء جسم أقوى مع التزامك بالتمرين.
@@ -1157,11 +1213,15 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <div class="workout-card">
 
-<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85">
+<img
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+>
 
 <div class="workout-card-content">
 
-<h3>Fat Loss</h3>
+<h3>
+Fat Loss
+</h3>
 
 <p>
 تمارين مناسبة لهدف خسارة الدهون وتحسين شكل الجسم.
@@ -1178,11 +1238,16 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <!-- NUTRITION -->
 
-<section class="nutrition" id="nutrition">
+<section
+class="nutrition"
+id="nutrition"
+>
 
 <div class="nutrition-box">
 
-<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85">
+<img
+src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85"
+>
 
 <div>
 
@@ -1197,54 +1262,21 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 
 <ul>
 
-<li>وجبات متوازنة تناسب احتياجاتك</li>
+<li>
+وجبات متوازنة تناسب احتياجاتك
+</li>
 
-<li>اختيارات أطعمة صحية وسهلة</li>
+<li>
+اختيارات أطعمة صحية وسهلة
+</li>
 
-<li>بروتين وعناصر غذائية أساسية</li>
+<li>
+بروتين وعناصر غذائية أساسية
+</li>
 
-<li>تغذية مناسبة لهدفك</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SPORTS INJURIES -->
-
-<section class="injuries" id="injuries">
-
-<div class="injuries-box">
-
-<img
-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85"
-alt="الإصابات الرياضية"
->
-
-<div class="injuries-content">
-
-<h2>
-الإصابات الرياضية
-</h2>
-
-<p>
-معلومات مهمة تساعدك تفهم الإصابات المرتبطة بالتمرين
-وتتعامل معها بشكل أكثر أمانًا أثناء رحلتك الرياضية.
-</p>
-
-<ul class="injuries-list">
-
-<li>الوقاية من الإصابات أثناء التمرين</li>
-
-<li>آلام العضلات والمفاصل</li>
-
-<li>الإسعافات الأولية للإصابات البسيطة</li>
-
-<li>التعافي والعودة للتمرين تدريجيًا</li>
+<li>
+تغذية مناسبة لهدفك
+</li>
 
 </ul>
 
@@ -1257,7 +1289,10 @@ alt="الإصابات الرياضية"
 
 <!-- CALORIES & MACROS -->
 
-<section class="calories" id="calories">
+<section
+class="calories"
+id="calories"
+>
 
 <div class="calories-box">
 
@@ -1295,6 +1330,53 @@ alt="حساب السعرات والماكروز"
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SPORTS INJURIES -->
+
+<section
+class="injuries"
+id="injuries"
+>
+
+<div class="injuries-box">
+
+<img
+src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85"
+alt="الإصابات الرياضية"
+>
+
+<div class="injuries-content">
+
+<h2>
+الإصابات الرياضية
+</h2>
+
+<p>
+إرشادات مختصرة تساعدك على الوقاية والتعامل مع الإصابات والعودة للتمرين بأمان.
+</p>
+
+<ul class="injuries-list">
+
+<li>
+الوقاية من الإصابات أثناء التمرين
+</li>
+
+<li>
+آلام العضلات والمفاصل
+</li>
+
+<li>
+التعافي والعودة للتمرين تدريجيًا
+</li>
+
+</ul>
 
 </div>
 
@@ -1424,6 +1506,19 @@ alt="حساب السعرات والماكروز"
 
 </div>
 
+
+<div class="why-card">
+
+<h3>
+الإصابات الرياضية
+</h3>
+
+<p>
+معلومات وإرشادات تساعدك على الوقاية والتعافي والعودة للتمرين بأمان.
+</p>
+
+</div>
+
 </div>
 
 </section>
@@ -1431,7 +1526,10 @@ alt="حساب السعرات والماكروز"
 
 <!-- SUBSCRIPTIONS -->
 
-<section class="subscriptions" id="subscriptions">
+<section
+class="subscriptions"
+id="subscriptions"
+>
 
 <h2 class="section-title">
 الاشتراكات
@@ -1459,17 +1557,28 @@ alt="حساب السعرات والماكروز"
 
 <ul>
 
-<li>خطة تمارين</li>
+<li>
+خطة تمارين
+</li>
 
-<li>خطة تغذية</li>
+<li>
+خطة تغذية
+</li>
 
-<li>حساب السعرات والماكروز</li>
+<li>
+حساب السعرات والماكروز
+</li>
 
-<li>متابعة التقدم</li>
+<li>
+متابعة التقدم
+</li>
 
 </ul>
 
-<a class="subscription-button" href="auth.html">
+<a
+class="subscription-button"
+href="auth.html"
+>
 اشترك الآن
 </a>
 
@@ -1492,17 +1601,28 @@ alt="حساب السعرات والماكروز"
 
 <ul>
 
-<li>خطة تمارين</li>
+<li>
+خطة تمارين
+</li>
 
-<li>خطة تغذية</li>
+<li>
+خطة تغذية
+</li>
 
-<li>حساب السعرات والماكروز</li>
+<li>
+حساب السعرات والماكروز
+</li>
 
-<li>متابعة التقدم</li>
+<li>
+متابعة التقدم
+</li>
 
 </ul>
 
-<a class="subscription-button" href="auth.html">
+<a
+class="subscription-button"
+href="auth.html"
+>
 اشترك الآن
 </a>
 
@@ -1525,17 +1645,28 @@ alt="حساب السعرات والماكروز"
 
 <ul>
 
-<li>خطة تمارين</li>
+<li>
+خطة تمارين
+</li>
 
-<li>خطة تغذية</li>
+<li>
+خطة تغذية
+</li>
 
-<li>حساب السعرات والماكروز</li>
+<li>
+حساب السعرات والماكروز
+</li>
 
-<li>متابعة التقدم</li>
+<li>
+متابعة التقدم
+</li>
 
 </ul>
 
-<a class="subscription-button" href="auth.html">
+<a
+class="subscription-button"
+href="auth.html"
+>
 اشترك الآن
 </a>
 
@@ -1560,7 +1691,10 @@ alt="حساب السعرات والماكروز"
 ابدأ بناء نظام صحي يناسب هدفك وخليك ملتزم بخطتك.
 </p>
 
-<a class="start-bottom" href="auth.html">
+<a
+class="start-bottom"
+href="auth.html"
+>
 ابدأ
 </a>
 
@@ -1582,30 +1716,4 @@ Body<span>Reset</span>
 </h3>
 
 <p>
-طريقك لبناء جسم أقوى وحياة صحية أفضل.
-</p>
-
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 BodyReset - جميع الحقوق محفوظة
-</div>
-
-</footer>
-
-<script>
-
-function openMenu(){
-document.getElementById("menu").classList.add("active");
-}
-
-function closeMenu(){
-document.getElementById("menu").classList.remove("active");
-document.getElementById("homeSubMenu").classList.remove("active");
-document.getElementById("homeArrow").classList.remove("active");
-}
-
-function toggleHomeMenu(){
-documen
+طريقك لبنا
