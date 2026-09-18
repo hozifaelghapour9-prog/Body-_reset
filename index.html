@@ -1716,4 +1716,88 @@ Body<span>Reset</span>
 </h3>
 
 <p>
-طريقك لبنا
+طريقك لبناء جسم أقوى وحياة صحية أفضل.
+</p>
+
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 BodyReset - جميع الحقوق محفوظة
+</div>
+
+</footer>
+
+
+<script>
+
+function openMenu(){
+
+const menu = document.getElementById("menu");
+
+if(menu){
+menu.classList.add("active");
+}
+
+}
+
+function closeMenu(){
+
+const menu = document.getElementById("menu");
+const subMenu = document.getElementById("homeSubMenu");
+const arrow = document.getElementById("homeArrow");
+
+if(menu){
+menu.classList.remove("active");
+}
+
+if(subMenu){
+subMenu.classList.remove("active");
+}
+
+if(arrow){
+arrow.classList.remove("active");
+}
+
+}
+
+function toggleHomeMenu(){
+
+const subMenu = document.getElementById("homeSubMenu");
+const arrow = document.getElementById("homeArrow");
+
+if(!subMenu || !arrow){
+return;
+}
+
+subMenu.classList.toggle("active");
+arrow.classList.toggle("active");
+
+}
+
+document.addEventListener("click",function(event){
+
+const menu = document.getElementById("menu");
+const button = document.querySelector(".menu-button");
+
+if(!menu || !button){
+return;
+}
+
+if(
+menu.classList.contains("active") &&
+!menu.contains(event.target) &&
+!button.contains(event.target)
+){
+
+closeMenu();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
