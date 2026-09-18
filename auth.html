@@ -677,6 +677,33 @@
     );
 
 
+  /* SELECTED SUBSCRIPTION PLAN */
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  const selectedPlan =
+    urlParams.get("plan");
+
+
+  function goAfterAuth() {
+
+    if (selectedPlan) {
+
+      window.location.href =
+        "dashboard.html?plan=" +
+        encodeURIComponent(selectedPlan);
+
+    } else {
+
+      window.location.href =
+        "dashboard.html";
+
+    }
+
+  }
+
+
   /* SHOW SIGNUP */
 
   window.showSignup = function() {
@@ -960,8 +987,7 @@
 
     if (data.session) {
 
-      window.location.href =
-        "dashboard.html";
+      goAfterAuth();
 
       return;
 
@@ -978,8 +1004,7 @@
 
     if (currentUser?.user) {
 
-      window.location.href =
-        "dashboard.html";
+      goAfterAuth();
 
       return;
 
@@ -1109,8 +1134,7 @@
 
     if (data.session) {
 
-      window.location.href =
-        "dashboard.html";
+      goAfterAuth();
 
       return;
 
@@ -1127,4 +1151,4 @@
 </script>
 
 </body>
-  </html>
+              </html>
