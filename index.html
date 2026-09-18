@@ -26,8 +26,6 @@ color:#071a33;
 line-height:1.8;
 }
 
-/* HEADER */
-
 header{
 background:#071a33;
 padding:24px 7% 20px;
@@ -220,27 +218,6 @@ height:22px;
 display:block;
 }
 
-nav{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:30px;
-direction:rtl;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:18px;
-font-weight:bold;
-}
-
-nav a:hover{
-color:#60a5fa;
-}
-
-/* HERO */
-
 .hero{
 min-height:650px;
 display:flex;
@@ -297,8 +274,6 @@ font-weight:bold;
 display:inline-block;
 }
 
-/* FLOATING BUTTONS */
-
 .floating-buttons{
 position:fixed;
 left:18px;
@@ -335,11 +310,6 @@ padding:9px 13px;
 font-size:14px;
 }
 
-.contact-float:hover{
-transform:translateY(-3px);
-box-shadow:0 9px 24px rgba(37,99,235,.35);
-}
-
 .whatsapp-icon{
 width:24px;
 height:24px;
@@ -358,13 +328,6 @@ padding:12px 20px;
 font-size:16px;
 }
 
-.subscribe-float:hover{
-transform:translateY(-3px);
-box-shadow:0 9px 24px rgba(7,26,51,.35);
-}
-
-/* SECTIONS */
-
 section{
 padding:85px 7%;
 }
@@ -381,8 +344,6 @@ color:#334155;
 font-size:19px;
 margin-bottom:45px;
 }
-
-/* WORKOUT */
 
 .workout-grid{
 display:grid;
@@ -416,8 +377,6 @@ margin-bottom:8px;
 color:#dbeafe;
 font-size:17px;
 }
-
-/* NUTRITION */
 
 .nutrition{
 background:white;
@@ -460,8 +419,6 @@ border-radius:8px;
 margin-bottom:10px;
 font-size:17px;
 }
-
-/* CALORIES & MACROS */
 
 .calories{
 background:#eef3f8;
@@ -507,8 +464,6 @@ font-size:17px;
 font-weight:bold;
 }
 
-/* SPORTS INJURIES */
-
 .injuries{
 background:#eef3f8;
 }
@@ -551,8 +506,6 @@ margin-bottom:10px;
 font-size:17px;
 }
 
-/* PROGRESS */
-
 .progress-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -582,8 +535,6 @@ color:#dbeafe;
 font-size:17px;
 }
 
-/* WHY */
-
 .why{
 background:white;
 }
@@ -611,8 +562,6 @@ margin-bottom:10px;
 color:#dbeafe;
 font-size:16px;
 }
-
-/* SUBSCRIPTIONS */
 
 .subscriptions{
 background:#eef3f8;
@@ -665,10 +614,6 @@ padding:8px 0;
 border-bottom:1px solid #1e3a5f;
 }
 
-.subscription-card li:last-child{
-border-bottom:none;
-}
-
 .subscription-button{
 display:inline-block;
 background:#2563eb;
@@ -679,12 +624,6 @@ border-radius:8px;
 font-weight:bold;
 font-size:17px;
 }
-
-.subscription-button:hover{
-background:#1d4ed8;
-}
-
-/* PRICING */
 
 .pricing{
 text-align:center;
@@ -709,8 +648,6 @@ color:#dbeafe;
 font-size:19px;
 margin-bottom:25px;
 }
-
-/* FOOTER */
 
 footer{
 background:#071a33;
@@ -745,25 +682,7 @@ border-top:1px solid #334155;
 color:#94a3b8;
 }
 
-/* TABLET */
-
 @media(max-width:900px){
-
-header{
-padding:22px 5% 18px;
-}
-
-.logo{
-font-size:28px;
-}
-
-nav{
-gap:22px;
-}
-
-nav a{
-font-size:17px;
-}
 
 .workout-grid,
 .progress-grid,
@@ -790,16 +709,10 @@ font-size:44px;
 
 }
 
-/* MOBILE */
-
 @media(max-width:500px){
 
 header{
 padding:20px 4% 17px;
-}
-
-.top-header{
-margin-bottom:18px;
 }
 
 .logo{
@@ -813,15 +726,6 @@ height:16px;
 
 .menu-icon span{
 width:23px;
-height:2px;
-}
-
-nav{
-gap:16px;
-}
-
-nav a{
-font-size:15px;
 }
 
 .hero{
@@ -869,15 +773,9 @@ grid-template-columns:1fr;
 padding:30px 20px;
 }
 
-.subscription-card h3{
-font-size:25px;
-}
-
 .subscription-price{
 font-size:34px;
 }
-
-/* FLOATING BUTTONS MOBILE */
 
 .floating-buttons{
 left:10px;
@@ -888,12 +786,6 @@ bottom:18px;
 .contact-float{
 padding:8px 10px;
 font-size:12px;
-gap:5px;
-}
-
-.whatsapp-icon{
-width:22px;
-height:22px;
 }
 
 .subscribe-float{
@@ -904,12 +796,9 @@ font-size:13px;
 }
 
 </style>
-
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
 
@@ -937,8 +826,6 @@ aria-label="فتح القائمة"
 </div>
 
 </header>
-
-<!-- SIDE MENU -->
 
 <div class="menu" id="menu">
 
@@ -1015,10 +902,7 @@ class="language-link"
 href="index-en.html"
 >
 
-<span
-class="language-icon"
-aria-hidden="true"
->
+<span class="language-icon">
 
 <svg
 viewBox="0 0 24 24"
@@ -1057,9 +941,6 @@ English
 </div>
 
 </div>
-
-
-<!-- FLOATING BUTTONS -->
 
 <div class="floating-buttons">
 
@@ -1100,20 +981,14 @@ transform="scale(.88) translate(1.6 1.6)"
 
 </a>
 
-
 <a
 class="subscribe-float"
 href="#subscriptions"
 >
-
 اشترك الآن
-
 </a>
 
 </div>
-
-
-<!-- HERO -->
 
 <section
 class="hero"
@@ -1154,9 +1029,6 @@ href="#workouts"
 
 </section>
 
-
-<!-- WORKOUTS -->
-
 <section id="workouts">
 
 <h2 class="section-title">
@@ -1189,7 +1061,6 @@ Fitness
 
 </div>
 
-
 <div class="workout-card">
 
 <img
@@ -1209,7 +1080,6 @@ Strength
 </div>
 
 </div>
-
 
 <div class="workout-card">
 
@@ -1235,9 +1105,6 @@ Fat Loss
 
 </section>
 
-
-<!-- NUTRITION -->
-
 <section
 class="nutrition"
 id="nutrition"
@@ -1262,21 +1129,10 @@ src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fi
 
 <ul>
 
-<li>
-وجبات متوازنة تناسب احتياجاتك
-</li>
-
-<li>
-اختيارات أطعمة صحية وسهلة
-</li>
-
-<li>
-بروتين وعناصر غذائية أساسية
-</li>
-
-<li>
-تغذية مناسبة لهدفك
-</li>
+<li>وجبات متوازنة تناسب احتياجاتك</li>
+<li>اختيارات أطعمة صحية وسهلة</li>
+<li>بروتين وعناصر غذائية أساسية</li>
+<li>تغذية مناسبة لهدفك</li>
 
 </ul>
 
@@ -1285,9 +1141,6 @@ src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fi
 </div>
 
 </section>
-
-
-<!-- CALORIES & MACROS -->
 
 <section
 class="calories"
@@ -1313,21 +1166,10 @@ alt="حساب السعرات والماكروز"
 
 <div class="macro-list">
 
-<div class="macro-item">
-السعرات اليومية
-</div>
-
-<div class="macro-item">
-البروتين
-</div>
-
-<div class="macro-item">
-الكربوهيدرات
-</div>
-
-<div class="macro-item">
-الدهون
-</div>
+<div class="macro-item">السعرات اليومية</div>
+<div class="macro-item">البروتين</div>
+<div class="macro-item">الكربوهيدرات</div>
+<div class="macro-item">الدهون</div>
 
 </div>
 
@@ -1336,9 +1178,6 @@ alt="حساب السعرات والماكروز"
 </div>
 
 </section>
-
-
-<!-- SPORTS INJURIES -->
 
 <section
 class="injuries"
@@ -1364,17 +1203,9 @@ alt="الإصابات الرياضية"
 
 <ul class="injuries-list">
 
-<li>
-الوقاية من الإصابات أثناء التمرين
-</li>
-
-<li>
-آلام العضلات والمفاصل
-</li>
-
-<li>
-التعافي والعودة للتمرين تدريجيًا
-</li>
+<li>الوقاية من الإصابات أثناء التمرين</li>
+<li>آلام العضلات والمفاصل</li>
+<li>التعافي والعودة للتمرين تدريجيًا</li>
 
 </ul>
 
@@ -1383,9 +1214,6 @@ alt="الإصابات الرياضية"
 </div>
 
 </section>
-
-
-<!-- PROGRESS -->
 
 <section id="progress">
 
@@ -1401,9 +1229,7 @@ alt="الإصابات الرياضية"
 
 <div class="progress-card">
 
-<div class="progress-number">
-01
-</div>
+<div class="progress-number">01</div>
 
 <h3>
 حدد هدفك
@@ -1415,12 +1241,9 @@ alt="الإصابات الرياضية"
 
 </div>
 
-
 <div class="progress-card">
 
-<div class="progress-number">
-02
-</div>
+<div class="progress-number">02</div>
 
 <h3>
 التزم بخطتك
@@ -1432,12 +1255,9 @@ alt="الإصابات الرياضية"
 
 </div>
 
-
 <div class="progress-card">
 
-<div class="progress-number">
-03
-</div>
+<div class="progress-number">03</div>
 
 <h3>
 شوف النتيجة
@@ -1452,9 +1272,6 @@ alt="الإصابات الرياضية"
 </div>
 
 </section>
-
-
-<!-- WHY -->
 
 <section class="why">
 
@@ -1480,7 +1297,6 @@ alt="الإصابات الرياضية"
 
 </div>
 
-
 <div class="why-card">
 
 <h3>
@@ -1493,7 +1309,6 @@ alt="الإصابات الرياضية"
 
 </div>
 
-
 <div class="why-card">
 
 <h3>
@@ -1501,11 +1316,10 @@ alt="الإصابات الرياضية"
 </h3>
 
 <p>
-تابع تقدمك وحافظ على الاستمرارية في رحلتك.
+متابعة مستمرة معك خطوة بخطوة، نراجع تقدمك ونساعدك تعدّل خطتك وتستمر لحد ما توصل لهدفك.
 </p>
 
 </div>
-
 
 <div class="why-card">
 
@@ -1514,7 +1328,7 @@ alt="الإصابات الرياضية"
 </h3>
 
 <p>
-معلومات وإرشادات تساعدك على الوقاية والتعافي والعودة للتمرين بأمان.
+إرشادات ومتابعة من متخصصين في الإصابات الرياضية، لمساعدتك على فهم الإصابة والتعامل معها والعودة إلى التمرين بشكل آمن.
 </p>
 
 </div>
@@ -1522,9 +1336,6 @@ alt="الإصابات الرياضية"
 </div>
 
 </section>
-
-
-<!-- SUBSCRIPTIONS -->
 
 <section
 class="subscriptions"
@@ -1543,9 +1354,7 @@ id="subscriptions"
 
 <div class="subscription-card">
 
-<h3>
-شهري
-</h3>
+<h3>شهري</h3>
 
 <div class="subscription-price">
 500 جنيه
@@ -1557,21 +1366,10 @@ id="subscriptions"
 
 <ul>
 
-<li>
-خطة تمارين
-</li>
-
-<li>
-خطة تغذية
-</li>
-
-<li>
-حساب السعرات والماكروز
-</li>
-
-<li>
-متابعة التقدم
-</li>
+<li>خطة تمارين</li>
+<li>خطة تغذية</li>
+<li>حساب السعرات والماكروز</li>
+<li>متابعة التقدم</li>
 
 </ul>
 
@@ -1584,12 +1382,9 @@ href="auth.html"
 
 </div>
 
-
 <div class="subscription-card">
 
-<h3>
-3 شهور
-</h3>
+<h3>3 شهور</h3>
 
 <div class="subscription-price">
 1000 جنيه
@@ -1601,21 +1396,10 @@ href="auth.html"
 
 <ul>
 
-<li>
-خطة تمارين
-</li>
-
-<li>
-خطة تغذية
-</li>
-
-<li>
-حساب السعرات والماكروز
-</li>
-
-<li>
-متابعة التقدم
-</li>
+<li>خطة تمارين</li>
+<li>خطة تغذية</li>
+<li>حساب السعرات والماكروز</li>
+<li>متابعة التقدم</li>
 
 </ul>
 
@@ -1628,12 +1412,9 @@ href="auth.html"
 
 </div>
 
-
 <div class="subscription-card">
 
-<h3>
-سنوي
-</h3>
+<h3>سنوي</h3>
 
 <div class="subscription-price">
 3000 جنيه
@@ -1645,21 +1426,10 @@ href="auth.html"
 
 <ul>
 
-<li>
-خطة تمارين
-</li>
-
-<li>
-خطة تغذية
-</li>
-
-<li>
-حساب السعرات والماكروز
-</li>
-
-<li>
-متابعة التقدم
-</li>
+<li>خطة تمارين</li>
+<li>خطة تغذية</li>
+<li>حساب السعرات والماكروز</li>
+<li>متابعة التقدم</li>
 
 </ul>
 
@@ -1675,9 +1445,6 @@ href="auth.html"
 </div>
 
 </section>
-
-
-<!-- PRICING -->
 
 <section class="pricing">
 
@@ -1702,9 +1469,6 @@ href="auth.html"
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
 
 <div class="footer-content">
@@ -1716,7 +1480,7 @@ Body<span>Reset</span>
 </h3>
 
 <p>
-طريقك لبناء جسم أقوى وحياة صحية أفضل.
+طريقك لبناءجسم أقوى وحياة صحية أفضل.
 </p>
 
 </div>
@@ -1728,7 +1492,6 @@ Body<span>Reset</span>
 </div>
 
 </footer>
-
 
 <script>
 
@@ -1800,4 +1563,4 @@ closeMenu();
 </script>
 
 </body>
-</html>
+  </html>
