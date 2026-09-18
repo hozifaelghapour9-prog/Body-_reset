@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>BodyReset | لوحة التحكم</title>  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BodyReset | لوحة التحكم</title>
+
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -140,6 +145,49 @@
       color: #999;
     }
 
+    .subscription-box {
+      margin-top: 30px;
+      background: linear-gradient(135deg, #121816, #18231d);
+      border: 1px solid #39d98a;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .subscription-box h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .subscription-box p {
+      color: #aaa;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .plan-price {
+      color: #39d98a;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .complete-subscription {
+      display: inline-block;
+      background: #39d98a;
+      color: #06100a;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .no-plan {
+      color: #999;
+    }
+
     #message {
       margin-top: 15px;
       color: #ff7777;
@@ -166,149 +214,205 @@
       }
 
     }
-  </style></head><body>  <header><div class="logo">
-  Body<span>Reset</span>
-</div>
+  </style>
+</head>
 
-<button id="logoutBtn">
-  تسجيل الخروج
-</button>
+<body>
 
-  </header>  <section class="hero"><div class="container">
+  <header>
 
-  <h1>
-    أهلاً بيك في BodyReset 👋
-  </h1>
-
-  <p>
-    جاهز تبدأ رحلة تغيير جسمك؟
-    <br>
-    حسابك:
-    <strong id="userEmail">
-      جاري التحميل...
-    </strong>
-  </p>
-
-</div>
-
-  </section>  <main class="container"><h2 class="section-title">
-  ابدأ رحلتك 💪
-</h2>
-
-
-<div class="cards">
-
-  <div class="card">
-
-    <div class="icon">
-      💪
+    <div class="logo">
+      Body<span>Reset</span>
     </div>
 
-    <h3>
-      Workout
-    </h3>
+    <button id="logoutBtn">
+      تسجيل الخروج
+    </button>
 
-    <p>
-      تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-    </p>
-
-    <a href="workout.html">
-      ابدأ التمرين
-    </a>
-
-  </div>
+  </header>
 
 
-  <div class="card">
+  <section class="hero">
 
-    <div class="icon">
-      🥗
+    <div class="container">
+
+      <h1>
+        أهلاً بيك في BodyReset 👋
+      </h1>
+
+      <p>
+        جاهز تبدأ رحلة تغيير جسمك؟
+        <br>
+        حسابك:
+        <strong id="userEmail">
+          جاري التحميل...
+        </strong>
+      </p>
+
     </div>
 
-    <h3>
-      Nutrition
-    </h3>
-
-    <p>
-      خطط غذائية تساعدك تختار أكلك حسب هدفك.
-    </p>
-
-    <a href="#">
-      خطة التغذية
-    </a>
-
-  </div>
+  </section>
 
 
-  <div class="card">
+  <main class="container">
 
-    <div class="icon">
-      📊
+    <h2 class="section-title">
+      ابدأ رحلتك 💪
+    </h2>
+
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <div class="icon">
+          💪
+        </div>
+
+        <h3>
+          Workout
+        </h3>
+
+        <p>
+          تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
+        </p>
+
+        <a href="workout.html">
+          ابدأ التمرين
+        </a>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          🥗
+        </div>
+
+        <h3>
+          Nutrition
+        </h3>
+
+        <p>
+          خطط غذائية تساعدك تختار أكلك حسب هدفك.
+        </p>
+
+        <a href="#">
+          خطة التغذية
+        </a>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          📊
+        </div>
+
+        <h3>
+          Progress
+        </h3>
+
+        <p>
+          تابع تقدمك وشوف تطورك مع الوقت.
+        </p>
+
+        <a href="#">
+          متابعة التقدم
+        </a>
+
+      </div>
+
+
     </div>
 
-    <h3>
-      Progress
-    </h3>
 
-    <p>
-      تابع تقدمك وشوف تطورك مع الوقت.
-    </p>
-
-    <a href="#">
-      متابعة التقدم
-    </a>
-
-  </div>
-
-</div>
+    <div class="stats">
 
 
-<div class="stats">
+      <div class="stat">
 
-  <div class="stat">
+        <strong>
+          0
+        </strong>
 
-    <strong>
-      0
-    </strong>
+        <span>
+          تمارين مكتملة
+        </span>
 
-    <span>
-      تمارين مكتملة
-    </span>
-
-  </div>
+      </div>
 
 
-  <div class="stat">
+      <div class="stat">
 
-    <strong>
-      0
-    </strong>
+        <strong>
+          0
+        </strong>
 
-    <span>
-      أيام متتالية
-    </span>
+        <span>
+          أيام متتالية
+        </span>
 
-  </div>
-
-
-  <div class="stat">
-
-    <strong>
-      0%
-    </strong>
-
-    <span>
-      نسبة الإنجاز
-    </span>
-
-  </div>
-
-</div>
+      </div>
 
 
-<div id="message"></div>
+      <div class="stat">
 
-  </main>  <script type="module">
+        <strong>
+          0%
+        </strong>
+
+        <span>
+          نسبة الإنجاز
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="subscription-box">
+
+      <h2>
+        اشتراكك في BodyReset
+      </h2>
+
+      <p id="selectedPlanText">
+        جاري تحميل الباقة...
+      </p>
+
+      <div
+        class="plan-price"
+        id="selectedPlanPrice">
+      </div>
+
+      <button
+        class="complete-subscription"
+        id="completeSubscriptionBtn"
+        style="display:none;">
+        إكمال الاشتراك
+      </button>
+
+      <p
+        class="no-plan"
+        id="noPlanText"
+        style="display:none;">
+        لم يتم اختيار أي باقة حتى الآن.
+      </p>
+
+    </div>
+
+
+    <div id="message"></div>
+
+  </main>
+
+
+  <script type="module">
 
     import { createClient } from
       "https://esm.sh/@supabase/supabase-js@2";
@@ -341,6 +445,121 @@
       document.getElementById("message");
 
 
+    const selectedPlanText =
+      document.getElementById("selectedPlanText");
+
+
+    const selectedPlanPrice =
+      document.getElementById("selectedPlanPrice");
+
+
+    const completeSubscriptionBtn =
+      document.getElementById(
+        "completeSubscriptionBtn"
+      );
+
+
+    const noPlanText =
+      document.getElementById("noPlanText");
+
+
+    const urlParams =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const selectedPlan =
+      urlParams.get("plan");
+
+
+    const plans = {
+
+      "500": {
+        name: "الباقة الشهرية",
+        price: "500 جنيه",
+        duration: "اشتراك لمدة شهر"
+      },
+
+      "1000": {
+        name: "باقة 3 شهور",
+        price: "1000 جنيه",
+        duration: "اشتراك لمدة 3 شهور"
+      },
+
+      "3000": {
+        name: "الباقة السنوية",
+        price: "3000 جنيه",
+        duration: "اشتراك لمدة سنة"
+      }
+
+    };
+
+
+    function showSelectedPlan() {
+
+      if (
+        selectedPlan &&
+        plans[selectedPlan]
+      ) {
+
+        const plan =
+          plans[selectedPlan];
+
+
+        selectedPlanText.textContent =
+          plan.name +
+          " - " +
+          plan.duration;
+
+
+        selectedPlanPrice.textContent =
+          plan.price;
+
+
+        completeSubscriptionBtn.style.display =
+          "inline-block";
+
+
+        noPlanText.style.display =
+          "none";
+
+      } else {
+
+        selectedPlanText.textContent =
+          "لم يتم اختيار أي باقة.";
+
+
+        selectedPlanPrice.textContent =
+          "";
+
+
+        completeSubscriptionBtn.style.display =
+          "none";
+
+
+        noPlanText.style.display =
+          "block";
+
+      }
+
+    }
+
+
+    completeSubscriptionBtn.addEventListener(
+      "click",
+      () => {
+
+        message.style.color =
+          "#39d98a";
+
+        message.textContent =
+          "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
+
+      }
+    );
+
+
     async function loadUser() {
 
       const {
@@ -365,6 +584,7 @@
 
       userEmail.textContent =
         username || user.email;
+
     }
 
 
@@ -380,6 +600,9 @@
 
         if (error) {
 
+          message.style.color =
+            "#ff7777";
+
           message.textContent =
             error.message;
 
@@ -394,7 +617,12 @@
     );
 
 
+    showSelectedPlan();
+
     loadUser();
 
-  </script></body>
-</html>
+  </script>
+
+</body>
+
+        </html>
