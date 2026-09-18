@@ -462,6 +462,50 @@ margin-bottom:10px;
 font-size:17px;
 }
 
+/* SPORTS INJURIES */
+
+.injuries{
+background:#eef3f8;
+}
+
+.injuries-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:45px;
+align-items:center;
+}
+
+.injuries img{
+width:100%;
+height:430px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.injuries-content h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.injuries-content p{
+color:#334155;
+font-size:19px;
+margin-bottom:20px;
+}
+
+.injuries-list{
+list-style:none;
+}
+
+.injuries-list li{
+background:#071a33;
+color:white;
+padding:13px 18px;
+border-radius:8px;
+margin-bottom:10px;
+font-size:17px;
+}
+
 /* CALORIES & MACROS */
 
 .calories{
@@ -726,12 +770,14 @@ font-size:17px;
 .progress-grid,
 .why-grid,
 .nutrition-box,
+.injuries-box,
 .calories-box,
 .subscription-grid{
 grid-template-columns:1fr;
 }
 
 .nutrition img,
+.injuries img,
 .calories img{
 height:300px;
 }
@@ -794,6 +840,7 @@ padding:60px 5%;
 
 .section-title,
 .nutrition h2,
+.injuries-content h2,
 .calories-content h2{
 font-size:31px;
 }
@@ -915,6 +962,10 @@ aria-label="فتح القائمة الرئيسية"
 
 <a href="#nutrition" onclick="closeMenu()">
 التغذية
+</a>
+
+<a href="#injuries" onclick="closeMenu()">
+الإصابات الرياضية
 </a>
 
 </div>
@@ -1153,6 +1204,47 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 <li>بروتين وعناصر غذائية أساسية</li>
 
 <li>تغذية مناسبة لهدفك</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SPORTS INJURIES -->
+
+<section class="injuries" id="injuries">
+
+<div class="injuries-box">
+
+<img
+src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85"
+alt="الإصابات الرياضية"
+>
+
+<div class="injuries-content">
+
+<h2>
+الإصابات الرياضية
+</h2>
+
+<p>
+معلومات مهمة تساعدك تفهم الإصابات المرتبطة بالتمرين
+وتتعامل معها بشكل أكثر أمانًا أثناء رحلتك الرياضية.
+</p>
+
+<ul class="injuries-list">
+
+<li>الوقاية من الإصابات أثناء التمرين</li>
+
+<li>آلام العضلات والمفاصل</li>
+
+<li>الإسعافات الأولية للإصابات البسيطة</li>
+
+<li>التعافي والعودة للتمرين تدريجيًا</li>
 
 </ul>
 
@@ -1516,11 +1608,4 @@ document.getElementById("homeArrow").classList.remove("active");
 }
 
 function toggleHomeMenu(){
-document.getElementById("homeSubMenu").classList.toggle("active");
-document.getElementById("homeArrow").classList.toggle("active");
-}
-
-</script>
-
-</body>
-  </html>
+documen
