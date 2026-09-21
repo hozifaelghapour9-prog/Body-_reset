@@ -7,6 +7,7 @@
   <title>BodyReset | لوحة التحكم</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,300 +21,529 @@
       min-height: 100vh;
     }
 
+
     header {
+
       padding: 20px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       background: #080808;
+
       border-bottom: 1px solid #333333;
+
     }
+
 
     .logo {
+
       font-size: 24px;
+
       font-weight: bold;
+
     }
+
 
     .logo span {
+
       color: #00f56a;
+
     }
+
 
     #logoutBtn {
+
       background: #222222;
+
       color: #ffffff;
+
       border: 1px solid #4a4a4a;
+
       padding: 10px 16px;
+
       border-radius: 10px;
+
       cursor: pointer;
+
       transition: 0.2s;
+
     }
+
 
     #logoutBtn:hover {
+
       border-color: #00f56a;
+
       color: #00f56a;
+
     }
 
+
     .hero {
+
       padding: 35px 20px;
+
       background:
         linear-gradient(
           135deg,
           #111111,
           #252525
         );
+
       border-bottom: 1px solid #333333;
+
     }
+
 
     .hero h1 {
+
       font-size: 32px;
+
       margin-bottom: 10px;
+
     }
+
 
     .hero p {
+
       color: #a5a5a5;
+
       line-height: 1.8;
+
     }
+
 
     .hero strong {
+
       color: #00f56a;
+
     }
+
 
     .container {
+
       max-width: 1000px;
+
       margin: auto;
+
       padding: 25px 20px;
+
     }
+
 
     .section-title {
+
       margin-bottom: 18px;
+
       font-size: 22px;
+
       color: #ffffff;
+
     }
+
 
     .cards {
+
       display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(220px, 1fr)
-      );
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(220px, 1fr)
+        );
+
       gap: 16px;
+
     }
+
+
+    /* نفس درجة الكروت في الصورة */
 
     .card {
+
       background:
         linear-gradient(
           145deg,
-          #2b2b2b,
-          #1d1d1d
+          #3d3d3d 0%,
+          #292929 35%,
+          #151515 65%,
+          #090909 100%
         );
+
       border: 1px solid #4a4a4a;
+
       border-radius: 18px;
+
       padding: 22px;
+
       transition: 0.2s;
+
     }
+
 
     .card:hover {
+
       transform: translateY(-3px);
+
       border-color: #00f56a;
+
       box-shadow:
-        0 0 18px rgba(0, 245, 106, 0.08);
+        0 0 18px
+        rgba(0, 245, 106, 0.08);
+
     }
+
 
     .icon {
+
       font-size: 35px;
+
       margin-bottom: 12px;
+
     }
+
 
     .card h3 {
+
       margin-bottom: 8px;
+
       color: #ffffff;
+
     }
+
 
     .card p {
+
       color: #a0a0a0;
+
       line-height: 1.6;
+
       margin-bottom: 18px;
+
     }
+
 
     .card a {
+
       display: inline-block;
+
       text-decoration: none;
+
       background: #00f56a;
+
       color: #06100a;
+
       padding: 10px 16px;
+
       border-radius: 10px;
+
       font-weight: bold;
+
       transition: 0.2s;
+
     }
+
 
     .card a:hover {
+
       background: #18ff78;
+
       box-shadow:
-        0 0 18px rgba(0, 245, 106, 0.25);
+        0 0 18px
+        rgba(0, 245, 106, 0.25);
+
     }
+
 
     .stats {
+
       margin-top: 30px;
+
       display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(150px, 1fr)
-      );
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(150px, 1fr)
+        );
+
       gap: 12px;
+
     }
+
+
+    /* نفس لون الكروت */
 
     .stat {
+
       background:
         linear-gradient(
           145deg,
-          #2b2b2b,
-          #1d1d1d
+          #3d3d3d 0%,
+          #292929 35%,
+          #151515 65%,
+          #090909 100%
         );
+
       border: 1px solid #4a4a4a;
+
       border-radius: 15px;
+
       padding: 20px;
+
       text-align: center;
+
     }
+
 
     .stat strong {
+
       display: block;
+
       color: #00f56a;
+
       font-size: 28px;
+
       margin-bottom: 6px;
+
     }
+
 
     .stat span {
+
       color: #a0a0a0;
+
     }
 
+
+    /* نفس لون الكروت */
+
     .subscription-box {
+
       margin-top: 30px;
+
       background:
         linear-gradient(
           145deg,
-          #2b2b2b,
-          #1d1d1d
+          #3d3d3d 0%,
+          #292929 35%,
+          #151515 65%,
+          #090909 100%
         );
+
       border: 1px solid #4a4a4a;
+
       border-radius: 20px;
+
       padding: 25px;
+
       text-align: center;
+
     }
+
 
     .subscription-box h2 {
+
       font-size: 24px;
+
       margin-bottom: 12px;
+
       color: #ffffff;
+
     }
+
 
     .subscription-box p {
+
       color: #a5a5a5;
+
       margin-bottom: 12px;
+
       line-height: 1.7;
+
     }
+
 
     .plan-price {
+
       color: #00f56a;
+
       font-size: 32px;
+
       font-weight: bold;
+
       margin: 15px 0;
+
       text-shadow:
-        0 0 12px rgba(0, 245, 106, 0.2);
+        0 0 12px
+        rgba(0, 245, 106, 0.2);
+
     }
+
 
     .complete-subscription {
+
       display: inline-block;
+
       background: #00f56a;
+
       color: #06100a;
+
       padding: 12px 22px;
+
       border-radius: 10px;
+
       font-weight: bold;
+
       border: none;
+
       cursor: pointer;
+
       font-size: 16px;
+
       transition: 0.2s;
+
     }
+
 
     .complete-subscription:hover {
+
       background: #18ff78;
+
       box-shadow:
-        0 0 20px rgba(0, 245, 106, 0.25);
+        0 0 20px
+        rgba(0, 245, 106, 0.25);
+
     }
+
 
     .no-plan {
+
       color: #999999;
+
     }
 
+
     #message {
+
       margin-top: 15px;
+
       color: #ff7777;
+
       text-align: center;
+
     }
+
 
     @media(max-width: 600px) {
 
+
       .hero h1 {
+
         font-size: 27px;
+
       }
+
 
       header {
+
         padding: 16px;
+
       }
+
 
       .logo {
+
         font-size: 21px;
+
       }
 
+
       #logoutBtn {
+
         padding: 8px 12px;
+
         font-size: 14px;
+
       }
 
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <header>
 
+
     <div class="logo">
+
       Body<span>Reset</span>
+
     </div>
 
+
     <button id="logoutBtn">
+
       تسجيل الخروج
+
     </button>
+
 
   </header>
 
 
   <section class="hero">
 
+
     <div class="container">
 
+
       <h1>
+
         أهلاً بيك في BodyReset 👋
+
       </h1>
 
+
       <p>
+
         جاهز تبدأ رحلة تغيير جسمك؟
+
         <br>
+
         حسابك:
+
         <strong id="userEmail">
+
           جاري التحميل...
+
         </strong>
+
       </p>
 
+
     </div>
+
 
   </section>
 
 
   <main class="container">
 
+
     <h2 class="section-title">
+
       ابدأ رحلتك 💪
+
     </h2>
 
 
@@ -322,68 +552,110 @@
 
       <div class="card">
 
+
         <div class="icon">
+
           💪
+
         </div>
 
+
         <h3>
+
           Workout
+
         </h3>
 
+
         <p>
+
           تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
+
         </p>
+
 
         <a href="workout.html">
+
           ابدأ التمرين
+
         </a>
+
 
       </div>
 
 
+
       <div class="card">
 
+
         <div class="icon">
+
           🥗
+
         </div>
 
+
         <h3>
+
           Nutrition
+
         </h3>
 
+
         <p>
+
           خطط غذائية تساعدك تختار أكلك حسب هدفك.
+
         </p>
 
+
         <a href="#">
+
           خطة التغذية
+
         </a>
+
 
       </div>
 
 
+
       <div class="card">
 
+
         <div class="icon">
+
           📊
+
         </div>
 
+
         <h3>
+
           Progress
+
         </h3>
 
+
         <p>
+
           تابع تقدمك وشوف تطورك مع الوقت.
+
         </p>
 
+
         <a href="#">
+
           متابعة التقدم
+
         </a>
+
 
       </div>
 
 
     </div>
+
 
 
     <div class="stats">
@@ -391,39 +663,62 @@
 
       <div class="stat">
 
+
         <strong>
+
           0
+
         </strong>
 
+
         <span>
+
           تمارين مكتملة
+
         </span>
+
 
       </div>
 
 
+
       <div class="stat">
 
+
         <strong>
+
           0
+
         </strong>
 
+
         <span>
+
           أيام متتالية
+
         </span>
+
 
       </div>
 
 
+
       <div class="stat">
 
+
         <strong>
+
           0%
+
         </strong>
 
+
         <span>
+
           نسبة الإنجاز
+
         </span>
+
 
       </div>
 
@@ -431,44 +726,63 @@
     </div>
 
 
+
     <div class="subscription-box">
 
+
       <h2>
+
         اشتراكك في BodyReset
+
       </h2>
 
+
       <p id="selectedPlanText">
+
         جاري تحميل الباقة...
+
       </p>
+
 
       <div
         class="plan-price"
         id="selectedPlanPrice">
       </div>
 
+
       <button
         class="complete-subscription"
         id="completeSubscriptionBtn"
         style="display:none;">
+
         إكمال الاشتراك
+
       </button>
+
 
       <p
         class="no-plan"
         id="noPlanText"
         style="display:none;">
+
         لم يتم اختيار أي باقة حتى الآن.
+
       </p>
+
 
     </div>
 
 
+
     <div id="message"></div>
+
 
   </main>
 
 
+
   <script type="module">
+
 
     import { createClient } from
       "https://esm.sh/@supabase/supabase-js@2";
@@ -489,6 +803,7 @@
       );
 
 
+
     const userEmail =
       document.getElementById("userEmail");
 
@@ -502,11 +817,15 @@
 
 
     const selectedPlanText =
-      document.getElementById("selectedPlanText");
+      document.getElementById(
+        "selectedPlanText"
+      );
 
 
     const selectedPlanPrice =
-      document.getElementById("selectedPlanPrice");
+      document.getElementById(
+        "selectedPlanPrice"
+      );
 
 
     const completeSubscriptionBtn =
@@ -516,7 +835,10 @@
 
 
     const noPlanText =
-      document.getElementById("noPlanText");
+      document.getElementById(
+        "noPlanText"
+      );
+
 
 
     const urlParams =
@@ -529,35 +851,54 @@
       urlParams.get("plan");
 
 
+
     const plans = {
 
+
       "500": {
+
         name: "الباقة الشهرية",
+
         price: "500 جنيه",
+
         duration: "اشتراك لمدة شهر"
+
       },
+
 
       "1000": {
+
         name: "باقة 3 شهور",
+
         price: "1000 جنيه",
+
         duration: "اشتراك لمدة 3 شهور"
+
       },
 
+
       "3000": {
+
         name: "الباقة السنوية",
+
         price: "3000 جنيه",
+
         duration: "اشتراك لمدة سنة"
+
       }
 
     };
 
 
+
     function showSelectedPlan() {
+
 
       if (
         selectedPlan &&
         plans[selectedPlan]
       ) {
+
 
         const plan =
           plans[selectedPlan];
@@ -580,7 +921,9 @@
         noPlanText.style.display =
           "none";
 
+
       } else {
+
 
         selectedPlanText.textContent =
           "لم يتم اختيار أي باقة.";
@@ -602,12 +945,15 @@
     }
 
 
+
     completeSubscriptionBtn.addEventListener(
       "click",
       () => {
 
+
         message.style.color =
           "#00f56a";
+
 
         message.textContent =
           "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
@@ -616,7 +962,9 @@
     );
 
 
+
     async function loadUser() {
+
 
       const {
         data: { user },
@@ -627,10 +975,13 @@
 
       if (error || !user) {
 
+
         window.location.href =
           "auth.html";
 
+
         return;
+
       }
 
 
@@ -644,9 +995,11 @@
     }
 
 
+
     logoutBtn.addEventListener(
       "click",
       async () => {
+
 
         const {
           error
@@ -656,13 +1009,17 @@
 
         if (error) {
 
+
           message.style.color =
             "#ff7777";
+
 
           message.textContent =
             error.message;
 
+
           return;
+
         }
 
 
@@ -673,12 +1030,15 @@
     );
 
 
+
     showSelectedPlan();
 
     loadUser();
 
+
   </script>
+
 
 </body>
 
-        </html>
+  </html>
