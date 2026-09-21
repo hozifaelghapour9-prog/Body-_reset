@@ -453,15 +453,17 @@ margin-bottom:22px;
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:12px;
+max-width:430px;
 }
 
 .macro-item{
 background:#071a33;
 color:white;
-padding:15px 18px;
+padding:18px 12px;
 border-radius:9px;
-font-size:17px;
+font-size:16px;
 font-weight:bold;
+text-align:center;
 }
 
 .injuries{
@@ -686,10 +688,13 @@ color:#94a3b8;
 
 .workout-grid,
 .progress-grid,
-.nutrition-box,
 .injuries-box,
 .calories-box,
 .subscription-grid{
+grid-template-columns:1fr;
+}
+
+.nutrition-box{
 grid-template-columns:1fr;
 }
 
@@ -762,7 +767,13 @@ font-size:31px;
 }
 
 .macro-list{
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.macro-item{
+padding:15px 8px;
+font-size:15px;
 }
 
 .why-grid{
@@ -872,6 +883,10 @@ aria-label="فتح القائمة الرئيسية"
 
 <a href="#workouts" onclick="closeMenu()">
 التمارين
+</a>
+
+<a href="#workouts" onclick="closeMenu()">
+تمارين في المنزل
 </a>
 
 <a href="#nutrition" onclick="closeMenu()">
@@ -1013,7 +1028,7 @@ BodyReset يساعدك تبني نظام حياة صحي يناسب هدفك،
 class="start"
 href="auth.html"
 >
-ابدأ رحلتك
+ابدأ رحلتي
 </a>
 
 <a
@@ -1101,6 +1116,26 @@ Fat Loss
 
 </div>
 
+<div class="workout-card">
+
+<img
+src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
+>
+
+<div class="workout-card-content">
+
+<h3>
+تمارين في المنزل
+</h3>
+
+<p>
+تمارين فعالة تقدر تنفذها في المنزل بسهولة، بدون الحاجة لمعدات.
+</p>
+
+</div>
+
+</div>
+
 </div>
 
 </section>
@@ -1166,10 +1201,21 @@ alt="حساب السعرات والماكروز"
 
 <div class="macro-list">
 
-<div class="macro-item">السعرات اليومية</div>
-<div class="macro-item">البروتين</div>
-<div class="macro-item">الكربوهيدرات</div>
-<div class="macro-item">الدهون</div>
+<div class="macro-item">
+السعرات اليومية
+</div>
+
+<div class="macro-item">
+البروتين
+</div>
+
+<div class="macro-item">
+الكربوهيدرات
+</div>
+
+<div class="macro-item">
+الدهون
+</div>
 
 </div>
 
@@ -1229,7 +1275,9 @@ alt="الإصابات الرياضية"
 
 <div class="progress-card">
 
-<div class="progress-number">01</div>
+<div class="progress-number">
+01
+</div>
 
 <h3>
 حدد هدفك
@@ -1243,7 +1291,9 @@ alt="الإصابات الرياضية"
 
 <div class="progress-card">
 
-<div class="progress-number">02</div>
+<div class="progress-number">
+02
+</div>
 
 <h3>
 التزم بخطتك
@@ -1257,7 +1307,9 @@ alt="الإصابات الرياضية"
 
 <div class="progress-card">
 
-<div class="progress-number">03</div>
+<div class="progress-number">
+03
+</div>
 
 <h3>
 شوف النتيجة
@@ -1354,7 +1406,9 @@ id="subscriptions"
 
 <div class="subscription-card">
 
-<h3>شهري</h3>
+<h3>
+شهري
+</h3>
 
 <div class="subscription-price">
 500 جنيه
@@ -1375,7 +1429,7 @@ id="subscriptions"
 
 <a
 class="subscription-button"
-href="auth.html"
+href="auth.html?plan=500"
 >
 اشترك الآن
 </a>
@@ -1384,7 +1438,9 @@ href="auth.html"
 
 <div class="subscription-card">
 
-<h3>3 شهور</h3>
+<h3>
+3 شهور
+</h3>
 
 <div class="subscription-price">
 1000 جنيه
@@ -1405,7 +1461,7 @@ href="auth.html"
 
 <a
 class="subscription-button"
-href="auth.html"
+href="auth.html?plan=1000"
 >
 اشترك الآن
 </a>
@@ -1414,7 +1470,9 @@ href="auth.html"
 
 <div class="subscription-card">
 
-<h3>سنوي</h3>
+<h3>
+سنوي
+</h3>
 
 <div class="subscription-price">
 3000 جنيه
@@ -1435,7 +1493,7 @@ href="auth.html"
 
 <a
 class="subscription-button"
-href="auth.html"
+href="auth.html?plan=3000"
 >
 اشترك الآن
 </a>
@@ -1535,32 +1593,4 @@ return;
 }
 
 subMenu.classList.toggle("active");
-arrow.classList.toggle("active");
-
-}
-
-document.addEventListener("click",function(event){
-
-const menu = document.getElementById("menu");
-const button = document.querySelector(".menu-button");
-
-if(!menu || !button){
-return;
-}
-
-if(
-menu.classList.contains("active") &&
-!menu.contains(event.target) &&
-!button.contains(event.target)
-){
-
-closeMenu();
-
-}
-
-});
-
-</script>
-
-</body>
-  </html>
+arrow.classList.toggle("activ
