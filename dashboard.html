@@ -25,17 +25,21 @@
       min-height: 100vh;
     }
 
+
     /* HEADER */
 
     header {
       height: 75px;
       padding: 0 25px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       background: #080808;
       border-bottom: 1px solid #292929;
     }
+
 
     .logo {
       font-size: 25px;
@@ -43,9 +47,11 @@
       letter-spacing: .5px;
     }
 
+
     .logo span {
       color: #00f56a;
     }
+
 
     .header-left {
       display: flex;
@@ -53,38 +59,52 @@
       gap: 12px;
     }
 
+
     .profile {
       width: 40px;
       height: 40px;
+
       border-radius: 50%;
+
       background:
         linear-gradient(
           145deg,
           #3d3d3d,
           #151515
         );
+
       border: 1px solid #4a4a4a;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       color: #00f56a;
       font-weight: bold;
     }
 
+
     #logoutBtn {
       background: #1d1d1d;
       color: #ffffff;
+
       border: 1px solid #444444;
+
       padding: 9px 15px;
+
       border-radius: 9px;
+
       cursor: pointer;
+
       transition: .2s;
     }
+
 
     #logoutBtn:hover {
       border-color: #00f56a;
       color: #00f56a;
     }
+
 
     /* MAIN */
 
@@ -93,6 +113,7 @@
       margin: auto;
       padding: 28px 20px 50px;
     }
+
 
     /* WELCOME */
 
@@ -104,22 +125,31 @@
           #222222 45%,
           #0b0b0b 100%
         );
+
       border: 1px solid #444444;
+
       border-radius: 22px;
+
       padding: 30px;
+
       position: relative;
+
       overflow: hidden;
+
       margin-bottom: 25px;
     }
+
 
     .welcome h1 {
       font-size: 31px;
       margin-bottom: 9px;
     }
 
+
     .welcome h1 span {
       color: #00f56a;
     }
+
 
     .welcome p {
       color: #a5a5a5;
@@ -127,10 +157,12 @@
       margin-bottom: 20px;
     }
 
+
     .account {
       color: #00f56a;
       font-weight: bold;
     }
+
 
     /* PROGRESS BAR */
 
@@ -138,45 +170,65 @@
       max-width: 600px;
     }
 
+
     .progress-top {
       display: flex;
       justify-content: space-between;
+
       margin-bottom: 8px;
+
       color: #bdbdbd;
+
       font-size: 14px;
     }
+
 
     .progress-top strong {
       color: #00f56a;
     }
 
+
     .progress-bar {
       width: 100%;
       height: 9px;
+
       background: #111111;
+
       border-radius: 20px;
+
       overflow: hidden;
+
       border: 1px solid #333333;
     }
+
 
     .progress-fill {
       width: 68%;
       height: 100%;
+
       background: #00f56a;
+
       border-radius: 20px;
+
       box-shadow:
         0 0 12px
         rgba(0,245,106,.35);
     }
 
+
     /* كروت التقدم */
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
       margin-bottom: 30px;
     }
+
 
     .stat {
       background:
@@ -187,54 +239,79 @@
           #151515 65%,
           #090909 100%
         );
+
       border: 1px solid #4a4a4a;
+
       border-radius: 20px;
-      padding: 35px 30px;
+
+      padding: 35px 25px;
+
       min-height: 200px;
+
       text-align: center;
+
       transition: .25s;
     }
 
+
     .stat:hover {
       transform: translateY(-5px);
+
       border-color: #00f56a;
+
       box-shadow:
         0 0 20px
         rgba(0,245,106,.08);
     }
 
+
     .stat-icon {
       font-size: 30px;
+
       margin-bottom: 15px;
     }
 
+
     .stat strong {
       display: block;
+
       font-size: 36px;
+
       color: #00f56a;
+
       margin-bottom: 8px;
     }
 
+
     .stat span {
       color: #a0a0a0;
+
       font-size: 16px;
     }
+
 
     /* SECTION TITLE */
 
     .section-title {
       font-size: 23px;
+
       margin-bottom: 18px;
     }
+
 
     /* DASHBOARD CARDS */
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 17px;
+
       margin-bottom: 30px;
     }
+
 
     .card {
       background:
@@ -245,55 +322,82 @@
           #151515 65%,
           #090909 100%
         );
+
       border: 1px solid #4a4a4a;
+
       border-radius: 18px;
+
       padding: 23px;
+
       transition: .25s;
     }
 
+
     .card:hover {
       transform: translateY(-4px);
+
       border-color: #00f56a;
+
       box-shadow:
         0 0 22px
         rgba(0,245,106,.08);
     }
 
+
     .icon {
       font-size: 34px;
+
       margin-bottom: 14px;
     }
 
+
     .card h3 {
       margin-bottom: 9px;
+
       font-size: 19px;
     }
 
+
     .card p {
       color: #a0a0a0;
+
       line-height: 1.7;
+
       font-size: 14px;
+
       margin-bottom: 18px;
     }
 
+
     .card a {
       display: inline-block;
+
       text-decoration: none;
+
       background: #00f56a;
+
       color: #06100a;
+
       padding: 10px 16px;
+
       border-radius: 9px;
+
       font-weight: bold;
+
       font-size: 14px;
+
       transition: .2s;
     }
 
+
     .card a:hover {
       background: #18ff78;
+
       box-shadow:
         0 0 18px
         rgba(0,245,106,.22);
     }
+
 
     /* SUBSCRIPTION */
 
@@ -306,86 +410,123 @@
           #151515 65%,
           #090909 100%
         );
+
       border: 1px solid #4a4a4a;
+
       border-radius: 20px;
+
       padding: 28px;
+
       text-align: center;
     }
 
+
     .subscription-box h2 {
       font-size: 24px;
+
       margin-bottom: 10px;
     }
+
 
     .subscription-box p {
       color: #a5a5a5;
+
       margin-bottom: 10px;
+
       line-height: 1.7;
     }
 
+
     .plan-price {
       color: #00f56a;
+
       font-size: 34px;
+
       font-weight: bold;
+
       margin: 16px 0;
+
       text-shadow:
         0 0 12px
         rgba(0,245,106,.18);
     }
 
+
     .complete-subscription {
       background: #00f56a;
+
       color: #06100a;
+
       padding: 12px 24px;
+
       border-radius: 10px;
+
       font-weight: bold;
+
       border: none;
+
       cursor: pointer;
+
       font-size: 16px;
+
       transition: .2s;
     }
 
+
     .complete-subscription:hover {
       background: #18ff78;
+
       box-shadow:
         0 0 20px
         rgba(0,245,106,.25);
     }
 
+
     .no-plan {
       color: #999999;
     }
 
+
     #message {
       margin-top: 15px;
+
       text-align: center;
     }
+
 
     /* TABLET */
 
     @media(max-width: 800px) {
 
       .stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        grid-template-columns:
+          repeat(3, 1fr);
+
+        gap: 10px;
       }
+
 
       .stat {
-        min-height: 175px;
-        padding: 28px 18px;
+        min-height: 180px;
+
+        padding: 25px 12px;
       }
+
 
       .stat-icon {
-        font-size: 27px;
+        font-size: 25px;
       }
+
 
       .stat strong {
-        font-size: 32px;
+        font-size: 30px;
       }
 
+
       .stat span {
-        font-size: 14px;
+        font-size: 13px;
       }
+
 
       .cards {
         grid-template-columns: 1fr;
@@ -393,55 +534,71 @@
 
     }
 
+
     /* MOBILE */
 
     @media(max-width: 600px) {
 
       header {
         height: 68px;
+
         padding: 0 16px;
       }
+
 
       .logo {
         font-size: 21px;
       }
 
+
       .header-left {
         gap: 8px;
       }
+
 
       .profile {
         width: 36px;
         height: 36px;
       }
 
+
       #logoutBtn {
         padding: 8px 10px;
+
         font-size: 13px;
       }
+
 
       .container {
         padding: 20px 14px 40px;
       }
 
+
       .welcome {
         padding: 23px 20px;
+
         border-radius: 18px;
       }
+
 
       .welcome h1 {
         font-size: 25px;
       }
 
+
       .stats {
         grid-template-columns: 1fr;
+
         gap: 14px;
       }
 
+
       .stat {
         min-height: 170px;
+
         padding: 30px 20px;
       }
+
 
       .subscription-box {
         padding: 23px 18px;
@@ -453,33 +610,51 @@
 
 </head>
 
+
 <body>
+
 
   <header>
 
+
     <div class="logo">
+
       Body<span>Reset</span>
+
     </div>
+
 
     <div class="header-left">
 
+
       <div class="profile">
+
         BR
+
       </div>
 
+
       <button id="logoutBtn">
+
         تسجيل الخروج
+
       </button>
+
 
     </div>
 
+
   </header>
 
+
+
   <main class="container">
+
 
     <!-- WELCOME -->
 
     <section class="welcome">
+
 
       <h1>
 
@@ -490,6 +665,7 @@
         </span>
 
       </h1>
+
 
       <p>
 
@@ -509,171 +685,284 @@
 
       </p>
 
+
       <div class="progress-area">
+
 
         <div class="progress-top">
 
+
           <span>
+
             نسبة إنجازك
+
           </span>
 
+
           <strong>
+
             68%
+
           </strong>
+
 
         </div>
 
+
         <div class="progress-bar">
+
 
           <div class="progress-fill">
           </div>
 
+
         </div>
+
 
       </div>
 
+
     </section>
+
+
 
     <!-- PROGRESS CARDS -->
 
     <div class="stats">
 
+
       <div class="stat">
 
+
         <div class="stat-icon">
+
           🔥
+
         </div>
 
+
         <strong>
+
           7
+
         </strong>
 
+
         <span>
+
           أيام متتالية
+
         </span>
+
 
       </div>
 
+
+
       <div class="stat">
 
+
         <div class="stat-icon">
+
           💪
+
         </div>
 
+
         <strong>
+
           12
+
         </strong>
 
+
         <span>
+
           تمرين مكتمل
+
         </span>
 
+
       </div>
+
+
 
       <div class="stat">
 
+
         <div class="stat-icon">
+
           ⚡
+
         </div>
 
+
         <strong>
+
           68%
+
         </strong>
 
+
         <span>
+
           نسبة الإنجاز
+
         </span>
 
+
       </div>
+
 
     </div>
+
+
 
     <!-- START -->
 
     <h2 class="section-title">
+
       ابدأ رحلتك 💪
+
     </h2>
+
 
     <div class="cards">
 
+
       <div class="card">
 
+
         <div class="icon">
+
           💪
+
         </div>
 
+
         <h3>
+
           Workout
+
         </h3>
 
+
         <p>
+
           تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
+
         </p>
+
 
         <a href="workout.html">
+
           ابدأ التمرين
+
         </a>
+
 
       </div>
 
+
+
       <div class="card">
 
+
         <div class="icon">
+
           🥗
+
         </div>
 
+
         <h3>
+
           Nutrition
+
         </h3>
 
+
         <p>
+
           خطط غذائية تساعدك تختار أكلك حسب هدفك.
+
         </p>
 
+
         <a href="#">
+
           خطة التغذية
+
         </a>
 
+
       </div>
+
+
 
       <div class="card">
 
+
         <div class="icon">
+
           📊
+
         </div>
 
+
         <h3>
+
           Progress
+
         </h3>
 
+
         <p>
+
           تابع تقدمك وشوف تطورك مع الوقت.
+
         </p>
 
+
         <a href="#">
+
           متابعة التقدم
+
         </a>
 
+
       </div>
+
 
     </div>
+
+
 
     <!-- SUBSCRIPTION -->
 
     <div class="subscription-box">
 
+
       <h2>
+
         اشتراكك في BodyReset
+
       </h2>
 
+
       <p id="selectedPlanText">
+
         جاري تحميل الباقة...
+
       </p>
+
 
       <div
         class="plan-price"
         id="selectedPlanPrice">
+
       </div>
+
 
       <button
         class="complete-subscription"
@@ -684,6 +973,7 @@
 
       </button>
 
+
       <p
         class="no-plan"
         id="noPlanText"
@@ -693,22 +983,31 @@
 
       </p>
 
+
     </div>
+
 
     <div id="message"></div>
 
+
   </main>
 
+
+
   <script type="module">
+
 
     import { createClient } from
       "https://esm.sh/@supabase/supabase-js@2";
 
+
     const SUPABASE_URL =
       "https://byodeoaluspphqduxmlh.supabase.co";
 
+
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+
 
     const supabase =
       createClient(
@@ -716,48 +1015,58 @@
         SUPABASE_PUBLISHABLE_KEY
       );
 
+
     const userEmail =
       document.getElementById(
         "userEmail"
       );
+
 
     const logoutBtn =
       document.getElementById(
         "logoutBtn"
       );
 
+
     const message =
       document.getElementById(
         "message"
       );
+
 
     const selectedPlanText =
       document.getElementById(
         "selectedPlanText"
       );
 
+
     const selectedPlanPrice =
       document.getElementById(
         "selectedPlanPrice"
       );
+
 
     const completeSubscriptionBtn =
       document.getElementById(
         "completeSubscriptionBtn"
       );
 
+
     const noPlanText =
       document.getElementById(
         "noPlanText"
       );
+
 
     const urlParams =
       new URLSearchParams(
         window.location.search
       );
 
+
     const selectedPlan =
       urlParams.get("plan");
+
 
     const plans = {
 
@@ -772,6 +1081,7 @@
 
       },
 
+
       "1000": {
 
         name: "باقة 3 شهور",
@@ -782,6 +1092,7 @@
           "اشتراك لمدة 3 شهور"
 
       },
+
 
       "3000": {
 
@@ -796,40 +1107,52 @@
 
     };
 
+
     function showSelectedPlan() {
+
 
       if (
         selectedPlan &&
         plans[selectedPlan]
       ) {
 
+
         const plan =
           plans[selectedPlan];
+
 
         selectedPlanText.textContent =
           plan.name +
           " - " +
           plan.duration;
 
+
         selectedPlanPrice.textContent =
           plan.price;
+
 
         completeSubscriptionBtn.style.display =
           "inline-block";
 
+
         noPlanText.style.display =
           "none";
 
+
       } else {
+
 
         selectedPlanText.textContent =
           "لم يتم اختيار أي باقة.";
 
+
         selectedPlanPrice.textContent =
           "";
 
+
         completeSubscriptionBtn.style.display =
           "none";
+
 
         noPlanText.style.display =
           "block";
@@ -838,12 +1161,15 @@
 
     }
 
+
     completeSubscriptionBtn.addEventListener(
       "click",
       () => {
 
+
         message.style.color =
           "#00f56a";
+
 
         message.textContent =
           "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
@@ -851,7 +1177,9 @@
       }
     );
 
+
     async function loadUser() {
+
 
       const {
         data: { user },
@@ -859,20 +1187,25 @@
       } =
         await supabase.auth.getUser();
 
+
       if (
         error ||
         !user
       ) {
 
+
         window.location.href =
           "auth.html";
+
 
         return;
 
       }
 
+
       const username =
         user.user_metadata?.username;
+
 
       userEmail.textContent =
         username ||
@@ -880,26 +1213,33 @@
 
     }
 
+
     logoutBtn.addEventListener(
       "click",
       async () => {
+
 
         const {
           error
         } =
           await supabase.auth.signOut();
 
+
         if (error) {
+
 
           message.style.color =
             "#ff7777";
 
+
           message.textContent =
             error.message;
+
 
           return;
 
         }
+
 
         window.location.href =
           "auth.html";
@@ -907,12 +1247,15 @@
       }
     );
 
+
     showSelectedPlan();
 
     loadUser();
 
+
   </script>
+
 
 </body>
 
-          </html>
+  </html>
