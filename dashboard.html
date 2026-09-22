@@ -221,6 +221,8 @@
     .stats {
       display: flex;
 
+      flex-direction: row-reverse;
+
       gap: 18px;
 
       margin-bottom: 30px;
@@ -238,6 +240,8 @@
       padding-bottom: 8px;
 
       -webkit-overflow-scrolling: touch;
+
+      scrollbar-width: thin;
     }
 
 
@@ -248,12 +252,14 @@
 
     .stats::-webkit-scrollbar-track {
       background: #111111;
+
       border-radius: 10px;
     }
 
 
     .stats::-webkit-scrollbar-thumb {
       background: #3d3d3d;
+
       border-radius: 10px;
     }
 
@@ -535,11 +541,8 @@
     @media(max-width: 800px) {
 
       .stat {
-        flex: 0 0 45%;
-      }
+        flex: 0 0 260px;
 
-
-      .stat {
         min-height: 200px;
 
         padding: 30px 18px;
@@ -620,7 +623,7 @@
 
 
       .stat {
-        flex: 0 0 85%;
+        flex: 0 0 230px;
 
         min-height: 200px;
 
@@ -670,7 +673,6 @@
 
 
     </div>
-
 
   </header>
 
