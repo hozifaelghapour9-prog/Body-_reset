@@ -23,6 +23,7 @@
       background: #050505;
       color: #f5f5f5;
       min-height: 100vh;
+      padding-bottom: 90px;
     }
 
 
@@ -216,12 +217,12 @@
     }
 
 
-    /* كروت التقدم */
+    /* DASHBOARD STATS */
 
     .stats {
       display: flex;
 
-      flex-direction: row-reverse;
+      flex-direction: row;
 
       gap: 18px;
 
@@ -241,26 +242,14 @@
 
       -webkit-overflow-scrolling: touch;
 
-      scrollbar-width: thin;
+      scrollbar-width: none;
+
+      direction: ltr;
     }
 
 
     .stats::-webkit-scrollbar {
-      height: 5px;
-    }
-
-
-    .stats::-webkit-scrollbar-track {
-      background: #111111;
-
-      border-radius: 10px;
-    }
-
-
-    .stats::-webkit-scrollbar-thumb {
-      background: #3d3d3d;
-
-      border-radius: 10px;
+      display: none;
     }
 
 
@@ -272,31 +261,34 @@
       background:
         linear-gradient(
           145deg,
-          #3d3d3d 0%,
-          #292929 35%,
-          #151515 65%,
-          #090909 100%
+          #3a3a3a 0%,
+          #242424 40%,
+          #111111 100%
         );
 
-      border: 1px solid #4a4a4a;
+      border: 1px solid #484848;
 
-      border-radius: 20px;
+      border-radius: 16px;
 
-      padding: 35px 25px;
+      padding: 22px 18px;
 
-      min-height: 220px;
+      min-height: 235px;
 
-      text-align: center;
+      text-align: right;
 
       scroll-snap-align: start;
+
+      position: relative;
+
+      overflow: hidden;
+
+      direction: rtl;
 
       transition: .25s;
     }
 
 
     .stat:hover {
-      transform: translateY(-5px);
-
       border-color: #00f56a;
 
       box-shadow:
@@ -305,30 +297,316 @@
     }
 
 
-    .stat-icon {
-      font-size: 30px;
+    .stat-title {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
 
       margin-bottom: 15px;
     }
 
 
-    .stat strong {
-      display: block;
+    .stat-title h3 {
+      font-size: 17px;
 
-      font-size: 36px;
-
-      color: #00f56a;
-
-      margin-bottom: 12px;
+      font-weight: bold;
     }
 
 
-    .stat span {
-      color: #a0a0a0;
+    .stat-arrow {
+      color: #999999;
 
-      font-size: 16px;
+      font-size: 22px;
 
-      line-height: 1.7;
+      line-height: 1;
+    }
+
+
+    /* WEEKLY ACTIVITY */
+
+    .activity-content {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 20px;
+
+      direction: ltr;
+
+      margin-top: 15px;
+    }
+
+
+    .circle-box {
+      text-align: center;
+
+      direction: rtl;
+    }
+
+
+    .circle {
+      width: 82px;
+      height: 82px;
+
+      border-radius: 50%;
+
+      background:
+        conic-gradient(
+          #00f56a 0 60%,
+          #3b3b3b 60% 100%
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      margin: auto;
+    }
+
+
+    .circle.small {
+      width: 65px;
+      height: 65px;
+
+      background:
+        conic-gradient(
+          #00f56a 0 0%,
+          #3b3b3b 0 100%
+        );
+    }
+
+
+    .circle::after {
+      content: "";
+
+      position: absolute;
+
+      width: 63px;
+      height: 63px;
+
+      background: #202020;
+
+      border-radius: 50%;
+    }
+
+
+    .circle.small::after {
+      width: 49px;
+      height: 49px;
+    }
+
+
+    .circle-value {
+      position: relative;
+
+      z-index: 2;
+
+      color: white;
+
+      font-size: 18px;
+
+      font-weight: bold;
+    }
+
+
+    .circle.small .circle-value {
+      font-size: 14px;
+    }
+
+
+    .circle-label {
+      display: block;
+
+      margin-top: 9px;
+
+      color: #9d9d9d;
+
+      font-size: 13px;
+    }
+
+
+    /* CALORIE BURN */
+
+    .calorie-number {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      direction: rtl;
+
+      margin-bottom: 10px;
+    }
+
+
+    .calorie-fire {
+      color: #00f56a;
+
+      font-size: 23px;
+    }
+
+
+    .calorie-number strong {
+      font-size: 24px;
+
+      color: white;
+    }
+
+
+    .calorie-number span {
+      color: #9d9d9d;
+
+      font-size: 15px;
+    }
+
+
+    .chart {
+      height: 105px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      gap: 7px;
+
+      direction: ltr;
+
+      padding: 0 3px;
+    }
+
+
+    .bar-wrap {
+      height: 100%;
+
+      flex: 1;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+      position: relative;
+    }
+
+
+    .bar-bg {
+      position: absolute;
+
+      bottom: 18px;
+
+      width: 14px;
+
+      height: 78px;
+
+      background: #363636;
+
+      border-radius: 8px 8px 0 0;
+    }
+
+
+    .bar {
+      width: 14px;
+
+      background: #00f56a;
+
+      border-radius: 8px 8px 0 0;
+
+      position: relative;
+
+      z-index: 2;
+
+      box-shadow:
+        0 0 10px
+        rgba(0,245,106,.16);
+    }
+
+
+    .day {
+      position: absolute;
+
+      bottom: 0;
+
+      color: #888888;
+
+      font-size: 10px;
+    }
+
+
+    /* WEEKLY PROGRESS */
+
+    .weekly-progress {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-top: 12px;
+    }
+
+
+    .big-progress {
+      width: 135px;
+      height: 135px;
+
+      border-radius: 50%;
+
+      background:
+        conic-gradient(
+          #00f56a 0 68%,
+          #3a3a3a 68% 100%
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      box-shadow:
+        0 0 20px
+        rgba(0,245,106,.08);
+    }
+
+
+    .big-progress::after {
+      content: "";
+
+      position: absolute;
+
+      width: 103px;
+      height: 103px;
+
+      background: #202020;
+
+      border-radius: 50%;
+    }
+
+
+    .big-progress-value {
+      position: relative;
+
+      z-index: 2;
+
+      color: #00f56a;
+
+      font-size: 28px;
+
+      font-weight: bold;
     }
 
 
@@ -536,31 +814,229 @@
     }
 
 
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 76px;
+
+      background:
+        rgba(8,8,8,.97);
+
+      border-top: 1px solid #2c2c2c;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-around;
+
+      z-index: 9999;
+
+      direction: ltr;
+
+      box-shadow:
+        0 -8px 25px
+        rgba(0,0,0,.35);
+    }
+
+
+    .nav-item {
+      flex: 1;
+
+      height: 100%;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 5px;
+
+      text-decoration: none;
+
+      color: #8d8d8d;
+
+      font-size: 12px;
+
+      transition: .2s;
+
+      direction: rtl;
+    }
+
+
+    .nav-icon {
+      width: 27px;
+
+      height: 27px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 24px;
+
+      line-height: 1;
+    }
+
+
+    .nav-item.active {
+      color: #00f56a;
+
+      text-shadow:
+        0 0 10px
+        rgba(0,245,106,.35);
+    }
+
+
+    .nav-item.active .nav-icon {
+      filter:
+        drop-shadow(
+          0 0 6px
+          rgba(0,245,106,.35)
+        );
+    }
+
+
+    /* BELL */
+
+    .dashboard-heading {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 18px;
+
+      direction: rtl;
+    }
+
+
+    .dashboard-heading h2 {
+      font-size: 27px;
+    }
+
+
+    .notification {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #ffffff;
+
+      background: #111111;
+
+      border: 1px solid #333333;
+
+      position: relative;
+    }
+
+
+    .notification::after {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      background: #00f56a;
+
+      border-radius: 50%;
+
+      position: absolute;
+
+      top: 8px;
+      right: 10px;
+
+      box-shadow:
+        0 0 8px
+        rgba(0,245,106,.5);
+    }
+
+
+    .bell-icon {
+      width: 20px;
+      height: 20px;
+
+      position: relative;
+
+      border: 2px solid #eeeeee;
+
+      border-top-left-radius: 11px;
+
+      border-top-right-radius: 11px;
+
+      border-bottom: none;
+    }
+
+
+    .bell-icon::before {
+      content: "";
+
+      position: absolute;
+
+      left: -5px;
+
+      bottom: -3px;
+
+      width: 26px;
+
+      height: 2px;
+
+      background: #eeeeee;
+
+      border-radius: 5px;
+    }
+
+
+    .bell-icon::after {
+      content: "";
+
+      position: absolute;
+
+      bottom: -7px;
+
+      left: 6px;
+
+      width: 6px;
+
+      height: 6px;
+
+      background: #eeeeee;
+
+      border-radius: 50%;
+    }
+
+
     /* TABLET */
 
     @media(max-width: 800px) {
 
       .stat {
-        flex: 0 0 260px;
+        flex: 0 0 280px;
 
-        min-height: 200px;
+        min-height: 235px;
 
-        padding: 30px 18px;
-      }
-
-
-      .stat-icon {
-        font-size: 27px;
-      }
-
-
-      .stat strong {
-        font-size: 32px;
-      }
-
-
-      .stat span {
-        font-size: 14px;
+        padding: 22px 18px;
       }
 
 
@@ -574,6 +1050,11 @@
     /* MOBILE */
 
     @media(max-width: 600px) {
+
+      body {
+        padding-bottom: 82px;
+      }
+
 
       header {
         height: 68px;
@@ -622,17 +1103,43 @@
       }
 
 
+      .dashboard-heading h2 {
+        font-size: 25px;
+      }
+
+
+      .notification {
+        width: 40px;
+        height: 40px;
+      }
+
+
       .stat {
-        flex: 0 0 230px;
+        flex: 0 0 300px;
 
-        min-height: 200px;
+        min-height: 225px;
 
-        padding: 30px 20px;
+        padding: 22px 18px;
       }
 
 
       .subscription-box {
         padding: 23px 18px;
+      }
+
+
+      .bottom-nav {
+        height: 72px;
+      }
+
+
+      .nav-item {
+        font-size: 11px;
+      }
+
+
+      .nav-icon {
+        font-size: 22px;
       }
 
     }
@@ -671,7 +1178,6 @@
 
       </button>
 
-
     </div>
 
   </header>
@@ -679,6 +1185,29 @@
 
 
   <main class="container">
+
+
+    <!-- DASHBOARD TITLE + NOTIFICATION -->
+
+    <div class="dashboard-heading">
+
+      <h2>
+
+        لوحة التحكم
+
+      </h2>
+
+
+      <div
+        class="notification"
+        aria-label="الإشعارات">
+
+        <div class="bell-icon"></div>
+
+      </div>
+
+    </div>
+
 
 
     <!-- WELCOME -->
@@ -756,90 +1285,326 @@
 
 
 
-    <!-- PROGRESS CARDS -->
+    <!-- 3 DASHBOARD STATS -->
 
     <div class="stats">
 
 
+      <!-- WEEKLY ACTIVITY -->
+
       <div class="stat">
 
 
-        <div class="stat-icon">
+        <div class="stat-title">
 
-          🔥
+          <h3>
+
+            النشاط الأسبوعي
+
+          </h3>
+
+
+          <span class="stat-arrow">
+
+            ‹
+
+          </span>
 
         </div>
 
 
-        <strong>
-
-          7
-
-        </strong>
+        <div class="activity-content">
 
 
-        <span>
+          <div class="circle-box">
 
-          أيام متتالية
 
-        </span>
+            <div class="circle">
 
+              <span class="circle-value">
+
+                60
+
+              </span>
+
+            </div>
+
+
+            <span class="circle-label">
+
+              التقدم
+
+            </span>
+
+          </div>
+
+
+          <div class="circle-box">
+
+
+            <div class="circle small">
+
+              <span class="circle-value">
+
+                0%
+
+              </span>
+
+            </div>
+
+
+            <span class="circle-label">
+
+              الحرق
+
+            </span>
+
+          </div>
+
+
+        </div>
 
       </div>
 
 
 
+      <!-- CALORIE BURN -->
+
       <div class="stat">
 
 
-        <div class="stat-icon">
+        <div class="stat-title">
 
-          💪
+          <h3>
+
+            حرق السعرات
+
+          </h3>
+
+
+          <span class="stat-arrow">
+
+            ‹
+
+          </span>
 
         </div>
 
 
-        <strong>
-
-          12
-
-        </strong>
+        <div class="calorie-number">
 
 
-        <span>
+          <span class="calorie-fire">
 
-          تمرين مكتمل
+            🔥
 
-        </span>
+          </span>
 
+
+          <strong>
+
+            280
+
+          </strong>
+
+
+          <span>
+
+            سعرة
+
+          </span>
+
+        </div>
+
+
+        <div class="chart">
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:38px;">
+            </div>
+
+            <span class="day">
+
+              س
+
+            </span>
+
+          </div>
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:58px;">
+            </div>
+
+            <span class="day">
+
+              ح
+
+            </span>
+
+          </div>
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:42px;">
+            </div>
+
+            <span class="day">
+
+              ن
+
+            </span>
+
+          </div>
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:50px;">
+            </div>
+
+            <span class="day">
+
+              ث
+
+            </span>
+
+          </div>
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:65px;">
+            </div>
+
+            <span class="day">
+
+              ر
+
+            </span>
+
+          </div>
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:48px;">
+            </div>
+
+            <span class="day">
+
+              خ
+
+            </span>
+
+          </div>
+
+
+          <div class="bar-wrap">
+
+            <div
+              class="bar-bg">
+            </div>
+
+            <div
+              class="bar"
+              style="height:70px;">
+            </div>
+
+            <span class="day">
+
+              ج
+
+            </span>
+
+          </div>
+
+        </div>
 
       </div>
 
 
 
+      <!-- WEEKLY PROGRESS -->
+
       <div class="stat">
 
 
-        <div class="stat-icon">
+        <div class="stat-title">
 
-          ⚡
+          <h3>
+
+            التقدم الأسبوعي
+
+          </h3>
+
+
+          <span class="stat-arrow">
+
+            ‹
+
+          </span>
 
         </div>
 
 
-        <strong>
-
-          68%
-
-        </strong>
+        <div class="weekly-progress">
 
 
-        <span>
+          <div class="big-progress">
 
-          نسبة الإنجاز
 
-        </span>
+            <span class="big-progress-value">
 
+              68%
+
+            </span>
+
+
+          </div>
+
+
+        </div>
 
       </div>
 
@@ -879,413 +1644,4 @@
 
         <p>
 
-          تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-
-        </p>
-
-
-        <a href="workout.html">
-
-          ابدأ التمرين
-
-        </a>
-
-
-      </div>
-
-
-
-      <div class="card">
-
-
-        <div class="icon">
-
-          🥗
-
-        </div>
-
-
-        <h3>
-
-          Nutrition
-
-        </h3>
-
-
-        <p>
-
-          خطط غذائية تساعدك تختار أكلك حسب هدفك.
-
-        </p>
-
-
-        <a href="#">
-
-          خطة التغذية
-
-        </a>
-
-
-      </div>
-
-
-
-      <div class="card">
-
-
-        <div class="icon">
-
-          📊
-
-        </div>
-
-
-        <h3>
-
-          Progress
-
-        </h3>
-
-
-        <p>
-
-          تابع تقدمك وشوف تطورك مع الوقت.
-
-        </p>
-
-
-        <a href="#">
-
-          متابعة التقدم
-
-        </a>
-
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- SUBSCRIPTION -->
-
-    <div class="subscription-box">
-
-
-      <h2>
-
-        اشتراكك في BodyReset
-
-      </h2>
-
-
-      <p id="selectedPlanText">
-
-        جاري تحميل الباقة...
-
-      </p>
-
-
-      <div
-        class="plan-price"
-        id="selectedPlanPrice">
-
-      </div>
-
-
-      <button
-        class="complete-subscription"
-        id="completeSubscriptionBtn"
-        style="display:none;">
-
-        إكمال الاشتراك
-
-      </button>
-
-
-      <p
-        class="no-plan"
-        id="noPlanText"
-        style="display:none;">
-
-        لم يتم اختيار أي باقة حتى الآن.
-
-      </p>
-
-
-    </div>
-
-
-    <div id="message"></div>
-
-
-  </main>
-
-
-
-  <script type="module">
-
-
-    import { createClient } from
-      "https://esm.sh/@supabase/supabase-js@2";
-
-
-    const SUPABASE_URL =
-      "https://byodeoaluspphqduxmlh.supabase.co";
-
-
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-
-
-    const supabase =
-      createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
-
-
-    const userEmail =
-      document.getElementById(
-        "userEmail"
-      );
-
-
-    const logoutBtn =
-      document.getElementById(
-        "logoutBtn"
-      );
-
-
-    const message =
-      document.getElementById(
-        "message"
-      );
-
-
-    const selectedPlanText =
-      document.getElementById(
-        "selectedPlanText"
-      );
-
-
-    const selectedPlanPrice =
-      document.getElementById(
-        "selectedPlanPrice"
-      );
-
-
-    const completeSubscriptionBtn =
-      document.getElementById(
-        "completeSubscriptionBtn"
-      );
-
-
-    const noPlanText =
-      document.getElementById(
-        "noPlanText"
-      );
-
-
-    const urlParams =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const selectedPlan =
-      urlParams.get("plan");
-
-
-    const plans = {
-
-      "500": {
-
-        name: "الباقة الشهرية",
-
-        price: "500 جنيه",
-
-        duration:
-          "اشتراك لمدة شهر"
-
-      },
-
-
-      "1000": {
-
-        name: "باقة 3 شهور",
-
-        price: "1000 جنيه",
-
-        duration:
-          "اشتراك لمدة 3 شهور"
-
-      },
-
-
-      "3000": {
-
-        name: "الباقة السنوية",
-
-        price: "3000 جنيه",
-
-        duration:
-          "اشتراك لمدة سنة"
-
-      }
-
-    };
-
-
-    function showSelectedPlan() {
-
-
-      if (
-        selectedPlan &&
-        plans[selectedPlan]
-      ) {
-
-
-        const plan =
-          plans[selectedPlan];
-
-
-        selectedPlanText.textContent =
-          plan.name +
-          " - " +
-          plan.duration;
-
-
-        selectedPlanPrice.textContent =
-          plan.price;
-
-
-        completeSubscriptionBtn.style.display =
-          "inline-block";
-
-
-        noPlanText.style.display =
-          "none";
-
-
-      } else {
-
-
-        selectedPlanText.textContent =
-          "لم يتم اختيار أي باقة.";
-
-
-        selectedPlanPrice.textContent =
-          "";
-
-
-        completeSubscriptionBtn.style.display =
-          "none";
-
-
-        noPlanText.style.display =
-          "block";
-
-      }
-
-    }
-
-
-    completeSubscriptionBtn.addEventListener(
-      "click",
-      () => {
-
-
-        message.style.color =
-          "#00f56a";
-
-
-        message.textContent =
-          "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
-
-      }
-    );
-
-
-    async function loadUser() {
-
-
-      const {
-        data: { user },
-        error
-      } =
-        await supabase.auth.getUser();
-
-
-      if (
-        error ||
-        !user
-      ) {
-
-
-        window.location.href =
-          "auth.html";
-
-
-        return;
-
-      }
-
-
-      const username =
-        user.user_metadata?.username;
-
-
-      userEmail.textContent =
-        username ||
-        user.email;
-
-    }
-
-
-    logoutBtn.addEventListener(
-      "click",
-      async () => {
-
-
-        const {
-          error
-        } =
-          await supabase.auth.signOut();
-
-
-        if (error) {
-
-
-          message.style.color =
-            "#ff7777";
-
-
-          message.textContent =
-            error.message;
-
-
-          return;
-
-        }
-
-
-        window.location.href =
-          "auth.html";
-
-      }
-    );
-
-
-    showSelectedPlan();
-
-    loadUser();
-
-
-  </script>
-
-
-</body>
-
-  </html>
+    
