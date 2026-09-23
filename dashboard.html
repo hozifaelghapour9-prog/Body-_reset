@@ -12,1108 +12,832 @@
 
   <style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:Arial,sans-serif;
     }
 
-    body {
-      background: #050505;
-      color: #f5f5f5;
-      min-height: 100vh;
+    body{
+      background:#050505;
+      color:#f5f5f5;
+      min-height:100vh;
     }
 
-
-    /* HEADER */
-
-    header {
-      height: 75px;
-      padding: 0 25px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      background: #080808;
-      border-bottom: 1px solid #292929;
+    header{
+      height:75px;
+      padding:0 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#080808;
+      border-bottom:1px solid #292929;
     }
 
-
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: .5px;
+    .logo{
+      font-size:25px;
+      font-weight:bold;
+      letter-spacing:.5px;
     }
 
-
-    .logo span {
-      color: #00f56a;
+    .logo span{
+      color:#00f56a;
     }
 
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .header-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
+    .profile{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:linear-gradient(145deg,#3d3d3d,#151515);
+      border:1px solid #4a4a4a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#00f56a;
+      font-weight:bold;
+    }
 
-    .profile {
-      width: 40px;
-      height: 40px;
+    #logoutBtn{
+      background:#1d1d1d;
+      color:#fff;
+      border:1px solid #444;
+      padding:9px 15px;
+      border-radius:9px;
+      cursor:pointer;
+      transition:.2s;
+    }
 
-      border-radius: 50%;
+    #logoutBtn:hover{
+      border-color:#00f56a;
+      color:#00f56a;
+    }
 
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:28px 20px 100px;
+    }
+
+    /* DASHBOARD TITLE */
+
+    .dashboard-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:22px;
+    }
+
+    .dashboard-title h1{
+      font-size:30px;
+    }
+
+    .notification{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:#181818;
+      border:1px solid #3b3b3b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      font-size:20px;
+    }
+
+    .notification-dot{
+      width:8px;
+      height:8px;
+      background:#00f56a;
+      border-radius:50%;
+      position:absolute;
+      top:7px;
+      right:8px;
+    }
+
+    /* WELCOME */
+
+    .welcome{
+      background:linear-gradient(
+        135deg,
+        #303030 0%,
+        #222 45%,
+        #0b0b0b 100%
+      );
+      border:1px solid #444;
+      border-radius:22px;
+      padding:30px;
+      margin-bottom:25px;
+    }
+
+    .welcome h1{
+      font-size:31px;
+      margin-bottom:9px;
+    }
+
+    .welcome h1 span{
+      color:#00f56a;
+    }
+
+    .welcome p{
+      color:#a5a5a5;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .account{
+      color:#00f56a;
+      font-weight:bold;
+    }
+
+    .progress-area{
+      max-width:600px;
+    }
+
+    .progress-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:8px;
+      color:#bdbdbd;
+      font-size:14px;
+    }
+
+    .progress-top strong{
+      color:#00f56a;
+    }
+
+    .progress-bar{
+      width:100%;
+      height:9px;
+      background:#111;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid #333;
+    }
+
+    .progress-fill{
+      width:68%;
+      height:100%;
+      background:#00f56a;
+      border-radius:20px;
+      box-shadow:0 0 12px rgba(0,245,106,.35);
+    }
+
+    /* STATS */
+
+    .stats{
+      display:flex;
+      flex-direction:row-reverse;
+      gap:18px;
+      margin-bottom:35px;
+      width:100%;
+      overflow-x:auto;
+      overflow-y:hidden;
+      scroll-snap-type:x mandatory;
+      padding-bottom:8px;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .stats::-webkit-scrollbar{
+      height:5px;
+    }
+
+    .stats::-webkit-scrollbar-track{
+      background:#111;
+      border-radius:10px;
+    }
+
+    .stats::-webkit-scrollbar-thumb{
+      background:#3d3d3d;
+      border-radius:10px;
+    }
+
+    .stat{
+      flex:0 0 calc((100% - 36px)/3);
+      background:linear-gradient(
+        145deg,
+        #3d3d3d 0%,
+        #292929 35%,
+        #151515 65%,
+        #090909 100%
+      );
+      border:1px solid #4a4a4a;
+      border-radius:20px;
+      padding:25px 20px;
+      min-height:225px;
+      scroll-snap-align:start;
+    }
+
+    .stat h3{
+      font-size:17px;
+      margin-bottom:20px;
+    }
+
+    /* WEEKLY ACTIVITY */
+
+    .activity-circles{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+    }
+
+    .activity-circle{
+      width:82px;
+      height:82px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+
+    .activity-circle.progress{
+      background:conic-gradient(
+        #00f56a 60%,
+        #333 60%
+      );
+    }
+
+    .activity-circle.burn{
+      background:conic-gradient(
+        #00f56a 0%,
+        #333 0%
+      );
+    }
+
+    .activity-circle::before{
+      content:"";
+      position:absolute;
+      width:62px;
+      height:62px;
+      background:#171717;
+      border-radius:50%;
+    }
+
+    .circle-content{
+      position:relative;
+      z-index:2;
+      text-align:center;
+    }
+
+    .circle-content strong{
+      display:block;
+      color:#00f56a;
+      font-size:18px;
+    }
+
+    .circle-content span{
+      display:block;
+      color:#aaa;
+      font-size:10px;
+      margin-top:3px;
+    }
+
+    /* CALORIES */
+
+    .calorie-number{
+      text-align:center;
+      margin-bottom:15px;
+    }
+
+    .calorie-number strong{
+      color:#00f56a;
+      font-size:32px;
+    }
+
+    .calorie-number span{
+      color:#aaa;
+      font-size:14px;
+    }
+
+    .calorie-chart{
+      height:90px;
+      display:flex;
+      align-items:end;
+      justify-content:center;
+      gap:9px;
+    }
+
+    .bar{
+      width:13px;
+      background:#00f56a;
+      border-radius:6px 6px 2px 2px;
+      box-shadow:0 0 10px rgba(0,245,106,.15);
+    }
+
+    /* WEEKLY PROGRESS */
+
+    .weekly-progress{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .progress-circle{
+      width:125px;
+      height:125px;
+      border-radius:50%;
+      background:conic-gradient(
+        #00f56a 68%,
+        #333 68%
+      );
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+
+    .progress-circle::before{
+      content:"";
+      position:absolute;
+      width:95px;
+      height:95px;
+      background:#171717;
+      border-radius:50%;
+    }
+
+    .progress-circle strong{
+      position:relative;
+      z-index:2;
+      color:#00f56a;
+      font-size:28px;
+    }
+
+    /* SECTION */
+
+    .section-heading{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .section-heading h2{
+      font-size:23px;
+    }
+
+    .see-all{
+      color:#00f56a;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:bold;
+    }
+
+    /* TODAY WORKOUT */
+
+    .today-workout{
       background:
         linear-gradient(
           145deg,
           #3d3d3d,
-          #151515
+          #292929 35%,
+          #151515 65%,
+          #090909
         );
-
-      border: 1px solid #4a4a4a;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #00f56a;
-      font-weight: bold;
+      border:1px solid #4a4a4a;
+      border-radius:20px;
+      padding:25px;
+      margin-bottom:30px;
     }
 
-
-    #logoutBtn {
-      background: #1d1d1d;
-      color: #ffffff;
-
-      border: 1px solid #444444;
-
-      padding: 9px 15px;
-
-      border-radius: 9px;
-
-      cursor: pointer;
-
-      transition: .2s;
+    .workout-main{
+      display:flex;
+      align-items:center;
+      gap:20px;
     }
 
-
-    #logoutBtn:hover {
-      border-color: #00f56a;
-      color: #00f56a;
+    .workout-icon{
+      width:75px;
+      height:75px;
+      min-width:75px;
+      border-radius:18px;
+      background:#00f56a;
+      color:#06100a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:34px;
+      font-weight:bold;
     }
 
-
-    /* MAIN */
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 28px 20px 100px;
+    .workout-info h3{
+      font-size:22px;
+      margin-bottom:7px;
     }
 
-
-    /* DASHBOARD TITLE */
-
-    .dashboard-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      margin-bottom: 22px;
+    .workout-info p{
+      color:#aaa;
+      line-height:1.7;
+      margin-bottom:14px;
     }
 
-
-    .dashboard-title h1 {
-      font-size: 30px;
+    .start-btn{
+      display:inline-block;
+      text-decoration:none;
+      background:#00f56a;
+      color:#06100a;
+      padding:11px 19px;
+      border-radius:9px;
+      font-weight:bold;
+      font-size:14px;
     }
 
-
-    .notification {
-      width: 42px;
-      height: 42px;
-
-      border-radius: 50%;
-
-      background: #181818;
-
-      border: 1px solid #3b3b3b;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      position: relative;
-
-      font-size: 20px;
+    .slider-dots{
+      display:flex;
+      justify-content:center;
+      gap:7px;
+      margin-top:20px;
     }
 
-
-    .notification-dot {
-      width: 8px;
-      height: 8px;
-
-      background: #00f56a;
-
-      border-radius: 50%;
-
-      position: absolute;
-
-      top: 7px;
-      right: 8px;
+    .slider-dots span{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#444;
     }
 
-
-    /* WELCOME */
-
-    .welcome {
-      background:
-        linear-gradient(
-          135deg,
-          #303030 0%,
-          #222222 45%,
-          #0b0b0b 100%
-        );
-
-      border: 1px solid #444444;
-
-      border-radius: 22px;
-
-      padding: 30px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      margin-bottom: 25px;
+    .slider-dots span.active{
+      width:25px;
+      border-radius:10px;
+      background:#00f56a;
     }
 
+    /* COMMUNITY */
 
-    .welcome h1 {
-      font-size: 31px;
-      margin-bottom: 9px;
-    }
-
-
-    .welcome h1 span {
-      color: #00f56a;
-    }
-
-
-    .welcome p {
-      color: #a5a5a5;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-
-    .account {
-      color: #00f56a;
-      font-weight: bold;
-    }
-
-
-    /* PROGRESS BAR */
-
-    .progress-area {
-      max-width: 600px;
-    }
-
-
-    .progress-top {
-      display: flex;
-      justify-content: space-between;
-
-      margin-bottom: 8px;
-
-      color: #bdbdbd;
-
-      font-size: 14px;
-    }
-
-
-    .progress-top strong {
-      color: #00f56a;
-    }
-
-
-    .progress-bar {
-      width: 100%;
-      height: 9px;
-
-      background: #111111;
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
-      border: 1px solid #333333;
-    }
-
-
-    .progress-fill {
-      width: 68%;
-      height: 100%;
-
-      background: #00f56a;
-
-      border-radius: 20px;
-
-      box-shadow:
-        0 0 12px
-        rgba(0,245,106,.35);
-    }
-
-
-    /* STAT CARDS */
-
-    .stats {
-      display: flex;
-
-      flex-direction: row-reverse;
-
-      gap: 18px;
-
-      margin-bottom: 35px;
-
-      width: 100%;
-
-      overflow-x: auto;
-
-      overflow-y: hidden;
-
-      scroll-snap-type: x mandatory;
-
-      scroll-behavior: smooth;
-
-      padding-bottom: 8px;
-
-      -webkit-overflow-scrolling: touch;
-
-      scrollbar-width: thin;
-    }
-
-
-    .stats::-webkit-scrollbar {
-      height: 5px;
-    }
-
-
-    .stats::-webkit-scrollbar-track {
-      background: #111111;
-
-      border-radius: 10px;
-    }
-
-
-    .stats::-webkit-scrollbar-thumb {
-      background: #3d3d3d;
-
-      border-radius: 10px;
-    }
-
-
-    .stat {
-      flex: 0 0 calc(
-        (100% - 36px) / 3
-      );
-
+    .community-card{
       background:
         linear-gradient(
           145deg,
-          #3d3d3d 0%,
+          #3d3d3d,
           #292929 35%,
           #151515 65%,
-          #090909 100%
+          #090909
         );
-
-      border: 1px solid #4a4a4a;
-
-      border-radius: 20px;
-
-      padding: 25px 20px;
-
-      min-height: 220px;
-
-      scroll-snap-align: start;
-
-      transition: .25s;
+      border:1px solid #4a4a4a;
+      border-radius:20px;
+      padding:10px 20px;
+      margin-bottom:30px;
     }
 
-
-    .stat:hover {
-      transform: translateY(-5px);
-
-      border-color: #00f56a;
-
-      box-shadow:
-        0 0 20px
-        rgba(0,245,106,.08);
+    .news-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+      border-bottom:1px solid #3a3a3a;
     }
 
-
-    .stat h3 {
-      font-size: 17px;
-
-      margin-bottom: 18px;
-
-      color: #ffffff;
+    .news-row:last-child{
+      border-bottom:none;
     }
 
-
-    .stat-main {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 25px;
+    .news-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
-
-    .circle {
-      width: 82px;
-      height: 82px;
-
-      border-radius: 50%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      position: relative;
-
-      background:
-        conic-gradient(
-          #00f56a 60%,
-          #333333 60%
-        );
+    .news-icon{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      background:#1f1f1f;
+      color:#00f56a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-
-    .circle::before {
-      content: "";
-
-      position: absolute;
-
-      width: 62px;
-      height: 62px;
-
-      background: #171717;
-
-      border-radius: 50%;
+    .news-title{
+      font-weight:bold;
+      margin-bottom:4px;
     }
 
-
-    .circle-content {
-      position: relative;
-
-      text-align: center;
-
-      z-index: 2;
+    .news-sub{
+      color:#999;
+      font-size:12px;
     }
 
+    /* OLD START JOURNEY */
 
-    .circle-content strong {
-      display: block;
-
-      color: #00f56a;
-
-      font-size: 19px;
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:17px;
+      margin-bottom:30px;
     }
 
-
-    .circle-content span {
-      color: #aaaaaa;
-
-      font-size: 11px;
-    }
-
-
-    .activity-item {
-      text-align: center;
-    }
-
-
-    .activity-item strong {
-      display: block;
-
-      color: #00f56a;
-
-      font-size: 27px;
-
-      margin-bottom: 5px;
-    }
-
-
-    .activity-item span {
-      color: #999999;
-
-      font-size: 12px;
-    }
-
-
-    /* CALORIE CARD */
-
-    .calorie-number {
-      text-align: center;
-
-      margin-bottom: 18px;
-    }
-
-
-    .calorie-number strong {
-      font-size: 32px;
-
-      color: #00f56a;
-    }
-
-
-    .calorie-number span {
-      color: #aaaaaa;
-
-      font-size: 14px;
-
-      margin-right: 4px;
-    }
-
-
-    .calorie-chart {
-      height: 85px;
-
-      display: flex;
-
-      align-items: end;
-
-      justify-content: center;
-
-      gap: 9px;
-    }
-
-
-    .bar {
-      width: 13px;
-
-      background: #00f56a;
-
-      border-radius: 6px 6px 2px 2px;
-
-      box-shadow:
-        0 0 10px
-        rgba(0,245,106,.15);
-    }
-
-
-    .bar:nth-child(1) {
-      height: 32%;
-    }
-
-
-    .bar:nth-child(2) {
-      height: 52%;
-    }
-
-
-    .bar:nth-child(3) {
-      height: 42%;
-    }
-
-
-    .bar:nth-child(4) {
-      height: 70%;
-    }
-
-
-    .bar:nth-child(5) {
-      height: 58%;
-    }
-
-
-    .bar:nth-child(6) {
-      height: 82%;
-    }
-
-
-    .bar:nth-child(7) {
-      height: 65%;
-    }
-
-
-    /* WEEKLY PROGRESS */
-
-    .weekly-progress {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-    }
-
-
-    .progress-circle {
-      width: 125px;
-      height: 125px;
-
-      border-radius: 50%;
-
-      background:
-        conic-gradient(
-          #00f56a 68%,
-          #333333 68%
-        );
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      position: relative;
-    }
-
-
-    .progress-circle::before {
-      content: "";
-
-      width: 95px;
-      height: 95px;
-
-      background: #171717;
-
-      border-radius: 50%;
-
-      position: absolute;
-    }
-
-
-    .progress-circle strong {
-      position: relative;
-
-      z-index: 2;
-
-      font-size: 28px;
-
-      color: #00f56a;
-    }
-
-
-    /* SECTION TITLE */
-
-    .section-title {
-      font-size: 23px;
-
-      margin-bottom: 18px;
-    }
-
-
-    .section-heading {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 18px;
-    }
-
-
-    .section-heading h2 {
-      font-size: 23px;
-    }
-
-
-    .see-all {
-      color: #00f56a;
-
-      text-decoration: none;
-
-      font-size: 14px;
-
-      font-weight: bold;
-    }
-
-
-    /* DASHBOARD CARDS */
-
-    .cards {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 17px;
-
-      margin-bottom: 30px;
-    }
-
-
-    .card {
+    .card{
       background:
         linear-gradient(
           145deg,
-          #3d3d3d 0%,
+          #3d3d3d,
           #292929 35%,
           #151515 65%,
-          #090909 100%
+          #090909
         );
-
-      border: 1px solid #4a4a4a;
-
-      border-radius: 18px;
-
-      padding: 23px;
-
-      transition: .25s;
+      border:1px solid #4a4a4a;
+      border-radius:18px;
+      padding:23px;
     }
 
-
-    .card:hover {
-      transform: translateY(-4px);
-
-      border-color: #00f56a;
-
-      box-shadow:
-        0 0 22px
-        rgba(0,245,106,.08);
+    .icon{
+      font-size:34px;
+      margin-bottom:14px;
     }
 
-
-    .icon {
-      font-size: 34px;
-
-      margin-bottom: 14px;
+    .card h3{
+      margin-bottom:9px;
+      font-size:19px;
     }
 
-
-    .card h3 {
-      margin-bottom: 9px;
-
-      font-size: 19px;
+    .card p{
+      color:#a0a0a0;
+      line-height:1.7;
+      font-size:14px;
+      margin-bottom:18px;
     }
 
-
-    .card p {
-      color: #a0a0a0;
-
-      line-height: 1.7;
-
-      font-size: 14px;
-
-      margin-bottom: 18px;
+    .card a{
+      display:inline-block;
+      text-decoration:none;
+      background:#00f56a;
+      color:#06100a;
+      padding:10px 16px;
+      border-radius:9px;
+      font-weight:bold;
+      font-size:14px;
     }
-
-
-    .card a {
-      display: inline-block;
-
-      text-decoration: none;
-
-      background: #00f56a;
-
-      color: #06100a;
-
-      padding: 10px 16px;
-
-      border-radius: 9px;
-
-      font-weight: bold;
-
-      font-size: 14px;
-
-      transition: .2s;
-    }
-
-
-    .card a:hover {
-      background: #18ff78;
-
-      box-shadow:
-        0 0 18px
-        rgba(0,245,106,.22);
-    }
-
 
     /* PROGRESS SECTION */
 
-    .progress-section {
-      margin-top: 15px;
-
-      margin-bottom: 30px;
+    .progress-section{
+      margin-bottom:30px;
     }
 
-
-    .progress-card {
+    .progress-card{
       background:
         linear-gradient(
           145deg,
-          #3d3d3d 0%,
+          #3d3d3d,
           #292929 35%,
           #151515 65%,
-          #090909 100%
+          #090909
         );
-
-      border: 1px solid #4a4a4a;
-
-      border-radius: 20px;
-
-      padding: 28px;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 25px;
+      border:1px solid #4a4a4a;
+      border-radius:20px;
+      padding:28px;
+      display:flex;
+      align-items:center;
+      gap:25px;
     }
 
-
-    .progress-icon {
-      width: 72px;
-      height: 72px;
-
-      min-width: 72px;
-
-      border-radius: 16px;
-
-      background: #00f56a;
-
-      color: #06100a;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 30px;
-
-      font-weight: bold;
+    .progress-icon{
+      width:72px;
+      height:72px;
+      min-width:72px;
+      border-radius:16px;
+      background:#00f56a;
+      color:#06100a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
     }
 
-
-    .progress-content {
-      flex: 1;
+    .progress-content{
+      flex:1;
     }
 
-
-    .progress-content h3 {
-      font-size: 21px;
-
-      margin-bottom: 8px;
+    .progress-content h3{
+      font-size:21px;
+      margin-bottom:8px;
     }
 
-
-    .progress-content p {
-      color: #a0a0a0;
-
-      line-height: 1.7;
-
-      font-size: 14px;
-
-      margin-bottom: 15px;
+    .progress-content p{
+      color:#a0a0a0;
+      line-height:1.7;
+      font-size:14px;
+      margin-bottom:15px;
     }
 
-
-    .progress-content a {
-      display: inline-block;
-
-      text-decoration: none;
-
-      background: #00f56a;
-
-      color: #06100a;
-
-      padding: 10px 17px;
-
-      border-radius: 9px;
-
-      font-weight: bold;
-
-      font-size: 14px;
+    .progress-content a{
+      display:inline-block;
+      text-decoration:none;
+      background:#00f56a;
+      color:#06100a;
+      padding:10px 17px;
+      border-radius:9px;
+      font-weight:bold;
+      font-size:14px;
     }
 
+    /* SUBSCRIPTIONS */
 
-    /* SUBSCRIPTION */
-
-    .subscriptions-section {
-      margin-top: 10px;
-
-      margin-bottom: 30px;
+    .subscriptions-section{
+      margin-bottom:30px;
     }
 
-
-    .subscription-box {
+    .subscription-box{
       background:
         linear-gradient(
           145deg,
-          #3d3d3d 0%,
+          #3d3d3d,
           #292929 35%,
           #151515 65%,
-          #090909 100%
+          #090909
         );
-
-      border: 1px solid #4a4a4a;
-
-      border-radius: 20px;
-
-      padding: 28px;
-
-      text-align: center;
+      border:1px solid #4a4a4a;
+      border-radius:20px;
+      padding:28px;
+      text-align:center;
     }
 
-
-    .subscription-box h2 {
-      font-size: 24px;
-
-      margin-bottom: 10px;
+    .subscription-box h2{
+      font-size:24px;
+      margin-bottom:10px;
     }
 
-
-    .subscription-box p {
-      color: #a5a5a5;
-
-      margin-bottom: 10px;
-
-      line-height: 1.7;
+    .subscription-box p{
+      color:#a5a5a5;
+      margin-bottom:10px;
+      line-height:1.7;
     }
 
-
-    .plan-price {
-      color: #00f56a;
-
-      font-size: 34px;
-
-      font-weight: bold;
-
-      margin: 16px 0;
-
-      text-shadow:
-        0 0 12px
-        rgba(0,245,106,.18);
+    .plan-price{
+      color:#00f56a;
+      font-size:34px;
+      font-weight:bold;
+      margin:16px 0;
     }
 
-
-    .complete-subscription {
-      background: #00f56a;
-
-      color: #06100a;
-
-      padding: 12px 24px;
-
-      border-radius: 10px;
-
-      font-weight: bold;
-
-      border: none;
-
-      cursor: pointer;
-
-      font-size: 16px;
-
-      transition: .2s;
+    .complete-subscription{
+      background:#00f56a;
+      color:#06100a;
+      padding:12px 24px;
+      border-radius:10px;
+      font-weight:bold;
+      border:none;
+      cursor:pointer;
+      font-size:16px;
     }
 
-
-    .complete-subscription:hover {
-      background: #18ff78;
-
-      box-shadow:
-        0 0 20px
-        rgba(0,245,106,.25);
+    .no-plan{
+      color:#999;
     }
 
-
-    .no-plan {
-      color: #999999;
+    #message{
+      margin-top:15px;
+      text-align:center;
     }
-
-
-    #message {
-      margin-top: 15px;
-
-      text-align: center;
-    }
-
 
     /* BOTTOM NAV */
 
-    .bottom-nav {
-      position: fixed;
-
-      bottom: 0;
-      left: 0;
-      right: 0;
-
-      height: 70px;
-
-      background: #080808;
-
-      border-top: 1px solid #292929;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-around;
-
-      z-index: 1000;
+    .bottom-nav{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      height:70px;
+      background:#080808;
+      border-top:1px solid #292929;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      z-index:1000;
     }
 
-
-    .nav-item {
-      color: #777777;
-
-      text-decoration: none;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 5px;
-
-      font-size: 12px;
-
-      min-width: 70px;
+    .nav-item{
+      color:#777;
+      text-decoration:none;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:5px;
+      font-size:12px;
+      min-width:70px;
     }
 
-
-    .nav-item span {
-      font-size: 21px;
+    .nav-item span{
+      font-size:21px;
     }
 
-
-    .nav-item.active {
-      color: #00f56a;
+    .nav-item.active{
+      color:#00f56a;
     }
-
 
     /* TABLET */
 
-    @media(max-width: 800px) {
+    @media(max-width:800px){
 
-      .stat {
-        flex: 0 0 260px;
-
-        min-height: 200px;
-
-        padding: 25px 18px;
+      .stat{
+        flex:0 0 270px;
       }
 
-
-      .cards {
-        grid-template-columns: 1fr;
+      .cards{
+        grid-template-columns:1fr;
       }
 
     }
 
-
     /* MOBILE */
 
-    @media(max-width: 600px) {
+    @media(max-width:600px){
 
-      header {
-        height: 68px;
-
-        padding: 0 16px;
+      header{
+        height:68px;
+        padding:0 16px;
       }
 
-
-      .logo {
-        font-size: 21px;
+      .logo{
+        font-size:21px;
       }
 
-
-      .header-left {
-        gap: 8px;
+      .profile{
+        width:36px;
+        height:36px;
       }
 
-
-      .profile {
-        width: 36px;
-        height: 36px;
+      #logoutBtn{
+        padding:8px 10px;
+        font-size:13px;
       }
 
-
-      #logoutBtn {
-        padding: 8px 10px;
-
-        font-size: 13px;
+      .container{
+        padding:20px 14px 100px;
       }
 
-
-      .container {
-        padding: 20px 14px 100px;
+      .dashboard-title h1{
+        font-size:26px;
       }
 
-
-      .dashboard-title h1 {
-        font-size: 26px;
+      .welcome{
+        padding:23px 20px;
+        border-radius:18px;
       }
 
-
-      .welcome {
-        padding: 23px 20px;
-
-        border-radius: 18px;
+      .welcome h1{
+        font-size:25px;
       }
 
-
-      .welcome h1 {
-        font-size: 25px;
+      .stat{
+        flex:0 0 285px;
       }
 
-
-      .stat {
-        flex: 0 0 285px;
-
-        min-height: 205px;
-
-        padding: 25px 18px;
+      .activity-circles{
+        gap:14px;
       }
 
-
-      .stat-main {
-        gap: 18px;
+      .activity-circle{
+        width:78px;
+        height:78px;
       }
 
-
-      .cards {
-        grid-template-columns: 1fr;
+      .activity-circle::before{
+        width:58px;
+        height:58px;
       }
 
-
-      .progress-card {
-        padding: 22px 18px;
-
-        gap: 17px;
+      .progress-card{
+        padding:22px 18px;
+        gap:17px;
       }
 
-
-      .progress-icon {
-        width: 62px;
-        height: 62px;
-
-        min-width: 62px;
-
-        font-size: 26px;
+      .progress-icon{
+        width:62px;
+        height:62px;
+        min-width:62px;
+        font-size:26px;
       }
 
-
-      .progress-content h3 {
-        font-size: 19px;
+      .progress-content h3{
+        font-size:19px;
       }
 
+      .workout-main{
+        align-items:flex-start;
+      }
 
-      .subscription-box {
-        padding: 23px 18px;
+      .workout-icon{
+        width:62px;
+        min-width:62px;
+        height:62px;
+        font-size:28px;
+      }
+
+      .workout-info h3{
+        font-size:19px;
+      }
+
+      .subscription-box{
+        padding:23px 18px;
       }
 
     }
@@ -1122,41 +846,27 @@
 
 </head>
 
-
 <body>
-
 
   <header>
 
-
     <div class="logo">
-
       Body<span>Reset</span>
-
     </div>
-
 
     <div class="header-left">
 
-
       <div class="profile">
-
         BR
-
       </div>
 
-
       <button id="logoutBtn">
-
         تسجيل الخروج
-
       </button>
-
 
     </div>
 
   </header>
-
 
 
   <main class="container">
@@ -1167,11 +877,8 @@
     <div class="dashboard-title">
 
       <h1>
-
         Dashboard
-
       </h1>
-
 
       <div class="notification">
 
@@ -1184,11 +891,9 @@
     </div>
 
 
-
     <!-- WELCOME -->
 
     <section class="welcome">
-
 
       <h1>
 
@@ -1199,7 +904,6 @@
         </span>
 
       </h1>
-
 
       <p>
 
@@ -1219,45 +923,29 @@
 
       </p>
 
-
       <div class="progress-area">
-
 
         <div class="progress-top">
 
-
           <span>
-
             نسبة إنجازك
-
           </span>
 
-
           <strong>
-
             68%
-
           </strong>
 
-
         </div>
-
 
         <div class="progress-bar">
 
-
-          <div class="progress-fill">
-          </div>
-
+          <div class="progress-fill"></div>
 
         </div>
 
-
       </div>
 
-
     </section>
-
 
 
     <!-- STAT CARDS -->
@@ -1269,188 +957,106 @@
 
       <div class="stat">
 
-
         <h3>
-
           Weekly Activity
-
         </h3>
 
+        <div class="activity-circles">
 
-        <div class="stat-main">
 
-
-          <div class="circle">
-
+          <div class="activity-circle progress">
 
             <div class="circle-content">
 
               <strong>
-
                 60
-
               </strong>
 
               <span>
-
                 Progress
-
               </span>
 
             </div>
 
-
           </div>
 
 
-          <div class="activity-item">
+          <div class="activity-circle burn">
 
+            <div class="circle-content">
 
-            <strong>
+              <strong>
+                0%
+              </strong>
 
-              0%
+              <span>
+                Burn
+              </span>
 
-            </strong>
-
-
-            <span>
-
-              Burn
-
-            </span>
-
+            </div>
 
           </div>
 
 
         </div>
 
-
       </div>
-
 
 
       <!-- CALORIE BURN -->
 
       <div class="stat">
 
-
         <h3>
-
           Calorie Burn
-
         </h3>
-
 
         <div class="calorie-number">
 
-
           <strong>
-
             280
-
           </strong>
 
-
           <span>
-
             kcal
-
           </span>
 
-
         </div>
-
 
         <div class="calorie-chart">
 
-
-          <div
-            class="bar"
-            style="height:32%;">
-
-          </div>
-
-
-          <div
-            class="bar"
-            style="height:52%;">
-
-          </div>
-
-
-          <div
-            class="bar"
-            style="height:42%;">
-
-          </div>
-
-
-          <div
-            class="bar"
-            style="height:70%;">
-
-          </div>
-
-
-          <div
-            class="bar"
-            style="height:58%;">
-
-          </div>
-
-
-          <div
-            class="bar"
-            style="height:82%;">
-
-          </div>
-
-
-          <div
-            class="bar"
-            style="height:65%;">
-
-          </div>
-
+          <div class="bar" style="height:32%;"></div>
+          <div class="bar" style="height:52%;"></div>
+          <div class="bar" style="height:42%;"></div>
+          <div class="bar" style="height:70%;"></div>
+          <div class="bar" style="height:58%;"></div>
+          <div class="bar" style="height:82%;"></div>
+          <div class="bar" style="height:65%;"></div>
 
         </div>
 
-
       </div>
-
 
 
       <!-- WEEKLY PROGRESS -->
 
       <div class="stat">
 
-
         <h3>
-
           Weekly Progress
-
         </h3>
-
 
         <div class="weekly-progress">
 
-
           <div class="progress-circle">
 
-
             <strong>
-
               68%
-
             </strong>
-
 
           </div>
 
-
         </div>
-
 
       </div>
 
@@ -1458,18 +1064,166 @@
     </div>
 
 
-
-    <!-- START JOURNEY -->
+    <!-- TODAY'S WORKOUT -->
 
     <div class="section-heading">
 
-
       <h2>
-
-        ابدأ رحلتك 💪
-
+        Today's Workout
       </h2>
 
+      <a href="workout.html" class="see-all">
+        See All
+      </a>
+
+    </div>
+
+
+    <section class="today-workout">
+
+      <div class="workout-main">
+
+        <div class="workout-icon">
+          💪
+        </div>
+
+        <div class="workout-info">
+
+          <h3>
+            HIIT & Strength
+          </h3>
+
+          <p>
+            Start up 10 min
+          </p>
+
+          <a
+            href="workout.html"
+            class="start-btn">
+
+            Start Now
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="slider-dots">
+
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </section>
+
+
+    <!-- COMMUNITY NEWS -->
+
+    <div class="section-heading">
+
+      <h2>
+        Community News
+      </h2>
+
+      <a href="#" class="see-all">
+        See All
+      </a>
+
+    </div>
+
+
+    <section class="community-card">
+
+
+      <div class="news-row">
+
+        <div class="news-left">
+
+          <div class="news-icon">
+            ★
+          </div>
+
+          <div>
+
+            <div class="news-title">
+              New Class: Neon Spin
+            </div>
+
+            <div class="news-sub">
+              New Class is Neon Spin
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="news-row">
+
+        <div class="news-left">
+
+          <div class="news-icon">
+            #
+          </div>
+
+          <div>
+
+            <div class="news-title">
+              Leaderboard Update
+            </div>
+
+            <div class="news-sub">
+              Check your latest ranking
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="news-row">
+
+        <div class="news-left">
+
+          <div class="news-icon">
+            +
+          </div>
+
+          <div>
+
+            <div class="news-title">
+              New Challenge
+            </div>
+
+            <div class="news-sub">
+              Join the latest challenge
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+    <!-- OLD WORKOUT / NUTRITION -->
+
+    <div class="section-heading">
+
+      <h2>
+        ابدأ رحلتك 💪
+      </h2>
 
     </div>
 
@@ -1479,69 +1233,42 @@
 
       <div class="card">
 
-
         <div class="icon">
-
           💪
-
         </div>
 
-
         <h3>
-
           Workout
-
         </h3>
 
-
         <p>
-
           تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-
         </p>
 
-
         <a href="workout.html">
-
           ابدأ التمرين
-
         </a>
-
 
       </div>
 
 
-
       <div class="card">
 
-
         <div class="icon">
-
           🥗
-
         </div>
 
-
         <h3>
-
           Nutrition
-
         </h3>
 
-
         <p>
-
           خطط غذائية تساعدك تختار أكلك حسب هدفك.
-
         </p>
 
-
         <a href="#">
-
           خطة التغذية
-
         </a>
-
 
       </div>
 
@@ -1549,128 +1276,81 @@
     </div>
 
 
-
     <!-- PROGRESS -->
 
     <section class="progress-section">
 
-
       <div class="section-heading">
 
-
         <h2>
-
           Progress
-
         </h2>
 
-
-        <a
-          href="#"
-          class="see-all">
-
+        <a href="#" class="see-all">
           See All
-
         </a>
-
 
       </div>
 
 
       <div class="progress-card">
 
-
         <div class="progress-icon">
-
           📊
-
         </div>
-
 
         <div class="progress-content">
 
-
           <h3>
-
             متابعة التقدم
-
           </h3>
 
-
           <p>
-
             تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
-
           </p>
 
-
           <a href="#">
-
             شوف التقدم
-
           </a>
-
 
         </div>
 
-
       </div>
 
-
     </section>
-
 
 
     <!-- SUBSCRIPTIONS -->
 
     <section class="subscriptions-section">
 
-
       <div class="section-heading">
 
-
         <h2>
-
           الاشتراكات
-
         </h2>
 
-
-        <a
-          href="#"
-          class="see-all">
-
+        <a href="#" class="see-all">
           See All
-
         </a>
-
 
       </div>
 
 
       <div class="subscription-box">
 
-
         <h2>
-
           اشتراكك في BodyReset
-
         </h2>
 
-
         <p id="selectedPlanText">
-
           جاري تحميل الباقة...
-
         </p>
-
 
         <div
           class="plan-price"
           id="selectedPlanPrice">
-
         </div>
-
 
         <button
           class="complete-subscription"
@@ -1681,7 +1361,6 @@
 
         </button>
 
-
         <p
           class="no-plan"
           id="noPlanText"
@@ -1691,12 +1370,9 @@
 
         </p>
 
-
       </div>
 
-
     </section>
-
 
 
     <div id="message"></div>
@@ -1705,11 +1381,318 @@
   </main>
 
 
-
   <!-- BOTTOM NAV -->
 
   <nav class="bottom-nav">
 
-
     <a
       href="dashboard.html"
+      class="nav-item active">
+
+      <span>
+        ⌂
+      </span>
+
+      Home
+
+    </a>
+
+
+    <a
+      href="workout.html"
+      class="nav-item">
+
+      <span>
+        💪
+      </span>
+
+      Workouts
+
+    </a>
+
+
+    <a
+      href="#"
+      class="nav-item">
+
+      <span>
+        📊
+      </span>
+
+      Progress
+
+    </a>
+
+
+    <a
+      href="#"
+      class="nav-item">
+
+      <span>
+        👤
+      </span>
+
+      Profile
+
+    </a>
+
+  </nav>
+
+
+  <script type="module">
+
+    import { createClient } from
+      "https://esm.sh/@supabase/supabase-js@2";
+
+
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+
+
+    const supabase =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+    const userEmail =
+      document.getElementById(
+        "userEmail"
+      );
+
+
+    const logoutBtn =
+      document.getElementById(
+        "logoutBtn"
+      );
+
+
+    const message =
+      document.getElementById(
+        "message"
+      );
+
+
+    const selectedPlanText =
+      document.getElementById(
+        "selectedPlanText"
+      );
+
+
+    const selectedPlanPrice =
+      document.getElementById(
+        "selectedPlanPrice"
+      );
+
+
+    const completeSubscriptionBtn =
+      document.getElementById(
+        "completeSubscriptionBtn"
+      );
+
+
+    const noPlanText =
+      document.getElementById(
+        "noPlanText"
+      );
+
+
+    const urlParams =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const selectedPlan =
+      urlParams.get("plan");
+
+
+    const plans = {
+
+      "500": {
+
+        name:
+          "الباقة الشهرية",
+
+        price:
+          "500 جنيه",
+
+        duration:
+          "اشتراك لمدة شهر"
+
+      },
+
+
+      "1000": {
+
+        name:
+          "باقة 3 شهور",
+
+        price:
+          "1000 جنيه",
+
+        duration:
+          "اشتراك لمدة 3 شهور"
+
+      },
+
+
+      "3000": {
+
+        name:
+          "الباقة السنوية",
+
+        price:
+          "3000 جنيه",
+
+        duration:
+          "اشتراك لمدة سنة"
+
+      }
+
+    };
+
+
+    function showSelectedPlan(){
+
+      if(
+        selectedPlan &&
+        plans[selectedPlan]
+      ){
+
+        const plan =
+          plans[selectedPlan];
+
+
+        selectedPlanText.textContent =
+          plan.name +
+          " - " +
+          plan.duration;
+
+
+        selectedPlanPrice.textContent =
+          plan.price;
+
+
+        completeSubscriptionBtn.style.display =
+          "inline-block";
+
+
+        noPlanText.style.display =
+          "none";
+
+
+      }else{
+
+        selectedPlanText.textContent =
+          "لم يتم اختيار أي باقة.";
+
+
+        selectedPlanPrice.textContent =
+          "";
+
+
+        completeSubscriptionBtn.style.display =
+          "none";
+
+
+        noPlanText.style.display =
+          "block";
+
+      }
+
+    }
+
+
+    completeSubscriptionBtn.addEventListener(
+      "click",
+      () => {
+
+        message.style.color =
+          "#00f56a";
+
+        message.textContent =
+          "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
+
+      }
+    );
+
+
+    async function loadUser(){
+
+      const {
+        data:{user},
+        error
+      } =
+        await supabase.auth.getUser();
+
+
+      if(
+        error ||
+        !user
+      ){
+
+        window.location.href =
+          "auth.html";
+
+        return;
+
+      }
+
+
+      const username =
+        user.user_metadata?.username;
+
+
+      userEmail.textContent =
+        username ||
+        user.email;
+
+    }
+
+
+    logoutBtn.addEventListener(
+      "click",
+      async () => {
+
+        const {
+          error
+        } =
+          await supabase.auth.signOut();
+
+
+        if(error){
+
+          message.style.color =
+            "#ff7777";
+
+          message.textContent =
+            error.message;
+
+          return;
+
+        }
+
+
+        window.location.href =
+          "auth.html";
+
+      }
+    );
+
+
+    showSelectedPlan();
+
+    loadUser();
+
+  </script>
+
+
+</body>
+
+  </html>
