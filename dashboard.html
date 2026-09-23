@@ -1,1181 +1,914 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <title>BodyReset | لوحة التحكم</title>
+  <title>BodyReset | Dashboard</title>
 
   <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:Arial,Helvetica,sans-serif;
     }
 
-    body {
-      background: #050505;
-      color: #f5f5f5;
-      min-height: 100vh;
-      padding-bottom: 90px;
+    html{
+      background:#000;
+      scroll-behavior:smooth;
     }
 
-
-    /* HEADER */
-
-    header {
-      height: 75px;
-      padding: 0 25px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      background: #080808;
-      border-bottom: 1px solid #292929;
+    body{
+      background:#000;
+      color:#fff;
+      min-height:100vh;
+      padding-bottom:92px;
+      overflow-x:hidden;
     }
 
+    /* =========================
+       HEADER
+    ========================= */
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: .5px;
+    header{
+      height:76px;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 22px;
+      position:sticky;
+      top:0;
+      z-index:1000;
     }
 
-
-    .logo span {
-      color: #00f56a;
+    .logo{
+      color:#fff;
+      font-size:24px;
+      font-weight:700;
+      letter-spacing:.3px;
     }
 
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .logo span{
+      color:#19f57a;
     }
 
-
-    .profile {
-      width: 40px;
-      height: 40px;
-
-      border-radius: 50%;
-
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d,
-          #151515
-        );
-
-      border: 1px solid #4a4a4a;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #00f56a;
-      font-weight: bold;
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
 
-
-    #logoutBtn {
-      background: #1d1d1d;
-      color: #ffffff;
-
-      border: 1px solid #444444;
-
-      padding: 9px 15px;
-
-      border-radius: 9px;
-
-      cursor: pointer;
-
-      transition: .2s;
+    .profile-button{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:#292929;
+      border:1px solid #4b4b4b;
+      color:#19f57a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:13px;
+      font-weight:bold;
     }
 
-
-    #logoutBtn:hover {
-      border-color: #00f56a;
-      color: #00f56a;
+    .logout-button{
+      border:1px solid #454545;
+      background:#191919;
+      color:#fff;
+      border-radius:9px;
+      padding:9px 13px;
+      cursor:pointer;
+      font-size:12px;
     }
 
-
-    /* MAIN */
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 28px 20px 50px;
+    .logout-button:hover{
+      border-color:#19f57a;
+      color:#19f57a;
     }
 
+    /* =========================
+       MAIN
+    ========================= */
 
-    /* WELCOME */
-
-    .welcome {
-      background:
-        linear-gradient(
-          135deg,
-          #303030 0%,
-          #222222 45%,
-          #0b0b0b 100%
-        );
-
-      border: 1px solid #444444;
-
-      border-radius: 22px;
-
-      padding: 30px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      margin-bottom: 25px;
+    .container{
+      width:100%;
+      max-width:1100px;
+      margin:auto;
+      padding:25px 20px 35px;
     }
 
-
-    .welcome h1 {
-      font-size: 31px;
-      margin-bottom: 9px;
+    .top-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:22px;
     }
 
-
-    .welcome h1 span {
-      color: #00f56a;
+    .top-title h1{
+      color:#fff;
+      font-size:36px;
+      font-weight:700;
     }
 
+    /* =========================
+       NOTIFICATION
+    ========================= */
 
-    .welcome p {
-      color: #a5a5a5;
-      line-height: 1.8;
-      margin-bottom: 20px;
+    .notification{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      background:#0b0b0b;
+      border:1px solid #383838;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
     }
 
-
-    .account {
-      color: #00f56a;
-      font-weight: bold;
+    .bell{
+      width:19px;
+      height:20px;
+      border:2px solid #fff;
+      border-bottom:0;
+      border-radius:12px 12px 4px 4px;
+      position:relative;
     }
 
-
-    /* PROGRESS BAR */
-
-    .progress-area {
-      max-width: 600px;
+    .bell:before{
+      content:"";
+      position:absolute;
+      left:-5px;
+      bottom:-3px;
+      width:25px;
+      height:2px;
+      background:#fff;
+      border-radius:5px;
     }
 
-
-    .progress-top {
-      display: flex;
-      justify-content: space-between;
-
-      margin-bottom: 8px;
-
-      color: #bdbdbd;
-
-      font-size: 14px;
+    .bell:after{
+      content:"";
+      position:absolute;
+      left:6px;
+      bottom:-8px;
+      width:5px;
+      height:5px;
+      background:#fff;
+      border-radius:50%;
     }
 
-
-    .progress-top strong {
-      color: #00f56a;
+    .notification-dot{
+      position:absolute;
+      top:7px;
+      right:8px;
+      width:7px;
+      height:7px;
+      background:#19f57a;
+      border-radius:50%;
+      box-shadow:0 0 8px rgba(25,245,122,.7);
     }
 
+    /* =========================
+       STATS
+    ========================= */
 
-    .progress-bar {
-      width: 100%;
-      height: 9px;
-
-      background: #111111;
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
-      border: 1px solid #333333;
+    .stats{
+      width:100%;
+      display:flex;
+      gap:17px;
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding-bottom:7px;
+      scroll-snap-type:x mandatory;
+      scrollbar-width:none;
     }
 
-
-    .progress-fill {
-      width: 68%;
-      height: 100%;
-
-      background: #00f56a;
-
-      border-radius: 20px;
-
-      box-shadow:
-        0 0 12px
-        rgba(0,245,106,.35);
+    .stats::-webkit-scrollbar{
+      display:none;
     }
 
-
-    /* DASHBOARD STATS */
-
-    .stats {
-      display: flex;
-
-      flex-direction: row;
-
-      gap: 18px;
-
-      margin-bottom: 30px;
-
-      width: 100%;
-
-      overflow-x: auto;
-
-      overflow-y: hidden;
-
-      scroll-snap-type: x mandatory;
-
-      scroll-behavior: smooth;
-
-      padding-bottom: 8px;
-
-      -webkit-overflow-scrolling: touch;
-
-      scrollbar-width: none;
-
-      direction: ltr;
-    }
-
-
-    .stats::-webkit-scrollbar {
-      display: none;
-    }
-
-
-    .stat {
-      flex: 0 0 calc(
-        (100% - 36px) / 3
+    .stat-card{
+      flex:0 0 calc((100% - 34px) / 3);
+      min-height:245px;
+      background:linear-gradient(
+        145deg,
+        #3a3a3a 0%,
+        #262626 45%,
+        #111 100%
       );
-
-      background:
-        linear-gradient(
-          145deg,
-          #3a3a3a 0%,
-          #242424 40%,
-          #111111 100%
-        );
-
-      border: 1px solid #484848;
-
-      border-radius: 16px;
-
-      padding: 22px 18px;
-
-      min-height: 235px;
-
-      text-align: right;
-
-      scroll-snap-align: start;
-
-      position: relative;
-
-      overflow: hidden;
-
-      direction: rtl;
-
-      transition: .25s;
+      border:1px solid #4a4a4a;
+      border-radius:17px;
+      padding:19px;
+      scroll-snap-align:start;
+      overflow:hidden;
     }
 
-
-    .stat:hover {
-      border-color: #00f56a;
-
-      box-shadow:
-        0 0 20px
-        rgba(0,245,106,.08);
+    .stat-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
     }
 
-
-    .stat-title {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin-bottom: 15px;
+    .stat-head h2{
+      font-size:18px;
+      color:#fff;
+      font-weight:600;
     }
 
-
-    .stat-title h3 {
-      font-size: 17px;
-
-      font-weight: bold;
+    .arrow{
+      color:#a8a8a8;
+      font-size:25px;
     }
 
+    /* =========================
+       ACTIVITY CIRCLES
+    ========================= */
 
-    .stat-arrow {
-      color: #999999;
-
-      font-size: 22px;
-
-      line-height: 1;
+    .activity{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:22px;
+      margin-top:10px;
     }
 
-
-    /* WEEKLY ACTIVITY */
-
-    .activity-content {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 20px;
-
-      direction: ltr;
-
-      margin-top: 15px;
+    .circle-box{
+      text-align:center;
     }
 
-
-    .circle-box {
-      text-align: center;
-
-      direction: rtl;
+    .progress-circle{
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      background:conic-gradient(
+        #19f57a 0 60%,
+        #3a3a3a 60% 100%
+      );
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
     }
 
-
-    .circle {
-      width: 82px;
-      height: 82px;
-
-      border-radius: 50%;
-
-      background:
-        conic-gradient(
-          #00f56a 0 60%,
-          #3b3b3b 60% 100%
-        );
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      position: relative;
-
-      margin: auto;
+    .progress-circle.small{
+      width:72px;
+      height:72px;
+      background:conic-gradient(
+        #19f57a 0 0%,
+        #3a3a3a 0 100%
+      );
     }
 
-
-    .circle.small {
-      width: 65px;
-      height: 65px;
-
-      background:
-        conic-gradient(
-          #00f56a 0 0%,
-          #3b3b3b 0 100%
-        );
+    .progress-circle:after{
+      content:"";
+      position:absolute;
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:#202020;
     }
 
-
-    .circle::after {
-      content: "";
-
-      position: absolute;
-
-      width: 63px;
-      height: 63px;
-
-      background: #202020;
-
-      border-radius: 50%;
+    .progress-circle.small:after{
+      width:54px;
+      height:54px;
     }
 
-
-    .circle.small::after {
-      width: 49px;
-      height: 49px;
+    .circle-number{
+      position:relative;
+      z-index:2;
+      color:#fff;
+      font-size:22px;
+      font-weight:bold;
     }
 
-
-    .circle-value {
-      position: relative;
-
-      z-index: 2;
-
-      color: white;
-
-      font-size: 18px;
-
-      font-weight: bold;
+    .small .circle-number{
+      font-size:16px;
     }
 
-
-    .circle.small .circle-value {
-      font-size: 14px;
+    .circle-label{
+      display:block;
+      margin-top:10px;
+      color:#a8a8a8;
+      font-size:13px;
     }
 
+    /* =========================
+       CALORIE
+    ========================= */
 
-    .circle-label {
-      display: block;
-
-      margin-top: 9px;
-
-      color: #9d9d9d;
-
-      font-size: 13px;
+    .calorie{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:8px;
     }
 
-
-    /* CALORIE BURN */
-
-    .calorie-number {
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      direction: rtl;
-
-      margin-bottom: 10px;
+    .fire{
+      color:#19f57a;
+      font-size:24px;
     }
 
-
-    .calorie-fire {
-      color: #00f56a;
-
-      font-size: 23px;
+    .calorie strong{
+      color:#fff;
+      font-size:26px;
     }
 
-
-    .calorie-number strong {
-      font-size: 24px;
-
-      color: white;
+    .calorie span{
+      color:#9c9c9c;
+      font-size:15px;
     }
 
-
-    .calorie-number span {
-      color: #9d9d9d;
-
-      font-size: 15px;
+    .chart{
+      height:130px;
+      display:flex;
+      align-items:flex-end;
+      gap:9px;
+      margin-top:8px;
     }
 
-
-    .chart {
-      height: 105px;
-
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: space-between;
-
-      gap: 7px;
-
-      direction: ltr;
-
-      padding: 0 3px;
+    .chart-column{
+      flex:1;
+      height:100%;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:flex-end;
     }
 
-
-    .bar-wrap {
-      height: 100%;
-
-      flex: 1;
-
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: center;
-
-      position: relative;
+    .chart-bg{
+      position:absolute;
+      bottom:21px;
+      width:15px;
+      height:100px;
+      border-radius:8px 8px 0 0;
+      background:#3a3a3a;
     }
 
-
-    .bar-bg {
-      position: absolute;
-
-      bottom: 18px;
-
-      width: 14px;
-
-      height: 78px;
-
-      background: #363636;
-
-      border-radius: 8px 8px 0 0;
+    .chart-bar{
+      width:15px;
+      background:#19f57a;
+      border-radius:8px 8px 0 0;
+      position:relative;
+      z-index:2;
+      box-shadow:0 0 10px rgba(25,245,122,.18);
     }
 
-
-    .bar {
-      width: 14px;
-
-      background: #00f56a;
-
-      border-radius: 8px 8px 0 0;
-
-      position: relative;
-
-      z-index: 2;
-
-      box-shadow:
-        0 0 10px
-        rgba(0,245,106,.16);
+    .day{
+      position:absolute;
+      bottom:0;
+      color:#858585;
+      font-size:10px;
     }
 
+    /* =========================
+       WEEKLY PROGRESS
+    ========================= */
 
-    .day {
-      position: absolute;
-
-      bottom: 0;
-
-      color: #888888;
-
-      font-size: 10px;
+    .weekly{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:170px;
     }
 
-
-    /* WEEKLY PROGRESS */
-
-    .weekly-progress {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      margin-top: 12px;
+    .big-circle{
+      width:142px;
+      height:142px;
+      border-radius:50%;
+      background:conic-gradient(
+        #19f57a 0 68%,
+        #393939 68% 100%
+      );
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
     }
 
-
-    .big-progress {
-      width: 135px;
-      height: 135px;
-
-      border-radius: 50%;
-
-      background:
-        conic-gradient(
-          #00f56a 0 68%,
-          #3a3a3a 68% 100%
-        );
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      position: relative;
-
-      box-shadow:
-        0 0 20px
-        rgba(0,245,106,.08);
+    .big-circle:after{
+      content:"";
+      position:absolute;
+      width:108px;
+      height:108px;
+      border-radius:50%;
+      background:#202020;
     }
 
-
-    .big-progress::after {
-      content: "";
-
-      position: absolute;
-
-      width: 103px;
-      height: 103px;
-
-      background: #202020;
-
-      border-radius: 50%;
+    .big-number{
+      position:relative;
+      z-index:2;
+      color:#19f57a;
+      font-size:30px;
+      font-weight:bold;
     }
 
+    /* =========================
+       SECTION TITLES
+    ========================= */
 
-    .big-progress-value {
-      position: relative;
-
-      z-index: 2;
-
-      color: #00f56a;
-
-      font-size: 28px;
-
-      font-weight: bold;
+    .section-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:28px;
+      margin-bottom:15px;
     }
 
-
-    /* SECTION TITLE */
-
-    .section-title {
-      font-size: 23px;
-
-      margin-bottom: 18px;
+    .section-header h2{
+      font-size:27px;
+      color:#fff;
     }
 
-
-    /* DASHBOARD CARDS */
-
-    .cards {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 17px;
-
-      margin-bottom: 30px;
+    .see-all{
+      color:#19f57a;
+      text-decoration:none;
+      font-size:16px;
     }
 
-
-    .card {
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d 0%,
-          #292929 35%,
-          #151515 65%,
-          #090909 100%
-        );
-
-      border: 1px solid #4a4a4a;
-
-      border-radius: 18px;
-
-      padding: 23px;
-
-      transition: .25s;
+    .see-all:hover{
+      color:#fff;
     }
 
+    /* =========================
+       TODAY'S WORKOUT
+    ========================= */
 
-    .card:hover {
-      transform: translateY(-4px);
-
-      border-color: #00f56a;
-
-      box-shadow:
-        0 0 22px
-        rgba(0,245,106,.08);
+    .workout-slider{
+      width:100%;
+      overflow:hidden;
     }
 
-
-    .icon {
-      font-size: 34px;
-
-      margin-bottom: 14px;
+    .workout-card{
+      min-height:220px;
+      width:100%;
+      background:linear-gradient(
+        135deg,
+        #333 0%,
+        #222 42%,
+        #101010 100%
+      );
+      border:1px solid #505050;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      padding:25px;
+      gap:25px;
     }
 
-
-    .card h3 {
-      margin-bottom: 9px;
-
-      font-size: 19px;
+    .workout-visual{
+      width:42%;
+      min-height:165px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
     }
 
-
-    .card p {
-      color: #a0a0a0;
-
-      line-height: 1.7;
-
-      font-size: 14px;
-
-      margin-bottom: 18px;
+    .dumbbell{
+      width:150px;
+      height:70px;
+      position:relative;
+      filter:drop-shadow(
+        0 0 13px rgba(25,245,122,.5)
+      );
     }
 
-
-    .card a {
-      display: inline-block;
-
-      text-decoration: none;
-
-      background: #00f56a;
-
-      color: #06100a;
-
-      padding: 10px 16px;
-
-      border-radius: 9px;
-
-      font-weight: bold;
-
-      font-size: 14px;
-
-      transition: .2s;
+    .handle{
+      position:absolute;
+      width:72px;
+      height:12px;
+      background:#19f57a;
+      border-radius:10px;
+      left:39px;
+      top:29px;
+      box-shadow:0 0 10px rgba(25,245,122,.7);
     }
 
-
-    .card a:hover {
-      background: #18ff78;
-
-      box-shadow:
-        0 0 18px
-        rgba(0,245,106,.22);
+    .weight{
+      position:absolute;
+      width:17px;
+      height:62px;
+      border:5px solid #19f57a;
+      border-radius:8px;
+      top:4px;
+      box-shadow:0 0 10px rgba(25,245,122,.55);
     }
 
-
-    /* SUBSCRIPTION */
-
-    .subscription-box {
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d 0%,
-          #292929 35%,
-          #151515 65%,
-          #090909 100%
-        );
-
-      border: 1px solid #4a4a4a;
-
-      border-radius: 20px;
-
-      padding: 28px;
-
-      text-align: center;
+    .weight.left{
+      left:23px;
     }
 
-
-    .subscription-box h2 {
-      font-size: 24px;
-
-      margin-bottom: 10px;
+    .weight.right{
+      right:23px;
     }
 
-
-    .subscription-box p {
-      color: #a5a5a5;
-
-      margin-bottom: 10px;
-
-      line-height: 1.7;
+    .weight2{
+      position:absolute;
+      width:17px;
+      height:48px;
+      border:5px solid #19f57a;
+      border-radius:8px;
+      top:11px;
+      box-shadow:0 0 10px rgba(25,245,122,.55);
     }
 
-
-    .plan-price {
-      color: #00f56a;
-
-      font-size: 34px;
-
-      font-weight: bold;
-
-      margin: 16px 0;
-
-      text-shadow:
-        0 0 12px
-        rgba(0,245,106,.18);
+    .weight2.left{
+      left:5px;
     }
 
-
-    .complete-subscription {
-      background: #00f56a;
-
-      color: #06100a;
-
-      padding: 12px 24px;
-
-      border-radius: 10px;
-
-      font-weight: bold;
-
-      border: none;
-
-      cursor: pointer;
-
-      font-size: 16px;
-
-      transition: .2s;
+    .weight2.right{
+      right:5px;
     }
 
-
-    .complete-subscription:hover {
-      background: #18ff78;
-
-      box-shadow:
-        0 0 20px
-        rgba(0,245,106,.25);
+    .workout-info{
+      flex:1;
     }
 
-
-    .no-plan {
-      color: #999999;
+    .workout-label{
+      color:#19f57a;
+      font-size:16px;
+      margin-bottom:8px;
     }
 
-
-    #message {
-      margin-top: 15px;
-
-      text-align: center;
+    .workout-info h3{
+      color:#fff;
+      font-size:26px;
+      margin-bottom:9px;
     }
 
-
-    /* BOTTOM NAV */
-
-    .bottom-nav {
-      position: fixed;
-
-      bottom: 0;
-
-      left: 0;
-
-      width: 100%;
-
-      height: 76px;
-
-      background:
-        rgba(8,8,8,.97);
-
-      border-top: 1px solid #2c2c2c;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-around;
-
-      z-index: 9999;
-
-      direction: ltr;
-
-      box-shadow:
-        0 -8px 25px
-        rgba(0,0,0,.35);
+    .workout-info p{
+      color:#a8a8a8;
+      font-size:16px;
+      margin-bottom:20px;
     }
 
-
-    .nav-item {
-      flex: 1;
-
-      height: 100%;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 5px;
-
-      text-decoration: none;
-
-      color: #8d8d8d;
-
-      font-size: 12px;
-
-      transition: .2s;
-
-      direction: rtl;
+    .start-button{
+      display:inline-block;
+      background:#19f57a;
+      color:#06100a;
+      border:none;
+      border-radius:25px;
+      padding:12px 28px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:16px;
+      box-shadow:0 0 18px rgba(25,245,122,.16);
     }
 
-
-    .nav-icon {
-      width: 27px;
-
-      height: 27px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 24px;
-
-      line-height: 1;
+    .start-button:hover{
+      background:#fff;
     }
 
-
-    .nav-item.active {
-      color: #00f56a;
-
-      text-shadow:
-        0 0 10px
-        rgba(0,245,106,.35);
+    .slider-dots{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:9px;
+      margin-top:17px;
     }
 
-
-    .nav-item.active .nav-icon {
-      filter:
-        drop-shadow(
-          0 0 6px
-          rgba(0,245,106,.35)
-        );
+    .slider-dot{
+      width:8px;
+      height:8px;
+      background:#555;
+      border-radius:50%;
     }
 
-
-    /* BELL */
-
-    .dashboard-heading {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin-bottom: 18px;
-
-      direction: rtl;
+    .slider-dot.active{
+      width:32px;
+      border-radius:8px;
+      background:#19f57a;
     }
 
+    /* =========================
+       COMMUNITY NEWS
+    ========================= */
 
-    .dashboard-heading h2 {
-      font-size: 27px;
+    .news-slider{
+      width:100%;
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scrollbar-width:none;
+      padding-bottom:5px;
     }
 
-
-    .notification {
-      width: 42px;
-      height: 42px;
-
-      border-radius: 50%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      color: #ffffff;
-
-      background: #111111;
-
-      border: 1px solid #333333;
-
-      position: relative;
+    .news-slider::-webkit-scrollbar{
+      display:none;
     }
 
-
-    .notification::after {
-      content: "";
-
-      width: 7px;
-      height: 7px;
-
-      background: #00f56a;
-
-      border-radius: 50%;
-
-      position: absolute;
-
-      top: 8px;
-      right: 10px;
-
-      box-shadow:
-        0 0 8px
-        rgba(0,245,106,.5);
+    .news-card{
+      flex:0 0 76%;
+      background:linear-gradient(
+        145deg,
+        #303030,
+        #171717
+      );
+      border:1px solid #484848;
+      border-radius:17px;
+      padding:18px;
     }
 
-
-    .bell-icon {
-      width: 20px;
-      height: 20px;
-
-      position: relative;
-
-      border: 2px solid #eeeeee;
-
-      border-top-left-radius: 11px;
-
-      border-top-right-radius: 11px;
-
-      border-bottom: none;
+    .news-row{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:10px 0;
     }
 
-
-    .bell-icon::before {
-      content: "";
-
-      position: absolute;
-
-      left: -5px;
-
-      bottom: -3px;
-
-      width: 26px;
-
-      height: 2px;
-
-      background: #eeeeee;
-
-      border-radius: 5px;
+    .news-row + .news-row{
+      border-top:1px solid #3b3b3b;
     }
 
-
-    .bell-icon::after {
-      content: "";
-
-      position: absolute;
-
-      bottom: -7px;
-
-      left: 6px;
-
-      width: 6px;
-
-      height: 6px;
-
-      background: #eeeeee;
-
-      border-radius: 50%;
+    .news-icon{
+      width:46px;
+      height:46px;
+      flex:0 0 46px;
+      border-radius:50%;
+      background:#3b3b3b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#19f57a;
+      font-size:21px;
+      border:1px solid #505050;
     }
 
+    .news-content{
+      flex:1;
+    }
 
-    /* TABLET */
+    .news-content h3{
+      color:#fff;
+      font-size:16px;
+      margin-bottom:5px;
+    }
 
-    @media(max-width: 800px) {
+    .news-content p{
+      color:#929292;
+      font-size:13px;
+    }
 
-      .stat {
-        flex: 0 0 280px;
+    .news-arrow{
+      color:#aaa;
+      font-size:25px;
+    }
 
-        min-height: 235px;
+    /* =========================
+       SUBSCRIPTION
+    ========================= */
 
-        padding: 22px 18px;
+    .subscription-box{
+      margin-top:30px;
+      background:linear-gradient(
+        145deg,
+        #303030,
+        #141414
+      );
+      border:1px solid #484848;
+      border-radius:18px;
+      padding:25px;
+      text-align:center;
+    }
+
+    .subscription-box h2{
+      color:#fff;
+      font-size:23px;
+      margin-bottom:10px;
+    }
+
+    .subscription-box p{
+      color:#999;
+      line-height:1.7;
+      margin-bottom:8px;
+    }
+
+    .plan-price{
+      color:#19f57a;
+      font-size:30px;
+      font-weight:bold;
+      margin:12px 0;
+    }
+
+    .complete-button{
+      display:none;
+      border:0;
+      background:#19f57a;
+      color:#06100a;
+      padding:12px 22px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    #message{
+      text-align:center;
+      margin-top:15px;
+    }
+
+    /* =========================
+       BOTTOM NAVIGATION
+    ========================= */
+
+    .bottom-nav{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      height:78px;
+      background:rgba(8,8,8,.98);
+      border-top:1px solid #303030;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      z-index:9999;
+      box-shadow:0 -8px 25px rgba(0,0,0,.45);
+    }
+
+    .nav-item{
+      flex:1;
+      height:100%;
+      color:#858585;
+      text-decoration:none;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      font-size:12px;
+      transition:.2s;
+    }
+
+    .nav-icon{
+      width:27px;
+      height:27px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      line-height:1;
+    }
+
+    .nav-item.active{
+      color:#19f57a;
+    }
+
+    .nav-item:hover{
+      color:#19f57a;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:800px){
+
+      header{
+        height:65px;
+        padding:0 15px;
       }
 
-
-      .cards {
-        grid-template-columns: 1fr;
+      .logo{
+        font-size:20px;
       }
 
+      .profile-button{
+        width:36px;
+        height:36px;
+      }
+
+      .logout-button{
+        display:none;
+      }
+
+      .container{
+        padding:22px 14px 30px;
+      }
+
+      .top-title h1{
+        font-size:32px;
+      }
+
+      .notification{
+        width:42px;
+        height:42px;
+      }
+
+      .stat-card{
+        flex:0 0 285px;
+        min-height:245px;
+      }
+
+      .workout-card{
+        min-height:215px;
+        padding:20px;
+        gap:12px;
+      }
+
+      .workout-visual{
+        width:40%;
+      }
+
+      .dumbbell{
+        transform:scale(.82);
+      }
+
+      .workout-info h3{
+        font-size:22px;
+      }
+
+      .workout-info p{
+        font-size:13px;
+      }
+
+      .start-button{
+        padding:11px 20px;
+        font-size:14px;
+      }
+
+      .news-card{
+        flex:0 0 88%;
+      }
+
+      .section-header h2{
+        font-size:24px;
+      }
+
+      .bottom-nav{
+        height:73px;
+      }
+
+      .nav-item{
+        font-size:11px;
+      }
     }
 
+    @media(max-width:430px){
 
-    /* MOBILE */
-
-    @media(max-width: 600px) {
-
-      body {
-        padding-bottom: 82px;
+      .top-title h1{
+        font-size:31px;
       }
 
-
-      header {
-        height: 68px;
-
-        padding: 0 16px;
+      .stat-card{
+        flex-basis:285px;
       }
 
-
-      .logo {
-        font-size: 21px;
+      .workout-card{
+        padding:17px;
       }
 
-
-      .header-left {
-        gap: 8px;
+      .workout-visual{
+        width:37%;
       }
 
-
-      .profile {
-        width: 36px;
-        height: 36px;
+      .dumbbell{
+        transform:scale(.68);
       }
 
-
-      #logoutBtn {
-        padding: 8px 10px;
-
-        font-size: 13px;
+      .workout-info h3{
+        font-size:20px;
       }
 
-
-      .container {
-        padding: 20px 14px 40px;
+      .workout-info p{
+        font-size:12px;
       }
 
-
-      .welcome {
-        padding: 23px 20px;
-
-        border-radius: 18px;
+      .start-button{
+        padding:10px 17px;
+        font-size:13px;
       }
-
-
-      .welcome h1 {
-        font-size: 25px;
-      }
-
-
-      .dashboard-heading h2 {
-        font-size: 25px;
-      }
-
-
-      .notification {
-        width: 40px;
-        height: 40px;
-      }
-
-
-      .stat {
-        flex: 0 0 300px;
-
-        min-height: 225px;
-
-        padding: 22px 18px;
-      }
-
-
-      .subscription-box {
-        padding: 23px 18px;
-      }
-
-
-      .bottom-nav {
-        height: 72px;
-      }
-
-
-      .nav-item {
-        font-size: 11px;
-      }
-
-
-      .nav-icon {
-        font-size: 22px;
-      }
-
     }
 
   </style>
-
 </head>
 
 
 <body>
 
-
+  <!-- HEADER -->
   <header>
 
-
     <div class="logo">
-
       Body<span>Reset</span>
-
     </div>
 
+    <div class="header-actions">
 
-    <div class="header-left">
-
-
-      <div class="profile">
-
+      <div
+        class="profile-button"
+        id="profileButton">
         BR
-
       </div>
 
-
-      <button id="logoutBtn">
-
-        تسجيل الخروج
-
+      <button
+        class="logout-button"
+        id="logoutBtn">
+        Logout
       </button>
 
     </div>
@@ -1183,157 +916,66 @@
   </header>
 
 
-
+  <!-- MAIN -->
   <main class="container">
 
 
-    <!-- DASHBOARD TITLE + NOTIFICATION -->
+    <!-- TITLE -->
+    <div class="top-title">
 
-    <div class="dashboard-heading">
+      <h1>
+        Dashboard
+      </h1>
 
-      <h2>
+      <div class="notification">
 
-        لوحة التحكم
+        <div class="bell"></div>
 
-      </h2>
-
-
-      <div
-        class="notification"
-        aria-label="الإشعارات">
-
-        <div class="bell-icon"></div>
+        <span class="notification-dot"></span>
 
       </div>
 
     </div>
 
 
+    <!-- =========================
+         3 STATS
+    ========================= -->
 
-    <!-- WELCOME -->
-
-    <section class="welcome">
-
-
-      <h1>
-
-        أهلاً بيك في
-
-        <span>
-          BodyReset
-        </span>
-
-      </h1>
-
-
-      <p>
-
-        جاهز تكمل رحلتك النهارده؟
-
-        <br>
-
-        حسابك:
-
-        <strong
-          class="account"
-          id="userEmail">
-
-          جاري التحميل...
-
-        </strong>
-
-      </p>
-
-
-      <div class="progress-area">
-
-
-        <div class="progress-top">
-
-
-          <span>
-
-            نسبة إنجازك
-
-          </span>
-
-
-          <strong>
-
-            68%
-
-          </strong>
-
-
-        </div>
-
-
-        <div class="progress-bar">
-
-
-          <div class="progress-fill">
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-
-    </section>
-
-
-
-    <!-- 3 DASHBOARD STATS -->
-
-    <div class="stats">
+    <section class="stats">
 
 
       <!-- WEEKLY ACTIVITY -->
+      <div class="stat-card">
 
-      <div class="stat">
+        <div class="stat-head">
 
+          <h2>
+            Weekly Activity
+          </h2>
 
-        <div class="stat-title">
-
-          <h3>
-
-            النشاط الأسبوعي
-
-          </h3>
-
-
-          <span class="stat-arrow">
-
-            ‹
-
+          <span class="arrow">
+            ›
           </span>
 
         </div>
 
 
-        <div class="activity-content">
+        <div class="activity">
 
 
           <div class="circle-box">
 
+            <div class="progress-circle">
 
-            <div class="circle">
-
-              <span class="circle-value">
-
+              <span class="circle-number">
                 60
-
               </span>
 
             </div>
 
-
             <span class="circle-label">
-
-              التقدم
-
+              Progress
             </span>
 
           </div>
@@ -1341,22 +983,16 @@
 
           <div class="circle-box">
 
+            <div class="progress-circle small">
 
-            <div class="circle small">
-
-              <span class="circle-value">
-
+              <span class="circle-number">
                 0%
-
               </span>
 
             </div>
 
-
             <span class="circle-label">
-
-              الحرق
-
+              Burn
             </span>
 
           </div>
@@ -1367,51 +1003,34 @@
       </div>
 
 
-
       <!-- CALORIE BURN -->
+      <div class="stat-card">
 
-      <div class="stat">
+        <div class="stat-head">
 
+          <h2>
+            Calorie Burn
+          </h2>
 
-        <div class="stat-title">
-
-          <h3>
-
-            حرق السعرات
-
-          </h3>
-
-
-          <span class="stat-arrow">
-
-            ‹
-
+          <span class="arrow">
+            ›
           </span>
 
         </div>
 
 
-        <div class="calorie-number">
+        <div class="calorie">
 
-
-          <span class="calorie-fire">
-
-            🔥
-
+          <span class="fire">
+            ♨
           </span>
 
-
           <strong>
-
             280
-
           </strong>
 
-
           <span>
-
-            سعرة
-
+            kcal
           </span>
 
         </div>
@@ -1420,228 +1039,169 @@
         <div class="chart">
 
 
-          <div class="bar-wrap">
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
 
             <div
-              class="bar-bg">
-            </div>
-
-            <div
-              class="bar"
+              class="chart-bar"
               style="height:38px;">
             </div>
 
             <span class="day">
-
-              س
-
+              Mo
             </span>
 
           </div>
 
 
-          <div class="bar-wrap">
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
 
             <div
-              class="bar-bg">
-            </div>
-
-            <div
-              class="bar"
-              style="height:58px;">
+              class="chart-bar"
+              style="height:62px;">
             </div>
 
             <span class="day">
-
-              ح
-
+              Tu
             </span>
 
           </div>
 
 
-          <div class="bar-wrap">
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
 
             <div
-              class="bar-bg">
-            </div>
-
-            <div
-              class="bar"
-              style="height:42px;">
+              class="chart-bar"
+              style="height:43px;">
             </div>
 
             <span class="day">
-
-              ن
-
+              We
             </span>
 
           </div>
 
 
-          <div class="bar-wrap">
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
 
             <div
-              class="bar-bg">
+              class="chart-bar"
+              style="height:55px;">
             </div>
 
+            <span class="day">
+              Th
+            </span>
+
+          </div>
+
+
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
+
             <div
-              class="bar"
+              class="chart-bar"
+              style="height:68px;">
+            </div>
+
+            <span class="day">
+              Fr
+            </span>
+
+          </div>
+
+
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
+
+            <div
+              class="chart-bar"
               style="height:50px;">
             </div>
 
             <span class="day">
-
-              ث
-
+              Sa
             </span>
 
           </div>
 
 
-          <div class="bar-wrap">
+          <div class="chart-column">
+
+            <div class="chart-bg"></div>
 
             <div
-              class="bar-bg">
-            </div>
-
-            <div
-              class="bar"
-              style="height:65px;">
+              class="chart-bar"
+              style="height:74px;">
             </div>
 
             <span class="day">
-
-              ر
-
+              Su
             </span>
 
           </div>
 
-
-          <div class="bar-wrap">
-
-            <div
-              class="bar-bg">
-            </div>
-
-            <div
-              class="bar"
-              style="height:48px;">
-            </div>
-
-            <span class="day">
-
-              خ
-
-            </span>
-
-          </div>
-
-
-          <div class="bar-wrap">
-
-            <div
-              class="bar-bg">
-            </div>
-
-            <div
-              class="bar"
-              style="height:70px;">
-            </div>
-
-            <span class="day">
-
-              ج
-
-            </span>
-
-          </div>
 
         </div>
 
       </div>
 
 
-
       <!-- WEEKLY PROGRESS -->
+      <div class="stat-card">
 
-      <div class="stat">
+        <div class="stat-head">
 
+          <h2>
+            Weekly Progress
+          </h2>
 
-        <div class="stat-title">
-
-          <h3>
-
-            التقدم الأسبوعي
-
-          </h3>
-
-
-          <span class="stat-arrow">
-
-            ‹
-
+          <span class="arrow">
+            ›
           </span>
 
         </div>
 
 
-        <div class="weekly-progress">
+        <div class="weekly">
 
+          <div class="big-circle">
 
-          <div class="big-progress">
-
-
-            <span class="big-progress-value">
-
+            <span class="big-number">
               68%
-
             </span>
 
-
           </div>
-
 
         </div>
 
       </div>
 
 
-    </div>
+    </section>
 
 
+    <!-- =========================
+         TODAY'S WORKOUT
+    ========================= -->
 
-    <!-- START -->
+    <div class="section-header">
 
-    <h2 class="section-title">
+      <h2>
+        Today's Workout
+      </h2>
 
-      ابدأ رحلتك 💪
-
-    </h2>
-
-
-    <div class="cards">
-
-
-      <div class="card">
-
-
-        <div class="icon">
-
-          💪
-
-        </div>
-
-
-        <h3>
-
-          Workout
-
-        </h3>
-
-
-        <p>
-
+      <a
+        href="workout.html"
+        class="see-all">
+        See All
     
