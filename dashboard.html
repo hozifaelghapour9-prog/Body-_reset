@@ -2,1697 +2,1824 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <title>BodyReset | لوحة التحكم</title>
-
-  <style>
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-      font-family:Arial,sans-serif;
-    }
-
-    body{
-      background:#050505;
-      color:#f5f5f5;
-      min-height:100vh;
-    }
-
-    header{
-      height:75px;
-      padding:0 25px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#080808;
-      border-bottom:1px solid #292929;
-    }
-
-    .logo{
-      font-size:25px;
-      font-weight:bold;
-      letter-spacing:.5px;
-    }
-
-    .logo span{
-      color:#00f56a;
-    }
-
-    .header-left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .profile{
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      background:linear-gradient(145deg,#3d3d3d,#151515);
-      border:1px solid #4a4a4a;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#00f56a;
-      font-weight:bold;
-    }
-
-    #logoutBtn{
-      background:#1d1d1d;
-      color:#fff;
-      border:1px solid #444;
-      padding:9px 15px;
-      border-radius:9px;
-      cursor:pointer;
-      transition:.2s;
-    }
-
-    #logoutBtn:hover{
-      border-color:#00f56a;
-      color:#00f56a;
-    }
-
-    .container{
-      max-width:1100px;
-      margin:auto;
-      padding:28px 20px 100px;
-    }
-
-    /* DASHBOARD TITLE */
-
-    .dashboard-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:22px;
-    }
-
-    .dashboard-title h1{
-      font-size:30px;
-    }
-
-    .notification{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      background:#181818;
-      border:1px solid #3b3b3b;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      font-size:20px;
-    }
-
-    .notification-dot{
-      width:8px;
-      height:8px;
-      background:#00f56a;
-      border-radius:50%;
-      position:absolute;
-      top:7px;
-      right:8px;
-    }
-
-    /* WELCOME */
-
-    .welcome{
-      background:linear-gradient(
-        135deg,
-        #303030 0%,
-        #222 45%,
-        #0b0b0b 100%
-      );
-      border:1px solid #444;
-      border-radius:22px;
-      padding:30px;
-      margin-bottom:25px;
-    }
-
-    .welcome h1{
-      font-size:31px;
-      margin-bottom:9px;
-    }
-
-    .welcome h1 span{
-      color:#00f56a;
-    }
-
-    .welcome p{
-      color:#a5a5a5;
-      line-height:1.8;
-      margin-bottom:20px;
-    }
-
-    .account{
-      color:#00f56a;
-      font-weight:bold;
-    }
-
-    .progress-area{
-      max-width:600px;
-    }
-
-    .progress-top{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:8px;
-      color:#bdbdbd;
-      font-size:14px;
-    }
-
-    .progress-top strong{
-      color:#00f56a;
-    }
-
-    .progress-bar{
-      width:100%;
-      height:9px;
-      background:#111;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid #333;
-    }
-
-    .progress-fill{
-      width:68%;
-      height:100%;
-      background:#00f56a;
-      border-radius:20px;
-      box-shadow:0 0 12px rgba(0,245,106,.35);
-    }
-
-    /* STATS */
-
-    .stats{
-      display:flex;
-      flex-direction:row-reverse;
-      gap:18px;
-      margin-bottom:35px;
-      width:100%;
-      overflow-x:auto;
-      overflow-y:hidden;
-      scroll-snap-type:x mandatory;
-      padding-bottom:8px;
-      -webkit-overflow-scrolling:touch;
-    }
-
-    .stats::-webkit-scrollbar{
-      height:5px;
-    }
-
-    .stats::-webkit-scrollbar-track{
-      background:#111;
-      border-radius:10px;
-    }
-
-    .stats::-webkit-scrollbar-thumb{
-      background:#3d3d3d;
-      border-radius:10px;
-    }
-
-    .stat{
-      flex:0 0 calc((100% - 36px)/3);
-      background:linear-gradient(
-        145deg,
-        #3d3d3d 0%,
-        #292929 35%,
-        #151515 65%,
-        #090909 100%
-      );
-      border:1px solid #4a4a4a;
-      border-radius:20px;
-      padding:25px 20px;
-      min-height:225px;
-      scroll-snap-align:start;
-    }
-
-    .stat h3{
-      font-size:17px;
-      margin-bottom:20px;
-    }
-
-    /* WEEKLY ACTIVITY */
-
-    .activity-circles{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-    }
-
-    .activity-circle{
-      width:82px;
-      height:82px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-    }
-
-    .activity-circle.progress{
-      background:conic-gradient(
-        #00f56a 60%,
-        #333 60%
-      );
-    }
-
-    .activity-circle.burn{
-      background:conic-gradient(
-        #00f56a 0%,
-        #333 0%
-      );
-    }
-
-    .activity-circle::before{
-      content:"";
-      position:absolute;
-      width:62px;
-      height:62px;
-      background:#171717;
-      border-radius:50%;
-    }
-
-    .circle-content{
-      position:relative;
-      z-index:2;
-      text-align:center;
-    }
-
-    .circle-content strong{
-      display:block;
-      color:#00f56a;
-      font-size:18px;
-    }
-
-    .circle-content span{
-      display:block;
-      color:#aaa;
-      font-size:10px;
-      margin-top:3px;
-    }
-
-    /* CALORIES */
-
-    .calorie-number{
-      text-align:center;
-      margin-bottom:15px;
-    }
-
-    .calorie-number strong{
-      color:#00f56a;
-      font-size:32px;
-    }
-
-    .calorie-number span{
-      color:#aaa;
-      font-size:14px;
-    }
-
-    .calorie-chart{
-      height:90px;
-      display:flex;
-      align-items:end;
-      justify-content:center;
-      gap:9px;
-    }
-
-    .bar{
-      width:13px;
-      background:#00f56a;
-      border-radius:6px 6px 2px 2px;
-      box-shadow:0 0 10px rgba(0,245,106,.15);
-    }
-
-    /* WEEKLY PROGRESS */
-
-    .weekly-progress{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .progress-circle{
-      width:125px;
-      height:125px;
-      border-radius:50%;
-      background:conic-gradient(
-        #00f56a 68%,
-        #333 68%
-      );
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-    }
-
-    .progress-circle::before{
-      content:"";
-      position:absolute;
-      width:95px;
-      height:95px;
-      background:#171717;
-      border-radius:50%;
-    }
-
-    .progress-circle strong{
-      position:relative;
-      z-index:2;
-      color:#00f56a;
-      font-size:28px;
-    }
-
-    /* SECTION */
-
-    .section-heading{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:18px;
-    }
-
-    .section-heading h2{
-      font-size:23px;
-    }
-
-    .see-all{
-      color:#00f56a;
-      text-decoration:none;
-      font-size:14px;
-      font-weight:bold;
-    }
-
-    /* TODAY WORKOUT */
-
-    .today-workout{
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d,
-          #292929 35%,
-          #151515 65%,
-          #090909
-        );
-      border:1px solid #4a4a4a;
-      border-radius:20px;
-      padding:25px;
-      margin-bottom:30px;
-    }
-
-    .workout-main{
-      display:flex;
-      align-items:center;
-      gap:20px;
-    }
-
-    .workout-icon{
-      width:75px;
-      height:75px;
-      min-width:75px;
-      border-radius:18px;
-      background:#00f56a;
-      color:#06100a;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:34px;
-      font-weight:bold;
-    }
-
-    .workout-info h3{
-      font-size:22px;
-      margin-bottom:7px;
-    }
-
-    .workout-info p{
-      color:#aaa;
-      line-height:1.7;
-      margin-bottom:14px;
-    }
-
-    .start-btn{
-      display:inline-block;
-      text-decoration:none;
-      background:#00f56a;
-      color:#06100a;
-      padding:11px 19px;
-      border-radius:9px;
-      font-weight:bold;
-      font-size:14px;
-    }
-
-    .slider-dots{
-      display:flex;
-      justify-content:center;
-      gap:7px;
-      margin-top:20px;
-    }
-
-    .slider-dots span{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#444;
-    }
-
-    .slider-dots span.active{
-      width:25px;
-      border-radius:10px;
-      background:#00f56a;
-    }
-
-    /* COMMUNITY */
-
-    .community-card{
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d,
-          #292929 35%,
-          #151515 65%,
-          #090909
-        );
-      border:1px solid #4a4a4a;
-      border-radius:20px;
-      padding:10px 20px;
-      margin-bottom:30px;
-    }
-
-    .news-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:18px 0;
-      border-bottom:1px solid #3a3a3a;
-    }
-
-    .news-row:last-child{
-      border-bottom:none;
-    }
-
-    .news-left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .news-icon{
-      width:40px;
-      height:40px;
-      border-radius:10px;
-      background:#1f1f1f;
-      color:#00f56a;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .news-title{
-      font-weight:bold;
-      margin-bottom:4px;
-    }
-
-    .news-sub{
-      color:#999;
-      font-size:12px;
-    }
-
-    /* OLD START JOURNEY */
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:17px;
-      margin-bottom:30px;
-    }
-
-    .card{
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d,
-          #292929 35%,
-          #151515 65%,
-          #090909
-        );
-      border:1px solid #4a4a4a;
-      border-radius:18px;
-      padding:23px;
-    }
-
-    .icon{
-      font-size:34px;
-      margin-bottom:14px;
-    }
-
-    .card h3{
-      margin-bottom:9px;
-      font-size:19px;
-    }
-
-    .card p{
-      color:#a0a0a0;
-      line-height:1.7;
-      font-size:14px;
-      margin-bottom:18px;
-    }
-
-    .card a{
-      display:inline-block;
-      text-decoration:none;
-      background:#00f56a;
-      color:#06100a;
-      padding:10px 16px;
-      border-radius:9px;
-      font-weight:bold;
-      font-size:14px;
-    }
-
-    /* PROGRESS SECTION */
-
-    .progress-section{
-      margin-bottom:30px;
-    }
-
-    .progress-card{
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d,
-          #292929 35%,
-          #151515 65%,
-          #090909
-        );
-      border:1px solid #4a4a4a;
-      border-radius:20px;
-      padding:28px;
-      display:flex;
-      align-items:center;
-      gap:25px;
-    }
-
-    .progress-icon{
-      width:72px;
-      height:72px;
-      min-width:72px;
-      border-radius:16px;
-      background:#00f56a;
-      color:#06100a;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-    }
-
-    .progress-content{
-      flex:1;
-    }
-
-    .progress-content h3{
-      font-size:21px;
-      margin-bottom:8px;
-    }
-
-    .progress-content p{
-      color:#a0a0a0;
-      line-height:1.7;
-      font-size:14px;
-      margin-bottom:15px;
-    }
-
-    .progress-content a{
-      display:inline-block;
-      text-decoration:none;
-      background:#00f56a;
-      color:#06100a;
-      padding:10px 17px;
-      border-radius:9px;
-      font-weight:bold;
-      font-size:14px;
-    }
-
-    /* SUBSCRIPTIONS */
-
-    .subscriptions-section{
-      margin-bottom:30px;
-    }
-
-    .subscription-box{
-      background:
-        linear-gradient(
-          145deg,
-          #3d3d3d,
-          #292929 35%,
-          #151515 65%,
-          #090909
-        );
-      border:1px solid #4a4a4a;
-      border-radius:20px;
-      padding:28px;
-      text-align:center;
-    }
-
-    .subscription-box h2{
-      font-size:24px;
-      margin-bottom:10px;
-    }
-
-    .subscription-box p{
-      color:#a5a5a5;
-      margin-bottom:10px;
-      line-height:1.7;
-    }
-
-    .plan-price{
-      color:#00f56a;
-      font-size:34px;
-      font-weight:bold;
-      margin:16px 0;
-    }
-
-    .complete-subscription{
-      background:#00f56a;
-      color:#06100a;
-      padding:12px 24px;
-      border-radius:10px;
-      font-weight:bold;
-      border:none;
-      cursor:pointer;
-      font-size:16px;
-    }
-
-    .no-plan{
-      color:#999;
-    }
-
-    #message{
-      margin-top:15px;
-      text-align:center;
-    }
-
-    /* BOTTOM NAV */
-
-    .bottom-nav{
-      position:fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      height:70px;
-      background:#080808;
-      border-top:1px solid #292929;
-      display:flex;
-      align-items:center;
-      justify-content:space-around;
-      z-index:1000;
-    }
-
-    .nav-item{
-      color:#777;
-      text-decoration:none;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:5px;
-      font-size:12px;
-      min-width:70px;
-    }
-
-    .nav-item span{
-      font-size:21px;
-    }
-
-    .nav-item.active{
-      color:#00f56a;
-    }
-
-    /* TABLET */
-
-    @media(max-width:800px){
-
-      .stat{
-        flex:0 0 270px;
-      }
-
-      .cards{
-        grid-template-columns:1fr;
-      }
-
-    }
-
-    /* MOBILE */
-
-    @media(max-width:600px){
-
-      header{
-        height:68px;
-        padding:0 16px;
-      }
-
-      .logo{
-        font-size:21px;
-      }
-
-      .profile{
-        width:36px;
-        height:36px;
-      }
-
-      #logoutBtn{
-        padding:8px 10px;
-        font-size:13px;
-      }
-
-      .container{
-        padding:20px 14px 100px;
-      }
-
-      .dashboard-title h1{
-        font-size:26px;
-      }
-
-      .welcome{
-        padding:23px 20px;
-        border-radius:18px;
-      }
-
-      .welcome h1{
-        font-size:25px;
-      }
-
-      .stat{
-        flex:0 0 285px;
-      }
-
-      .activity-circles{
-        gap:14px;
-      }
-
-      .activity-circle{
-        width:78px;
-        height:78px;
-      }
-
-      .activity-circle::before{
-        width:58px;
-        height:58px;
-      }
-
-      .progress-card{
-        padding:22px 18px;
-        gap:17px;
-      }
-
-      .progress-icon{
-        width:62px;
-        height:62px;
-        min-width:62px;
-        font-size:26px;
-      }
-
-      .progress-content h3{
-        font-size:19px;
-      }
-
-      .workout-main{
-        align-items:flex-start;
-      }
-
-      .workout-icon{
-        width:62px;
-        min-width:62px;
-        height:62px;
-        font-size:28px;
-      }
-
-      .workout-info h3{
-        font-size:19px;
-      }
-
-      .subscription-box{
-        padding:23px 18px;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BodyReset Dashboard</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#050505;
+color:white;
+min-height:100vh;
+padding-bottom:90px;
+}
+
+header{
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 20px;
+border-bottom:1px solid #222;
+background:#050505;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.logo span{
+color:#00f56a;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.profile{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#151515;
+border:1px solid #333;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#00f56a;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+#logoutBtn{
+background:#151515;
+border:1px solid #333;
+color:white;
+padding:9px 14px;
+border-radius:8px;
+cursor:pointer;
+}
+
+main{
+max-width:1100px;
+margin:auto;
+padding:25px 18px;
+}
+
+.dashboard-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:22px;
+}
+
+.dashboard-title h1{
+font-size:30px;
+}
+
+.notification{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#151515;
+border:1px solid #2a2a2a;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+position:relative;
+}
+
+.notification-dot{
+position:absolute;
+top:7px;
+right:7px;
+width:8px;
+height:8px;
+background:#00f56a;
+border-radius:50%;
+}
+
+/* PROFILE POPUP */
+
+.profile-popup{
+display:none;
+position:absolute;
+top:62px;
+right:18px;
+width:250px;
+background:#151515;
+border:1px solid #333;
+border-radius:14px;
+padding:18px;
+z-index:1000;
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.profile-popup.active{
+display:block;
+}
+
+.profile-popup h3{
+margin-bottom:8px;
+font-size:18px;
+}
+
+.profile-popup p{
+color:#aaa;
+font-size:14px;
+word-break:break-word;
+}
+
+/* WELCOME */
+
+.welcome{
+background:#111;
+border:1px solid #242424;
+border-radius:14px;
+padding:22px;
+margin-bottom:20px;
+}
+
+.welcome h2{
+font-size:21px;
+margin-bottom:8px;
+}
+
+.welcome p{
+color:#aaa;
+font-size:15px;
+margin-bottom:18px;
+}
+
+.progress-bar{
+height:8px;
+background:#252525;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:68%;
+background:#00f56a;
+border-radius:20px;
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+gap:14px;
+overflow-x:auto;
+padding-bottom:5px;
+margin-bottom:28px;
+scrollbar-width:none;
+}
+
+.stats::-webkit-scrollbar{
+display:none;
+}
+
+.stat-card{
+min-width:280px;
+background:#111;
+border:1px solid #242424;
+border-radius:14px;
+padding:20px;
+}
+
+.stat-card h3{
+font-size:16px;
+margin-bottom:18px;
+}
+
+.stat-card small{
+color:#888;
+}
+
+.circle-stats{
+display:flex;
+justify-content:space-around;
+align-items:center;
+}
+
+.circle{
+width:82px;
+height:82px;
+border-radius:50%;
+border:7px solid #262626;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.circle.green{
+border-color:#00f56a;
+}
+
+.circle span{
+font-size:18px;
+font-weight:bold;
+}
+
+.circle-label{
+text-align:center;
+margin-top:8px;
+font-size:13px;
+color:#aaa;
+}
+
+/* CALORIE BURN */
+
+.calorie-value{
+font-size:26px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.bars{
+display:flex;
+align-items:flex-end;
+gap:8px;
+height:70px;
+}
+
+.bar{
+width:22px;
+background:#00f56a;
+border-radius:5px 5px 0 0;
+}
+
+.bar:nth-child(1){
+height:30%;
+}
+
+.bar:nth-child(2){
+height:55%;
+}
+
+.bar:nth-child(3){
+height:40%;
+}
+
+.bar:nth-child(4){
+height:80%;
+}
+
+.bar:nth-child(5){
+height:65%;
+}
+
+.bar:nth-child(6){
+height:95%;
+}
+
+.bar:nth-child(7){
+height:70%;
+}
+
+/* WEEKLY PROGRESS */
+
+.big-progress{
+width:105px;
+height:105px;
+border-radius:50%;
+background:
+conic-gradient(
+#00f56a 68%,
+#262626 68%
+);
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+}
+
+.big-progress-inner{
+width:83px;
+height:83px;
+border-radius:50%;
+background:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+font-weight:bold;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.section-title h2{
+font-size:22px;
+}
+
+.section-title span{
+color:#00f56a;
+font-size:14px;
+cursor:pointer;
+}
+
+/* TODAY WORKOUT */
+
+.today-workout{
+background:#111;
+border:1px solid #242424;
+border-radius:16px;
+padding:22px;
+margin-bottom:10px;
+}
+
+.workout-icon{
+width:65px;
+height:65px;
+border-radius:15px;
+background:#092516;
+border:1px solid #00f56a;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:#00f56a;
+margin-bottom:18px;
+}
+
+.today-workout h3{
+font-size:21px;
+margin-bottom:8px;
+}
+
+.today-workout p{
+color:#aaa;
+margin-bottom:18px;
+}
+
+.start-workout{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.start-time{
+color:#aaa;
+font-size:14px;
+}
+
+.start-btn{
+background:#00f56a;
+color:#000;
+border:none;
+padding:11px 18px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.slider-dots{
+display:flex;
+justify-content:center;
+gap:7px;
+margin:15px 0 28px;
+}
+
+.slider-dots span{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#333;
+}
+
+.slider-dots span.active{
+width:25px;
+border-radius:10px;
+background:#00f56a;
+}
+
+/* COMMUNITY */
+
+.community{
+background:#111;
+border:1px solid #242424;
+border-radius:16px;
+overflow:hidden;
+margin-bottom:30px;
+}
+
+.news-item{
+display:flex;
+align-items:center;
+gap:14px;
+padding:17px;
+border-bottom:1px solid #242424;
+}
+
+.news-item:last-child{
+border-bottom:none;
+}
+
+.news-icon{
+width:42px;
+height:42px;
+border-radius:10px;
+background:#181818;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#00f56a;
+font-size:19px;
+}
+
+.news-content h4{
+font-size:15px;
+margin-bottom:5px;
+}
+
+.news-content p{
+font-size:13px;
+color:#888;
+}
+
+/* OLD WORKOUT */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-bottom:35px;
+}
+
+.card{
+background:#071a33;
+border-radius:14px;
+overflow:hidden;
+}
+
+.card img{
+width:100%;
+height:190px;
+object-fit:cover;
+}
+
+.card-content{
+padding:18px;
+}
+
+.card-content h3{
+font-size:20px;
+margin-bottom:8px;
+}
+
+.card-content p{
+color:#ddd;
+font-size:14px;
+}
+
+/* NUTRITION */
+
+.nutrition{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:35px;
+align-items:center;
+margin-bottom:35px;
+}
+
+.nutrition img{
+width:100%;
+height:390px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.nutrition-content h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.nutrition-list{
+list-style:none;
+}
+
+.nutrition-list li{
+background:#071a33;
+color:white;
+padding:14px 18px;
+border-radius:8px;
+margin-bottom:10px;
+font-size:16px;
+}
+
+/* PROGRESS */
+
+.progress-section{
+margin-bottom:35px;
+}
+
+.progress-card{
+background:#071a33;
+border-radius:14px;
+padding:22px;
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.progress-icon{
+width:58px;
+height:58px;
+border-radius:12px;
+background:#0d294d;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:27px;
+color:#00f56a;
+}
+
+.progress-card h3{
+margin-bottom:7px;
+}
+
+.progress-card p{
+color:#ddd;
+font-size:14px;
+}
+
+/* SUBSCRIPTIONS */
+
+.subscriptions{
+margin-bottom:35px;
+}
+
+.subscription-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.subscription-card{
+background:#071a33;
+border-radius:14px;
+padding:22px;
+}
+
+.subscription-card h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:28px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.duration{
+color:#bbb;
+font-size:14px;
+margin-bottom:18px;
+}
+
+.subscription-card ul{
+list-style:none;
+margin-bottom:20px;
+}
+
+.subscription-card li{
+padding:7px 0;
+color:#ddd;
+font-size:14px;
+}
+
+.subscribe-btn{
+width:100%;
+background:#00f56a;
+color:#000;
+border:none;
+padding:12px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* CALORIES */
+
+.calories{
+background:#eef3f8;
+color:#071a33;
+padding:35px 0;
+border-radius:14px;
+margin-bottom:35px;
+}
+
+.calories-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:35px;
+align-items:center;
+}
+
+.calories img{
+width:100%;
+height:360px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.calories-content h2{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.calories-content p{
+color:#334155;
+font-size:18px;
+margin-bottom:20px;
+}
+
+.macro-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+max-width:430px;
+}
+
+.macro-item{
+background:#071a33;
+color:white;
+padding:18px 12px;
+border-radius:9px;
+font-size:16px;
+font-weight:bold;
+text-align:center;
+}
+
+/* INJURIES */
+
+.injuries{
+background:#eef3f8;
+color:#071a33;
+padding:35px 0;
+border-radius:14px;
+margin-bottom:35px;
+}
+
+.injuries-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:45px;
+align-items:center;
+}
+
+.injuries img{
+width:100%;
+height:430px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.injuries-content h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.injuries-content p{
+color:#334155;
+font-size:18px;
+margin-bottom:20px;
+}
+
+.injuries-list{
+list-style:none;
+}
+
+.injuries-list li{
+background:#071a33;
+color:white;
+padding:13px 18px;
+border-radius:8px;
+margin-bottom:10px;
+font-size:17px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:72px;
+background:#0c0c0c;
+border-top:1px solid #222;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:999;
+}
+
+.nav-item{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:5px;
+color:#777;
+font-size:12px;
+cursor:pointer;
+}
+
+.nav-item span{
+font-size:21px;
+}
+
+.nav-item.active{
+color:#00f56a;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+header{
+padding:0 15px;
+}
+
+#logoutBtn{
+display:none;
+}
+
+main{
+padding:20px 14px;
+}
+
+.dashboard-title h1{
+font-size:25px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.nutrition{
+grid-template-columns:1fr;
+}
+
+.nutrition img{
+height:260px;
+}
+
+.calories-box{
+grid-template-columns:1fr;
+}
+
+.calories img{
+height:260px;
+}
+
+.injuries-box{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.injuries img{
+height:280px;
+}
+
+.injuries-content h2{
+font-size:30px;
+}
+
+.subscription-grid{
+grid-template-columns:1fr;
+}
+
+.macro-list{
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.macro-item{
+padding:15px 8px;
+font-size:15px;
+}
+
+.profile-popup{
+right:14px;
+width:230px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
 
-    <div class="logo">
-      Body<span>Reset</span>
-    </div>
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
-    <div class="header-left">
+<div class="header-left">
 
-      <div class="profile">
-        BR
-      </div>
+<div
+class="profile"
+id="profileBtn">
 
-      <button id="logoutBtn">
-        تسجيل الخروج
-      </button>
+<span id="profileInitial">?</span>
 
-    </div>
+</div>
 
-  </header>
+<button id="logoutBtn">
+تسجيل الخروج
+</button>
 
+</div>
 
-  <main class="container">
+</header>
 
 
-    <!-- DASHBOARD TITLE -->
+<div
+class="profile-popup"
+id="profilePopup">
 
-    <div class="dashboard-title">
+<h3 id="profileName">
+غير مسجل
+</h3>
 
-      <h1>
-        Dashboard
-      </h1>
+<p id="profileEmail">
+غير مسجل
+</p>
 
-      <div class="notification">
+</div>
 
-        🔔
 
-        <div class="notification-dot"></div>
+<main>
 
-      </div>
 
-    </div>
+<div class="dashboard-title">
 
+<h1>Dashboard</h1>
 
-    <!-- WELCOME -->
+<div class="notification">
 
-    <section class="welcome">
+🔔
 
-      <h1>
+<div class="notification-dot"></div>
 
-        أهلاً بيك في
+</div>
 
-        <span>
-          BodyReset
-        </span>
+</div>
 
-      </h1>
 
-      <p>
+<!-- WELCOME -->
 
-        جاهز تكمل رحلتك النهارده؟
+<section class="welcome">
 
-        <br>
+<h2>
+أهلاً بيك في BodyReset
+</h2>
 
-        حسابك:
+<p id="userEmail">
+جاري تحميل بياناتك...
+</p>
 
-        <strong
-          class="account"
-          id="userEmail">
+<div class="progress-bar">
 
-          جاري التحميل...
+<div class="progress-fill"></div>
 
-        </strong>
+</div>
 
-      </p>
+</section>
 
-      <div class="progress-area">
 
-        <div class="progress-top">
+<!-- STATS -->
 
-          <span>
-            نسبة إنجازك
-          </span>
+<section class="stats">
 
-          <strong>
-            68%
-          </strong>
 
-        </div>
+<div class="stat-card">
 
-        <div class="progress-bar">
+<h3>
+Weekly Activity
+</h3>
 
-          <div class="progress-fill"></div>
+<div class="circle-stats">
 
-        </div>
+<div>
 
-      </div>
+<div class="circle green">
+<span>60</span>
+</div>
 
-    </section>
+<div class="circle-label">
+Progress
+</div>
 
+</div>
 
-    <!-- STAT CARDS -->
 
-    <div class="stats">
+<div>
 
+<div class="circle">
+<span>0%</span>
+</div>
 
-      <!-- WEEKLY ACTIVITY -->
+<div class="circle-label">
+Burn
+</div>
 
-      <div class="stat">
+</div>
 
-        <h3>
-          Weekly Activity
-        </h3>
+</div>
 
-        <div class="activity-circles">
+</div>
 
 
-          <div class="activity-circle progress">
 
-            <div class="circle-content">
+<div class="stat-card">
 
-              <strong>
-                60
-              </strong>
+<h3>
+Calorie Burn
+</h3>
 
-              <span>
-                Progress
-              </span>
+<div class="calorie-value">
+280 kcal
+</div>
 
-            </div>
+<div class="bars">
 
-          </div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
 
+</div>
 
-          <div class="activity-circle burn">
+</div>
 
-            <div class="circle-content">
 
-              <strong>
-                0%
-              </strong>
 
-              <span>
-                Burn
-              </span>
+<div class="stat-card">
 
-            </div>
+<h3>
+Weekly Progress
+</h3>
 
-          </div>
+<div class="big-progress">
 
+<div class="big-progress-inner">
+68%
+</div>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
 
-      <!-- CALORIE BURN -->
+</section>
 
-      <div class="stat">
 
-        <h3>
-          Calorie Burn
-        </h3>
+<!-- TODAY WORKOUT -->
 
-        <div class="calorie-number">
+<section>
 
-          <strong>
-            280
-          </strong>
+<div class="section-title">
 
-          <span>
-            kcal
-          </span>
+<h2>
+Today's Workout
+</h2>
 
-        </div>
+<span>
+See All
+</span>
 
-        <div class="calorie-chart">
+</div>
 
-          <div class="bar" style="height:32%;"></div>
-          <div class="bar" style="height:52%;"></div>
-          <div class="bar" style="height:42%;"></div>
-          <div class="bar" style="height:70%;"></div>
-          <div class="bar" style="height:58%;"></div>
-          <div class="bar" style="height:82%;"></div>
-          <div class="bar" style="height:65%;"></div>
 
-        </div>
+<div class="today-workout">
 
-      </div>
+<div class="workout-icon">
+🏋
+</div>
 
+<h3>
+HIIT & Strength
+</h3>
 
-      <!-- WEEKLY PROGRESS -->
+<p>
+Today's Workout
+</p>
 
-      <div class="stat">
+<div class="start-workout">
 
-        <h3>
-          Weekly Progress
-        </h3>
+<div class="start-time">
+Start up 10 min
+</div>
 
-        <div class="weekly-progress">
+<button class="start-btn">
+Start Now
+</button>
 
-          <div class="progress-circle">
+</div>
 
-            <strong>
-              68%
-            </strong>
+</div>
 
-          </div>
 
-        </div>
+<div class="slider-dots">
 
-      </div>
+<span class="active"></span>
+<span></span>
+<span></span>
 
+</div>
 
-    </div>
+</section>
 
 
-    <!-- TODAY'S WORKOUT -->
+<!-- COMMUNITY -->
 
-    <div class="section-heading">
+<section>
 
-      <h2>
-        Today's Workout
-      </h2>
+<div class="section-title">
 
-      <a href="workout.html" class="see-all">
-        See All
-      </a>
+<h2>
+Community News
+</h2>
 
-    </div>
+<span>
+See All
+</span>
 
+</div>
 
-    <section class="today-workout">
 
-      <div class="workout-main">
+<div class="community">
 
-        <div class="workout-icon">
-          💪
-        </div>
 
-        <div class="workout-info">
+<div class="news-item">
 
-          <h3>
-            HIIT & Strength
-          </h3>
+<div class="news-icon">
+⚡
+</div>
 
-          <p>
-            Start up 10 min
-          </p>
+<div class="news-content">
 
-          <a
-            href="workout.html"
-            class="start-btn">
+<h4>
+New Class: Neon Spin
+</h4>
 
-            Start Now
+<p>
+New Class is. Neon Spin
+</p>
 
-          </a>
+</div>
 
-        </div>
+</div>
 
-      </div>
 
+<div class="news-item">
 
-      <div class="slider-dots">
+<div class="news-icon">
+🏆
+</div>
 
-        <span class="active"></span>
-        <span></span>
-        <span></span>
+<div class="news-content">
 
-      </div>
+<h4>
+Leaderboard Update
+</h4>
 
-    </section>
+<p>
+Check your latest position
+</p>
 
+</div>
 
-    <!-- COMMUNITY NEWS -->
+</div>
 
-    <div class="section-heading">
 
-      <h2>
-        Community News
-      </h2>
+<div class="news-item">
 
-      <a href="#" class="see-all">
-        See All
-      </a>
+<div class="news-icon">
+🔥
+</div>
 
-    </div>
+<div class="news-content">
 
+<h4>
+New Challenge
+</h4>
 
-    <section class="community-card">
+<p>
+Start your next challenge
+</p>
 
+</div>
 
-      <div class="news-row">
+</div>
 
-        <div class="news-left">
 
-          <div class="news-icon">
-            ★
-          </div>
+</div>
 
-          <div>
+</section>
 
-            <div class="news-title">
-              New Class: Neon Spin
-            </div>
 
-            <div class="news-sub">
-              New Class is Neon Spin
-            </div>
+<!-- WORKOUTS -->
 
-          </div>
+<section>
 
-        </div>
+<div class="section-title">
 
-      </div>
+<h2>
+اختيارات تناسب هدفك
+</h2>
 
+</div>
 
-      <div class="news-row">
 
-        <div class="news-left">
+<div class="cards">
 
-          <div class="news-icon">
-            #
-          </div>
 
-          <div>
+<div class="card">
 
-            <div class="news-title">
-              Leaderboard Update
-            </div>
+<img
+src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85">
 
-            <div class="news-sub">
-              Check your latest ranking
-            </div>
+<div class="card-content">
 
-          </div>
+<h3>
+Fitness
+</h3>
 
-        </div>
+<p>
+تمارين تساعدك على بناء لياقة أفضل.
+</p>
 
-      </div>
+</div>
 
+</div>
 
-      <div class="news-row">
 
-        <div class="news-left">
 
-          <div class="news-icon">
-            +
-          </div>
+<div class="card">
 
-          <div>
+<img
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85">
 
-            <div class="news-title">
-              New Challenge
-            </div>
+<div class="card-content">
 
-            <div class="news-sub">
-              Join the latest challenge
-            </div>
+<h3>
+Strength
+</h3>
 
-          </div>
+<p>
+تمارين لبناء القوة والعضلات.
+</p>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
 
-    </section>
 
+<div class="card">
 
-    <!-- OLD WORKOUT / NUTRITION -->
+<img
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85">
 
-    <div class="section-heading">
+<div class="card-content">
 
-      <h2>
-        ابدأ رحلتك 💪
-      </h2>
+<h3>
+Fat Loss
+</h3>
 
-    </div>
+<p>
+تمارين تساعدك على حرق الدهون.
+</p>
 
+</div>
 
-    <div class="cards">
+</div>
 
 
-      <div class="card">
 
-        <div class="icon">
-          💪
-        </div>
+<div class="card">
 
-        <h3>
-          Workout
-        </h3>
+<img
+src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85">
 
-        <p>
-          تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-        </p>
+<div class="card-content">
 
-        <a href="workout.html">
-          ابدأ التمرين
-        </a>
+<h3>
+تمارين في المنزل
+</h3>
 
-      </div>
+<p>
+تمارين سهلة تقدر تعملها في البيت.
+</p>
 
+</div>
 
-      <div class="card">
+</div>
 
-        <div class="icon">
-          🥗
-        </div>
 
-        <h3>
-          Nutrition
-        </h3>
+</div>
 
-        <p>
-          خطط غذائية تساعدك تختار أكلك حسب هدفك.
-        </p>
+</section>
 
-        <a href="#">
-          خطة التغذية
-        </a>
 
-      </div>
+<!-- NUTRITION -->
 
+<section class="nutrition">
 
-    </div>
+<img
+src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85">
 
 
-    <!-- PROGRESS -->
+<div class="nutrition-content">
 
-    <section class="progress-section">
+<h2>
+التغذية
+</h2>
 
-      <div class="section-heading">
+<ul class="nutrition-list">
 
-        <h2>
-          Progress
-        </h2>
+<li>
+وجبات متوازنة تناسب احتياجاتك
+</li>
 
-        <a href="#" class="see-all">
-          See All
-        </a>
+<li>
+اختيارات أطعمة صحية وسهلة
+</li>
 
-      </div>
+<li>
+بروتين وعناصر غذائية أساسية
+</li>
 
+<li>
+تغذية مناسبة لهدفك
+</li>
 
-      <div class="progress-card">
+</ul>
 
-        <div class="progress-icon">
-          📊
-        </div>
+</div>
 
-        <div class="progress-content">
+</section>
 
-          <h3>
-            متابعة التقدم
-          </h3>
 
-          <p>
-            تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
-          </p>
+<!-- PROGRESS -->
 
-          <a href="#">
-            شوف التقدم
-          </a>
+<section class="progress-section">
 
-        </div>
+<div class="section-title">
 
-      </div>
+<h2>
+التقدم
+</h2>
 
-    </section>
+</div>
 
 
-    <!-- SUBSCRIPTIONS -->
+<div class="progress-card">
 
-    <section class="subscriptions-section">
+<div class="progress-icon">
+📊
+</div>
 
-      <div class="section-heading">
+<div>
 
-        <h2>
-          الاشتراكات
-        </h2>
+<h3>
+تابع تقدمك
+</h3>
 
-        <a href="#" class="see-all">
-          See All
-        </a>
+<p>
+سجل تطورك وتابع نتائجك باستمرار.
+</p>
 
-      </div>
+</div>
 
+</div>
 
-      <div class="subscription-box">
+</section>
 
-        <h2>
-          اشتراكك في BodyReset
-        </h2>
 
-        <p id="selectedPlanText">
-          جاري تحميل الباقة...
-        </p>
+<!-- SUBSCRIPTIONS -->
 
-        <div
-          class="plan-price"
-          id="selectedPlanPrice">
-        </div>
+<section class="subscriptions">
 
-        <button
-          class="complete-subscription"
-          id="completeSubscriptionBtn"
-          style="display:none;">
+<div class="section-title">
 
-          إكمال الاشتراك
+<h2>
+الاشتراكات
+</h2>
 
-        </button>
+</div>
 
-        <p
-          class="no-plan"
-          id="noPlanText"
-          style="display:none;">
+<p style="color:#aaa;margin-bottom:18px;">
+اختار الباقة المناسبة ليك وابدأ رحلتك مع BodyReset
+</p>
 
-          لم يتم اختيار أي باقة حتى الآن.
 
-        </p>
+<div class="subscription-grid">
 
-      </div>
 
-    </section>
+<div class="subscription-card">
 
+<h3>
+شهري
+</h3>
 
-    <div id="message"></div>
+<div class="price">
+500 جنيه
+</div>
 
+<div class="duration">
+اشتراك لمدة شهر
+</div>
 
-  </main>
+<ul>
 
+<li>
+✓ خطة تمارين
+</li>
 
-  <!-- BOTTOM NAV -->
+<li>
+✓ خطة تغذية
+</li>
 
-  <nav class="bottom-nav">
+<li>
+✓ حساب السعرات والماكروز
+</li>
 
-    <a
-      href="dashboard.html"
-      class="nav-item active">
+<li>
+✓ متابعة التقدم
+</li>
 
-      <span>
-        ⌂
-      </span>
+</ul>
 
-      Home
+<button
+class="subscribe-btn"
+onclick="selectPlan(500)">
 
-    </a>
+ابدأ
 
+</button>
 
-    <a
-      href="workout.html"
-      class="nav-item">
+</div>
 
-      <span>
-        💪
-      </span>
 
-      Workouts
 
-    </a>
+<div class="subscription-card">
 
+<h3>
+3 شهور
+</h3>
 
-    <a
-      href="#"
-      class="nav-item">
+<div class="price">
+1000 جنيه
+</div>
 
-      <span>
-        📊
-      </span>
+<div class="duration">
+اشتراك لمدة 3 شهور
+</div>
 
-      Progress
+<ul>
 
-    </a>
+<li>
+✓ خطة تمارين
+</li>
 
+<li>
+✓ خطة تغذية
+</li>
 
-    <a
-      href="#"
-      class="nav-item">
+<li>
+✓ حساب السعرات والماكروز
+</li>
 
-      <span>
-        👤
-      </span>
+<li>
+✓ متابعة التقدم
+</li>
 
-      Profile
+</ul>
 
-    </a>
+<button
+class="subscribe-btn"
+onclick="selectPlan(1000)">
 
-  </nav>
+ابدأ
 
+</button>
 
-  <script type="module">
+</div>
 
-    import { createClient } from
-      "https://esm.sh/@supabase/supabase-js@2";
 
 
-    const SUPABASE_URL =
-      "https://byodeoaluspphqduxmlh.supabase.co";
+<div class="subscription-card">
 
+<h3>
+سنوي
+</h3>
 
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+<div class="price">
+3000 جنيه
+</div>
 
+<div class="duration">
+اشتراك لمدة سنة
+</div>
 
-    const supabase =
-      createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+<ul>
 
+<li>
+✓ خطة تمارين
+</li>
 
-    const userEmail =
-      document.getElementById(
-        "userEmail"
-      );
+<li>
+✓ خطة تغذية
+</li>
 
+<li>
+✓ حساب السعرات والماكروز
+</li>
 
-    const logoutBtn =
-      document.getElementById(
-        "logoutBtn"
-      );
+<li>
+✓ متابعة التقدم
+</li>
 
+</ul>
 
-    const message =
-      document.getElementById(
-        "message"
-      );
+<button
+class="subscribe-btn"
+onclick="selectPlan(3000)">
 
+ابدأ
 
-    const selectedPlanText =
-      document.getElementById(
-        "selectedPlanText"
-      );
+</button>
 
+</div>
 
-    const selectedPlanPrice =
-      document.getElementById(
-        "selectedPlanPrice"
-      );
 
+</div>
 
-    const completeSubscriptionBtn =
-      document.getElementById(
-        "completeSubscriptionBtn"
-      );
+</section>
 
 
-    const noPlanText =
-      document.getElementById(
-        "noPlanText"
-      );
+<!-- CALORIES -->
 
+<section
+class="calories"
+id="calories">
 
-    const urlParams =
-      new URLSearchParams(
-        window.location.search
-      );
+<div class="calories-box">
 
 
-    const selectedPlan =
-      urlParams.get("plan");
+<img
+src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1000&q=85">
 
 
-    const plans = {
+<div class="calories-content">
 
-      "500": {
+<h2>
+احسب سعراتك وماكروزك
+</h2>
 
-        name:
-          "الباقة الشهرية",
+<p>
+اعرف احتياجك اليومي من السعرات والعناصر الغذائية.
+</p>
 
-        price:
-          "500 جنيه",
 
-        duration:
-          "اشتراك لمدة شهر"
+<div class="macro-list">
 
-      },
+<div class="macro-item">
+السعرات اليومية
+</div>
 
+<div class="macro-item">
+البروتين
+</div>
 
-      "1000": {
+<div class="macro-item">
+الكربوهيدرات
+</div>
 
-        name:
-          "باقة 3 شهور",
+<div class="macro-item">
+الدهون
+</div>
 
-        price:
-          "1000 جنيه",
+</div>
 
-        duration:
-          "اشتراك لمدة 3 شهور"
+</div>
 
-      },
+</div>
 
+</section>
 
-      "3000": {
 
-        name:
-          "الباقة السنوية",
+<!-- INJURIES -->
 
-        price:
-          "3000 جنيه",
+<section class="injuries">
 
-        duration:
-          "اشتراك لمدة سنة"
+<div class="injuries-box">
 
-      }
 
-    };
+<img
+src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85">
 
 
-    function showSelectedPlan(){
+<div class="injuries-content">
 
-      if(
-        selectedPlan &&
-        plans[selectedPlan]
-      ){
+<h2>
+الإصابات الرياضية
+</h2>
 
-        const plan =
-          plans[selectedPlan];
+<p>
+إرشادات مختصرة تساعدك على الوقاية والتعامل مع الإصابات والعودة للتمرين بأمان.
+</p>
 
 
-        selectedPlanText.textContent =
-          plan.name +
-          " - " +
-          plan.duration;
+<ul class="injuries-list">
 
+<li>
+الوقاية من الإصابات أثناء التمرين
+</li>
 
-        selectedPlanPrice.textContent =
-          plan.price;
+<li>
+آلام العضلات والمفاصل
+</li>
 
+<li>
+التعافي والعودة للتمرين تدريجيًا
+</li>
 
-        completeSubscriptionBtn.style.display =
-          "inline-block";
+</ul>
 
+</div>
 
-        noPlanText.style.display =
-          "none";
+</div>
 
+</section>
 
-      }else{
 
-        selectedPlanText.textContent =
-          "لم يتم اختيار أي باقة.";
+</main>
 
 
-        selectedPlanPrice.textContent =
-          "";
+<!-- BOTTOM NAV -->
 
+<nav class="bottom-nav">
 
-        completeSubscriptionBtn.style.display =
-          "none";
+<div class="nav-item active">
 
+<span>
+⌂
+</span>
 
-        noPlanText.style.display =
-          "block";
+Home
 
-      }
+</div>
 
-    }
 
+<div class="nav-item">
 
-    completeSubscriptionBtn.addEventListener(
-      "click",
-      () => {
+<span>
+🏋
+</span>
 
-        message.style.color =
-          "#00f56a";
+Workouts
 
-        message.textContent =
-          "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
+</div>
 
-      }
-    );
 
+<div class="nav-item">
 
-    async function loadUser(){
+<span>
+📊
+</span>
 
-      const {
-        data:{user},
-        error
-      } =
-        await supabase.auth.getUser();
+Progress
 
+</div>
 
-      if(
-        error ||
-        !user
-      ){
 
-        window.location.href =
-          "auth.html";
+<div class="nav-item">
 
-        return;
+<span>
+👤
+</span>
 
-      }
+Profile
 
+</div>
 
-      const username =
-        user.user_metadata?.username;
+</nav>
 
 
-      userEmail.textContent =
-        username ||
-        user.email;
+<script type="module">
 
-    }
+import { createClient } from
+"https://esm.sh/@supabase/supabase-js@2";
 
 
-    logoutBtn.addEventListener(
-      "click",
-      async () => {
+const SUPABASE_URL =
+"https://byodeoaluspphqduxmlh.supabase.co";
 
-        const {
-          error
-        } =
-          await supabase.auth.signOut();
 
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
-        if(error){
 
-          message.style.color =
-            "#ff7777";
+const supabase =
+createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
 
-          message.textContent =
-            error.message;
 
-          return;
+/* ELEMENTS */
 
-        }
+const userEmail =
+document.getElementById(
+"userEmail"
+);
 
+const profileBtn =
+document.getElementById(
+"profileBtn"
+);
 
-        window.location.href =
-          "auth.html";
+const profilePopup =
+document.getElementById(
+"profilePopup"
+);
 
-      }
-    );
+const profileName =
+document.getElementById(
+"profileName"
+);
 
+const profileEmail =
+document.getElementById(
+"profileEmail"
+);
 
-    showSelectedPlan();
+const profileInitial =
+document.getElementById(
+"profileInitial"
+);
 
-    loadUser();
+const logoutBtn =
+document.getElementById(
+"logoutBtn"
+);
 
-  </script>
 
+/* LOAD USER */
+
+async function loadUser(){
+
+const {
+data:{user},
+error
+} =
+await supabase.auth.getUser();
+
+
+if(error || !user){
+
+window.location.href =
+"auth.html";
+
+return;
+
+}
+
+
+const username =
+user.user_metadata?.username;
+
+
+/* WELCOME */
+
+userEmail.textContent =
+username ||
+user.email;
+
+
+/* PROFILE */
+
+profileName.textContent =
+username ||
+"غير مسجل";
+
+
+profileEmail.textContent =
+user.email ||
+"غير مسجل";
+
+
+/* FIRST LETTER */
+
+profileInitial.textContent =
+username
+? username.trim().charAt(0).toUpperCase()
+: "?";
+
+
+}
+
+
+/* PROFILE POPUP */
+
+profileBtn.addEventListener(
+"click",
+function(){
+
+profilePopup.classList.toggle(
+"active"
+);
+
+}
+);
+
+
+/* CLOSE POPUP */
+
+document.addEventListener(
+"click",
+function(event){
+
+if(
+!profileBtn.contains(event.target) &&
+!profilePopup.contains(event.target)
+){
+
+profilePopup.classList.remove(
+"active"
+);
+
+}
+
+}
+);
+
+
+/* LOGOUT */
+
+logoutBtn.addEventListener(
+"click",
+async function(){
+
+await supabase.auth.signOut();
+
+window.location.href =
+"auth.html";
+
+}
+);
+
+
+/* SUBSCRIPTION */
+
+window.selectPlan =
+function(plan){
+
+window.location.href =
+"auth.html?plan=" +
+encodeURIComponent(plan);
+
+};
+
+
+/* START */
+
+loadUser();
+
+</script>
 
 </body>
-
   </html>
