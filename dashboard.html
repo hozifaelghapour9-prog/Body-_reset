@@ -1531,3 +1531,326 @@
         <div class="icon">
 
           📊
+      <!-- PROGRESS -->
+
+      <div class="card">
+
+        <div class="icon">
+          📊
+        </div>
+
+        <h3>
+          Progress
+        </h3>
+
+        <p>
+          تابع تقدمك وشوف التغييرات اللي بتحصل معاك خطوة بخطوة.
+        </p>
+
+        <a href="#">
+          شوف التقدم
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- SUBSCRIPTION -->
+
+    <section class="subscription-box">
+
+      <h2>
+        اشتراكك
+      </h2>
+
+      <p id="planName">
+        لم يتم اختيار باقة حتى الآن
+      </p>
+
+      <div
+        class="plan-price"
+        id="planPrice">
+      </div>
+
+      <p id="planDuration"></p>
+
+      <button
+        class="complete-subscription"
+        id="completeSubscription"
+        style="display:none;"
+        onclick="completeSubscription()">
+        إكمال الاشتراك
+      </button>
+
+      <div
+        class="no-plan"
+        id="noPlan">
+        اختار باقة من صفحة الاشتراكات للبدء.
+      </div>
+
+    </section>
+
+
+    <div
+      id="message">
+    </div>
+
+
+  </main>
+
+
+  <!-- BOTTOM NAV -->
+
+  <nav class="bottom-nav">
+
+    <a
+      href="dashboard.html"
+      class="nav-item active">
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
+      <span>
+        Home
+      </span>
+
+    </a>
+
+
+    <a
+      href="workout.html"
+      class="nav-item">
+
+      <span class="nav-icon">
+        🏋
+      </span>
+
+      <span>
+        Workouts
+      </span>
+
+    </a>
+
+
+    <a
+      href="#"
+      class="nav-item">
+
+      <span class="nav-icon">
+        ◉
+      </span>
+
+      <span>
+        Progress
+      </span>
+
+    </a>
+
+
+    <a
+      href="#"
+      class="nav-item">
+
+      <span class="nav-icon">
+        ◯
+      </span>
+
+      <span>
+        Profile
+      </span>
+
+    </a>
+
+  </nav>
+
+
+  <!-- SUPABASE -->
+
+  <script type="module">
+
+    import {
+      createClient
+    } from
+      "https://esm.sh/@supabase/supabase-js@2";
+
+
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
+
+
+    const SUPABASE_KEY =
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+
+
+    const supabase =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+    /* LOGOUT */
+
+    document
+      .getElementById("logoutBtn")
+      .addEventListener(
+        "click",
+        async function() {
+
+          await supabase.auth.signOut();
+
+          window.location.href =
+            "auth.html";
+
+        }
+      );
+
+
+    /* CHECK USER */
+
+    const {
+      data: {
+        user
+      }
+    } =
+      await supabase.auth.getUser();
+
+
+    if (!user) {
+
+      window.location.href =
+        "auth.html";
+
+    }
+
+
+    /* SHOW ACCOUNT */
+
+    if (user) {
+
+      const account =
+        document.getElementById("userEmail");
+
+      if (account) {
+
+        account.textContent =
+          user.email || "حسابك";
+
+      }
+
+    }
+
+
+    /* SELECTED PLAN */
+
+    const urlParams =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const selectedPlan =
+      urlParams.get("plan");
+
+
+    const planName =
+      document.getElementById("planName");
+
+    const planPrice =
+      document.getElementById("planPrice");
+
+    const planDuration =
+      document.getElementById("planDuration");
+
+    const completeButton =
+      document.getElementById(
+        "completeSubscription"
+      );
+
+    const noPlan =
+      document.getElementById("noPlan");
+
+
+    const plans = {
+
+      "500": {
+        name: "الباقة الشهرية",
+        price: "500 جنيه",
+        duration: "اشتراك لمدة شهر"
+      },
+
+      "1000": {
+        name: "باقة 3 شهور",
+        price: "1000 جنيه",
+        duration: "اشتراك لمدة 3 شهور"
+      },
+
+      "3000": {
+        name: "الباقة السنوية",
+        price: "3000 جنيه",
+        duration: "اشتراك لمدة سنة"
+      }
+
+    };
+
+
+    if (
+      selectedPlan &&
+      plans[selectedPlan]
+    ) {
+
+      const plan =
+        plans[selectedPlan];
+
+
+      planName.textContent =
+        plan.name;
+
+
+      planPrice.textContent =
+        plan.price;
+
+
+      planDuration.textContent =
+        plan.duration;
+
+
+      completeButton.style.display =
+        "inline-block";
+
+
+      noPlan.style.display =
+        "none";
+
+    }
+
+
+    /* COMPLETE SUBSCRIPTION */
+
+    window.completeSubscription =
+      function() {
+
+        const message =
+          document.getElementById(
+            "message"
+          );
+
+
+        message.style.color =
+          "#00f56a";
+
+
+        message.textContent =
+          "تم اختيار الباقة بنجاح. سيتم تفعيل الاشتراك بعد إتمام الدفع.";
+
+      };
+
+
+  </script>
+
+
+</body>
+
+  </html>
