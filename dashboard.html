@@ -111,7 +111,58 @@
     .container {
       max-width: 1100px;
       margin: auto;
-      padding: 28px 20px 50px;
+      padding: 28px 20px 100px;
+    }
+
+
+    /* DASHBOARD TITLE */
+
+    .dashboard-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 22px;
+    }
+
+
+    .dashboard-title h1 {
+      font-size: 30px;
+    }
+
+
+    .notification {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      background: #181818;
+
+      border: 1px solid #3b3b3b;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      font-size: 20px;
+    }
+
+
+    .notification-dot {
+      width: 8px;
+      height: 8px;
+
+      background: #00f56a;
+
+      border-radius: 50%;
+
+      position: absolute;
+
+      top: 7px;
+      right: 8px;
     }
 
 
@@ -216,7 +267,7 @@
     }
 
 
-    /* كروت التقدم */
+    /* STAT CARDS */
 
     .stats {
       display: flex;
@@ -225,7 +276,7 @@
 
       gap: 18px;
 
-      margin-bottom: 30px;
+      margin-bottom: 35px;
 
       width: 100%;
 
@@ -282,11 +333,9 @@
 
       border-radius: 20px;
 
-      padding: 35px 25px;
+      padding: 25px 20px;
 
       min-height: 220px;
-
-      text-align: center;
 
       scroll-snap-align: start;
 
@@ -305,30 +354,251 @@
     }
 
 
-    .stat-icon {
-      font-size: 30px;
+    .stat h3 {
+      font-size: 17px;
 
-      margin-bottom: 15px;
+      margin-bottom: 18px;
+
+      color: #ffffff;
     }
 
 
-    .stat strong {
-      display: block;
+    .stat-main {
+      display: flex;
 
-      font-size: 36px;
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 25px;
+    }
+
+
+    .circle {
+      width: 82px;
+      height: 82px;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      background:
+        conic-gradient(
+          #00f56a 60%,
+          #333333 60%
+        );
+    }
+
+
+    .circle::before {
+      content: "";
+
+      position: absolute;
+
+      width: 62px;
+      height: 62px;
+
+      background: #171717;
+
+      border-radius: 50%;
+    }
+
+
+    .circle-content {
+      position: relative;
+
+      text-align: center;
+
+      z-index: 2;
+    }
+
+
+    .circle-content strong {
+      display: block;
 
       color: #00f56a;
 
-      margin-bottom: 12px;
+      font-size: 19px;
     }
 
 
-    .stat span {
-      color: #a0a0a0;
+    .circle-content span {
+      color: #aaaaaa;
 
-      font-size: 16px;
+      font-size: 11px;
+    }
 
-      line-height: 1.7;
+
+    .activity-item {
+      text-align: center;
+    }
+
+
+    .activity-item strong {
+      display: block;
+
+      color: #00f56a;
+
+      font-size: 27px;
+
+      margin-bottom: 5px;
+    }
+
+
+    .activity-item span {
+      color: #999999;
+
+      font-size: 12px;
+    }
+
+
+    /* CALORIE CARD */
+
+    .calorie-number {
+      text-align: center;
+
+      margin-bottom: 18px;
+    }
+
+
+    .calorie-number strong {
+      font-size: 32px;
+
+      color: #00f56a;
+    }
+
+
+    .calorie-number span {
+      color: #aaaaaa;
+
+      font-size: 14px;
+
+      margin-right: 4px;
+    }
+
+
+    .calorie-chart {
+      height: 85px;
+
+      display: flex;
+
+      align-items: end;
+
+      justify-content: center;
+
+      gap: 9px;
+    }
+
+
+    .bar {
+      width: 13px;
+
+      background: #00f56a;
+
+      border-radius: 6px 6px 2px 2px;
+
+      box-shadow:
+        0 0 10px
+        rgba(0,245,106,.15);
+    }
+
+
+    .bar:nth-child(1) {
+      height: 32%;
+    }
+
+
+    .bar:nth-child(2) {
+      height: 52%;
+    }
+
+
+    .bar:nth-child(3) {
+      height: 42%;
+    }
+
+
+    .bar:nth-child(4) {
+      height: 70%;
+    }
+
+
+    .bar:nth-child(5) {
+      height: 58%;
+    }
+
+
+    .bar:nth-child(6) {
+      height: 82%;
+    }
+
+
+    .bar:nth-child(7) {
+      height: 65%;
+    }
+
+
+    /* WEEKLY PROGRESS */
+
+    .weekly-progress {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+
+    .progress-circle {
+      width: 125px;
+      height: 125px;
+
+      border-radius: 50%;
+
+      background:
+        conic-gradient(
+          #00f56a 68%,
+          #333333 68%
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+    }
+
+
+    .progress-circle::before {
+      content: "";
+
+      width: 95px;
+      height: 95px;
+
+      background: #171717;
+
+      border-radius: 50%;
+
+      position: absolute;
+    }
+
+
+    .progress-circle strong {
+      position: relative;
+
+      z-index: 2;
+
+      font-size: 28px;
+
+      color: #00f56a;
     }
 
 
@@ -341,13 +611,40 @@
     }
 
 
+    .section-heading {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 18px;
+    }
+
+
+    .section-heading h2 {
+      font-size: 23px;
+    }
+
+
+    .see-all {
+      color: #00f56a;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: bold;
+    }
+
+
     /* DASHBOARD CARDS */
 
     .cards {
       display: grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(2, 1fr);
 
       gap: 17px;
 
@@ -441,7 +738,113 @@
     }
 
 
+    /* PROGRESS SECTION */
+
+    .progress-section {
+      margin-top: 15px;
+
+      margin-bottom: 30px;
+    }
+
+
+    .progress-card {
+      background:
+        linear-gradient(
+          145deg,
+          #3d3d3d 0%,
+          #292929 35%,
+          #151515 65%,
+          #090909 100%
+        );
+
+      border: 1px solid #4a4a4a;
+
+      border-radius: 20px;
+
+      padding: 28px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 25px;
+    }
+
+
+    .progress-icon {
+      width: 72px;
+      height: 72px;
+
+      min-width: 72px;
+
+      border-radius: 16px;
+
+      background: #00f56a;
+
+      color: #06100a;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 30px;
+
+      font-weight: bold;
+    }
+
+
+    .progress-content {
+      flex: 1;
+    }
+
+
+    .progress-content h3 {
+      font-size: 21px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .progress-content p {
+      color: #a0a0a0;
+
+      line-height: 1.7;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .progress-content a {
+      display: inline-block;
+
+      text-decoration: none;
+
+      background: #00f56a;
+
+      color: #06100a;
+
+      padding: 10px 17px;
+
+      border-radius: 9px;
+
+      font-weight: bold;
+
+      font-size: 14px;
+    }
+
+
     /* SUBSCRIPTION */
+
+    .subscriptions-section {
+      margin-top: 10px;
+
+      margin-bottom: 30px;
+    }
+
 
     .subscription-box {
       background:
@@ -536,6 +939,62 @@
     }
 
 
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+      position: fixed;
+
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      height: 70px;
+
+      background: #080808;
+
+      border-top: 1px solid #292929;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-around;
+
+      z-index: 1000;
+    }
+
+
+    .nav-item {
+      color: #777777;
+
+      text-decoration: none;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 5px;
+
+      font-size: 12px;
+
+      min-width: 70px;
+    }
+
+
+    .nav-item span {
+      font-size: 21px;
+    }
+
+
+    .nav-item.active {
+      color: #00f56a;
+    }
+
+
     /* TABLET */
 
     @media(max-width: 800px) {
@@ -545,22 +1004,7 @@
 
         min-height: 200px;
 
-        padding: 30px 18px;
-      }
-
-
-      .stat-icon {
-        font-size: 27px;
-      }
-
-
-      .stat strong {
-        font-size: 32px;
-      }
-
-
-      .stat span {
-        font-size: 14px;
+        padding: 25px 18px;
       }
 
 
@@ -606,7 +1050,12 @@
 
 
       .container {
-        padding: 20px 14px 40px;
+        padding: 20px 14px 100px;
+      }
+
+
+      .dashboard-title h1 {
+        font-size: 26px;
       }
 
 
@@ -623,11 +1072,43 @@
 
 
       .stat {
-        flex: 0 0 230px;
+        flex: 0 0 285px;
 
-        min-height: 200px;
+        min-height: 205px;
 
-        padding: 30px 20px;
+        padding: 25px 18px;
+      }
+
+
+      .stat-main {
+        gap: 18px;
+      }
+
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+
+      .progress-card {
+        padding: 22px 18px;
+
+        gap: 17px;
+      }
+
+
+      .progress-icon {
+        width: 62px;
+        height: 62px;
+
+        min-width: 62px;
+
+        font-size: 26px;
+      }
+
+
+      .progress-content h3 {
+        font-size: 19px;
       }
 
 
@@ -679,6 +1160,29 @@
 
 
   <main class="container">
+
+
+    <!-- DASHBOARD TITLE -->
+
+    <div class="dashboard-title">
+
+      <h1>
+
+        Dashboard
+
+      </h1>
+
+
+      <div class="notification">
+
+        🔔
+
+        <div class="notification-dot"></div>
+
+      </div>
+
+    </div>
+
 
 
     <!-- WELCOME -->
@@ -756,89 +1260,196 @@
 
 
 
-    <!-- PROGRESS CARDS -->
+    <!-- STAT CARDS -->
 
     <div class="stats">
 
 
+      <!-- WEEKLY ACTIVITY -->
+
       <div class="stat">
 
 
-        <div class="stat-icon">
+        <h3>
 
-          🔥
+          Weekly Activity
+
+        </h3>
+
+
+        <div class="stat-main">
+
+
+          <div class="circle">
+
+
+            <div class="circle-content">
+
+              <strong>
+
+                60
+
+              </strong>
+
+              <span>
+
+                Progress
+
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="activity-item">
+
+
+            <strong>
+
+              0%
+
+            </strong>
+
+
+            <span>
+
+              Burn
+
+            </span>
+
+
+          </div>
+
 
         </div>
-
-
-        <strong>
-
-          7
-
-        </strong>
-
-
-        <span>
-
-          أيام متتالية
-
-        </span>
 
 
       </div>
 
 
 
+      <!-- CALORIE BURN -->
+
       <div class="stat">
 
 
-        <div class="stat-icon">
+        <h3>
 
-          💪
+          Calorie Burn
+
+        </h3>
+
+
+        <div class="calorie-number">
+
+
+          <strong>
+
+            280
+
+          </strong>
+
+
+          <span>
+
+            kcal
+
+          </span>
+
 
         </div>
 
 
-        <strong>
-
-          12
-
-        </strong>
+        <div class="calorie-chart">
 
 
-        <span>
+          <div
+            class="bar"
+            style="height:32%;">
 
-          تمرين مكتمل
+          </div>
 
-        </span>
+
+          <div
+            class="bar"
+            style="height:52%;">
+
+          </div>
+
+
+          <div
+            class="bar"
+            style="height:42%;">
+
+          </div>
+
+
+          <div
+            class="bar"
+            style="height:70%;">
+
+          </div>
+
+
+          <div
+            class="bar"
+            style="height:58%;">
+
+          </div>
+
+
+          <div
+            class="bar"
+            style="height:82%;">
+
+          </div>
+
+
+          <div
+            class="bar"
+            style="height:65%;">
+
+          </div>
+
+
+        </div>
 
 
       </div>
 
 
 
+      <!-- WEEKLY PROGRESS -->
+
       <div class="stat">
 
 
-        <div class="stat-icon">
+        <h3>
 
-          ⚡
+          Weekly Progress
+
+        </h3>
+
+
+        <div class="weekly-progress">
+
+
+          <div class="progress-circle">
+
+
+            <strong>
+
+              68%
+
+            </strong>
+
+
+          </div>
+
 
         </div>
-
-
-        <strong>
-
-          68%
-
-        </strong>
-
-
-        <span>
-
-          نسبة الإنجاز
-
-        </span>
 
 
       </div>
@@ -848,13 +1459,19 @@
 
 
 
-    <!-- START -->
+    <!-- START JOURNEY -->
 
-    <h2 class="section-title">
+    <div class="section-heading">
 
-      ابدأ رحلتك 💪
 
-    </h2>
+      <h2>
+
+        ابدأ رحلتك 💪
+
+      </h2>
+
+
+    </div>
 
 
     <div class="cards">
@@ -929,34 +1546,30 @@
       </div>
 
 
-
-      <div class="card">
-
-
-        <div class="icon">
-
-          📊
-
-        </div>
+    </div>
 
 
-        <h3>
+
+    <!-- PROGRESS -->
+
+    <section class="progress-section">
+
+
+      <div class="section-heading">
+
+
+        <h2>
 
           Progress
 
-        </h3>
+        </h2>
 
 
-        <p>
+        <a
+          href="#"
+          class="see-all">
 
-          تابع تقدمك وشوف تطورك مع الوقت.
-
-        </p>
-
-
-        <a href="#">
-
-          متابعة التقدم
+          See All
 
         </a>
 
@@ -964,57 +1577,126 @@
       </div>
 
 
-    </div>
+      <div class="progress-card">
 
 
+        <div class="progress-icon">
 
-    <!-- SUBSCRIPTION -->
+          📊
 
-    <div class="subscription-box">
-
-
-      <h2>
-
-        اشتراكك في BodyReset
-
-      </h2>
+        </div>
 
 
-      <p id="selectedPlanText">
-
-        جاري تحميل الباقة...
-
-      </p>
+        <div class="progress-content">
 
 
-      <div
-        class="plan-price"
-        id="selectedPlanPrice">
+          <h3>
+
+            متابعة التقدم
+
+          </h3>
+
+
+          <p>
+
+            تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
+
+          </p>
+
+
+          <a href="#">
+
+            شوف التقدم
+
+          </a>
+
+
+        </div>
+
 
       </div>
 
 
-      <button
-        class="complete-subscription"
-        id="completeSubscriptionBtn"
-        style="display:none;">
-
-        إكمال الاشتراك
-
-      </button>
+    </section>
 
 
-      <p
-        class="no-plan"
-        id="noPlanText"
-        style="display:none;">
 
-        لم يتم اختيار أي باقة حتى الآن.
+    <!-- SUBSCRIPTIONS -->
 
-      </p>
+    <section class="subscriptions-section">
 
 
-    </div>
+      <div class="section-heading">
+
+
+        <h2>
+
+          الاشتراكات
+
+        </h2>
+
+
+        <a
+          href="#"
+          class="see-all">
+
+          See All
+
+        </a>
+
+
+      </div>
+
+
+      <div class="subscription-box">
+
+
+        <h2>
+
+          اشتراكك في BodyReset
+
+        </h2>
+
+
+        <p id="selectedPlanText">
+
+          جاري تحميل الباقة...
+
+        </p>
+
+
+        <div
+          class="plan-price"
+          id="selectedPlanPrice">
+
+        </div>
+
+
+        <button
+          class="complete-subscription"
+          id="completeSubscriptionBtn"
+          style="display:none;">
+
+          إكمال الاشتراك
+
+        </button>
+
+
+        <p
+          class="no-plan"
+          id="noPlanText"
+          style="display:none;">
+
+          لم يتم اختيار أي باقة حتى الآن.
+
+        </p>
+
+
+      </div>
+
+
+    </section>
+
 
 
     <div id="message"></div>
@@ -1024,268 +1706,10 @@
 
 
 
-  <script type="module">
+  <!-- BOTTOM NAV -->
 
+  <nav class="bottom-nav">
 
-    import { createClient } from
-      "https://esm.sh/@supabase/supabase-js@2";
 
-
-    const SUPABASE_URL =
-      "https://byodeoaluspphqduxmlh.supabase.co";
-
-
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-
-
-    const supabase =
-      createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
-
-
-    const userEmail =
-      document.getElementById(
-        "userEmail"
-      );
-
-
-    const logoutBtn =
-      document.getElementById(
-        "logoutBtn"
-      );
-
-
-    const message =
-      document.getElementById(
-        "message"
-      );
-
-
-    const selectedPlanText =
-      document.getElementById(
-        "selectedPlanText"
-      );
-
-
-    const selectedPlanPrice =
-      document.getElementById(
-        "selectedPlanPrice"
-      );
-
-
-    const completeSubscriptionBtn =
-      document.getElementById(
-        "completeSubscriptionBtn"
-      );
-
-
-    const noPlanText =
-      document.getElementById(
-        "noPlanText"
-      );
-
-
-    const urlParams =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const selectedPlan =
-      urlParams.get("plan");
-
-
-    const plans = {
-
-      "500": {
-
-        name: "الباقة الشهرية",
-
-        price: "500 جنيه",
-
-        duration:
-          "اشتراك لمدة شهر"
-
-      },
-
-
-      "1000": {
-
-        name: "باقة 3 شهور",
-
-        price: "1000 جنيه",
-
-        duration:
-          "اشتراك لمدة 3 شهور"
-
-      },
-
-
-      "3000": {
-
-        name: "الباقة السنوية",
-
-        price: "3000 جنيه",
-
-        duration:
-          "اشتراك لمدة سنة"
-
-      }
-
-    };
-
-
-    function showSelectedPlan() {
-
-
-      if (
-        selectedPlan &&
-        plans[selectedPlan]
-      ) {
-
-
-        const plan =
-          plans[selectedPlan];
-
-
-        selectedPlanText.textContent =
-          plan.name +
-          " - " +
-          plan.duration;
-
-
-        selectedPlanPrice.textContent =
-          plan.price;
-
-
-        completeSubscriptionBtn.style.display =
-          "inline-block";
-
-
-        noPlanText.style.display =
-          "none";
-
-
-      } else {
-
-
-        selectedPlanText.textContent =
-          "لم يتم اختيار أي باقة.";
-
-
-        selectedPlanPrice.textContent =
-          "";
-
-
-        completeSubscriptionBtn.style.display =
-          "none";
-
-
-        noPlanText.style.display =
-          "block";
-
-      }
-
-    }
-
-
-    completeSubscriptionBtn.addEventListener(
-      "click",
-      () => {
-
-
-        message.style.color =
-          "#00f56a";
-
-
-        message.textContent =
-          "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
-
-      }
-    );
-
-
-    async function loadUser() {
-
-
-      const {
-        data: { user },
-        error
-      } =
-        await supabase.auth.getUser();
-
-
-      if (
-        error ||
-        !user
-      ) {
-
-
-        window.location.href =
-          "auth.html";
-
-
-        return;
-
-      }
-
-
-      const username =
-        user.user_metadata?.username;
-
-
-      userEmail.textContent =
-        username ||
-        user.email;
-
-    }
-
-
-    logoutBtn.addEventListener(
-      "click",
-      async () => {
-
-
-        const {
-          error
-        } =
-          await supabase.auth.signOut();
-
-
-        if (error) {
-
-
-          message.style.color =
-            "#ff7777";
-
-
-          message.textContent =
-            error.message;
-
-
-          return;
-
-        }
-
-
-        window.location.href =
-          "auth.html";
-
-      }
-    );
-
-
-    showSelectedPlan();
-
-    loadUser();
-
-
-  </script>
-
-
-</body>
-
-  </html>
+    <a
+      href="dashboard.html"
