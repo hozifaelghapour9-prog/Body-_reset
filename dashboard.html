@@ -63,6 +63,7 @@
       color:#00f56a;
       font-weight:bold;
       cursor:pointer;
+      transition:.2s;
     }
 
     .profile:hover{
@@ -70,74 +71,19 @@
       box-shadow:0 0 12px rgba(0,245,106,.2);
     }
 
-    /* MENU */
-
-    .menu-btn{
-      width:42px;
-      height:42px;
-      border-radius:10px;
+    #logoutBtn{
       background:#1d1d1d;
-      color:#00f56a;
-      border:1px solid #444;
-      cursor:pointer;
-      font-size:25px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .menu-popup{
-      position:fixed;
-      top:85px;
-      right:25px;
-      width:230px;
-      background:#171717;
-      border:1px solid #444;
-      border-radius:16px;
-      padding:15px;
-      z-index:3000;
-      box-shadow:0 10px 35px rgba(0,0,0,.6);
-      display:none;
-    }
-
-    .menu-popup.show{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-
-    .menu-popup a,
-    .menu-popup button{
-      width:100%;
-      padding:13px;
-      border-radius:10px;
-      background:#0d0d0d;
-      border:1px solid #333;
       color:#fff;
-      text-decoration:none;
-      text-align:right;
+      border:1px solid #444;
+      padding:9px 15px;
+      border-radius:9px;
       cursor:pointer;
-      font-size:15px;
+      transition:.2s;
     }
 
-    .menu-popup a:hover,
-    .menu-popup button:hover{
+    #logoutBtn:hover{
       border-color:#00f56a;
       color:#00f56a;
-    }
-
-    .close-menu{
-      width:34px !important;
-      height:34px;
-      padding:0 !important;
-      margin-right:auto;
-      text-align:center !important;
-      font-size:22px !important;
-      background:#292929 !important;
-    }
-
-    #menuLogout{
-      color:#ff7777;
     }
 
     /* PROFILE POPUP */
@@ -209,6 +155,8 @@
       padding:28px 20px 100px;
     }
 
+    /* DASHBOARD TITLE */
+
     .dashboard-title{
       display:flex;
       justify-content:space-between;
@@ -242,6 +190,8 @@
       top:7px;
       right:8px;
     }
+
+    /* WELCOME */
 
     .welcome{
       background:linear-gradient(
@@ -309,6 +259,8 @@
       box-shadow:0 0 12px rgba(0,245,106,.35);
     }
 
+    /* STATS */
+
     .stats{
       display:flex;
       flex-direction:row-reverse;
@@ -319,6 +271,7 @@
       overflow-y:hidden;
       scroll-snap-type:x mandatory;
       padding-bottom:8px;
+      -webkit-overflow-scrolling:touch;
     }
 
     .stats::-webkit-scrollbar{
@@ -355,6 +308,8 @@
       font-size:17px;
       margin-bottom:20px;
     }
+
+    /* WEEKLY ACTIVITY */
 
     .activity-circles{
       display:flex;
@@ -415,6 +370,8 @@
       margin-top:3px;
     }
 
+    /* CALORIES */
+
     .calorie-number{
       text-align:center;
       margin-bottom:15px;
@@ -444,6 +401,8 @@
       border-radius:6px 6px 2px 2px;
       box-shadow:0 0 10px rgba(0,245,106,.15);
     }
+
+    /* WEEKLY PROGRESS */
 
     .weekly-progress{
       display:flex;
@@ -481,6 +440,8 @@
       font-size:28px;
     }
 
+    /* SECTION */
+
     .section-heading{
       display:flex;
       justify-content:space-between;
@@ -498,6 +459,8 @@
       font-size:14px;
       font-weight:bold;
     }
+
+    /* TODAY WORKOUT */
 
     .today-workout{
       background:
@@ -576,6 +539,8 @@
       background:#00f56a;
     }
 
+    /* COMMUNITY */
+
     .community-card{
       background:
         linear-gradient(
@@ -630,6 +595,8 @@
       font-size:12px;
     }
 
+    /* OLD START JOURNEY */
+
     .cards{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -678,6 +645,8 @@
       font-weight:bold;
       font-size:14px;
     }
+
+    /* PROGRESS SECTION */
 
     .progress-section{
       margin-bottom:30px;
@@ -740,6 +709,8 @@
       font-size:14px;
     }
 
+    /* SUBSCRIPTIONS */
+
     .subscriptions-section{
       margin-bottom:30px;
     }
@@ -797,6 +768,8 @@
       text-align:center;
     }
 
+    /* BOTTOM NAV */
+
     .bottom-nav{
       position:fixed;
       bottom:0;
@@ -830,6 +803,8 @@
       color:#00f56a;
     }
 
+    /* TABLET */
+
     @media(max-width:800px){
 
       .stat{
@@ -841,6 +816,8 @@
       }
 
     }
+
+    /* MOBILE */
 
     @media(max-width:600px){
 
@@ -858,16 +835,9 @@
         height:36px;
       }
 
-      .menu-btn{
-        width:38px;
-        height:38px;
-        font-size:23px;
-      }
-
-      .menu-popup{
-        top:76px;
-        right:14px;
-        width:220px;
+      #logoutBtn{
+        padding:8px 10px;
+        font-size:13px;
       }
 
       .profile-popup{
@@ -971,12 +941,8 @@
 
       </div>
 
-      <button
-        id="menuBtn"
-        class="menu-btn">
-
-        ☰
-
+      <button id="logoutBtn">
+        تسجيل الخروج
       </button>
 
     </div>
@@ -984,32 +950,7 @@
   </header>
 
 
-  <div
-    class="menu-popup"
-    id="menuPopup">
-
-    <button
-      id="closeMenu"
-      class="close-menu">
-
-      ×
-
-    </button>
-
-    <a href="#subscriptions">
-      الاشتراكات
-    </a>
-
-    <a href="#">
-      العروض
-    </a>
-
-    <button id="menuLogout">
-      تسجيل الخروج
-    </button>
-
-  </div>
-
+  <!-- PROFILE POPUP -->
 
   <div
     class="profile-popup"
@@ -1062,6 +1003,9 @@
 
   <main class="container">
 
+
+    <!-- DASHBOARD TITLE -->
+
     <div class="dashboard-title">
 
       <h1>
@@ -1078,6 +1022,8 @@
 
     </div>
 
+
+    <!-- WELCOME -->
 
     <section class="welcome">
 
@@ -1134,7 +1080,12 @@
     </section>
 
 
+    <!-- STAT CARDS -->
+
     <div class="stats">
+
+
+      <!-- WEEKLY ACTIVITY -->
 
       <div class="stat">
 
@@ -1143,6 +1094,7 @@
         </h3>
 
         <div class="activity-circles">
+
 
           <div class="activity-circle progress">
 
@@ -1160,6 +1112,7 @@
 
           </div>
 
+
           <div class="activity-circle burn">
 
             <div class="circle-content">
@@ -1176,10 +1129,13 @@
 
           </div>
 
+
         </div>
 
       </div>
 
+
+      <!-- CALORIE BURN -->
 
       <div class="stat">
 
@@ -1207,7 +1163,192 @@
           <div class="bar" style="height:70%;"></div>
           <div class="bar" style="height:58%;"></div>
           <div class="bar" style="height:82%;"></div>
-          <div class="bar" style="hei
+          <div class="bar" style="height:65%;"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- WEEKLY PROGRESS -->
+
+      <div class="stat">
+
+        <h3>
+          Weekly Progress
+        </h3>
+
+        <div class="weekly-progress">
+
+          <div class="progress-circle">
+
+            <strong>
+              68%
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- TODAY'S WORKOUT -->
+
+    <div class="section-heading">
+
+      <h2>
+        Today's Workout
+      </h2>
+
+      <a href="workout.html" class="see-all">
+        See All
+      </a>
+
+    </div>
+
+
+    <section class="today-workout">
+
+      <div class="workout-main">
+
+        <div class="workout-icon">
+          💪
+        </div>
+
+        <div class="workout-info">
+
+          <h3>
+            HIIT & Strength
+          </h3>
+
+          <p>
+            Start up 10 min
+          </p>
+
+          <a
+            href="workout.html"
+            class="start-btn">
+
+            Start Now
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="slider-dots">
+
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </section>
+
+
+    <!-- COMMUNITY NEWS -->
+
+    <div class="section-heading">
+
+      <h2>
+        Community News
+      </h2>
+
+      <a href="#" class="see-all">
+        See All
+      </a>
+
+    </div>
+
+
+    <section class="community-card">
+
+
+      <div class="news-row">
+
+        <div class="news-left">
+
+          <div class="news-icon">
+            ★
+          </div>
+
+          <div>
+
+            <div class="news-title">
+              New Class: Neon Spin
+            </div>
+
+            <div class="news-sub">
+              New Class is Neon Spin
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="news-row">
+
+        <div class="news-left">
+
+          <div class="news-icon">
+            #
+          </div>
+
+          <div>
+
+            <div class="news-title">
+              Leaderboard Update
+            </div>
+
+            <div class="news-sub">
+              Check your latest ranking
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="news-row">
+
+        <div class="news-left">
+
+          <div class="news-icon">
+            +
+          </div>
+
+          <div>
+
+            <div class="news-title">
+              New Challenge
+            </div>
+
+            <div class="news-sub">
+              Join the latest challenge
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
     <!-- OLD WORKOUT / NUTRITION -->
 
     <div class="section-heading">
@@ -1277,12 +1418,8 @@
           Progress
         </h2>
 
-        <a
-          href="#"
-          class="see-all">
-
+        <a href="#" class="see-all">
           See All
-
         </a>
 
       </div>
@@ -1317,9 +1454,7 @@
 
     <!-- SUBSCRIPTIONS -->
 
-    <section
-      class="subscriptions-section"
-      id="subscriptions">
+    <section class="subscriptions-section">
 
       <div class="section-heading">
 
@@ -1327,12 +1462,8 @@
           الاشتراكات
         </h2>
 
-        <a
-          href="#"
-          class="see-all">
-
+        <a href="#" class="see-all">
           See All
-
         </a>
 
       </div>
@@ -1503,27 +1634,9 @@
       );
 
 
-    const menuBtn =
+    const logoutBtn =
       document.getElementById(
-        "menuBtn"
-      );
-
-
-    const menuPopup =
-      document.getElementById(
-        "menuPopup"
-      );
-
-
-    const closeMenu =
-      document.getElementById(
-        "closeMenu"
-      );
-
-
-    const menuLogout =
-      document.getElementById(
-        "menuLogout"
+        "logoutBtn"
       );
 
 
@@ -1727,17 +1840,11 @@
     }
 
 
-    /* PROFILE */
-
     profileBtn.addEventListener(
       "click",
       () => {
 
         profilePopup.classList.toggle(
-          "show"
-        );
-
-        menuPopup.classList.remove(
           "show"
         );
 
@@ -1750,36 +1857,6 @@
       () => {
 
         profilePopup.classList.remove(
-          "show"
-        );
-
-      }
-    );
-
-
-    /* MENU */
-
-    menuBtn.addEventListener(
-      "click",
-      () => {
-
-        menuPopup.classList.toggle(
-          "show"
-        );
-
-        profilePopup.classList.remove(
-          "show"
-        );
-
-      }
-    );
-
-
-    closeMenu.addEventListener(
-      "click",
-      () => {
-
-        menuPopup.classList.remove(
           "show"
         );
 
@@ -1802,25 +1879,11 @@
 
         }
 
-
-        if(
-          !menuPopup.contains(event.target) &&
-          !menuBtn.contains(event.target)
-        ){
-
-          menuPopup.classList.remove(
-            "show"
-          );
-
-        }
-
       }
     );
 
 
-    /* LOGOUT */
-
-    menuLogout.addEventListener(
+    logoutBtn.addEventListener(
       "click",
       async () => {
 
@@ -1859,5 +1922,4 @@
 
 </body>
 
-</html>
-            
+  </html>
