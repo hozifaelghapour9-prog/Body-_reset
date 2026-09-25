@@ -81,11 +81,13 @@
       color:#fff;
       border:1px solid #444;
       cursor:pointer;
-      font-size:23px;
+      font-size:25px;
       display:flex;
       align-items:center;
       justify-content:center;
       transition:.2s;
+      position:relative;
+      z-index:3001;
     }
 
     .menu-btn:hover{
@@ -93,49 +95,70 @@
       color:#00f56a;
     }
 
-    /* MENU POPUP */
+    /* FULL PAGE MENU */
 
-    .menu-popup{
+    .menu-overlay{
       position:fixed;
-      top:85px;
-      left:25px;
-      width:220px;
-      background:#171717;
-      border:1px solid #444;
-      border-radius:16px;
-      padding:10px;
-      z-index:2000;
-      box-shadow:0 10px 35px rgba(0,0,0,.5);
+      inset:0;
+      background:rgba(0,0,0,.65);
+      z-index:3000;
       display:none;
     }
 
-    .menu-popup.show{
+    .menu-overlay.show{
       display:block;
+    }
+
+    .side-menu{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100vh;
+      background:#0b0b0b;
+      border-right:1px solid #292929;
+      z-index:3000;
+      transform:translateX(-100%);
+      transition:.3s ease;
+      padding:95px 25px 30px;
+    }
+
+    .side-menu.show{
+      transform:translateX(0);
+    }
+
+    .side-menu-title{
+      font-size:26px;
+      font-weight:bold;
+      margin-bottom:30px;
+      color:#fff;
+    }
+
+    .side-menu-title span{
+      color:#00f56a;
     }
 
     .menu-item{
       width:100%;
-      display:block;
-      text-align:right;
-      background:#0d0d0d;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:#171717;
       color:#fff;
       border:1px solid #333;
-      padding:13px 15px;
-      border-radius:10px;
-      margin-bottom:8px;
+      padding:18px 20px;
+      border-radius:12px;
+      margin-bottom:12px;
       text-decoration:none;
       cursor:pointer;
-      font-size:15px;
+      font-size:17px;
       transition:.2s;
-    }
-
-    .menu-item:last-child{
-      margin-bottom:0;
     }
 
     .menu-item:hover{
       border-color:#00f56a;
       color:#00f56a;
+      background:#121212;
     }
 
     .menu-logout{
@@ -145,6 +168,11 @@
     .menu-logout:hover{
       border-color:#ff7777;
       color:#ff7777;
+    }
+
+    .menu-arrow{
+      color:#00f56a;
+      font-size:20px;
     }
 
     /* PROFILE POPUP */
@@ -899,12 +927,21 @@
       .menu-btn{
         width:36px;
         height:36px;
+        font-size:23px;
       }
 
-      .menu-popup{
-        top:78px;
-        left:14px;
-        width:220px;
+      .side-menu{
+        padding:85px 16px 30px;
+      }
+
+      .side-menu-title{
+        font-size:23px;
+        margin-bottom:25px;
+      }
+
+      .menu-item{
+        padding:16px;
+        font-size:16px;
       }
 
       .profile-popup{
@@ -1021,37 +1058,71 @@
   </header>
 
 
-  <!-- MENU POPUP -->
+  <!-- FULL PAGE MENU -->
 
   <div
-    class="menu-popup"
-    id="menuPopup">
+    class="menu-overlay"
+    id="menuOverlay">
+  </div>
+
+
+  <aside
+    class="side-menu"
+    id="sideMenu">
+
+    <div class="side-menu-title">
+
+      Body<span>Reset</span>
+
+    </div>
+
 
     <a
       href="#"
       class="menu-item">
 
-      العروض
+      <span>
+        العروض
+      </span>
+
+      <span class="menu-arrow">
+        ‹
+      </span>
 
     </a>
+
 
     <a
       href="#subscriptions"
-      class="menu-item">
+      class="menu-item"
+      id="subscriptionsMenuLink">
 
-      اشتراكات
+      <span>
+        اشتراكات
+      </span>
+
+      <span class="menu-arrow">
+        ‹
+      </span>
 
     </a>
+
 
     <button
       class="menu-item menu-logout"
       id="logoutBtn">
 
-      تسجيل الخروج
+      <span>
+        تسجيل الخروج
+      </span>
+
+      <span>
+        ‹
+      </span>
 
     </button>
 
-  </div>
+  </aside>
 
 
   <!-- PROFILE POPUP -->
@@ -1746,9 +1817,21 @@
       );
 
 
-    const menuPopup =
+    const sideMenu =
       document.getElementById(
-        "menuPopup"
+        "sideMenu"
+      );
+
+
+    const menuOverlay =
+      document.getElementById(
+        "menuOverlay"
+      );
+
+
+    const subscriptionsMenuLink =
+      document.getElementById(
+        "subscriptionsMenuLink"
       );
 
 
@@ -1842,6 +1925,82 @@
       }
 
     };
+
+
+    function openMenu(){
+
+      sideMenu.classList.add(
+        "show"
+      );
+
+      menuOverlay.classList.add(
+        "show"
+      );
+
+      menuBtn.textContent =
+        "×";
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function closeMenu(){
+
+      sideMenu.classList.remove(
+        "show"
+      );
+
+      menuOverlay.classList.remove(
+        "show"
+      );
+
+      menuBtn.textContent =
+        "☰";
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        if(
+          sideMenu.classList.contains(
+            "show"
+          )
+        ){
+
+          closeMenu();
+
+        }else{
+
+          openMenu();
+
+        }
+
+      }
+    );
+
+
+    menuOverlay.addEventListener(
+      "click",
+      closeMenu
+    );
+
+
+    subscriptionsMenuLink.addEventListener(
+      "click",
+      () => {
+
+        closeMenu();
+
+      }
+    );
 
 
     function showSelectedPlan(){
@@ -1982,18 +2141,6 @@
     );
 
 
-    menuBtn.addEventListener(
-      "click",
-      () => {
-
-        menuPopup.classList.toggle(
-          "show"
-        );
-
-      }
-    );
-
-
     document.addEventListener(
       "click",
       (event) => {
@@ -2004,18 +2151,6 @@
         ){
 
           profilePopup.classList.remove(
-            "show"
-          );
-
-        }
-
-
-        if(
-          !menuPopup.contains(event.target) &&
-          !menuBtn.contains(event.target)
-        ){
-
-          menuPopup.classList.remove(
             "show"
           );
 
@@ -2042,6 +2177,8 @@
 
           message.textContent =
             error.message;
+
+          closeMenu();
 
           return;
 
