@@ -71,19 +71,80 @@
       box-shadow:0 0 12px rgba(0,245,106,.2);
     }
 
-    #logoutBtn{
+    /* MENU BUTTON */
+
+    .menu-btn{
+      width:40px;
+      height:40px;
+      border-radius:10px;
       background:#1d1d1d;
       color:#fff;
       border:1px solid #444;
-      padding:9px 15px;
-      border-radius:9px;
       cursor:pointer;
+      font-size:23px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       transition:.2s;
     }
 
-    #logoutBtn:hover{
+    .menu-btn:hover{
       border-color:#00f56a;
       color:#00f56a;
+    }
+
+    /* MENU POPUP */
+
+    .menu-popup{
+      position:fixed;
+      top:85px;
+      left:25px;
+      width:220px;
+      background:#171717;
+      border:1px solid #444;
+      border-radius:16px;
+      padding:10px;
+      z-index:2000;
+      box-shadow:0 10px 35px rgba(0,0,0,.5);
+      display:none;
+    }
+
+    .menu-popup.show{
+      display:block;
+    }
+
+    .menu-item{
+      width:100%;
+      display:block;
+      text-align:right;
+      background:#0d0d0d;
+      color:#fff;
+      border:1px solid #333;
+      padding:13px 15px;
+      border-radius:10px;
+      margin-bottom:8px;
+      text-decoration:none;
+      cursor:pointer;
+      font-size:15px;
+      transition:.2s;
+    }
+
+    .menu-item:last-child{
+      margin-bottom:0;
+    }
+
+    .menu-item:hover{
+      border-color:#00f56a;
+      color:#00f56a;
+    }
+
+    .menu-logout{
+      color:#ff7777;
+    }
+
+    .menu-logout:hover{
+      border-color:#ff7777;
+      color:#ff7777;
     }
 
     /* PROFILE POPUP */
@@ -835,9 +896,15 @@
         height:36px;
       }
 
-      #logoutBtn{
-        padding:8px 10px;
-        font-size:13px;
+      .menu-btn{
+        width:36px;
+        height:36px;
+      }
+
+      .menu-popup{
+        top:78px;
+        left:14px;
+        width:220px;
       }
 
       .profile-popup{
@@ -941,13 +1008,50 @@
 
       </div>
 
-      <button id="logoutBtn">
-        تسجيل الخروج
+      <button
+        class="menu-btn"
+        id="menuBtn">
+
+        ☰
+
       </button>
 
     </div>
 
   </header>
+
+
+  <!-- MENU POPUP -->
+
+  <div
+    class="menu-popup"
+    id="menuPopup">
+
+    <a
+      href="#"
+      class="menu-item">
+
+      العروض
+
+    </a>
+
+    <a
+      href="#subscriptions"
+      class="menu-item">
+
+      اشتراكات
+
+    </a>
+
+    <button
+      class="menu-item menu-logout"
+      id="logoutBtn">
+
+      تسجيل الخروج
+
+    </button>
+
+  </div>
 
 
   <!-- PROFILE POPUP -->
@@ -1454,7 +1558,9 @@
 
     <!-- SUBSCRIPTIONS -->
 
-    <section class="subscriptions-section">
+    <section
+      class="subscriptions-section"
+      id="subscriptions">
 
       <div class="section-heading">
 
@@ -1631,6 +1737,18 @@
     const profileInitial =
       document.getElementById(
         "profileInitial"
+      );
+
+
+    const menuBtn =
+      document.getElementById(
+        "menuBtn"
+      );
+
+
+    const menuPopup =
+      document.getElementById(
+        "menuPopup"
       );
 
 
@@ -1864,6 +1982,18 @@
     );
 
 
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        menuPopup.classList.toggle(
+          "show"
+        );
+
+      }
+    );
+
+
     document.addEventListener(
       "click",
       (event) => {
@@ -1874,6 +2004,18 @@
         ){
 
           profilePopup.classList.remove(
+            "show"
+          );
+
+        }
+
+
+        if(
+          !menuPopup.contains(event.target) &&
+          !menuBtn.contains(event.target)
+        ){
+
+          menuPopup.classList.remove(
             "show"
           );
 
