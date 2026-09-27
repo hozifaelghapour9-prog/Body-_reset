@@ -26,7 +26,9 @@ body{
   margin:auto;
 }
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
 
 .header{
   background:#071a33;
@@ -72,7 +74,9 @@ body{
   line-height:1.7;
 }
 
-/* Search */
+/* =========================
+   SEARCH
+========================= */
 
 .search-box{
   background:white;
@@ -109,7 +113,9 @@ body{
   font-size:19px;
 }
 
-/* Categories */
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories{
   display:flex;
@@ -135,7 +141,9 @@ body{
   color:white;
 }
 
-/* Results */
+/* =========================
+   FOOD RESULTS
+========================= */
 
 .results-info{
   color:white;
@@ -227,7 +235,9 @@ body{
   font-weight:bold;
 }
 
-/* Empty */
+/* =========================
+   EMPTY FOOD
+========================= */
 
 .empty{
   display:none;
@@ -246,7 +256,9 @@ body{
   color:#64748b;
 }
 
-/* Modal */
+/* =========================
+   FOOD MODAL
+========================= */
 
 .modal{
   display:none;
@@ -393,11 +405,274 @@ body{
   font-size:13px;
 }
 
-/* Responsive */
+/* =========================
+   VITAMINS & MINERALS
+========================= */
+
+.vitamins-section{
+  background:#fff;
+  border-radius:18px;
+  padding:25px;
+  margin-top:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.vitamins-header{
+  margin-bottom:20px;
+}
+
+.vitamins-header h2{
+  font-size:28px;
+  margin-bottom:8px;
+  color:#071a33;
+}
+
+.vitamins-header p{
+  color:#64748b;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.vitamins-search{
+  position:relative;
+  margin-bottom:15px;
+}
+
+.vitamins-search span{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.vitamins-search input{
+  width:100%;
+  padding:14px 45px 14px 15px;
+  border:1px solid #dbe2ea;
+  border-radius:10px;
+  background:#f8fafc;
+  font-size:16px;
+  outline:none;
+}
+
+.vitamins-search input:focus{
+  border-color:#2563eb;
+  background:#fff;
+}
+
+.vitamin-categories{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  margin-bottom:20px;
+}
+
+.vitamin-category{
+  border:none;
+  background:#f1f5f9;
+  color:#071a33;
+  padding:10px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  white-space:nowrap;
+  font-weight:bold;
+}
+
+.vitamin-category.active{
+  background:#071a33;
+  color:#fff;
+}
+
+.vitamins-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.vitamin-card{
+  border:1px solid #e2e8f0;
+  border-radius:13px;
+  padding:18px;
+  cursor:pointer;
+  transition:.2s;
+  background:#fff;
+}
+
+.vitamin-card:hover{
+  transform:translateY(-3px);
+  border-color:#2563eb;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.vitamin-card-type{
+  color:#2563eb;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.vitamin-card h3{
+  font-size:19px;
+  margin-bottom:8px;
+}
+
+.vitamin-card p{
+  color:#64748b;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.vitamin-source{
+  margin-top:12px;
+  background:#071a33;
+  color:#fff;
+  padding:9px;
+  border-radius:8px;
+  text-align:center;
+  font-size:13px;
+}
+
+.vitamins-empty{
+  display:none;
+  text-align:center;
+  padding:30px 15px;
+}
+
+.vitamins-empty h3{
+  margin-bottom:7px;
+}
+
+.vitamins-empty p{
+  color:#64748b;
+}
+
+/* =========================
+   VITAMIN MODAL
+========================= */
+
+.vitamin-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:2000;
+  padding:15px;
+  overflow-y:auto;
+}
+
+.vitamin-modal.show{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.vitamin-modal-box{
+  width:100%;
+  max-width:650px;
+  background:#fff;
+  border-radius:18px;
+  position:relative;
+  max-height:94vh;
+  overflow-y:auto;
+}
+
+.vitamin-modal-content{
+  padding:25px;
+}
+
+.vitamin-close{
+  position:absolute;
+  left:15px;
+  top:15px;
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:50%;
+  background:#f1f5f9;
+  color:#071a33;
+  font-size:23px;
+  cursor:pointer;
+}
+
+.modal-vitamin-type{
+  color:#2563eb;
+  font-weight:bold;
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.modal-vitamin-name{
+  font-size:30px;
+  margin-bottom:20px;
+}
+
+.vitamin-info-box{
+  background:#071a33;
+  color:#fff;
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:22px;
+}
+
+.vitamin-info-box span{
+  display:block;
+  color:#93c5fd;
+  font-size:13px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+.vitamin-info-box p{
+  line-height:1.8;
+}
+
+.vitamin-modal-content h3{
+  font-size:19px;
+  margin:20px 0 10px;
+}
+
+.vitamin-list{
+  list-style:none;
+}
+
+.vitamin-list li{
+  background:#f1f5f9;
+  padding:11px 13px;
+  border-radius:8px;
+  margin-bottom:7px;
+  color:#334155;
+  line-height:1.6;
+}
+
+.daily-value{
+  background:#eff6ff;
+  color:#1d4ed8;
+  padding:13px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+.vitamin-note{
+  background:#fff7ed;
+  color:#9a3412;
+  padding:14px;
+  border-radius:9px;
+  margin-top:20px;
+  line-height:1.7;
+  font-size:13px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:850px){
 
   .food-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .vitamins-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -445,6 +720,35 @@ body{
     font-size:24px;
   }
 
+  .vitamins-section{
+    padding:18px;
+  }
+
+  .vitamins-header h2{
+    font-size:24px;
+  }
+
+  .vitamins-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .vitamin-card{
+    padding:14px 10px;
+  }
+
+  .vitamin-card h3{
+    font-size:16px;
+  }
+
+  .vitamin-card p{
+    font-size:12px;
+  }
+
+  .modal-vitamin-name{
+    font-size:25px;
+  }
+
 }
 </style>
 </head>
@@ -453,139 +757,225 @@ body{
 
 <div class="container">
 
-  <header class="header">
+<!-- =========================
+     HEADER
+========================= -->
 
-    <div class="header-top">
+<header class="header">
 
-      <div class="logo">
-        Body<span>Reset</span>
-      </div>
+  <div class="header-top">
 
-      <a
-        href="dashboard.html"
-        class="back"
-      >
-        العودة للوحة التحكم
-      </a>
-
+    <div class="logo">
+      Body<span>Reset</span>
     </div>
 
-    <h1>
-      التغذية
-    </h1>
+    <a
+      href="dashboard.html"
+      class="back"
+    >
+      العودة للوحة التحكم
+    </a>
+
+  </div>
+
+  <h1>
+    التغذية
+  </h1>
+
+  <p>
+    اكتشف الأطعمة والوصفات واحسب السعرات والماكروز المناسبة لهدفك.
+  </p>
+
+</header>
+
+
+<!-- =========================
+     FOOD SEARCH
+========================= -->
+
+<div class="search-box">
+
+  <div class="search">
+
+    <span class="search-icon">
+      🔎
+    </span>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="ابحث عن أكلة أو مكوّن أو وصفة..."
+      oninput="searchFoods()"
+    >
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     FOOD CATEGORIES
+========================= -->
+
+<div class="categories">
+
+  <button
+    class="category active"
+    onclick="filterCategory('all',this)"
+  >
+    الكل
+  </button>
+
+  <button
+    class="category"
+    onclick="filterCategory('protein',this)"
+  >
+    بروتين
+  </button>
+
+  <button
+    class="category"
+    onclick="filterCategory('carbs',this)"
+  >
+    نشويات
+  </button>
+
+  <button
+    class="category"
+    onclick="filterCategory('vegetables',this)"
+  >
+    خضار
+  </button>
+
+  <button
+    class="category"
+    onclick="filterCategory('fruits',this)"
+  >
+    فواكه
+  </button>
+
+  <button
+    class="category"
+    onclick="filterCategory('breakfast',this)"
+  >
+    فطار
+  </button>
+
+  <button
+    class="category"
+    onclick="filterCategory('recipes',this)"
+  >
+    وصفات
+  </button>
+
+</div>
+
+
+<div class="results-info">
+
+  <span id="resultsCount">
+    جميع الأكلات
+  </span>
+
+</div>
+
+
+<!-- =========================
+     FOOD GRID
+========================= -->
+
+<div
+  class="food-grid"
+  id="foodGrid"
+></div>
+
+
+<div
+  class="empty"
+  id="empty"
+>
+
+  <h3>
+    مفيش نتائج
+  </h3>
+
+  <p>
+    جرّب تبحث باسم أكلة أو مكوّن مختلف.
+  </p>
+
+</div>
+
+
+<!-- =========================
+     VITAMINS & MINERALS
+========================= -->
+
+<section class="vitamins-section">
+
+  <div class="vitamins-header">
+
+    <h2>
+      الفيتامينات والمعادن
+    </h2>
 
     <p>
-      اكتشف الأطعمة والوصفات واحسب السعرات والماكروز المناسبة لهدفك.
+      تعرف على أهم الفيتامينات والمعادن ووظائفها ومصادرها والاحتياج اليومي التقريبي منها.
     </p>
-
-  </header>
-
-
-  <!-- البحث -->
-
-  <div class="search-box">
-
-    <div class="search">
-
-      <span class="search-icon">
-        🔎
-      </span>
-
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="ابحث عن أكلة أو مكوّن أو وصفة..."
-        oninput="searchFoods()"
-      >
-
-    </div>
 
   </div>
 
 
-  <!-- التصنيفات -->
+  <div class="vitamins-search">
 
-  <div class="categories">
+    <span>
+      🔎
+    </span>
+
+    <input
+      type="text"
+      id="vitaminSearch"
+      placeholder="ابحث عن فيتامين أو معدن..."
+      oninput="searchVitamins()"
+    >
+
+  </div>
+
+
+  <div class="vitamin-categories">
 
     <button
-      class="category active"
-      data-category="all"
-      onclick="filterCategory('all',this)"
+      class="vitamin-category active"
+      onclick="filterVitamins('all',this)"
     >
       الكل
     </button>
 
     <button
-      class="category"
-      data-category="protein"
-      onclick="filterCategory('protein',this)"
+      class="vitamin-category"
+      onclick="filterVitamins('vitamin',this)"
     >
-      بروتين
+      الفيتامينات
     </button>
 
     <button
-      class="category"
-      data-category="carbs"
-      onclick="filterCategory('carbs',this)"
+      class="vitamin-category"
+      onclick="filterVitamins('mineral',this)"
     >
-      نشويات
-    </button>
-
-    <button
-      class="category"
-      data-category="vegetables"
-      onclick="filterCategory('vegetables',this)"
-    >
-      خضار
-    </button>
-
-    <button
-      class="category"
-      data-category="fruits"
-      onclick="filterCategory('fruits',this)"
-    >
-      فواكه
-    </button>
-
-    <button
-      class="category"
-      data-category="breakfast"
-      onclick="filterCategory('breakfast',this)"
-    >
-      فطار
-    </button>
-
-    <button
-      class="category"
-      data-category="recipes"
-      onclick="filterCategory('recipes',this)"
-    >
-      وصفات
+      المعادن
     </button>
 
   </div>
 
-
-  <div class="results-info">
-
-    <span id="resultsCount">
-      جميع الأكلات
-    </span>
-
-  </div>
-
-
-  <!-- الأكلات -->
 
   <div
-    class="food-grid"
-    id="foodGrid"
+    class="vitamins-grid"
+    id="vitaminsGrid"
   ></div>
 
 
   <div
-    class="empty"
-    id="empty"
+    class="vitamins-empty"
+    id="vitaminsEmpty"
   >
 
     <h3>
@@ -593,15 +983,19 @@ body{
     </h3>
 
     <p>
-      جرّب تبحث باسم أكلة أو مكوّن مختلف.
+      جرّب البحث باسم فيتامين أو معدن آخر.
     </p>
 
   </div>
 
+</section>
+
 </div>
 
 
-<!-- نافذة الوصفة -->
+<!-- =========================
+     FOOD MODAL
+========================= -->
 
 <div
   class="modal"
@@ -726,13 +1120,103 @@ body{
 </div>
 
 
+<!-- =========================
+     VITAMIN MODAL
+========================= -->
+
+<div
+  class="vitamin-modal"
+  id="vitaminModal"
+  onclick="closeVitaminOutside(event)"
+>
+
+  <div class="vitamin-modal-box">
+
+    <button
+      class="vitamin-close"
+      onclick="closeVitaminModal()"
+    >
+      ×
+    </button>
+
+    <div class="vitamin-modal-content">
+
+      <div
+        id="modalVitaminType"
+        class="modal-vitamin-type"
+      ></div>
+
+      <h2
+        id="modalVitaminName"
+        class="modal-vitamin-name"
+      ></h2>
+
+
+      <div class="vitamin-info-box">
+
+        <span>
+          الوظيفة الأساسية
+        </span>
+
+        <p
+          id="modalVitaminFunction"
+        ></p>
+
+      </div>
+
+
+      <h3>
+        أهم المصادر الغذائية
+      </h3>
+
+      <ul
+        id="modalVitaminSources"
+        class="vitamin-list"
+      ></ul>
+
+
+      <h3>
+        الاحتياج اليومي التقريبي
+      </h3>
+
+      <div
+        id="modalVitaminDaily"
+        class="daily-value"
+      ></div>
+
+
+      <h3>
+        علامات النقص
+      </h3>
+
+      <ul
+        id="modalVitaminDeficiency"
+        class="vitamin-list"
+      ></ul>
+
+
+      <div class="vitamin-note">
+
+        <strong>
+          ملاحظة:
+        </strong>
+
+        المعلومات للتثقيف الغذائي ولا تغني عن استشارة الطبيب أو أخصائي التغذية عند وجود نقص أو حالة صحية.
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
 
-/*
-====================================
-بيانات الأكلات والوصفات
-====================================
-*/
+/* ==========================================
+   الأكلات والوصفات
+========================================== */
 
 const foods = [
 
@@ -766,7 +1250,6 @@ const foods = [
     ]
   },
 
-
   {
     id:2,
     name:"بيض كامل",
@@ -788,7 +1271,6 @@ const foods = [
       "برد البيض ثم قشره وقدمه."
     ]
   },
-
 
   {
     id:3,
@@ -814,7 +1296,6 @@ const foods = [
       "اتركه عدة دقائق قبل التقديم."
     ]
   },
-
 
   {
     id:4,
@@ -843,7 +1324,6 @@ const foods = [
     ]
   },
 
-
   {
     id:5,
     name:"بطاطس مشوية",
@@ -871,7 +1351,6 @@ const foods = [
       "اتركها حتى تصبح ذهبية ومقرمشة."
     ]
   },
-
 
   {
     id:6,
@@ -902,7 +1381,6 @@ const foods = [
     ]
   },
 
-
   {
     id:7,
     name:"موز",
@@ -923,7 +1401,6 @@ const foods = [
       "تناوله كما هو أو أضفه إلى وجبتك."
     ]
   },
-
 
   {
     id:8,
@@ -951,7 +1428,6 @@ const foods = [
       "قدّم الوجبة مباشرة."
     ]
   },
-
 
   {
     id:9,
@@ -982,7 +1458,6 @@ const foods = [
     ]
   },
 
-
   {
     id:10,
     name:"ساندوتش دجاج صحي",
@@ -1012,7 +1487,6 @@ const foods = [
     ]
   },
 
-
   {
     id:11,
     name:"سمك مشوي",
@@ -1041,7 +1515,6 @@ const foods = [
     ]
   },
 
-
   {
     id:12,
     name:"تفاحة",
@@ -1065,20 +1538,526 @@ const foods = [
 ];
 
 
-/*
-====================================
-المتغيرات
-====================================
-*/
+/* ==========================================
+   الفيتامينات والمعادن
+========================================== */
+
+const vitamins = [
+
+  {
+    id:1,
+    name:"فيتامين A",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد في دعم صحة العين والمناعة والجلد والأنسجة.",
+    sources:[
+      "الكبد",
+      "الجزر",
+      "البطاطا الحلوة",
+      "السبانخ",
+      "البيض",
+      "منتجات الألبان"
+    ],
+    daily:"الرجال: 900 ميكروجرام — النساء: 700 ميكروجرام",
+    deficiency:[
+      "ضعف الرؤية الليلية",
+      "جفاف العين والجلد",
+      "ضعف المناعة"
+    ]
+  },
+
+  {
+    id:2,
+    name:"فيتامين B1",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد الجسم على تحويل الكربوهيدرات إلى طاقة ويدعم وظائف الأعصاب.",
+    sources:[
+      "الحبوب الكاملة",
+      "البقوليات",
+      "المكسرات",
+      "البذور",
+      "اللحوم"
+    ],
+    daily:"الرجال: 1.2 مجم — النساء: 1.1 مجم",
+    deficiency:[
+      "الإرهاق",
+      "ضعف الشهية",
+      "مشكلات الأعصاب في حالات النقص الشديد"
+    ]
+  },
+
+  {
+    id:3,
+    name:"فيتامين B2",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد في إنتاج الطاقة ويدعم صحة الجلد والعينين والأنسجة.",
+    sources:[
+      "اللبن",
+      "البيض",
+      "اللحوم",
+      "اللوز",
+      "الفطر"
+    ],
+    daily:"الرجال: 1.3 مجم — النساء: 1.1 مجم",
+    deficiency:[
+      "تشقق الشفاه",
+      "التهاب اللسان",
+      "مشكلات الجلد"
+    ]
+  },
+
+  {
+    id:4,
+    name:"فيتامين B3",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد الجسم على تحويل الغذاء إلى طاقة ويدعم الجلد والجهاز العصبي.",
+    sources:[
+      "الدجاج",
+      "التونة",
+      "اللحم",
+      "الفول السوداني",
+      "الحبوب الكاملة"
+    ],
+    daily:"الرجال: 16 مجم — النساء: 14 مجم",
+    deficiency:[
+      "الإرهاق",
+      "مشكلات الجلد",
+      "ضعف الهضم في حالات النقص الشديد"
+    ]
+  },
+
+  {
+    id:5,
+    name:"فيتامين B5",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد في تصنيع الطاقة وبعض الهرمونات والدهون.",
+    sources:[
+      "الدجاج",
+      "البيض",
+      "الفطر",
+      "الأفوكادو",
+      "الحبوب الكاملة"
+    ],
+    daily:"حوالي 5 مجم للبالغين",
+    deficiency:[
+      "الإرهاق",
+      "الصداع",
+      "تنميل الأطراف في حالات النقص الشديد"
+    ]
+  },
+
+  {
+    id:6,
+    name:"فيتامين B6",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يدخل في عمليات التمثيل الغذائي للبروتين ويساعد في تكوين النواقل العصبية.",
+    sources:[
+      "الدجاج",
+      "السمك",
+      "البطاطس",
+      "الموز",
+      "الحمص"
+    ],
+    daily:"للبالغين حتى 50 سنة: 1.3 مجم تقريبًا",
+    deficiency:[
+      "فقر الدم",
+      "مشكلات الجلد",
+      "ضعف المناعة"
+    ]
+  },
+
+  {
+    id:7,
+    name:"فيتامين B7",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد في عمليات التمثيل الغذائي للدهون والكربوهيدرات والبروتين.",
+    sources:[
+      "البيض المطهو",
+      "المكسرات",
+      "البذور",
+      "البقوليات",
+      "البطاطا"
+    ],
+    daily:"حوالي 30 ميكروجرام للبالغين",
+    deficiency:[
+      "تساقط الشعر",
+      "طفح جلدي",
+      "الإرهاق"
+    ]
+  },
+
+  {
+    id:8,
+    name:"فيتامين B9",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"مهم لتكوين DNA وخلايا الدم ويزداد الاحتياج إليه أثناء الحمل.",
+    sources:[
+      "الخضروات الورقية",
+      "البقوليات",
+      "الأفوكادو",
+      "الحمضيات",
+      "الأطعمة المدعمة"
+    ],
+    daily:"حوالي 400 ميكروجرام للبالغين",
+    deficiency:[
+      "فقر الدم",
+      "الإرهاق",
+      "ضعف النمو الخلوي"
+    ]
+  },
+
+  {
+    id:9,
+    name:"فيتامين B12",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"ضروري لتكوين خلايا الدم الحمراء ووظائف الجهاز العصبي.",
+    sources:[
+      "اللحوم",
+      "الأسماك",
+      "البيض",
+      "اللبن",
+      "منتجات الألبان"
+    ],
+    daily:"حوالي 2.4 ميكروجرام للبالغين",
+    deficiency:[
+      "الإرهاق",
+      "فقر الدم",
+      "تنميل الأطراف",
+      "مشكلات عصبية في حالات النقص"
+    ]
+  },
+
+  {
+    id:10,
+    name:"فيتامين C",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يدعم المناعة ويساعد على تكوين الكولاجين وامتصاص الحديد.",
+    sources:[
+      "البرتقال",
+      "الجوافة",
+      "الفراولة",
+      "الفلفل",
+      "البروكلي"
+    ],
+    daily:"الرجال: 90 مجم — النساء: 75 مجم",
+    deficiency:[
+      "نزيف اللثة",
+      "بطء التئام الجروح",
+      "الإرهاق"
+    ]
+  },
+
+  {
+    id:11,
+    name:"فيتامين D",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"يساعد الجسم على امتصاص الكالسيوم ويدعم صحة العظام والعضلات.",
+    sources:[
+      "التعرض للشمس",
+      "الأسماك الدهنية",
+      "صفار البيض",
+      "الأطعمة المدعمة"
+    ],
+    daily:"حوالي 15 ميكروجرام (600 وحدة دولية) للبالغين",
+    deficiency:[
+      "ضعف العظام",
+      "آلام العضلات",
+      "ضعف العضلات"
+    ]
+  },
+
+  {
+    id:12,
+    name:"فيتامين E",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"مضاد أكسدة يساعد على حماية الخلايا.",
+    sources:[
+      "اللوز",
+      "بذور دوار الشمس",
+      "الفول السوداني",
+      "الزيوت النباتية",
+      "السبانخ"
+    ],
+    daily:"حوالي 15 مجم للبالغين",
+    deficiency:[
+      "ضعف العضلات",
+      "مشكلات الأعصاب في حالات النقص الشديد"
+    ]
+  },
+
+  {
+    id:13,
+    name:"فيتامين K",
+    type:"vitamin",
+    typeName:"فيتامين",
+    function:"مهم لتجلط الدم الطبيعي وصحة العظام.",
+    sources:[
+      "السبانخ",
+      "الجرجير",
+      "الكرنب",
+      "البروكلي",
+      "الخضروات الورقية"
+    ],
+    daily:"الرجال: 120 ميكروجرام — النساء: 90 ميكروجرام",
+    deficiency:[
+      "زيادة قابلية النزيف",
+      "ضعف صحة العظام في بعض الحالات"
+    ]
+  },
+
+  {
+    id:14,
+    name:"الكالسيوم",
+    type:"mineral",
+    typeName:"معدن",
+    function:"مهم لصحة العظام والأسنان ويساعد العضلات والأعصاب على العمل بشكل طبيعي.",
+    sources:[
+      "اللبن",
+      "الزبادي",
+      "الجبن",
+      "السردين",
+      "الخضروات الورقية"
+    ],
+    daily:"حوالي 1000 مجم للبالغين",
+    deficiency:[
+      "ضعف العظام",
+      "تشنجات العضلات",
+      "زيادة خطر هشاشة العظام"
+    ]
+  },
+
+  {
+    id:15,
+    name:"الحديد",
+    type:"mineral",
+    typeName:"معدن",
+    function:"ضروري لتكوين الهيموجلوبين ونقل الأكسجين في الدم.",
+    sources:[
+      "اللحوم الحمراء",
+      "الكبد",
+      "العدس",
+      "الفاصوليا",
+      "السبانخ"
+    ],
+    daily:"الرجال: 8 مجم — النساء قبل انقطاع الدورة: 18 مجم",
+    deficiency:[
+      "الإرهاق",
+      "الدوخة",
+      "شحوب الجلد",
+      "فقر الدم"
+    ]
+  },
+
+  {
+    id:16,
+    name:"المغنيسيوم",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يساعد في وظائف العضلات والأعصاب وإنتاج الطاقة.",
+    sources:[
+      "اللوز",
+      "الكاجو",
+      "البذور",
+      "الحبوب الكاملة",
+      "البقوليات"
+    ],
+    daily:"الرجال: 400–420 مجم — النساء: 310–320 مجم",
+    deficiency:[
+      "تشنجات العضلات",
+      "الإرهاق",
+      "ضعف الشهية"
+    ]
+  },
+
+  {
+    id:17,
+    name:"الزنك",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يدعم المناعة والتئام الجروح وصحة الجلد.",
+    sources:[
+      "اللحوم",
+      "المأكولات البحرية",
+      "البيض",
+      "المكسرات",
+      "البقوليات"
+    ],
+    daily:"الرجال: 11 مجم — النساء: 8 مجم",
+    deficiency:[
+      "ضعف المناعة",
+      "بطء التئام الجروح",
+      "ضعف الشهية"
+    ]
+  },
+
+  {
+    id:18,
+    name:"البوتاسيوم",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يساعد في توازن السوائل ووظائف العضلات والأعصاب.",
+    sources:[
+      "الموز",
+      "البطاطس",
+      "الطماطم",
+      "الفاصوليا",
+      "الزبادي"
+    ],
+    daily:"حوالي 3400 مجم للرجال و2600 مجم للنساء",
+    deficiency:[
+      "ضعف العضلات",
+      "الإرهاق",
+      "تشنجات العضلات"
+    ]
+  },
+
+  {
+    id:19,
+    name:"الفوسفور",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يدخل في صحة العظام والأسنان وإنتاج الطاقة داخل الخلايا.",
+    sources:[
+      "اللحوم",
+      "السمك",
+      "اللبن",
+      "البيض",
+      "البقوليات"
+    ],
+    daily:"حوالي 700 مجم للبالغين",
+    deficiency:[
+      "ضعف العضلات",
+      "ضعف العظام",
+      "الإرهاق"
+    ]
+  },
+
+  {
+    id:20,
+    name:"السيلينيوم",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يساعد في حماية الخلايا ويدعم وظائف الغدة الدرقية والمناعة.",
+    sources:[
+      "السمك",
+      "البيض",
+      "اللحوم",
+      "المكسرات البرازيلية",
+      "الحبوب"
+    ],
+    daily:"حوالي 55 ميكروجرام للبالغين",
+    deficiency:[
+      "ضعف العضلات",
+      "مشكلات الغدة الدرقية في حالات النقص"
+    ]
+  },
+
+  {
+    id:21,
+    name:"اليود",
+    type:"mineral",
+    typeName:"معدن",
+    function:"ضروري لإنتاج هرمونات الغدة الدرقية.",
+    sources:[
+      "الملح المدعم باليود",
+      "الأسماك",
+      "المأكولات البحرية",
+      "منتجات الألبان",
+      "البيض"
+    ],
+    daily:"حوالي 150 ميكروجرام للبالغين",
+    deficiency:[
+      "تضخم الغدة الدرقية",
+      "ضعف إنتاج هرمونات الغدة الدرقية"
+    ]
+  },
+
+  {
+    id:22,
+    name:"النحاس",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يساعد في تكوين خلايا الدم والأنسجة ويدعم وظائف الأعصاب والمناعة.",
+    sources:[
+      "المكسرات",
+      "البذور",
+      "المأكولات البحرية",
+      "الكبد",
+      "الشوكولاتة الداكنة"
+    ],
+    daily:"حوالي 900 ميكروجرام للبالغين",
+    deficiency:[
+      "فقر الدم",
+      "ضعف المناعة",
+      "مشكلات في الأنسجة والأعصاب"
+    ]
+  },
+
+  {
+    id:23,
+    name:"المنغنيز",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يدخل في عمليات التمثيل الغذائي ودعم العظام وحماية الخلايا.",
+    sources:[
+      "الحبوب الكاملة",
+      "المكسرات",
+      "البقوليات",
+      "الخضروات الورقية",
+      "الشاي"
+    ],
+    daily:"الرجال: 2.3 مجم — النساء: 1.8 مجم",
+    deficiency:[
+      "نقصه نادر، وقد يؤثر في العظام والتمثيل الغذائي"
+    ]
+  },
+
+  {
+    id:24,
+    name:"الصوديوم",
+    type:"mineral",
+    typeName:"معدن",
+    function:"يساعد في توازن السوائل ووظائف الأعصاب والعضلات.",
+    sources:[
+      "ملح الطعام",
+      "الأطعمة المصنعة",
+      "الجبن",
+      "الخبز",
+      "المخللات"
+    ],
+    daily:"يُفضل ألا يتجاوز معظم البالغين 2300 مجم يوميًا",
+    deficiency:[
+      "الصداع",
+      "الغثيان",
+      "الضعف والتشوش في حالات النقص الشديد"
+    ]
+  }
+
+];
+
+
+/* ==========================================
+   متغيرات
+========================================== */
 
 let currentCategory = "all";
+let currentVitaminCategory = "all";
 
 
-/*
-====================================
-عرض الأكلات
-====================================
-*/
+/* ==========================================
+   عرض الأكلات
+========================================== */
 
 function renderFoods(){
 
@@ -1229,11 +2208,9 @@ function renderFoods(){
 }
 
 
-/*
-====================================
-البحث
-====================================
-*/
+/* ==========================================
+   البحث في الأكلات
+========================================== */
 
 function searchFoods(){
 
@@ -1242,11 +2219,9 @@ function searchFoods(){
 }
 
 
-/*
-====================================
-التصنيف
-====================================
-*/
+/* ==========================================
+   تصنيف الأكلات
+========================================== */
 
 function filterCategory(
   category,
@@ -1274,11 +2249,9 @@ function filterCategory(
 }
 
 
-/*
-====================================
-فتح الوصفة
-====================================
-*/
+/* ==========================================
+   فتح الوصفة
+========================================== */
 
 function openFood(id){
 
@@ -1404,11 +2377,9 @@ function openFood(id){
 }
 
 
-/*
-====================================
-إغلاق الوصفة
-====================================
-*/
+/* ==========================================
+   إغلاق الوصفة
+========================================== */
 
 function closeModal(){
 
@@ -1437,11 +2408,294 @@ function closeOutside(event){
 }
 
 
-/*
-====================================
-زر ESC
-====================================
-*/
+/* ==========================================
+   البحث في الفيتامينات والمعادن
+========================================== */
+
+function searchVitamins(){
+
+  renderVitamins();
+
+}
+
+
+/* ==========================================
+   عرض الفيتامينات والمعادن
+========================================== */
+
+function renderVitamins(){
+
+  const grid =
+    document.getElementById(
+      "vitaminsGrid"
+    );
+
+  const empty =
+    document.getElementById(
+      "vitaminsEmpty"
+    );
+
+  const search =
+    document
+      .getElementById("vitaminSearch")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const filtered =
+    vitamins.filter(function(item){
+
+      const categoryMatch =
+        currentVitaminCategory === "all" ||
+        item.type === currentVitaminCategory;
+
+
+      const text =
+        (
+          item.name +
+          " " +
+          item.function +
+          " " +
+          item.sources.join(" ")
+        ).toLowerCase();
+
+
+      const searchMatch =
+        search === "" ||
+        text.includes(search);
+
+
+      return (
+        categoryMatch &&
+        searchMatch
+      );
+
+    });
+
+
+  grid.innerHTML = "";
+
+
+  if(filtered.length === 0){
+
+    empty.style.display = "block";
+
+    return;
+
+  }
+
+
+  empty.style.display = "none";
+
+
+  filtered.forEach(function(item){
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "vitamin-card";
+
+
+    card.onclick =
+      function(){
+
+        openVitamin(item.id);
+
+      };
+
+
+    card.innerHTML = `
+
+      <div class="vitamin-card-type">
+        ${item.typeName}
+      </div>
+
+      <h3>
+        ${item.name}
+      </h3>
+
+      <p>
+        ${item.function}
+      </p>
+
+      <div class="vitamin-source">
+        أهم المصادر الغذائية
+      </div>
+
+    `;
+
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* ==========================================
+   تصنيف الفيتامينات والمعادن
+========================================== */
+
+function filterVitamins(
+  category,
+  button
+){
+
+  currentVitaminCategory =
+    category;
+
+
+  document
+    .querySelectorAll(".vitamin-category")
+    .forEach(function(item){
+
+      item.classList.remove("active");
+
+    });
+
+
+  button.classList.add("active");
+
+
+  renderVitamins();
+
+}
+
+
+/* ==========================================
+   فتح تفاصيل الفيتامين
+========================================== */
+
+function openVitamin(id){
+
+  const item =
+    vitamins.find(function(v){
+
+      return v.id === id;
+
+    });
+
+
+  if(!item) return;
+
+
+  document.getElementById(
+    "modalVitaminType"
+  ).textContent =
+    item.typeName;
+
+
+  document.getElementById(
+    "modalVitaminName"
+  ).textContent =
+    item.name;
+
+
+  document.getElementById(
+    "modalVitaminFunction"
+  ).textContent =
+    item.function;
+
+
+  document.getElementById(
+    "modalVitaminDaily"
+  ).textContent =
+    item.daily;
+
+
+  const sources =
+    document.getElementById(
+      "modalVitaminSources"
+    );
+
+  sources.innerHTML = "";
+
+
+  item.sources.forEach(
+    function(source){
+
+      const li =
+        document.createElement("li");
+
+      li.textContent =
+        source;
+
+      sources.appendChild(li);
+
+    }
+  );
+
+
+  const deficiency =
+    document.getElementById(
+      "modalVitaminDeficiency"
+    );
+
+  deficiency.innerHTML = "";
+
+
+  item.deficiency.forEach(
+    function(text){
+
+      const li =
+        document.createElement("li");
+
+      li.textContent =
+        text;
+
+      deficiency.appendChild(li);
+
+    }
+  );
+
+
+  document
+    .getElementById("vitaminModal")
+    .classList.add("show");
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* ==========================================
+   إغلاق تفاصيل الفيتامين
+========================================== */
+
+function closeVitaminModal(){
+
+  document
+    .getElementById("vitaminModal")
+    .classList.remove("show");
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+function closeVitaminOutside(event){
+
+  if(
+    event.target ===
+    document.getElementById("vitaminModal")
+  ){
+
+    closeVitaminModal();
+
+  }
+
+}
+
+
+/* ==========================================
+   زر ESC
+========================================== */
 
 document.addEventListener(
   "keydown",
@@ -1450,6 +2704,7 @@ document.addEventListener(
     if(event.key === "Escape"){
 
       closeModal();
+      closeVitaminModal();
 
     }
 
@@ -1457,13 +2712,12 @@ document.addEventListener(
 );
 
 
-/*
-====================================
-تشغيل الصفحة
-====================================
-*/
+/* ==========================================
+   تشغيل الصفحة
+========================================== */
 
 renderFoods();
+renderVitamins();
 
 </script>
 
