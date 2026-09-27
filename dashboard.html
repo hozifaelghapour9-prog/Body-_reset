@@ -383,67 +383,6 @@
       line-height:1.6;
     }
 
-    .welcome{
-      background:#ffffff;
-      border:1px solid #d7dee8;
-      border-radius:22px;
-      padding:30px;
-      margin-bottom:25px;
-    }
-
-    .welcome h1{
-      font-size:31px;
-      margin-bottom:9px;
-      color:#071a33;
-    }
-
-    .welcome h1 span{
-      color:#2563eb;
-    }
-
-    .welcome p{
-      color:#334155;
-      line-height:1.8;
-      margin-bottom:20px;
-    }
-
-    .account{
-      color:#2563eb;
-      font-weight:bold;
-    }
-
-    .progress-area{
-      max-width:600px;
-    }
-
-    .progress-top{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:8px;
-      color:#334155;
-      font-size:14px;
-    }
-
-    .progress-top strong{
-      color:#2563eb;
-    }
-
-    .progress-bar{
-      width:100%;
-      height:9px;
-      background:#e5e7eb;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid #cbd5e1;
-    }
-
-    .progress-fill{
-      width:68%;
-      height:100%;
-      background:#2563eb;
-      border-radius:20px;
-    }
-
     /* STATS */
 
     .stats{
@@ -508,8 +447,8 @@
 
     .activity-circle.progress{
       background:conic-gradient(
-        #2563eb 60%,
-        #d7dee8 60%
+        #2563eb 0%,
+        #d7dee8 0%
       );
     }
 
@@ -575,6 +514,7 @@
       width:13px;
       background:#2563eb;
       border-radius:6px 6px 2px 2px;
+      height:0;
     }
 
     .weekly-progress{
@@ -588,8 +528,8 @@
       height:125px;
       border-radius:50%;
       background:conic-gradient(
-        #2563eb 68%,
-        #d7dee8 68%
+        #2563eb 0%,
+        #d7dee8 0%
       );
       display:flex;
       align-items:center;
@@ -1000,15 +940,6 @@
         padding:20px 14px 100px;
       }
 
-      .welcome{
-        padding:23px 20px;
-        border-radius:18px;
-      }
-
-      .welcome h1{
-        font-size:25px;
-      }
-
       .stat{
         flex:0 0 285px;
       }
@@ -1318,60 +1249,6 @@
 
     </div>
 
-    <section class="welcome">
-
-      <h1>
-
-        أهلاً بيك في
-
-        <span>
-          BodyReset
-        </span>
-
-      </h1>
-
-      <p>
-
-        جاهز تكمل رحلتك النهارده؟
-
-        <br>
-
-        حسابك:
-
-        <strong
-          class="account"
-          id="userEmail">
-
-          جاري التحميل...
-
-        </strong>
-
-      </p>
-
-      <div class="progress-area">
-
-        <div class="progress-top">
-
-          <span>
-            نسبة إنجازك
-          </span>
-
-          <strong>
-            68%
-          </strong>
-
-        </div>
-
-        <div class="progress-bar">
-
-          <div class="progress-fill"></div>
-
-        </div>
-
-      </div>
-
-    </section>
-
     <div class="stats">
 
       <div class="stat">
@@ -1387,7 +1264,7 @@
             <div class="circle-content">
 
               <strong>
-                60
+                0
               </strong>
 
               <span>
@@ -1427,7 +1304,7 @@
         <div class="calorie-number">
 
           <strong>
-            280
+            0
           </strong>
 
           <span>
@@ -1437,14 +1314,6 @@
         </div>
 
         <div class="calorie-chart">
-
-          <div class="bar" style="height:32%;"></div>
-          <div class="bar" style="height:52%;"></div>
-          <div class="bar" style="height:42%;"></div>
-          <div class="bar" style="height:70%;"></div>
-          <div class="bar" style="height:58%;"></div>
-          <div class="bar" style="height:82%;"></div>
-          <div class="bar" style="height:65%;"></div>
 
         </div>
 
@@ -1461,7 +1330,7 @@
           <div class="progress-circle">
 
             <strong>
-              68%
+              0%
             </strong>
 
           </div>
@@ -1839,11 +1708,6 @@
         SUPABASE_PUBLISHABLE_KEY
       );
 
-    const userEmail =
-      document.getElementById(
-        "userEmail"
-      );
-
     const profileBtn =
       document.getElementById(
         "profileBtn"
@@ -2149,10 +2013,6 @@
       const username =
         user.user_metadata?.username;
 
-      userEmail.textContent =
-        username ||
-        user.email;
-
       profileName.textContent =
         username ||
         "غير مسجل";
@@ -2396,4 +2256,4 @@
 
 </body>
 
-        </html>
+  </html>
