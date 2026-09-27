@@ -1,1 +1,833 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>حاسبة السعرات | BodyReset</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Tahoma,sans-serif;
+  background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
+  color:#071a33;
+  min-height:100vh;
+  padding:20px;
+}
+
+.container{
+  max-width:700px;
+  margin:0 auto;
+}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.header{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.logo span{
+  color:#2563eb;
+}
+
+.header h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.header p{
+  color:#64748b;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.form-group{
+  margin-bottom:18px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:8px;
+  font-size:15px;
+}
+
+input,
+select{
+  width:100%;
+  padding:14px;
+  border:1px solid #dbe2ea;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+  background:#f8fafc;
+  color:#071a33;
+}
+
+input:focus,
+select:focus{
+  border-color:#2563eb;
+  background:#fff;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+/* الأهداف */
+
+.goal-title{
+  font-size:20px;
+  margin:25px 0 14px;
+}
+
+.goals{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.goal{
+  background:#f1f5f9;
+  border:2px solid transparent;
+  border-radius:12px;
+  padding:16px 10px;
+  text-align:center;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:15px;
+  transition:.2s;
+}
+
+.goal:hover{
+  border-color:#2563eb;
+}
+
+.goal.active{
+  background:#2563eb;
+  color:#fff;
+  border-color:#2563eb;
+}
+
+/* زر الحساب */
+
+.calculate-btn{
+  width:100%;
+  border:none;
+  background:#071a33;
+  color:#fff;
+  padding:16px;
+  border-radius:11px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:25px;
+}
+
+.calculate-btn:hover{
+  background:#0d294d;
+}
+
+/* النتائج */
+
+.results{
+  display:none;
+  margin-top:30px;
+}
+
+.results.show{
+  display:block;
+}
+
+.results-title{
+  text-align:center;
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+.main-result{
+  background:#071a33;
+  color:#fff;
+  border-radius:15px;
+  padding:22px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.main-result small{
+  display:block;
+  color:#cbd5e1;
+  margin-bottom:8px;
+}
+
+.calories-number{
+  font-size:38px;
+  font-weight:bold;
+  color:#38bdf8;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.result-box{
+  background:#f1f5f9;
+  border-radius:12px;
+  padding:18px 8px;
+  text-align:center;
+}
+
+.result-box span{
+  display:block;
+  color:#64748b;
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.result-box strong{
+  font-size:20px;
+}
+
+.info{
+  margin-top:18px;
+  background:#eff6ff;
+  border-radius:12px;
+  padding:15px;
+  color:#334155;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.error{
+  display:none;
+  background:#fee2e2;
+  color:#991b1b;
+  padding:12px;
+  border-radius:10px;
+  margin-top:15px;
+  text-align:center;
+  font-size:14px;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:20px;
+  color:#2563eb;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+  body{
+    padding:12px;
+  }
+
+  .card{
+    padding:18px;
+    border-radius:16px;
+  }
+
+  .header h1{
+    font-size:25px;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .goals{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .goal{
+    padding:15px 7px;
+    font-size:14px;
+  }
+
+  .result-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .result-box:last-child{
+    grid-column:1 / -1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="header">
+      <div class="logo">
+        Body<span>Reset</span>
+      </div>
+
+      <h1>حاسبة السعرات والماكروز</h1>
+
+      <p>
+        احسب احتياجك اليومي من السعرات والعناصر الغذائية حسب جسمك وهدفك.
+      </p>
+    </div>
+
+    <div class="row">
+
+      <div class="form-group">
+        <label>الجنس</label>
+
+        <select id="gender">
+          <option value="">اختر الجنس</option>
+          <option value="male">ذكر</option>
+          <option value="female">أنثى</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>العمر</label>
+
+        <input
+          type="number"
+          id="age"
+          placeholder="مثال: 25"
+          min="10"
+          max="100"
+        >
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="form-group">
+        <label>الوزن بالكيلو</label>
+
+        <input
+          type="number"
+          id="weight"
+          placeholder="مثال: 75"
+          min="20"
+          max="300"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>الطول بالسنتيمتر</label>
+
+        <input
+          type="number"
+          id="height"
+          placeholder="مثال: 175"
+          min="100"
+          max="250"
+        >
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>مستوى النشاط</label>
+
+      <select id="activity">
+
+        <option value="">
+          اختر مستوى نشاطك
+        </option>
+
+        <option value="1.2">
+          قليل الحركة - بدون تمارين
+        </option>
+
+        <option value="1.375">
+          نشاط خفيف - 1 إلى 3 أيام
+        </option>
+
+        <option value="1.55">
+          نشاط متوسط - 3 إلى 5 أيام
+        </option>
+
+        <option value="1.725">
+          نشاط مرتفع - 6 إلى 7 أيام
+        </option>
+
+        <option value="1.9">
+          نشاط عالي جدًا - تمرين شاق
+        </option>
+
+      </select>
+
+    </div>
+
+    <h2 class="goal-title">
+      اختر هدفك
+    </h2>
+
+    <div class="goals">
+
+      <div
+        class="goal"
+        data-goal="loss"
+        onclick="selectGoal(this)"
+      >
+        خسارة دهون
+      </div>
+
+      <div
+        class="goal"
+        data-goal="gain"
+        onclick="selectGoal(this)"
+      >
+        زيادة كتلة عضلية
+      </div>
+
+      <div
+        class="goal"
+        data-goal="maintain"
+        onclick="selectGoal(this)"
+      >
+        ثبات الوزن
+      </div>
+
+      <div
+        class="goal"
+        data-goal="other"
+        onclick="selectGoal(this)"
+      >
+        هدف آخر
+      </div>
+
+    </div>
+
+    <button
+      class="calculate-btn"
+      onclick="calculateCalories()"
+    >
+      احسب احتياجي
+    </button>
+
+    <div
+      class="error"
+      id="error"
+    >
+      من فضلك أكمل جميع البيانات واختر هدفك.
+    </div>
+
+    <div
+      class="results"
+      id="results"
+    >
+
+      <h2 class="results-title">
+        نتائج حسابك
+      </h2>
+
+      <div class="main-result">
+
+        <small>
+          السعرات اليومية المقترحة
+        </small>
+
+        <div class="calories-number">
+          <span id="calories">0</span>
+          <small style="display:inline;color:#cbd5e1;">
+            kcal
+          </small>
+        </div>
+
+      </div>
+
+      <div class="result-grid">
+
+        <div class="result-box">
+
+          <span>
+            معدل الحرق الأساسي BMR
+          </span>
+
+          <strong>
+            <span id="bmr">0</span>
+          </strong>
+
+        </div>
+
+        <div class="result-box">
+
+          <span>
+            البروتين
+          </span>
+
+          <strong>
+            <span id="protein">0</span> g
+          </strong>
+
+        </div>
+
+        <div class="result-box">
+
+          <span>
+            الكربوهيدرات
+          </span>
+
+          <strong>
+            <span id="carbs">0</span> g
+          </strong>
+
+        </div>
+
+        <div class="result-box">
+
+          <span>
+            الدهون
+          </span>
+
+          <strong>
+            <span id="fat">0</span> g
+          </strong>
+
+        </div>
+
+        <div class="result-box">
+
+          <span>
+            احتياج الحفاظ على الوزن
+          </span>
+
+          <strong>
+            <span id="maintenance">0</span>
+          </strong>
+
+        </div>
+
+      </div>
+
+      <div class="info" id="goalInfo">
+      </div>
+
+    </div>
+
+    <a
+      href="dashboard.html"
+      class="back"
+    >
+      العودة للوحة التحكم
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+
+let selectedGoal = "";
+
+function selectGoal(element){
+
+  document
+    .querySelectorAll(".goal")
+    .forEach(function(goal){
+
+      goal.classList.remove("active");
+
+    });
+
+  element.classList.add("active");
+
+  selectedGoal =
+    element.getAttribute("data-goal");
+}
+
+
+function calculateCalories(){
+
+  const gender =
+    document.getElementById("gender").value;
+
+  const age =
+    Number(document.getElementById("age").value);
+
+  const weight =
+    Number(document.getElementById("weight").value);
+
+  const height =
+    Number(document.getElementById("height").value);
+
+  const activity =
+    Number(document.getElementById("activity").value);
+
+  const error =
+    document.getElementById("error");
+
+  const results =
+    document.getElementById("results");
+
+
+  if(
+    !gender ||
+    !age ||
+    !weight ||
+    !height ||
+    !activity ||
+    !selectedGoal
+  ){
+
+    error.style.display = "block";
+    results.classList.remove("show");
+
+    return;
+  }
+
+
+  error.style.display = "none";
+
+
+  let bmr;
+
+
+  /*
+    معادلة Mifflin-St Jeor
+  */
+
+  if(gender === "male"){
+
+    bmr =
+      (10 * weight) +
+      (6.25 * height) -
+      (5 * age) +
+      5;
+
+  }else{
+
+    bmr =
+      (10 * weight) +
+      (6.25 * height) -
+      (5 * age) -
+      161;
+
+  }
+
+
+  bmr = Math.round(bmr);
+
+
+  /*
+    السعرات اللازمة للحفاظ على الوزن
+  */
+
+  const maintenance =
+    Math.round(bmr * activity);
+
+
+  /*
+    تحديد سعرات الهدف
+  */
+
+  let goalCalories;
+
+
+  if(selectedGoal === "loss"){
+
+    goalCalories =
+      maintenance - 400;
+
+  }
+
+  else if(selectedGoal === "gain"){
+
+    goalCalories =
+      maintenance + 300;
+
+  }
+
+  else if(selectedGoal === "maintain"){
+
+    goalCalories =
+      maintenance;
+
+  }
+
+  else{
+
+    /*
+      الهدف الآخر = سعرات الحفاظ
+      ويمكن تعديلها لاحقًا حسب الهدف
+    */
+
+    goalCalories =
+      maintenance;
+
+  }
+
+
+  /*
+    عدم السماح بسعرات منخفضة جدًا
+  */
+
+  if(gender === "male" && goalCalories < 1500){
+
+    goalCalories = 1500;
+
+  }
+
+  if(gender === "female" && goalCalories < 1200){
+
+    goalCalories = 1200;
+
+  }
+
+
+  /*
+    حساب الماكروز
+
+    البروتين:
+    1.8 جرام لكل كيلو
+
+    الدهون:
+    0.8 جرام لكل كيلو
+
+    الكربوهيدرات:
+    باقي السعرات
+  */
+
+  const protein =
+    Math.round(weight * 1.8);
+
+  const fat =
+    Math.round(weight * 0.8);
+
+
+  const proteinCalories =
+    protein * 4;
+
+  const fatCalories =
+    fat * 9;
+
+
+  let carbCalories =
+    goalCalories -
+    proteinCalories -
+    fatCalories;
+
+
+  if(carbCalories < 0){
+
+    carbCalories = 0;
+
+  }
+
+
+  const carbs =
+    Math.round(carbCalories / 4);
+
+
+  /*
+    عرض النتائج
+  */
+
+  document.getElementById("bmr").textContent =
+    bmr;
+
+  document.getElementById("maintenance").textContent =
+    maintenance;
+
+  document.getElementById("calories").textContent =
+    goalCalories;
+
+  document.getElementById("protein").textContent =
+    protein;
+
+  document.getElementById("carbs").textContent =
+    carbs;
+
+  document.getElementById("fat").textContent =
+    fat;
+
+
+  let goalText = "";
+
+
+  if(selectedGoal === "loss"){
+
+    goalText =
+      "تم حساب السعرات بعجز متوسط للمساعدة على خسارة الدهون مع الحفاظ على الكتلة العضلية قدر الإمكان.";
+
+  }
+
+  else if(selectedGoal === "gain"){
+
+    goalText =
+      "تم رفع السعرات عن احتياج الحفاظ على الوزن لدعم زيادة الكتلة العضلية.";
+
+  }
+
+  else if(selectedGoal === "maintain"){
+
+    goalText =
+      "تم حساب السعرات بالقرب من احتياجك للحفاظ على وزنك الحالي.";
+
+  }
+
+  else{
+
+    goalText =
+      "تم حساب السعرات بناءً على احتياج الحفاظ على الوزن. يمكنك استخدام النتيجة كنقطة بداية لهدفك الخاص.";
+
+  }
+
+
+  document.getElementById("goalInfo").textContent =
+    goalText;
+
+
+  results.classList.add("show");
+
+
+  /*
+    النزول تلقائيًا للنتائج
+  */
+
+  setTimeout(function(){
+
+    results.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },100);
+
+}
+
+</script>
+
+</body>
+        </html>
