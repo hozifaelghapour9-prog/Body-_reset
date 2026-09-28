@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>BodyReset | Workout</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
+color:#071a33;
+min-height:100vh;
+padding-bottom:90px;
+}
+
+header{
+height:75px;
+padding:0 25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:#000000;
+border-bottom:1px solid #071a33;
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#ffffff;
+}
+
+.logo span{
+color:#2563eb;
+}
+
+.back-btn{
+width:44px;
+height:44px;
+border-radius:50%;
+background:#ffffff;
+color:#071a33;
+border:1px solid #d7dee8;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:22px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:28px 20px 40px;
+}
+
+.page-title{
+margin-bottom:25px;
+}
+
+.page-title h1{
+font-size:32px;
+color:#ffffff;
+margin-bottom:8px;
+}
+
+.page-title p{
+font-size:16px;
+color:#e2e8f0;
+line-height:1.7;
+}
+
+/* TODAY WORKOUT */
+
+.today-box{
+background:#ffffff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:25px;
+margin-bottom:25px;
+}
+
+.today-label{
+color:#2563eb;
+font-size:14px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.today-box h2{
+font-size:30px;
+color:#071a33;
+margin-bottom:10px;
+}
+
+.today-box p{
+color:#64748b;
+font-size:15px;
+line-height:1.7;
+}
+
+.today-info{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:18px;
+}
+
+.info-item{
+background:#071a33;
+color:#ffffff;
+padding:10px 15px;
+border-radius:9px;
+font-size:13px;
+}
+
+/* SECTION */
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.section-title h2{
+color:#ffffff;
+font-size:23px;
+}
+
+.section-title span{
+color:#ffffff;
+font-size:13px;
+}
+
+/* SLIDER */
+
+.exercise-slider{
+display:flex;
+gap:16px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+scrollbar-width:none;
+padding:5px 2px 15px;
+}
+
+.exercise-slider::-webkit-scrollbar{
+display:none;
+}
+
+.exercise-card{
+flex:0 0 300px;
+background:#ffffff;
+border:1px solid #d7dee8;
+border-radius:18px;
+padding:20px;
+scroll-snap-align:start;
+cursor:pointer;
+transition:.2s;
+}
+
+.exercise-card:hover{
+border-color:#2563eb;
+transform:translateY(-2px);
+}
+
+.exercise-image{
+width:100%;
+height:180px;
+border-radius:13px;
+object-fit:cover;
+margin-bottom:15px;
+}
+
+.exercise-number{
+color:#2563eb;
+font-size:13px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.exercise-card h3{
+font-size:20px;
+color:#071a33;
+margin-bottom:7px;
+}
+
+.exercise-card p{
+color:#64748b;
+font-size:13px;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.exercise-stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+}
+
+.exercise-stat{
+background:#f1f5f9;
+border-radius:8px;
+padding:9px;
+text-align:center;
+}
+
+.exercise-stat span{
+display:block;
+color:#64748b;
+font-size:11px;
+margin-bottom:4px;
+}
+
+.exercise-stat strong{
+color:#071a33;
+font-size:14px;
+}
+
+/* DOTS */
+
+.dots{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+margin-top:5px;
+direction:ltr;
+}
+
+.dot{
+width:9px;
+height:9px;
+background:#cbd5e1;
+border-radius:50%;
+transition:.25s;
+}
+
+.dot.active{
+width:28px;
+background:#2563eb;
+border-radius:8px;
+}
+
+/* MODAL */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+display:none;
+align-items:flex-end;
+justify-content:center;
+z-index:5000;
+padding:15px;
+}
+
+.modal.show{
+display:flex;
+}
+
+.modal-box{
+width:100%;
+max-width:650px;
+max-height:90vh;
+overflow-y:auto;
+background:#ffffff;
+border-radius:22px;
+padding:25px;
+position:relative;
+animation:slideUp .25s ease;
+}
+
+@keyframes slideUp{
+
+from{
+transform:translateY(50px);
+opacity:0;
+}
+
+to{
+transform:translateY(0);
+opacity:1;
+}
+
+}
+
+.close-btn{
+position:absolute;
+top:15px;
+left:15px;
+width:35px;
+height:35px;
+border-radius:50%;
+border:none;
+background:#071a33;
+color:#ffffff;
+font-size:18px;
+cursor:pointer;
+}
+
+.modal-image{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.modal-box h2{
+font-size:28px;
+color:#071a33;
+margin-bottom:8px;
+}
+
+.modal-description{
+color:#64748b;
+font-size:14px;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.detail-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+
+.detail-box{
+background:#071a33;
+color:#ffffff;
+border-radius:10px;
+padding:15px;
+text-align:center;
+}
+
+.detail-box span{
+display:block;
+font-size:12px;
+color:#cbd5e1;
+margin-bottom:6px;
+}
+
+.detail-box strong{
+font-size:19px;
+}
+
+.instruction{
+background:#f1f5f9;
+border:1px solid #d7dee8;
+border-radius:12px;
+padding:18px;
+margin-bottom:15px;
+}
+
+.instruction h3{
+color:#071a33;
+font-size:17px;
+margin-bottom:8px;
+}
+
+.instruction p{
+color:#334155;
+font-size:14px;
+line-height:1.8;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:70px;
+background:#ffffff;
+border-top:1px solid #d7dee8;
+display:flex;
+align-items:center;
+justify-content:space-around;
+z-index:1000;
+}
+
+.nav-item{
+color:#64748b;
+text-decoration:none;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:5px;
+font-size:12px;
+min-width:70px;
+}
+
+.nav-item span{
+font-size:21px;
+}
+
+.nav-item.active{
+color:#2563eb;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+header{
+height:68px;
+padding:0 16px;
+}
+
+.logo{
+font-size:21px;
+}
+
+.container{
+padding:20px 14px 30px;
+}
+
+.page-title h1{
+font-size:27px;
+}
+
+.today-box{
+padding:20px;
+}
+
+.today-box h2{
+font-size:26px;
+}
+
+.exercise-card{
+flex:0 0 82%;
+}
+
+.exercise-image{
+height:190px;
+}
+
+.modal{
+padding:0;
+}
+
+.modal-box{
+border-radius:22px 22px 0 0;
+max-height:92vh;
+}
+
+.modal-image{
+height:200px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a
+href="dashboard.html"
+class="back-btn">
+
+‹
+
+</a>
+
+<div class="logo">
+Body<span>Reset</span>
+</div>
+
+</header>
+
+
+<main class="container">
+
+<div class="page-title">
+
+<h1>
+Today's Workout
+</h1>
+
+<p>
+تمرينك النهارده حسب الخطة والهدف بتاعك.
+</p>
+
+</div>
+
+
+<section class="today-box">
+
+<div class="today-label">
+تمرين اليوم
+</div>
+
+<h2 id="workoutTitle">
+Chest
+</h2>
+
+<p id="workoutDescription">
+تمرين الصدر اليومي الخاص بخطتك.
+</p>
+
+<div class="today-info">
+
+<div class="info-item">
+4 تمارين
+</div>
+
+<div class="info-item">
+45 دقيقة
+</div>
+
+<div class="info-item">
+Strength
+</div>
+
+</div>
+
+</section>
+
+
+<div class="section-title">
+
+<h2>
+تمارين اليوم
+</h2>
+
+<span>
+اسحب يمين / شمال
+</span>
+
+</div>
+
+
+<section
+class="exercise-slider"
+id="exerciseSlider">
+</section>
+
+
+<div
+class="dots"
+id="dots">
+</div>
+
+</main>
+
+
+<!-- EXERCISE DETAILS -->
+
+<div
+class="modal"
+id="exerciseModal">
+
+<div class="modal-box">
+
+<button
+class="close-btn"
+id="closeModal">
+
+×
+
+</button>
+
+<img
+src=""
+class="modal-image"
+id="modalImage">
+
+<h2 id="modalTitle">
+Bench Press
+</h2>
+
+<p
+class="modal-description"
+id="modalDescription">
+</p>
+
+<div class="detail-grid">
+
+<div class="detail-box">
+
+<span>
+المجموعات
+</span>
+
+<strong id="modalSets">
+4
+</strong>
+
+</div>
+
+<div class="detail-box">
+
+<span>
+العدات
+</span>
+
+<strong id="modalReps">
+10
+</strong>
+
+</div>
+
+<div class="detail-box">
+
+<span>
+الإحماء
+</span>
+
+<strong id="modalWarmup">
+2 Sets
+</strong>
+
+</div>
+
+<div class="detail-box">
+
+<span>
+الراحة
+</span>
+
+<strong id="modalRest">
+90 sec
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="instruction">
+
+<h3>
+طريقة الأداء
+</h3>
+
+<p id="modalHow">
+</p>
+
+</div>
+
+
+<div class="instruction">
+
+<h3>
+نصائح مهمة
+</h3>
+
+<p id="modalTips">
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<nav class="bottom-nav">
+
+<a
+href="dashboard.html"
+class="nav-item">
+
+<span>
+⌂
+</span>
+
+Home
+
+</a>
+
+<a
+href="workout.html"
+class="nav-item active">
+
+<span>
+💪
+</span>
+
+Workouts
+
+</a>
+
+<a
+href="#"
+class="nav-item">
+
+<span>
+📊
+</span>
+
+Progress
+
+</a>
+
+<a
+href="#"
+class="nav-item">
+
+<span>
+👤
+</span>
+
+Profile
+
+</a>
+
+</nav>
+
+
+<script>
+
+const workouts = {
+
+chest:{
+
+title:"Chest",
+
+description:
+"تمرين الصدر اليومي الخاص بخطتك.",
+
+level:"Strength",
+
+duration:"45 دقيقة",
+
+exercises:[
+
+{
+
+name:"Bench Press",
+
+description:
+"تمرين أساسي لبناء عضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85",
+
+sets:"4",
+
+reps:"10",
+
+warmup:"2 Sets",
+
+rest:"90 sec",
+
+how:
+"ثبت جسمك على البنش، حافظ على ثبات الكتفين، انزل بالبار ناحية منتصف الصدر ثم ادفعه لأعلى مع التحكم في الحركة.",
+
+tips:
+"حافظ على الحركة ببطء ولا تستخدم وزنًا أكبر من قدرتك على التحكم."
+
+},
+
+{
+
+name:"Incline Press",
+
+description:
+"تمرين يستهدف الجزء العلوي من عضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12",
+
+warmup:"1 Set",
+
+rest:"75 sec",
+
+how:
+"اضبط البنش بزاوية مناسبة، ابدأ بالأوزان بجانب الصدر ثم ادفع لأعلى مع الحفاظ على التحكم.",
+
+tips:
+"لا تقفل الكوع بالكامل وحافظ على مسار ثابت للوزن."
+
+},
+
+{
+
+name:"Chest Fly",
+
+description:
+"تمرين لعزل عضلات الصدر وتحسين التحكم.",
+
+image:
+"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12",
+
+warmup:"1 Set",
+
+rest:"60 sec",
+
+how:
+"ابدأ والذراعان مفتوحتان، ثم اجمع الذراعين أمام الصدر بحركة متحكم فيها.",
+
+tips:
+"ركز على عضلة الصدر وتجنب استخدام سرعة عالية."
+
+},
+
+{
+
+name:"Push Ups",
+
+description:
+"تمرين وزن جسم فعال لعضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1598971639058-999e7a7b4f0a?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"15",
+
+warmup:"بدون",
+
+rest:"60 sec",
+
+how:
+"حافظ على الجسم في خط مستقيم، انزل بالصدر ناحية الأرض ثم ادفع الجسم لأعلى.",
+
+tips:
+"حافظ على الحوض ثابتًا ولا ترفع الرأس أثناء الحركة."
+
+}
+
+]
+
+}
+
+};
+
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const workoutName =
+params.get("workout") || "chest";
+
+
+const workout =
+workouts[workoutName] ||
+workouts.chest;
+
+
+const workoutTitle =
+document.getElementById(
+"workoutTitle"
+);
+
+const workoutDescription =
+document.getElementById(
+"workoutDescription"
+);
+
+const exerciseSlider =
+document.getElementById(
+"exerciseSlider"
+);
+
+const dots =
+document.getElementById(
+"dots"
+);
+
+
+workoutTitle.textContent =
+workout.title;
+
+workoutDescription.textContent =
+workout.description;
+
+
+function renderExercises(){
+
+exerciseSlider.innerHTML = "";
+
+dots.innerHTML = "";
+
+
+workout.exercises.forEach(
+(exercise,index) => {
+
+const card =
+document.createElement("div");
+
+card.className =
+"exercise-card";
+
+
+card.innerHTML = `
+
+<img
+class="exercise-image"
+src="${exercise.image}"
+alt="${exercise.name}">
+
+<div class="exercise-number">
+Exercise ${index + 1}
+</div>
+
+<h3>
+${exercise.name}
+</h3>
+
+<p>
+${exercise.description}
+</p>
+
+<div class="exercise-stats">
+
+<div class="exercise-stat">
+<span>Sets</span>
+<strong>${exercise.sets}</strong>
+</div>
+
+<div class="exercise-stat">
+<span>Reps</span>
+<strong>${exercise.reps}</strong>
+</div>
+
+</div>
+
+`;
+
+
+card.addEventListener(
+"click",
+() => {
+
+openExercise(
+exercise
+);
+
+}
+);
+
+
+exerciseSlider.appendChild(
+card
+);
+
+
+const dot =
+document.createElement("span");
+
+dot.className =
+"dot";
+
+if(index === 0){
+
+dot.classList.add(
+"active"
+);
+
+}
+
+dots.appendChild(dot);
+
+}
+);
+
+}
+
+
+function updateDots(){
+
+const cards =
+document.querySelectorAll(
+".exercise-card"
+);
+
+const dotElements =
+document.querySelectorAll(
+".dot"
+);
+
+if(!cards.length){
+return;
+}
+
+const cardWidth =
+cards[0].offsetWidth + 16;
+
+const position =
+Math.abs(
+exerciseSlider.scrollLeft
+);
+
+const index =
+Math.round(
+position / cardWidth
+);
+
+
+dotElements.forEach(
+(dot,i) => {
+
+dot.classList.toggle(
+"active",
+i === index
+);
+
+}
+);
+
+}
+
+
+exerciseSlider.addEventListener(
+"scroll",
+updateDots,
+{
+passive:true
+}
+);
+
+
+const modal =
+document.getElementById(
+"exerciseModal"
+);
+
+const closeModal =
+document.getElementById(
+"closeModal"
+);
+
+const modalImage =
+document.getElementById(
+"modalImage"
+);
+
+const modalTitle =
+document.getElementById(
+"modalTitle"
+);
+
+const modalDescription =
+document.getElementById(
+"modalDescription"
+);
+
+const modalSets =
+document.getElementById(
+"modalSets"
+);
+
+const modalReps =
+document.getElementById(
+"modalReps"
+);
+
+const modalWarmup =
+document.getElementById(
+"modalWarmup"
+);
+
+const modalRest =
+document.getElementById(
+"modalRest"
+);
+
+const modalHow =
+document.getElementById(
+"modalHow"
+);
+
+const modalTips =
+document.getElementById(
+"modalTips"
+);
+
+
+function openExercise(
+exercise
+){
+
+modalImage.src =
+exercise.image;
+
+modalTitle.textContent =
+exercise.name;
+
+modalDescription.textContent =
+exercise.description;
+
+modalSets.textContent =
+exercise.sets;
+
+modalReps.textContent =
+exercise.reps;
+
+modalWarmup.textContent =
+exercise.warmup;
+
+modalRest.textContent =
+exercise.rest;
+
+modalHow.textContent =
+exercise.how;
+
+modalTips.textContent =
+exercise.tips;
+
+modal.classList.add(
+"show"
+);
+
+document.body.style.overflow =
+"hidden";
+
+}
+
+
+function closeExercise(){
+
+modal.classList.remove(
+"show"
+);
+
+document.body.style.overflow =
+"";
+
+}
+
+
+closeModal.addEventListener(
+"click",
+closeExercise
+);
+
+
+modal.addEventListener(
+"click",
+(event) => {
+
+if(
+event.target === modal
+){
+
+closeExercise();
+
+}
+
+}
+);
+
+
+renderExercises();
+
+</script>
+
+</body>
+
+  </html>
