@@ -20,7 +20,7 @@
     }
 
     body{
-      background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
+      background:#000000;
       color:#071a33;
       min-height:100vh;
     }
@@ -118,7 +118,6 @@
       transition:.3s ease;
       padding:90px 20px 30px;
       box-shadow:8px 0 30px rgba(0,0,0,.45);
-      overflow-y:auto;
     }
 
     .side-menu.show{
@@ -384,6 +383,67 @@
       line-height:1.6;
     }
 
+    .welcome{
+      background:#ffffff;
+      border:1px solid #d7dee8;
+      border-radius:22px;
+      padding:30px;
+      margin-bottom:25px;
+    }
+
+    .welcome h1{
+      font-size:31px;
+      margin-bottom:9px;
+      color:#071a33;
+    }
+
+    .welcome h1 span{
+      color:#2563eb;
+    }
+
+    .welcome p{
+      color:#334155;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .account{
+      color:#2563eb;
+      font-weight:bold;
+    }
+
+    .progress-area{
+      max-width:600px;
+    }
+
+    .progress-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:8px;
+      color:#334155;
+      font-size:14px;
+    }
+
+    .progress-top strong{
+      color:#2563eb;
+    }
+
+    .progress-bar{
+      width:100%;
+      height:9px;
+      background:#e5e7eb;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid #cbd5e1;
+    }
+
+    .progress-fill{
+      width:68%;
+      height:100%;
+      background:#2563eb;
+      border-radius:20px;
+    }
+
     /* STATS */
 
     .stats{
@@ -448,8 +508,8 @@
 
     .activity-circle.progress{
       background:conic-gradient(
-        #2563eb 0%,
-        #d7dee8 0%
+        #2563eb 60%,
+        #d7dee8 60%
       );
     }
 
@@ -515,7 +575,6 @@
       width:13px;
       background:#2563eb;
       border-radius:6px 6px 2px 2px;
-      height:0;
     }
 
     .weekly-progress{
@@ -529,8 +588,8 @@
       height:125px;
       border-radius:50%;
       background:conic-gradient(
-        #2563eb 0%,
-        #d7dee8 0%
+        #2563eb 68%,
+        #d7dee8 68%
       );
       display:flex;
       align-items:center;
@@ -573,6 +632,8 @@
       font-weight:bold;
     }
 
+    /* TODAY'S WORKOUT */
+
     .today-workout{
       background:#ffffff;
       border:1px solid #d7dee8;
@@ -581,47 +642,54 @@
       margin-bottom:30px;
     }
 
-    .workout-main{
-      display:flex;
-      align-items:center;
-      gap:20px;
+    .workout-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
     }
 
-    .workout-icon{
-      width:75px;
-      height:75px;
-      min-width:75px;
-      border-radius:18px;
+    .workout-card{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      background:#071a33;
+      border:1px solid #102b4d;
+      border-radius:16px;
+      padding:17px;
+      text-decoration:none;
+      color:#ffffff;
+      transition:.2s ease;
+    }
+
+    .workout-card:hover{
+      transform:translateY(-3px);
+      border-color:#2563eb;
+      box-shadow:0 8px 20px rgba(37,99,235,.18);
+    }
+
+    .workout-card-icon{
+      width:55px;
+      height:55px;
+      min-width:55px;
+      border-radius:14px;
       background:#2563eb;
       color:#ffffff;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:34px;
+      font-size:25px;
       font-weight:bold;
     }
 
-    .workout-info h3{
-      font-size:22px;
-      margin-bottom:7px;
-      color:#071a33;
-    }
-
-    .workout-info p{
-      color:#64748b;
-      line-height:1.7;
-      margin-bottom:14px;
-    }
-
-    .start-btn{
-      display:inline-block;
-      text-decoration:none;
-      background:#2563eb;
+    .workout-card-info h3{
       color:#ffffff;
-      padding:11px 19px;
-      border-radius:9px;
-      font-weight:bold;
-      font-size:14px;
+      font-size:18px;
+      margin-bottom:5px;
+    }
+
+    .workout-card-info p{
+      color:#cbd5e1;
+      font-size:12px;
     }
 
     .slider-dots{
@@ -886,6 +954,10 @@
         grid-template-columns:1fr;
       }
 
+      .workout-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
     }
 
     @media(max-width:600px){
@@ -941,6 +1013,15 @@
         padding:20px 14px 100px;
       }
 
+      .welcome{
+        padding:23px 20px;
+        border-radius:18px;
+      }
+
+      .welcome h1{
+        font-size:25px;
+      }
+
       .stat{
         flex:0 0 285px;
       }
@@ -975,19 +1056,31 @@
         font-size:19px;
       }
 
-      .workout-main{
-        align-items:flex-start;
+      .workout-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
       }
 
-      .workout-icon{
-        width:62px;
-        min-width:62px;
-        height:62px;
-        font-size:28px;
+      .workout-card{
+        flex-direction:column;
+        text-align:center;
+        padding:15px 10px;
+        gap:9px;
       }
 
-      .workout-info h3{
-        font-size:19px;
+      .workout-card-icon{
+        width:52px;
+        height:52px;
+        min-width:52px;
+        font-size:23px;
+      }
+
+      .workout-card-info h3{
+        font-size:16px;
+      }
+
+      .workout-card-info p{
+        font-size:11px;
       }
 
       .subscription-box{
@@ -1049,34 +1142,6 @@
 
       <span>
         العروض
-      </span>
-
-      <span class="menu-arrow">
-        ‹
-      </span>
-
-    </a>
-
-    <a
-      href="calories.html"
-      class="menu-item">
-
-      <span>
-        حساب سعرات الجسم
-      </span>
-
-      <span class="menu-arrow">
-        ‹
-      </span>
-
-    </a>
-
-    <a
-      href="nutrition.html"
-      class="menu-item">
-
-      <span>
-        التغذية
       </span>
 
       <span class="menu-arrow">
@@ -1278,6 +1343,60 @@
 
     </div>
 
+    <section class="welcome">
+
+      <h1>
+
+        أهلاً بيك في
+
+        <span>
+          BodyReset
+        </span>
+
+      </h1>
+
+      <p>
+
+        جاهز تكمل رحلتك النهارده؟
+
+        <br>
+
+        حسابك:
+
+        <strong
+          class="account"
+          id="userEmail">
+
+          جاري التحميل...
+
+        </strong>
+
+      </p>
+
+      <div class="progress-area">
+
+        <div class="progress-top">
+
+          <span>
+            نسبة إنجازك
+          </span>
+
+          <strong>
+            68%
+          </strong>
+
+        </div>
+
+        <div class="progress-bar">
+
+          <div class="progress-fill"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
     <div class="stats">
 
       <div class="stat">
@@ -1293,7 +1412,7 @@
             <div class="circle-content">
 
               <strong>
-                0
+                60
               </strong>
 
               <span>
@@ -1333,7 +1452,7 @@
         <div class="calorie-number">
 
           <strong>
-            0
+            280
           </strong>
 
           <span>
@@ -1343,6 +1462,14 @@
         </div>
 
         <div class="calorie-chart">
+
+          <div class="bar" style="height:32%;"></div>
+          <div class="bar" style="height:52%;"></div>
+          <div class="bar" style="height:42%;"></div>
+          <div class="bar" style="height:70%;"></div>
+          <div class="bar" style="height:58%;"></div>
+          <div class="bar" style="height:82%;"></div>
+          <div class="bar" style="height:65%;"></div>
 
         </div>
 
@@ -1359,7 +1486,7 @@
           <div class="progress-circle">
 
             <strong>
-              0%
+              68%
             </strong>
 
           </div>
@@ -1369,6 +1496,8 @@
       </div>
 
     </div>
+
+    <!-- TODAY'S WORKOUT -->
 
     <div class="section-heading">
 
@@ -1388,31 +1517,139 @@
 
     <section class="today-workout">
 
-      <div class="workout-main">
+      <div class="workout-grid">
 
-        <div class="workout-icon">
-          💪
-        </div>
+        <a
+          href="workout.html?workout=back"
+          class="workout-card">
 
-        <div class="workout-info">
+          <div class="workout-card-icon">
+            B
+          </div>
 
-          <h3>
-            HIIT & Strength
-          </h3>
+          <div class="workout-card-info">
 
-          <p>
-            Start up 10 min
-          </p>
+            <h3>
+              Back
+            </h3>
 
-          <a
-            href="workout.html"
-            class="start-btn">
+            <p>
+              تمارين الظهر
+            </p>
 
-            Start Now
+          </div>
 
-          </a>
+        </a>
 
-        </div>
+        <a
+          href="workout.html?workout=chest"
+          class="workout-card">
+
+          <div class="workout-card-icon">
+            C
+          </div>
+
+          <div class="workout-card-info">
+
+            <h3>
+              Chest
+            </h3>
+
+            <p>
+              تمارين الصدر
+            </p>
+
+          </div>
+
+        </a>
+
+        <a
+          href="workout.html?workout=shoulders"
+          class="workout-card">
+
+          <div class="workout-card-icon">
+            S
+          </div>
+
+          <div class="workout-card-info">
+
+            <h3>
+              Shoulders
+            </h3>
+
+            <p>
+              تمارين الكتف
+            </p>
+
+          </div>
+
+        </a>
+
+        <a
+          href="workout.html?workout=arms"
+          class="workout-card">
+
+          <div class="workout-card-icon">
+            A
+          </div>
+
+          <div class="workout-card-info">
+
+            <h3>
+              Arms
+            </h3>
+
+            <p>
+              تمارين الذراع
+            </p>
+
+          </div>
+
+        </a>
+
+        <a
+          href="workout.html?workout=legs"
+          class="workout-card">
+
+          <div class="workout-card-icon">
+            L
+          </div>
+
+          <div class="workout-card-info">
+
+            <h3>
+              Legs
+            </h3>
+
+            <p>
+              تمارين الرجل
+            </p>
+
+          </div>
+
+        </a>
+
+        <a
+          href="workout.html?workout=abs"
+          class="workout-card">
+
+          <div class="workout-card-icon">
+            A
+          </div>
+
+          <div class="workout-card-info">
+
+            <h3>
+              Abs
+            </h3>
+
+            <p>
+              تمارين البطن
+            </p>
+
+          </div>
+
+        </a>
 
       </div>
 
@@ -1562,7 +1799,7 @@
           خطط غذائية تساعدك تختار أكلك حسب هدفك.
         </p>
 
-        <a href="nutrition.html">
+        <a href="#">
           خطة التغذية
         </a>
 
@@ -1735,6 +1972,11 @@
       createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
+      );
+
+    const userEmail =
+      document.getElementById(
+        "userEmail"
       );
 
     const profileBtn =
@@ -2041,6 +2283,10 @@
 
       const username =
         user.user_metadata?.username;
+
+      userEmail.textContent =
+        username ||
+        user.email;
 
       profileName.textContent =
         username ||
