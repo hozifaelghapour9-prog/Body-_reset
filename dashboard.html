@@ -1,2723 +1,1512 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>التغذية | BodyReset</title>
+<title>BodyReset Dashboard</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-  font-family:Arial,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
-  color:#071a33;
-  min-height:100vh;
-  padding:18px;
+background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
+color:#071a33;
+min-height:100vh;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.header{
-  background:#071a33;
-  color:white;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:18px;
-}
-
-.header-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+header{
+height:70px;
+background:#000;
+color:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
 }
 
 .logo{
-  font-size:27px;
-  font-weight:bold;
+font-size:25px;
+font-weight:bold;
 }
 
 .logo span{
-  color:#2563eb;
+color:#2563eb;
 }
 
-.back{
-  color:white;
-  text-decoration:none;
-  background:#2563eb;
-  padding:10px 15px;
-  border-radius:9px;
-  font-size:14px;
+.profile-circle{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#f97316;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+font-size:20px;
 }
 
-.header h1{
-  margin-top:22px;
-  font-size:30px;
+.header-left{
+display:flex;
+align-items:center;
+gap:15px;
 }
 
-.header p{
-  margin-top:8px;
-  color:#cbd5e1;
-  line-height:1.7;
+.menu-btn{
+background:none;
+border:none;
+color:white;
+font-size:25px;
+cursor:pointer;
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* SIDE MENU */
 
-.search-box{
-  background:white;
-  border-radius:16px;
-  padding:15px;
-  margin-bottom:16px;
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
+.side-menu{
+position:fixed;
+top:70px;
+right:-280px;
+width:280px;
+height:calc(100vh - 70px);
+background:#071a33;
+color:white;
+padding:25px;
+z-index:1000;
+transition:.3s;
 }
 
-.search{
-  position:relative;
+.side-menu.active{
+right:0;
 }
 
-.search input{
-  width:100%;
-  border:1px solid #dbe2ea;
-  background:#f8fafc;
-  border-radius:11px;
-  padding:15px 45px 15px 15px;
-  font-size:16px;
-  outline:none;
+.side-menu a{
+display:block;
+color:white;
+text-decoration:none;
+padding:15px 10px;
+border-bottom:1px solid #1e293b;
+font-size:17px;
 }
 
-.search input:focus{
-  border-color:#2563eb;
-  background:white;
+.side-menu button{
+width:100%;
+margin-top:20px;
+padding:13px;
+background:#dc2626;
+border:none;
+border-radius:8px;
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
-.search-icon{
-  position:absolute;
-  right:15px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:19px;
-}
+/* PROFILE POPUP */
 
-/* =========================
-   CATEGORIES
-========================= */
-
-.categories{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  padding-bottom:5px;
-  margin-bottom:18px;
+.profile-popup{
+display:none;
+position:fixed;
+top:80px;
+left:20px;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+z-index:1001;
+width:260px;
 }
 
-.category{
-  border:none;
-  background:white;
-  color:#071a33;
-  padding:11px 17px;
-  border-radius:20px;
-  white-space:nowrap;
-  cursor:pointer;
-  font-weight:bold;
+.profile-popup.active{
+display:block;
 }
 
-.category.active{
-  background:#071a33;
-  color:white;
+.profile-popup h3{
+margin-bottom:12px;
 }
-
-/* =========================
-   FOOD RESULTS
-========================= */
 
-.results-info{
-  color:white;
-  margin-bottom:12px;
-  font-size:15px;
+.profile-popup p{
+margin:7px 0;
+color:#475569;
 }
 
-.food-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
+/* NOTIFICATION */
 
-.food-card{
-  background:white;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
-  cursor:pointer;
-  transition:.2s;
+.notification{
+position:relative;
+font-size:25px;
+cursor:pointer;
 }
 
-.food-card:hover{
-  transform:translateY(-3px);
+.notification-dot{
+position:absolute;
+top:0;
+right:-2px;
+width:9px;
+height:9px;
+background:#22c55e;
+border-radius:50%;
 }
 
-.food-image{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block;
+.notification-popup{
+display:none;
+position:fixed;
+top:80px;
+right:20px;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+z-index:1001;
+width:280px;
 }
 
-.food-content{
-  padding:17px;
+.notification-popup.active{
+display:block;
 }
 
-.food-category{
-  color:#2563eb;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:7px;
-}
+/* MAIN */
 
-.food-title{
-  font-size:19px;
-  margin-bottom:8px;
+.container{
+width:94%;
+max-width:1200px;
+margin:30px auto 100px;
 }
 
-.food-description{
-  color:#64748b;
-  font-size:14px;
-  line-height:1.6;
-  min-height:44px;
-}
+/* WELCOME */
 
-.macros{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  margin-top:13px;
+.welcome{
+background:white;
+border-radius:16px;
+padding:25px;
+margin-bottom:25px;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.macro{
-  background:#f1f5f9;
-  padding:9px 4px;
-  border-radius:8px;
-  text-align:center;
+.welcome h1{
+font-size:30px;
+margin-bottom:8px;
 }
 
-.macro span{
-  display:block;
-  color:#64748b;
-  font-size:11px;
-  margin-bottom:3px;
+.welcome p{
+color:#64748b;
+font-size:17px;
 }
 
-.macro strong{
-  font-size:13px;
-}
+/* STATS */
 
-.calories{
-  margin-top:12px;
-  background:#071a33;
-  color:white;
-  text-align:center;
-  padding:10px;
-  border-radius:8px;
-  font-weight:bold;
+.stats{
+display:flex;
+gap:15px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+scrollbar-width:none;
+margin-bottom:30px;
 }
 
-/* =========================
-   EMPTY FOOD
-========================= */
+.stats::-webkit-scrollbar{
+display:none;
+}
 
-.empty{
-  display:none;
-  background:white;
-  border-radius:15px;
-  padding:35px 20px;
-  text-align:center;
-  margin-top:10px;
+.stat-card{
+background:white;
+border-radius:16px;
+padding:22px;
+min-width:300px;
+flex:1;
+scroll-snap-align:start;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.empty h3{
-  margin-bottom:7px;
+.stat-card h3{
+font-size:18px;
+margin-bottom:20px;
 }
 
-.empty p{
-  color:#64748b;
+.stat-content{
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
-/* =========================
-   FOOD MODAL
-========================= */
+/* CIRCLES */
 
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:1000;
-  padding:15px;
-  overflow-y:auto;
+.circle{
+width:85px;
+height:85px;
+border-radius:50%;
+border:8px solid #2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:15px;
+font-weight:bold;
+text-align:center;
 }
 
-.modal.show{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.circle.green{
+border-color:#22c55e;
 }
 
-.modal-box{
-  background:white;
-  width:100%;
-  max-width:750px;
-  border-radius:18px;
-  overflow:hidden;
-  position:relative;
-  max-height:94vh;
-  overflow-y:auto;
-}
+/* CALORIE BARS */
 
-.modal-image{
-  width:100%;
-  height:270px;
-  object-fit:cover;
+.bars{
+height:90px;
+display:flex;
+align-items:flex-end;
+gap:7px;
 }
 
-.modal-content{
-  padding:22px;
+.bar{
+width:12px;
+background:#22c55e;
+border-radius:5px 5px 0 0;
 }
 
-.close{
-  position:absolute;
-  left:15px;
-  top:15px;
-  width:38px;
-  height:38px;
-  border:none;
-  border-radius:50%;
-  background:white;
-  color:#071a33;
-  font-size:22px;
-  cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,.2);
-}
+.bar:nth-child(1){height:30px;}
+.bar:nth-child(2){height:45px;}
+.bar:nth-child(3){height:60px;}
+.bar:nth-child(4){height:38px;}
+.bar:nth-child(5){height:75px;}
+.bar:nth-child(6){height:55px;}
+.bar:nth-child(7){height:85px;}
 
-.modal-category{
-  color:#2563eb;
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:6px;
-}
+/* SECTION */
 
-.modal-title{
-  font-size:27px;
-  margin-bottom:8px;
+.section{
+background:white;
+border-radius:16px;
+padding:25px;
+margin-bottom:30px;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.modal-description{
-  color:#64748b;
-  line-height:1.8;
-  margin-bottom:18px;
+.section-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:20px;
 }
 
-.nutrition-summary{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-  margin-bottom:22px;
+.section-header h2{
+font-size:25px;
 }
 
-.nutrition-box{
-  background:#071a33;
-  color:white;
-  border-radius:10px;
-  padding:13px 7px;
-  text-align:center;
+.section-header a{
+color:#2563eb;
+text-decoration:none;
+font-weight:bold;
 }
+
+/* TODAY WORKOUT CAROUSEL */
 
-.nutrition-box span{
-  display:block;
-  color:#cbd5e1;
-  font-size:11px;
-  margin-bottom:5px;
+.workout-grid{
+display:flex;
+gap:16px;
+width:100%;
+overflow-x:auto;
+overflow-y:hidden;
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+padding:5px 2px 15px;
+scrollbar-width:none;
 }
 
-.nutrition-box strong{
-  font-size:15px;
+.workout-grid::-webkit-scrollbar{
+display:none;
 }
 
-.section-title{
-  font-size:20px;
-  margin:20px 0 10px;
+.workout-card{
+flex:0 0 calc((100% - 32px)/3);
+background:#071a33;
+color:white;
+border-radius:14px;
+padding:20px;
+text-decoration:none;
+display:block;
+scroll-snap-align:start;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+transition:.2s;
 }
 
-.ingredients{
-  list-style:none;
+.workout-card:active{
+transform:scale(.97);
 }
 
-.ingredients li{
-  background:#f1f5f9;
-  margin-bottom:7px;
-  padding:11px 13px;
-  border-radius:8px;
-  color:#334155;
+.workout-icon{
+width:55px;
+height:55px;
+border-radius:12px;
+background:#22c55e;
+color:#071a33;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+font-weight:bold;
+margin-bottom:15px;
 }
 
-.instructions{
-  list-style:none;
-  counter-reset:steps;
+.workout-card h3{
+font-size:21px;
+margin-bottom:8px;
 }
 
-.instructions li{
-  counter-increment:steps;
-  position:relative;
-  padding:11px 45px 11px 10px;
-  margin-bottom:8px;
-  background:#f8fafc;
-  border-radius:8px;
-  line-height:1.7;
+.workout-card p{
+color:#cbd5e1;
+font-size:14px;
+margin-bottom:18px;
 }
 
-.instructions li::before{
-  content:counter(steps);
-  position:absolute;
-  right:10px;
-  top:10px;
-  width:26px;
-  height:26px;
-  border-radius:50%;
-  background:#2563eb;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  font-size:13px;
+.start-btn{
+display:inline-block;
+background:#22c55e;
+color:#071a33;
+padding:10px 15px;
+border-radius:8px;
+font-weight:bold;
+font-size:14px;
 }
 
-/* =========================
-   VITAMINS & MINERALS
-========================= */
+/* COMMUNITY */
 
-.vitamins-section{
-  background:#fff;
-  border-radius:18px;
-  padding:25px;
-  margin-top:30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+.news-list{
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
-.vitamins-header{
-  margin-bottom:20px;
+.news-item{
+display:flex;
+align-items:center;
+gap:15px;
+background:#071a33;
+color:white;
+padding:15px;
+border-radius:10px;
 }
 
-.vitamins-header h2{
-  font-size:28px;
-  margin-bottom:8px;
-  color:#071a33;
+.news-icon{
+width:42px;
+height:42px;
+border-radius:10px;
+background:#22c55e;
+color:#071a33;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
 }
 
-.vitamins-header p{
-  color:#64748b;
-  line-height:1.8;
-  font-size:15px;
+.news-item h4{
+margin-bottom:5px;
 }
 
-.vitamins-search{
-  position:relative;
-  margin-bottom:15px;
+.news-item p{
+color:#cbd5e1;
+font-size:14px;
 }
 
-.vitamins-search span{
-  position:absolute;
-  right:15px;
-  top:50%;
-  transform:translateY(-50%);
-}
+/* NORMAL CARDS */
 
-.vitamins-search input{
-  width:100%;
-  padding:14px 45px 14px 15px;
-  border:1px solid #dbe2ea;
-  border-radius:10px;
-  background:#f8fafc;
-  font-size:16px;
-  outline:none;
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
 }
 
-.vitamins-search input:focus{
-  border-color:#2563eb;
-  background:#fff;
+.card{
+background:#071a33;
+color:white;
+padding:25px;
+border-radius:14px;
 }
 
-.vitamin-categories{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  margin-bottom:20px;
+.card h3{
+margin-bottom:10px;
+font-size:23px;
 }
 
-.vitamin-category{
-  border:none;
-  background:#f1f5f9;
-  color:#071a33;
-  padding:10px 18px;
-  border-radius:20px;
-  cursor:pointer;
-  white-space:nowrap;
-  font-weight:bold;
+.card p{
+color:#cbd5e1;
+line-height:1.7;
 }
 
-.vitamin-category.active{
-  background:#071a33;
-  color:#fff;
-}
+/* PROGRESS */
 
-.vitamins-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+.progress-box{
+background:#071a33;
+color:white;
+border-radius:14px;
+padding:25px;
 }
 
-.vitamin-card{
-  border:1px solid #e2e8f0;
-  border-radius:13px;
-  padding:18px;
-  cursor:pointer;
-  transition:.2s;
-  background:#fff;
+.progress-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px solid #1e293b;
 }
 
-.vitamin-card:hover{
-  transform:translateY(-3px);
-  border-color:#2563eb;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
+.progress-row:last-child{
+border-bottom:none;
 }
 
-.vitamin-card-type{
-  color:#2563eb;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:7px;
+.progress-circle{
+width:90px;
+height:90px;
+border-radius:50%;
+border:9px solid #22c55e;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:bold;
 }
 
-.vitamin-card h3{
-  font-size:19px;
-  margin-bottom:8px;
-}
+/* SUBSCRIPTIONS */
 
-.vitamin-card p{
-  color:#64748b;
-  font-size:14px;
-  line-height:1.7;
+.subscription-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
 }
 
-.vitamin-source{
-  margin-top:12px;
-  background:#071a33;
-  color:#fff;
-  padding:9px;
-  border-radius:8px;
-  text-align:center;
-  font-size:13px;
+.subscription-card{
+background:#071a33;
+color:white;
+padding:25px;
+border-radius:14px;
+text-align:center;
 }
 
-.vitamins-empty{
-  display:none;
-  text-align:center;
-  padding:30px 15px;
+.subscription-card h3{
+font-size:22px;
+margin-bottom:15px;
 }
 
-.vitamins-empty h3{
-  margin-bottom:7px;
+.price{
+font-size:30px;
+font-weight:bold;
+margin-bottom:8px;
 }
 
-.vitamins-empty p{
-  color:#64748b;
+.duration{
+color:#cbd5e1;
+margin-bottom:20px;
 }
 
-/* =========================
-   VITAMIN MODAL
-========================= */
-
-.vitamin-modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:2000;
-  padding:15px;
-  overflow-y:auto;
+.subscription-card ul{
+list-style:none;
+text-align:right;
+margin-bottom:20px;
 }
 
-.vitamin-modal.show{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.subscription-card li{
+padding:7px 0;
+color:#e2e8f0;
 }
 
-.vitamin-modal-box{
-  width:100%;
-  max-width:650px;
-  background:#fff;
-  border-radius:18px;
-  position:relative;
-  max-height:94vh;
-  overflow-y:auto;
+.subscription-card button{
+width:100%;
+padding:13px;
+background:#22c55e;
+border:none;
+border-radius:8px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+color:#071a33;
 }
 
-.vitamin-modal-content{
-  padding:25px;
-}
+/* BOTTOM NAV */
 
-.vitamin-close{
-  position:absolute;
-  left:15px;
-  top:15px;
-  width:38px;
-  height:38px;
-  border:none;
-  border-radius:50%;
-  background:#f1f5f9;
-  color:#071a33;
-  font-size:23px;
-  cursor:pointer;
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:space-around;
+z-index:999;
 }
 
-.modal-vitamin-type{
-  color:#2563eb;
-  font-weight:bold;
-  font-size:14px;
-  margin-bottom:7px;
+.bottom-nav a{
+color:#94a3b8;
+text-decoration:none;
+text-align:center;
+font-size:13px;
 }
 
-.modal-vitamin-name{
-  font-size:30px;
-  margin-bottom:20px;
+.bottom-nav a.active{
+color:#22c55e;
 }
 
-.vitamin-info-box{
-  background:#071a33;
-  color:#fff;
-  border-radius:12px;
-  padding:18px;
-  margin-bottom:22px;
+.bottom-nav-icon{
+font-size:23px;
+display:block;
+margin-bottom:3px;
 }
 
-.vitamin-info-box span{
-  display:block;
-  color:#93c5fd;
-  font-size:13px;
-  margin-bottom:7px;
-  font-weight:bold;
-}
+/* MOBILE */
 
-.vitamin-info-box p{
-  line-height:1.8;
-}
+@media(max-width:800px){
 
-.vitamin-modal-content h3{
-  font-size:19px;
-  margin:20px 0 10px;
+.container{
+width:94%;
 }
 
-.vitamin-list{
-  list-style:none;
+.stats{
+gap:12px;
 }
 
-.vitamin-list li{
-  background:#f1f5f9;
-  padding:11px 13px;
-  border-radius:8px;
-  margin-bottom:7px;
-  color:#334155;
-  line-height:1.6;
+.stat-card{
+min-width:290px;
 }
 
-.daily-value{
-  background:#eff6ff;
-  color:#1d4ed8;
-  padding:13px;
-  border-radius:9px;
-  font-weight:bold;
+.workout-card{
+flex:0 0 48%;
 }
 
-.vitamin-note{
-  background:#fff7ed;
-  color:#9a3412;
-  padding:14px;
-  border-radius:9px;
-  margin-top:20px;
-  line-height:1.7;
-  font-size:13px;
+.cards{
+grid-template-columns:1fr;
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:850px){
 
-  .food-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .vitamins-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+.subscription-grid{
+grid-template-columns:1fr;
+}
 
 }
+
+/* SMALL MOBILE */
 
 @media(max-width:600px){
 
-  body{
-    padding:10px;
-  }
+header{
+padding:0 15px;
+}
 
-  .header{
-    padding:18px;
-  }
+.logo{
+font-size:22px;
+}
 
-  .header h1{
-    font-size:25px;
-  }
+.container{
+margin-top:20px;
+}
 
-  .food-grid{
-    grid-template-columns:1fr;
-  }
+.welcome h1{
+font-size:25px;
+}
 
-  .food-image{
-    height:200px;
-  }
+.section{
+padding:18px;
+}
 
-  .nutrition-summary{
-    grid-template-columns:repeat(2,1fr);
-  }
+.section-header h2{
+font-size:21px;
+}
 
-  .modal{
-    padding:8px;
-  }
+/* TWO CARDS SIDE BY SIDE */
 
-  .modal-image{
-    height:210px;
-  }
+.workout-grid{
+gap:12px;
+}
 
-  .modal-content{
-    padding:17px;
-  }
+.workout-card{
+flex:0 0 48%;
+padding:16px;
+}
 
-  .modal-title{
-    font-size:24px;
-  }
+.workout-card h3{
+font-size:18px;
+}
 
-  .vitamins-section{
-    padding:18px;
-  }
+.workout-card p{
+font-size:13px;
+}
 
-  .vitamins-header h2{
-    font-size:24px;
-  }
-
-  .vitamins-grid{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .vitamin-card{
-    padding:14px 10px;
-  }
-
-  .vitamin-card h3{
-    font-size:16px;
-  }
-
-  .vitamin-card p{
-    font-size:12px;
-  }
-
-  .modal-vitamin-name{
-    font-size:25px;
-  }
+.workout-icon{
+width:45px;
+height:45px;
+font-size:20px;
+}
 
 }
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header>
 
-<!-- =========================
-     HEADER
-========================= -->
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
-<header class="header">
+<div class="header-left">
 
-  <div class="header-top">
+<div class="notification" onclick="toggleNotification()">
+●
+<div class="notification-dot"></div>
+</div>
 
-    <div class="logo">
-      Body<span>Reset</span>
-    </div>
+<div class="profile-circle" onclick="toggleProfile()">
+U
+</div>
 
-    <a
-      href="dashboard.html"
-      class="back"
-    >
-      العودة للوحة التحكم
-    </a>
+<button class="menu-btn" onclick="toggleMenu()">
+☰
+</button>
 
-  </div>
-
-  <h1>
-    التغذية
-  </h1>
-
-  <p>
-    اكتشف الأطعمة والوصفات واحسب السعرات والماكروز المناسبة لهدفك.
-  </p>
+</div>
 
 </header>
 
 
-<!-- =========================
-     FOOD SEARCH
-========================= -->
+<!-- SIDE MENU -->
 
-<div class="search-box">
+<div class="side-menu" id="sideMenu">
 
-  <div class="search">
+<a href="#">العروض</a>
 
-    <span class="search-icon">
-      🔎
-    </span>
+<a href="calories.html">
+حساب سعرات الجسم
+</a>
 
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="ابحث عن أكلة أو مكوّن أو وصفة..."
-      oninput="searchFoods()"
-    >
+<a href="nutrition.html">
+التغذية
+</a>
 
-  </div>
+<a href="#subscriptions">
+اشتراكات
+</a>
 
-</div>
-
-
-<!-- =========================
-     FOOD CATEGORIES
-========================= -->
-
-<div class="categories">
-
-  <button
-    class="category active"
-    onclick="filterCategory('all',this)"
-  >
-    الكل
-  </button>
-
-  <button
-    class="category"
-    onclick="filterCategory('protein',this)"
-  >
-    بروتين
-  </button>
-
-  <button
-    class="category"
-    onclick="filterCategory('carbs',this)"
-  >
-    نشويات
-  </button>
-
-  <button
-    class="category"
-    onclick="filterCategory('vegetables',this)"
-  >
-    خضار
-  </button>
-
-  <button
-    class="category"
-    onclick="filterCategory('fruits',this)"
-  >
-    فواكه
-  </button>
-
-  <button
-    class="category"
-    onclick="filterCategory('breakfast',this)"
-  >
-    فطار
-  </button>
-
-  <button
-    class="category"
-    onclick="filterCategory('recipes',this)"
-  >
-    وصفات
-  </button>
+<button onclick="logoutUser()">
+تسجيل الخروج
+</button>
 
 </div>
 
 
-<div class="results-info">
+<!-- PROFILE POPUP -->
 
-  <span id="resultsCount">
-    جميع الأكلات
-  </span>
+<div class="profile-popup" id="profilePopup">
 
-</div>
+<h3>الملف الشخصي</h3>
 
+<p id="profileUsername">
+اسم المستخدم: -
+</p>
 
-<!-- =========================
-     FOOD GRID
-========================= -->
+<p id="profileEmail">
+البريد: -
+</p>
 
-<div
-  class="food-grid"
-  id="foodGrid"
-></div>
-
-
-<div
-  class="empty"
-  id="empty"
->
-
-  <h3>
-    مفيش نتائج
-  </h3>
-
-  <p>
-    جرّب تبحث باسم أكلة أو مكوّن مختلف.
-  </p>
+<p id="profilePhone">
+الهاتف: -
+</p>
 
 </div>
 
 
-<!-- =========================
-     VITAMINS & MINERALS
-========================= -->
+<!-- NOTIFICATION POPUP -->
 
-<section class="vitamins-section">
+<div class="notification-popup" id="notificationPopup">
 
-  <div class="vitamins-header">
+<h3>الإشعارات</h3>
 
-    <h2>
-      الفيتامينات والمعادن
-    </h2>
+<p style="margin-top:12px;color:#64748b;">
+مفيش إشعارات جديدة حاليًا.
+</p>
 
-    <p>
-      تعرف على أهم الفيتامينات والمعادن ووظائفها ومصادرها والاحتياج اليومي التقريبي منها.
-    </p>
-
-  </div>
+</div>
 
 
-  <div class="vitamins-search">
-
-    <span>
-      🔎
-    </span>
-
-    <input
-      type="text"
-      id="vitaminSearch"
-      placeholder="ابحث عن فيتامين أو معدن..."
-      oninput="searchVitamins()"
-    >
-
-  </div>
+<main class="container">
 
 
-  <div class="vitamin-categories">
+<!-- WELCOME -->
 
-    <button
-      class="vitamin-category active"
-      onclick="filterVitamins('all',this)"
-    >
-      الكل
-    </button>
+<section class="welcome">
 
-    <button
-      class="vitamin-category"
-      onclick="filterVitamins('vitamin',this)"
-    >
-      الفيتامينات
-    </button>
+<h1>
+أهلاً بيك في BodyReset
+</h1>
 
-    <button
-      class="vitamin-category"
-      onclick="filterVitamins('mineral',this)"
-    >
-      المعادن
-    </button>
-
-  </div>
-
-
-  <div
-    class="vitamins-grid"
-    id="vitaminsGrid"
-  ></div>
-
-
-  <div
-    class="vitamins-empty"
-    id="vitaminsEmpty"
-  >
-
-    <h3>
-      مفيش نتائج
-    </h3>
-
-    <p>
-      جرّب البحث باسم فيتامين أو معدن آخر.
-    </p>
-
-  </div>
+<p>
+ابدأ يومك بخطة واضحة واستمر في تطوير نفسك.
+</p>
 
 </section>
 
+
+<!-- STATS -->
+
+<section class="stats">
+
+
+<div class="stat-card">
+
+<h3>
+Weekly Activity
+</h3>
+
+<div class="stat-content">
+
+<div>
+
+<strong style="font-size:28px;">
+60
+</strong>
+
+<p style="color:#64748b;margin-top:5px;">
+Progress
+</p>
+
 </div>
 
+<div class="circle">
+60%
+</div>
 
-<!-- =========================
-     FOOD MODAL
-========================= -->
+<div>
 
-<div
-  class="modal"
-  id="modal"
-  onclick="closeOutside(event)"
->
+<strong style="font-size:25px;">
+0%
+</strong>
 
-  <div class="modal-box">
+<p style="color:#64748b;margin-top:5px;">
+Burn
+</p>
 
-    <button
-      class="close"
-      onclick="closeModal()"
-    >
-      ×
-    </button>
+</div>
 
-    <img
-      id="modalImage"
-      class="modal-image"
-      src=""
-      alt=""
-    >
-
-    <div class="modal-content">
-
-      <div
-        id="modalCategory"
-        class="modal-category"
-      ></div>
-
-      <h2
-        id="modalTitle"
-        class="modal-title"
-      ></h2>
-
-      <p
-        id="modalDescription"
-        class="modal-description"
-      ></p>
-
-
-      <div class="nutrition-summary">
-
-        <div class="nutrition-box">
-
-          <span>
-            السعرات
-          </span>
-
-          <strong>
-            <span id="modalCalories"></span>
-            kcal
-          </strong>
-
-        </div>
-
-        <div class="nutrition-box">
-
-          <span>
-            البروتين
-          </span>
-
-          <strong>
-            <span id="modalProtein"></span>
-            g
-          </strong>
-
-        </div>
-
-        <div class="nutrition-box">
-
-          <span>
-            الكربوهيدرات
-          </span>
-
-          <strong>
-            <span id="modalCarbs"></span>
-            g
-          </strong>
-
-        </div>
-
-        <div class="nutrition-box">
-
-          <span>
-            الدهون
-          </span>
-
-          <strong>
-            <span id="modalFat"></span>
-            g
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <h3 class="section-title">
-        المكونات
-      </h3>
-
-      <ul
-        class="ingredients"
-        id="modalIngredients"
-      ></ul>
-
-
-      <h3 class="section-title">
-        طريقة التحضير
-      </h3>
-
-      <ol
-        class="instructions"
-        id="modalInstructions"
-      ></ol>
-
-    </div>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- =========================
-     VITAMIN MODAL
-========================= -->
+<div class="stat-card">
 
-<div
-  class="vitamin-modal"
-  id="vitaminModal"
-  onclick="closeVitaminOutside(event)"
->
+<h3>
+Calorie Burn
+</h3>
 
-  <div class="vitamin-modal-box">
+<div class="stat-content">
 
-    <button
-      class="vitamin-close"
-      onclick="closeVitaminModal()"
-    >
-      ×
-    </button>
+<div>
 
-    <div class="vitamin-modal-content">
+<strong style="font-size:28px;">
+280
+</strong>
 
-      <div
-        id="modalVitaminType"
-        class="modal-vitamin-type"
-      ></div>
-
-      <h2
-        id="modalVitaminName"
-        class="modal-vitamin-name"
-      ></h2>
-
-
-      <div class="vitamin-info-box">
-
-        <span>
-          الوظيفة الأساسية
-        </span>
-
-        <p
-          id="modalVitaminFunction"
-        ></p>
-
-      </div>
-
-
-      <h3>
-        أهم المصادر الغذائية
-      </h3>
-
-      <ul
-        id="modalVitaminSources"
-        class="vitamin-list"
-      ></ul>
-
-
-      <h3>
-        الاحتياج اليومي التقريبي
-      </h3>
-
-      <div
-        id="modalVitaminDaily"
-        class="daily-value"
-      ></div>
-
-
-      <h3>
-        علامات النقص
-      </h3>
-
-      <ul
-        id="modalVitaminDeficiency"
-        class="vitamin-list"
-      ></ul>
-
-
-      <div class="vitamin-note">
-
-        <strong>
-          ملاحظة:
-        </strong>
-
-        المعلومات للتثقيف الغذائي ولا تغني عن استشارة الطبيب أو أخصائي التغذية عند وجود نقص أو حالة صحية.
-
-      </div>
-
-    </div>
-
-  </div>
+<p style="color:#64748b;margin-top:5px;">
+kcal
+</p>
 
 </div>
 
+<div class="bars">
+
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<h3>
+Weekly Progress
+</h3>
+
+<div class="stat-content">
+
+<p style="color:#64748b;">
+التقدم الأسبوعي
+</p>
+
+<div class="circle green">
+68%
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- TODAY WORKOUT -->
+
+<section class="section">
+
+<div class="section-header">
+
+<h2>
+Today's Workout
+</h2>
+
+<a href="workout.html">
+See All
+</a>
+
+</div>
+
+
+<div class="workout-grid">
+
+
+<a href="workout.html?workout=back" class="workout-card">
+
+<div class="workout-icon">
+B
+</div>
+
+<h3>
+Back
+</h3>
+
+<p>
+تمارين الظهر
+</p>
+
+<span class="start-btn">
+Start Now
+</span>
+
+</a>
+
+
+<a href="workout.html?workout=chest" class="workout-card">
+
+<div class="workout-icon">
+C
+</div>
+
+<h3>
+Chest
+</h3>
+
+<p>
+تمارين الصدر
+</p>
+
+<span class="start-btn">
+Start Now
+</span>
+
+</a>
+
+
+<a href="workout.html?workout=shoulders" class="workout-card">
+
+<div class="workout-icon">
+S
+</div>
+
+<h3>
+Shoulders
+</h3>
+
+<p>
+تمارين الكتف
+</p>
+
+<span class="start-btn">
+Start Now
+</span>
+
+</a>
+
+
+<a href="workout.html?workout=arms" class="workout-card">
+
+<div class="workout-icon">
+A
+</div>
+
+<h3>
+Arms
+</h3>
+
+<p>
+تمارين الذراع
+</p>
+
+<span class="start-btn">
+Start Now
+</span>
+
+</a>
+
+
+<a href="workout.html?workout=legs" class="workout-card">
+
+<div class="workout-icon">
+L
+</div>
+
+<h3>
+Legs
+</h3>
+
+<p>
+تمارين الرجل
+</p>
+
+<span class="start-btn">
+Start Now
+</span>
+
+</a>
+
+
+<a href="workout.html?workout=abs" class="workout-card">
+
+<div class="workout-icon">
+A
+</div>
+
+<h3>
+Abs
+</h3>
+
+<p>
+تمارين البطن
+</p>
+
+<span class="start-btn">
+Start Now
+</span>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+<!-- COMMUNITY NEWS -->
+
+<section class="section">
+
+<div class="section-header">
+
+<h2>
+Community News
+</h2>
+
+<a href="#">
+See All
+</a>
+
+</div>
+
+
+<div class="news-list">
+
+
+<div class="news-item">
+
+<div class="news-icon">
+N
+</div>
+
+<div>
+
+<h4>
+New Class: Neon Spin
+</h4>
+
+<p>
+New Class is. Neon Spin
+</p>
+
+</div>
+
+</div>
+
+
+<div class="news-item">
+
+<div class="news-icon">
+L
+</div>
+
+<div>
+
+<h4>
+Leaderboard Update
+</h4>
+
+<p>
+تابع ترتيبك وتقدمك.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="news-item">
+
+<div class="news-icon">
+C
+</div>
+
+<div>
+
+<h4>
+New Challenge
+</h4>
+
+<p>
+تحدي جديد مستنيك.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- WORKOUT / NUTRITION -->
+
+<section class="section">
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+Workout
+</h3>
+
+<p>
+اختار التمرين المناسب لهدفك والتزم بخطتك.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Nutrition
+</h3>
+
+<p>
+خطط غذائية واختيارات تساعدك تحقق هدفك.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section class="section" id="progress">
+
+<div class="section-header">
+
+<h2>
+Progress
+</h2>
+
+</div>
+
+
+<div class="progress-box">
+
+
+<div class="progress-row">
+
+<div>
+
+<strong>
+التقدم الأسبوعي
+</strong>
+
+<p style="color:#cbd5e1;margin-top:6px;">
+تابع تقدمك واستمر في خطتك.
+</p>
+
+</div>
+
+<div class="progress-circle">
+68%
+</div>
+
+</div>
+
+
+<div class="progress-row">
+
+<span>
+Workout
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+
+<div class="progress-row">
+
+<span>
+Nutrition
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- SUBSCRIPTIONS -->
+
+<section class="section" id="subscriptions">
+
+<div class="section-header">
+
+<h2>
+الاشتراكات
+</h2>
+
+</div>
+
+<p style="color:#64748b;margin-bottom:20px;">
+اختار الباقة المناسبة ليك وابدأ رحلتك مع BodyReset
+</p>
+
+
+<div class="subscription-grid">
+
+
+<div class="subscription-card">
+
+<h3>
+شهري
+</h3>
+
+<div class="price">
+500 جنيه
+</div>
+
+<div class="duration">
+اشتراك لمدة شهر
+</div>
+
+<ul>
+
+<li>خطة تمارين</li>
+<li>خطة تغذية</li>
+<li>حساب السعرات والماكروز</li>
+<li>متابعة التقدم</li>
+
+</ul>
+
+<button onclick="startSubscription('500')">
+ابدأ
+</button>
+
+</div>
+
+
+<div class="subscription-card">
+
+<h3>
+3 شهور
+</h3>
+
+<div class="price">
+1000 جنيه
+</div>
+
+<div class="duration">
+اشتراك لمدة 3 شهور
+</div>
+
+<ul>
+
+<li>خطة تمارين</li>
+<li>خطة تغذية</li>
+<li>حساب السعرات والماكروز</li>
+<li>متابعة التقدم</li>
+
+</ul>
+
+<button onclick="startSubscription('1000')">
+ابدأ
+</button>
+
+</div>
+
+
+<div class="subscription-card">
+
+<h3>
+سنوي
+</h3>
+
+<div class="price">
+3000 جنيه
+</div>
+
+<div class="duration">
+اشتراك لمدة سنة
+</div>
+
+<ul>
+
+<li>خطة تمارين</li>
+<li>خطة تغذية</li>
+<li>حساب السعرات والماكروز</li>
+<li>متابعة التقدم</li>
+
+</ul>
+
+<button onclick="startSubscription('3000')">
+ابدأ
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<a href="#" class="active">
+
+<span class="bottom-nav-icon">
+⌂
+</span>
+
+Home
+
+</a>
+
+
+<a href="workout.html">
+
+<span class="bottom-nav-icon">
+⌁
+</span>
+
+Workouts
+
+</a>
+
+
+<a href="#progress">
+
+<span class="bottom-nav-icon">
+◉
+</span>
+
+Progress
+
+</a>
+
+
+<a href="#" onclick="toggleProfile();return false;">
+
+<span class="bottom-nav-icon">
+○
+</span>
+
+Profile
+
+</a>
+
+</nav>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* ==========================================
-   الأكلات والوصفات
-========================================== */
-
-const foods = [
-
-  {
-    id:1,
-    name:"صدور الدجاج المشوي",
-    category:"protein",
-    type:"وصفة",
-    image:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",
-    description:"صدور دجاج مشوية غنية بالبروتين ومناسبة للوجبات الصحية.",
-    calories:330,
-    protein:55,
-    carbs:2,
-    fat:11,
-    ingredients:[
-      "200 جم صدور دجاج",
-      "ملعقة صغيرة زيت زيتون",
-      "نصف ملعقة صغيرة ملح",
-      "فلفل أسود",
-      "بابريكا",
-      "ثوم بودرة",
-      "عصير نصف ليمونة"
-    ],
-    instructions:[
-      "اغسل وجفف صدور الدجاج جيدًا.",
-      "تبّل الدجاج بالملح والفلفل والبابريكا والثوم وعصير الليمون.",
-      "اترك الدجاج في التتبيلة لمدة 20 إلى 30 دقيقة.",
-      "سخن الشواية أو الطاسة جيدًا.",
-      "ضع الدجاج واتركه حتى يأخذ لونًا ذهبيًا من الجانبين.",
-      "تأكد من نضج الدجاج بالكامل قبل التقديم."
-    ]
-  },
-
-  {
-    id:2,
-    name:"بيض كامل",
-    category:"protein",
-    type:"بروتين",
-    image:"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
-    description:"مصدر جيد للبروتين والدهون والعناصر الغذائية الأساسية.",
-    calories:155,
-    protein:13,
-    carbs:1,
-    fat:11,
-    ingredients:[
-      "2 بيضة كاملة"
-    ],
-    instructions:[
-      "ضع البيض في ماء بارد.",
-      "اتركه على النار حتى يغلي الماء.",
-      "اسلق البيض لمدة 8 إلى 10 دقائق.",
-      "برد البيض ثم قشره وقدمه."
-    ]
-  },
-
-  {
-    id:3,
-    name:"أرز أبيض مطبوخ",
-    category:"carbs",
-    type:"نشويات",
-    image:"https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=85",
-    description:"مصدر للكربوهيدرات ويمكن استخدامه بجانب البروتين والخضار.",
-    calories:205,
-    protein:4,
-    carbs:45,
-    fat:0.5,
-    ingredients:[
-      "150 جم أرز أبيض",
-      "ماء",
-      "رشة ملح"
-    ],
-    instructions:[
-      "اغسل الأرز جيدًا بالماء.",
-      "ضع الأرز والماء والملح في وعاء.",
-      "اتركه حتى يغلي.",
-      "خفف النار واتركه حتى ينضج تمامًا.",
-      "اتركه عدة دقائق قبل التقديم."
-    ]
-  },
-
-  {
-    id:4,
-    name:"شوفان بالموز",
-    category:"breakfast",
-    type:"فطار",
-    image:"https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=900&q=85",
-    description:"وجبة فطار سهلة تحتوي على الكربوهيدرات والألياف والبروتين.",
-    calories:390,
-    protein:14,
-    carbs:67,
-    fat:9,
-    ingredients:[
-      "60 جم شوفان",
-      "موزة متوسطة",
-      "200 مل لبن قليل الدسم",
-      "ملعقة صغيرة عسل",
-      "رشة قرفة"
-    ],
-    instructions:[
-      "ضع الشوفان واللبن في وعاء.",
-      "اطهه على نار هادئة مع التقليب.",
-      "قطع الموز إلى شرائح.",
-      "أضف الموز والعسل والقرفة.",
-      "قدم الوجبة وهي دافئة."
-    ]
-  },
-
-  {
-    id:5,
-    name:"بطاطس مشوية",
-    category:"carbs",
-    type:"نشويات",
-    image:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=900&q=85",
-    description:"بديل بسيط للبطاطس المقلية ويمكن استخدامه مع الوجبات الرئيسية.",
-    calories:220,
-    protein:5,
-    carbs:40,
-    fat:6,
-    ingredients:[
-      "250 جم بطاطس",
-      "ملعقة صغيرة زيت زيتون",
-      "بابريكا",
-      "ثوم بودرة",
-      "رشة ملح",
-      "فلفل أسود"
-    ],
-    instructions:[
-      "قطع البطاطس إلى قطع متساوية.",
-      "أضف الزيت والتوابل.",
-      "قلب البطاطس جيدًا.",
-      "ضعها في الفرن على حرارة 200 درجة.",
-      "اتركها حتى تصبح ذهبية ومقرمشة."
-    ]
-  },
-
-  {
-    id:6,
-    name:"سلطة خضراء",
-    category:"vegetables",
-    type:"خضار",
-    image:"https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
-    description:"سلطة خفيفة غنية بالألياف والفيتامينات.",
-    calories:120,
-    protein:3,
-    carbs:15,
-    fat:6,
-    ingredients:[
-      "خس",
-      "خيار",
-      "طماطم",
-      "فلفل ألوان",
-      "عصير ليمون",
-      "ملعقة صغيرة زيت زيتون",
-      "رشة ملح"
-    ],
-    instructions:[
-      "اغسل جميع الخضروات جيدًا.",
-      "قطع الخضروات إلى قطع مناسبة.",
-      "ضعها في وعاء كبير.",
-      "أضف عصير الليمون وزيت الزيتون والملح.",
-      "قلب المكونات جيدًا وقدّم السلطة."
-    ]
-  },
-
-  {
-    id:7,
-    name:"موز",
-    category:"fruits",
-    type:"فاكهة",
-    image:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=900&q=85",
-    description:"فاكهة غنية بالكربوهيدرات والبوتاسيوم.",
-    calories:105,
-    protein:1.3,
-    carbs:27,
-    fat:0.4,
-    ingredients:[
-      "موزة متوسطة"
-    ],
-    instructions:[
-      "اغسل قشرة الموز.",
-      "قشر الموز.",
-      "تناوله كما هو أو أضفه إلى وجبتك."
-    ]
-  },
-
-  {
-    id:8,
-    name:"زبادي يوناني بالفواكه",
-    category:"breakfast",
-    type:"فطار",
-    image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85",
-    description:"وجبة سريعة تحتوي على البروتين والفواكه.",
-    calories:280,
-    protein:20,
-    carbs:35,
-    fat:6,
-    ingredients:[
-      "200 جم زبادي يوناني",
-      "نصف موزة",
-      "50 جم فراولة",
-      "ملعقة صغيرة عسل",
-      "رشة قرفة"
-    ],
-    instructions:[
-      "ضع الزبادي في وعاء.",
-      "قطع الفواكه إلى قطع صغيرة.",
-      "أضف الفواكه فوق الزبادي.",
-      "أضف العسل والقرفة.",
-      "قدّم الوجبة مباشرة."
-    ]
-  },
-
-  {
-    id:9,
-    name:"تونة مع سلطة",
-    category:"recipes",
-    type:"وصفة",
-    image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
-    description:"وجبة عالية البروتين وسهلة التحضير.",
-    calories:310,
-    protein:36,
-    carbs:13,
-    fat:12,
-    ingredients:[
-      "علبة تونة مصفاة",
-      "خس",
-      "طماطم",
-      "خيار",
-      "عصير ليمون",
-      "ملعقة صغيرة زيت زيتون",
-      "رشة فلفل أسود"
-    ],
-    instructions:[
-      "صف التونة جيدًا.",
-      "قطع الخضروات وضعها في وعاء.",
-      "أضف التونة إلى الخضروات.",
-      "أضف الليمون وزيت الزيتون والفلفل.",
-      "قلب المكونات وقدّمها."
-    ]
-  },
-
-  {
-    id:10,
-    name:"ساندوتش دجاج صحي",
-    category:"recipes",
-    type:"وصفة",
-    image:"https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=900&q=85",
-    description:"ساندوتش عملي يحتوي على الدجاج والخضروات.",
-    calories:420,
-    protein:38,
-    carbs:42,
-    fat:12,
-    ingredients:[
-      "120 جم صدور دجاج مشوية",
-      "2 شريحة خبز كامل الحبة",
-      "خس",
-      "طماطم",
-      "خيار",
-      "ملعقة زبادي يوناني",
-      "رشة فلفل أسود"
-    ],
-    instructions:[
-      "قطّع الدجاج المشوي إلى شرائح.",
-      "ضع الزبادي على شرائح الخبز.",
-      "أضف الخس والطماطم والخيار.",
-      "ضع شرائح الدجاج فوق الخضروات.",
-      "أغلق الساندوتش وقدمه."
-    ]
-  },
-
-  {
-    id:11,
-    name:"سمك مشوي",
-    category:"protein",
-    type:"بروتين",
-    image:"https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=900&q=85",
-    description:"مصدر جيد للبروتين ويمكن تناوله مع الأرز والسلطة.",
-    calories:290,
-    protein:42,
-    carbs:2,
-    fat:12,
-    ingredients:[
-      "200 جم سمك",
-      "عصير ليمون",
-      "ثوم",
-      "كمون",
-      "فلفل أسود",
-      "رشة ملح"
-    ],
-    instructions:[
-      "نظف السمك جيدًا.",
-      "تبله بالليمون والثوم والكمون والفلفل.",
-      "اتركه في التتبيلة لمدة 20 دقيقة.",
-      "ضعه على الشواية.",
-      "اتركه حتى ينضج من الجانبين."
-    ]
-  },
-
-  {
-    id:12,
-    name:"تفاحة",
-    category:"fruits",
-    type:"فاكهة",
-    image:"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=900&q=85",
-    description:"فاكهة سهلة وسريعة وغنية بالألياف.",
-    calories:95,
-    protein:0.5,
-    carbs:25,
-    fat:0.3,
-    ingredients:[
-      "تفاحة متوسطة"
-    ],
-    instructions:[
-      "اغسل التفاحة جيدًا.",
-      "يمكن تناولها كاملة أو تقطيعها إلى شرائح."
-    ]
-  }
-
-];
-
-
-/* ==========================================
-   الفيتامينات والمعادن
-========================================== */
-
-const vitamins = [
-
-  {
-    id:1,
-    name:"فيتامين A",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد في دعم صحة العين والمناعة والجلد والأنسجة.",
-    sources:[
-      "الكبد",
-      "الجزر",
-      "البطاطا الحلوة",
-      "السبانخ",
-      "البيض",
-      "منتجات الألبان"
-    ],
-    daily:"الرجال: 900 ميكروجرام — النساء: 700 ميكروجرام",
-    deficiency:[
-      "ضعف الرؤية الليلية",
-      "جفاف العين والجلد",
-      "ضعف المناعة"
-    ]
-  },
-
-  {
-    id:2,
-    name:"فيتامين B1",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد الجسم على تحويل الكربوهيدرات إلى طاقة ويدعم وظائف الأعصاب.",
-    sources:[
-      "الحبوب الكاملة",
-      "البقوليات",
-      "المكسرات",
-      "البذور",
-      "اللحوم"
-    ],
-    daily:"الرجال: 1.2 مجم — النساء: 1.1 مجم",
-    deficiency:[
-      "الإرهاق",
-      "ضعف الشهية",
-      "مشكلات الأعصاب في حالات النقص الشديد"
-    ]
-  },
-
-  {
-    id:3,
-    name:"فيتامين B2",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد في إنتاج الطاقة ويدعم صحة الجلد والعينين والأنسجة.",
-    sources:[
-      "اللبن",
-      "البيض",
-      "اللحوم",
-      "اللوز",
-      "الفطر"
-    ],
-    daily:"الرجال: 1.3 مجم — النساء: 1.1 مجم",
-    deficiency:[
-      "تشقق الشفاه",
-      "التهاب اللسان",
-      "مشكلات الجلد"
-    ]
-  },
-
-  {
-    id:4,
-    name:"فيتامين B3",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد الجسم على تحويل الغذاء إلى طاقة ويدعم الجلد والجهاز العصبي.",
-    sources:[
-      "الدجاج",
-      "التونة",
-      "اللحم",
-      "الفول السوداني",
-      "الحبوب الكاملة"
-    ],
-    daily:"الرجال: 16 مجم — النساء: 14 مجم",
-    deficiency:[
-      "الإرهاق",
-      "مشكلات الجلد",
-      "ضعف الهضم في حالات النقص الشديد"
-    ]
-  },
-
-  {
-    id:5,
-    name:"فيتامين B5",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد في تصنيع الطاقة وبعض الهرمونات والدهون.",
-    sources:[
-      "الدجاج",
-      "البيض",
-      "الفطر",
-      "الأفوكادو",
-      "الحبوب الكاملة"
-    ],
-    daily:"حوالي 5 مجم للبالغين",
-    deficiency:[
-      "الإرهاق",
-      "الصداع",
-      "تنميل الأطراف في حالات النقص الشديد"
-    ]
-  },
-
-  {
-    id:6,
-    name:"فيتامين B6",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يدخل في عمليات التمثيل الغذائي للبروتين ويساعد في تكوين النواقل العصبية.",
-    sources:[
-      "الدجاج",
-      "السمك",
-      "البطاطس",
-      "الموز",
-      "الحمص"
-    ],
-    daily:"للبالغين حتى 50 سنة: 1.3 مجم تقريبًا",
-    deficiency:[
-      "فقر الدم",
-      "مشكلات الجلد",
-      "ضعف المناعة"
-    ]
-  },
-
-  {
-    id:7,
-    name:"فيتامين B7",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد في عمليات التمثيل الغذائي للدهون والكربوهيدرات والبروتين.",
-    sources:[
-      "البيض المطهو",
-      "المكسرات",
-      "البذور",
-      "البقوليات",
-      "البطاطا"
-    ],
-    daily:"حوالي 30 ميكروجرام للبالغين",
-    deficiency:[
-      "تساقط الشعر",
-      "طفح جلدي",
-      "الإرهاق"
-    ]
-  },
-
-  {
-    id:8,
-    name:"فيتامين B9",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"مهم لتكوين DNA وخلايا الدم ويزداد الاحتياج إليه أثناء الحمل.",
-    sources:[
-      "الخضروات الورقية",
-      "البقوليات",
-      "الأفوكادو",
-      "الحمضيات",
-      "الأطعمة المدعمة"
-    ],
-    daily:"حوالي 400 ميكروجرام للبالغين",
-    deficiency:[
-      "فقر الدم",
-      "الإرهاق",
-      "ضعف النمو الخلوي"
-    ]
-  },
-
-  {
-    id:9,
-    name:"فيتامين B12",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"ضروري لتكوين خلايا الدم الحمراء ووظائف الجهاز العصبي.",
-    sources:[
-      "اللحوم",
-      "الأسماك",
-      "البيض",
-      "اللبن",
-      "منتجات الألبان"
-    ],
-    daily:"حوالي 2.4 ميكروجرام للبالغين",
-    deficiency:[
-      "الإرهاق",
-      "فقر الدم",
-      "تنميل الأطراف",
-      "مشكلات عصبية في حالات النقص"
-    ]
-  },
-
-  {
-    id:10,
-    name:"فيتامين C",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يدعم المناعة ويساعد على تكوين الكولاجين وامتصاص الحديد.",
-    sources:[
-      "البرتقال",
-      "الجوافة",
-      "الفراولة",
-      "الفلفل",
-      "البروكلي"
-    ],
-    daily:"الرجال: 90 مجم — النساء: 75 مجم",
-    deficiency:[
-      "نزيف اللثة",
-      "بطء التئام الجروح",
-      "الإرهاق"
-    ]
-  },
-
-  {
-    id:11,
-    name:"فيتامين D",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"يساعد الجسم على امتصاص الكالسيوم ويدعم صحة العظام والعضلات.",
-    sources:[
-      "التعرض للشمس",
-      "الأسماك الدهنية",
-      "صفار البيض",
-      "الأطعمة المدعمة"
-    ],
-    daily:"حوالي 15 ميكروجرام (600 وحدة دولية) للبالغين",
-    deficiency:[
-      "ضعف العظام",
-      "آلام العضلات",
-      "ضعف العضلات"
-    ]
-  },
-
-  {
-    id:12,
-    name:"فيتامين E",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"مضاد أكسدة يساعد على حماية الخلايا.",
-    sources:[
-      "اللوز",
-      "بذور دوار الشمس",
-      "الفول السوداني",
-      "الزيوت النباتية",
-      "السبانخ"
-    ],
-    daily:"حوالي 15 مجم للبالغين",
-    deficiency:[
-      "ضعف العضلات",
-      "مشكلات الأعصاب في حالات النقص الشديد"
-    ]
-  },
-
-  {
-    id:13,
-    name:"فيتامين K",
-    type:"vitamin",
-    typeName:"فيتامين",
-    function:"مهم لتجلط الدم الطبيعي وصحة العظام.",
-    sources:[
-      "السبانخ",
-      "الجرجير",
-      "الكرنب",
-      "البروكلي",
-      "الخضروات الورقية"
-    ],
-    daily:"الرجال: 120 ميكروجرام — النساء: 90 ميكروجرام",
-    deficiency:[
-      "زيادة قابلية النزيف",
-      "ضعف صحة العظام في بعض الحالات"
-    ]
-  },
-
-  {
-    id:14,
-    name:"الكالسيوم",
-    type:"mineral",
-    typeName:"معدن",
-    function:"مهم لصحة العظام والأسنان ويساعد العضلات والأعصاب على العمل بشكل طبيعي.",
-    sources:[
-      "اللبن",
-      "الزبادي",
-      "الجبن",
-      "السردين",
-      "الخضروات الورقية"
-    ],
-    daily:"حوالي 1000 مجم للبالغين",
-    deficiency:[
-      "ضعف العظام",
-      "تشنجات العضلات",
-      "زيادة خطر هشاشة العظام"
-    ]
-  },
-
-  {
-    id:15,
-    name:"الحديد",
-    type:"mineral",
-    typeName:"معدن",
-    function:"ضروري لتكوين الهيموجلوبين ونقل الأكسجين في الدم.",
-    sources:[
-      "اللحوم الحمراء",
-      "الكبد",
-      "العدس",
-      "الفاصوليا",
-      "السبانخ"
-    ],
-    daily:"الرجال: 8 مجم — النساء قبل انقطاع الدورة: 18 مجم",
-    deficiency:[
-      "الإرهاق",
-      "الدوخة",
-      "شحوب الجلد",
-      "فقر الدم"
-    ]
-  },
-
-  {
-    id:16,
-    name:"المغنيسيوم",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يساعد في وظائف العضلات والأعصاب وإنتاج الطاقة.",
-    sources:[
-      "اللوز",
-      "الكاجو",
-      "البذور",
-      "الحبوب الكاملة",
-      "البقوليات"
-    ],
-    daily:"الرجال: 400–420 مجم — النساء: 310–320 مجم",
-    deficiency:[
-      "تشنجات العضلات",
-      "الإرهاق",
-      "ضعف الشهية"
-    ]
-  },
-
-  {
-    id:17,
-    name:"الزنك",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يدعم المناعة والتئام الجروح وصحة الجلد.",
-    sources:[
-      "اللحوم",
-      "المأكولات البحرية",
-      "البيض",
-      "المكسرات",
-      "البقوليات"
-    ],
-    daily:"الرجال: 11 مجم — النساء: 8 مجم",
-    deficiency:[
-      "ضعف المناعة",
-      "بطء التئام الجروح",
-      "ضعف الشهية"
-    ]
-  },
-
-  {
-    id:18,
-    name:"البوتاسيوم",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يساعد في توازن السوائل ووظائف العضلات والأعصاب.",
-    sources:[
-      "الموز",
-      "البطاطس",
-      "الطماطم",
-      "الفاصوليا",
-      "الزبادي"
-    ],
-    daily:"حوالي 3400 مجم للرجال و2600 مجم للنساء",
-    deficiency:[
-      "ضعف العضلات",
-      "الإرهاق",
-      "تشنجات العضلات"
-    ]
-  },
-
-  {
-    id:19,
-    name:"الفوسفور",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يدخل في صحة العظام والأسنان وإنتاج الطاقة داخل الخلايا.",
-    sources:[
-      "اللحوم",
-      "السمك",
-      "اللبن",
-      "البيض",
-      "البقوليات"
-    ],
-    daily:"حوالي 700 مجم للبالغين",
-    deficiency:[
-      "ضعف العضلات",
-      "ضعف العظام",
-      "الإرهاق"
-    ]
-  },
-
-  {
-    id:20,
-    name:"السيلينيوم",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يساعد في حماية الخلايا ويدعم وظائف الغدة الدرقية والمناعة.",
-    sources:[
-      "السمك",
-      "البيض",
-      "اللحوم",
-      "المكسرات البرازيلية",
-      "الحبوب"
-    ],
-    daily:"حوالي 55 ميكروجرام للبالغين",
-    deficiency:[
-      "ضعف العضلات",
-      "مشكلات الغدة الدرقية في حالات النقص"
-    ]
-  },
-
-  {
-    id:21,
-    name:"اليود",
-    type:"mineral",
-    typeName:"معدن",
-    function:"ضروري لإنتاج هرمونات الغدة الدرقية.",
-    sources:[
-      "الملح المدعم باليود",
-      "الأسماك",
-      "المأكولات البحرية",
-      "منتجات الألبان",
-      "البيض"
-    ],
-    daily:"حوالي 150 ميكروجرام للبالغين",
-    deficiency:[
-      "تضخم الغدة الدرقية",
-      "ضعف إنتاج هرمونات الغدة الدرقية"
-    ]
-  },
-
-  {
-    id:22,
-    name:"النحاس",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يساعد في تكوين خلايا الدم والأنسجة ويدعم وظائف الأعصاب والمناعة.",
-    sources:[
-      "المكسرات",
-      "البذور",
-      "المأكولات البحرية",
-      "الكبد",
-      "الشوكولاتة الداكنة"
-    ],
-    daily:"حوالي 900 ميكروجرام للبالغين",
-    deficiency:[
-      "فقر الدم",
-      "ضعف المناعة",
-      "مشكلات في الأنسجة والأعصاب"
-    ]
-  },
-
-  {
-    id:23,
-    name:"المنغنيز",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يدخل في عمليات التمثيل الغذائي ودعم العظام وحماية الخلايا.",
-    sources:[
-      "الحبوب الكاملة",
-      "المكسرات",
-      "البقوليات",
-      "الخضروات الورقية",
-      "الشاي"
-    ],
-    daily:"الرجال: 2.3 مجم — النساء: 1.8 مجم",
-    deficiency:[
-      "نقصه نادر، وقد يؤثر في العظام والتمثيل الغذائي"
-    ]
-  },
-
-  {
-    id:24,
-    name:"الصوديوم",
-    type:"mineral",
-    typeName:"معدن",
-    function:"يساعد في توازن السوائل ووظائف الأعصاب والعضلات.",
-    sources:[
-      "ملح الطعام",
-      "الأطعمة المصنعة",
-      "الجبن",
-      "الخبز",
-      "المخللات"
-    ],
-    daily:"يُفضل ألا يتجاوز معظم البالغين 2300 مجم يوميًا",
-    deficiency:[
-      "الصداع",
-      "الغثيان",
-      "الضعف والتشوش في حالات النقص الشديد"
-    ]
-  }
-
-];
-
-
-/* ==========================================
-   متغيرات
-========================================== */
-
-let currentCategory = "all";
-let currentVitaminCategory = "all";
-
-
-/* ==========================================
-   عرض الأكلات
-========================================== */
-
-function renderFoods(){
-
-  const grid =
-    document.getElementById("foodGrid");
-
-  const empty =
-    document.getElementById("empty");
-
-  const search =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
-
-
-  const filtered =
-    foods.filter(function(food){
-
-      const matchesCategory =
-        currentCategory === "all" ||
-        food.category === currentCategory;
-
-
-      const text =
-        (
-          food.name +
-          " " +
-          food.description +
-          " " +
-          food.type
-        ).toLowerCase();
-
-
-      const matchesSearch =
-        search === "" ||
-        text.includes(search);
-
-
-      return (
-        matchesCategory &&
-        matchesSearch
-      );
-
-    });
-
-
-  grid.innerHTML = "";
-
-
-  if(filtered.length === 0){
-
-    empty.style.display = "block";
-
-    document.getElementById(
-      "resultsCount"
-    ).textContent =
-      "لا توجد نتائج";
-
-    return;
-
-  }
-
-
-  empty.style.display = "none";
-
-
-  document.getElementById(
-    "resultsCount"
-  ).textContent =
-    "تم العثور على " +
-    filtered.length +
-    " نتيجة";
-
-
-  filtered.forEach(function(food){
-
-    const card =
-      document.createElement("div");
-
-    card.className =
-      "food-card";
-
-
-    card.onclick =
-      function(){
-
-        openFood(food.id);
-
-      };
-
-
-    card.innerHTML = `
-
-      <img
-        class="food-image"
-        src="${food.image}"
-        alt="${food.name}"
-      >
-
-      <div class="food-content">
-
-        <div class="food-category">
-          ${food.type}
-        </div>
-
-        <h3 class="food-title">
-          ${food.name}
-        </h3>
-
-        <p class="food-description">
-          ${food.description}
-        </p>
-
-        <div class="macros">
-
-          <div class="macro">
-            <span>بروتين</span>
-            <strong>${food.protein}g</strong>
-          </div>
-
-          <div class="macro">
-            <span>كارب</span>
-            <strong>${food.carbs}g</strong>
-          </div>
-
-          <div class="macro">
-            <span>دهون</span>
-            <strong>${food.fat}g</strong>
-          </div>
-
-        </div>
-
-        <div class="calories">
-          ${food.calories} kcal
-        </div>
-
-      </div>
-
-    `;
-
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-
-/* ==========================================
-   البحث في الأكلات
-========================================== */
-
-function searchFoods(){
-
-  renderFoods();
-
-}
-
-
-/* ==========================================
-   تصنيف الأكلات
-========================================== */
-
-function filterCategory(
-  category,
-  button
-){
-
-  currentCategory =
-    category;
-
-
-  document
-    .querySelectorAll(".category")
-    .forEach(function(item){
-
-      item.classList.remove("active");
-
-    });
-
-
-  button.classList.add("active");
-
-
-  renderFoods();
-
-}
-
-
-/* ==========================================
-   فتح الوصفة
-========================================== */
-
-function openFood(id){
-
-  const food =
-    foods.find(function(item){
-
-      return item.id === id;
-
-    });
-
-
-  if(!food) return;
-
-
-  document.getElementById(
-    "modalImage"
-  ).src = food.image;
-
-
-  document.getElementById(
-    "modalImage"
-  ).alt = food.name;
-
-
-  document.getElementById(
-    "modalCategory"
-  ).textContent =
-    food.type;
-
-
-  document.getElementById(
-    "modalTitle"
-  ).textContent =
-    food.name;
-
-
-  document.getElementById(
-    "modalDescription"
-  ).textContent =
-    food.description;
-
-
-  document.getElementById(
-    "modalCalories"
-  ).textContent =
-    food.calories;
-
-
-  document.getElementById(
-    "modalProtein"
-  ).textContent =
-    food.protein;
-
-
-  document.getElementById(
-    "modalCarbs"
-  ).textContent =
-    food.carbs;
-
-
-  document.getElementById(
-    "modalFat"
-  ).textContent =
-    food.fat;
-
-
-  const ingredients =
-    document.getElementById(
-      "modalIngredients"
-    );
-
-
-  ingredients.innerHTML = "";
-
-
-  food.ingredients.forEach(
-    function(item){
-
-      const li =
-        document.createElement("li");
-
-      li.textContent =
-        item;
-
-      ingredients.appendChild(li);
-
-    }
-  );
-
-
-  const instructions =
-    document.getElementById(
-      "modalInstructions"
-    );
-
-
-  instructions.innerHTML = "";
-
-
-  food.instructions.forEach(
-    function(item){
-
-      const li =
-        document.createElement("li");
-
-      li.textContent =
-        item;
-
-      instructions.appendChild(li);
-
-    }
-  );
-
-
-  document
-    .getElementById("modal")
-    .classList.add("show");
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-/* ==========================================
-   إغلاق الوصفة
-========================================== */
-
-function closeModal(){
-
-  document
-    .getElementById("modal")
-    .classList.remove("show");
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-function closeOutside(event){
-
-  if(
-    event.target ===
-    document.getElementById("modal")
-  ){
-
-    closeModal();
-
-  }
-
-}
-
-
-/* ==========================================
-   البحث في الفيتامينات والمعادن
-========================================== */
-
-function searchVitamins(){
-
-  renderVitamins();
-
-}
-
-
-/* ==========================================
-   عرض الفيتامينات والمعادن
-========================================== */
-
-function renderVitamins(){
-
-  const grid =
-    document.getElementById(
-      "vitaminsGrid"
-    );
-
-  const empty =
-    document.getElementById(
-      "vitaminsEmpty"
-    );
-
-  const search =
-    document
-      .getElementById("vitaminSearch")
-      .value
-      .trim()
-      .toLowerCase();
-
-
-  const filtered =
-    vitamins.filter(function(item){
-
-      const categoryMatch =
-        currentVitaminCategory === "all" ||
-        item.type === currentVitaminCategory;
-
-
-      const text =
-        (
-          item.name +
-          " " +
-          item.function +
-          " " +
-          item.sources.join(" ")
-        ).toLowerCase();
-
-
-      const searchMatch =
-        search === "" ||
-        text.includes(search);
-
-
-      return (
-        categoryMatch &&
-        searchMatch
-      );
-
-    });
-
-
-  grid.innerHTML = "";
-
-
-  if(filtered.length === 0){
-
-    empty.style.display = "block";
-
-    return;
-
-  }
-
-
-  empty.style.display = "none";
-
-
-  filtered.forEach(function(item){
-
-    const card =
-      document.createElement("div");
-
-    card.className =
-      "vitamin-card";
-
-
-    card.onclick =
-      function(){
-
-        openVitamin(item.id);
-
-      };
-
-
-    card.innerHTML = `
-
-      <div class="vitamin-card-type">
-        ${item.typeName}
-      </div>
-
-      <h3>
-        ${item.name}
-      </h3>
-
-      <p>
-        ${item.function}
-      </p>
-
-      <div class="vitamin-source">
-        أهم المصادر الغذائية
-      </div>
-
-    `;
-
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-
-/* ==========================================
-   تصنيف الفيتامينات والمعادن
-========================================== */
-
-function filterVitamins(
-  category,
-  button
-){
-
-  currentVitaminCategory =
-    category;
-
-
-  document
-    .querySelectorAll(".vitamin-category")
-    .forEach(function(item){
-
-      item.classList.remove("active");
-
-    });
-
-
-  button.classList.add("active");
-
-
-  renderVitamins();
-
-}
-
-
-/* ==========================================
-   فتح تفاصيل الفيتامين
-========================================== */
-
-function openVitamin(id){
-
-  const item =
-    vitamins.find(function(v){
-
-      return v.id === id;
-
-    });
-
-
-  if(!item) return;
-
-
-  document.getElementById(
-    "modalVitaminType"
-  ).textContent =
-    item.typeName;
-
-
-  document.getElementById(
-    "modalVitaminName"
-  ).textContent =
-    item.name;
-
-
-  document.getElementById(
-    "modalVitaminFunction"
-  ).textContent =
-    item.function;
-
-
-  document.getElementById(
-    "modalVitaminDaily"
-  ).textContent =
-    item.daily;
-
-
-  const sources =
-    document.getElementById(
-      "modalVitaminSources"
-    );
-
-  sources.innerHTML = "";
-
-
-  item.sources.forEach(
-    function(source){
-
-      const li =
-        document.createElement("li");
-
-      li.textContent =
-        source;
-
-      sources.appendChild(li);
-
-    }
-  );
-
-
-  const deficiency =
-    document.getElementById(
-      "modalVitaminDeficiency"
-    );
-
-  deficiency.innerHTML = "";
-
-
-  item.deficiency.forEach(
-    function(text){
-
-      const li =
-        document.createElement("li");
-
-      li.textContent =
-        text;
-
-      deficiency.appendChild(li);
-
-    }
-  );
-
-
-  document
-    .getElementById("vitaminModal")
-    .classList.add("show");
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-/* ==========================================
-   إغلاق تفاصيل الفيتامين
-========================================== */
-
-function closeVitaminModal(){
-
-  document
-    .getElementById("vitaminModal")
-    .classList.remove("show");
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-function closeVitaminOutside(event){
-
-  if(
-    event.target ===
-    document.getElementById("vitaminModal")
-  ){
-
-    closeVitaminModal();
-
-  }
-
-}
-
-
-/* ==========================================
-   زر ESC
-========================================== */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key === "Escape"){
-
-      closeModal();
-      closeVitaminModal();
-
-    }
-
-  }
+const SUPABASE_URL =
+"https://byodeoaluspphqduxmlh.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 
-/* ==========================================
-   تشغيل الصفحة
-========================================== */
+/* MENU */
 
-renderFoods();
-renderVitamins();
+function toggleMenu(){
+
+document
+.getElementById("sideMenu")
+.classList.toggle("active");
+
+}
+
+
+/* PROFILE */
+
+function toggleProfile(){
+
+document
+.getElementById("profilePopup")
+.classList.toggle("active");
+
+}
+
+
+/* NOTIFICATION */
+
+function toggleNotification(){
+
+document
+.getElementById("notificationPopup")
+.classList.toggle("active");
+
+}
+
+
+/* SUBSCRIPTION */
+
+function startSubscription(plan){
+
+window.location.href =
+"auth.html?plan=" +
+encodeURIComponent(plan);
+
+}
+
+
+/* LOGOUT */
+
+async function logoutUser(){
+
+await supabaseClient.auth.signOut();
+
+window.location.href =
+"auth.html";
+
+}
+
+
+/* LOAD USER */
+
+async function loadUser(){
+
+const {
+data:{
+user
+}
+} =
+await supabaseClient.auth.getUser();
+
+
+if(!user){
+
+window.location.href =
+"auth.html";
+
+return;
+
+}
+
+
+document.getElementById(
+"profileEmail"
+).textContent =
+"البريد: " +
+(user.email || "-");
+
+
+const username =
+user.user_metadata?.username ||
+user.user_metadata?.user_name ||
+"User";
+
+
+document.getElementById(
+"profileUsername"
+).textContent =
+"اسم المستخدم: " +
+username;
+
+
+const phone =
+user.user_metadata?.phone ||
+"-";
+
+
+document.getElementById(
+"profilePhone"
+).textContent =
+"الهاتف: " +
+phone;
+
+
+document.querySelector(
+".profile-circle"
+).textContent =
+username.charAt(0).toUpperCase();
+
+}
+
+
+loadUser();
 
 </script>
 
