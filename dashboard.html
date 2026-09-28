@@ -1,1514 +1,2243 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  <head>    <meta charset="UTF-8">  <meta name="viewport"  
+content="width=device-width, initial-scale=1.0">
+
+  <title>BodyReset | لوحة التحكم</title>    <style>  
+  
+    *{  
+      box-sizing:border-box;  
+      margin:0;  
+      padding:0;  
+      font-family:Arial,sans-serif;  
+    }  
+  
+    body{  
+      background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);  
+      color:#071a33;  
+      min-height:100vh;  
+    }  
+  
+    header{  
+      height:75px;  
+      padding:0 25px;  
+      display:flex;  
+      justify-content:space-between;  
+      align-items:center;  
+      background:#000000;  
+      border-bottom:1px solid #071a33;  
+    }  
+  
+    .logo{  
+      font-size:25px;  
+      font-weight:bold;  
+      letter-spacing:.5px;  
+      color:#ffffff;  
+    }  
+  
+    .logo span{  
+      color:#2563eb;  
+    }  
+  
+    .header-left{  
+      display:flex;  
+      align-items:center;  
+      gap:20px;  
+    }  
+  
+    .profile{  
+      width:40px;  
+      height:40px;  
+      border-radius:50%;  
+      background:#f97316;  
+      border:1px solid #f97316;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      color:#ffffff;  
+      font-weight:bold;  
+      cursor:pointer;  
+      transition:.2s;  
+    }  
+  
+    .profile:hover{  
+      border-color:#f97316;  
+      box-shadow:0 0 12px rgba(249,115,22,.25);  
+    }  
+  
+    .menu-btn{  
+      width:auto;  
+      height:auto;  
+      padding:0;  
+      background:none;  
+      border:none;  
+      color:#ffffff;  
+      cursor:pointer;  
+      font-size:30px;  
+      line-height:1;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      position:relative;  
+      z-index:4001;  
+    }  
+  
+    .menu-btn:hover{  
+      color:#2563eb;  
+    }  
+  
+    .menu-overlay{  
+      position:fixed;  
+      inset:0;  
+      background:rgba(0,0,0,.55);  
+      z-index:3999;  
+      display:none;  
+    }  
+  
+    .menu-overlay.show{  
+      display:block;  
+    }  
+  
+    .side-menu{  
+      position:fixed;  
+      top:0;  
+      left:0;  
+      width:300px;  
+      height:100vh;  
+      background:#ffffff;  
+      border-right:1px solid #071a33;  
+      z-index:4000;  
+      transform:translateX(-100%);  
+      transition:.3s ease;  
+      padding:90px 20px 30px;  
+      box-shadow:8px 0 30px rgba(0,0,0,.45);  
+      overflow-y:auto;  
+    }  
+  
+    .side-menu.show{  
+      transform:translateX(0);  
+    }  
+  
+    .side-menu-title{  
+      font-size:25px;  
+      font-weight:bold;  
+      margin-bottom:28px;  
+      color:#071a33;  
+    }  
+  
+    .side-menu-title span{  
+      color:#2563eb;  
+    }  
+  
+    .menu-item{  
+      width:100%;  
+      display:flex;  
+      align-items:center;  
+      justify-content:space-between;  
+      background:#ffffff;  
+      color:#071a33;  
+      border:1px solid #d7dee8;  
+      padding:17px 18px;  
+      border-radius:12px;  
+      margin-bottom:12px;  
+      text-decoration:none;  
+      cursor:pointer;  
+      font-size:17px;  
+      transition:.2s;  
+    }  
+  
+    .menu-item:hover{  
+      border-color:#2563eb;  
+      color:#2563eb;  
+    }  
+  
+    .menu-logout{  
+      color:#b91c1c;  
+    }  
+  
+    .menu-logout:hover{  
+      border-color:#b91c1c;  
+      color:#b91c1c;  
+    }  
+  
+    .menu-arrow{  
+      color:#2563eb;  
+      font-size:20px;  
+    }  
+  
+    .profile-popup{  
+      position:fixed;  
+      top:85px;  
+      right:25px;  
+      width:300px;  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:16px;  
+      padding:22px;  
+      z-index:5000;  
+      box-shadow:0 10px 35px rgba(0,0,0,.35);  
+      display:none;  
+    }  
+  
+    .profile-popup.show{  
+      display:block;  
+    }  
+  
+    .profile-popup-header{  
+      display:flex;  
+      align-items:center;  
+      justify-content:space-between;  
+      margin-bottom:20px;  
+    }  
+  
+    .profile-popup-header h2{  
+      font-size:21px;  
+      color:#071a33;  
+    }  
+  
+    .close-profile{  
+      width:30px;  
+      height:30px;  
+      border-radius:50%;  
+      background:#071a33;  
+      border:1px solid #071a33;  
+      color:#ffffff;  
+      cursor:pointer;  
+      font-size:16px;  
+    }  
+  
+    .profile-data{  
+      background:#f4f7fa;  
+      border:1px solid #d7dee8;  
+      border-radius:12px;  
+      padding:15px;  
+      margin-bottom:10px;  
+    }  
+  
+    .profile-data span{  
+      display:block;  
+      color:#64748b;  
+      font-size:12px;  
+      margin-bottom:6px;  
+    }  
+  
+    .profile-data strong{  
+      color:#071a33;  
+      font-size:15px;  
+      word-break:break-word;  
+    }  
+  
+    .container{  
+      max-width:1100px;  
+      margin:auto;  
+      padding:28px 20px 100px;  
+    }  
+  
+    .top-area{  
+      display:flex;  
+      justify-content:flex-start;  
+      align-items:center;  
+      margin-bottom:22px;  
+    }  
+  
+    .notification{  
+      width:44px;  
+      height:44px;  
+      border-radius:50%;  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      position:relative;  
+      color:#071a33;  
+      cursor:pointer;  
+      transition:.2s;  
+      padding:0;  
+    }  
+  
+    .notification:hover{  
+      border-color:#2563eb;  
+      color:#2563eb;  
+      box-shadow:0 0 14px rgba(37,99,235,.15);  
+    }  
+  
+    .notification svg{  
+      width:21px;  
+      height:21px;  
+      stroke:currentColor;  
+      fill:none;  
+      stroke-width:1.8;  
+      stroke-linecap:round;  
+      stroke-linejoin:round;  
+    }  
+  
+    .notification-dot{  
+      width:8px;  
+      height:8px;  
+      background:#f97316;  
+      border-radius:50%;  
+      position:absolute;  
+      top:6px;  
+      right:7px;  
+      box-shadow:0 0 8px rgba(249,115,22,.45);  
+    }  
+  
+    .notification-dot.hidden{  
+      display:none;  
+    }  
+  
+    .notification-popup{  
+      position:fixed;  
+      top:85px;  
+      right:25px;  
+      width:340px;  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:16px;  
+      padding:20px;  
+      z-index:5000;  
+      box-shadow:0 10px 35px rgba(0,0,0,.35);  
+      display:none;  
+    }  
+  
+    .notification-popup.show{  
+      display:block;  
+    }  
+  
+    .notification-popup-header{  
+      display:flex;  
+      align-items:center;  
+      justify-content:space-between;  
+      margin-bottom:16px;  
+    }  
+  
+    .notification-popup-header h2{  
+      font-size:20px;  
+      color:#071a33;  
+    }  
+  
+    .close-notification{  
+      width:30px;  
+      height:30px;  
+      border-radius:50%;  
+      background:#071a33;  
+      border:1px solid #071a33;  
+      color:#ffffff;  
+      cursor:pointer;  
+      font-size:16px;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+    }  
+  
+    .close-notification:hover{  
+      border-color:#2563eb;  
+      background:#2563eb;  
+    }  
+  
+    .notification-item{  
+      display:flex;  
+      align-items:flex-start;  
+      gap:12px;  
+      padding:14px 0;  
+      border-bottom:1px solid #d7dee8;  
+    }  
+  
+    .notification-item:last-child{  
+      border-bottom:none;  
+      padding-bottom:0;  
+    }  
+  
+    .notification-icon{  
+      width:38px;  
+      height:38px;  
+      min-width:38px;  
+      border-radius:10px;  
+      background:#071a33;  
+      border:1px solid #071a33;  
+      color:#ffffff;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      font-size:18px;  
+    }  
+  
+    .notification-item strong{  
+      display:block;  
+      color:#071a33;  
+      font-size:14px;  
+      margin-bottom:5px;  
+    }  
+  
+    .notification-item span{  
+      display:block;  
+      color:#64748b;  
+      font-size:12px;  
+      line-height:1.6;  
+    }  
+  
+    /* STATS */  
+  
+    .stats{  
+      display:flex;  
+      flex-direction:row-reverse;  
+      gap:18px;  
+      margin-bottom:35px;  
+      width:100%;  
+      overflow-x:auto;  
+      overflow-y:hidden;  
+      scroll-snap-type:x mandatory;  
+      padding-bottom:8px;  
+      -webkit-overflow-scrolling:touch;  
+    }  
+  
+    .stats::-webkit-scrollbar{  
+      height:5px;  
+    }  
+  
+    .stats::-webkit-scrollbar-track{  
+      background:#111111;  
+      border-radius:10px;  
+    }  
+  
+    .stats::-webkit-scrollbar-thumb{  
+      background:#2563eb;  
+      border-radius:10px;  
+    }  
+  
+    .stat{  
+      flex:0 0 calc((100% - 36px)/3);  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:20px;  
+      padding:25px 20px;  
+      min-height:225px;  
+      scroll-snap-align:start;  
+    }  
+  
+    .stat h3{  
+      font-size:17px;  
+      margin-bottom:20px;  
+      color:#2563eb;  
+    }  
+  
+    .activity-circles{  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      gap:18px;  
+    }  
+  
+    .activity-circle{  
+      width:82px;  
+      height:82px;  
+      border-radius:50%;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      position:relative;  
+    }  
+  
+    .activity-circle.progress{  
+      background:conic-gradient(  
+        #2563eb 0%,  
+        #d7dee8 0%  
+      );  
+    }  
+  
+    .activity-circle.burn{  
+      background:conic-gradient(  
+        #2563eb 0%,  
+        #d7dee8 0%  
+      );  
+    }  
+  
+    .activity-circle::before{  
+      content:"";  
+      position:absolute;  
+      width:62px;  
+      height:62px;  
+      background:#ffffff;  
+      border-radius:50%;  
+    }  
+  
+    .circle-content{  
+      position:relative;  
+      z-index:2;  
+      text-align:center;  
+    }  
+  
+    .circle-content strong{  
+      display:block;  
+      color:#2563eb;  
+      font-size:18px;  
+    }  
+  
+    .circle-content span{  
+      display:block;  
+      color:#64748b;  
+      font-size:10px;  
+      margin-top:3px;  
+    }  
+  
+    .calorie-number{  
+      text-align:center;  
+      margin-bottom:15px;  
+    }  
+  
+    .calorie-number strong{  
+      color:#2563eb;  
+      font-size:32px;  
+    }  
+  
+    .calorie-number span{  
+      color:#64748b;  
+      font-size:14px;  
+    }  
+  
+    .calorie-chart{  
+      height:90px;  
+      display:flex;  
+      align-items:end;  
+      justify-content:center;  
+      gap:9px;  
+    }  
+  
+    .bar{  
+      width:13px;  
+      background:#2563eb;  
+      border-radius:6px 6px 2px 2px;  
+      height:0;  
+    }  
+  
+    .weekly-progress{  
+      display:flex;  
+      justify-content:center;  
+      align-items:center;  
+    }  
+  
+    .progress-circle{  
+      width:125px;  
+      height:125px;  
+      border-radius:50%;  
+      background:conic-gradient(  
+        #2563eb 0%,  
+        #d7dee8 0%  
+      );  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      position:relative;  
+    }  
+  
+    .progress-circle::before{  
+      content:"";  
+      position:absolute;  
+      width:95px;  
+      height:95px;  
+      background:#ffffff;  
+      border-radius:50%;  
+    }  
+  
+    .progress-circle strong{  
+      position:relative;  
+      z-index:2;  
+      color:#2563eb;  
+      font-size:28px;  
+    }  
+  
+    .section-heading{  
+      display:flex;  
+      justify-content:space-between;  
+      align-items:center;  
+      margin-bottom:18px;  
+    }  
+  
+    .section-heading h2{  
+      font-size:23px;  
+      color:#ffffff;  
+    }  
+  
+    .see-all{  
+      color:#ffffff;  
+      text-decoration:none;  
+      font-size:14px;  
+      font-weight:bold;  
+    }  
+  
+    .today-workout{  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:20px;  
+      padding:25px;  
+      margin-bottom:30px;  
+    }  
+  
+    .workout-main{  
+      display:flex;  
+      align-items:center;  
+      gap:20px;  
+    }  
+  
+    .workout-icon{  
+      width:75px;  
+      height:75px;  
+      min-width:75px;  
+      border-radius:18px;  
+      background:#2563eb;  
+      color:#ffffff;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      font-size:34px;  
+      font-weight:bold;  
+    }  
+  
+    .workout-info h3{  
+      font-size:22px;  
+      margin-bottom:7px;  
+      color:#071a33;  
+    }  
+  
+    .workout-info p{  
+      color:#64748b;  
+      line-height:1.7;  
+      margin-bottom:14px;  
+    }  
+  
+    .start-btn{  
+      display:inline-block;  
+      text-decoration:none;  
+      background:#2563eb;  
+      color:#ffffff;  
+      padding:11px 19px;  
+      border-radius:9px;  
+      font-weight:bold;  
+      font-size:14px;  
+    }  
+  
+    .slider-dots{  
+      display:flex;  
+      justify-content:center;  
+      gap:7px;  
+      margin-top:20px;  
+    }  
+  
+    .slider-dots span{  
+      width:8px;  
+      height:8px;  
+      border-radius:50%;  
+      background:#cbd5e1;  
+    }  
+  
+    .slider-dots span.active{  
+      width:25px;  
+      border-radius:10px;  
+      background:#2563eb;  
+    }  
+  
+    .community-card{  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:20px;  
+      padding:10px 20px;  
+      margin-bottom:30px;  
+    }  
+  
+    .news-row{  
+      display:flex;  
+      align-items:center;  
+      justify-content:space-between;  
+      padding:18px 0;  
+      border-bottom:1px solid #d7dee8;  
+    }  
+  
+    .news-row:last-child{  
+      border-bottom:none;  
+    }  
+  
+    .news-left{  
+      display:flex;  
+      align-items:center;  
+      gap:12px;  
+    }  
+  
+    .news-icon{  
+      width:40px;  
+      height:40px;  
+      border-radius:10px;  
+      background:#2563eb;  
+      color:#ffffff;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+    }  
+  
+    .news-title{  
+      font-weight:bold;  
+      margin-bottom:4px;  
+      color:#071a33;  
+    }  
+  
+    .news-sub{  
+      color:#64748b;  
+      font-size:12px;  
+    }  
+  
+    .cards{  
+      display:grid;  
+      grid-template-columns:repeat(2,1fr);  
+      gap:17px;  
+      margin-bottom:30px;  
+    }  
+  
+    .card{  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:18px;  
+      padding:23px;  
+    }  
+  
+    .icon{  
+      font-size:34px;  
+      margin-bottom:14px;  
+    }  
+  
+    .card h3{  
+      margin-bottom:9px;  
+      font-size:19px;  
+      color:#071a33;  
+    }  
+  
+    .card p{  
+      color:#334155;  
+      line-height:1.7;  
+      font-size:14px;  
+      margin-bottom:18px;  
+    }  
+  
+    .card a{  
+      display:inline-block;  
+      text-decoration:none;  
+      background:#2563eb;  
+      color:#ffffff;  
+      padding:10px 16px;  
+      border-radius:9px;  
+      font-weight:bold;  
+      font-size:14px;  
+    }  
+  
+    .progress-section{  
+      margin-bottom:30px;  
+    }  
+  
+    .progress-card{  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:20px;  
+      padding:28px;  
+      display:flex;  
+      align-items:center;  
+      gap:25px;  
+    }  
+  
+    .progress-icon{  
+      width:72px;  
+      height:72px;  
+      min-width:72px;  
+      border-radius:16px;  
+      background:#2563eb;  
+      color:#ffffff;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      font-size:30px;  
+    }  
+  
+    .progress-content{  
+      flex:1;  
+    }  
+  
+    .progress-content h3{  
+      font-size:21px;  
+      margin-bottom:8px;  
+      color:#071a33;  
+    }  
+  
+    .progress-content p{  
+      color:#334155;  
+      line-height:1.7;  
+      font-size:14px;  
+      margin-bottom:15px;  
+    }  
+  
+    .progress-content a{  
+      display:inline-block;  
+      text-decoration:none;  
+      background:#2563eb;  
+      color:#ffffff;  
+      padding:10px 17px;  
+      border-radius:9px;  
+      font-weight:bold;  
+      font-size:14px;  
+    }  
+  
+    .subscriptions-section{  
+      margin-bottom:30px;  
+    }  
+  
+    .subscription-box{  
+      background:#ffffff;  
+      border:1px solid #d7dee8;  
+      border-radius:20px;  
+      padding:28px;  
+      text-align:center;  
+    }  
+  
+    .subscription-box h2{  
+      font-size:24px;  
+      margin-bottom:10px;  
+      color:#071a33;  
+    }  
+  
+    .subscription-box p{  
+      color:#334155;  
+      margin-bottom:10px;  
+      line-height:1.7;  
+    }  
+  
+    .plan-price{  
+      color:#2563eb;  
+      font-size:34px;  
+      font-weight:bold;  
+      margin:16px 0;  
+    }  
+  
+    .complete-subscription{  
+      background:#2563eb;  
+      color:#ffffff;  
+      padding:12px 24px;  
+      border-radius:10px;  
+      font-weight:bold;  
+      border:none;  
+      cursor:pointer;  
+      font-size:16px;  
+    }  
+  
+    .no-plan{  
+      color:#64748b;  
+    }  
+  
+    #message{  
+      margin-top:15px;  
+      text-align:center;  
+      color:#2563eb;  
+    }  
+  
+    .bottom-nav{  
+      position:fixed;  
+      bottom:0;  
+      left:0;  
+      right:0;  
+      height:70px;  
+      background:#ffffff;  
+      border-top:1px solid #d7dee8;  
+      display:flex;  
+      align-items:center;  
+      justify-content:space-around;  
+      z-index:1000;  
+    }  
+  
+    .nav-item{  
+      color:#64748b;  
+      text-decoration:none;  
+      display:flex;  
+      flex-direction:column;  
+      align-items:center;  
+      gap:5px;  
+      font-size:12px;  
+      min-width:70px;  
+      cursor:pointer;  
+    }  
+  
+    .nav-item span{  
+      font-size:21px;  
+    }  
+  
+    .nav-item.active{  
+      color:#2563eb;  
+    }  
+  
+    @media(max-width:800px){  
+  
+      .stat{  
+        flex:0 0 270px;  
+      }  
+  
+      .cards{  
+        grid-template-columns:1fr;  
+      }  
+  
+    }  
+  
+    @media(max-width:600px){  
+  
+      header{  
+        height:68px;  
+        padding:0 16px;  
+      }  
+  
+      .logo{  
+        font-size:21px;  
+      }  
+  
+      .profile{  
+        width:36px;  
+        height:36px;  
+      }  
+  
+      .menu-btn{  
+        font-size:29px;  
+      }  
+  
+      .side-menu{  
+        width:300px;  
+        padding:85px 16px 30px;  
+      }  
+  
+      .side-menu-title{  
+        font-size:23px;  
+        margin-bottom:25px;  
+      }  
+  
+      .menu-item{  
+        padding:16px;  
+        font-size:16px;  
+      }  
+  
+      .profile-popup{  
+        top:78px;  
+        right:14px;  
+        left:14px;  
+        width:auto;  
+      }  
+  
+      .notification-popup{  
+        top:78px;  
+        right:14px;  
+        left:14px;  
+        width:auto;  
+      }  
+  
+      .container{  
+        padding:20px 14px 100px;  
+      }  
+  
+      .stat{  
+        flex:0 0 285px;  
+      }  
+  
+      .activity-circles{  
+        gap:14px;  
+      }  
+  
+      .activity-circle{  
+        width:78px;  
+        height:78px;  
+      }  
+  
+      .activity-circle::before{  
+        width:58px;  
+        height:58px;  
+      }  
+  
+      .progress-card{  
+        padding:22px 18px;  
+        gap:17px;  
+      }  
+  
+      .progress-icon{  
+        width:62px;  
+        height:62px;  
+        min-width:62px;  
+        font-size:26px;  
+      }  
+  
+      .progress-content h3{  
+        font-size:19px;  
+      }  
+  
+      .workout-main{  
+        align-items:flex-start;  
+      }  
+  
+      .workout-icon{  
+        width:62px;  
+        min-width:62px;  
+        height:62px;  
+        font-size:28px;  
+      }  
+  
+      .workout-info h3{  
+        font-size:19px;  
+      }  
+  
+      .subscription-box{  
+        padding:23px 18px;  
+      }  
+  
+    }  
+  
+  </style>  </head>  <body>    <header>  <div class="logo">  
+  Body<span>Reset</span>  
+</div>  
+
+<div class="header-left">  
+
+  <div  
+    class="profile"  
+    id="profileBtn">  
+
+    <span id="profileInitial">?</span>  
+
+  </div>  
+
+  <button  
+    class="menu-btn"  
+    id="menuBtn">  
+
+    ☰  
+
+  </button>  
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BodyReset Dashboard</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
-color:#071a33;
-min-height:100vh;
-}
-
-header{
-height:70px;
-background:#000;
-color:white;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 25px;
-}
-
-.logo{
-font-size:25px;
-font-weight:bold;
-}
-
-.logo span{
-color:#2563eb;
-}
-
-.profile-circle{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#f97316;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:20px;
-}
-
-.header-left{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.menu-btn{
-background:none;
-border:none;
-color:white;
-font-size:25px;
-cursor:pointer;
-}
-
-/* SIDE MENU */
-
-.side-menu{
-position:fixed;
-top:70px;
-right:-280px;
-width:280px;
-height:calc(100vh - 70px);
-background:#071a33;
-color:white;
-padding:25px;
-z-index:1000;
-transition:.3s;
-}
-
-.side-menu.active{
-right:0;
-}
-
-.side-menu a{
-display:block;
-color:white;
-text-decoration:none;
-padding:15px 10px;
-border-bottom:1px solid #1e293b;
-font-size:17px;
-}
-
-.side-menu button{
-width:100%;
-margin-top:20px;
-padding:13px;
-background:#dc2626;
-border:none;
-border-radius:8px;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-/* PROFILE POPUP */
-
-.profile-popup{
-display:none;
-position:fixed;
-top:80px;
-left:20px;
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-z-index:1001;
-width:260px;
-}
-
-.profile-popup.active{
-display:block;
-}
-
-.profile-popup h3{
-margin-bottom:12px;
-}
-
-.profile-popup p{
-margin:7px 0;
-color:#475569;
-}
-
-/* NOTIFICATION */
-
-.notification{
-position:relative;
-font-size:25px;
-cursor:pointer;
-}
-
-.notification-dot{
-position:absolute;
-top:0;
-right:-2px;
-width:9px;
-height:9px;
-background:#22c55e;
-border-radius:50%;
-}
-
-.notification-popup{
-display:none;
-position:fixed;
-top:80px;
-right:20px;
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-z-index:1001;
-width:280px;
-}
-
-.notification-popup.active{
-display:block;
-}
-
-/* MAIN */
-
-.container{
-width:94%;
-max-width:1200px;
-margin:30px auto 100px;
-}
-
-/* WELCOME */
-
-.welcome{
-background:white;
-border-radius:16px;
-padding:25px;
-margin-bottom:25px;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.welcome h1{
-font-size:30px;
-margin-bottom:8px;
-}
-
-.welcome p{
-color:#64748b;
-font-size:17px;
-}
-
-/* STATS */
-
-.stats{
-display:flex;
-gap:15px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-scrollbar-width:none;
-margin-bottom:30px;
-}
-
-.stats::-webkit-scrollbar{
-display:none;
-}
-
-.stat-card{
-background:white;
-border-radius:16px;
-padding:22px;
-min-width:300px;
-flex:1;
-scroll-snap-align:start;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.stat-card h3{
-font-size:18px;
-margin-bottom:20px;
-}
-
-.stat-content{
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-/* CIRCLES */
-
-.circle{
-width:85px;
-height:85px;
-border-radius:50%;
-border:8px solid #2563eb;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:15px;
-font-weight:bold;
-text-align:center;
-}
-
-.circle.green{
-border-color:#22c55e;
-}
-
-/* CALORIE BARS */
-
-.bars{
-height:90px;
-display:flex;
-align-items:flex-end;
-gap:7px;
-}
-
-.bar{
-width:12px;
-background:#22c55e;
-border-radius:5px 5px 0 0;
-}
-
-.bar:nth-child(1){height:30px;}
-.bar:nth-child(2){height:45px;}
-.bar:nth-child(3){height:60px;}
-.bar:nth-child(4){height:38px;}
-.bar:nth-child(5){height:75px;}
-.bar:nth-child(6){height:55px;}
-.bar:nth-child(7){height:85px;}
-
-/* SECTION */
-
-.section{
-background:white;
-border-radius:16px;
-padding:25px;
-margin-bottom:30px;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.section-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:20px;
-}
-
-.section-header h2{
-font-size:25px;
-}
-
-.section-header a{
-color:#2563eb;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* TODAY WORKOUT CAROUSEL */
-
-.workout-grid{
-display:flex;
-gap:16px;
-width:100%;
-overflow-x:auto;
-overflow-y:hidden;
-scroll-snap-type:x mandatory;
--webkit-overflow-scrolling:touch;
-padding:5px 2px 15px;
-scrollbar-width:none;
-}
-
-.workout-grid::-webkit-scrollbar{
-display:none;
-}
-
-.workout-card{
-flex:0 0 calc((100% - 32px)/3);
-background:#071a33;
-color:white;
-border-radius:14px;
-padding:20px;
-text-decoration:none;
-display:block;
-scroll-snap-align:start;
-box-shadow:0 8px 20px rgba(0,0,0,.15);
-transition:.2s;
-}
-
-.workout-card:active{
-transform:scale(.97);
-}
-
-.workout-icon{
-width:55px;
-height:55px;
-border-radius:12px;
-background:#22c55e;
-color:#071a33;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-.workout-card h3{
-font-size:21px;
-margin-bottom:8px;
-}
-
-.workout-card p{
-color:#cbd5e1;
-font-size:14px;
-margin-bottom:18px;
-}
-
-.start-btn{
-display:inline-block;
-background:#22c55e;
-color:#071a33;
-padding:10px 15px;
-border-radius:8px;
-font-weight:bold;
-font-size:14px;
-}
-
-/* COMMUNITY */
-
-.news-list{
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
-.news-item{
-display:flex;
-align-items:center;
-gap:15px;
-background:#071a33;
-color:white;
-padding:15px;
-border-radius:10px;
-}
-
-.news-icon{
-width:42px;
-height:42px;
-border-radius:10px;
-background:#22c55e;
-color:#071a33;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-}
-
-.news-item h4{
-margin-bottom:5px;
-}
-
-.news-item p{
-color:#cbd5e1;
-font-size:14px;
-}
-
-/* NORMAL CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-}
-
-.card{
-background:#071a33;
-color:white;
-padding:25px;
-border-radius:14px;
-}
-
-.card h3{
-margin-bottom:10px;
-font-size:23px;
-}
-
-.card p{
-color:#cbd5e1;
-line-height:1.7;
-}
-
-/* PROGRESS */
-
-.progress-box{
-background:#071a33;
-color:white;
-border-radius:14px;
-padding:25px;
-}
-
-.progress-row{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:15px 0;
-border-bottom:1px solid #1e293b;
-}
-
-.progress-row:last-child{
-border-bottom:none;
-}
-
-.progress-circle{
-width:90px;
-height:90px;
-border-radius:50%;
-border:9px solid #22c55e;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:20px;
-font-weight:bold;
-}
-
-/* SUBSCRIPTIONS */
-
-.subscription-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.subscription-card{
-background:#071a33;
-color:white;
-padding:25px;
-border-radius:14px;
-text-align:center;
-}
-
-.subscription-card h3{
-font-size:22px;
-margin-bottom:15px;
-}
-
-.price{
-font-size:30px;
-font-weight:bold;
-margin-bottom:8px;
-}
-
-.duration{
-color:#cbd5e1;
-margin-bottom:20px;
-}
-
-.subscription-card ul{
-list-style:none;
-text-align:right;
-margin-bottom:20px;
-}
-
-.subscription-card li{
-padding:7px 0;
-color:#e2e8f0;
-}
-
-.subscription-card button{
-width:100%;
-padding:13px;
-background:#22c55e;
-border:none;
-border-radius:8px;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-color:#071a33;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-height:70px;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:space-around;
-z-index:999;
-}
-
-.bottom-nav a{
-color:#94a3b8;
-text-decoration:none;
-text-align:center;
-font-size:13px;
-}
-
-.bottom-nav a.active{
-color:#22c55e;
-}
-
-.bottom-nav-icon{
-font-size:23px;
-display:block;
-margin-bottom:3px;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-.container{
-width:94%;
-}
-
-.stats{
-gap:12px;
-}
-
-.stat-card{
-min-width:290px;
-}
-
-.workout-card{
-flex:0 0 48%;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-.subscription-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-/* SMALL MOBILE */
-
-@media(max-width:600px){
-
-header{
-padding:0 15px;
-}
-
-.logo{
-font-size:22px;
-}
-
-.container{
-margin-top:20px;
-}
-
-.welcome h1{
-font-size:25px;
-}
-
-.section{
-padding:18px;
-}
-
-.section-header h2{
-font-size:21px;
-}
-
-/* TWO CARDS SIDE BY SIDE */
-
-.workout-grid{
-gap:12px;
-}
-
-.workout-card{
-flex:0 0 48%;
-padding:16px;
-}
-
-.workout-card h3{
-font-size:18px;
-}
-
-.workout-card p{
-font-size:13px;
-}
-
-.workout-icon{
-width:45px;
-height:45px;
-font-size:20px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<div class="logo">
-Body<span>Reset</span>
 </div>
 
-<div class="header-left">
+  </header>    <div  
+    class="menu-overlay"  
+    id="menuOverlay">  
+  </div>    <aside  
+    class="side-menu"  
+    id="sideMenu">  <div class="side-menu-title">  
+  Body<span>Reset</span>  
+</div>  
 
-<div class="notification" onclick="toggleNotification()">
-●
-<div class="notification-dot"></div>
-</div>
+<a  
+  href="#"  
+  class="menu-item">  
 
-<div class="profile-circle" onclick="toggleProfile()">
-U
-</div>
+  <span>  
+    العروض  
+  </span>  
 
-<button class="menu-btn" onclick="toggleMenu()">
-☰
+  <span class="menu-arrow">  
+    ‹  
+  </span>  
+
+</a>  
+
+<a  
+  href="calories.html"  
+  class="menu-item">  
+
+  <span>  
+    حساب سعرات الجسم  
+  </span>  
+
+  <span class="menu-arrow">  
+    ‹  
+  </span>  
+
+</a>  
+
+<a  
+  href="nutrition.html"  
+  class="menu-item">  
+
+  <span>  
+    التغذية  
+  </span>  
+
+  <span class="menu-arrow">  
+    ‹  
+  </span>  
+
+</a>  
+
+<a  
+  href="#subscriptions"  
+  class="menu-item"  
+  id="subscriptionsMenuLink">  
+
+  <span>  
+    اشتراكات  
+  </span>  
+
+  <span class="menu-arrow">  
+    ‹  
+  </span>  
+
+</a>  
+
+<button  
+  class="menu-item menu-logout"  
+  id="logoutBtn">  
+
+  <span>  
+    تسجيل الخروج  
+  </span>  
+
+  <span>  
+    ‹  
+  </span>  
+
 </button>
 
-</div>
+  </aside>    <div  
+    class="profile-popup"  
+    id="profilePopup">  <div class="profile-popup-header">  
 
-</header>
+  <h2>  
+    البروفايل  
+  </h2>  
 
+  <button  
+    class="close-profile"  
+    id="closeProfile">  
 
-<!-- SIDE MENU -->
+    ×  
 
-<div class="side-menu" id="sideMenu">
+  </button>  
 
-<a href="#">العروض</a>
+</div>  
 
-<a href="calories.html">
-حساب سعرات الجسم
-</a>
+<div class="profile-data">  
 
-<a href="nutrition.html">
-التغذية
-</a>
+  <span>  
+    الاسم  
+  </span>  
 
-<a href="#subscriptions">
-اشتراكات
-</a>
+  <strong id="profileName">  
+    جاري التحميل...  
+  </strong>  
 
-<button onclick="logoutUser()">
-تسجيل الخروج
-</button>
+</div>  
 
-</div>
+<div class="profile-data">  
 
+  <span>  
+    الإيميل  
+  </span>  
 
-<!-- PROFILE POPUP -->
-
-<div class="profile-popup" id="profilePopup">
-
-<h3>الملف الشخصي</h3>
-
-<p id="profileUsername">
-اسم المستخدم: -
-</p>
-
-<p id="profileEmail">
-البريد: -
-</p>
-
-<p id="profilePhone">
-الهاتف: -
-</p>
+  <strong id="profileEmail">  
+    جاري التحميل...  
+  </strong>  
 
 </div>
 
+  </div>    <div  
+    class="notification-popup"  
+    id="notificationPopup">  <div class="notification-popup-header">  
 
-<!-- NOTIFICATION POPUP -->
+  <h2>  
+    الإشعارات  
+  </h2>  
 
-<div class="notification-popup" id="notificationPopup">
+  <button  
+    class="close-notification"  
+    id="closeNotification"  
+    type="button">  
 
-<h3>الإشعارات</h3>
+    ×  
 
-<p style="margin-top:12px;color:#64748b;">
-مفيش إشعارات جديدة حاليًا.
-</p>
+  </button>  
 
-</div>
+</div>  
 
+<div class="notification-item">  
 
-<main class="container">
+  <div class="notification-icon">  
+    ✓  
+  </div>  
 
+  <div>  
 
-<!-- WELCOME -->
+    <strong>  
+      أهلاً بيك في BodyReset  
+    </strong>  
 
-<section class="welcome">
+    <span>  
+      حسابك جاهز، ابدأ رحلتك دلوقتي.  
+    </span>  
 
-<h1>
-أهلاً بيك في BodyReset
-</h1>
+  </div>  
 
-<p>
-ابدأ يومك بخطة واضحة واستمر في تطوير نفسك.
-</p>
+</div>  
 
-</section>
+<div class="notification-item">  
 
+  <div class="notification-icon">  
+    💪  
+  </div>  
 
-<!-- STATS -->
+  <div>  
 
-<section class="stats">
+    <strong>  
+      تمرينك النهارده جاهز  
+    </strong>  
 
+    <span>  
+      متنساش تكمل تمرينك وتحافظ على استمراريتك.  
+    </span>  
 
-<div class="stat-card">
+  </div>  
 
-<h3>
-Weekly Activity
-</h3>
+</div>  
 
-<div class="stat-content">
+<div class="notification-item">  
 
-<div>
+  <div class="notification-icon">  
+    ★  
+  </div>  
 
-<strong style="font-size:28px;">
-60
-</strong>
+  <div>  
 
-<p style="color:#64748b;margin-top:5px;">
-Progress
-</p>
+    <strong>  
+      تابع تقدمك  
+    </strong>  
 
-</div>
+    <span>  
+      راجع نسبة تقدمك وشوف تطورك مع الوقت.  
+    </span>  
 
-<div class="circle">
-60%
-</div>
-
-<div>
-
-<strong style="font-size:25px;">
-0%
-</strong>
-
-<p style="color:#64748b;margin-top:5px;">
-Burn
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="stat-card">
-
-<h3>
-Calorie Burn
-</h3>
-
-<div class="stat-content">
-
-<div>
-
-<strong style="font-size:28px;">
-280
-</strong>
-
-<p style="color:#64748b;margin-top:5px;">
-kcal
-</p>
+  </div>  
 
 </div>
 
-<div class="bars">
+  </div>    <main class="container">  <div class="top-area">  
 
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
+  <button  
+    class="notification"  
+    id="notificationBtn"  
+    type="button"  
+    aria-label="الإشعارات">  
 
-</div>
+    <svg  
+      viewBox="0 0 24 24"  
+      aria-hidden="true">  
 
-</div>
+      <path  
+        d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">  
+      </path>  
 
-</div>
+      <path  
+        d="M10 21h4">  
+      </path>  
 
+    </svg>  
 
-<div class="stat-card">
+    <span  
+      class="notification-dot"  
+      id="notificationDot">  
+    </span>  
 
-<h3>
-Weekly Progress
-</h3>
+  </button>  
 
-<div class="stat-content">
+</div>  
 
-<p style="color:#64748b;">
-التقدم الأسبوعي
-</p>
+<div class="stats">  
 
-<div class="circle green">
-68%
-</div>
+  <div class="stat">  
 
-</div>
+    <h3>  
+      Weekly Activity  
+    </h3>  
 
-</div>
+    <div class="activity-circles">  
 
+      <div class="activity-circle progress">  
 
-</section>
+        <div class="circle-content">  
 
+          <strong>  
+            0  
+          </strong>  
 
-<!-- TODAY WORKOUT -->
+          <span>  
+            Progress  
+          </span>  
 
-<section class="section">
+        </div>  
 
-<div class="section-header">
+      </div>  
 
-<h2>
-Today's Workout
-</h2>
+      <div class="activity-circle burn">  
 
-<a href="workout.html">
-See All
-</a>
+        <div class="circle-content">  
 
-</div>
+          <strong>  
+            0%  
+          </strong>  
 
+          <span>  
+            Burn  
+          </span>  
 
-<div class="workout-grid">
+        </div>  
 
+      </div>  
 
-<a href="workout.html?workout=back" class="workout-card">
+    </div>  
 
-<div class="workout-icon">
-B
-</div>
+  </div>  
 
-<h3>
-Back
-</h3>
+  <div class="stat">  
 
-<p>
-تمارين الظهر
-</p>
+    <h3>  
+      Calorie Burn  
+    </h3>  
 
-<span class="start-btn">
-Start Now
-</span>
+    <div class="calorie-number">  
 
-</a>
+      <strong>  
+        0  
+      </strong>  
 
+      <span>  
+        kcal  
+      </span>  
 
-<a href="workout.html?workout=chest" class="workout-card">
+    </div>  
 
-<div class="workout-icon">
-C
-</div>
+    <div class="calorie-chart">  
 
-<h3>
-Chest
-</h3>
+    </div>  
 
-<p>
-تمارين الصدر
-</p>
+  </div>  
 
-<span class="start-btn">
-Start Now
-</span>
+  <div class="stat">  
 
-</a>
+    <h3>  
+      Weekly Progress  
+    </h3>  
 
+    <div class="weekly-progress">  
 
-<a href="workout.html?workout=shoulders" class="workout-card">
+      <div class="progress-circle">  
 
-<div class="workout-icon">
-S
-</div>
+        <strong>  
+          0%  
+        </strong>  
 
-<h3>
-Shoulders
-</h3>
+      </div>  
 
-<p>
-تمارين الكتف
-</p>
+    </div>  
 
-<span class="start-btn">
-Start Now
-</span>
+  </div>  
 
-</a>
+</div>  
 
+<div class="section-heading">  
 
-<a href="workout.html?workout=arms" class="workout-card">
+  <h2>  
+    Today's Workout  
+  </h2>  
 
-<div class="workout-icon">
-A
-</div>
+  <a  
+    href="workout.html"  
+    class="see-all">  
 
-<h3>
-Arms
-</h3>
+    See All  
 
-<p>
-تمارين الذراع
-</p>
+  </a>  
 
-<span class="start-btn">
-Start Now
-</span>
+</div>  
 
-</a>
+<section class="today-workout">  
 
+  <div class="workout-main">  
 
-<a href="workout.html?workout=legs" class="workout-card">
+    <div class="workout-icon">  
+      💪  
+    </div>  
 
-<div class="workout-icon">
-L
-</div>
+    <div class="workout-info">  
 
-<h3>
-Legs
-</h3>
+      <h3>  
+        HIIT & Strength  
+      </h3>  
 
-<p>
-تمارين الرجل
-</p>
+      <p>  
+        Start up 10 min  
+      </p>  
 
-<span class="start-btn">
-Start Now
-</span>
+      <a  
+        href="workout.html"  
+        class="start-btn">  
 
-</a>
+        Start Now  
 
+      </a>  
 
-<a href="workout.html?workout=abs" class="workout-card">
+    </div>  
 
-<div class="workout-icon">
-A
-</div>
+  </div>  
 
-<h3>
-Abs
-</h3>
+  <div class="slider-dots">  
 
-<p>
-تمارين البطن
-</p>
+    <span class="active"></span>  
+    <span></span>  
+    <span></span>  
 
-<span class="start-btn">
-Start Now
-</span>
+  </div>  
 
-</a>
+</section>  
 
+<div class="section-heading">  
 
-</div>
+  <h2>  
+    Community News  
+  </h2>  
 
-</section>
+  <a  
+    href="#"  
+    class="see-all">  
 
+    See All  
 
-<!-- COMMUNITY NEWS -->
+  </a>  
 
-<section class="section">
+</div>  
 
-<div class="section-header">
+<section class="community-card">  
 
-<h2>
-Community News
-</h2>
+  <div class="news-row">  
 
-<a href="#">
-See All
-</a>
+    <div class="news-left">  
 
-</div>
+      <div class="news-icon">  
+        ★  
+      </div>  
 
+      <div>  
 
-<div class="news-list">
+        <div class="news-title">  
+          New Class: Neon Spin  
+        </div>  
 
+        <div class="news-sub">  
+          New Class is Neon Spin  
+        </div>  
 
-<div class="news-item">
+      </div>  
 
-<div class="news-icon">
-N
-</div>
+    </div>  
 
-<div>
+  </div>  
 
-<h4>
-New Class: Neon Spin
-</h4>
+  <div class="news-row">  
 
-<p>
-New Class is. Neon Spin
-</p>
+    <div class="news-left">  
 
-</div>
+      <div class="news-icon">  
+        #  
+      </div>  
 
-</div>
+      <div>  
 
+        <div class="news-title">  
+          Leaderboard Update  
+        </div>  
 
-<div class="news-item">
+        <div class="news-sub">  
+          Check your latest ranking  
+        </div>  
 
-<div class="news-icon">
-L
-</div>
+      </div>  
 
-<div>
+    </div>  
 
-<h4>
-Leaderboard Update
-</h4>
+  </div>  
 
-<p>
-تابع ترتيبك وتقدمك.
-</p>
+  <div class="news-row">  
 
-</div>
+    <div class="news-left">  
 
-</div>
+      <div class="news-icon">  
+        +  
+      </div>  
 
+      <div>  
 
-<div class="news-item">
+        <div class="news-title">  
+          New Challenge  
+        </div>  
 
-<div class="news-icon">
-C
-</div>
+        <div class="news-sub">  
+          Join the latest challenge  
+        </div>  
 
-<div>
+      </div>  
 
-<h4>
-New Challenge
-</h4>
+    </div>  
 
-<p>
-تحدي جديد مستنيك.
-</p>
+  </div>  
 
-</div>
+</section>  
 
-</div>
+<div class="section-heading">  
 
+  <h2>  
+    ابدأ رحلتك 💪  
+  </h2>  
 
-</div>
+</div>  
 
-</section>
+<div class="cards">  
 
+  <div class="card">  
 
-<!-- WORKOUT / NUTRITION -->
+    <div class="icon">  
+      💪  
+    </div>  
 
-<section class="section">
+    <h3>  
+      Workout  
+    </h3>  
 
-<div class="cards">
+    <p>  
+      تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.  
+    </p>  
 
+    <a href="workout.html">  
+      ابدأ التمرين  
+    </a>  
 
-<div class="card">
+  </div>  
 
-<h3>
-Workout
-</h3>
+  <div class="card">  
 
-<p>
-اختار التمرين المناسب لهدفك والتزم بخطتك.
-</p>
+    <div class="icon">  
+      🥗  
+    </div>  
 
-</div>
+    <h3>  
+      Nutrition  
+    </h3>  
 
+    <p>  
+      خطط غذائية تساعدك تختار أكلك حسب هدفك.  
+    </p>  
 
-<div class="card">
+    <a href="nutrition.html">  
+      خطة التغذية  
+    </a>  
 
-<h3>
-Nutrition
-</h3>
+  </div>  
 
-<p>
-خطط غذائية واختيارات تساعدك تحقق هدفك.
-</p>
+</div>  
 
-</div>
+<section class="progress-section">  
 
+  <div class="section-heading">  
 
-</div>
+    <h2>  
+      Progress  
+    </h2>  
 
-</section>
+    <a href="#" class="see-all">  
+      See All  
+    </a>  
 
+  </div>  
 
-<!-- PROGRESS -->
+  <div class="progress-card">  
 
-<section class="section" id="progress">
+    <div class="progress-icon">  
+      📊  
+    </div>  
 
-<div class="section-header">
+    <div class="progress-content">  
 
-<h2>
-Progress
-</h2>
+      <h3>  
+        متابعة التقدم  
+      </h3>  
 
-</div>
+      <p>  
+        تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.  
+      </p>  
 
+      <a href="#">  
+        شوف التقدم  
+      </a>  
 
-<div class="progress-box">
+    </div>  
 
+  </div>  
 
-<div class="progress-row">
+</section>  
 
-<div>
+<section  
+  class="subscriptions-section"  
+  id="subscriptions">  
 
-<strong>
-التقدم الأسبوعي
-</strong>
+  <div class="section-heading">  
 
-<p style="color:#cbd5e1;margin-top:6px;">
-تابع تقدمك واستمر في خطتك.
-</p>
+    <h2>  
+      الاشتراكات  
+    </h2>  
 
-</div>
+    <a href="#" class="see-all">  
+      See All  
+    </a>  
 
-<div class="progress-circle">
-68%
-</div>
+  </div>  
 
-</div>
+  <div class="subscription-box">  
 
+    <h2>  
+      اشتراكك في BodyReset  
+    </h2>  
 
-<div class="progress-row">
+    <p id="selectedPlanText">  
+      جاري تحميل الباقة...  
+    </p>  
 
-<span>
-Workout
-</span>
+    <div  
+      class="plan-price"  
+      id="selectedPlanPrice">  
+    </div>  
 
-<strong>
-0%
-</strong>
+    <button  
+      class="complete-subscription"  
+      id="completeSubscriptionBtn"  
+      style="display:none;">  
 
-</div>
+      إكمال الاشتراك  
 
+    </button>  
 
-<div class="progress-row">
+    <p  
+      class="no-plan"  
+      id="noPlanText"  
+      style="display:none;">  
 
-<span>
-Nutrition
-</span>
+      لم يتم اختيار أي باقة حتى الآن.  
 
-<strong>
-0%
-</strong>
+    </p>  
 
-</div>
+  </div>  
 
+</section>  
 
-</div>
+<div id="message"></div>
 
-</section>
+  </main>    <nav class="bottom-nav">  <a  
+  href="dashboard.html"  
+  class="nav-item active">  
 
+  <span>  
+    ⌂  
+  </span>  
 
-<!-- SUBSCRIPTIONS -->
+  Home  
 
-<section class="section" id="subscriptions">
+</a>  
 
-<div class="section-header">
+<a  
+  href="workout.html"  
+  class="nav-item">  
 
-<h2>
-الاشتراكات
-</h2>
+  <span>  
+    💪  
+  </span>  
 
-</div>
+  Workouts  
 
-<p style="color:#64748b;margin-bottom:20px;">
-اختار الباقة المناسبة ليك وابدأ رحلتك مع BodyReset
-</p>
+</a>  
 
+<a  
+  href="#"  
+  class="nav-item">  
 
-<div class="subscription-grid">
+  <span>  
+    📊  
+  </span>  
 
+  Progress  
 
-<div class="subscription-card">
+</a>  
 
-<h3>
-شهري
-</h3>
+<a  
+  href="#"  
+  class="nav-item"  
+  id="bottomProfileBtn">  
 
-<div class="price">
-500 جنيه
-</div>
+  <span>  
+    👤  
+  </span>  
 
-<div class="duration">
-اشتراك لمدة شهر
-</div>
-
-<ul>
-
-<li>خطة تمارين</li>
-<li>خطة تغذية</li>
-<li>حساب السعرات والماكروز</li>
-<li>متابعة التقدم</li>
-
-</ul>
-
-<button onclick="startSubscription('500')">
-ابدأ
-</button>
-
-</div>
-
-
-<div class="subscription-card">
-
-<h3>
-3 شهور
-</h3>
-
-<div class="price">
-1000 جنيه
-</div>
-
-<div class="duration">
-اشتراك لمدة 3 شهور
-</div>
-
-<ul>
-
-<li>خطة تمارين</li>
-<li>خطة تغذية</li>
-<li>حساب السعرات والماكروز</li>
-<li>متابعة التقدم</li>
-
-</ul>
-
-<button onclick="startSubscription('1000')">
-ابدأ
-</button>
-
-</div>
-
-
-<div class="subscription-card">
-
-<h3>
-سنوي
-</h3>
-
-<div class="price">
-3000 جنيه
-</div>
-
-<div class="duration">
-اشتراك لمدة سنة
-</div>
-
-<ul>
-
-<li>خطة تمارين</li>
-<li>خطة تغذية</li>
-<li>حساب السعرات والماكروز</li>
-<li>متابعة التقدم</li>
-
-</ul>
-
-<button onclick="startSubscription('3000')">
-ابدأ
-</button>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-</main>
-
-
-<!-- BOTTOM NAV -->
-
-<nav class="bottom-nav">
-
-<a href="#" class="active">
-
-<span class="bottom-nav-icon">
-⌂
-</span>
-
-Home
+  Profile  
 
 </a>
 
-
-<a href="workout.html">
-
-<span class="bottom-nav-icon">
-⌁
-</span>
-
-Workouts
-
-</a>
-
-
-<a href="#progress">
-
-<span class="bottom-nav-icon">
-◉
-</span>
-
-Progress
-
-</a>
-
-
-<a href="#" onclick="toggleProfile();return false;">
-
-<span class="bottom-nav-icon">
-○
-</span>
-
-Profile
-
-</a>
-
-</nav>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const SUPABASE_URL =
-"https://byodeoaluspphqduxmlh.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-
-const supabaseClient =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-
-/* MENU */
-
-function toggleMenu(){
-
-document
-.getElementById("sideMenu")
-.classList.toggle("active");
-
-}
-
-
-/* PROFILE */
-
-function toggleProfile(){
-
-document
-.getElementById("profilePopup")
-.classList.toggle("active");
-
-}
-
-
-/* NOTIFICATION */
-
-function toggleNotification(){
-
-document
-.getElementById("notificationPopup")
-.classList.toggle("active");
-
-}
-
-
-/* SUBSCRIPTION */
-
-function startSubscription(plan){
-
-window.location.href =
-"auth.html?plan=" +
-encodeURIComponent(plan);
-
-}
-
-
-/* LOGOUT */
-
-async function logoutUser(){
-
-await supabaseClient.auth.signOut();
-
-window.location.href =
-"auth.html";
-
-}
-
-
-/* LOAD USER */
-
-async function loadUser(){
-
-const {
-data:{
-user
-}
-} =
-await supabaseClient.auth.getUser();
-
-
-if(!user){
-
-window.location.href =
-"auth.html";
-
-return;
-
-}
-
-
-document.getElementById(
-"profileEmail"
-).textContent =
-"البريد: " +
-(user.email || "-");
-
-
-const username =
-user.user_metadata?.username ||
-user.user_metadata?.user_name ||
-"User";
-
-
-document.getElementById(
-"profileUsername"
-).textContent =
-"اسم المستخدم: " +
-username;
-
-
-const phone =
-user.user_metadata?.phone ||
-"-";
-
-
-document.getElementById(
-"profilePhone"
-).textContent =
-"الهاتف: " +
-phone;
-
-
-document.querySelector(
-".profile-circle"
-).textContent =
-username.charAt(0).toUpperCase();
-
-}
-
-
-loadUser();
-
-</script>
-
-</body>
-  </html>
+  </nav>    <script type="module">  
+  
+    import { createClient } from  
+      "https://esm.sh/@supabase/supabase-js@2";  
+  
+    const SUPABASE_URL =  
+      "https://byodeoaluspphqduxmlh.supabase.co";  
+  
+    const SUPABASE_PUBLISHABLE_KEY =  
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";  
+  
+    const supabase =  
+      createClient(  
+        SUPABASE_URL,  
+        SUPABASE_PUBLISHABLE_KEY  
+      );  
+  
+    const profileBtn =  
+      document.getElementById(  
+        "profileBtn"  
+      );  
+  
+    const bottomProfileBtn =  
+      document.getElementById(  
+        "bottomProfileBtn"  
+      );  
+  
+    const profilePopup =  
+      document.getElementById(  
+        "profilePopup"  
+      );  
+  
+    const closeProfile =  
+      document.getElementById(  
+        "closeProfile"  
+      );  
+  
+    const profileName =  
+      document.getElementById(  
+        "profileName"  
+      );  
+  
+    const profileEmail =  
+      document.getElementById(  
+        "profileEmail"  
+      );  
+  
+    const profileInitial =  
+      document.getElementById(  
+        "profileInitial"  
+      );  
+  
+    const notificationBtn =  
+      document.getElementById(  
+        "notificationBtn"  
+      );  
+  
+    const notificationPopup =  
+      document.getElementById(  
+        "notificationPopup"  
+      );  
+  
+    const closeNotification =  
+      document.getElementById(  
+        "closeNotification"  
+      );  
+  
+    const notificationDot =  
+      document.getElementById(  
+        "notificationDot"  
+      );  
+  
+    const menuBtn =  
+      document.getElementById(  
+        "menuBtn"  
+      );  
+  
+    const sideMenu =  
+      document.getElementById(  
+        "sideMenu"  
+      );  
+  
+    const menuOverlay =  
+      document.getElementById(  
+        "menuOverlay"  
+      );  
+  
+    const subscriptionsMenuLink =  
+      document.getElementById(  
+        "subscriptionsMenuLink"  
+      );  
+  
+    const logoutBtn =  
+      document.getElementById(  
+        "logoutBtn"  
+      );  
+  
+    const message =  
+      document.getElementById(  
+        "message"  
+      );  
+  
+    const selectedPlanText =  
+      document.getElementById(  
+        "selectedPlanText"  
+      );  
+  
+    const selectedPlanPrice =  
+      document.getElementById(  
+        "selectedPlanPrice"  
+      );  
+  
+    const completeSubscriptionBtn =  
+      document.getElementById(  
+        "completeSubscriptionBtn"  
+      );  
+  
+    const noPlanText =  
+      document.getElementById(  
+        "noPlanText"  
+      );  
+  
+    const urlParams =  
+      new URLSearchParams(  
+        window.location.search  
+      );  
+  
+    const selectedPlan =  
+      urlParams.get("plan");  
+  
+    const plans = {  
+  
+      "500": {  
+  
+        name:  
+          "الباقة الشهرية",  
+  
+        price:  
+          "500 جنيه",  
+  
+        duration:  
+          "اشتراك لمدة شهر"  
+  
+      },  
+  
+      "1000": {  
+  
+        name:  
+          "باقة 3 شهور",  
+  
+        price:  
+          "1000 جنيه",  
+  
+        duration:  
+          "اشتراك لمدة 3 شهور"  
+  
+      },  
+  
+      "3000": {  
+  
+        name:  
+          "الباقة السنوية",  
+  
+        price:  
+          "3000 جنيه",  
+  
+        duration:  
+          "اشتراك لمدة سنة"  
+  
+      }  
+  
+    };  
+  
+    function openMenu(){  
+  
+      sideMenu.classList.add(  
+        "show"  
+      );  
+  
+      menuOverlay.classList.add(  
+        "show"  
+      );  
+  
+      menuBtn.textContent =  
+        "×";  
+  
+      document.body.style.overflow =  
+        "hidden";  
+  
+    }  
+  
+    function closeMenu(){  
+  
+      sideMenu.classList.remove(  
+        "show"  
+      );  
+  
+      menuOverlay.classList.remove(  
+        "show"  
+      );  
+  
+      menuBtn.textContent =  
+        "☰";  
+  
+      document.body.style.overflow =  
+        "";  
+  
+    }  
+  
+    menuBtn.addEventListener(  
+      "click",  
+      () => {  
+  
+        if(  
+          sideMenu.classList.contains(  
+            "show"  
+          )  
+        ){  
+  
+          closeMenu();  
+  
+        }else{  
+  
+          openMenu();  
+  
+        }  
+  
+      }  
+    );  
+  
+    menuOverlay.addEventListener(  
+      "click",  
+      closeMenu  
+    );  
+  
+    subscriptionsMenuLink.addEventListener(  
+      "click",  
+      () => {  
+  
+        closeMenu();  
+  
+      }  
+    );  
+  
+    function showSelectedPlan(){  
+  
+      if(  
+        selectedPlan &&  
+        plans[selectedPlan]  
+      ){  
+  
+        const plan =  
+          plans[selectedPlan];  
+  
+        selectedPlanText.textContent =  
+          plan.name +  
+          " - " +  
+          plan.duration;  
+  
+        selectedPlanPrice.textContent =  
+          plan.price;  
+  
+        completeSubscriptionBtn.style.display =  
+          "inline-block";  
+  
+        noPlanText.style.display =  
+          "none";  
+  
+      }else{  
+  
+        selectedPlanText.textContent =  
+          "لم يتم اختيار أي باقة.";  
+  
+        selectedPlanPrice.textContent =  
+          "";  
+  
+        completeSubscriptionBtn.style.display =  
+          "none";  
+  
+        noPlanText.style.display =  
+          "block";  
+  
+      }  
+  
+    }  
+  
+    completeSubscriptionBtn.addEventListener(  
+      "click",  
+      () => {  
+  
+        message.style.color =  
+          "#2563eb";  
+  
+        message.textContent =  
+          "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";  
+  
+      }  
+    );  
+  
+    async function loadUser(){  
+  
+      const {  
+        data:{user},  
+        error  
+      } =  
+        await supabase.auth.getUser();  
+  
+      if(  
+        error ||  
+        !user  
+      ){  
+  
+        window.location.href =  
+          "auth.html";  
+  
+        return;  
+  
+      }  
+  
+      const username =  
+        user.user_metadata?.username;  
+  
+      profileName.textContent =  
+        username ||  
+        "غير مسجل";  
+  
+      profileInitial.textContent =  
+        username  
+          ? username.trim().charAt(0).toUpperCase()  
+          : "?";  
+  
+      profileEmail.textContent =  
+        user.email ||  
+        "غير متوفر";  
+  
+    }  
+  
+    function positionProfilePopup(){  
+  
+      const rect =  
+        profileBtn.getBoundingClientRect();  
+  
+      const popupWidth =  
+        profilePopup.offsetWidth || 300;  
+  
+      let rightPosition =  
+        window.innerWidth - rect.right;  
+  
+      const maxRight =  
+        window.innerWidth - popupWidth - 14;  
+  
+      if(rightPosition > maxRight){  
+        rightPosition = maxRight;  
+      }  
+  
+      if(rightPosition < 14){  
+        rightPosition = 14;  
+      }  
+  
+      profilePopup.style.top =  
+        (rect.bottom + 10) + "px";  
+  
+      profilePopup.style.right =  
+        rightPosition + "px";  
+  
+      profilePopup.style.left =  
+        "auto";  
+  
+    }  
+  
+    function openProfile(){  
+  
+      notificationPopup.classList.remove(  
+        "show"  
+      );  
+  
+      profilePopup.classList.add(  
+        "show"  
+      );  
+  
+      positionProfilePopup();  
+  
+    }  
+  
+    profileBtn.addEventListener(  
+      "click",  
+      (event) => {  
+  
+        event.stopPropagation();  
+  
+        notificationPopup.classList.remove(  
+          "show"  
+        );  
+  
+        if(  
+          profilePopup.classList.contains(  
+            "show"  
+          )  
+        ){  
+  
+          profilePopup.classList.remove(  
+            "show"  
+          );  
+  
+        }else{  
+  
+          profilePopup.classList.add(  
+            "show"  
+          );  
+  
+          positionProfilePopup();  
+  
+        }  
+  
+      }  
+    );  
+  
+    bottomProfileBtn.addEventListener(  
+      "click",  
+      (event) => {  
+  
+        event.preventDefault();  
+  
+        openProfile();  
+  
+      }  
+    );  
+  
+    closeProfile.addEventListener(  
+      "click",  
+      () => {  
+  
+        profilePopup.classList.remove(  
+          "show"  
+        );  
+  
+      }  
+    );  
+  
+    window.addEventListener(  
+      "resize",  
+      () => {  
+  
+        if(  
+          profilePopup.classList.contains(  
+            "show"  
+          )  
+        ){  
+  
+          positionProfilePopup();  
+  
+        }  
+  
+      }  
+    );  
+  
+    notificationBtn.addEventListener(  
+      "click",  
+      (event) => {  
+  
+        event.stopPropagation();  
+  
+        profilePopup.classList.remove(  
+          "show"  
+        );  
+  
+        notificationPopup.classList.toggle(  
+          "show"  
+        );  
+  
+        notificationDot.classList.add(  
+          "hidden"  
+        );  
+  
+      }  
+    );  
+  
+    closeNotification.addEventListener(  
+      "click",  
+      () => {  
+  
+        notificationPopup.classList.remove(  
+          "show"  
+        );  
+  
+      }  
+    );  
+  
+    document.addEventListener(  
+      "click",  
+      (event) => {  
+  
+        if(  
+          !profilePopup.contains(  
+            event.target  
+          ) &&  
+          !profileBtn.contains(  
+            event.target  
+          ) &&  
+          !bottomProfileBtn.contains(  
+            event.target  
+          )  
+        ){  
+  
+          profilePopup.classList.remove(  
+            "show"  
+          );  
+  
+        }  
+  
+        if(  
+          !notificationPopup.contains(  
+            event.target  
+          ) &&  
+          !notificationBtn.contains(  
+            event.target  
+          )  
+        ){  
+  
+          notificationPopup.classList.remove(  
+            "show"  
+          );  
+  
+        }  
+  
+      }  
+    );  
+  
+    logoutBtn.addEventListener(  
+      "click",  
+      async () => {  
+  
+        const {  
+          error  
+        } =  
+          await supabase.auth.signOut();  
+  
+        if(error){  
+  
+          message.style.color =  
+            "#b91c1c";  
+  
+          message.textContent =  
+            error.message;  
+  
+          closeMenu();  
+  
+          return;  
+  
+        }  
+  
+        window.location.href =  
+          "auth.html";  
+  
+      }  
+    );  
+  
+    showSelectedPlan();  
+  
+    loadUser();  
+  
+  </script>  </body>  </html>
