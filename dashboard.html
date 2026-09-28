@@ -1,1653 +1,938 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BodyReset | لوحة التحكم</title>
 
 <style>
-
 *{
 box-sizing:border-box;
 margin:0;
 padding:0;
+font-family:Arial,sans-serif;
 }
 
 body{
-
-font-family:
-Arial,
-Tahoma,
-sans-serif;
-
-background:
-linear-gradient(
-135deg,
-#0066cc 0%,
-#00a6b2 100%
-);
-
+background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
 color:#071a33;
-
 min-height:100vh;
-
 }
 
-/* =========================
-HEADER
-========================= */
-
 header{
-
-background:#000;
-
-height:70px;
-
+height:75px;
+padding:0 25px;
 display:flex;
-
-align-items:center;
-
 justify-content:space-between;
-
-padding:0 22px;
-
-position:sticky;
-
-top:0;
-
-z-index:1000;
-
+align-items:center;
+background:#000000;
+border-bottom:1px solid #071a33;
 }
 
 .logo{
-
 font-size:25px;
-
 font-weight:bold;
-
-color:white;
-
+letter-spacing:.5px;
+color:#ffffff;
 }
 
 .logo span{
-
 color:#2563eb;
-
 }
 
 .header-left{
-
 display:flex;
-
 align-items:center;
-
-gap:15px;
-
+gap:20px;
 }
 
-.profile-circle{
-
-width:42px;
-
-height:42px;
-
+.profile{
+width:40px;
+height:40px;
 border-radius:50%;
-
 background:#f97316;
-
-color:white;
-
+border:1px solid #f97316;
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
+color:#ffffff;
 font-weight:bold;
-
-font-size:18px;
-
 cursor:pointer;
+transition:.2s;
+}
 
+.profile:hover{
+border-color:#f97316;
+box-shadow:0 0 12px rgba(249,115,22,.25);
 }
 
 .menu-btn{
-
-width:42px;
-
-height:42px;
-
+width:auto;
+height:auto;
+padding:0;
+background:none;
 border:none;
-
-border-radius:10px;
-
-background:#111827;
-
-color:white;
-
-font-size:24px;
-
+color:#ffffff;
 cursor:pointer;
-
+font-size:30px;
+line-height:1;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+z-index:4001;
 }
 
-/* =========================
-SIDE MENU
-========================= */
+.menu-btn:hover{
+color:#2563eb;
+}
+
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:3999;
+display:none;
+}
+
+.menu-overlay.show{
+display:block;
+}
 
 .side-menu{
-
 position:fixed;
-
-top:70px;
-
-right:-300px;
-
-width:280px;
-
-height:calc(100vh - 70px);
-
-background:#071a33;
-
-z-index:2000;
-
-padding:25px 18px;
-
+top:0;
+left:0;
+width:300px;
+height:100vh;
+background:#ffffff;
+border-right:1px solid #071a33;
+z-index:4000;
+transform:translateX(-100%);
 transition:.3s ease;
-
-box-shadow:-5px 0 20px rgba(0,0,0,.2);
-
+padding:90px 20px 30px;
+box-shadow:8px 0 30px rgba(0,0,0,.45);
+overflow-y:auto;
 }
 
-.side-menu.active{
-
-right:0;
-
+.side-menu.show{
+transform:translateX(0);
 }
 
-.side-menu h3{
-
-color:white;
-
-font-size:20px;
-
-margin-bottom:20px;
-
+.side-menu-title{
+font-size:25px;
+font-weight:bold;
+margin-bottom:28px;
+color:#071a33;
 }
 
-.side-menu a,
-.side-menu button{
+.side-menu-title span{
+color:#2563eb;
+}
 
-display:block;
-
+.menu-item{
 width:100%;
-
-padding:14px;
-
-margin-bottom:10px;
-
-border-radius:10px;
-
-border:1px solid #1e3a5f;
-
-background:#10294a;
-
-color:white;
-
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:#ffffff;
+color:#071a33;
+border:1px solid #d7dee8;
+padding:17px 18px;
+border-radius:12px;
+margin-bottom:12px;
 text-decoration:none;
-
-font-size:16px;
-
-text-align:right;
-
 cursor:pointer;
-
+font-size:17px;
+transition:.2s;
 }
 
-.side-menu a:hover,
-.side-menu button:hover{
-
-background:#2563eb;
-
+.menu-item:hover{
+border-color:#2563eb;
+color:#2563eb;
 }
 
-.overlay{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.45);
-
-z-index:1500;
-
-display:none;
-
+.menu-logout{
+color:#b91c1c;
 }
 
-.overlay.active{
-
-display:block;
-
+.menu-logout:hover{
+border-color:#b91c1c;
+color:#b91c1c;
 }
 
-/* =========================
-PROFILE POPUP
-========================= */
+.menu-arrow{
+color:#2563eb;
+font-size:20px;
+}
 
 .profile-popup{
-
 position:fixed;
-
-top:80px;
-
-right:20px;
-
-width:280px;
-
-background:white;
-
+top:85px;
+right:25px;
+width:300px;
+background:#ffffff;
+border:1px solid #d7dee8;
 border-radius:16px;
-
-padding:20px;
-
-z-index:3000;
-
-box-shadow:0 10px 40px rgba(0,0,0,.25);
-
+padding:22px;
+z-index:5000;
+box-shadow:0 10px 35px rgba(0,0,0,.35);
 display:none;
-
 }
 
-.profile-popup.active{
-
+.profile-popup.show{
 display:block;
-
 }
 
-.profile-popup h3{
-
-margin-bottom:10px;
-
-color:#071a33;
-
+.profile-popup-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:20px;
 }
 
-.profile-popup p{
-
-color:#64748b;
-
-font-size:14px;
-
-margin-bottom:7px;
-
-}
-
-/* =========================
-NOTIFICATION
-========================= */
-
-.notification-wrap{
-
-position:relative;
-
-}
-
-.notification-btn{
-
-width:45px;
-
-height:45px;
-
-border-radius:50%;
-
-border:none;
-
-background:white;
-
-color:#071a33;
-
+.profile-popup-header h2{
 font-size:21px;
+color:#071a33;
+}
 
+.close-profile{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#071a33;
+border:1px solid #071a33;
+color:#ffffff;
 cursor:pointer;
+font-size:16px;
+}
 
+.profile-data{
+background:#f4f7fa;
+border:1px solid #d7dee8;
+border-radius:12px;
+padding:15px;
+margin-bottom:10px;
+}
+
+.profile-data span{
+display:block;
+color:#64748b;
+font-size:12px;
+margin-bottom:6px;
+}
+
+.profile-data strong{
+color:#071a33;
+font-size:15px;
+word-break:break-word;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:28px 20px 100px;
+}
+
+.top-area{
+display:flex;
+justify-content:flex-start;
+align-items:center;
+margin-bottom:22px;
+}
+
+.notification{
+width:44px;
+height:44px;
+border-radius:50%;
+background:#ffffff;
+border:1px solid #d7dee8;
+display:flex;
+align-items:center;
+justify-content:center;
 position:relative;
+color:#071a33;
+cursor:pointer;
+transition:.2s;
+padding:0;
+}
 
+.notification:hover{
+border-color:#2563eb;
+color:#2563eb;
+box-shadow:0 0 14px rgba(37,99,235,.15);
+}
+
+.notification svg{
+width:21px;
+height:21px;
+stroke:currentColor;
+fill:none;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
 .notification-dot{
-
-position:absolute;
-
-top:4px;
-
-right:5px;
-
-width:9px;
-
-height:9px;
-
-background:#ef4444;
-
+width:8px;
+height:8px;
+background:#f97316;
 border-radius:50%;
+position:absolute;
+top:6px;
+right:7px;
+box-shadow:0 0 8px rgba(249,115,22,.45);
+}
 
-border:2px solid white;
-
+.notification-dot.hidden{
+display:none;
 }
 
 .notification-popup{
-
-position:absolute;
-
-top:55px;
-
-left:0;
-
-width:290px;
-
-background:white;
-
-border-radius:15px;
-
-padding:15px;
-
-box-shadow:0 10px 35px rgba(0,0,0,.2);
-
+position:fixed;
+top:85px;
+right:25px;
+width:340px;
+background:#ffffff;
+border:1px solid #d7dee8;
+border-radius:16px;
+padding:20px;
+z-index:5000;
+box-shadow:0 10px 35px rgba(0,0,0,.35);
 display:none;
-
-z-index:3000;
-
 }
 
-.notification-popup.active{
-
+.notification-popup.show{
 display:block;
+}
 
+.notification-popup-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:16px;
+}
+
+.notification-popup-header h2{
+font-size:20px;
+color:#071a33;
+}
+
+.close-notification{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#071a33;
+border:1px solid #071a33;
+color:#ffffff;
+cursor:pointer;
+font-size:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.close-notification:hover{
+border-color:#2563eb;
+background:#2563eb;
 }
 
 .notification-item{
-
-padding:12px;
-
-border-bottom:1px solid #e2e8f0;
-
+display:flex;
+align-items:flex-start;
+gap:12px;
+padding:14px 0;
+border-bottom:1px solid #d7dee8;
 }
 
 .notification-item:last-child{
-
 border-bottom:none;
+padding-bottom:0;
+}
 
+.notification-icon{
+width:38px;
+height:38px;
+min-width:38px;
+border-radius:10px;
+background:#071a33;
+border:1px solid #071a33;
+color:#ffffff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
 }
 
 .notification-item strong{
-
 display:block;
-
 color:#071a33;
-
-margin-bottom:4px;
-
+font-size:14px;
+margin-bottom:5px;
 }
 
 .notification-item span{
-
-font-size:13px;
-
+display:block;
 color:#64748b;
-
+font-size:12px;
+line-height:1.6;
 }
-
-/* =========================
-MAIN
-========================= */
-
-main{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:25px 20px 100px;
-
-}
-
-.top-bar{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-margin-bottom:25px;
-
-}
-
-.top-bar h1{
-
-color:white;
-
-font-size:28px;
-
-}
-
-.section-title{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-margin-bottom:15px;
-
-}
-
-.section-title h2{
-
-font-size:25px;
-
-color:#071a33;
-
-}
-
-.section-title a{
-
-color:white;
-
-font-size:14px;
-
-font-weight:bold;
-
-text-decoration:none;
-
-background:#071a33;
-
-padding:9px 15px;
-
-border-radius:8px;
-
-}
-
-/* =========================
-STATS
-========================= */
 
 .stats{
-
 display:flex;
-
-gap:15px;
-
+flex-direction:row-reverse;
+gap:18px;
+margin-bottom:35px;
+width:100%;
 overflow-x:auto;
-
-padding-bottom:10px;
-
-margin-bottom:30px;
-
-scrollbar-width:none;
-
+overflow-y:hidden;
+scroll-snap-type:x mandatory;
+padding-bottom:8px;
+-webkit-overflow-scrolling:touch;
 }
 
 .stats::-webkit-scrollbar{
+height:5px;
+}
 
-display:none;
+.stats::-webkit-scrollbar-track{
+background:#111111;
+border-radius:10px;
+}
 
+.stats::-webkit-scrollbar-thumb{
+background:#2563eb;
+border-radius:10px;
 }
 
 .stat{
-
-background:white;
-
-border-radius:18px;
-
-padding:20px;
-
-min-width:280px;
-
-flex:1;
-
+flex:0 0 calc((100% - 36px)/3);
+background:#ffffff;
 border:1px solid #d7dee8;
-
+border-radius:20px;
+padding:25px 20px;
+min-height:225px;
+scroll-snap-align:start;
 }
 
 .stat h3{
-
-font-size:16px;
-
-margin-bottom:15px;
-
-color:#071a33;
-
+font-size:17px;
+margin-bottom:20px;
+color:#2563eb;
 }
 
-.stat-main{
-
+.activity-circles{
 display:flex;
-
 align-items:center;
-
-justify-content:space-between;
-
-gap:15px;
-
+justify-content:center;
+gap:18px;
 }
 
-.stat-number{
-
-font-size:28px;
-
-font-weight:bold;
-
-color:#071a33;
-
+.activity-circle{
+width:82px;
+height:82px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
 }
 
-.stat-label{
+.activity-circle.progress{
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
+}
 
-font-size:13px;
+.activity-circle.burn{
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
+}
 
+.activity-circle::before{
+content:"";
+position:absolute;
+width:62px;
+height:62px;
+background:#ffffff;
+border-radius:50%;
+}
+
+.circle-content{
+position:relative;
+z-index:2;
+text-align:center;
+}
+
+.circle-content strong{
+display:block;
+color:#2563eb;
+font-size:18px;
+}
+
+.circle-content span{
+display:block;
 color:#64748b;
-
-margin-top:4px;
-
+font-size:10px;
+margin-top:3px;
 }
 
-/* =========================
-CIRCLES
-========================= */
+.calorie-number{
+text-align:center;
+margin-bottom:15px;
+}
+
+.calorie-number strong{
+color:#2563eb;
+font-size:32px;
+}
+
+.calorie-number span{
+color:#64748b;
+font-size:14px;
+}
+
+.calorie-chart{
+height:90px;
+display:flex;
+align-items:end;
+justify-content:center;
+gap:9px;
+}
+
+.bar{
+width:13px;
+background:#2563eb;
+border-radius:6px 6px 2px 2px;
+height:0;
+}
+
+.weekly-progress{
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
 .progress-circle{
-
-width:75px;
-
-height:75px;
-
+width:125px;
+height:125px;
 border-radius:50%;
-
-background:
-
-conic-gradient(
-#2563eb 0deg,
-#2563eb 0deg,
-#e2e8f0 0deg
-);
-
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 position:relative;
-
 }
 
 .progress-circle::before{
-
 content:"";
-
 position:absolute;
-
-width:57px;
-
-height:57px;
-
+width:95px;
+height:95px;
+background:#ffffff;
 border-radius:50%;
-
-background:white;
-
 }
 
-.progress-circle span{
-
+.progress-circle strong{
 position:relative;
-
-font-size:15px;
-
-font-weight:bold;
-
+z-index:2;
+color:#2563eb;
+font-size:28px;
 }
 
-/* =========================
-WEEKLY CIRCLES
-========================= */
-
-.weekly-circles{
-
+.section-heading{
 display:flex;
-
-gap:12px;
-
-}
-
-.small-circle{
-
-width:62px;
-
-height:62px;
-
-border-radius:50%;
-
-background:
-
-conic-gradient(
-#2563eb 0deg,
-#2563eb 0deg,
-#e2e8f0 0deg
-);
-
-display:flex;
-
+justify-content:space-between;
 align-items:center;
-
-justify-content:center;
-
-position:relative;
-
+margin-bottom:18px;
 }
 
-.small-circle::before{
-
-content:"";
-
-position:absolute;
-
-width:48px;
-
-height:48px;
-
-border-radius:50%;
-
-background:white;
-
+.section-heading h2{
+font-size:23px;
+color:#ffffff;
 }
 
-.small-circle span{
-
-position:relative;
-
-font-size:12px;
-
+.see-all{
+color:#ffffff;
+text-decoration:none;
+font-size:14px;
 font-weight:bold;
-
-text-align:center;
-
 }
 
-/* =========================
-CALORIE BARS
-========================= */
-
-.calorie-chart{
-
-height:85px;
-
-display:flex;
-
-align-items:flex-end;
-
-gap:8px;
-
-}
-
-.calorie-bar{
-
-width:15px;
-
-background:#2563eb;
-
-border-radius:5px 5px 0 0;
-
-height:15px;
-
-}
-
-.calorie-bar:nth-child(2){
-
-height:25px;
-
-}
-
-.calorie-bar:nth-child(3){
-
-height:35px;
-
-}
-
-.calorie-bar:nth-child(4){
-
-height:50px;
-
-}
-
-.calorie-bar:nth-child(5){
-
-height:28px;
-
-}
-
-.calorie-bar:nth-child(6){
-
-height:42px;
-
-}
-
-.calorie-bar:nth-child(7){
-
-height:60px;
-
-}
-
-/* =========================
-TODAY WORKOUT
-========================= */
+/* TODAY'S WORKOUT */
 
 .today-workout{
-
 background:#ffffff;
-
 border:1px solid #d7dee8;
-
 border-radius:20px;
-
 padding:20px;
-
 margin-bottom:30px;
-
 overflow:hidden;
-
 }
 
 .workout-slider{
-
 display:flex;
-
 gap:16px;
-
 width:100%;
-
 overflow-x:auto;
-
 overflow-y:hidden;
-
 scroll-snap-type:x mandatory;
-
 -webkit-overflow-scrolling:touch;
-
 scrollbar-width:none;
-
 padding:5px 2px 10px;
-
 direction:rtl;
-
 }
 
 .workout-slider::-webkit-scrollbar{
-
 display:none;
-
 }
 
 .workout-card{
-
 flex:0 0 calc((100% - 32px)/3);
-
 min-width:0;
-
 background:#f8fafc;
-
 border:1px solid #d7dee8;
-
 border-radius:16px;
-
 padding:20px;
-
 scroll-snap-align:start;
-
 display:flex;
-
 flex-direction:column;
-
 justify-content:space-between;
-
-min-height:300px;
-
+min-height:220px;
+text-decoration:none;
 }
 
 .workout-card-icon{
-
 width:58px;
-
 height:58px;
-
 border-radius:15px;
-
 background:#2563eb;
-
 color:#ffffff;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 font-size:28px;
-
 margin-bottom:15px;
-
 }
 
 .workout-card h3{
-
 font-size:20px;
-
 color:#071a33;
-
 margin-bottom:8px;
-
 }
 
 .workout-card p{
-
 color:#64748b;
-
 font-size:14px;
-
 line-height:1.6;
-
 margin-bottom:14px;
-
 }
 
 .exercise-list{
-
 list-style:none;
-
 margin-bottom:18px;
-
 }
 
 .exercise-list li{
-
 color:#334155;
-
 font-size:13px;
-
 margin-bottom:7px;
-
 padding-right:13px;
-
 position:relative;
-
 }
 
 .exercise-list li::before{
-
 content:"";
-
 position:absolute;
-
 right:0;
-
 top:7px;
-
 width:6px;
-
 height:6px;
-
 border-radius:50%;
-
 background:#2563eb;
-
-}
-
-.exercise-btn{
-
-width:100%;
-
-border:none;
-
-background:#071a33;
-
-color:white;
-
-padding:11px;
-
-border-radius:9px;
-
-margin-bottom:8px;
-
-cursor:pointer;
-
-font-size:13px;
-
-text-align:right;
-
-}
-
-.exercise-btn:hover{
-
-background:#2563eb;
-
-}
-
-.start-btn{
-
-border:none;
-
-background:#2563eb;
-
-color:white;
-
-padding:11px 18px;
-
-border-radius:9px;
-
-cursor:pointer;
-
-font-size:14px;
-
-font-weight:bold;
-
-}
-
-.start-btn:hover{
-
-background:#1d4ed8;
-
 }
 
 .workout-card .start-btn{
-
 align-self:flex-start;
-
-margin-top:5px;
-
 }
 
 .workout-dots{
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 gap:14px;
-
 margin-top:18px;
-
 direction:ltr;
-
 }
 
 .workout-dots span{
-
 display:block;
-
 width:9px;
-
 height:9px;
-
 border-radius:50%;
-
 background:#cbd5e1;
-
 transition:.25s ease;
-
-cursor:pointer;
-
 }
 
 .workout-dots span.active{
-
 width:28px;
-
 height:9px;
-
 border-radius:8px;
-
 background:#2563eb;
-
 }
 
-/* =========================
-NEWS
-========================= */
+.start-btn{
+display:inline-block;
+text-decoration:none;
+background:#2563eb;
+color:#ffffff;
+padding:11px 19px;
+border-radius:9px;
+font-weight:bold;
+font-size:14px;
+}
 
-.news-box{
-
-background:white;
-
-border-radius:20px;
-
+.community-card{
+background:#ffffff;
 border:1px solid #d7dee8;
-
-padding:20px;
-
+border-radius:20px;
+padding:10px 20px;
 margin-bottom:30px;
-
 }
 
-.news-item{
-
+.news-row{
 display:flex;
-
 align-items:center;
-
-gap:14px;
-
-padding:15px 0;
-
-border-bottom:1px solid #e2e8f0;
-
+justify-content:space-between;
+padding:18px 0;
+border-bottom:1px solid #d7dee8;
 }
 
-.news-item:last-child{
-
+.news-row:last-child{
 border-bottom:none;
+}
 
+.news-left{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
 .news-icon{
-
-width:45px;
-
-height:45px;
-
-border-radius:12px;
-
-background:#071a33;
-
-color:white;
-
+width:40px;
+height:40px;
+border-radius:10px;
+background:#2563eb;
+color:#ffffff;
 display:flex;
-
 align-items:center;
-
 justify-content:center;
+}
 
+.news-title{
 font-weight:bold;
-
-font-size:18px;
-
-flex-shrink:0;
-
-}
-
-.news-item strong{
-
-display:block;
-
+margin-bottom:4px;
 color:#071a33;
-
-margin-bottom:5px;
-
 }
 
-.news-item span{
-
+.news-sub{
 color:#64748b;
-
-font-size:13px;
-
+font-size:12px;
 }
-
-/* =========================
-CARDS
-========================= */
 
 .cards{
-
 display:grid;
-
 grid-template-columns:repeat(2,1fr);
-
-gap:20px;
-
+gap:17px;
 margin-bottom:30px;
-
 }
 
-.info-card{
-
-background:white;
-
-border-radius:20px;
-
-padding:22px;
-
+.card{
+background:#ffffff;
 border:1px solid #d7dee8;
-
+border-radius:18px;
+padding:23px;
 }
 
-.info-card h3{
+.icon{
+font-size:34px;
+margin-bottom:14px;
+}
 
-font-size:20px;
-
-margin-bottom:10px;
-
+.card h3{
+margin-bottom:9px;
+font-size:19px;
 color:#071a33;
-
 }
 
-.info-card p{
-
-font-size:15px;
-
-line-height:1.8;
-
-color:#64748b;
-
+.card p{
+color:#334155;
+line-height:1.7;
+font-size:14px;
+margin-bottom:18px;
 }
 
-.info-card a{
-
+.card a{
 display:inline-block;
-
-margin-top:15px;
-
-background:#071a33;
-
-color:white;
-
-padding:10px 17px;
-
-border-radius:8px;
-
 text-decoration:none;
-
+background:#2563eb;
+color:#ffffff;
+padding:10px 16px;
+border-radius:9px;
+font-weight:bold;
+font-size:14px;
 }
-
-/* =========================
-PROGRESS
-========================= */
 
 .progress-section{
-
-background:white;
-
-border-radius:20px;
-
-padding:22px;
-
-border:1px solid #d7dee8;
-
 margin-bottom:30px;
-
 }
 
-.progress-section h2{
-
-font-size:25px;
-
-margin-bottom:10px;
-
-}
-
-.progress-section p{
-
-color:#64748b;
-
-line-height:1.8;
-
-}
-
-/* =========================
-SUBSCRIPTIONS
-========================= */
-
-.subscriptions{
-
-background:white;
-
-border-radius:20px;
-
-padding:22px;
-
+.progress-card{
+background:#ffffff;
 border:1px solid #d7dee8;
-
-margin-bottom:30px;
-
+border-radius:20px;
+padding:28px;
+display:flex;
+align-items:center;
+gap:25px;
 }
 
-.subscriptions h2{
-
-font-size:27px;
-
-margin-bottom:8px;
-
-}
-
-.subscription-subtitle{
-
-color:#64748b;
-
-margin-bottom:20px;
-
-}
-
-.subscription-grid{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:18px;
-
-}
-
-.plan{
-
-background:#071a33;
-
-color:white;
-
+.progress-icon{
+width:72px;
+height:72px;
+min-width:72px;
 border-radius:16px;
-
-padding:22px;
-
+background:#2563eb;
+color:#ffffff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
 }
 
-.plan h3{
+.progress-content{
+flex:1;
+}
 
-font-size:20px;
+.progress-content h3{
+font-size:21px;
+margin-bottom:8px;
+color:#071a33;
+}
 
-margin-bottom:12px;
+.progress-content p{
+color:#334155;
+line-height:1.7;
+font-size:14px;
+margin-bottom:15px;
+}
 
+.progress-content a{
+display:inline-block;
+text-decoration:none;
+background:#2563eb;
+color:#ffffff;
+padding:10px 17px;
+border-radius:9px;
+font-weight:bold;
+font-size:14px;
+}
+
+.subscriptions-section{
+margin-bottom:30px;
+}
+
+.subscription-box{
+background:#ffffff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:28px;
+text-align:center;
+}
+
+.subscription-box h2{
+font-size:24px;
+margin-bottom:10px;
+color:#071a33;
+}
+
+.subscription-box p{
+color:#334155;
+margin-bottom:10px;
+line-height:1.7;
 }
 
 .plan-price{
-
-font-size:29px;
-
-font-weight:bold;
-
-margin-bottom:5px;
-
-}
-
-.plan-duration{
-
-color:#cbd5e1;
-
-font-size:14px;
-
-margin-bottom:18px;
-
-}
-
-.plan ul{
-
-list-style:none;
-
-margin-bottom:20px;
-
-}
-
-.plan li{
-
-font-size:14px;
-
-padding:8px 0;
-
-border-bottom:1px solid rgba(255,255,255,.1);
-
-}
-
-.plan li:last-child{
-
-border-bottom:none;
-
-}
-
-.plan button{
-
-width:100%;
-
-background:#2563eb;
-
-border:none;
-
-color:white;
-
-padding:12px;
-
-border-radius:9px;
-
-font-size:15px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-}
-
-.plan button:hover{
-
-background:#1d4ed8;
-
-}
-
-.selected-plan{
-
-margin-top:20px;
-
-padding:18px;
-
-background:#eff6ff;
-
-border-radius:12px;
-
-border:1px solid #bfdbfe;
-
-display:none;
-
-}
-
-.selected-plan h3{
-
-color:#071a33;
-
-margin-bottom:8px;
-
-}
-
-.selected-plan p{
-
-color:#475569;
-
-margin-bottom:12px;
-
-}
-
-/* =========================
-EXERCISE MODAL
-========================= */
-
-.exercise-modal{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.65);
-
-z-index:5000;
-
-display:none;
-
-align-items:center;
-
-justify-content:center;
-
-padding:20px;
-
-}
-
-.exercise-modal.active{
-
-display:flex;
-
-}
-
-.exercise-modal-box{
-
-background:white;
-
-width:100%;
-
-max-width:560px;
-
-max-height:90vh;
-
-overflow-y:auto;
-
-border-radius:20px;
-
-padding:25px;
-
-position:relative;
-
-}
-
-.close-modal{
-
-position:absolute;
-
-top:12px;
-
-left:12px;
-
-width:38px;
-
-height:38px;
-
-border:none;
-
-border-radius:50%;
-
-background:#e2e8f0;
-
-color:#071a33;
-
-font-size:22px;
-
-cursor:pointer;
-
-}
-
-.exercise-modal-box h2{
-
-font-size:26px;
-
-color:#071a33;
-
-margin-bottom:7px;
-
-padding-left:45px;
-
-}
-
-.exercise-target{
-
 color:#2563eb;
-
+font-size:34px;
 font-weight:bold;
-
-margin-bottom:20px;
-
+margin:16px 0;
 }
 
-.exercise-details{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:12px;
-
-margin-bottom:20px;
-
+.complete-subscription{
+background:#2563eb;
+color:#ffffff;
+padding:12px 24px;
+border-radius:10px;
+font-weight:bold;
+border:none;
+cursor:pointer;
+font-size:16px;
 }
 
-.detail-box{
-
-background:#f1f5f9;
-
-border-radius:12px;
-
-padding:15px;
-
-}
-
-.detail-box strong{
-
-display:block;
-
+.no-plan{
 color:#64748b;
-
-font-size:13px;
-
-margin-bottom:6px;
-
 }
 
-.detail-box span{
-
-font-size:18px;
-
-font-weight:bold;
-
-color:#071a33;
-
+#message{
+margin-top:15px;
+text-align:center;
+color:#2563eb;
 }
-
-.exercise-instructions{
-
-background:#071a33;
-
-color:white;
-
-border-radius:14px;
-
-padding:18px;
-
-line-height:1.9;
-
-}
-
-.exercise-instructions h3{
-
-margin-bottom:8px;
-
-}
-
-.exercise-instructions p{
-
-color:#e2e8f0;
-
-font-size:15px;
-
-}
-
-/* =========================
-BOTTOM NAV
-========================= */
 
 .bottom-nav{
-
 position:fixed;
-
 bottom:0;
-
 left:0;
-
 right:0;
-
 height:70px;
-
-background:#000;
-
+background:#ffffff;
+border-top:1px solid #d7dee8;
 display:flex;
-
 align-items:center;
-
-justify-content:center;
-
-gap:55px;
-
+justify-content:space-around;
 z-index:1000;
-
-border-top:1px solid #1e293b;
-
 }
 
-.bottom-nav a{
-
-text-decoration:none;
-
+.nav-item{
 color:#64748b;
-
+text-decoration:none;
 display:flex;
-
 flex-direction:column;
-
 align-items:center;
-
-justify-content:center;
-
-font-size:12px;
-
 gap:5px;
-
-min-width:55px;
-
+font-size:12px;
+min-width:70px;
+cursor:pointer;
 }
 
-.bottom-nav a span{
-
+.nav-item span{
 font-size:21px;
-
 }
 
-.bottom-nav a.active{
-
+.nav-item.active{
 color:#2563eb;
-
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-.subscription-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.workout-card{
-
-flex:0 0 48%;
-
-}
-
 }
 
 @media(max-width:800px){
 
 .stat{
-
 flex:0 0 270px;
-
 }
 
 .cards{
-
 grid-template-columns:1fr;
-
 }
 
 .workout-card{
-
 flex:0 0 48%;
-
-}
-
-.bottom-nav{
-
-gap:25px;
-
 }
 
 }
@@ -1655,224 +940,147 @@ gap:25px;
 @media(max-width:600px){
 
 header{
-
-padding:0 15px;
-
+height:68px;
+padding:0 16px;
 }
 
 .logo{
-
-font-size:22px;
-
-}
-
-main{
-
-padding:18px 12px 95px;
-
-}
-
-.top-bar h1{
-
-font-size:23px;
-
-}
-
-.section-title h2{
-
 font-size:21px;
-
 }
 
-.today-workout{
-
-padding:14px;
-
+.profile{
+width:36px;
+height:36px;
 }
 
-.workout-slider{
-
-gap:12px;
-
-padding:4px 2px 10px;
-
+.menu-btn{
+font-size:29px;
 }
 
-.workout-card{
-
-flex:0 0 82%;
-
-min-height:300px;
-
-padding:18px;
-
+.side-menu{
+width:300px;
+padding:85px 16px 30px;
 }
 
-.workout-card-icon{
-
-width:55px;
-
-height:55px;
-
-font-size:26px;
-
+.side-menu-title{
+font-size:23px;
+margin-bottom:25px;
 }
 
-.workout-card h3{
-
-font-size:19px;
-
-}
-
-.workout-card p{
-
-font-size:13px;
-
-}
-
-.exercise-list li{
-
-font-size:12px;
-
-}
-
-.workout-dots{
-
-gap:14px;
-
-margin-top:17px;
-
-}
-
-.workout-dots span{
-
-width:9px;
-
-height:9px;
-
-}
-
-.workout-dots span.active{
-
-width:27px;
-
-}
-
-.notification-popup{
-
-position:fixed;
-
-top:80px;
-
-left:15px;
-
-right:15px;
-
-width:auto;
-
+.menu-item{
+padding:16px;
+font-size:16px;
 }
 
 .profile-popup{
-
-right:15px;
-
-left:15px;
-
+top:78px;
+right:14px;
+left:14px;
 width:auto;
-
 }
 
-.bottom-nav{
-
-gap:8px;
-
-justify-content:space-around;
-
+.notification-popup{
+top:78px;
+right:14px;
+left:14px;
+width:auto;
 }
 
-.bottom-nav a{
-
-font-size:10px;
-
+.container{
+padding:20px 14px 100px;
 }
 
-.bottom-nav a span{
+.stat{
+flex:0 0 285px;
+}
 
+.activity-circles{
+gap:14px;
+}
+
+.activity-circle{
+width:78px;
+height:78px;
+}
+
+.activity-circle::before{
+width:58px;
+height:58px;
+}
+
+.progress-card{
+padding:22px 18px;
+gap:17px;
+}
+
+.progress-icon{
+width:62px;
+height:62px;
+min-width:62px;
+font-size:26px;
+}
+
+.progress-content h3{
 font-size:19px;
-
 }
 
-.exercise-modal{
-
-padding:12px;
-
+.today-workout{
+padding:14px;
 }
 
-.exercise-modal-box{
-
-padding:20px;
-
-border-radius:16px;
-
-}
-
-.exercise-modal-box h2{
-
-font-size:22px;
-
-}
-
-.exercise-details{
-
-grid-template-columns:1fr 1fr;
-
-}
-
-}
-
-/* =========================
-MACRO STYLE
-========================= */
-
-.macro-list{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
+.workout-slider{
 gap:12px;
-
-max-width:430px;
-
+padding:4px 2px 10px;
 }
 
-.macro-item{
+.workout-card{
+flex:0 0 82%;
+min-height:225px;
+padding:18px;
+}
 
-background:#071a33;
+.workout-card-icon{
+width:55px;
+height:55px;
+font-size:26px;
+}
 
-color:white;
+.workout-card h3{
+font-size:19px;
+}
 
-padding:18px 12px;
+.workout-card p{
+font-size:13px;
+}
 
-border-radius:9px;
+.exercise-list li{
+font-size:12px;
+}
 
-font-size:16px;
+.workout-dots{
+gap:14px;
+margin-top:17px;
+}
 
-font-weight:bold;
+.workout-dots span{
+width:9px;
+height:9px;
+}
 
-text-align:center;
+.workout-dots span.active{
+width:27px;
+}
+
+.subscription-box{
+padding:23px 18px;
+}
 
 }
 
 </style>
-
 </head>
 
 <body>
-
-<!-- =========================
-HEADER
-========================= -->
 
 <header>
 
@@ -1882,68 +1090,11 @@ Body<span>Reset</span>
 
 <div class="header-left">
 
-<div class="notification-wrap">
-
-<button
-class="notification-btn"
-id="notificationBtn"
->
-🔔
-
-<span class="notification-dot"></span>
-
-</button>
-
-<div
-class="notification-popup"
-id="notificationPopup"
->
-
-<div class="notification-item">
-
-<strong>تمرين جديد</strong>
-
-<span>
-تمت إضافة تمارين جديدة لهدفك.
-</span>
-
+<div class="profile" id="profileBtn">
+<span id="profileInitial">?</span>
 </div>
 
-<div class="notification-item">
-
-<strong>تحديث التقدم</strong>
-
-<span>
-تابع تقدمك الأسبوعي من لوحة التحكم.
-</span>
-
-</div>
-
-<div class="notification-item">
-
-<strong>تحدي جديد</strong>
-
-<span>
-ابدأ تحديك الجديد اليوم.
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div
-class="profile-circle"
-id="profileBtn"
->
-B
-</div>
-
-<button
-class="menu-btn"
-id="menuBtn"
->
+<button class="menu-btn" id="menuBtn">
 ☰
 </button>
 
@@ -1951,88 +1102,179 @@ id="menuBtn"
 
 </header>
 
-<!-- =========================
-OVERLAY
-========================= -->
+<div class="menu-overlay" id="menuOverlay"></div>
 
-<div
-class="overlay"
-id="overlay"
-></div>
+<aside class="side-menu" id="sideMenu">
 
-<!-- =========================
-SIDE MENU
-========================= -->
+<div class="side-menu-title">
+Body<span>Reset</span>
+</div>
 
-<aside
-class="side-menu"
-id="sideMenu"
->
-
-<h3>BodyReset</h3>
-
-<a href="#">
-العروض
+<a href="#" class="menu-item">
+<span>العروض</span>
+<span class="menu-arrow">‹</span>
 </a>
 
-<a href="calories.html">
-حساب سعرات الجسم
+<a href="calories.html" class="menu-item">
+<span>حساب سعرات الجسم</span>
+<span class="menu-arrow">‹</span>
 </a>
 
-<a href="nutrition.html">
-التغذية
+<a href="nutrition.html" class="menu-item">
+<span>التغذية</span>
+<span class="menu-arrow">‹</span>
 </a>
 
-<a href="#subscriptions">
-الاشتراكات
+<a href="#subscriptions" class="menu-item" id="subscriptionsMenuLink">
+<span>اشتراكات</span>
+<span class="menu-arrow">‹</span>
 </a>
 
-<button id="logoutBtn">
-تسجيل الخروج
+<button class="menu-item menu-logout" id="logoutBtn">
+<span>تسجيل الخروج</span>
+<span>‹</span>
 </button>
 
 </aside>
 
-<!-- =========================
-PROFILE POPUP
-========================= -->
+<div class="profile-popup" id="profilePopup">
 
-<div
-class="profile-popup"
-id="profilePopup"
->
+<div class="profile-popup-header">
 
-<h3>حسابي</h3>
+<h2>
+البروفايل
+</h2>
 
-<p>
-الاسم:
-<span id="profileName">...</span>
-</p>
-
-<p>
-البريد:
-<span id="profileEmail">...</span>
-</p>
+<button class="close-profile" id="closeProfile">
+×
+</button>
 
 </div>
 
-<!-- =========================
-MAIN
-========================= -->
+<div class="profile-data">
+<span>الاسم</span>
+<strong id="profileName">
+جاري التحميل...
+</strong>
+</div>
 
-<main>
-
-<div class="top-bar">
-
-<h1>
-أهلاً بيك 👋
-</h1>
+<div class="profile-data">
+<span>الإيميل</span>
+<strong id="profileEmail">
+جاري التحميل...
+</strong>
+</div>
 
 </div>
 
-<!-- =========================
-STATS
-========================= -->
+<div class="notification-popup" id="notificationPopup">
+
+<div class="notification-popup-header">
+
+<h2>
+الإشعارات
+</h2>
+
+<button
+class="close-notification"
+id="closeNotification"
+type="button">
+×
+</button>
+
+</div>
+
+<div class="notification-item">
+
+<div class="notification-icon">
+✓
+</div>
+
+<div>
+<strong>
+أهلاً بيك في BodyReset
+</strong>
+
+<span>
+حسابك جاهز، ابدأ رحلتك دلوقتي.
+</span>
+
+</div>
+
+</div>
+
+<div class="notification-item">
+
+<div class="notification-icon">
+💪
+</div>
+
+<div>
+
+<strong>
+تمرينك النهارده جاهز
+</strong>
+
+<span>
+متنساش تكمل تمرينك وتحافظ على استمراريتك.
+</span>
+
+</div>
+
+</div>
+
+<div class="notification-item">
+
+<div class="notification-icon">
+★
+</div>
+
+<div>
+
+<strong>
+تابع تقدمك
+</strong>
+
+<span>
+راجع نسبة تقدمك وشوف تطورك مع الوقت.
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<main class="container">
+
+<div class="top-area">
+
+<button
+class="notification"
+id="notificationBtn"
+type="button"
+aria-label="الإشعارات">
+
+<svg
+viewBox="0 0 24 24"
+aria-hidden="true">
+
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
+</path>
+
+<path d="M10 21h4">
+</path>
+
+</svg>
+
+<span
+class="notification-dot"
+id="notificationDot">
+</span>
+
+</button>
+
+</div>
 
 <div class="stats">
 
@@ -2042,35 +1284,33 @@ STATS
 Weekly Activity
 </h3>
 
-<div class="stat-main">
+<div class="activity-circles">
 
-<div>
+<div class="activity-circle progress">
 
-<div class="stat-number">
+<div class="circle-content">
+
+<strong>
 0
-</div>
-
-<div class="stat-label">
-تمرين هذا الأسبوع
-</div>
-
-</div>
-
-<div class="weekly-circles">
-
-<div class="small-circle">
+</strong>
 
 <span>
-60<br>
 Progress
 </span>
 
 </div>
 
-<div class="small-circle">
+</div>
+
+<div class="activity-circle burn">
+
+<div class="circle-content">
+
+<strong>
+0%
+</strong>
 
 <span>
-0%<br>
 Burn
 </span>
 
@@ -2088,38 +1328,19 @@ Burn
 Calorie Burn
 </h3>
 
-<div class="stat-main">
+<div class="calorie-number">
 
-<div>
+<strong>
+0
+</strong>
 
-<div class="stat-number">
-0 kcal
-</div>
-
-<div class="stat-label">
-إجمالي الحرق
-</div>
+<span>
+kcal
+</span>
 
 </div>
 
 <div class="calorie-chart">
-
-<div class="calorie-bar"></div>
-
-<div class="calorie-bar"></div>
-
-<div class="calorie-bar"></div>
-
-<div class="calorie-bar"></div>
-
-<div class="calorie-bar"></div>
-
-<div class="calorie-bar"></div>
-
-<div class="calorie-bar"></div>
-
-</div>
-
 </div>
 
 </div>
@@ -2130,25 +1351,13 @@ Calorie Burn
 Weekly Progress
 </h3>
 
-<div class="stat-main">
-
-<div>
-
-<div class="stat-number">
-0%
-</div>
-
-<div class="stat-label">
-تقدمك الأسبوعي
-</div>
-
-</div>
+<div class="weekly-progress">
 
 <div class="progress-circle">
 
-<span>
+<strong>
 0%
-</span>
+</strong>
 
 </div>
 
@@ -2158,95 +1367,31 @@ Weekly Progress
 
 </div>
 
-<!-- =========================
-TODAY'S WORKOUT
-========================= -->
+<!-- TODAY'S WORKOUT -->
 
-<section
-class="today-workout"
-id="workout"
->
-
-<div class="section-title">
+<div class="section-heading">
 
 <h2>
 Today's Workout
 </h2>
 
-<a href="#workout">
+<a
+href="workout.html?workout=chest"
+class="see-all">
 See All
 </a>
 
 </div>
 
+<section class="today-workout">
+
 <div
 class="workout-slider"
-id="workoutSlider"
->
+id="workoutSlider">
 
-<!-- BACK -->
-
-<div class="workout-card">
-
-<div>
-
-<div class="workout-card-icon">
-🏋️
-</div>
-
-<h3>
-Back
-</h3>
-
-<p>
-تمارين الظهر وبناء القوة.
-</p>
-
-<ul class="exercise-list">
-
-<li>
-<button
-class="exercise-btn"
-data-exercise="latPulldown"
->
-Lat Pulldown
-</button>
-</li>
-
-<li>
-<button
-class="exercise-btn"
-data-exercise="seatedRow"
->
-Seated Row
-</button>
-</li>
-
-<li>
-<button
-class="exercise-btn"
-data-exercise="oneArmRow"
->
-One Arm Row
-</button>
-</li>
-
-</ul>
-
-</div>
-
-<button
-class="start-btn"
-data-goal="back"
->
-Start Now
-</button>
-
-</div>
-
-<!-- CHEST -->
-
-<div class="workout-card">
+<a
+href="workout.html?workout=chest"
+class="workout-card">
 
 <div>
 
@@ -2259,417 +1404,130 @@ Chest
 </h3>
 
 <p>
-تمارين الصدر وتحسين القوة.
+تمرين الصدر اليومي الخاص بخطتك.
 </p>
 
 <ul class="exercise-list">
 
 <li>
-
-<button
-class="exercise-btn"
-data-exercise="benchPress"
->
 Bench Press
-</button>
-
 </li>
 
 <li>
-
-<button
-class="exercise-btn"
-data-exercise="inclinePress"
->
 Incline Press
-</button>
-
 </li>
 
 <li>
-
-<button
-class="exercise-btn"
-data-exercise="chestFly"
->
 Chest Fly
-</button>
+</li>
 
+<li>
+Push Ups
 </li>
 
 </ul>
 
 </div>
 
-<button
-class="start-btn"
-data-goal="chest"
->
-Start Now
-</button>
-
-</div>
-
-<!-- SHOULDERS -->
-
-<div class="workout-card">
-
-<div>
-
-<div class="workout-card-icon">
-🏋️
-</div>
-
-<h3>
-Shoulders
-</h3>
-
-<p>
-تمارين الكتف وبناء القوة.
-</p>
-
-<ul class="exercise-list">
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="shoulderPress"
->
-Shoulder Press
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="lateralRaise"
->
-Lateral Raise
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="frontRaise"
->
-Front Raise
-</button>
-
-</li>
-
-</ul>
-
-</div>
-
-<button
-class="start-btn"
-data-goal="shoulders"
->
-Start Now
-</button>
-
-</div>
-
-<!-- ARMS -->
-
-<div class="workout-card">
-
-<div>
-
-<div class="workout-card-icon">
-💪
-</div>
-
-<h3>
-Arms
-</h3>
-
-<p>
-تمارين الذراعين والبiceps والترايسبس.
-</p>
-
-<ul class="exercise-list">
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="bicepsCurl"
->
-Biceps Curl
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="hammerCurl"
->
-Hammer Curl
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="tricepsPushdown"
->
-Triceps Pushdown
-</button>
-
-</li>
-
-</ul>
-
-</div>
-
-<button
-class="start-btn"
-data-goal="arms"
->
-Start Now
-</button>
-
-</div>
-
-<!-- LEGS -->
-
-<div class="workout-card">
-
-<div>
-
-<div class="workout-card-icon">
-🏋️
-</div>
-
-<h3>
-Legs
-</h3>
-
-<p>
-تمارين الرجلين والقوة.
-</p>
-
-<ul class="exercise-list">
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="squats"
->
-Squats
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="legPress"
->
-Leg Press
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="lunges"
->
-Lunges
-</button>
-
-</li>
-
-</ul>
-
-</div>
-
-<button
-class="start-btn"
-data-goal="legs"
->
-Start Now
-</button>
-
-</div>
-
-<!-- ABS -->
-
-<div class="workout-card">
-
-<div>
-
-<div class="workout-card-icon">
-🔥
-</div>
-
-<h3>
-Abs
-</h3>
-
-<p>
-تمارين البطن والـ Core.
-</p>
-
-<ul class="exercise-list">
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="crunches"
->
-Crunches
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="legRaises"
->
-Leg Raises
-</button>
-
-</li>
-
-<li>
-
-<button
-class="exercise-btn"
-data-exercise="plank"
->
-Plank
-</button>
-
-</li>
-
-</ul>
-
-</div>
-
-<button
-class="start-btn"
-data-goal="abs"
->
-Start Now
-</button>
-
-</div>
+<span class="start-btn">
+ابدأ
+</span>
+
+</a>
 
 </div>
 
 <div
 class="workout-dots"
-id="workoutDots"
->
+id="workoutDots">
 
 <span class="active"></span>
-
-<span></span>
-
-<span></span>
-
-<span></span>
-
-<span></span>
-
-<span></span>
 
 </div>
 
 </section>
 
-<!-- =========================
-COMMUNITY NEWS
-========================= -->
-
-<section class="news-box">
-
-<div class="section-title">
+<div class="section-heading">
 
 <h2>
 Community News
 </h2>
 
-<a href="#">
+<a href="#" class="see-all">
 See All
 </a>
 
 </div>
 
-<div class="news-item">
+<section class="community-card">
+
+<div class="news-row">
+
+<div class="news-left">
 
 <div class="news-icon">
-1
+★
 </div>
 
 <div>
 
-<strong>
+<div class="news-title">
 New Class: Neon Spin
-</strong>
+</div>
 
-<span>
-New Class is. Neon Spin
-</span>
+<div class="news-sub">
+New Class is Neon Spin
+</div>
+
+</div>
 
 </div>
 
 </div>
 
-<div class="news-item">
+<div class="news-row">
+
+<div class="news-left">
 
 <div class="news-icon">
-2
+#
 </div>
 
 <div>
 
-<strong>
+<div class="news-title">
 Leaderboard Update
-</strong>
+</div>
 
-<span>
-تم تحديث ترتيب المجتمع.
-</span>
+<div class="news-sub">
+Check your latest ranking
+</div>
+
+</div>
 
 </div>
 
 </div>
 
-<div class="news-item">
+<div class="news-row">
+
+<div class="news-left">
 
 <div class="news-icon">
-3
++
 </div>
 
 <div>
 
-<strong>
+<div class="news-title">
 New Challenge
-</strong>
+</div>
 
-<span>
-ابدأ التحدي الجديد وحقق تقدمك.
-</span>
+<div class="news-sub">
+Join the latest challenge
+</div>
+
+</div>
 
 </div>
 
@@ -2677,391 +1535,161 @@ New Challenge
 
 </section>
 
-<!-- =========================
-INFO CARDS
-========================= -->
+<div class="section-heading">
+
+<h2>
+ابدأ رحلتك 💪
+</h2>
+
+</div>
 
 <div class="cards">
 
-<div class="info-card">
+<div class="card">
+
+<div class="icon">
+💪
+</div>
 
 <h3>
-التمارين
+Workout
 </h3>
 
 <p>
-اختار هدفك وتابع التمارين المناسبة ليك، مع تفاصيل كل تمرين وعدد المجموعات والتكرارات والراحة.
+تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
 </p>
 
-<a href="#workout">
-عرض التمارين
+<a href="workout.html">
+ابدأ التمرين
 </a>
 
 </div>
 
-<div class="info-card">
+<div class="card">
+
+<div class="icon">
+🥗
+</div>
 
 <h3>
-التغذية
+Nutrition
 </h3>
 
 <p>
-خطط غذائية واختيارات أكل تساعدك على الالتزام بهدفك وتحسين نتائجك.
+خطط غذائية تساعدك تختار أكلك حسب هدفك.
 </p>
 
 <a href="nutrition.html">
-عرض التغذية
+خطة التغذية
 </a>
 
 </div>
 
 </div>
 
-<!-- =========================
-PROGRESS
-========================= -->
-
 <section class="progress-section">
+
+<div class="section-heading">
 
 <h2>
 Progress
 </h2>
 
+<a href="#" class="see-all">
+See All
+</a>
+
+</div>
+
+<div class="progress-card">
+
+<div class="progress-icon">
+📊
+</div>
+
+<div class="progress-content">
+
+<h3>
+متابعة التقدم
+</h3>
+
 <p>
-تابع تقدمك واستمر في الالتزام بتمارينك وتغذيتك للوصول لهدفك.
+تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
 </p>
+
+<a href="#">
+شوف التقدم
+</a>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- =========================
-SUBSCRIPTIONS
-========================= -->
-
 <section
-class="subscriptions"
-id="subscriptions"
->
+class="subscriptions-section"
+id="subscriptions">
+
+<div class="section-heading">
 
 <h2>
 الاشتراكات
 </h2>
 
-<p class="subscription-subtitle">
-اختار الباقة المناسبة ليك وابدأ رحلتك مع BodyReset
-</p>
-
-<div class="subscription-grid">
-
-<!-- MONTH -->
-
-<div class="plan">
-
-<h3>
-شهري
-</h3>
-
-<div class="plan-price">
-500 جنيه
-</div>
-
-<div class="plan-duration">
-اشتراك لمدة شهر
-</div>
-
-<ul>
-
-<li>
-خطة تمارين
-</li>
-
-<li>
-خطة تغذية
-</li>
-
-<li>
-حساب السعرات والماكروز
-</li>
-
-<li>
-متابعة التقدم
-</li>
-
-</ul>
-
-<button
-class="choose-plan"
-data-plan="500"
->
-ابدأ
-</button>
+<a href="#" class="see-all">
+See All
+</a>
 
 </div>
 
-<!-- 3 MONTHS -->
+<div class="subscription-box">
 
-<div class="plan">
-
-<h3>
-3 شهور
-</h3>
-
-<div class="plan-price">
-1000 جنيه
-</div>
-
-<div class="plan-duration">
-اشتراك لمدة 3 شهور
-</div>
-
-<ul>
-
-<li>
-خطة تمارين
-</li>
-
-<li>
-خطة تغذية
-</li>
-
-<li>
-حساب السعرات والماكروز
-</li>
-
-<li>
-متابعة التقدم
-</li>
-
-</ul>
-
-<button
-class="choose-plan"
-data-plan="1000"
->
-ابدأ
-</button>
-
-</div>
-
-<!-- YEAR -->
-
-<div class="plan">
-
-<h3>
-سنوي
-</h3>
-
-<div class="plan-price">
-3000 جنيه
-</div>
-
-<div class="plan-duration">
-اشتراك لمدة سنة
-</div>
-
-<ul>
-
-<li>
-خطة تمارين
-</li>
-
-<li>
-خطة تغذية
-</li>
-
-<li>
-حساب السعرات والماكروز
-</li>
-
-<li>
-متابعة التقدم
-</li>
-
-</ul>
-
-<button
-class="choose-plan"
-data-plan="3000"
->
-ابدأ
-</button>
-
-</div>
-
-</div>
-
-<div
-class="selected-plan"
-id="selectedPlan"
->
-
-<h3 id="selectedPlanName">
-الباقة
-</h3>
-
-<p id="selectedPlanText">
-تم اختيار الباقة.
-</p>
-
-<button
-class="start-btn"
-id="continuePlan"
->
-إكمال الاشتراك
-</button>
-
-</div>
-
-</section>
-
-<!-- =========================
-MACROS
-========================= -->
-
-<section
-class="info-card"
-id="calories"
-style="margin-bottom:30px;"
->
-
-<h3>
-احسب سعراتك وماكروزك
-</h3>
-
-<p style="margin-bottom:18px;">
-اعرف احتياجك اليومي من السعرات والعناصر الغذائية.
-</p>
-
-<div class="macro-list">
-
-<div class="macro-item">
-السعرات اليومية
-</div>
-
-<div class="macro-item">
-البروتين
-</div>
-
-<div class="macro-item">
-الكربوهيدرات
-</div>
-
-<div class="macro-item">
-الدهون
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-<!-- =========================
-EXERCISE MODAL
-========================= -->
-
-<div
-class="exercise-modal"
-id="exerciseModal"
->
-
-<div class="exercise-modal-box">
-
-<button
-class="close-modal"
-id="closeExercise"
->
-×
-</button>
-
-<h2 id="exerciseTitle">
-التمرين
+<h2>
+اشتراكك في BodyReset
 </h2>
 
+<p id="selectedPlanText">
+جاري تحميل الباقة...
+</p>
+
 <div
-class="exercise-target"
-id="exerciseTarget"
->
-العضلة المستهدفة
+class="plan-price"
+id="selectedPlanPrice">
 </div>
 
-<div class="exercise-details">
+<button
+class="complete-subscription"
+id="completeSubscriptionBtn"
+style="display:none;">
 
-<div class="detail-box">
+إكمال الاشتراك
 
-<strong>
-المجموعات
-</strong>
+</button>
 
-<span id="exerciseSets">
-3
-</span>
+<p
+class="no-plan"
+id="noPlanText"
+style="display:none;">
 
-</div>
+لم يتم اختيار أي باقة حتى الآن.
 
-<div class="detail-box">
-
-<strong>
-التكرارات
-</strong>
-
-<span id="exerciseReps">
-10
-</span>
-
-</div>
-
-<div class="detail-box">
-
-<strong>
-الإحماء
-</strong>
-
-<span id="exerciseWarmup">
-5 دقائق
-</span>
-
-</div>
-
-<div class="detail-box">
-
-<strong>
-الراحة
-</strong>
-
-<span id="exerciseRest">
-60 ثانية
-</span>
-
-</div>
-
-</div>
-
-<div class="exercise-instructions">
-
-<h3>
-طريقة الأداء
-</h3>
-
-<p id="exerciseInstructions">
-تفاصيل أداء التمرين ستظهر هنا.
 </p>
 
 </div>
 
+</section>
+
+<div id="message">
 </div>
 
-</div>
-
-<!-- =========================
-BOTTOM NAV
-========================= -->
+</main>
 
 <nav class="bottom-nav">
 
 <a
-href="#"
-class="active"
->
+href="dashboard.html"
+class="nav-item active">
 
 <span>
 ⌂
@@ -3071,17 +1699,21 @@ Home
 
 </a>
 
-<a href="#workout">
+<a
+href="workout.html"
+class="nav-item">
 
 <span>
-🏋
+💪
 </span>
 
 Workouts
 
 </a>
 
-<a href="#">
+<a
+href="#"
+class="nav-item">
 
 <span>
 📊
@@ -3091,7 +1723,10 @@ Progress
 
 </a>
 
-<a href="#">
+<a
+href="#"
+class="nav-item"
+id="bottomProfileBtn">
 
 <span>
 👤
@@ -3102,10 +1737,6 @@ Profile
 </a>
 
 </nav>
-
-<!-- =========================
-SUPABASE
-========================= -->
 
 <script type="module">
 
@@ -3118,32 +1749,13 @@ from
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
-const SUPABASE_KEY =
+const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
 const supabase =
 createClient(
 SUPABASE_URL,
-SUPABASE_KEY
-);
-
-/* =========================
-ELEMENTS
-========================= */
-
-const menuBtn =
-document.getElementById(
-"menuBtn"
-);
-
-const sideMenu =
-document.getElementById(
-"sideMenu"
-);
-
-const overlay =
-document.getElementById(
-"overlay"
+SUPABASE_PUBLISHABLE_KEY
 );
 
 const profileBtn =
@@ -3151,9 +1763,34 @@ document.getElementById(
 "profileBtn"
 );
 
+const bottomProfileBtn =
+document.getElementById(
+"bottomProfileBtn"
+);
+
 const profilePopup =
 document.getElementById(
 "profilePopup"
+);
+
+const closeProfile =
+document.getElementById(
+"closeProfile"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+const profileEmail =
+document.getElementById(
+"profileEmail"
+);
+
+const profileInitial =
+document.getElementById(
+"profileInitial"
 );
 
 const notificationBtn =
@@ -3166,196 +1803,65 @@ document.getElementById(
 "notificationPopup"
 );
 
+const closeNotification =
+document.getElementById(
+"closeNotification"
+);
+
+const notificationDot =
+document.getElementById(
+"notificationDot"
+);
+
+const menuBtn =
+document.getElementById(
+"menuBtn"
+);
+
+const sideMenu =
+document.getElementById(
+"sideMenu"
+);
+
+const menuOverlay =
+document.getElementById(
+"menuOverlay"
+);
+
+const subscriptionsMenuLink =
+document.getElementById(
+"subscriptionsMenuLink"
+);
+
 const logoutBtn =
 document.getElementById(
 "logoutBtn"
 );
 
-/* =========================
-MENU
-========================= */
-
-function openMenu(){
-
-sideMenu.classList.add(
-"active"
-);
-
-overlay.classList.add(
-"active"
-);
-
-}
-
-function closeMenu(){
-
-sideMenu.classList.remove(
-"active"
-);
-
-overlay.classList.remove(
-"active"
-);
-
-}
-
-menuBtn.addEventListener(
-"click",
-openMenu
-);
-
-overlay.addEventListener(
-"click",
-closeMenu
-);
-
-/* =========================
-PROFILE
-========================= */
-
-profileBtn.addEventListener(
-"click",
-(e)=>{
-
-e.stopPropagation();
-
-profilePopup.classList.toggle(
-"active"
-);
-
-notificationPopup.classList.remove(
-"active"
-);
-
-}
-);
-
-/* =========================
-NOTIFICATIONS
-========================= */
-
-notificationBtn.addEventListener(
-"click",
-(e)=>{
-
-e.stopPropagation();
-
-notificationPopup.classList.toggle(
-"active"
-);
-
-profilePopup.classList.remove(
-"active"
-);
-
-}
-);
-
-document.addEventListener(
-"click",
-(e)=>{
-
-if(
-!profilePopup.contains(e.target) &&
-e.target !== profileBtn
-){
-
-profilePopup.classList.remove(
-"active"
-);
-
-}
-
-if(
-!notificationPopup.contains(e.target) &&
-e.target !== notificationBtn
-){
-
-notificationPopup.classList.remove(
-"active"
-);
-
-}
-
-}
-);
-
-/* =========================
-LOAD USER
-========================= */
-
-async function loadUser(){
-
-const {
-data,
-error
-} =
-await supabase.auth.getUser();
-
-if(
-error ||
-!data ||
-!data.user
-){
-
-window.location.href =
-"auth.html";
-
-return;
-
-}
-
-const user =
-data.user;
-
-const email =
-user.email || "";
-
+const message =
 document.getElementById(
-"profileEmail"
-).textContent =
-email;
-
-let username =
-user.user_metadata?.username ||
-"BodyReset";
-
-document.getElementById(
-"profileName"
-).textContent =
-username;
-
-const firstLetter =
-username
-.charAt(0)
-.toUpperCase();
-
-profileBtn.textContent =
-firstLetter;
-
-}
-
-loadUser();
-
-/* =========================
-LOGOUT
-========================= */
-
-logoutBtn.addEventListener(
-"click",
-async ()=>{
-
-await supabase.auth.signOut();
-
-window.location.href =
-"auth.html";
-
-}
+"message"
 );
 
-/* =========================
-WORKOUT SLIDER
-========================= */
+const selectedPlanText =
+document.getElementById(
+"selectedPlanText"
+);
+
+const selectedPlanPrice =
+document.getElementById(
+"selectedPlanPrice"
+);
+
+const completeSubscriptionBtn =
+document.getElementById(
+"completeSubscriptionBtn"
+);
+
+const noPlanText =
+document.getElementById(
+"noPlanText"
+);
 
 const workoutSlider =
 document.getElementById(
@@ -3367,14 +1873,452 @@ document.querySelectorAll(
 "#workoutDots span"
 );
 
-function updateWorkoutDots(){
+const urlParams =
+new URLSearchParams(
+window.location.search
+);
+
+const selectedPlan =
+urlParams.get("plan");
+
+const plans = {
+
+"500":{
+name:"الباقة الشهرية",
+price:"500 جنيه",
+duration:"اشتراك لمدة شهر"
+},
+
+"1000":{
+name:"باقة 3 شهور",
+price:"1000 جنيه",
+duration:"اشتراك لمدة 3 شهور"
+},
+
+"3000":{
+name:"الباقة السنوية",
+price:"3000 جنيه",
+duration:"اشتراك لمدة سنة"
+}
+
+};
+
+function openMenu(){
+
+sideMenu.classList.add(
+"show"
+);
+
+menuOverlay.classList.add(
+"show"
+);
+
+menuBtn.textContent =
+"×";
+
+document.body.style.overflow =
+"hidden";
+
+}
+
+function closeMenu(){
+
+sideMenu.classList.remove(
+"show"
+);
+
+menuOverlay.classList.remove(
+"show"
+);
+
+menuBtn.textContent =
+"☰";
+
+document.body.style.overflow =
+"";
+
+}
+
+menuBtn.addEventListener(
+"click",
+()=>{
 
 if(
-!workoutSlider
+sideMenu.classList.contains(
+"show"
+)
 ){
+
+closeMenu();
+
+}else{
+
+openMenu();
+
+}
+
+}
+);
+
+menuOverlay.addEventListener(
+"click",
+closeMenu
+);
+
+subscriptionsMenuLink.addEventListener(
+"click",
+()=>{
+
+closeMenu();
+
+}
+);
+
+function showSelectedPlan(){
+
+if(
+selectedPlan &&
+plans[selectedPlan]
+){
+
+const plan =
+plans[selectedPlan];
+
+selectedPlanText.textContent =
+plan.name +
+" - " +
+plan.duration;
+
+selectedPlanPrice.textContent =
+plan.price;
+
+completeSubscriptionBtn.style.display =
+"inline-block";
+
+noPlanText.style.display =
+"none";
+
+}else{
+
+selectedPlanText.textContent =
+"لم يتم اختيار أي باقة.";
+
+selectedPlanPrice.textContent =
+"";
+
+completeSubscriptionBtn.style.display =
+"none";
+
+noPlanText.style.display =
+"block";
+
+}
+
+}
+
+completeSubscriptionBtn.addEventListener(
+"click",
+()=>{
+
+message.style.color =
+"#2563eb";
+
+message.textContent =
+"تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
+
+}
+);
+
+async function loadUser(){
+
+const {
+data:{
+user
+},
+error
+} =
+await supabase.auth.getUser();
+
+if(
+error ||
+!user
+){
+
+window.location.href =
+"auth.html";
 
 return;
 
+}
+
+const username =
+user.user_metadata?.username;
+
+profileName.textContent =
+username ||
+"غير مسجل";
+
+profileInitial.textContent =
+username
+?
+username.trim().charAt(0).toUpperCase()
+:
+"?";
+
+profileEmail.textContent =
+user.email ||
+"غير متوفر";
+
+}
+
+function positionProfilePopup(){
+
+const rect =
+profileBtn.getBoundingClientRect();
+
+const popupWidth =
+profilePopup.offsetWidth ||
+300;
+
+let rightPosition =
+window.innerWidth -
+rect.right;
+
+const maxRight =
+window.innerWidth -
+popupWidth -
+14;
+
+if(
+rightPosition >
+maxRight
+){
+
+rightPosition =
+maxRight;
+
+}
+
+if(
+rightPosition <
+14
+){
+
+rightPosition =
+14;
+
+}
+
+profilePopup.style.top =
+(rect.bottom + 10) +
+"px";
+
+profilePopup.style.right =
+rightPosition +
+"px";
+
+profilePopup.style.left =
+"auto";
+
+}
+
+function openProfile(){
+
+notificationPopup.classList.remove(
+"show"
+);
+
+profilePopup.classList.add(
+"show"
+);
+
+positionProfilePopup();
+
+}
+
+profileBtn.addEventListener(
+"click",
+(event)=>{
+
+event.stopPropagation();
+
+notificationPopup.classList.remove(
+"show"
+);
+
+if(
+profilePopup.classList.contains(
+"show"
+)
+){
+
+profilePopup.classList.remove(
+"show"
+);
+
+}else{
+
+profilePopup.classList.add(
+"show"
+);
+
+positionProfilePopup();
+
+}
+
+}
+);
+
+bottomProfileBtn.addEventListener(
+"click",
+(event)=>{
+
+event.preventDefault();
+
+openProfile();
+
+}
+);
+
+closeProfile.addEventListener(
+"click",
+()=>{
+
+profilePopup.classList.remove(
+"show"
+);
+
+}
+);
+
+window.addEventListener(
+"resize",
+()=>{
+
+if(
+profilePopup.classList.contains(
+"show"
+)
+){
+
+positionProfilePopup();
+
+}
+
+}
+);
+
+notificationBtn.addEventListener(
+"click",
+(event)=>{
+
+event.stopPropagation();
+
+profilePopup.classList.remove(
+"show"
+);
+
+notificationPopup.classList.toggle(
+"show"
+);
+
+notificationDot.classList.add(
+"hidden"
+);
+
+}
+);
+
+closeNotification.addEventListener(
+"click",
+()=>{
+
+notificationPopup.classList.remove(
+"show"
+);
+
+}
+);
+
+document.addEventListener(
+"click",
+(event)=>{
+
+if(
+!profilePopup.contains(
+event.target
+) &&
+!profileBtn.contains(
+event.target
+) &&
+!bottomProfileBtn.contains(
+event.target
+)
+){
+
+profilePopup.classList.remove(
+"show"
+);
+
+}
+
+if(
+!notificationPopup.contains(
+event.target
+) &&
+!notificationBtn.contains(
+event.target
+)
+){
+
+notificationPopup.classList.remove(
+"show"
+);
+
+}
+
+}
+);
+
+logoutBtn.addEventListener(
+"click",
+async()=>{
+
+const {
+error
+} =
+await supabase.auth.signOut();
+
+if(error){
+
+message.style.color =
+"#b91c1c";
+
+message.textContent =
+error.message;
+
+closeMenu();
+
+return;
+
+}
+
+window.location.href =
+"auth.html";
+
+}
+);
+
+showSelectedPlan();
+
+loadUser();
+
+/* TODAY WORKOUT */
+
+function updateWorkoutDots(){
+
+if(!workoutSlider){
+return;
 }
 
 const cards =
@@ -3382,12 +2326,8 @@ workoutSlider.querySelectorAll(
 ".workout-card"
 );
 
-if(
-!cards.length
-){
-
+if(!cards.length){
 return;
-
 }
 
 const scrollLeft =
@@ -3396,30 +2336,20 @@ workoutSlider.scrollLeft
 );
 
 const cardWidth =
-cards[0].offsetWidth +
-16;
+cards[0].offsetWidth + 16;
 
 let index =
 Math.round(
-scrollLeft /
-cardWidth
+scrollLeft / cardWidth
 );
 
-if(
-index < 0
-){
-
+if(index < 0){
 index = 0;
-
 }
 
-if(
-index >= workoutDots.length
-){
-
+if(index >= workoutDots.length){
 index =
 workoutDots.length - 1;
-
 }
 
 workoutDots.forEach(
@@ -3435,6 +2365,8 @@ indexDot === index
 
 }
 
+if(workoutSlider){
+
 workoutSlider.addEventListener(
 "scroll",
 updateWorkoutDots,
@@ -3443,755 +2375,9 @@ passive:true
 }
 );
 
-workoutDots.forEach(
-(dot,index)=>{
-
-dot.addEventListener(
-"click",
-()=>{
-
-const cards =
-workoutSlider.querySelectorAll(
-".workout-card"
-);
-
-if(
-cards[index]
-){
-
-workoutSlider.scrollTo({
-
-left:
-cards[index].offsetLeft,
-
-behavior:
-"smooth"
-
-});
-
 }
-
-}
-);
-
-}
-);
-
-/* =========================
-EXERCISE DATA
-========================= */
-
-const exercises = {
-
-latPulldown:{
-
-title:"Lat Pulldown",
-
-target:"عضلات الظهر",
-
-sets:"3",
-
-reps:"10 - 12",
-
-warmup:"5 دقائق",
-
-rest:"60 - 90 ثانية",
-
-instructions:
-"اجلس بثبات واسحب البار باتجاه أعلى الصدر مع إبقاء ظهرك مستقيمًا. توقف لحظة ثم ارفع البار ببطء مع التحكم في الحركة."
-
-},
-
-seatedRow:{
-
-title:"Seated Row",
-
-target:"منتصف الظهر",
-
-sets:"3",
-
-reps:"10 - 12",
-
-warmup:"5 دقائق",
-
-rest:"60 - 90 ثانية",
-
-instructions:
-"اجلس بشكل مستقيم واسحب المقبض باتجاه جسمك مع ضم لوحي الكتف. ارجع ببطء إلى وضع البداية بدون تحريك الجسم للأمام والخلف."
-
-},
-
-oneArmRow:{
-
-title:"One Arm Row",
-
-target:"عضلات الظهر",
-
-sets:"3",
-
-reps:"10 لكل جانب",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"ثبت جسمك واسحب الدمبل باتجاه الخصر مع الحفاظ على الظهر ثابتًا. أنزل الوزن ببطء ثم كرر الحركة."
-
-},
-
-benchPress:{
-
-title:"Bench Press",
-
-target:"عضلات الصدر",
-
-sets:"3",
-
-reps:"8 - 12",
-
-warmup:"5 - 8 دقائق",
-
-rest:"90 ثانية",
-
-instructions:
-"ثبت القدمين والظهر على المقعد. أنزل البار باتجاه منتصف الصدر بتحكم ثم ادفعه لأعلى بدون قفل المرفقين بعنف."
-
-},
-
-inclinePress:{
-
-title:"Incline Press",
-
-target:"أعلى الصدر",
-
-sets:"3",
-
-reps:"8 - 12",
-
-warmup:"5 دقائق",
-
-rest:"90 ثانية",
-
-instructions:
-"استخدم مقعدًا مائلًا وثبت كتفيك. انزل بالأوزان بجانب الصدر ثم ادفع لأعلى مع التحكم الكامل."
-
-},
-
-chestFly:{
-
-title:"Chest Fly",
-
-target:"عضلات الصدر",
-
-sets:"3",
-
-reps:"12 - 15",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"افتح الذراعين بشكل مريح ثم اجمعهما أمام الصدر مع ثني بسيط للمرفقين. حافظ على الحركة بطيئة ومتحكم فيها."
-
-},
-
-shoulderPress:{
-
-title:"Shoulder Press",
-
-target:"عضلات الكتف",
-
-sets:"3",
-
-reps:"8 - 12",
-
-warmup:"5 دقائق",
-
-rest:"90 ثانية",
-
-instructions:
-"ابدأ بالأوزان بجانب الكتفين. ادفع لأعلى حتى قرب استقامة الذراعين ثم انزل ببطء."
-
-},
-
-lateralRaise:{
-
-title:"Lateral Raise",
-
-target:"الكتف الجانبي",
-
-sets:"3",
-
-reps:"12 - 15",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"ارفع الدمبلز إلى الجانبين حتى مستوى الكتف تقريبًا، مع الحفاظ على المرفقين في وضع مريح وعدم استخدام حركة الجسم."
-
-},
-
-frontRaise:{
-
-title:"Front Raise",
-
-target:"الكتف الأمامي",
-
-sets:"3",
-
-reps:"12 - 15",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"ارفع الوزن أمام جسمك حتى مستوى الكتف ثم أنزله ببطء. حافظ على الجذع ثابتًا."
-
-},
-
-bicepsCurl:{
-
-title:"Biceps Curl",
-
-target:"عضلة البايسبس",
-
-sets:"3",
-
-reps:"10 - 12",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"ثبت المرفقين بجانب الجسم وارفع الدمبل باتجاه الكتف. أنزل الوزن ببطء مع الحفاظ على المرفق ثابتًا."
-
-},
-
-hammerCurl:{
-
-title:"Hammer Curl",
-
-target:"البايسبس والساعد",
-
-sets:"3",
-
-reps:"10 - 12",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"أمسك الدمبلز والراحة للداخل. ارفع الوزن باتجاه الكتف مع تثبيت المرفق ثم أنزله بتحكم."
-
-},
-
-tricepsPushdown:{
-
-title:"Triceps Pushdown",
-
-target:"عضلة الترايسبس",
-
-sets:"3",
-
-reps:"10 - 15",
-
-warmup:"5 دقائق",
-
-rest:"60 ثانية",
-
-instructions:
-"ثبت المرفقين بجانب الجسم وادفع المقبض لأسفل حتى تمد الذراعين، ثم ارجع ببطء لوضع البداية."
-
-},
-
-squats:{
-
-title:"Squats",
-
-target:"الفخذين والأرداف",
-
-sets:"3",
-
-reps:"10 - 15",
-
-warmup:"7 دقائق",
-
-rest:"90 ثانية",
-
-instructions:
-"قف والقدمين بعرض الكتفين. انزل بالحوض للخلف ولأسفل مع الحفاظ على الظهر ثابتًا، ثم ادفع الأرض للعودة للوقوف."
-
-},
-
-legPress:{
-
-title:"Leg Press",
-
-target:"عضلات الرجلين",
-
-sets:"3",
-
-reps:"10 - 12",
-
-warmup:"7 دقائق",
-
-rest:"90 ثانية",
-
-instructions:
-"ضع القدمين بثبات على المنصة. انزل بالوزن بتحكم ثم ادفع المنصة بعيدًا بدون قفل الركبتين بقوة."
-
-},
-
-lunges:{
-
-title:"Lunges",
-
-target:"الفخذين والأرداف",
-
-sets:"3",
-
-reps:"10 لكل رجل",
-
-warmup:"5 دقائق",
-
-rest:"60 - 90 ثانية",
-
-instructions:
-"خذ خطوة للأمام وانزل بالحوض مع الحفاظ على توازن الجسم، ثم ادفع بالقدم الأمامية للعودة لوضع البداية."
-
-},
-
-crunches:{
-
-title:"Crunches",
-
-target:"عضلات البطن",
-
-sets:"3",
-
-reps:"15 - 20",
-
-warmup:"3 دقائق",
-
-rest:"45 ثانية",
-
-instructions:
-"استلقِ على ظهرك وثبت القدمين. ارفع الجزء العلوي من الجسم باستخدام عضلات البطن بدون سحب الرقبة باليدين."
-
-},
-
-legRaises:{
-
-title:"Leg Raises",
-
-target:"أسفل البطن",
-
-sets:"3",
-
-reps:"10 - 15",
-
-warmup:"3 دقائق",
-
-rest:"45 - 60 ثانية",
-
-instructions:
-"استلقِ على ظهرك وارفع الرجلين مع الحفاظ على التحكم. أنزلهما ببطء بدون ترك أسفل الظهر ينفصل عن الأرض بشكل مبالغ."
-
-},
-
-plank:{
-
-title:"Plank",
-
-target:"عضلات الـ Core",
-
-sets:"3",
-
-reps:"30 - 60 ثانية",
-
-warmup:"3 دقائق",
-
-rest:"45 - 60 ثانية",
-
-instructions:
-"ثبت جسمك في خط مستقيم من الرأس حتى القدمين، وشد عضلات البطن والأرداف مع التنفس بشكل طبيعي."
-
-}
-
-};
-
-/* =========================
-EXERCISE MODAL
-========================= */
-
-const exerciseModal =
-document.getElementById(
-"exerciseModal"
-);
-
-const closeExercise =
-document.getElementById(
-"closeExercise"
-);
-
-const exerciseTitle =
-document.getElementById(
-"exerciseTitle"
-);
-
-const exerciseTarget =
-document.getElementById(
-"exerciseTarget"
-);
-
-const exerciseSets =
-document.getElementById(
-"exerciseSets"
-);
-
-const exerciseReps =
-document.getElementById(
-"exerciseReps"
-);
-
-const exerciseWarmup =
-document.getElementById(
-"exerciseWarmup"
-);
-
-const exerciseRest =
-document.getElementById(
-"exerciseRest"
-);
-
-const exerciseInstructions =
-document.getElementById(
-"exerciseInstructions"
-);
-
-function openExercise(
-exerciseId
-){
-
-const exercise =
-exercises[exerciseId];
-
-if(
-!exercise
-){
-
-return;
-
-}
-
-exerciseTitle.textContent =
-exercise.title;
-
-exerciseTarget.textContent =
-exercise.target;
-
-exerciseSets.textContent =
-exercise.sets;
-
-exerciseReps.textContent =
-exercise.reps;
-
-exerciseWarmup.textContent =
-exercise.warmup;
-
-exerciseRest.textContent =
-exercise.rest;
-
-exerciseInstructions.textContent =
-exercise.instructions;
-
-exerciseModal.classList.add(
-"active"
-);
-
-document.body.style.overflow =
-"hidden";
-
-}
-
-function closeExerciseModal(){
-
-exerciseModal.classList.remove(
-"active"
-);
-
-document.body.style.overflow =
-"";
-
-}
-
-document
-.querySelectorAll(
-".exercise-btn"
-)
-.forEach(
-button=>{
-
-button.addEventListener(
-"click",
-()=>{
-
-openExercise(
-button.dataset.exercise
-);
-
-}
-);
-
-}
-);
-
-closeExercise.addEventListener(
-"click",
-closeExerciseModal
-);
-
-exerciseModal.addEventListener(
-"click",
-(e)=>{
-
-if(
-e.target ===
-exerciseModal
-){
-
-closeExerciseModal();
-
-}
-
-}
-);
-
-document.addEventListener(
-"keydown",
-(e)=>{
-
-if(
-e.key === "Escape"
-){
-
-closeExerciseModal();
-
-}
-
-}
-);
-
-/* =========================
-START WORKOUT
-========================= */
-
-document
-.querySelectorAll(
-".start-btn[data-goal]"
-)
-.forEach(
-button=>{
-
-button.addEventListener(
-"click",
-()=>{
-
-const goal =
-button.dataset.goal;
-
-const firstCard =
-button.closest(
-".workout-card"
-);
-
-if(
-firstCard
-){
-
-const firstExercise =
-firstCard.querySelector(
-".exercise-btn"
-);
-
-if(
-firstExercise
-){
-
-openExercise(
-firstExercise.dataset.exercise
-);
-
-}
-
-}
-
-}
-);
-
-}
-);
-
-/* =========================
-SUBSCRIPTIONS
-========================= */
-
-const plans = {
-
-"500":{
-
-name:"الباقة الشهرية",
-
-price:"500 جنيه",
-
-duration:"اشتراك لمدة شهر"
-
-},
-
-"1000":{
-
-name:"باقة 3 شهور",
-
-price:"1000 جنيه",
-
-duration:"اشتراك لمدة 3 شهور"
-
-},
-
-"3000":{
-
-name:"الباقة السنوية",
-
-price:"3000 جنيه",
-
-duration:"اشتراك لمدة سنة"
-
-}
-
-};
-
-const selectedPlanBox =
-document.getElementById(
-"selectedPlan"
-);
-
-const selectedPlanName =
-document.getElementById(
-"selectedPlanName"
-);
-
-const selectedPlanText =
-document.getElementById(
-"selectedPlanText"
-);
-
-const continuePlan =
-document.getElementById(
-"continuePlan"
-);
-
-let selectedPlan = null;
-
-document
-.querySelectorAll(
-".choose-plan"
-)
-.forEach(
-button=>{
-
-button.addEventListener(
-"click",
-async ()=>{
-
-const planId =
-button.dataset.plan;
-
-selectedPlan =
-plans[planId];
-
-selectedPlanBox.style.display =
-"block";
-
-selectedPlanName.textContent =
-selectedPlan.name;
-
-selectedPlanText.textContent =
-selectedPlan.price +
-" - " +
-selectedPlan.duration;
-
-continuePlan.dataset.plan =
-planId;
-
-selectedPlanBox.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-}
-);
-
-}
-);
-
-/* =========================
-CONTINUE SUBSCRIPTION
-========================= */
-
-continuePlan.addEventListener(
-"click",
-async ()=>{
-
-const {
-data
-} =
-await supabase.auth.getUser();
-
-if(
-!data ||
-!data.user
-){
-
-window.location.href =
-"auth.html?plan=" +
-encodeURIComponent(
-continuePlan.dataset.plan
-);
-
-return;
-
-}
-
-const plan =
-plans[
-continuePlan.dataset.plan
-];
-
-if(
-plan
-){
-
-alert(
-"تم اختيار " +
-plan.name +
-" - " +
-plan.price
-);
-
-}
-
-}
-);
 
 </script>
 
 </body>
-
   </html>
