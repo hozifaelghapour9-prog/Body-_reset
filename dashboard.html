@@ -6,12 +6,7 @@
 <title>BodyReset | لوحة التحكم</title>
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif;}
 
 body{
 background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
@@ -36,9 +31,7 @@ letter-spacing:.5px;
 color:#ffffff;
 }
 
-.logo span{
-color:#2563eb;
-}
+.logo span{color:#2563eb;}
 
 .header-left{
 display:flex;
@@ -83,9 +76,7 @@ position:relative;
 z-index:4001;
 }
 
-.menu-btn:hover{
-color:#2563eb;
-}
+.menu-btn:hover{color:#2563eb;}
 
 .menu-overlay{
 position:fixed;
@@ -95,9 +86,7 @@ z-index:3999;
 display:none;
 }
 
-.menu-overlay.show{
-display:block;
-}
+.menu-overlay.show{display:block;}
 
 .side-menu{
 position:fixed;
@@ -115,9 +104,7 @@ box-shadow:8px 0 30px rgba(0,0,0,.45);
 overflow-y:auto;
 }
 
-.side-menu.show{
-transform:translateX(0);
-}
+.side-menu.show{transform:translateX(0);}
 
 .side-menu-title{
 font-size:25px;
@@ -126,9 +113,7 @@ margin-bottom:28px;
 color:#071a33;
 }
 
-.side-menu-title span{
-color:#2563eb;
-}
+.side-menu-title span{color:#2563eb;}
 
 .menu-item{
 width:100%;
@@ -152,9 +137,7 @@ border-color:#2563eb;
 color:#2563eb;
 }
 
-.menu-logout{
-color:#b91c1c;
-}
+.menu-logout{color:#b91c1c;}
 
 .menu-logout:hover{
 border-color:#b91c1c;
@@ -180,9 +163,7 @@ box-shadow:0 10px 35px rgba(0,0,0,.35);
 display:none;
 }
 
-.profile-popup.show{
-display:block;
-}
+.profile-popup.show{display:block;}
 
 .profile-popup-header{
 display:flex;
@@ -284,9 +265,7 @@ right:7px;
 box-shadow:0 0 8px rgba(249,115,22,.45);
 }
 
-.notification-dot.hidden{
-display:none;
-}
+.notification-dot.hidden{display:none;}
 
 .notification-popup{
 position:fixed;
@@ -302,9 +281,7 @@ box-shadow:0 10px 35px rgba(0,0,0,.35);
 display:none;
 }
 
-.notification-popup.show{
-display:block;
-}
+.notification-popup.show{display:block;}
 
 .notification-popup-header{
 display:flex;
@@ -391,9 +368,7 @@ padding-bottom:8px;
 -webkit-overflow-scrolling:touch;
 }
 
-.stats::-webkit-scrollbar{
-height:5px;
-}
+.stats::-webkit-scrollbar{height:5px;}
 
 .stats::-webkit-scrollbar-track{
 background:#111111;
@@ -567,7 +542,28 @@ margin-bottom:30px;
 overflow:hidden;
 }
 
-.workout-slider{
+.today-workout-title{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:18px;
+}
+
+.today-workout-title h3{
+font-size:22px;
+color:#071a33;
+}
+
+.today-workout-title span{
+background:#2563eb;
+color:#ffffff;
+padding:7px 13px;
+border-radius:8px;
+font-size:13px;
+font-weight:bold;
+}
+
+.exercise-slider{
 display:flex;
 gap:16px;
 width:100%;
@@ -576,94 +572,92 @@ overflow-y:hidden;
 scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 scrollbar-width:none;
-padding:5px 2px 10px;
+padding:4px 2px 10px;
 direction:rtl;
 }
 
-.workout-slider::-webkit-scrollbar{
+.exercise-slider::-webkit-scrollbar{
 display:none;
 }
 
-.workout-card{
+.exercise-card{
 flex:0 0 calc((100% - 32px)/3);
-min-width:0;
 background:#f8fafc;
 border:1px solid #d7dee8;
 border-radius:16px;
-padding:20px;
+padding:18px;
 scroll-snap-align:start;
+min-height:220px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-min-height:220px;
-text-decoration:none;
 }
 
-.workout-card-icon{
-width:58px;
-height:58px;
-border-radius:15px;
+.exercise-card-icon{
+width:55px;
+height:55px;
+border-radius:14px;
 background:#2563eb;
 color:#ffffff;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:28px;
-margin-bottom:15px;
+font-size:25px;
+margin-bottom:13px;
 }
 
-.workout-card h3{
-font-size:20px;
+.exercise-card h3{
+font-size:18px;
 color:#071a33;
 margin-bottom:8px;
 }
 
-.workout-card p{
-color:#64748b;
+.exercise-card p{
 font-size:14px;
+color:#64748b;
 line-height:1.6;
-margin-bottom:14px;
+margin-bottom:12px;
 }
 
-.exercise-list{
-list-style:none;
-margin-bottom:18px;
+.exercise-meta{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:15px;
 }
 
-.exercise-list li{
-color:#334155;
-font-size:13px;
-margin-bottom:7px;
-padding-right:13px;
-position:relative;
+.exercise-meta span{
+background:#071a33;
+color:#ffffff;
+padding:7px 9px;
+border-radius:7px;
+font-size:12px;
+font-weight:bold;
 }
 
-.exercise-list li::before{
-content:"";
-position:absolute;
-right:0;
-top:7px;
-width:6px;
-height:6px;
-border-radius:50%;
+.exercise-start{
+display:block;
+width:100%;
+text-align:center;
 background:#2563eb;
+color:#ffffff;
+padding:11px 10px;
+border-radius:9px;
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
 }
 
-.workout-card .start-btn{
-align-self:flex-start;
-}
-
-.workout-dots{
+.exercise-dots{
 display:flex;
 align-items:center;
 justify-content:center;
-gap:14px;
-margin-top:18px;
+gap:12px;
+margin-top:16px;
 direction:ltr;
 }
 
-.workout-dots span{
-display:block;
+.exercise-dots span{
 width:9px;
 height:9px;
 border-radius:50%;
@@ -671,22 +665,10 @@ background:#cbd5e1;
 transition:.25s ease;
 }
 
-.workout-dots span.active{
-width:28px;
-height:9px;
+.exercise-dots span.active{
+width:27px;
 border-radius:8px;
 background:#2563eb;
-}
-
-.start-btn{
-display:inline-block;
-text-decoration:none;
-background:#2563eb;
-color:#ffffff;
-padding:11px 19px;
-border-radius:9px;
-font-weight:bold;
-font-size:14px;
 }
 
 .community-card{
@@ -931,7 +913,7 @@ flex:0 0 270px;
 grid-template-columns:1fr;
 }
 
-.workout-card{
+.exercise-card{
 flex:0 0 48%;
 }
 
@@ -1028,47 +1010,33 @@ font-size:19px;
 padding:14px;
 }
 
-.workout-slider{
+.exercise-slider{
 gap:12px;
 padding:4px 2px 10px;
 }
 
-.workout-card{
+.exercise-card{
 flex:0 0 82%;
 min-height:225px;
 padding:18px;
 }
 
-.workout-card-icon{
+.exercise-card-icon{
 width:55px;
 height:55px;
 font-size:26px;
 }
 
-.workout-card h3{
+.exercise-card h3{
 font-size:19px;
 }
 
-.workout-card p{
+.exercise-card p{
 font-size:13px;
 }
 
-.exercise-list li{
-font-size:12px;
-}
-
-.workout-dots{
-gap:14px;
-margin-top:17px;
-}
-
-.workout-dots span{
-width:9px;
-height:9px;
-}
-
-.workout-dots span.active{
-width:27px;
+.exercise-meta span{
+font-size:11px;
 }
 
 .subscription-box{
@@ -1141,9 +1109,7 @@ Body<span>Reset</span>
 
 <div class="profile-popup-header">
 
-<h2>
-البروفايل
-</h2>
+<h2>البروفايل</h2>
 
 <button class="close-profile" id="closeProfile">
 ×
@@ -1153,16 +1119,12 @@ Body<span>Reset</span>
 
 <div class="profile-data">
 <span>الاسم</span>
-<strong id="profileName">
-جاري التحميل...
-</strong>
+<strong id="profileName">جاري التحميل...</strong>
 </div>
 
 <div class="profile-data">
 <span>الإيميل</span>
-<strong id="profileEmail">
-جاري التحميل...
-</strong>
+<strong id="profileEmail">جاري التحميل...</strong>
 </div>
 
 </div>
@@ -1171,9 +1133,7 @@ Body<span>Reset</span>
 
 <div class="notification-popup-header">
 
-<h2>
-الإشعارات
-</h2>
+<h2>الإشعارات</h2>
 
 <button
 class="close-notification"
@@ -1191,14 +1151,8 @@ type="button">
 </div>
 
 <div>
-<strong>
-أهلاً بيك في BodyReset
-</strong>
-
-<span>
-حسابك جاهز، ابدأ رحلتك دلوقتي.
-</span>
-
+<strong>أهلاً بيك في BodyReset</strong>
+<span>حسابك جاهز، ابدأ رحلتك دلوقتي.</span>
 </div>
 
 </div>
@@ -1210,15 +1164,8 @@ type="button">
 </div>
 
 <div>
-
-<strong>
-تمرينك النهارده جاهز
-</strong>
-
-<span>
-متنساش تكمل تمرينك وتحافظ على استمراريتك.
-</span>
-
+<strong>تمرينك النهارده جاهز</strong>
+<span>متنساش تكمل تمرينك وتحافظ على استمراريتك.</span>
 </div>
 
 </div>
@@ -1230,15 +1177,8 @@ type="button">
 </div>
 
 <div>
-
-<strong>
-تابع تقدمك
-</strong>
-
-<span>
-راجع نسبة تقدمك وشوف تطورك مع الوقت.
-</span>
-
+<strong>تابع تقدمك</strong>
+<span>راجع نسبة تقدمك وشوف تطورك مع الوقت.</span>
 </div>
 
 </div>
@@ -1255,9 +1195,7 @@ id="notificationBtn"
 type="button"
 aria-label="الإشعارات">
 
-<svg
-viewBox="0 0 24 24"
-aria-hidden="true">
+<svg viewBox="0 0 24 24" aria-hidden="true">
 
 <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
 </path>
@@ -1280,9 +1218,7 @@ id="notificationDot">
 
 <div class="stat">
 
-<h3>
-Weekly Activity
-</h3>
+<h3>Weekly Activity</h3>
 
 <div class="activity-circles">
 
@@ -1290,13 +1226,9 @@ Weekly Activity
 
 <div class="circle-content">
 
-<strong>
-0
-</strong>
+<strong>0</strong>
 
-<span>
-Progress
-</span>
+<span>Progress</span>
 
 </div>
 
@@ -1306,13 +1238,9 @@ Progress
 
 <div class="circle-content">
 
-<strong>
-0%
-</strong>
+<strong>0%</strong>
 
-<span>
-Burn
-</span>
+<span>Burn</span>
 
 </div>
 
@@ -1324,40 +1252,29 @@ Burn
 
 <div class="stat">
 
-<h3>
-Calorie Burn
-</h3>
+<h3>Calorie Burn</h3>
 
 <div class="calorie-number">
 
-<strong>
-0
-</strong>
+<strong>0</strong>
 
-<span>
-kcal
-</span>
+<span>kcal</span>
 
 </div>
 
-<div class="calorie-chart">
-</div>
+<div class="calorie-chart"></div>
 
 </div>
 
 <div class="stat">
 
-<h3>
-Weekly Progress
-</h3>
+<h3>Weekly Progress</h3>
 
 <div class="weekly-progress">
 
 <div class="progress-circle">
 
-<strong>
-0%
-</strong>
+<strong>0%</strong>
 
 </div>
 
@@ -1371,9 +1288,7 @@ Weekly Progress
 
 <div class="section-heading">
 
-<h2>
-Today's Workout
-</h2>
+<h2>Today's Workout</h2>
 
 <a
 href="workout.html?workout=chest"
@@ -1385,63 +1300,164 @@ See All
 
 <section class="today-workout">
 
-<div
-class="workout-slider"
-id="workoutSlider">
+<div class="today-workout-title">
 
-<a
-href="workout.html?workout=chest"
-class="workout-card">
+<h3>Chest</h3>
+
+<span>Today's Workout</span>
+
+</div>
+
+<div
+class="exercise-slider"
+id="exerciseSlider">
+
+<div class="exercise-card">
 
 <div>
 
-<div class="workout-card-icon">
+<div class="exercise-card-icon">
 🏋️
 </div>
 
-<h3>
-Chest
-</h3>
+<h3>Bench Press</h3>
 
 <p>
-تمرين الصدر اليومي الخاص بخطتك.
+تمرين أساسي لاستهداف عضلات الصدر.
 </p>
 
-<ul class="exercise-list">
+<div class="exercise-meta">
 
-<li>
-Bench Press
-</li>
+<span>4 مجموعات</span>
 
-<li>
-Incline Press
-</li>
-
-<li>
-Chest Fly
-</li>
-
-<li>
-Push Ups
-</li>
-
-</ul>
+<span>12 عدة</span>
 
 </div>
 
-<span class="start-btn">
+</div>
+
+<a
+href="workout.html?workout=bench-press"
+class="exercise-start">
+
 ابدأ
-</span>
 
 </a>
 
 </div>
 
+<div class="exercise-card">
+
+<div>
+
+<div class="exercise-card-icon">
+🏋️
+</div>
+
+<h3>Incline Press</h3>
+
+<p>
+تمرين يستهدف الجزء العلوي من الصدر.
+</p>
+
+<div class="exercise-meta">
+
+<span>3 مجموعات</span>
+
+<span>10 عدات</span>
+
+</div>
+
+</div>
+
+<a
+href="workout.html?workout=incline-press"
+class="exercise-start">
+
+ابدأ
+
+</a>
+
+</div>
+
+<div class="exercise-card">
+
+<div>
+
+<div class="exercise-card-icon">
+💪
+</div>
+
+<h3>Chest Fly</h3>
+
+<p>
+تمرين لعزل عضلات الصدر وزيادة التحكم.
+</p>
+
+<div class="exercise-meta">
+
+<span>3 مجموعات</span>
+
+<span>12 عدة</span>
+
+</div>
+
+</div>
+
+<a
+href="workout.html?workout=chest-fly"
+class="exercise-start">
+
+ابدأ
+
+</a>
+
+</div>
+
+<div class="exercise-card">
+
+<div>
+
+<div class="exercise-card-icon">
+💪
+</div>
+
+<h3>Push Ups</h3>
+
+<p>
+تمرين وزن جسم فعال لعضلات الصدر.
+</p>
+
+<div class="exercise-meta">
+
+<span>3 مجموعات</span>
+
+<span>15 عدة</span>
+
+</div>
+
+</div>
+
+<a
+href="workout.html?workout=push-ups"
+class="exercise-start">
+
+ابدأ
+
+</a>
+
+</div>
+
+</div>
+
 <div
-class="workout-dots"
-id="workoutDots">
+class="exercise-dots"
+id="exerciseDots">
 
 <span class="active"></span>
+<span></span>
+<span></span>
+<span></span>
 
 </div>
 
@@ -1449,9 +1465,7 @@ id="workoutDots">
 
 <div class="section-heading">
 
-<h2>
-Community News
-</h2>
+<h2>Community News</h2>
 
 <a href="#" class="see-all">
 See All
@@ -1537,9 +1551,7 @@ Join the latest challenge
 
 <div class="section-heading">
 
-<h2>
-ابدأ رحلتك 💪
-</h2>
+<h2>ابدأ رحلتك 💪</h2>
 
 </div>
 
@@ -1551,9 +1563,7 @@ Join the latest challenge
 💪
 </div>
 
-<h3>
-Workout
-</h3>
+<h3>Workout</h3>
 
 <p>
 تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
@@ -1571,9 +1581,7 @@ Workout
 🥗
 </div>
 
-<h3>
-Nutrition
-</h3>
+<h3>Nutrition</h3>
 
 <p>
 خطط غذائية تساعدك تختار أكلك حسب هدفك.
@@ -1591,9 +1599,7 @@ Nutrition
 
 <div class="section-heading">
 
-<h2>
-Progress
-</h2>
+<h2>Progress</h2>
 
 <a href="#" class="see-all">
 See All
@@ -1609,9 +1615,7 @@ See All
 
 <div class="progress-content">
 
-<h3>
-متابعة التقدم
-</h3>
+<h3>متابعة التقدم</h3>
 
 <p>
 تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
@@ -1633,9 +1637,7 @@ id="subscriptions">
 
 <div class="section-heading">
 
-<h2>
-الاشتراكات
-</h2>
+<h2>الاشتراكات</h2>
 
 <a href="#" class="see-all">
 See All
@@ -1680,8 +1682,7 @@ style="display:none;">
 
 </section>
 
-<div id="message">
-</div>
+<div id="message"></div>
 
 </main>
 
@@ -1691,9 +1692,7 @@ style="display:none;">
 href="dashboard.html"
 class="nav-item active">
 
-<span>
-⌂
-</span>
+<span>⌂</span>
 
 Home
 
@@ -1703,9 +1702,7 @@ Home
 href="workout.html"
 class="nav-item">
 
-<span>
-💪
-</span>
+<span>💪</span>
 
 Workouts
 
@@ -1715,9 +1712,7 @@ Workouts
 href="#"
 class="nav-item">
 
-<span>
-📊
-</span>
+<span>📊</span>
 
 Progress
 
@@ -1728,9 +1723,7 @@ href="#"
 class="nav-item"
 id="bottomProfileBtn">
 
-<span>
-👤
-</span>
+<span>👤</span>
 
 Profile
 
@@ -1759,119 +1752,73 @@ SUPABASE_PUBLISHABLE_KEY
 );
 
 const profileBtn =
-document.getElementById(
-"profileBtn"
-);
+document.getElementById("profileBtn");
 
 const bottomProfileBtn =
-document.getElementById(
-"bottomProfileBtn"
-);
+document.getElementById("bottomProfileBtn");
 
 const profilePopup =
-document.getElementById(
-"profilePopup"
-);
+document.getElementById("profilePopup");
 
 const closeProfile =
-document.getElementById(
-"closeProfile"
-);
+document.getElementById("closeProfile");
 
 const profileName =
-document.getElementById(
-"profileName"
-);
+document.getElementById("profileName");
 
 const profileEmail =
-document.getElementById(
-"profileEmail"
-);
+document.getElementById("profileEmail");
 
 const profileInitial =
-document.getElementById(
-"profileInitial"
-);
+document.getElementById("profileInitial");
 
 const notificationBtn =
-document.getElementById(
-"notificationBtn"
-);
+document.getElementById("notificationBtn");
 
 const notificationPopup =
-document.getElementById(
-"notificationPopup"
-);
+document.getElementById("notificationPopup");
 
 const closeNotification =
-document.getElementById(
-"closeNotification"
-);
+document.getElementById("closeNotification");
 
 const notificationDot =
-document.getElementById(
-"notificationDot"
-);
+document.getElementById("notificationDot");
 
 const menuBtn =
-document.getElementById(
-"menuBtn"
-);
+document.getElementById("menuBtn");
 
 const sideMenu =
-document.getElementById(
-"sideMenu"
-);
+document.getElementById("sideMenu");
 
 const menuOverlay =
-document.getElementById(
-"menuOverlay"
-);
+document.getElementById("menuOverlay");
 
 const subscriptionsMenuLink =
-document.getElementById(
-"subscriptionsMenuLink"
-);
+document.getElementById("subscriptionsMenuLink");
 
 const logoutBtn =
-document.getElementById(
-"logoutBtn"
-);
+document.getElementById("logoutBtn");
 
 const message =
-document.getElementById(
-"message"
-);
+document.getElementById("message");
 
 const selectedPlanText =
-document.getElementById(
-"selectedPlanText"
-);
+document.getElementById("selectedPlanText");
 
 const selectedPlanPrice =
-document.getElementById(
-"selectedPlanPrice"
-);
+document.getElementById("selectedPlanPrice");
 
 const completeSubscriptionBtn =
-document.getElementById(
-"completeSubscriptionBtn"
-);
+document.getElementById("completeSubscriptionBtn");
 
 const noPlanText =
-document.getElementById(
-"noPlanText"
-);
+document.getElementById("noPlanText");
 
-const workoutSlider =
-document.getElementById(
-"workoutSlider"
-);
+const exerciseSlider =
+document.getElementById("exerciseSlider");
 
-const workoutDots =
-document.querySelectorAll(
-"#workoutDots span"
-);
+const exerciseDots =
+document.querySelectorAll("#exerciseDots span");
 
 const urlParams =
 new URLSearchParams(
@@ -1905,37 +1852,25 @@ duration:"اشتراك لمدة سنة"
 
 function openMenu(){
 
-sideMenu.classList.add(
-"show"
-);
+sideMenu.classList.add("show");
 
-menuOverlay.classList.add(
-"show"
-);
+menuOverlay.classList.add("show");
 
-menuBtn.textContent =
-"×";
+menuBtn.textContent="×";
 
-document.body.style.overflow =
-"hidden";
+document.body.style.overflow="hidden";
 
 }
 
 function closeMenu(){
 
-sideMenu.classList.remove(
-"show"
-);
+sideMenu.classList.remove("show");
 
-menuOverlay.classList.remove(
-"show"
-);
+menuOverlay.classList.remove("show");
 
-menuBtn.textContent =
-"☰";
+menuBtn.textContent="☰";
 
-document.body.style.overflow =
-"";
+document.body.style.overflow="";
 
 }
 
@@ -1944,9 +1879,7 @@ menuBtn.addEventListener(
 ()=>{
 
 if(
-sideMenu.classList.contains(
-"show"
-)
+sideMenu.classList.contains("show")
 ){
 
 closeMenu();
@@ -1968,9 +1901,7 @@ closeMenu
 subscriptionsMenuLink.addEventListener(
 "click",
 ()=>{
-
 closeMenu();
-
 }
 );
 
@@ -2020,8 +1951,7 @@ completeSubscriptionBtn.addEventListener(
 "click",
 ()=>{
 
-message.style.color =
-"#2563eb";
+message.style.color="#2563eb";
 
 message.textContent =
 "تم اختيار الباقة بنجاح. الخطوة التالية ستكون الدفع.";
@@ -2044,8 +1974,7 @@ error ||
 !user
 ){
 
-window.location.href =
-"auth.html";
+window.location.href="auth.html";
 
 return;
 
@@ -2147,20 +2076,14 @@ notificationPopup.classList.remove(
 );
 
 if(
-profilePopup.classList.contains(
-"show"
-)
+profilePopup.classList.contains("show")
 ){
 
-profilePopup.classList.remove(
-"show"
-);
+profilePopup.classList.remove("show");
 
 }else{
 
-profilePopup.classList.add(
-"show"
-);
+profilePopup.classList.add("show");
 
 positionProfilePopup();
 
@@ -2184,9 +2107,7 @@ closeProfile.addEventListener(
 "click",
 ()=>{
 
-profilePopup.classList.remove(
-"show"
-);
+profilePopup.classList.remove("show");
 
 }
 );
@@ -2196,9 +2117,7 @@ window.addEventListener(
 ()=>{
 
 if(
-profilePopup.classList.contains(
-"show"
-)
+profilePopup.classList.contains("show")
 ){
 
 positionProfilePopup();
@@ -2214,17 +2133,11 @@ notificationBtn.addEventListener(
 
 event.stopPropagation();
 
-profilePopup.classList.remove(
-"show"
-);
+profilePopup.classList.remove("show");
 
-notificationPopup.classList.toggle(
-"show"
-);
+notificationPopup.classList.toggle("show");
 
-notificationDot.classList.add(
-"hidden"
-);
+notificationDot.classList.add("hidden");
 
 }
 );
@@ -2233,9 +2146,7 @@ closeNotification.addEventListener(
 "click",
 ()=>{
 
-notificationPopup.classList.remove(
-"show"
-);
+notificationPopup.classList.remove("show");
 
 }
 );
@@ -2245,35 +2156,21 @@ document.addEventListener(
 (event)=>{
 
 if(
-!profilePopup.contains(
-event.target
-) &&
-!profileBtn.contains(
-event.target
-) &&
-!bottomProfileBtn.contains(
-event.target
-)
+!profilePopup.contains(event.target) &&
+!profileBtn.contains(event.target) &&
+!bottomProfileBtn.contains(event.target)
 ){
 
-profilePopup.classList.remove(
-"show"
-);
+profilePopup.classList.remove("show");
 
 }
 
 if(
-!notificationPopup.contains(
-event.target
-) &&
-!notificationBtn.contains(
-event.target
-)
+!notificationPopup.contains(event.target) &&
+!notificationBtn.contains(event.target)
 ){
 
-notificationPopup.classList.remove(
-"show"
-);
+notificationPopup.classList.remove("show");
 
 }
 
@@ -2291,8 +2188,7 @@ await supabase.auth.signOut();
 
 if(error){
 
-message.style.color =
-"#b91c1c";
+message.style.color="#b91c1c";
 
 message.textContent =
 error.message;
@@ -2303,8 +2199,7 @@ return;
 
 }
 
-window.location.href =
-"auth.html";
+window.location.href="auth.html";
 
 }
 );
@@ -2313,17 +2208,17 @@ showSelectedPlan();
 
 loadUser();
 
-/* TODAY WORKOUT */
+/* EXERCISE SLIDER */
 
-function updateWorkoutDots(){
+function updateExerciseDots(){
 
-if(!workoutSlider){
+if(!exerciseSlider){
 return;
 }
 
 const cards =
-workoutSlider.querySelectorAll(
-".workout-card"
+exerciseSlider.querySelectorAll(
+".exercise-card"
 );
 
 if(!cards.length){
@@ -2332,7 +2227,7 @@ return;
 
 const scrollLeft =
 Math.abs(
-workoutSlider.scrollLeft
+exerciseSlider.scrollLeft
 );
 
 const cardWidth =
@@ -2344,20 +2239,20 @@ scrollLeft / cardWidth
 );
 
 if(index < 0){
-index = 0;
+index=0;
 }
 
-if(index >= workoutDots.length){
+if(index >= exerciseDots.length){
 index =
-workoutDots.length - 1;
+exerciseDots.length - 1;
 }
 
-workoutDots.forEach(
-(dot,indexDot)=>{
+exerciseDots.forEach(
+(dot,dotIndex)=>{
 
 dot.classList.toggle(
 "active",
-indexDot === index
+dotIndex === index
 );
 
 }
@@ -2365,13 +2260,44 @@ indexDot === index
 
 }
 
-if(workoutSlider){
+if(exerciseSlider){
 
-workoutSlider.addEventListener(
+exerciseSlider.addEventListener(
 "scroll",
-updateWorkoutDots,
+updateExerciseDots,
 {
 passive:true
+}
+);
+
+exerciseDots.forEach(
+(dot,index)=>{
+
+dot.addEventListener(
+"click",
+()=>{
+
+const cards =
+exerciseSlider.querySelectorAll(
+".exercise-card"
+);
+
+if(cards[index]){
+
+exerciseSlider.scrollTo({
+
+left:
+cards[index].offsetLeft,
+
+behavior:"smooth"
+
+});
+
+}
+
+}
+);
+
 }
 );
 
