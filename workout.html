@@ -26,6 +26,11 @@ min-height:100vh;
 padding-bottom:90px;
 }
 
+button,
+a{
+-webkit-tap-highlight-color:transparent;
+}
+
 header{
 height:75px;
 padding:0 25px;
@@ -58,6 +63,13 @@ align-items:center;
 justify-content:center;
 text-decoration:none;
 font-size:22px;
+transition:.2s;
+}
+
+.back-btn:hover{
+background:#2563eb;
+color:#ffffff;
+border-color:#2563eb;
 }
 
 .container{
@@ -89,7 +101,8 @@ background:#ffffff;
 border:1px solid #d7dee8;
 border-radius:20px;
 padding:25px;
-margin-bottom:25px;
+margin-bottom:28px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 .today-label{
@@ -154,7 +167,7 @@ overflow-x:auto;
 scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 scrollbar-width:none;
-padding:5px 2px 15px;
+padding:5px 2px 18px;
 }
 
 .exercise-slider::-webkit-scrollbar{
@@ -162,19 +175,24 @@ display:none;
 }
 
 .exercise-card{
-flex:0 0 300px;
+flex:0 0 310px;
 background:#ffffff;
 border:1px solid #d7dee8;
 border-radius:18px;
-padding:20px;
+padding:18px;
 scroll-snap-align:start;
-cursor:pointer;
 transition:.2s;
+box-shadow:0 7px 22px rgba(0,0,0,.08);
 }
 
 .exercise-card:hover{
 border-color:#2563eb;
-transform:translateY(-2px);
+transform:translateY(-3px);
+}
+
+.exercise-image-wrap{
+position:relative;
+margin-bottom:15px;
 }
 
 .exercise-image{
@@ -182,14 +200,19 @@ width:100%;
 height:180px;
 border-radius:13px;
 object-fit:cover;
-margin-bottom:15px;
+display:block;
 }
 
 .exercise-number{
-color:#2563eb;
-font-size:13px;
+position:absolute;
+top:10px;
+right:10px;
+background:#071a33;
+color:#ffffff;
+padding:7px 10px;
+border-radius:8px;
+font-size:11px;
 font-weight:bold;
-margin-bottom:7px;
 }
 
 .exercise-card h3{
@@ -203,18 +226,20 @@ color:#64748b;
 font-size:13px;
 line-height:1.6;
 margin-bottom:14px;
+min-height:42px;
 }
 
 .exercise-stats{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:8px;
+margin-bottom:15px;
 }
 
 .exercise-stat{
 background:#f1f5f9;
 border-radius:8px;
-padding:9px;
+padding:10px;
 text-align:center;
 }
 
@@ -230,6 +255,24 @@ color:#071a33;
 font-size:14px;
 }
 
+.start-exercise{
+width:100%;
+border:none;
+background:#2563eb;
+color:#ffffff;
+padding:12px 15px;
+border-radius:9px;
+font-weight:bold;
+font-size:14px;
+cursor:pointer;
+transition:.2s;
+}
+
+.start-exercise:hover{
+background:#1d4ed8;
+transform:translateY(-1px);
+}
+
 /* DOTS */
 
 .dots{
@@ -237,7 +280,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 gap:12px;
-margin-top:5px;
+margin-top:3px;
 direction:ltr;
 }
 
@@ -247,6 +290,7 @@ height:9px;
 background:#cbd5e1;
 border-radius:50%;
 transition:.25s;
+cursor:pointer;
 }
 
 .dot.active{
@@ -260,7 +304,7 @@ border-radius:8px;
 .modal{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.65);
+background:rgba(0,0,0,.68);
 display:none;
 align-items:flex-end;
 justify-content:center;
@@ -282,6 +326,7 @@ border-radius:22px;
 padding:25px;
 position:relative;
 animation:slideUp .25s ease;
+box-shadow:0 15px 50px rgba(0,0,0,.3);
 }
 
 @keyframes slideUp{
@@ -302,14 +347,20 @@ opacity:1;
 position:absolute;
 top:15px;
 left:15px;
-width:35px;
-height:35px;
+width:36px;
+height:36px;
 border-radius:50%;
 border:none;
 background:#071a33;
 color:#ffffff;
 font-size:18px;
 cursor:pointer;
+z-index:5;
+transition:.2s;
+}
+
+.close-btn:hover{
+background:#2563eb;
 }
 
 .modal-image{
@@ -379,6 +430,25 @@ font-size:14px;
 line-height:1.8;
 }
 
+/* MODAL ACTION */
+
+.modal-action{
+width:100%;
+border:none;
+background:#2563eb;
+color:#ffffff;
+padding:13px;
+border-radius:10px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+margin-top:5px;
+}
+
+.modal-action:hover{
+background:#1d4ed8;
+}
+
 /* BOTTOM NAV */
 
 .bottom-nav{
@@ -435,6 +505,10 @@ padding:20px 14px 30px;
 font-size:27px;
 }
 
+.page-title p{
+font-size:14px;
+}
+
 .today-box{
 padding:20px;
 }
@@ -443,12 +517,21 @@ padding:20px;
 font-size:26px;
 }
 
+.today-box p{
+font-size:14px;
+}
+
 .exercise-card{
 flex:0 0 82%;
+padding:17px;
 }
 
 .exercise-image{
 height:190px;
+}
+
+.exercise-card h3{
+font-size:19px;
 }
 
 .modal{
@@ -458,10 +541,15 @@ padding:0;
 .modal-box{
 border-radius:22px 22px 0 0;
 max-height:92vh;
+padding:22px 18px 25px;
 }
 
 .modal-image{
 height:200px;
+}
+
+.modal-box h2{
+font-size:25px;
 }
 
 }
@@ -476,7 +564,8 @@ height:200px;
 
 <a
 href="dashboard.html"
-class="back-btn">
+class="back-btn"
+aria-label="رجوع">
 
 ‹
 
@@ -521,15 +610,22 @@ Chest
 <div class="today-info">
 
 <div class="info-item">
-4 تمارين
+<span id="exerciseCount">
+4
+</span>
+تمارين
 </div>
 
 <div class="info-item">
+<span id="workoutDuration">
 45 دقيقة
+</span>
 </div>
 
 <div class="info-item">
+<span id="workoutLevel">
 Strength
+</span>
 </div>
 
 </div>
@@ -568,13 +664,16 @@ id="dots">
 
 <div
 class="modal"
-id="exerciseModal">
+id="exerciseModal"
+aria-hidden="true">
 
 <div class="modal-box">
 
 <button
 class="close-btn"
-id="closeModal">
+id="closeModal"
+type="button"
+aria-label="إغلاق">
 
 ×
 
@@ -583,7 +682,8 @@ id="closeModal">
 <img
 src=""
 class="modal-image"
-id="modalImage">
+id="modalImage"
+alt="">
 
 <h2 id="modalTitle">
 Bench Press
@@ -611,7 +711,7 @@ id="modalDescription">
 <div class="detail-box">
 
 <span>
-العدات
+التكرارات
 </span>
 
 <strong id="modalReps">
@@ -669,6 +769,16 @@ id="modalDescription">
 </p>
 
 </div>
+
+
+<button
+class="modal-action"
+id="modalDone"
+type="button">
+
+تم
+
+</button>
 
 </div>
 
@@ -747,10 +857,12 @@ exercises:[
 
 {
 
+id:"bench-press",
+
 name:"Bench Press",
 
 description:
-"تمرين أساسي لبناء عضلات الصدر.",
+"تمرين أساسي لبناء عضلات الصدر وزيادة القوة.",
 
 image:
 "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85",
@@ -761,17 +873,19 @@ reps:"10",
 
 warmup:"2 Sets",
 
-rest:"90 sec",
+rest:"90 ثانية",
 
 how:
-"ثبت جسمك على البنش، حافظ على ثبات الكتفين، انزل بالبار ناحية منتصف الصدر ثم ادفعه لأعلى مع التحكم في الحركة.",
+"ثبت جسمك على البنش وحافظ على الكتفين للخلف. امسك البار بقبضة ثابتة، انزله ناحية منتصف الصدر بتحكم ثم ادفعه لأعلى بدون حركة مفاجئة.",
 
 tips:
-"حافظ على الحركة ببطء ولا تستخدم وزنًا أكبر من قدرتك على التحكم."
+"اختار وزن تقدر تتحكم فيه بالكامل. حافظ على ثبات القدمين والظهر، وتجنب رفع الحوض عن البنش."
 
 },
 
 {
+
+id:"incline-press",
 
 name:"Incline Press",
 
@@ -787,22 +901,24 @@ reps:"12",
 
 warmup:"1 Set",
 
-rest:"75 sec",
+rest:"75 ثانية",
 
 how:
-"اضبط البنش بزاوية مناسبة، ابدأ بالأوزان بجانب الصدر ثم ادفع لأعلى مع الحفاظ على التحكم.",
+"اضبط البنش على زاوية مناسبة، ابدأ بالأوزان بجانب الصدر ثم ادفع لأعلى مع الحفاظ على التحكم في النزول والصعود.",
 
 tips:
-"لا تقفل الكوع بالكامل وحافظ على مسار ثابت للوزن."
+"لا تقفل الكوع بالكامل في أعلى الحركة، وحافظ على حركة مستقرة طوال التمرين."
 
 },
 
 {
 
+id:"chest-fly",
+
 name:"Chest Fly",
 
 description:
-"تمرين لعزل عضلات الصدر وتحسين التحكم.",
+"تمرين لعزل عضلات الصدر وتحسين التحكم والانقباض.",
 
 image:
 "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85",
@@ -813,22 +929,24 @@ reps:"12",
 
 warmup:"1 Set",
 
-rest:"60 sec",
+rest:"60 ثانية",
 
 how:
-"ابدأ والذراعان مفتوحتان، ثم اجمع الذراعين أمام الصدر بحركة متحكم فيها.",
+"ابدأ والذراعان مفتوحتان، ثم اجمع الذراعين أمام الصدر بحركة بطيئة ومتحكم فيها، وبعدها ارجع لنقطة البداية.",
 
 tips:
-"ركز على عضلة الصدر وتجنب استخدام سرعة عالية."
+"ركز على انقباض عضلات الصدر ولا تستخدم سرعة عالية أو وزنًا أكبر من قدرتك."
 
 },
 
 {
 
+id:"push-ups",
+
 name:"Push Ups",
 
 description:
-"تمرين وزن جسم فعال لعضلات الصدر.",
+"تمرين بوزن الجسم فعال لتقوية عضلات الصدر والجزء العلوي.",
 
 image:
 "https://images.unsplash.com/photo-1598971639058-999e7a7b4f0a?auto=format&fit=crop&w=900&q=85",
@@ -839,13 +957,13 @@ reps:"15",
 
 warmup:"بدون",
 
-rest:"60 sec",
+rest:"60 ثانية",
 
 how:
-"حافظ على الجسم في خط مستقيم، انزل بالصدر ناحية الأرض ثم ادفع الجسم لأعلى.",
+"حافظ على الجسم في خط مستقيم، انزل بالصدر ناحية الأرض مع ثبات الجذع ثم ادفع الجسم لأعلى.",
 
 tips:
-"حافظ على الحوض ثابتًا ولا ترفع الرأس أثناء الحركة."
+"حافظ على الحوض ثابتًا ولا ترفع الرأس. لو التمرين صعب قلل التكرارات مع الحفاظ على الأداء الصحيح."
 
 }
 
@@ -862,7 +980,11 @@ window.location.search
 );
 
 const workoutName =
-params.get("workout") || "chest";
+params.get("workout") ||
+"chest";
+
+const exerciseName =
+params.get("exercise");
 
 
 const workout =
@@ -878,6 +1000,21 @@ document.getElementById(
 const workoutDescription =
 document.getElementById(
 "workoutDescription"
+);
+
+const workoutLevel =
+document.getElementById(
+"workoutLevel"
+);
+
+const workoutDuration =
+document.getElementById(
+"workoutDuration"
+);
+
+const exerciseCount =
+document.getElementById(
+"exerciseCount"
 );
 
 const exerciseSlider =
@@ -897,25 +1034,43 @@ workout.title;
 workoutDescription.textContent =
 workout.description;
 
+workoutLevel.textContent =
+workout.level;
+
+workoutDuration.textContent =
+workout.duration;
+
+exerciseCount.textContent =
+workout.exercises.length;
+
 
 function renderExercises(){
 
-exerciseSlider.innerHTML = "";
+exerciseSlider.innerHTML =
+"";
 
-dots.innerHTML = "";
+dots.innerHTML =
+"";
 
 
 workout.exercises.forEach(
-(exercise,index) => {
+(exercise,index)=>{
 
 const card =
-document.createElement("div");
+document.createElement(
+"article"
+);
 
 card.className =
 "exercise-card";
 
+card.dataset.exercise =
+exercise.id;
+
 
 card.innerHTML = `
+
+<div class="exercise-image-wrap">
 
 <img
 class="exercise-image"
@@ -924,6 +1079,8 @@ alt="${exercise.name}">
 
 <div class="exercise-number">
 Exercise ${index + 1}
+</div>
+
 </div>
 
 <h3>
@@ -937,23 +1094,53 @@ ${exercise.description}
 <div class="exercise-stats">
 
 <div class="exercise-stat">
-<span>Sets</span>
-<strong>${exercise.sets}</strong>
+
+<span>
+المجموعات
+</span>
+
+<strong>
+${exercise.sets}
+</strong>
+
 </div>
 
 <div class="exercise-stat">
-<span>Reps</span>
-<strong>${exercise.reps}</strong>
+
+<span>
+التكرارات
+</span>
+
+<strong>
+${exercise.reps}
+</strong>
+
 </div>
 
 </div>
+
+<button
+class="start-exercise"
+type="button">
+
+ابدأ التمرين
+
+</button>
 
 `;
 
 
-card.addEventListener(
+const startButton =
+card.querySelector(
+".start-exercise"
+);
+
+
+startButton.addEventListener(
 "click",
-() => {
+(event)=>{
+
+event.stopPropagation();
 
 openExercise(
 exercise
@@ -969,22 +1156,46 @@ card
 
 
 const dot =
-document.createElement("span");
+document.createElement(
+"span"
+);
 
 dot.className =
 "dot";
 
-if(index === 0){
+dot.addEventListener(
+"click",
+()=>{
 
-dot.classList.add(
-"active"
+const targetCard =
+exerciseSlider.querySelector(
+`[data-exercise="${exercise.id}"]`
+);
+
+if(targetCard){
+
+exerciseSlider.scrollTo({
+
+left:
+targetCard.offsetLeft,
+
+behavior:
+"smooth"
+
+});
+
+}
+
+}
+);
+
+
+dots.appendChild(
+dot
 );
 
 }
 
-dots.appendChild(dot);
-
-}
 );
 
 }
@@ -1006,41 +1217,60 @@ if(!cards.length){
 return;
 }
 
-const cardWidth =
-cards[0].offsetWidth + 16;
 
-const position =
+const sliderRect =
+exerciseSlider.getBoundingClientRect();
+
+
+let closestIndex =
+0;
+
+let closestDistance =
+Infinity;
+
+
+cards.forEach(
+(card,index)=>{
+
+const cardRect =
+card.getBoundingClientRect();
+
+const distance =
 Math.abs(
-exerciseSlider.scrollLeft
+cardRect.left -
+sliderRect.left
 );
 
-const index =
-Math.round(
-position / cardWidth
+
+if(
+distance <
+closestDistance
+){
+
+closestDistance =
+distance;
+
+closestIndex =
+index;
+
+}
+
+}
 );
 
 
 dotElements.forEach(
-(dot,i) => {
+(dot,index)=>{
 
 dot.classList.toggle(
 "active",
-i === index
+index === closestIndex
 );
 
 }
 );
 
 }
-
-
-exerciseSlider.addEventListener(
-"scroll",
-updateDots,
-{
-passive:true
-}
-);
 
 
 const modal =
@@ -1051,6 +1281,11 @@ document.getElementById(
 const closeModal =
 document.getElementById(
 "closeModal"
+);
+
+const modalDone =
+document.getElementById(
+"modalDone"
 );
 
 const modalImage =
@@ -1106,6 +1341,9 @@ exercise
 modalImage.src =
 exercise.image;
 
+modalImage.alt =
+exercise.name;
+
 modalTitle.textContent =
 exercise.name;
 
@@ -1134,6 +1372,11 @@ modal.classList.add(
 "show"
 );
 
+modal.setAttribute(
+"aria-hidden",
+"false"
+);
+
 document.body.style.overflow =
 "hidden";
 
@@ -1144,6 +1387,11 @@ function closeExercise(){
 
 modal.classList.remove(
 "show"
+);
+
+modal.setAttribute(
+"aria-hidden",
+"true"
 );
 
 document.body.style.overflow =
@@ -1158,9 +1406,15 @@ closeExercise
 );
 
 
+modalDone.addEventListener(
+"click",
+closeExercise
+);
+
+
 modal.addEventListener(
 "click",
-(event) => {
+(event)=>{
 
 if(
 event.target === modal
@@ -1174,7 +1428,65 @@ closeExercise();
 );
 
 
+document.addEventListener(
+"keydown",
+(event)=>{
+
+if(
+event.key === "Escape" &&
+modal.classList.contains(
+"show"
+)
+){
+
+closeExercise();
+
+}
+
+}
+);
+
+
+exerciseSlider.addEventListener(
+"scroll",
+updateDots,
+{
+passive:true
+}
+);
+
+
 renderExercises();
+
+updateDots();
+
+
+/* OPEN SPECIFIC EXERCISE FROM URL */
+
+if(exerciseName){
+
+const selectedExercise =
+workout.exercises.find(
+(item)=>
+item.id === exerciseName
+);
+
+if(selectedExercise){
+
+setTimeout(
+()=>{
+
+openExercise(
+selectedExercise
+);
+
+},
+250
+);
+
+}
+
+}
 
 </script>
 
