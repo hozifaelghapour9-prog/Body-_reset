@@ -263,6 +263,9 @@ scrollbar-width:none;
 display:none;
 }
 
+
+/* EXERCISE CARD */
+
 .exercise-card{
 flex:0 0 280px;
 background:#f8fafc;
@@ -279,14 +282,26 @@ object-fit:cover;
 display:block;
 }
 
-.exercise-content{
-padding:17px;
+
+/* اسم التمرين فوق الصورة */
+
+.exercise-name{
+background:#fff;
+padding:16px 15px;
+text-align:center;
 }
 
-.exercise-content h3{
+.exercise-name h3{
 font-size:19px;
 color:#071a33;
-margin-bottom:15px;
+font-weight:bold;
+}
+
+
+/* زر البداية */
+
+.exercise-content{
+padding:15px;
 }
 
 .start-btn{
@@ -300,6 +315,11 @@ padding:12px;
 border-radius:9px;
 font-size:14px;
 font-weight:bold;
+transition:0.2s;
+}
+
+.start-btn:hover{
+background:#1d4ed8;
 }
 
 .workout-dots{
@@ -665,7 +685,6 @@ Weekly Activity
 
 </div>
 
-
 <div class="activity-circle">
 
 <div class="circle-content">
@@ -755,15 +774,19 @@ Chest
 
 <div class="exercise-card">
 
+<div class="exercise-name">
+
+<h3>
+Bench Press
+</h3>
+
+</div>
+
 <img
 src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
 alt="Bench Press">
 
 <div class="exercise-content">
-
-<h3>
-Bench Press
-</h3>
 
 <a
 href="workout.html?exercise=bench-press"
@@ -782,15 +805,19 @@ class="start-btn">
 
 <div class="exercise-card">
 
+<div class="exercise-name">
+
+<h3>
+Incline Press
+</h3>
+
+</div>
+
 <img
 src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
 alt="Incline Press">
 
 <div class="exercise-content">
-
-<h3>
-Incline Press
-</h3>
 
 <a
 href="workout.html?exercise=incline-press"
@@ -809,15 +836,19 @@ class="start-btn">
 
 <div class="exercise-card">
 
+<div class="exercise-name">
+
+<h3>
+Chest Fly
+</h3>
+
+</div>
+
 <img
 src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
 alt="Chest Fly">
 
 <div class="exercise-content">
-
-<h3>
-Chest Fly
-</h3>
 
 <a
 href="workout.html?exercise=chest-fly"
@@ -836,15 +867,19 @@ class="start-btn">
 
 <div class="exercise-card">
 
+<div class="exercise-name">
+
+<h3>
+Push Ups
+</h3>
+
+</div>
+
 <img
 src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
 alt="Push Ups">
 
 <div class="exercise-content">
-
-<h3>
-Push Ups
-</h3>
 
 <a
 href="workout.html?exercise=push-ups"
