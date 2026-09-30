@@ -3,792 +3,605 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BodyReset | Dashboard</title>
-
-<style>
-
-/* =========================
-   RESET
-========================= */
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
-}
-
-
-/* =========================
-   BODY
-========================= */
-
-body{
-background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
-color:#071a33;
-min-height:100vh;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-height:75px;
-padding:0 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#000;
-border-bottom:1px solid #071a33;
-}
-
-.logo{
-font-size:25px;
-font-weight:bold;
-color:#fff;
-text-decoration:none;
-}
-
-.logo span{
-color:#2563eb;
-}
-
-.header-left{
-display:flex;
-align-items:center;
-gap:18px;
-}
-
-.profile{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#f97316;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-}
-
-.menu-btn{
-background:none;
-border:none;
-color:#fff;
-font-size:30px;
-cursor:pointer;
-}
-
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:28px 20px 110px;
-}
-
-
-/* =========================
-   TOP AREA
-========================= */
-
-.top-area{
-display:flex;
-justify-content:flex-start;
-margin-bottom:25px;
-}
-
-.notification{
-width:44px;
-height:44px;
-border-radius:50%;
-background:#fff;
-border:1px solid #d7dee8;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-}
-
-.notification svg{
-width:21px;
-height:21px;
-stroke:#071a33;
-fill:none;
-stroke-width:1.8;
-}
-
-
-/* =========================
-   STATS
-========================= */
-
-.stats{
-display:flex;
-gap:18px;
-overflow-x:auto;
-margin-bottom:35px;
-padding-bottom:8px;
-}
-
-.stat{
-flex:0 0 calc((100% - 36px)/3);
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:25px 20px;
-min-height:210px;
-}
-
-.stat h3{
-font-size:17px;
-margin-bottom:20px;
-color:#2563eb;
-}
-
-.activity-circles{
-display:flex;
-justify-content:center;
-gap:18px;
-}
-
-.activity-circle{
-width:82px;
-height:82px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:conic-gradient(#2563eb 0%,#d7dee8 0%);
-position:relative;
-}
-
-.activity-circle:before{
-content:"";
-position:absolute;
-width:62px;
-height:62px;
-background:#fff;
-border-radius:50%;
-}
-
-.circle-content{
-position:relative;
-z-index:2;
-text-align:center;
-}
-
-.circle-content strong{
-display:block;
-color:#2563eb;
-font-size:18px;
-}
-
-.circle-content span{
-font-size:10px;
-color:#64748b;
-}
-
-.calorie-number{
-text-align:center;
-margin-bottom:15px;
-}
-
-.calorie-number strong{
-font-size:32px;
-color:#2563eb;
-}
-
-.calorie-number span{
-font-size:14px;
-color:#64748b;
-}
-
-.weekly-progress{
-display:flex;
-justify-content:center;
-}
-
-.progress-circle{
-width:125px;
-height:125px;
-border-radius:50%;
-background:conic-gradient(#2563eb 0%,#d7dee8 0%);
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.progress-circle:before{
-content:"";
-position:absolute;
-width:95px;
-height:95px;
-background:#fff;
-border-radius:50%;
-}
-
-.progress-circle strong{
-position:relative;
-z-index:2;
-font-size:28px;
-color:#2563eb;
-}
-
-
-/* =========================
-   SECTION HEADING
-========================= */
-
-.section-heading{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px;
-}
-
-.section-heading h2{
-font-size:23px;
-color:#fff;
-}
-
-.see-all{
-color:#fff;
-text-decoration:none;
-font-size:14px;
-font-weight:bold;
-}
-
-
-/* =========================
-   TODAY WORKOUT
-========================= */
-
-.today-workout{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:20px;
-margin-bottom:30px;
-}
-
-.workout-title{
-font-size:25px;
-font-weight:bold;
-color:#071a33;
-margin-bottom:20px;
-}
-
-.workout-slider{
-display:flex;
-gap:16px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:8px;
-scrollbar-width:none;
-}
-
-.workout-slider::-webkit-scrollbar{
-display:none;
-}
-
-
-/* =========================
-   EXERCISE CARD
-========================= */
-
-.exercise-card{
-flex:0 0 280px;
-background:#f8fafc;
-border:1px solid #d7dee8;
-border-radius:16px;
-overflow:hidden;
-scroll-snap-align:start;
-}
-
-.exercise-card img{
-width:100%;
-height:190px;
-object-fit:cover;
-display:block;
-}
-
-
-/* EXERCISE NAME */
-
-.exercise-name{
-background:#fff;
-padding:16px 15px;
-text-align:center;
-}
-
-.exercise-name h3{
-font-size:19px;
-color:#071a33;
-font-weight:bold;
-}
-
-
-/* EXERCISE BUTTON */
-
-.exercise-content{
-padding:15px;
-}
-
-.start-btn{
-display:block;
-width:100%;
-background:#2563eb;
-color:#fff;
-text-align:center;
-text-decoration:none;
-padding:12px;
-border-radius:9px;
-font-size:14px;
-font-weight:bold;
-transition:0.2s;
-}
-
-.start-btn:hover{
-background:#1d4ed8;
-}
-
-
-/* DOTS */
-
-.workout-dots{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-top:18px;
-}
-
-.workout-dots span{
-width:8px;
-height:8px;
-border-radius:50%;
-background:#cbd5e1;
-}
-
-.workout-dots span.active{
-width:25px;
-border-radius:8px;
-background:#2563eb;
-}
-
-
-/* =========================
-   COMMUNITY
-========================= */
-
-.community-card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:10px 20px;
-margin-bottom:30px;
-}
-
-.news-row{
-padding:18px 0;
-border-bottom:1px solid #d7dee8;
-}
-
-.news-row:last-child{
-border-bottom:none;
-}
-
-.news-left{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.news-icon{
-width:40px;
-height:40px;
-border-radius:10px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.news-title{
-font-weight:bold;
-color:#071a33;
-margin-bottom:4px;
-}
-
-.news-sub{
-font-size:12px;
-color:#64748b;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:17px;
-margin-bottom:30px;
-}
-
-.card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:18px;
-padding:23px;
-}
-
-.icon{
-font-size:34px;
-margin-bottom:14px;
-}
-
-.card h3{
-font-size:19px;
-margin-bottom:9px;
-color:#071a33;
-}
-
-.card p{
-color:#334155;
-line-height:1.7;
-font-size:14px;
-margin-bottom:18px;
-}
-
-.card a{
-display:inline-block;
-background:#2563eb;
-color:#fff;
-padding:10px 16px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-.progress-section{
-margin-bottom:30px;
-}
-
-.progress-card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-display:flex;
-align-items:center;
-gap:25px;
-}
-
-.progress-icon{
-width:72px;
-height:72px;
-min-width:72px;
-border-radius:16px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-}
-
-.progress-content{
-flex:1;
-}
-
-.progress-content h3{
-font-size:21px;
-margin-bottom:8px;
-color:#071a33;
-}
-
-.progress-content p{
-color:#334155;
-line-height:1.7;
-font-size:14px;
-margin-bottom:15px;
-}
-
-.progress-content a{
-background:#2563eb;
-color:#fff;
-padding:10px 17px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-/* =========================
-   SUBSCRIPTIONS
-========================= */
-
-.subscription-box{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-text-align:center;
-margin-bottom:30px;
-}
-
-.subscription-box h2{
-font-size:24px;
-color:#071a33;
-margin-bottom:10px;
-}
-
-.subscription-box p{
-color:#334155;
-line-height:1.7;
-}
-
-.plan-price{
-color:#2563eb;
-font-size:34px;
-font-weight:bold;
-margin:16px 0;
-}
-
-#message{
-text-align:center;
-margin-top:15px;
-}
-
-
-/* =====================================================
-   BOTTOM NAV
-   نفس التصميم اللي هيتحط في باقي الصفحات
-===================================================== */
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:72px;
-background:#fff;
-border-top:1px solid #d7dee8;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:1000;
-}
-
-.nav-item{
-width:25%;
-height:72px;
-color:#071a33;
-text-decoration:none;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:4px;
-font-size:11px;
-font-weight:bold;
-}
-
-.nav-icon{
-width:32px;
-height:32px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.nav-icon svg{
-width:27px;
-height:27px;
-fill:none;
-stroke:#2563eb;
-stroke-width:2;
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-
-/* =========================
-   HOME ICON
-========================= */
-
-.home-nav .nav-icon{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#071a33;
-}
-
-.home-nav .nav-icon svg{
-width:23px;
-height:23px;
-stroke:#fff;
-}
-
-
-/* =========================
-   WORKOUT ICON
-========================= */
-
-.workout-nav .nav-icon svg{
-width:32px;
-height:32px;
-stroke:#071a33;
-stroke-width:2.4;
-
-/* الاتجاه الجديد */
-transform:rotate(12deg);
-}
-
-
-/* =========================
-   PROGRESS ICON
-========================= */
-
-.progress-nav .nav-icon{
-width:32px;
-height:32px;
-}
-
-.progress-nav .nav-icon svg{
-width:29px;
-height:29px;
-stroke:#2563eb;
-stroke-width:2;
-}
-
-
-/* =========================
-   PROFILE ICON
-========================= */
-
-.profile-nav .nav-icon svg{
-width:28px;
-height:28px;
-stroke:#2563eb;
-}
-
-
-/*
-IMPORTANT:
-مفيش active class
-عشان شكل الزرار يفضل ثابت
-في كل الصفحات.
-*/
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px){
-
-.stat{
-flex:0 0 270px;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-}
-
-
-@media(max-width:600px){
-
-header{
-height:68px;
-padding:0 16px;
-}
-
-.logo{
-font-size:21px;
-}
-
-.container{
-padding:20px 14px 110px;
-}
-
-.stat{
-flex:0 0 285px;
-}
-
-.today-workout{
-padding:15px;
-}
-
-.exercise-card{
-flex:0 0 82%;
-}
-
-.exercise-card img{
-height:200px;
-}
-
-.progress-card{
-padding:22px 18px;
-}
-
-.bottom-nav{
-height:72px;
-}
-
-.nav-item{
-height:72px;
-font-size:10px;
-}
-
-.nav-icon{
-width:29px;
-height:29px;
-}
-
-.nav-icon svg{
-width:25px;
-height:25px;
-}
-
-.home-nav .nav-icon{
-width:37px;
-height:37px;
-}
-
-.home-nav .nav-icon svg{
-width:21px;
-height:21px;
-}
-
-.workout-nav .nav-icon svg{
-width:30px;
-height:30px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BodyReset - Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            padding-bottom: 90px;
+            background: linear-gradient(
+                135deg,
+                #0066cc 0%,
+                #00a6b2 100%
+            );
+            color: #111;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 75px;
+            background: #000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 22px;
+
+            direction: ltr;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #ffffff;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #2563eb;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .profile {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+            color: #071a33;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu-btn {
+            border: none;
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            line-height: 1;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            width: 92%;
+            max-width: 1100px;
+
+            margin: 25px auto;
+        }
+
+
+        /* =========================
+           TOP AREA
+        ========================= */
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .welcome {
+            color: #ffffff;
+        }
+
+        .welcome h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .welcome p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .notification {
+            width: 45px;
+            height: 45px;
+
+            background: #ffffff;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.96);
+
+            border-radius: 18px;
+
+            padding: 18px 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card h3 {
+            font-size: 13px;
+
+            color: #555;
+
+            margin-bottom: 9px;
+        }
+
+        .stat-card strong {
+            display: block;
+
+            color: #071a33;
+
+            font-size: 23px;
+
+            margin-bottom: 4px;
+        }
+
+        .stat-card span {
+            color: #777;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+
+            color: #ffffff;
+        }
+
+        .section-title h2 {
+            font-size: 21px;
+        }
+
+        .section-title a {
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           TODAY WORKOUT
+        ========================= */
+
+        .workout-main {
+            background: #ffffff;
+
+            border-radius: 22px;
+
+            padding: 20px;
+
+            margin-bottom: 28px;
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .workout-main h3 {
+            color: #071a33;
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+        }
+
+        .workout-main p {
+            color: #777;
+
+            font-size: 13px;
+
+            margin-bottom: 15px;
+        }
+
+        .start-workout {
+            display: block;
+
+            width: 100%;
+
+            background: #071a33;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            padding: 13px;
+
+            border-radius: 12px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           EXERCISES
+        ========================= */
+
+        .exercise-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .exercise-card {
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.14);
+        }
+
+        .exercise-card h3 {
+            padding: 14px 12px 10px;
+
+            font-size: 16px;
+
+            color: #071a33;
+        }
+
+        .exercise-card img {
+            width: 100%;
+            height: 180px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .exercise-content {
+            padding: 12px;
+        }
+
+        .exercise-btn {
+            display: block;
+
+            width: 100%;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           EXTRA CARDS
+        ========================= */
+
+        .extra-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+            margin-top: 28px;
+        }
+
+        .extra-card {
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            text-decoration: none;
+
+            color: #071a33;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.14);
+        }
+
+        .extra-card h3 {
+            margin-bottom: 8px;
+
+            font-size: 17px;
+        }
+
+        .extra-card p {
+            color: #777;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           BOTTOM NAV
+        ========================= */
+
+        .bottom-nav {
+            position: fixed;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 72px;
+
+            background: #ffffff;
+
+            display: flex;
+
+            direction: ltr;
+
+            box-shadow:
+                0 -5px 20px rgba(0, 0, 0, 0.15);
+
+            z-index: 999;
+        }
+
+        .nav-item {
+            width: 25%;
+            height: 72px;
+
+            text-decoration: none;
+
+            color: #071a33;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 3px;
+        }
+
+        .nav-item span {
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-icon svg {
+            width: 26px;
+            height: 26px;
+
+            fill: none;
+
+            stroke: #071a33;
+
+            stroke-width: 2;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        /* =========================
+           HOME ICON
+        ========================= */
+
+        .home-nav .nav-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background: #071a33;
+        }
+
+        .home-nav .nav-icon svg {
+            width: 23px;
+            height: 23px;
+
+            stroke: #ffffff;
+        }
+
+
+        /* =========================
+           WORKOUT ICON
+        ========================= */
+
+        .workout-nav .nav-icon svg {
+            width: 32px;
+            height: 32px;
+
+            stroke: #071a33;
+
+            stroke-width: 2.4;
+
+            transform: rotate(12deg);
+        }
+
+
+        /* =========================
+           PROGRESS ICON
+        ========================= */
+
+        .progress-nav .nav-icon svg {
+            width: 30px;
+            height: 30px;
+
+            stroke: #071a33;
+
+            stroke-width: 2;
+        }
+
+
+        /* =========================
+           PROFILE ICON
+        ========================= */
+
+        .profile-nav .nav-icon svg {
+            width: 28px;
+            height: 28px;
+
+            stroke: #071a33;
+
+            stroke-width: 2;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 0 16px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            main {
+                width: 94%;
+                margin-top: 20px;
+            }
+
+            .welcome h1 {
+                font-size: 24px;
+            }
+
+            .stats {
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 14px 7px;
+            }
+
+            .stat-card strong {
+                font-size: 19px;
+            }
+
+            .stat-card h3 {
+                font-size: 11px;
+            }
+
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exercise-card img {
+                height: 210px;
+            }
+
+            .extra-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 
 </head>
 
@@ -796,796 +609,551 @@ height:30px;
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- =====================================
+         HEADER
+    ====================================== -->
 
-<header>
+    <header>
 
-<!-- اللوجو ثابت في كل الصفحات -->
+        <!-- اللوجو يرجع للرئيسية -->
 
-<a
-href="dashboard.html"
-class="logo">
+        <a
+            href="dashboard.html"
+            class="logo"
+        >
+            Body<span>Reset</span>
+        </a>
 
-Body<span>Reset</span>
 
-</a>
+        <div class="header-left">
 
+            <div class="profile">
+                ?
+            </div>
 
-<div class="header-left">
+            <button
+                class="menu-btn"
+                type="button"
+            >
+                ☰
+            </button>
 
+        </div>
 
-<div class="profile">
-?
-</div>
+    </header>
 
 
-<button
-class="menu-btn"
-type="button">
 
-☰
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
 
-</button>
+    <main>
 
 
-</div>
+        <!-- TOP -->
 
-</header>
+        <div class="top-row">
 
+            <div class="welcome">
 
+                <h1>
+                    أهلاً بيك 👋
+                </h1>
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+                <p>
+                    جاهز تتمرن النهارده؟
+                </p>
 
-<main class="container">
+            </div>
 
 
-<!-- TOP -->
+            <div class="notification">
+                🔔
+            </div>
 
-<div class="top-area">
+        </div>
 
-<button
-class="notification"
-type="button">
 
-<svg viewBox="0 0 24 24">
 
-<path
-d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
-</path>
+        <!-- =====================================
+             STATS
+        ====================================== -->
 
-<path
-d="M10 21h4">
-</path>
+        <section class="stats">
 
-</svg>
 
-</button>
+            <div class="stat-card">
 
-</div>
+                <h3>
+                    Weekly Activity
+                </h3>
 
+                <strong>
+                    4
+                </strong>
 
+                <span>
+                    Days
+                </span>
 
-<!-- =====================================================
-     STATS
-===================================================== -->
+            </div>
 
-<div class="stats">
 
 
-<!-- WEEKLY ACTIVITY -->
+            <div class="stat-card">
 
-<div class="stat">
+                <h3>
+                    Calorie Burn
+                </h3>
 
-<h3>
-Weekly Activity
-</h3>
+                <strong>
+                    2,450
+                </strong>
 
-<div class="activity-circles">
+                <span>
+                    kcal
+                </span>
 
+            </div>
 
-<div class="activity-circle">
 
-<div class="circle-content">
 
-<strong>
-0
-</strong>
+            <div class="stat-card">
 
-<span>
-Progress
-</span>
+                <h3>
+                    Weekly Progress
+                </h3>
 
-</div>
+                <strong>
+                    78%
+                </strong>
 
-</div>
+                <span>
+                    Complete
+                </span>
 
+            </div>
 
-<div class="activity-circle">
 
-<div class="circle-content">
+        </section>
 
-<strong>
-0%
-</strong>
 
-<span>
-Burn
-</span>
 
-</div>
+        <!-- =====================================
+             TODAY'S WORKOUT
+        ====================================== -->
 
-</div>
+        <div class="section-title">
 
+            <h2>
+                Today's Workout
+            </h2>
 
-</div>
 
-</div>
+            <a
+                href="workout.html?workout=chest"
+            >
+                عرض الكل
+            </a>
 
+        </div>
 
 
-<!-- CALORIE -->
 
-<div class="stat">
+        <div class="workout-main">
 
-<h3>
-Calorie Burn
-</h3>
+            <h3>
+                Chest
+            </h3>
 
-<div class="calorie-number">
+            <p>
+                تمرين الصدر النهارده جاهز ليك
+            </p>
 
-<strong>
-0
-</strong>
 
-<span>
-kcal
-</span>
+            <a
+                href="workout.html?workout=chest"
+                class="start-workout"
+            >
+                ابدأ التمرين
+            </a>
 
-</div>
+        </div>
 
-</div>
 
 
+        <!-- =====================================
+             EXERCISES
+        ====================================== -->
 
-<!-- WEEKLY PROGRESS -->
+        <div class="section-title">
 
-<div class="stat">
+            <h2>
+                Exercises
+            </h2>
 
-<h3>
-Weekly Progress
-</h3>
+        </div>
 
-<div class="weekly-progress">
 
-<div class="progress-circle">
 
-<strong>
-0%
-</strong>
+        <section class="exercise-grid">
 
-</div>
 
-</div>
+            <!-- =================================
+                 BENCH PRESS
+            ================================== -->
 
-</div>
+            <div class="exercise-card">
 
+                <h3>
+                    Bench Press
+                </h3>
 
-</div>
 
+                <img
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+                    alt="Bench Press"
+                >
 
 
-<!-- =====================================================
-     TODAY WORKOUT
-===================================================== -->
+                <div class="exercise-content">
 
-<div class="section-heading">
+                    <a
+                        href="workout.html?exercise=bench-press"
+                        class="exercise-btn"
+                    >
+                        ابدأ الآن
+                    </a>
 
-<h2>
-Today's Workout
-</h2>
+                </div>
 
-<a
-href="workout.html?workout=chest"
-class="see-all">
+            </div>
 
-See All
 
-</a>
 
-</div>
+            <!-- =================================
+                 INCLINE PRESS
+            ================================== -->
 
+            <div class="exercise-card">
 
+                <h3>
+                    Incline Press
+                </h3>
 
-<section class="today-workout">
 
+                <img
+                    src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
+                    alt="Incline Press"
+                >
 
-<div class="workout-title">
-Chest
-</div>
 
+                <div class="exercise-content">
 
-<div class="workout-slider">
+                    <a
+                        href="workout.html?exercise=incline-press"
+                        class="exercise-btn"
+                    >
+                        ابدأ الآن
+                    </a>
 
+                </div>
 
-<!-- BENCH PRESS -->
+            </div>
 
-<div class="exercise-card">
 
-<div class="exercise-name">
 
-<h3>
-Bench Press
-</h3>
+            <!-- =================================
+                 CHEST FLY
+            ================================== -->
 
-</div>
+            <div class="exercise-card">
 
-<img
-src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-alt="Bench Press">
+                <h3>
+                    Chest Fly
+                </h3>
 
-<div class="exercise-content">
 
-<a
-href="workout.html?exercise=bench-press"
-class="start-btn">
+                <img
+                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+                    alt="Chest Fly"
+                >
 
-ابدأ الآن
 
-</a>
+                <div class="exercise-content">
 
-</div>
+                    <a
+                        href="workout.html?exercise=chest-fly"
+                        class="exercise-btn"
+                    >
+                        ابدأ الآن
+                    </a>
 
-</div>
+                </div>
 
+            </div>
 
 
-<!-- INCLINE PRESS -->
 
-<div class="exercise-card">
+            <!-- =================================
+                 PUSH UPS
+            ================================== -->
 
-<div class="exercise-name">
+            <div class="exercise-card">
 
-<h3>
-Incline Press
-</h3>
+                <h3>
+                    Push Ups
+                </h3>
 
-</div>
 
-<img
-src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
-alt="Incline Press">
+                <img
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
+                    alt="Push Ups"
+                >
 
-<div class="exercise-content">
 
-<a
-href="workout.html?exercise=incline-press"
-class="start-btn">
+                <div class="exercise-content">
 
-ابدأ الآن
+                    <a
+                        href="workout.html?exercise=push-ups"
+                        class="exercise-btn"
+                    >
+                        ابدأ الآن
+                    </a>
 
-</a>
+                </div>
 
-</div>
+            </div>
 
-</div>
 
+        </section>
 
 
-<!-- CHEST FLY -->
 
-<div class="exercise-card">
+        <!-- =====================================
+             EXTRA CARDS
+        ====================================== -->
 
-<div class="exercise-name">
+        <section class="extra-grid">
 
-<h3>
-Chest Fly
-</h3>
 
-</div>
+            <a
+                href="nutrition.html"
+                class="extra-card"
+            >
 
-<img
-src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
-alt="Chest Fly">
+                <h3>
+                    Nutrition
+                </h3>
 
-<div class="exercise-content">
+                <p>
+                    تابع أكلك وسعراتك اليومية.
+                </p>
 
-<a
-href="workout.html?exercise=chest-fly"
-class="start-btn">
+            </a>
 
-ابدأ الآن
 
-</a>
 
-</div>
+            <a
+                href="progress.html"
+                class="extra-card"
+            >
 
-</div>
+                <h3>
+                    Progress
+                </h3>
 
+                <p>
+                    شوف تطورك ومستواك خلال الأسبوع.
+                </p>
 
+            </a>
 
-<!-- PUSH UPS -->
 
-<div class="exercise-card">
+        </section>
 
-<div class="exercise-name">
 
-<h3>
-Push Ups
-</h3>
+    </main>
 
-</div>
 
-<img
-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
-alt="Push Ups">
 
-<div class="exercise-content">
+    <!-- =====================================
+         BOTTOM NAVIGATION
+    ====================================== -->
 
-<a
-href="workout.html?exercise=push-ups"
-class="start-btn">
+    <nav class="bottom-nav">
 
-ابدأ الآن
 
-</a>
+        <!-- =================================
+             HOME
+             يرجع للصفحة الرئيسية
+        ================================== -->
 
-</div>
+        <a
+            href="dashboard.html"
+            class="nav-item home-nav"
+        >
 
-</div>
+            <div class="nav-icon">
 
+                <svg viewBox="0 0 24 24">
 
-</div>
+                    <path
+                        d="M3 10.5L12 3l9 7.5"
+                    ></path>
 
+                    <path
+                        d="M5 9.5V21h14V9.5"
+                    ></path>
 
+                    <path
+                        d="M9 21v-6h6v6"
+                    ></path>
 
-<div class="workout-dots">
+                </svg>
 
-<span class="active"></span>
+            </div>
 
-<span></span>
 
-<span></span>
+            <span>
+                Home
+            </span>
 
-<span></span>
+        </a>
 
-</div>
 
 
-</section>
+        <!-- =================================
+             WORKOUTS
+        ================================== -->
 
+        <a
+            href="workout.html"
+            class="nav-item workout-nav"
+        >
 
+            <div class="nav-icon">
 
-<!-- =====================================================
-     COMMUNITY
-===================================================== -->
+                <svg viewBox="0 0 24 24">
 
-<div class="section-heading">
+                    <path
+                        d="M4 9v6"
+                    ></path>
 
-<h2>
-Community News
-</h2>
+                    <path
+                        d="M7 7v10"
+                    ></path>
 
-<a
-href="#"
-class="see-all">
+                    <path
+                        d="M10 10h4"
+                    ></path>
 
-See All
+                    <path
+                        d="M14 10h4"
+                    ></path>
 
-</a>
+                    <path
+                        d="M17 7v10"
+                    ></path>
 
-</div>
+                    <path
+                        d="M20 9v6"
+                    ></path>
 
+                </svg>
 
+            </div>
 
-<section class="community-card">
 
+            <span>
+                Workouts
+            </span>
 
-<div class="news-row">
+        </a>
 
-<div class="news-left">
 
-<div class="news-icon">
-★
-</div>
 
-<div>
+        <!-- =================================
+             PROGRESS
+        ================================== -->
 
-<div class="news-title">
-New Class: Neon Spin
-</div>
+        <a
+            href="progress.html"
+            class="nav-item progress-nav"
+        >
 
-<div class="news-sub">
-New Class is Neon Spin
-</div>
+            <div class="nav-icon">
 
-</div>
+                <svg viewBox="0 0 24 24">
 
-</div>
+                    <path
+                        d="M3 21H21"
+                    ></path>
 
-</div>
+                    <path
+                        d="M5 21V14H8V21"
+                    ></path>
 
+                    <path
+                        d="M10.5 21V9H13.5V21"
+                    ></path>
 
+                    <path
+                        d="M16 21V4H19V21"
+                    ></path>
 
-<div class="news-row">
+                </svg>
 
-<div class="news-left">
+            </div>
 
-<div class="news-icon">
-#
-</div>
 
-<div>
+            <span>
+                Progress
+            </span>
 
-<div class="news-title">
-Leaderboard Update
-</div>
+        </a>
 
-<div class="news-sub">
-Check your latest ranking
-</div>
 
-</div>
 
-</div>
+        <!-- =================================
+             PROFILE
+        ================================== -->
 
-</div>
+        <a
+            href="profile.html"
+            class="nav-item profile-nav"
+        >
 
+            <div class="nav-icon">
 
+                <svg viewBox="0 0 24 24">
 
-<div class="news-row">
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="4"
+                    ></circle>
 
-<div class="news-left">
+                    <path
+                        d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"
+                    ></path>
 
-<div class="news-icon">
-+
-</div>
+                </svg>
 
-<div>
+            </div>
 
-<div class="news-title">
-New Challenge
-</div>
 
-<div class="news-sub">
-Join the latest challenge
-</div>
+            <span>
+                Profile
+            </span>
 
-</div>
+        </a>
 
-</div>
 
-</div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     START JOURNEY
-===================================================== -->
-
-<div class="section-heading">
-
-<h2>
-ابدأ رحلتك 💪
-</h2>
-
-</div>
-
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<div class="icon">
-💪
-</div>
-
-<h3>
-Workout
-</h3>
-
-<p>
-تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-</p>
-
-<a href="workout.html">
-ابدأ التمرين
-</a>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-🥗
-</div>
-
-<h3>
-Nutrition
-</h3>
-
-<p>
-خطط غذائية تساعدك تختار أكلك حسب هدفك.
-</p>
-
-<a href="nutrition.html">
-خطة التغذية
-</a>
-
-</div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     PROGRESS
-===================================================== -->
-
-<section class="progress-section">
-
-
-<div class="section-heading">
-
-<h2>
-Progress
-</h2>
-
-<a
-href="progress.html"
-class="see-all">
-
-See All
-
-</a>
-
-</div>
-
-
-
-<div class="progress-card">
-
-
-<div class="progress-icon">
-📊
-</div>
-
-
-<div class="progress-content">
-
-<h3>
-متابعة التقدم
-</h3>
-
-<p>
-تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
-</p>
-
-<a href="progress.html">
-شوف التقدم
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SUBSCRIPTIONS
-===================================================== -->
-
-<section>
-
-
-<div class="section-heading">
-
-<h2>
-الاشتراكات
-</h2>
-
-</div>
-
-
-
-<div class="subscription-box">
-
-<h2>
-اشتراكك في BodyReset
-</h2>
-
-<p>
-الباقة الحالية
-</p>
-
-<div class="plan-price">
-BodyReset
-</div>
-
-</div>
-
-
-</section>
-
-
-
-<div id="message">
-</div>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
-
-<nav class="bottom-nav">
-
-
-<!-- HOME -->
-
-<a
-href="dashboard.html"
-class="nav-item home-nav">
-
-<div class="nav-icon">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M3 10.5L12 3l9 7.5">
-</path>
-
-<path
-d="M5 9.5V21h14V9.5">
-</path>
-
-<path
-d="M9 21v-6h6v6">
-</path>
-
-</svg>
-
-</div>
-
-<span>
-Home
-</span>
-
-</a>
-
-
-
-<!-- WORKOUTS -->
-
-<a
-href="workout.html"
-class="nav-item workout-nav">
-
-<div class="nav-icon">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M6 9v6">
-</path>
-
-<path
-d="M3.5 10v4">
-</path>
-
-<path
-d="M18 9v6">
-</path>
-
-<path
-d="M20.5 10v4">
-</path>
-
-<path
-d="M6 12h12">
-</path>
-
-</svg>
-
-</div>
-
-<span>
-Workouts
-</span>
-
-</a>
-
-
-
-<!-- PROGRESS -->
-
-<a
-href="progress.html"
-class="nav-item progress-nav">
-
-<div class="nav-icon">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M3 21H21">
-</path>
-
-<path
-d="M5 21V14H8V21">
-</path>
-
-<path
-d="M10.5 21V9H13.5V21">
-</path>
-
-<path
-d="M16 21V4H19V21">
-</path>
-
-</svg>
-
-</div>
-
-<span>
-Progress
-</span>
-
-</a>
-
-
-
-<!-- PROFILE -->
-
-<a
-href="profile.html"
-class="nav-item profile-nav">
-
-<div class="nav-icon">
-
-<svg viewBox="0 0 24 24">
-
-<circle
-cx="12"
-cy="7"
-r="4">
-</circle>
-
-<path
-d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7">
-</path>
-
-</svg>
-
-</div>
-
-<span>
-Profile
-</span>
-
-</a>
-
-
-</nav>
+    </nav>
 
 
 </body>
 
-   </html>
+                   </html>
