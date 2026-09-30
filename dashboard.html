@@ -71,7 +71,7 @@ cursor:pointer;
 .container{
 max-width:1100px;
 margin:auto;
-padding:28px 20px 100px;
+padding:28px 20px 110px;
 }
 
 .top-area{
@@ -282,9 +282,6 @@ object-fit:cover;
 display:block;
 }
 
-
-/* اسم التمرين */
-
 .exercise-name{
 background:#fff;
 padding:16px 15px;
@@ -296,9 +293,6 @@ font-size:19px;
 color:#071a33;
 font-weight:bold;
 }
-
-
-/* زر البداية */
 
 .exercise-content{
 padding:15px;
@@ -548,7 +542,7 @@ z-index:1000;
 .nav-item{
 width:25%;
 height:72px;
-color:#64748b;
+color:#071a33;
 text-decoration:none;
 display:flex;
 flex-direction:column;
@@ -557,12 +551,11 @@ justify-content:center;
 gap:4px;
 font-size:11px;
 font-weight:bold;
-transition:0.2s;
 }
 
 .nav-icon{
-width:30px;
-height:30px;
+width:32px;
+height:32px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -572,7 +565,7 @@ justify-content:center;
 width:27px;
 height:27px;
 fill:none;
-stroke:currentColor;
+stroke:#2563eb;
 stroke-width:2;
 stroke-linecap:round;
 stroke-linejoin:round;
@@ -581,15 +574,11 @@ stroke-linejoin:round;
 
 /* HOME */
 
-.home-nav{
-color:#071a33;
-}
-
 .home-nav .nav-icon{
-background:#071a33;
 width:40px;
 height:40px;
 border-radius:50%;
+background:#071a33;
 }
 
 .home-nav .nav-icon svg{
@@ -599,56 +588,54 @@ stroke:#fff;
 }
 
 
-/* WORKOUT */
-
-.workout-nav{
-color:#071a33;
-}
+/* WORKOUT - DUMBBELL */
 
 .workout-nav .nav-icon svg{
-width:31px;
-height:31px;
-stroke:#000;
+width:32px;
+height:32px;
+stroke:#071a33;
 stroke-width:2.4;
-transform:rotate(-12deg);
+
+/* مائل للناحية التانية */
+transform:rotate(12deg);
 }
 
 
-/* PROGRESS */
+/* PROGRESS - 3 BARS */
 
-.progress-nav{
-color:#071a33;
+.progress-nav .nav-icon{
+width:32px;
+height:32px;
 }
 
 .progress-nav .nav-icon svg{
-width:28px;
-height:28px;
-stroke:#071a33;
+width:29px;
+height:29px;
+stroke:#2563eb;
 stroke-width:2;
 }
 
 
 /* PROFILE */
 
-.profile-nav{
-color:#071a33;
-}
-
 .profile-nav .nav-icon svg{
-width:27px;
-height:27px;
-stroke:#071a33;
+width:28px;
+height:28px;
+stroke:#2563eb;
 }
 
 
-/* ACTIVE PAGE */
+/*
+لا يوجد تغيير في الشكل عند الانتقال
+بين الصفحات.
+*/
 
 .nav-item.active{
 color:#071a33;
 }
 
 .nav-item.active .nav-icon{
-transform:translateY(-1px);
+transform:none;
 }
 
 
@@ -678,7 +665,7 @@ font-size:21px;
 }
 
 .container{
-padding:20px 14px 100px;
+padding:20px 14px 110px;
 }
 
 .stat{
@@ -711,8 +698,8 @@ font-size:10px;
 }
 
 .nav-icon{
-width:28px;
-height:28px;
+width:29px;
+height:29px;
 }
 
 .nav-icon svg{
@@ -731,8 +718,8 @@ height:21px;
 }
 
 .workout-nav .nav-icon svg{
-width:29px;
-height:29px;
+width:30px;
+height:30px;
 }
 
 }
@@ -884,7 +871,6 @@ See All
 
 
 <section class="today-workout">
-
 
 <div class="workout-title">
 Chest
@@ -1197,7 +1183,7 @@ Nutrition
 Progress
 </h2>
 
-<a href="#" class="see-all">
+<a href="progress.html" class="see-all">
 See All
 </a>
 
@@ -1220,7 +1206,7 @@ See All
 تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
 </p>
 
-<a href="#">
+<a href="progress.html">
 شوف التقدم
 </a>
 
@@ -1270,7 +1256,9 @@ BodyReset
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- =====================================
+     BOTTOM NAV
+===================================== -->
 
 <nav class="bottom-nav">
 
@@ -1279,7 +1267,7 @@ BodyReset
 
 <a
 href="dashboard.html"
-class="nav-item home-nav active">
+class="nav-item home-nav">
 
 <div class="nav-icon">
 
@@ -1343,15 +1331,21 @@ class="nav-item progress-nav">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M4 19V10"></path>
+<!-- خط الأرض -->
 
-<path d="M9 19V6"></path>
+<path d="M3 21H21"></path>
 
-<path d="M14 19v-4"></path>
+<!-- العمود الأول -->
 
-<path d="M19 19V3"></path>
+<path d="M5 21V14H8V21"></path>
 
-<path d="M3 21h18"></path>
+<!-- العمود الثاني -->
+
+<path d="M10.5 21V9H13.5V21"></path>
+
+<!-- العمود الثالث -->
+
+<path d="M16 21V4H19V21"></path>
 
 </svg>
 
@@ -1374,9 +1368,15 @@ class="nav-item profile-nav">
 
 <svg viewBox="0 0 24 24">
 
-<circle cx="12" cy="7" r="4"></circle>
+<circle
+cx="12"
+cy="7"
+r="4">
+</circle>
 
-<path d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"></path>
+<path
+d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7">
+</path>
 
 </svg>
 
