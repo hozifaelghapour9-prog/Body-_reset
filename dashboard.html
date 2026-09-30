@@ -1,2152 +1,1202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BodyReset Dashboard</title>
+<title>BodyReset | Dashboard</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:#050505;
-    color:#ffffff;
-    min-height:100vh;
-    overflow-x:hidden;
+background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
+color:#071a33;
+min-height:100vh;
 }
 
-/* ================= HEADER ================= */
-
 header{
-    height:75px;
-    padding:0 25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    position:relative;
-    z-index:100;
+height:75px;
+padding:0 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000;
+border-bottom:1px solid #071a33;
 }
 
 .logo{
-    font-size:28px;
-    font-weight:800;
-    letter-spacing:-1px;
+font-size:25px;
+font-weight:bold;
+color:#fff;
 }
 
 .logo span{
-    color:#20f57a;
+color:#2563eb;
 }
 
 .header-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
+display:flex;
+align-items:center;
+gap:18px;
 }
 
 .profile{
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    background:#181818;
-    border:1px solid #343434;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.profile:hover{
-    border-color:#20f57a;
-    box-shadow:0 0 15px rgba(32,245,122,.18);
-}
-
-.profile svg{
-    width:22px;
-    height:22px;
-    stroke:#ffffff;
+width:40px;
+height:40px;
+border-radius:50%;
+background:#f97316;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
 }
 
 .menu-btn{
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-    border:1px solid #343434;
-
-    background:#181818;
-    color:#ffffff;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    transition:.25s;
+background:none;
+border:none;
+color:#fff;
+font-size:30px;
+cursor:pointer;
 }
-
-.menu-btn:hover{
-    border-color:#20f57a;
-    color:#20f57a;
-}
-
-.menu-btn svg{
-    width:22px;
-    height:22px;
-}
-
-/* ================= PROFILE MENU ================= */
-
-.profile-menu{
-    position:absolute;
-
-    top:68px;
-    right:20px;
-
-    width:235px;
-
-    background:#111111;
-
-    border:1px solid #303030;
-    border-radius:18px;
-
-    padding:12px;
-
-    opacity:0;
-    visibility:hidden;
-
-    transform:translateY(-10px);
-
-    transition:.25s;
-
-    z-index:500;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.6);
-}
-
-.profile-menu.show{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
-
-.profile-menu-header{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    padding:10px;
-
-    margin-bottom:8px;
-
-    border-bottom:1px solid #292929;
-}
-
-.profile-menu-icon{
-    width:40px;
-    height:40px;
-
-    border-radius:50%;
-
-    background:#202020;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.profile-menu-icon svg{
-    width:20px;
-    height:20px;
-    stroke:#20f57a;
-}
-
-.profile-menu-header strong{
-    display:block;
-    font-size:14px;
-}
-
-.profile-menu-header span{
-    display:block;
-    font-size:11px;
-    color:#888888;
-    margin-top:4px;
-}
-
-.profile-menu a{
-    display:block;
-
-    text-decoration:none;
-
-    color:#dddddd;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    font-size:14px;
-
-    transition:.2s;
-}
-
-.profile-menu a:hover{
-    background:#1a1a1a;
-    color:#20f57a;
-}
-
-/* ================= MAIN ================= */
 
 .container{
-    width:100%;
-    max-width:1100px;
-
-    margin:auto;
-
-    padding:10px 25px 120px;
+max-width:1100px;
+margin:auto;
+padding:28px 20px 100px;
 }
 
-/* ================= PAGE TITLE ================= */
-
-.page-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    margin:20px 0 22px;
-}
-
-.page-title h1{
-    font-size:32px;
-    font-weight:800;
+.top-area{
+display:flex;
+justify-content:flex-start;
+margin-bottom:25px;
 }
 
 .notification{
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    border:1px solid #303030;
-
-    background:#111111;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    position:relative;
+width:44px;
+height:44px;
+border-radius:50%;
+background:#fff;
+border:1px solid #d7dee8;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
 }
 
 .notification svg{
-    width:22px;
-    height:22px;
-    stroke:#ffffff;
+width:21px;
+height:21px;
+stroke:#071a33;
+fill:none;
+stroke-width:1.8;
 }
-
-.notification::after{
-    content:"";
-
-    position:absolute;
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#20f57a;
-
-    top:8px;
-    right:9px;
-
-    box-shadow:0 0 8px rgba(32,245,122,.5);
-}
-
-/* ================= STATS ================= */
 
 .stats{
-    display:flex;
-    gap:15px;
-
-    overflow-x:auto;
-
-    scrollbar-width:none;
-
-    padding-bottom:5px;
+display:flex;
+gap:18px;
+overflow-x:auto;
+margin-bottom:35px;
+padding-bottom:8px;
 }
 
-.stats::-webkit-scrollbar{
-    display:none;
+.stat{
+flex:0 0 calc((100% - 36px)/3);
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:25px 20px;
+min-height:210px;
 }
 
-.stat-card{
-    min-width:290px;
-    flex:1;
-
-    background:linear-gradient(
-        145deg,
-        #171717,
-        #0c0c0c
-    );
-
-    border:1px solid #353535;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    position:relative;
-
-    min-height:190px;
+.stat h3{
+font-size:17px;
+margin-bottom:20px;
+color:#2563eb;
 }
 
-.stat-card h3{
-    font-size:18px;
-    margin-bottom:20px;
+.activity-circles{
+display:flex;
+justify-content:center;
+gap:18px;
 }
 
-.arrow{
-    position:absolute;
-
-    top:20px;
-    left:18px;
-
-    color:#888888;
-
-    font-size:24px;
+.activity-circle{
+width:82px;
+height:82px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
+position:relative;
 }
 
-/* ================= ACTIVITY ================= */
-
-.activity-rings{
-    display:flex;
-    justify-content:center;
-    gap:30px;
+.activity-circle:before{
+content:"";
+position:absolute;
+width:62px;
+height:62px;
+background:#fff;
+border-radius:50%;
 }
 
-.ring-box{
-    text-align:center;
+.circle-content{
+position:relative;
+z-index:2;
+text-align:center;
 }
 
-.ring{
-    width:78px;
-    height:78px;
-
-    border-radius:50%;
-
-    border:10px solid #292929;
-
-    border-top-color:#20f57a;
-    border-right-color:#20f57a;
-
-    transform:rotate(25deg);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    margin:auto auto 10px;
+.circle-content strong{
+display:block;
+color:#2563eb;
+font-size:18px;
 }
 
-.ring span{
-    transform:rotate(-25deg);
-
-    font-size:18px;
-    font-weight:bold;
+.circle-content span{
+font-size:10px;
+color:#64748b;
 }
-
-.ring-box strong{
-    font-size:25px;
-}
-
-.ring-box p{
-    color:#888888;
-    font-size:13px;
-    margin-top:3px;
-}
-
-/* ================= CALORIES ================= */
 
 .calorie-number{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:16px;
-}
-
-.fire{
-    color:#20f57a;
-    font-size:27px;
+text-align:center;
+margin-bottom:15px;
 }
 
 .calorie-number strong{
-    font-size:25px;
+font-size:32px;
+color:#2563eb;
 }
 
 .calorie-number span{
-    color:#888888;
+font-size:14px;
+color:#64748b;
 }
 
-.chart{
-    height:75px;
-
-    display:flex;
-    align-items:end;
-
-    justify-content:space-between;
-
-    gap:8px;
+.weekly-progress{
+display:flex;
+justify-content:center;
 }
 
-.bar-wrap{
-    height:75px;
-
-    flex:1;
-
-    display:flex;
-    align-items:end;
+.progress-circle{
+width:125px;
+height:125px;
+border-radius:50%;
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
 }
 
-.bar{
-    width:100%;
-
-    background:#20f57a;
-
-    border-radius:7px 7px 0 0;
-
-    box-shadow:0 0 10px rgba(32,245,122,.18);
+.progress-circle:before{
+content:"";
+position:absolute;
+width:95px;
+height:95px;
+background:#fff;
+border-radius:50%;
 }
 
-.days{
-    display:flex;
-    justify-content:space-between;
-
-    color:#777777;
-
-    font-size:10px;
-
-    margin-top:7px;
+.progress-circle strong{
+position:relative;
+z-index:2;
+font-size:28px;
+color:#2563eb;
 }
 
-/* ================= SECTION TITLES ================= */
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin:38px 0 18px;
+.section-heading{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
 }
 
-.section-title h2{
-    font-size:26px;
+.section-heading h2{
+font-size:23px;
+color:#fff;
 }
 
-.section-title a{
-    color:#20f57a;
-
-    text-decoration:none;
-
-    font-size:15px;
+.see-all{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
 }
 
-/* ================= WORKOUT ================= */
+
+/* TODAY WORKOUT */
+
+.today-workout{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:20px;
+margin-bottom:30px;
+}
+
+.workout-title{
+font-size:25px;
+font-weight:bold;
+color:#071a33;
+margin-bottom:20px;
+}
 
 .workout-slider{
-    display:flex;
-
-    gap:15px;
-
-    overflow-x:auto;
-
-    scrollbar-width:none;
+display:flex;
+gap:16px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:8px;
+scrollbar-width:none;
 }
 
 .workout-slider::-webkit-scrollbar{
-    display:none;
+display:none;
 }
 
-.workout-card{
-    min-width:100%;
 
-    height:220px;
+/* EXERCISE CARD */
 
-    background:linear-gradient(
-        135deg,
-        #191919,
-        #0c0c0c
-    );
-
-    border:1px solid #383838;
-
-    border-radius:22px;
-
-    display:flex;
-    align-items:center;
-
-    padding:25px;
-
-    gap:30px;
+.exercise-card{
+flex:0 0 280px;
+background:#f8fafc;
+border:1px solid #d7dee8;
+border-radius:16px;
+overflow:hidden;
+scroll-snap-align:start;
 }
 
-.workout-icon{
-    width:42%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#20f57a;
-
-    filter:drop-shadow(
-        0 0 12px rgba(32,245,122,.35)
-    );
+.exercise-card img{
+width:100%;
+height:190px;
+object-fit:cover;
+display:block;
 }
 
-.workout-icon svg{
-    width:100px;
-    height:100px;
+
+/* اسم التمرين فوق الصورة */
+
+.exercise-name{
+background:#fff;
+padding:16px 15px;
+text-align:center;
 }
 
-.workout-info{
-    flex:1;
+.exercise-name h3{
+font-size:19px;
+color:#071a33;
+font-weight:bold;
 }
 
-.workout-label{
-    color:#20f57a;
 
-    font-size:15px;
+/* زر البداية */
 
-    margin-bottom:8px;
-}
-
-.workout-info h3{
-    font-size:27px;
-
-    margin-bottom:8px;
-}
-
-.workout-info p{
-    color:#999999;
-
-    margin-bottom:18px;
+.exercise-content{
+padding:15px;
 }
 
 .start-btn{
-    background:#20f57a;
-
-    border:none;
-
-    color:#000000;
-
-    font-weight:bold;
-
-    padding:12px 25px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-size:14px;
-
-    transition:.25s;
+display:block;
+width:100%;
+background:#2563eb;
+color:#fff;
+text-align:center;
+text-decoration:none;
+padding:12px;
+border-radius:9px;
+font-size:14px;
+font-weight:bold;
+transition:0.2s;
 }
 
 .start-btn:hover{
-    transform:scale(1.04);
-
-    box-shadow:
-        0 0 18px
-        rgba(32,245,122,.3);
+background:#1d4ed8;
 }
 
-/* ================= DOTS ================= */
-
-.slider-dots{
-    display:flex;
-
-    justify-content:center;
-
-    gap:7px;
-
-    margin-top:16px;
+.workout-dots{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-top:18px;
 }
 
-.dot{
-    width:8px;
-    height:8px;
-
-    background:#444444;
-
-    border-radius:50%;
+.workout-dots span{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#cbd5e1;
 }
 
-.dot.active{
-    width:30px;
-
-    border-radius:20px;
-
-    background:#20f57a;
+.workout-dots span.active{
+width:25px;
+border-radius:8px;
+background:#2563eb;
 }
 
-/* ================= COMMUNITY ================= */
 
-.community{
-    background:linear-gradient(
-        145deg,
-        #171717,
-        #0d0d0d
-    );
+/* COMMUNITY */
 
-    border:1px solid #333333;
-
-    border-radius:20px;
-
-    overflow:hidden;
+.community-card{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:10px 20px;
+margin-bottom:30px;
 }
 
-.news-item{
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:18px;
-
-    border-bottom:1px solid #282828;
+.news-row{
+padding:18px 0;
+border-bottom:1px solid #d7dee8;
 }
 
-.news-item:last-child{
-    border-bottom:none;
+.news-row:last-child{
+border-bottom:none;
+}
+
+.news-left{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
 .news-icon{
-    width:48px;
-    height:48px;
-
-    border-radius:50%;
-
-    background:#242424;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#20f57a;
-
-    flex-shrink:0;
+width:40px;
+height:40px;
+border-radius:10px;
+background:#2563eb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-.news-icon svg{
-    width:22px;
-    height:22px;
+.news-title{
+font-weight:bold;
+color:#071a33;
+margin-bottom:4px;
 }
 
-.news-content{
-    flex:1;
+.news-sub{
+font-size:12px;
+color:#64748b;
 }
 
-.news-content strong{
-    display:block;
 
-    font-size:16px;
+/* CARDS */
 
-    margin-bottom:5px;
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:17px;
+margin-bottom:30px;
 }
 
-.news-content span{
-    color:#777777;
-
-    font-size:13px;
+.card{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:18px;
+padding:23px;
 }
 
-.news-arrow{
-    color:#777777;
-
-    font-size:24px;
+.icon{
+font-size:34px;
+margin-bottom:14px;
 }
 
-/* ================= JOURNEY ================= */
-
-.journey{
-    margin-top:35px;
-
-    background:linear-gradient(
-        145deg,
-        #161616,
-        #0c0c0c
-    );
-
-    border:1px solid #303030;
-
-    border-radius:20px;
-
-    padding:25px;
-
-    text-align:center;
+.card h3{
+font-size:19px;
+margin-bottom:9px;
+color:#071a33;
 }
 
-.journey h2{
-    margin-bottom:10px;
+.card p{
+color:#334155;
+line-height:1.7;
+font-size:14px;
+margin-bottom:18px;
 }
 
-.journey p{
-    color:#888888;
-
-    margin-bottom:18px;
+.card a{
+display:inline-block;
+background:#2563eb;
+color:#fff;
+padding:10px 16px;
+border-radius:9px;
+text-decoration:none;
+font-weight:bold;
 }
 
-/* ===================================================== */
-/*                  BOTTOM NAVIGATION                    */
-/* ===================================================== */
+
+/* PROGRESS */
+
+.progress-section{
+margin-bottom:30px;
+}
+
+.progress-card{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:28px;
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+.progress-icon{
+width:72px;
+height:72px;
+min-width:72px;
+border-radius:16px;
+background:#2563eb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+}
+
+.progress-content{
+flex:1;
+}
+
+.progress-content h3{
+font-size:21px;
+margin-bottom:8px;
+color:#071a33;
+}
+
+.progress-content p{
+color:#334155;
+line-height:1.7;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.progress-content a{
+background:#2563eb;
+color:#fff;
+padding:10px 17px;
+border-radius:9px;
+text-decoration:none;
+font-weight:bold;
+}
+
+
+/* SUBSCRIPTIONS */
+
+.subscription-box{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:28px;
+text-align:center;
+margin-bottom:30px;
+}
+
+.subscription-box h2{
+font-size:24px;
+color:#071a33;
+margin-bottom:10px;
+}
+
+.subscription-box p{
+color:#334155;
+line-height:1.7;
+}
+
+.plan-price{
+color:#2563eb;
+font-size:34px;
+font-weight:bold;
+margin:16px 0;
+}
+
+#message{
+text-align:center;
+margin-top:15px;
+}
+
+
+/* BOTTOM NAV */
 
 .bottom-nav{
-    position:fixed;
-
-    left:50%;
-    bottom:0;
-
-    transform:translateX(-50%);
-
-    width:100%;
-    max-width:700px;
-
-    height:82px;
-
-    background:rgba(9,9,9,.97);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    border-top:1px solid #252525;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-
-    z-index:1000;
-
-    padding:5px 10px;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:70px;
+background:#fff;
+border-top:1px solid #d7dee8;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:1000;
 }
-
-/* NAV ITEM */
 
 .nav-item{
-    width:25%;
-    height:70px;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:5px;
-
-    text-decoration:none;
-
-    color:#777777;
-
-    position:relative;
-
-    transition:.25s;
+color:#64748b;
+text-decoration:none;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:5px;
+font-size:12px;
 }
 
-/* ICON */
-
-.nav-icon{
-    width:29px;
-    height:29px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    transition:.25s;
+.nav-item span{
+font-size:21px;
 }
-
-.nav-icon svg{
-    width:27px;
-    height:27px;
-
-    fill:none;
-
-    stroke:#7c7c7c;
-
-    stroke-width:1.8;
-
-    stroke-linecap:round;
-    stroke-linejoin:round;
-
-    transition:.25s;
-}
-
-/* LABEL */
-
-.nav-label{
-    font-size:11px;
-
-    color:#777777;
-
-    transition:.25s;
-}
-
-/* ================= ACTIVE HOME ================= */
 
 .nav-item.active{
-    color:#20f57a;
+color:#2563eb;
 }
 
-.nav-item.active .nav-icon svg{
-    stroke:#20f57a;
 
-    filter:
-        drop-shadow(
-            0 0 6px
-            rgba(32,245,122,.35)
-        );
+/* MOBILE */
+
+@media(max-width:800px){
+
+.stat{
+flex:0 0 270px;
 }
 
-.nav-item.active .nav-label{
-    color:#20f57a;
-
-    font-weight:600;
+.cards{
+grid-template-columns:1fr;
 }
 
-/* ACTIVE BACKGROUND */
-
-.nav-item.active::before{
-    content:"";
-
-    position:absolute;
-
-    top:4px;
-
-    width:58px;
-    height:42px;
-
-    border-radius:16px;
-
-    background:
-        rgba(32,245,122,.07);
-
-    box-shadow:
-        0 0 20px
-        rgba(32,245,122,.05);
-
-    z-index:-1;
 }
-
-/* ACTIVE LINE */
-
-.nav-item.active::after{
-    content:"";
-
-    position:absolute;
-
-    bottom:2px;
-
-    width:30px;
-    height:3px;
-
-    border-radius:20px;
-
-    background:#20f57a;
-
-    box-shadow:
-        0 0 8px
-        rgba(32,245,122,.35);
-}
-
-/* HOVER */
-
-.nav-item:hover .nav-icon svg{
-    stroke:#bcbcbc;
-}
-
-.nav-item:hover .nav-label{
-    color:#bcbcbc;
-}
-
-.nav-item.active:hover .nav-icon svg,
-.nav-item.active:hover .nav-label{
-    stroke:#20f57a;
-    color:#20f57a;
-}
-
-/* ===================================================== */
-/*                     SIDE MENU                         */
-/* ===================================================== */
-
-.menu-overlay{
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.65);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:1100;
-}
-
-.menu-overlay.show{
-    opacity:1;
-
-    visibility:visible;
-}
-
-.side-menu{
-    position:fixed;
-
-    top:0;
-
-    right:-310px;
-
-    width:290px;
-
-    height:100vh;
-
-    background:#101010;
-
-    border-left:1px solid #292929;
-
-    z-index:1200;
-
-    transition:.3s;
-
-    padding:25px 18px;
-}
-
-.side-menu.open{
-    right:0;
-}
-
-.side-menu-header{
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding-bottom:20px;
-
-    border-bottom:1px solid #292929;
-}
-
-.side-profile{
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    background:#202020;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.side-profile svg{
-    width:21px;
-    height:21px;
-
-    stroke:#20f57a;
-}
-
-.side-user-info{
-    flex:1;
-}
-
-.side-user-info strong{
-    display:block;
-}
-
-.side-user-info span{
-    display:block;
-
-    color:#777777;
-
-    font-size:11px;
-
-    margin-top:4px;
-}
-
-.side-menu-header button{
-    width:35px;
-    height:35px;
-
-    border:none;
-
-    background:#1d1d1d;
-
-    color:#ffffff;
-
-    border-radius:50%;
-
-    font-size:22px;
-
-    cursor:pointer;
-}
-
-.side-menu-links{
-    margin-top:20px;
-}
-
-.side-menu-links a{
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    color:#dddddd;
-
-    text-decoration:none;
-
-    padding:15px 12px;
-
-    border-radius:12px;
-
-    margin-bottom:5px;
-
-    transition:.2s;
-}
-
-.side-menu-links a:hover{
-    background:#1b1b1b;
-
-    color:#20f57a;
-}
-
-/* ===================================================== */
-/*                     MOBILE                            */
-/* ===================================================== */
 
 @media(max-width:600px){
 
-    header{
-        padding:0 18px;
-    }
+header{
+height:68px;
+padding:0 16px;
+}
 
-    .logo{
-        font-size:24px;
-    }
+.logo{
+font-size:21px;
+}
 
-    .container{
-        padding:
-            5px
-            16px
-            110px;
-    }
+.container{
+padding:20px 14px 100px;
+}
 
-    .page-title h1{
-        font-size:29px;
-    }
+.stat{
+flex:0 0 285px;
+}
 
-    .stat-card{
-        min-width:285px;
-    }
+.today-workout{
+padding:15px;
+}
 
-    .workout-card{
-        min-width:100%;
+.exercise-card{
+flex:0 0 82%;
+}
 
-        height:190px;
+.exercise-card img{
+height:200px;
+}
 
-        padding:18px;
-
-        gap:12px;
-    }
-
-    .workout-icon{
-        width:35%;
-    }
-
-    .workout-icon svg{
-        width:65px;
-        height:65px;
-    }
-
-    .workout-info h3{
-        font-size:21px;
-    }
-
-    .workout-label{
-        font-size:13px;
-    }
-
-    .workout-info p{
-        font-size:12px;
-
-        margin-bottom:12px;
-    }
-
-    .start-btn{
-        padding:10px 18px;
-
-        font-size:12px;
-    }
-
-    .section-title h2{
-        font-size:23px;
-    }
-
-    /* BOTTOM NAV */
-
-    .bottom-nav{
-        height:78px;
-
-        padding:
-            4px
-            5px
-            3px;
-    }
-
-    .nav-item{
-        height:66px;
-    }
-
-    .nav-icon{
-        width:27px;
-        height:27px;
-    }
-
-    .nav-icon svg{
-        width:25px;
-        height:25px;
-    }
-
-    .nav-label{
-        font-size:10px;
-    }
+.progress-card{
+padding:22px 18px;
+}
 
 }
 
 </style>
 </head>
 
-
 <body>
-
-
-<!-- ===================================================== -->
-<!-- HEADER                                                -->
-<!-- ===================================================== -->
 
 <header>
 
-    <div class="logo">
-        Body<span>Reset</span>
-    </div>
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
+<div class="header-left">
 
-    <div class="header-left">
+<div class="profile" id="profileBtn">
+?
+</div>
 
-        <!-- PROFILE -->
+<button class="menu-btn">
+☰
+</button>
 
-        <div class="profile" id="profileBtn">
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-
-                <circle cx="12" cy="8" r="4"></circle>
-
-                <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
-
-            </svg>
-
-        </div>
-
-
-        <!-- MENU -->
-
-        <button class="menu-btn" id="menuBtn">
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round">
-
-                <line x1="4" y1="6" x2="20" y2="6"></line>
-
-                <line x1="4" y1="12" x2="20" y2="12"></line>
-
-                <line x1="4" y1="18" x2="20" y2="18"></line>
-
-            </svg>
-
-        </button>
-
-    </div>
+</div>
 
 </header>
 
 
-<!-- ===================================================== -->
-<!-- PROFILE MENU                                          -->
-<!-- ===================================================== -->
-
-<div class="profile-menu" id="profileMenu">
-
-    <div class="profile-menu-header">
-
-        <div class="profile-menu-icon">
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <circle cx="12" cy="8" r="4"></circle>
-
-                <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
-
-            </svg>
-
-        </div>
-
-        <div>
-
-            <strong>My Profile</strong>
-
-            <span>BodyReset Member</span>
-
-        </div>
-
-    </div>
+<main class="container">
 
 
-    <a href="profile.html">
-        👤 الملف الشخصي
-    </a>
+<div class="top-area">
 
-    <a href="settings.html">
-        ⚙️ الإعدادات
-    </a>
+<button class="notification">
 
-    <a href="#" id="logoutBtn">
-        🚪 تسجيل الخروج
-    </a>
+<svg viewBox="0 0 24 24">
+
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
+</path>
+
+<path d="M10 21h4">
+</path>
+
+</svg>
+
+</button>
 
 </div>
 
 
-<!-- ===================================================== -->
-<!-- SIDE MENU                                             -->
-<!-- ===================================================== -->
+<!-- STATS -->
 
-<div class="menu-overlay" id="menuOverlay"></div>
+<div class="stats">
 
+<div class="stat">
 
-<aside class="side-menu" id="sideMenu">
+<h3>
+Weekly Activity
+</h3>
 
-    <div class="side-menu-header">
+<div class="activity-circles">
 
-        <div class="side-profile">
+<div class="activity-circle">
 
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
+<div class="circle-content">
 
-                <circle cx="12" cy="8" r="4"></circle>
+<strong>0</strong>
 
-                <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
+<span>Progress</span>
 
-            </svg>
+</div>
 
-        </div>
+</div>
 
+<div class="activity-circle">
 
-        <div class="side-user-info">
+<div class="circle-content">
 
-            <strong>BodyReset</strong>
+<strong>0%</strong>
 
-            <span>Fitness Dashboard</span>
+<span>Burn</span>
 
-        </div>
+</div>
 
+</div>
 
-        <button id="closeMenu">
-            ×
-        </button>
+</div>
 
-    </div>
+</div>
 
 
-    <div class="side-menu-links">
+<div class="stat">
 
-        <a href="dashboard.html">
-            🏠
-            <span>الرئيسية</span>
-        </a>
+<h3>
+Calorie Burn
+</h3>
 
-        <a href="workout.html">
-            💪
-            <span>التمارين</span>
-        </a>
+<div class="calorie-number">
 
-        <a href="nutrition.html">
-            🥗
-            <span>التغذية</span>
-        </a>
+<strong>0</strong>
 
-        <a href="progress.html">
-            📊
-            <span>التقدم</span>
-        </a>
+<span>kcal</span>
 
-        <a href="profile.html">
-            👤
-            <span>الملف الشخصي</span>
-        </a>
+</div>
 
-        <a href="settings.html">
-            ⚙️
-            <span>الإعدادات</span>
-        </a>
+</div>
 
-    </div>
 
-</aside>
+<div class="stat">
 
+<h3>
+Weekly Progress
+</h3>
 
-<!-- ===================================================== -->
-<!-- MAIN                                                  -->
-<!-- ===================================================== -->
+<div class="weekly-progress">
 
-<main class="container">
+<div class="progress-circle">
 
+<strong>0%</strong>
 
-    <!-- PAGE TITLE -->
+</div>
 
-    <div class="page-title">
+</div>
 
-        <h1>Dashboard</h1>
+</div>
 
+</div>
 
-        <button
-            class="notification"
-            id="notificationBtn">
 
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
+<!-- TODAY WORKOUT -->
 
-                <path
-                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
-                </path>
+<div class="section-heading">
 
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+<h2>
+Today's Workout
+</h2>
 
-            </svg>
+<a
+href="workout.html?workout=chest"
+class="see-all">
 
-        </button>
+See All
 
-    </div>
+</a>
 
+</div>
 
-    <!-- ================================================= -->
-    <!-- STATS                                              -->
-    <!-- ================================================= -->
 
-    <section class="stats">
+<section class="today-workout">
 
 
-        <!-- WEEKLY ACTIVITY -->
+<div class="workout-title">
+Chest
+</div>
 
-        <div class="stat-card">
 
-            <span class="arrow">›</span>
+<div class="workout-slider">
 
-            <h3>
-                Weekly Activity
-            </h3>
 
+<!-- BENCH PRESS -->
 
-            <div class="activity-rings">
+<div class="exercise-card">
 
+<div class="exercise-name">
 
-                <div class="ring-box">
+<h3>
+Bench Press
+</h3>
 
-                    <div class="ring">
+</div>
 
-                        <span>
-                            60
-                        </span>
+<img
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+alt="Bench Press">
 
-                    </div>
+<div class="exercise-content">
 
-                    <strong>
-                        60
-                    </strong>
+<a
+href="workout.html?exercise=bench-press"
+class="start-btn">
 
-                    <p>
-                        Progress
-                    </p>
+ابدأ الآن
 
-                </div>
+</a>
 
+</div>
 
-                <div class="ring-box">
+</div>
 
-                    <div class="ring">
 
-                        <span>
-                            0%
-                        </span>
+<!-- INCLINE PRESS -->
 
-                    </div>
+<div class="exercise-card">
 
-                    <strong>
-                        0%
-                    </strong>
+<div class="exercise-name">
 
-                    <p>
-                        Burn
-                    </p>
+<h3>
+Incline Press
+</h3>
 
-                </div>
+</div>
 
+<img
+src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
+alt="Incline Press">
 
-            </div>
+<div class="exercise-content">
 
-        </div>
+<a
+href="workout.html?exercise=incline-press"
+class="start-btn">
 
+ابدأ الآن
 
-        <!-- CALORIE BURN -->
+</a>
 
-        <div class="stat-card">
+</div>
 
-            <span class="arrow">›</span>
+</div>
 
-            <h3>
-                Calorie Burn
-            </h3>
 
+<!-- CHEST FLY -->
 
-            <div class="calorie-number">
+<div class="exercise-card">
 
-                <div class="fire">
-                    🔥
-                </div>
+<div class="exercise-name">
 
-                <strong>
-                    280
-                </strong>
+<h3>
+Chest Fly
+</h3>
 
-                <span>
-                    kcal
-                </span>
+</div>
 
-            </div>
+<img
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+alt="Chest Fly">
 
+<div class="exercise-content">
 
-            <div class="chart">
+<a
+href="workout.html?exercise=chest-fly"
+class="start-btn">
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:40%">
-                    </div>
-                </div>
+ابدأ الآن
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:65%">
-                    </div>
-                </div>
+</a>
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:50%">
-                    </div>
-                </div>
+</div>
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:55%">
-                    </div>
-                </div>
+</div>
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:75%">
-                    </div>
-                </div>
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:52%">
-                    </div>
-                </div>
+<!-- PUSH UPS -->
 
-                <div class="bar-wrap">
-                    <div
-                        class="bar"
-                        style="height:85%">
-                    </div>
-                </div>
+<div class="exercise-card">
 
-            </div>
+<div class="exercise-name">
 
+<h3>
+Push Ups
+</h3>
 
-            <div class="days">
+</div>
 
-                <span>Mo</span>
-                <span>Tu</span>
-                <span>We</span>
-                <span>Th</span>
-                <span>Fr</span>
-                <span>Sa</span>
-                <span>Su</span>
+<img
+src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
+alt="Push Ups">
 
-            </div>
+<div class="exercise-content">
 
-        </div>
+<a
+href="workout.html?exercise=push-ups"
+class="start-btn">
 
+ابدأ الآن
 
-        <!-- WEEKLY PROGRESS -->
+</a>
 
-        <div class="stat-card">
+</div>
 
-            <span class="arrow">›</span>
+</div>
 
-            <h3>
-                Weekly Progress
-            </h3>
 
+</div>
 
-            <div
-                style="
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                height:110px;
-                ">
 
-                <div
-                    class="ring"
-                    style="
-                    width:100px;
-                    height:100px;
-                    border-width:11px;
-                    border-top-color:#20f57a;
-                    border-right-color:#292929;
-                    border-bottom-color:#292929;
-                    border-left-color:#292929;
-                    ">
+<div class="workout-dots">
 
-                    <span>
-                        0%
-                    </span>
+<span class="active"></span>
+<span></span>
+<span></span>
+<span></span>
 
-                </div>
+</div>
 
-            </div>
+</section>
 
-        </div>
 
+<!-- COMMUNITY -->
 
-    </section>
+<div class="section-heading">
 
+<h2>
+Community News
+</h2>
 
-    <!-- ================================================= -->
-    <!-- TODAY WORKOUT                                     -->
-    <!-- ================================================= -->
+<a href="#" class="see-all">
+See All
+</a>
 
-    <div class="section-title">
+</div>
 
-        <h2>
-            Today's Workout
-        </h2>
 
-        <a href="workout.html">
-            See All
-        </a>
+<section class="community-card">
 
-    </div>
 
+<div class="news-row">
 
-    <section class="workout-slider">
+<div class="news-left">
 
+<div class="news-icon">
+★
+</div>
 
-        <div class="workout-card">
+<div>
 
+<div class="news-title">
+New Class: Neon Spin
+</div>
 
-            <div class="workout-icon">
+<div class="news-sub">
+New Class is Neon Spin
+</div>
 
-                <svg
-                    viewBox="0 0 100 100"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4"
-                    stroke-linecap="round">
+</div>
 
-                    <rect
-                        x="20"
-                        y="28"
-                        width="12"
-                        height="44"
-                        rx="4">
-                    </rect>
+</div>
 
-                    <rect
-                        x="68"
-                        y="28"
-                        width="12"
-                        height="44"
-                        rx="4">
-                    </rect>
+</div>
 
-                    <line
-                        x1="32"
-                        y1="50"
-                        x2="68"
-                        y2="50">
-                    </line>
 
-                    <line
-                        x1="14"
-                        y1="38"
-                        x2="14"
-                        y2="62">
-                    </line>
+<div class="news-row">
 
-                    <line
-                        x1="86"
-                        y1="38"
-                        x2="86"
-                        y2="62">
-                    </line>
+<div class="news-left">
 
-                </svg>
+<div class="news-icon">
+#
+</div>
 
-            </div>
+<div>
 
+<div class="news-title">
+Leaderboard Update
+</div>
 
-            <div class="workout-info">
+<div class="news-sub">
+Check your latest ranking
+</div>
 
-                <div class="workout-label">
-                    Today's Workout
-                </div>
+</div>
 
-                <h3>
-                    HIIT & Strength
-                </h3>
+</div>
 
-                <p>
-                    Start up 10 min
-                </p>
+</div>
 
-                <button class="start-btn">
-                    Start Now
-                </button>
 
-            </div>
+<div class="news-row">
 
-        </div>
+<div class="news-left">
 
+<div class="news-icon">
++
+</div>
 
-    </section>
+<div>
 
+<div class="news-title">
+New Challenge
+</div>
 
-    <div class="slider-dots">
+<div class="news-sub">
+Join the latest challenge
+</div>
 
-        <div class="dot active"></div>
+</div>
 
-        <div class="dot"></div>
+</div>
 
-        <div class="dot"></div>
+</div>
 
-    </div>
 
+</section>
 
-    <!-- ================================================= -->
-    <!-- COMMUNITY NEWS                                    -->
-    <!-- ================================================= -->
 
-    <div class="section-title">
+<!-- START JOURNEY -->
 
-        <h2>
-            Community News
-        </h2>
+<div class="section-heading">
 
-        <a href="#">
-            See All
-        </a>
+<h2>
+ابدأ رحلتك 💪
+</h2>
 
-    </div>
+</div>
 
 
-    <section class="community">
+<div class="cards">
 
 
-        <div class="news-item">
+<div class="card">
 
-            <div class="news-icon">
+<div class="icon">
+💪
+</div>
 
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
+<h3>
+Workout
+</h3>
 
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="9">
-                    </circle>
+<p>
+تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
+</p>
 
-                    <path d="M10 8l5 4-5 4V8z"></path>
+<a href="workout.html">
+ابدأ التمرين
+</a>
 
-                </svg>
+</div>
 
-            </div>
 
+<div class="card">
 
-            <div class="news-content">
+<div class="icon">
+🥗
+</div>
 
-                <strong>
-                    New Class: Neon Spin
-                </strong>
+<h3>
+Nutrition
+</h3>
 
-                <span>
-                    New Class is. Neon Spin
-                </span>
+<p>
+خطط غذائية تساعدك تختار أكلك حسب هدفك.
+</p>
 
-            </div>
+<a href="nutrition.html">
+خطة التغذية
+</a>
 
+</div>
 
-            <div class="news-arrow">
-                ›
-            </div>
+</div>
 
-        </div>
 
+<!-- PROGRESS -->
 
-        <div class="news-item">
+<section class="progress-section">
 
-            <div class="news-icon">
+<div class="section-heading">
 
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
+<h2>
+Progress
+</h2>
 
-                    <path d="M8 21h8"></path>
+<a href="#" class="see-all">
+See All
+</a>
 
-                    <path d="M12 17v4"></path>
+</div>
 
-                    <path d="M5 5h14l-1 7a6 6 0 0 1-12 0L5 5z"></path>
 
-                </svg>
+<div class="progress-card">
 
-            </div>
+<div class="progress-icon">
+📊
+</div>
 
+<div class="progress-content">
 
-            <div class="news-content">
+<h3>
+متابعة التقدم
+</h3>
 
-                <strong>
-                    Leaderboard Update
-                </strong>
+<p>
+تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
+</p>
 
-                <span>
-                    Check your latest ranking
-                </span>
+<a href="#">
+شوف التقدم
+</a>
 
-            </div>
+</div>
 
+</div>
 
-            <div class="news-arrow">
-                ›
-            </div>
+</section>
 
-        </div>
 
+<!-- SUBSCRIPTIONS -->
 
-    </section>
+<section>
 
+<div class="section-heading">
 
-    <!-- ================================================= -->
-    <!-- JOURNEY                                           -->
-    <!-- ================================================= -->
+<h2>
+الاشتراكات
+</h2>
 
-    <section class="journey">
+</div>
 
-        <h2>
-            Start Your Journey
-        </h2>
 
-        <p>
-            Build your body. Build your habits.
-        </p>
+<div class="subscription-box">
 
-        <button class="start-btn">
-            Start Now
-        </button>
+<h2>
+اشتراكك في BodyReset
+</h2>
 
-    </section>
+<p>
+الباقة الحالية
+</p>
+
+<div class="plan-price">
+BodyReset
+</div>
+
+</div>
+
+</section>
+
+
+<div id="message">
+</div>
 
 
 </main>
 
 
-<!-- ===================================================== -->
-<!-- BOTTOM NAVIGATION                                     -->
-<!-- ===================================================== -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
 
-    <!-- HOME -->
+<a
+href="dashboard.html"
+class="nav-item active">
 
-    <a
-        href="dashboard.html"
-        class="nav-item active">
+<span>⌂</span>
 
-        <div class="nav-icon">
+Home
 
-            <svg
-                viewBox="0 0 24 24">
-
-                <path
-                    d="M3 10.5L12 3l9 7.5">
-                </path>
-
-                <path
-                    d="M5 9.5V21h14V9.5">
-                </path>
-
-                <path
-                    d="M9 21v-6h6v6">
-                </path>
-
-            </svg>
-
-        </div>
-
-        <div class="nav-label">
-            Home
-        </div>
-
-    </a>
+</a>
 
 
-    <!-- WORKOUTS -->
+<a
+href="workout.html"
+class="nav-item">
 
-    <a
-        href="workout.html"
-        class="nav-item">
+<span>💪</span>
 
-        <div class="nav-icon">
+Workouts
 
-            <svg
-                viewBox="0 0 24 24">
-
-                <path
-                    d="M6 9v6">
-                </path>
-
-                <path
-                    d="M3.5 10v4">
-                </path>
-
-                <path
-                    d="M18 9v6">
-                </path>
-
-                <path
-                    d="M20.5 10v4">
-                </path>
-
-                <path
-                    d="M6 12h12">
-                </path>
-
-            </svg>
-
-        </div>
-
-        <div class="nav-label">
-            Workouts
-        </div>
-
-    </a>
+</a>
 
 
-    <!-- PROGRESS -->
+<a
+href="#"
+class="nav-item">
 
-    <a
-        href="progress.html"
-        class="nav-item">
+<span>📊</span>
 
-        <div class="nav-icon">
+Progress
 
-            <svg
-                viewBox="0 0 24 24">
-
-                <path
-                    d="M4 20V10">
-                </path>
-
-                <path
-                    d="M10 20V5">
-                </path>
-
-                <path
-                    d="M16 20v-8">
-                </path>
-
-                <path
-                    d="M22 20H2">
-                </path>
-
-            </svg>
-
-        </div>
-
-        <div class="nav-label">
-            Progress
-        </div>
-
-    </a>
+</a>
 
 
-    <!-- PROFILE -->
+<a
+href="#"
+class="nav-item">
 
-    <a
-        href="profile.html"
-        class="nav-item">
+<span>👤</span>
 
-        <div class="nav-icon">
+Profile
 
-            <svg
-                viewBox="0 0 24 24">
-
-                <circle
-                    cx="12"
-                    cy="7"
-                    r="4">
-                </circle>
-
-                <path
-                    d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7">
-                </path>
-
-            </svg>
-
-        </div>
-
-        <div class="nav-label">
-            Profile
-        </div>
-
-    </a>
+</a>
 
 
 </nav>
 
 
-<!-- ===================================================== -->
-<!-- JAVASCRIPT                                            -->
-<!-- ===================================================== -->
-
-<script>
-
-/* ================= PROFILE ================= */
-
-const profileBtn =
-    document.getElementById("profileBtn");
-
-const profileMenu =
-    document.getElementById("profileMenu");
-
-
-profileBtn.addEventListener(
-    "click",
-    function(e){
-
-        e.stopPropagation();
-
-        profileMenu.classList.toggle("show");
-
-    }
-);
-
-
-document.addEventListener(
-    "click",
-    function(e){
-
-        if(
-            !profileMenu.contains(e.target) &&
-            !profileBtn.contains(e.target)
-        ){
-
-            profileMenu.classList.remove("show");
-
-        }
-
-    }
-);
-
-
-/* ================= SIDE MENU ================= */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const sideMenu =
-    document.getElementById("sideMenu");
-
-const menuOverlay =
-    document.getElementById("menuOverlay");
-
-const closeMenu =
-    document.getElementById("closeMenu");
-
-
-menuBtn.addEventListener(
-    "click",
-    function(){
-
-        sideMenu.classList.add("open");
-
-        menuOverlay.classList.add("show");
-
-        profileMenu.classList.remove("show");
-
-    }
-);
-
-
-closeMenu.addEventListener(
-    "click",
-    function(){
-
-        sideMenu.classList.remove("open");
-
-        menuOverlay.classList.remove("show");
-
-    }
-);
-
-
-menuOverlay.addEventListener(
-    "click",
-    function(){
-
-        sideMenu.classList.remove("open");
-
-        menuOverlay.classList.remove("show");
-
-    }
-);
-
-
-/* ================= LOGOUT ================= */
-
-document
-.getElementById("logoutBtn")
-.addEventListener(
-    "click",
-    function(e){
-
-        e.preventDefault();
-
-        alert("تم تسجيل الخروج");
-
-    }
-);
-
-
-/* ================= NOTIFICATION ================= */
-
-document
-.getElementById("notificationBtn")
-.addEventListener(
-    "click",
-    function(){
-
-        alert("لا توجد إشعارات جديدة 🔔");
-
-    }
-);
-
-
-/* ================= BOTTOM NAV ================= */
-
-const navItems =
-    document.querySelectorAll(".nav-item");
-
-
-navItems.forEach(
-    function(item){
-
-        item.addEventListener(
-            "click",
-            function(){
-
-                navItems.forEach(
-                    function(nav){
-
-                        nav.classList.remove("active");
-
-                    }
-                );
-
-                this.classList.add("active");
-
-            }
-        );
-
-    }
-);
-
-</script>
-
 </body>
-   </html>
+    </html>
