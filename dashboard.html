@@ -283,7 +283,7 @@ display:block;
 }
 
 
-/* اسم التمرين فوق الصورة */
+/* اسم التمرين */
 
 .exercise-name{
 background:#fff;
@@ -536,7 +536,7 @@ position:fixed;
 bottom:0;
 left:0;
 right:0;
-height:70px;
+height:72px;
 background:#fff;
 border-top:1px solid #d7dee8;
 display:flex;
@@ -547,7 +547,7 @@ z-index:1000;
 
 .nav-item{
 width:25%;
-height:70px;
+height:72px;
 color:#64748b;
 text-decoration:none;
 display:flex;
@@ -557,19 +557,20 @@ justify-content:center;
 gap:4px;
 font-size:11px;
 font-weight:bold;
+transition:0.2s;
 }
 
 .nav-icon{
-width:28px;
-height:28px;
+width:30px;
+height:30px;
 display:flex;
 align-items:center;
 justify-content:center;
 }
 
 .nav-icon svg{
-width:25px;
-height:25px;
+width:27px;
+height:27px;
 fill:none;
 stroke:currentColor;
 stroke-width:2;
@@ -581,19 +582,19 @@ stroke-linejoin:round;
 /* HOME */
 
 .home-nav{
-color:#fff;
+color:#071a33;
 }
 
 .home-nav .nav-icon{
-background:#2563eb;
-width:38px;
-height:38px;
+background:#071a33;
+width:40px;
+height:40px;
 border-radius:50%;
 }
 
 .home-nav .nav-icon svg{
-width:22px;
-height:22px;
+width:23px;
+height:23px;
 stroke:#fff;
 }
 
@@ -605,30 +606,49 @@ color:#071a33;
 }
 
 .workout-nav .nav-icon svg{
+width:31px;
+height:31px;
 stroke:#000;
-stroke-width:2.2;
+stroke-width:2.4;
+transform:rotate(-12deg);
 }
 
 
 /* PROGRESS */
 
 .progress-nav{
-color:#2563eb;
+color:#071a33;
 }
 
 .progress-nav .nav-icon svg{
-stroke:#2563eb;
+width:28px;
+height:28px;
+stroke:#071a33;
+stroke-width:2;
 }
 
 
 /* PROFILE */
 
 .profile-nav{
-color:#2563eb;
+color:#071a33;
 }
 
 .profile-nav .nav-icon svg{
-stroke:#2563eb;
+width:27px;
+height:27px;
+stroke:#071a33;
+}
+
+
+/* ACTIVE PAGE */
+
+.nav-item.active{
+color:#071a33;
+}
+
+.nav-item.active .nav-icon{
+transform:translateY(-1px);
 }
 
 
@@ -691,18 +711,28 @@ font-size:10px;
 }
 
 .nav-icon{
-width:27px;
-height:27px;
+width:28px;
+height:28px;
 }
 
 .nav-icon svg{
-width:24px;
-height:24px;
+width:25px;
+height:25px;
 }
 
 .home-nav .nav-icon{
-width:36px;
-height:36px;
+width:37px;
+height:37px;
+}
+
+.home-nav .nav-icon svg{
+width:21px;
+height:21px;
+}
+
+.workout-nav .nav-icon svg{
+width:29px;
+height:29px;
 }
 
 }
@@ -1245,9 +1275,11 @@ BodyReset
 <nav class="bottom-nav">
 
 
+<!-- HOME -->
+
 <a
 href="dashboard.html"
-class="nav-item active home-nav">
+class="nav-item home-nav active">
 
 <div class="nav-icon">
 
@@ -1269,6 +1301,8 @@ Home
 
 </a>
 
+
+<!-- WORKOUTS -->
 
 <a
 href="workout.html"
@@ -1299,21 +1333,25 @@ Workouts
 </a>
 
 
+<!-- PROGRESS -->
+
 <a
-href="#"
+href="progress.html"
 class="nav-item progress-nav">
 
 <div class="nav-icon">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M4 20V10"></path>
+<path d="M4 19V10"></path>
 
-<path d="M10 20V5"></path>
+<path d="M9 19V6"></path>
 
-<path d="M16 20v-8"></path>
+<path d="M14 19v-4"></path>
 
-<path d="M22 20H2"></path>
+<path d="M19 19V3"></path>
+
+<path d="M3 21h18"></path>
 
 </svg>
 
@@ -1326,8 +1364,10 @@ Progress
 </a>
 
 
+<!-- PROFILE -->
+
 <a
-href="#"
+href="profile.html"
 class="nav-item profile-nav">
 
 <div class="nav-icon">
@@ -1353,4 +1393,4 @@ Profile
 
 
 </body>
-    </html>
+   </html>
