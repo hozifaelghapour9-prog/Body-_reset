@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BodyReset | Dashboard</title>
+<title>BodyReset | Workouts</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
 box-sizing:border-box;
@@ -15,11 +21,21 @@ padding:0;
 font-family:Arial,sans-serif;
 }
 
+
+/* =========================
+   BODY
+========================= */
+
 body{
 background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
 color:#071a33;
 min-height:100vh;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
 height:75px;
@@ -68,234 +84,142 @@ font-size:30px;
 cursor:pointer;
 }
 
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
 max-width:1100px;
 margin:auto;
 padding:28px 20px 110px;
 }
 
-.top-area{
-display:flex;
-justify-content:flex-start;
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-heading{
 margin-bottom:25px;
 }
 
-.notification{
-width:44px;
-height:44px;
-border-radius:50%;
+.page-heading h1{
+font-size:30px;
+color:#fff;
+margin-bottom:8px;
+}
+
+.page-heading p{
+font-size:14px;
+color:#eaf6ff;
+line-height:1.7;
+}
+
+
+/* =========================
+   WORKOUT FILTER
+========================= */
+
+.workout-tabs{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding-bottom:8px;
+margin-bottom:25px;
+scrollbar-width:none;
+}
+
+.workout-tabs::-webkit-scrollbar{
+display:none;
+}
+
+.workout-tab{
+flex:0 0 auto;
+padding:11px 20px;
+border-radius:10px;
 background:#fff;
 border:1px solid #d7dee8;
-display:flex;
-align-items:center;
-justify-content:center;
+color:#071a33;
+font-weight:bold;
 cursor:pointer;
 }
 
-.notification svg{
-width:21px;
-height:21px;
-stroke:#071a33;
-fill:none;
-stroke-width:1.8;
-}
-
-.stats{
-display:flex;
-gap:18px;
-overflow-x:auto;
-margin-bottom:35px;
-padding-bottom:8px;
-}
-
-.stat{
-flex:0 0 calc((100% - 36px)/3);
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:25px 20px;
-min-height:210px;
-}
-
-.stat h3{
-font-size:17px;
-margin-bottom:20px;
-color:#2563eb;
-}
-
-.activity-circles{
-display:flex;
-justify-content:center;
-gap:18px;
-}
-
-.activity-circle{
-width:82px;
-height:82px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:conic-gradient(#2563eb 0%,#d7dee8 0%);
-position:relative;
-}
-
-.activity-circle:before{
-content:"";
-position:absolute;
-width:62px;
-height:62px;
-background:#fff;
-border-radius:50%;
-}
-
-.circle-content{
-position:relative;
-z-index:2;
-text-align:center;
-}
-
-.circle-content strong{
-display:block;
-color:#2563eb;
-font-size:18px;
-}
-
-.circle-content span{
-font-size:10px;
-color:#64748b;
-}
-
-.calorie-number{
-text-align:center;
-margin-bottom:15px;
-}
-
-.calorie-number strong{
-font-size:32px;
-color:#2563eb;
-}
-
-.calorie-number span{
-font-size:14px;
-color:#64748b;
-}
-
-.weekly-progress{
-display:flex;
-justify-content:center;
-}
-
-.progress-circle{
-width:125px;
-height:125px;
-border-radius:50%;
-background:conic-gradient(#2563eb 0%,#d7dee8 0%);
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.progress-circle:before{
-content:"";
-position:absolute;
-width:95px;
-height:95px;
-background:#fff;
-border-radius:50%;
-}
-
-.progress-circle strong{
-position:relative;
-z-index:2;
-font-size:28px;
-color:#2563eb;
-}
-
-.section-heading{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px;
-}
-
-.section-heading h2{
-font-size:23px;
+.workout-tab.active{
+background:#071a33;
 color:#fff;
 }
 
-.see-all{
-color:#fff;
-text-decoration:none;
-font-size:14px;
-font-weight:bold;
-}
 
+/* =========================
+   WORKOUT SECTION
+========================= */
 
-/* TODAY WORKOUT */
-
-.today-workout{
+.workout-section{
 background:#fff;
 border:1px solid #d7dee8;
 border-radius:20px;
 padding:20px;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
-.workout-title{
-font-size:25px;
+.workout-section-title{
+font-size:24px;
 font-weight:bold;
 color:#071a33;
 margin-bottom:20px;
 }
 
-.workout-slider{
-display:flex;
-gap:16px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:8px;
-scrollbar-width:none;
+
+/* =========================
+   EXERCISES
+========================= */
+
+.exercise-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
 }
-
-.workout-slider::-webkit-scrollbar{
-display:none;
-}
-
-
-/* EXERCISE CARD */
 
 .exercise-card{
-flex:0 0 280px;
 background:#f8fafc;
 border:1px solid #d7dee8;
 border-radius:16px;
 overflow:hidden;
-scroll-snap-align:start;
-}
-
-.exercise-card img{
-width:100%;
-height:190px;
-object-fit:cover;
-display:block;
 }
 
 .exercise-name{
 background:#fff;
-padding:16px 15px;
+padding:16px;
 text-align:center;
 }
 
 .exercise-name h3{
 font-size:19px;
 color:#071a33;
-font-weight:bold;
+}
+
+.exercise-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+display:block;
 }
 
 .exercise-content{
 padding:15px;
+}
+
+.exercise-info{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.exercise-info span{
+font-size:13px;
+color:#64748b;
 }
 
 .start-btn{
@@ -316,214 +240,10 @@ transition:0.2s;
 background:#1d4ed8;
 }
 
-.workout-dots{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-top:18px;
-}
 
-.workout-dots span{
-width:8px;
-height:8px;
-border-radius:50%;
-background:#cbd5e1;
-}
-
-.workout-dots span.active{
-width:25px;
-border-radius:8px;
-background:#2563eb;
-}
-
-
-/* COMMUNITY */
-
-.community-card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:10px 20px;
-margin-bottom:30px;
-}
-
-.news-row{
-padding:18px 0;
-border-bottom:1px solid #d7dee8;
-}
-
-.news-row:last-child{
-border-bottom:none;
-}
-
-.news-left{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.news-icon{
-width:40px;
-height:40px;
-border-radius:10px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.news-title{
-font-weight:bold;
-color:#071a33;
-margin-bottom:4px;
-}
-
-.news-sub{
-font-size:12px;
-color:#64748b;
-}
-
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:17px;
-margin-bottom:30px;
-}
-
-.card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:18px;
-padding:23px;
-}
-
-.icon{
-font-size:34px;
-margin-bottom:14px;
-}
-
-.card h3{
-font-size:19px;
-margin-bottom:9px;
-color:#071a33;
-}
-
-.card p{
-color:#334155;
-line-height:1.7;
-font-size:14px;
-margin-bottom:18px;
-}
-
-.card a{
-display:inline-block;
-background:#2563eb;
-color:#fff;
-padding:10px 16px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-/* PROGRESS */
-
-.progress-section{
-margin-bottom:30px;
-}
-
-.progress-card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-display:flex;
-align-items:center;
-gap:25px;
-}
-
-.progress-icon{
-width:72px;
-height:72px;
-min-width:72px;
-border-radius:16px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-}
-
-.progress-content{
-flex:1;
-}
-
-.progress-content h3{
-font-size:21px;
-margin-bottom:8px;
-color:#071a33;
-}
-
-.progress-content p{
-color:#334155;
-line-height:1.7;
-font-size:14px;
-margin-bottom:15px;
-}
-
-.progress-content a{
-background:#2563eb;
-color:#fff;
-padding:10px 17px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-/* SUBSCRIPTIONS */
-
-.subscription-box{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-text-align:center;
-margin-bottom:30px;
-}
-
-.subscription-box h2{
-font-size:24px;
-color:#071a33;
-margin-bottom:10px;
-}
-
-.subscription-box p{
-color:#334155;
-line-height:1.7;
-}
-
-.plan-price{
-color:#2563eb;
-font-size:34px;
-font-weight:bold;
-margin:16px 0;
-}
-
-#message{
-text-align:center;
-margin-top:15px;
-}
-
-
-/* =====================================
+/* =========================
    BOTTOM NAV
-===================================== */
+========================= */
 
 .bottom-nav{
 position:fixed;
@@ -572,7 +292,9 @@ stroke-linejoin:round;
 }
 
 
-/* HOME */
+/* =========================
+   HOME
+========================= */
 
 .home-nav .nav-icon{
 width:40px;
@@ -588,7 +310,9 @@ stroke:#fff;
 }
 
 
-/* WORKOUT - DUMBBELL */
+/* =========================
+   WORKOUT DUMBBELL
+========================= */
 
 .workout-nav .nav-icon svg{
 width:32px;
@@ -596,12 +320,14 @@ height:32px;
 stroke:#071a33;
 stroke-width:2.4;
 
-/* مائل للناحية التانية */
+/* الميل الجديد */
 transform:rotate(12deg);
 }
 
 
-/* PROGRESS - 3 BARS */
+/* =========================
+   PROGRESS
+========================= */
 
 .progress-nav .nav-icon{
 width:32px;
@@ -616,7 +342,9 @@ stroke-width:2;
 }
 
 
-/* PROFILE */
+/* =========================
+   PROFILE
+========================= */
 
 .profile-nav .nav-icon svg{
 width:28px;
@@ -626,32 +354,24 @@ stroke:#2563eb;
 
 
 /*
-لا يوجد تغيير في الشكل عند الانتقال
-بين الصفحات.
+مهم:
+مفيش تغيير في شكل الزر
+لما تدخل الصفحة.
 */
 
-.nav-item.active{
-color:#071a33;
-}
 
-.nav-item.active .nav-icon{
-transform:none;
-}
-
-
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
-.stat{
-flex:0 0 270px;
-}
-
-.cards{
+.exercise-grid{
 grid-template-columns:1fr;
 }
 
 }
+
 
 @media(max-width:600px){
 
@@ -668,24 +388,16 @@ font-size:21px;
 padding:20px 14px 110px;
 }
 
-.stat{
-flex:0 0 285px;
+.page-heading h1{
+font-size:25px;
 }
 
-.today-workout{
+.workout-section{
 padding:15px;
-}
-
-.exercise-card{
-flex:0 0 82%;
 }
 
 .exercise-card img{
 height:200px;
-}
-
-.progress-card{
-padding:22px 18px;
 }
 
 .bottom-nav{
@@ -725,9 +437,16 @@ height:30px;
 }
 
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -737,7 +456,7 @@ Body<span>Reset</span>
 
 <div class="header-left">
 
-<div class="profile" id="profileBtn">
+<div class="profile">
 ?
 </div>
 
@@ -750,134 +469,70 @@ Body<span>Reset</span>
 </header>
 
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="container">
 
 
-<div class="top-area">
+<div class="page-heading">
 
-<button class="notification">
+<h1>
+Workouts 💪
+</h1>
 
-<svg viewBox="0 0 24 24">
-
-<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
-</path>
-
-<path d="M10 21h4">
-</path>
-
-</svg>
-
-</button>
+<p>
+اختار التمرين المناسب ليك وابدأ تمرينك.
+</p>
 
 </div>
 
 
-<!-- STATS -->
 
-<div class="stats">
+<!-- =========================
+     TABS
+========================= -->
 
-<div class="stat">
+<div class="workout-tabs">
 
-<h3>
-Weekly Activity
-</h3>
-
-<div class="activity-circles">
-
-<div class="activity-circle">
-
-<div class="circle-content">
-
-<strong>0</strong>
-
-<span>Progress</span>
-
+<div class="workout-tab active">
+Chest
 </div>
 
+<div class="workout-tab">
+Back
 </div>
 
-<div class="activity-circle">
-
-<div class="circle-content">
-
-<strong>0%</strong>
-
-<span>Burn</span>
-
+<div class="workout-tab">
+Shoulders
 </div>
 
+<div class="workout-tab">
+Arms
 </div>
 
+<div class="workout-tab">
+Legs
 </div>
 
 </div>
 
 
-<div class="stat">
 
-<h3>
-Calorie Burn
-</h3>
+<!-- =========================
+     CHEST
+========================= -->
 
-<div class="calorie-number">
+<section class="workout-section">
 
-<strong>0</strong>
-
-<span>kcal</span>
-
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<h3>
-Weekly Progress
-</h3>
-
-<div class="weekly-progress">
-
-<div class="progress-circle">
-
-<strong>0%</strong>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- TODAY WORKOUT -->
-
-<div class="section-heading">
-
-<h2>
-Today's Workout
-</h2>
-
-<a
-href="workout.html?workout=chest"
-class="see-all">
-
-See All
-
-</a>
-
-</div>
-
-
-<section class="today-workout">
-
-<div class="workout-title">
+<div class="workout-section-title">
 Chest
 </div>
 
 
-<div class="workout-slider">
+<div class="exercise-grid">
 
 
 <!-- BENCH PRESS -->
@@ -898,6 +553,18 @@ alt="Bench Press">
 
 <div class="exercise-content">
 
+<div class="exercise-info">
+
+<span>
+4 Sets
+</span>
+
+<span>
+10 Reps
+</span>
+
+</div>
+
 <a
 href="workout.html?exercise=bench-press"
 class="start-btn">
@@ -909,6 +576,7 @@ class="start-btn">
 </div>
 
 </div>
+
 
 
 <!-- INCLINE PRESS -->
@@ -929,6 +597,18 @@ alt="Incline Press">
 
 <div class="exercise-content">
 
+<div class="exercise-info">
+
+<span>
+4 Sets
+</span>
+
+<span>
+10 Reps
+</span>
+
+</div>
+
 <a
 href="workout.html?exercise=incline-press"
 class="start-btn">
@@ -940,6 +620,7 @@ class="start-btn">
 </div>
 
 </div>
+
 
 
 <!-- CHEST FLY -->
@@ -960,6 +641,18 @@ alt="Chest Fly">
 
 <div class="exercise-content">
 
+<div class="exercise-info">
+
+<span>
+3 Sets
+</span>
+
+<span>
+12 Reps
+</span>
+
+</div>
+
 <a
 href="workout.html?exercise=chest-fly"
 class="start-btn">
@@ -971,6 +664,7 @@ class="start-btn">
 </div>
 
 </div>
+
 
 
 <!-- PUSH UPS -->
@@ -991,6 +685,18 @@ alt="Push Ups">
 
 <div class="exercise-content">
 
+<div class="exercise-info">
+
+<span>
+3 Sets
+</span>
+
+<span>
+15 Reps
+</span>
+
+</div>
+
 <a
 href="workout.html?exercise=push-ups"
 class="start-btn">
@@ -1006,259 +712,17 @@ class="start-btn">
 
 </div>
 
-
-<div class="workout-dots">
-
-<span class="active"></span>
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
 </section>
 
-
-<!-- COMMUNITY -->
-
-<div class="section-heading">
-
-<h2>
-Community News
-</h2>
-
-<a href="#" class="see-all">
-See All
-</a>
-
-</div>
-
-
-<section class="community-card">
-
-
-<div class="news-row">
-
-<div class="news-left">
-
-<div class="news-icon">
-★
-</div>
-
-<div>
-
-<div class="news-title">
-New Class: Neon Spin
-</div>
-
-<div class="news-sub">
-New Class is Neon Spin
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="news-row">
-
-<div class="news-left">
-
-<div class="news-icon">
-#
-</div>
-
-<div>
-
-<div class="news-title">
-Leaderboard Update
-</div>
-
-<div class="news-sub">
-Check your latest ranking
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="news-row">
-
-<div class="news-left">
-
-<div class="news-icon">
-+
-</div>
-
-<div>
-
-<div class="news-title">
-New Challenge
-</div>
-
-<div class="news-sub">
-Join the latest challenge
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</section>
-
-
-<!-- START JOURNEY -->
-
-<div class="section-heading">
-
-<h2>
-ابدأ رحلتك 💪
-</h2>
-
-</div>
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<div class="icon">
-💪
-</div>
-
-<h3>
-Workout
-</h3>
-
-<p>
-تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-</p>
-
-<a href="workout.html">
-ابدأ التمرين
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-🥗
-</div>
-
-<h3>
-Nutrition
-</h3>
-
-<p>
-خطط غذائية تساعدك تختار أكلك حسب هدفك.
-</p>
-
-<a href="nutrition.html">
-خطة التغذية
-</a>
-
-</div>
-
-</div>
-
-
-<!-- PROGRESS -->
-
-<section class="progress-section">
-
-<div class="section-heading">
-
-<h2>
-Progress
-</h2>
-
-<a href="progress.html" class="see-all">
-See All
-</a>
-
-</div>
-
-
-<div class="progress-card">
-
-<div class="progress-icon">
-📊
-</div>
-
-<div class="progress-content">
-
-<h3>
-متابعة التقدم
-</h3>
-
-<p>
-تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
-</p>
-
-<a href="progress.html">
-شوف التقدم
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SUBSCRIPTIONS -->
-
-<section>
-
-<div class="section-heading">
-
-<h2>
-الاشتراكات
-</h2>
-
-</div>
-
-
-<div class="subscription-box">
-
-<h2>
-اشتراكك في BodyReset
-</h2>
-
-<p>
-الباقة الحالية
-</p>
-
-<div class="plan-price">
-BodyReset
-</div>
-
-</div>
-
-</section>
-
-
-<div id="message">
-</div>
 
 
 </main>
 
 
-<!-- =====================================
+
+<!-- =========================
      BOTTOM NAV
-===================================== -->
+========================= -->
 
 <nav class="bottom-nav">
 
@@ -1288,6 +752,7 @@ Home
 </span>
 
 </a>
+
 
 
 <!-- WORKOUTS -->
@@ -1321,6 +786,7 @@ Workouts
 </a>
 
 
+
 <!-- PROGRESS -->
 
 <a
@@ -1331,19 +797,11 @@ class="nav-item progress-nav">
 
 <svg viewBox="0 0 24 24">
 
-<!-- خط الأرض -->
-
 <path d="M3 21H21"></path>
-
-<!-- العمود الأول -->
 
 <path d="M5 21V14H8V21"></path>
 
-<!-- العمود الثاني -->
-
 <path d="M10.5 21V9H13.5V21"></path>
-
-<!-- العمود الثالث -->
 
 <path d="M16 21V4H19V21"></path>
 
@@ -1356,6 +814,7 @@ Progress
 </span>
 
 </a>
+
 
 
 <!-- PROFILE -->
@@ -1393,4 +852,5 @@ Profile
 
 
 </body>
-   </html>
+
+</html>
