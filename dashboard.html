@@ -185,6 +185,18 @@ font-weight:bold;
 background:#f1f5f9;
 }
 
+/* ================= LOGOUT BUTTON ================= */
+
+.side-menu .logout-btn{
+width:100%;
+border:none;
+background:none;
+text-align:right;
+font-family:Arial,sans-serif;
+font-size:16px;
+cursor:pointer;
+}
+
 /* ================= NOTIFICATIONS ================= */
 
 .notification-panel{
@@ -957,21 +969,25 @@ Menu
 
 </div>
 
+<a href="calories.html">
+حاسب سعرات الجسم
+</a>
+
+<a href="subscription.html">
+الاشتراك
+</a>
+
 <a href="dashboard.html">
-Home
+🇪🇬 عربي
 </a>
 
-<a href="workout.html">
-Workouts
+<a href="dashboard-en.html">
+🇺🇸 English
 </a>
 
-<a href="progress.html">
-Progress
-</a>
-
-<a href="profile.html">
-Profile
-</a>
+<button class="logout-btn" id="logoutBtn">
+تسجيل الخروج
+</button>
 
 </div>
 
@@ -1784,6 +1800,32 @@ menuOverlay.classList.remove("show");
 );
 
 
+/* ================= LOGOUT ================= */
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener(
+"click",
+async function(){
+
+const {
+error
+} =
+await supabase.auth.signOut();
+
+
+if(!error){
+
+window.location.href =
+"auth.html";
+
+}
+
+}
+);
+
+
 /* ================= NOTIFICATIONS ================= */
 
 const notificationBtn =
@@ -1838,4 +1880,4 @@ notificationPanel.classList.remove("show");
 </script>
 
 </body>
-  </html>
+   </html>
