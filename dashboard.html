@@ -66,8 +66,6 @@ border:none;
 color:#fff;
 font-size:30px;
 cursor:pointer;
-line-height:1;
-padding:3px;
 }
 
 /* ================= PROFILE MENU ================= */
@@ -138,14 +136,15 @@ display:block;
 .side-menu{
 position:fixed;
 top:0;
-right:-310px;
-width:300px;
+right:-320px;
+width:320px;
 height:100vh;
 background:#fff;
 z-index:2500;
 padding:25px 20px;
 box-shadow:-5px 0 25px rgba(0,0,0,.2);
 transition:right .3s ease;
+overflow-y:auto;
 }
 
 .side-menu.open{
@@ -194,7 +193,7 @@ display:flex;
 align-items:center;
 gap:12px;
 width:100%;
-padding:13px 12px;
+padding:15px 12px;
 margin-bottom:8px;
 border:none;
 border-radius:10px;
@@ -205,7 +204,6 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 text-align:right;
-direction:rtl;
 }
 
 .language-switcher:hover{
@@ -215,18 +213,17 @@ background:#f1f5f9;
 .translate-icon{
 width:40px;
 height:40px;
-min-width:40px;
 border-radius:10px;
 background:#f1f5f9;
 display:flex;
 align-items:center;
 justify-content:center;
-color:#071a33;
+direction:ltr;
 }
 
 .translate-icon svg{
-width:25px;
-height:25px;
+width:27px;
+height:27px;
 fill:none;
 stroke:#071a33;
 stroke-width:1.8;
@@ -240,16 +237,19 @@ stroke-linejoin:round;
 width:100%;
 border:none;
 background:none;
+color:#dc2626;
 text-align:right;
 font-family:Arial,sans-serif;
 font-size:16px;
+font-weight:bold;
 cursor:pointer;
 padding:15px 12px;
 border-radius:10px;
 }
 
 .side-menu .logout-btn:hover{
-background:#f1f5f9;
+background:#fef2f2;
+color:#b91c1c;
 }
 
 /* ================= NOTIFICATIONS ================= */
@@ -954,6 +954,11 @@ right:14px;
 width:auto;
 }
 
+.side-menu{
+width:320px;
+max-width:88vw;
+}
+
 }
 
 </style>
@@ -1033,7 +1038,7 @@ Menu
 </a>
 
 
-<!-- LANGUAGE -->
+<!-- LANGUAGE SWITCH -->
 
 <button
 type="button"
@@ -1043,24 +1048,21 @@ id="languageSwitcher"
 
 <div class="translate-icon">
 
-<svg
-viewBox="0 0 24 24"
-aria-hidden="true"
->
+<svg viewBox="0 0 24 24">
 
-<!-- A -->
+<!-- حرف A -->
 <path d="M4 19L8.5 5L13 19"></path>
 
 <path d="M5.5 15H11.5"></path>
 
-<!-- Translation / language -->
+<!-- علامة اللغة / الترجمة -->
 <path d="M15 6H21"></path>
 
 <path d="M18 4V6"></path>
 
-<path d="M16 9C17.1 11.8 18.8 14 21 15.5"></path>
+<path d="M16 9C17 11.8 18.7 14 21 15.5"></path>
 
-<path d="M21 9C19.9 11.8 18.2 14 16 15.5"></path>
+<path d="M21 9C20 11.8 18.3 14 16 15.5"></path>
 
 </svg>
 
