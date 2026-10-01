@@ -1,1396 +1,1887 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BodyReset | Dashboard</title>
-
-<style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
-color:#071a33;
-min-height:100vh;
-}
-
-header{
-height:75px;
-padding:0 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#000;
-border-bottom:1px solid #071a33;
-}
-
-.logo{
-font-size:25px;
-font-weight:bold;
-color:#fff;
-}
-
-.logo span{
-color:#2563eb;
-}
-
-.header-left{
-display:flex;
-align-items:center;
-gap:18px;
-}
-
-.profile{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#f97316;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-}
-
-.menu-btn{
-background:none;
-border:none;
-color:#fff;
-font-size:30px;
-cursor:pointer;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:28px 20px 110px;
-}
-
-.top-area{
-display:flex;
-justify-content:flex-start;
-margin-bottom:25px;
-}
-
-.notification{
-width:44px;
-height:44px;
-border-radius:50%;
-background:#fff;
-border:1px solid #d7dee8;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-}
-
-.notification svg{
-width:21px;
-height:21px;
-stroke:#071a33;
-fill:none;
-stroke-width:1.8;
-}
-
-.stats{
-display:flex;
-gap:18px;
-overflow-x:auto;
-margin-bottom:35px;
-padding-bottom:8px;
-}
-
-.stat{
-flex:0 0 calc((100% - 36px)/3);
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:25px 20px;
-min-height:210px;
-}
-
-.stat h3{
-font-size:17px;
-margin-bottom:20px;
-color:#2563eb;
-}
-
-.activity-circles{
-display:flex;
-justify-content:center;
-gap:18px;
-}
-
-.activity-circle{
-width:82px;
-height:82px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:conic-gradient(#2563eb 0%,#d7dee8 0%);
-position:relative;
-}
-
-.activity-circle:before{
-content:"";
-position:absolute;
-width:62px;
-height:62px;
-background:#fff;
-border-radius:50%;
-}
-
-.circle-content{
-position:relative;
-z-index:2;
-text-align:center;
-}
-
-.circle-content strong{
-display:block;
-color:#2563eb;
-font-size:18px;
-}
-
-.circle-content span{
-font-size:10px;
-color:#64748b;
-}
-
-.calorie-number{
-text-align:center;
-margin-bottom:15px;
-}
-
-.calorie-number strong{
-font-size:32px;
-color:#2563eb;
-}
-
-.calorie-number span{
-font-size:14px;
-color:#64748b;
-}
-
-.weekly-progress{
-display:flex;
-justify-content:center;
-}
-
-.progress-circle{
-width:125px;
-height:125px;
-border-radius:50%;
-background:conic-gradient(#2563eb 0%,#d7dee8 0%);
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.progress-circle:before{
-content:"";
-position:absolute;
-width:95px;
-height:95px;
-background:#fff;
-border-radius:50%;
-}
-
-.progress-circle strong{
-position:relative;
-z-index:2;
-font-size:28px;
-color:#2563eb;
-}
-
-.section-heading{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px;
-}
-
-.section-heading h2{
-font-size:23px;
-color:#fff;
-}
-
-.see-all{
-color:#fff;
-text-decoration:none;
-font-size:14px;
-font-weight:bold;
-}
-
-
-/* TODAY WORKOUT */
-
-.today-workout{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:20px;
-margin-bottom:30px;
-}
-
-.workout-title{
-font-size:25px;
-font-weight:bold;
-color:#071a33;
-margin-bottom:20px;
-}
-
-.workout-slider{
-display:flex;
-gap:16px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:8px;
-scrollbar-width:none;
-}
-
-.workout-slider::-webkit-scrollbar{
-display:none;
-}
-
-
-/* EXERCISE CARD */
-
-.exercise-card{
-flex:0 0 280px;
-background:#f8fafc;
-border:1px solid #d7dee8;
-border-radius:16px;
-overflow:hidden;
-scroll-snap-align:start;
-}
-
-.exercise-card img{
-width:100%;
-height:190px;
-object-fit:cover;
-display:block;
-}
-
-.exercise-name{
-background:#fff;
-padding:16px 15px;
-text-align:center;
-}
-
-.exercise-name h3{
-font-size:19px;
-color:#071a33;
-font-weight:bold;
-}
-
-.exercise-content{
-padding:15px;
-}
-
-.start-btn{
-display:block;
-width:100%;
-background:#2563eb;
-color:#fff;
-text-align:center;
-text-decoration:none;
-padding:12px;
-border-radius:9px;
-font-size:14px;
-font-weight:bold;
-transition:0.2s;
-}
-
-.start-btn:hover{
-background:#1d4ed8;
-}
-
-.workout-dots{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-top:18px;
-}
-
-.workout-dots span{
-width:8px;
-height:8px;
-border-radius:50%;
-background:#cbd5e1;
-}
-
-.workout-dots span.active{
-width:25px;
-border-radius:8px;
-background:#2563eb;
-}
-
-
-/* COMMUNITY */
-
-.community-card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:10px 20px;
-margin-bottom:30px;
-}
-
-.news-row{
-padding:18px 0;
-border-bottom:1px solid #d7dee8;
-}
-
-.news-row:last-child{
-border-bottom:none;
-}
-
-.news-left{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.news-icon{
-width:40px;
-height:40px;
-border-radius:10px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.news-title{
-font-weight:bold;
-color:#071a33;
-margin-bottom:4px;
-}
-
-.news-sub{
-font-size:12px;
-color:#64748b;
-}
-
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:17px;
-margin-bottom:30px;
-}
-
-.card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:18px;
-padding:23px;
-}
-
-.icon{
-font-size:34px;
-margin-bottom:14px;
-}
-
-.card h3{
-font-size:19px;
-margin-bottom:9px;
-color:#071a33;
-}
-
-.card p{
-color:#334155;
-line-height:1.7;
-font-size:14px;
-margin-bottom:18px;
-}
-
-.card a{
-display:inline-block;
-background:#2563eb;
-color:#fff;
-padding:10px 16px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-/* PROGRESS */
-
-.progress-section{
-margin-bottom:30px;
-}
-
-.progress-card{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-display:flex;
-align-items:center;
-gap:25px;
-}
-
-.progress-icon{
-width:72px;
-height:72px;
-min-width:72px;
-border-radius:16px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-}
-
-.progress-content{
-flex:1;
-}
-
-.progress-content h3{
-font-size:21px;
-margin-bottom:8px;
-color:#071a33;
-}
-
-.progress-content p{
-color:#334155;
-line-height:1.7;
-font-size:14px;
-margin-bottom:15px;
-}
-
-.progress-content a{
-background:#2563eb;
-color:#fff;
-padding:10px 17px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-/* SUBSCRIPTIONS */
-
-.subscription-box{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-text-align:center;
-margin-bottom:30px;
-}
-
-.subscription-box h2{
-font-size:24px;
-color:#071a33;
-margin-bottom:10px;
-}
-
-.subscription-box p{
-color:#334155;
-line-height:1.7;
-}
-
-.plan-price{
-color:#2563eb;
-font-size:34px;
-font-weight:bold;
-margin:16px 0;
-}
-
-#message{
-text-align:center;
-margin-top:15px;
-}
-
-
-/* =====================================
-   BOTTOM NAV
-===================================== */
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:72px;
-background:#fff;
-border-top:1px solid #d7dee8;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:1000;
-}
-
-.nav-item{
-width:25%;
-height:72px;
-color:#071a33;
-text-decoration:none;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:4px;
-font-size:11px;
-font-weight:bold;
-}
-
-.nav-icon{
-width:32px;
-height:32px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.nav-icon svg{
-width:27px;
-height:27px;
-fill:none;
-stroke:#2563eb;
-stroke-width:2;
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-
-/* HOME */
-
-.home-nav .nav-icon{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#071a33;
-}
-
-.home-nav .nav-icon svg{
-width:23px;
-height:23px;
-stroke:#fff;
-}
-
-
-/* WORKOUT - DUMBBELL */
-
-.workout-nav .nav-icon svg{
-width:32px;
-height:32px;
-stroke:#071a33;
-stroke-width:2.4;
-
-/* مائل للناحية التانية */
-transform:rotate(12deg);
-}
-
-
-/* PROGRESS - 3 BARS */
-
-.progress-nav .nav-icon{
-width:32px;
-height:32px;
-}
-
-.progress-nav .nav-icon svg{
-width:29px;
-height:29px;
-stroke:#2563eb;
-stroke-width:2;
-}
-
-
-/* PROFILE */
-
-.profile-nav .nav-icon svg{
-width:28px;
-height:28px;
-stroke:#2563eb;
-}
-
-
-/*
-لا يوجد تغيير في الشكل عند الانتقال
-بين الصفحات.
-*/
-
-.nav-item.active{
-color:#071a33;
-}
-
-.nav-item.active .nav-icon{
-transform:none;
-}
-
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-.stat{
-flex:0 0 270px;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-}
-
-@media(max-width:600px){
-
-header{
-height:68px;
-padding:0 16px;
-}
-
-.logo{
-font-size:21px;
-}
-
-.container{
-padding:20px 14px 110px;
-}
-
-.stat{
-flex:0 0 285px;
-}
-
-.today-workout{
-padding:15px;
-}
-
-.exercise-card{
-flex:0 0 82%;
-}
-
-.exercise-card img{
-height:200px;
-}
-
-.progress-card{
-padding:22px 18px;
-}
-
-.bottom-nav{
-height:72px;
-}
-
-.nav-item{
-height:72px;
-font-size:10px;
-}
-
-.nav-icon{
-width:29px;
-height:29px;
-}
-
-.nav-icon svg{
-width:25px;
-height:25px;
-}
-
-.home-nav .nav-icon{
-width:37px;
-height:37px;
-}
-
-.home-nav .nav-icon svg{
-width:21px;
-height:21px;
-}
-
-.workout-nav .nav-icon svg{
-width:30px;
-height:30px;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BodyReset Dashboard</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0066cc 0%, #00a6b2 100%);
+      color: #111;
+      padding-bottom: 90px;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      height: 75px;
+      background: #000;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 20px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ================= PROFILE ================= */
+
+    .profile-btn {
+      width: 43px;
+      height: 43px;
+
+      border-radius: 50%;
+      border: none;
+
+      background: #2563eb;
+      color: white;
+
+      font-size: 20px;
+      font-weight: bold;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+    }
+
+    .profile-menu {
+      position: fixed;
+      top: 70px;
+      left: 20px;
+
+      width: 270px;
+
+      background: white;
+      border-radius: 14px;
+
+      padding: 18px;
+
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+
+      display: none;
+      z-index: 3000;
+    }
+
+    .profile-menu.show {
+      display: block;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .profile-menu-avatar {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .profile-info {
+      min-width: 0;
+    }
+
+    .profile-info h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+
+      word-break: break-word;
+    }
+
+    .profile-info p {
+      font-size: 13px;
+      color: #777;
+
+      word-break: break-word;
+    }
+
+    .logout-btn {
+      width: 100%;
+
+      margin-top: 15px;
+
+      border: none;
+      border-radius: 9px;
+
+      background: #f3f4f6;
+      color: #dc2626;
+
+      padding: 11px;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background: #fee2e2;
+    }
+
+    /* ================= MENU BUTTON ================= */
+
+    .menu-btn {
+      width: 43px;
+      height: 43px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: #111;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      gap: 5px;
+
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      width: 23px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* ================= SIDE MENU ================= */
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0,0,0,0.5);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: 0.25s;
+
+      z-index: 2000;
+    }
+
+    .menu-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -310px;
+
+      width: 300px;
+      height: 100vh;
+
+      background: white;
+
+      padding: 25px 20px;
+
+      transition: 0.3s;
+
+      z-index: 2500;
+
+      box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 30px;
+    }
+
+    .side-menu-header h2 {
+      font-size: 21px;
+    }
+
+    .close-menu {
+      width: 38px;
+      height: 38px;
+
+      border: none;
+      border-radius: 9px;
+
+      background: #f1f5f9;
+
+      font-size: 22px;
+
+      cursor: pointer;
+    }
+
+    .side-menu-item {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 14px 10px;
+
+      border-radius: 10px;
+
+      margin-bottom: 8px;
+
+      color: #111;
+      text-decoration: none;
+
+      font-size: 15px;
+    }
+
+    .side-menu-item:hover {
+      background: #f1f5f9;
+    }
+
+    /* ================= MAIN ================= */
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+
+      padding: 22px 18px;
+    }
+
+    .welcome-section {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .welcome-section h1 {
+      font-size: 27px;
+      margin-bottom: 7px;
+    }
+
+    .welcome-section p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    /* ================= NOTIFICATIONS ================= */
+
+    .top-actions {
+      display: flex;
+      justify-content: flex-start;
+
+      margin-bottom: 18px;
+    }
+
+    .notification-btn {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 50%;
+      border: none;
+
+      background: white;
+
+      position: relative;
+
+      cursor: pointer;
+
+      font-size: 21px;
+    }
+
+    .notification-count {
+      position: absolute;
+
+      top: -3px;
+      right: -3px;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      background: #ef4444;
+      color: white;
+
+      font-size: 11px;
+      font-weight: bold;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .notification-panel {
+      position: fixed;
+
+      top: 80px;
+      right: 20px;
+
+      width: 310px;
+
+      background: white;
+
+      border-radius: 14px;
+
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+
+      display: none;
+
+      z-index: 3000;
+
+      overflow: hidden;
+    }
+
+    .notification-panel.show {
+      display: block;
+    }
+
+    .notification-header {
+      padding: 16px;
+
+      font-weight: bold;
+
+      border-bottom: 1px solid #eee;
+    }
+
+    .notification-item {
+      padding: 14px 16px;
+
+      border-bottom: 1px solid #eee;
+
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .notification-item:last-child {
+      border-bottom: none;
+    }
+
+    /* ================= STATS ================= */
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 13px;
+
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 18px;
+
+      text-align: center;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .stat-card .number {
+      font-size: 27px;
+      font-weight: bold;
+
+      color: #0066cc;
+
+      margin-bottom: 5px;
+    }
+
+    .stat-card .label {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* ================= SECTION ================= */
+
+    .section {
+      background: white;
+
+      border-radius: 17px;
+
+      padding: 20px;
+
+      margin-bottom: 20px;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 17px;
+    }
+
+    .section-title h2 {
+      font-size: 19px;
+    }
+
+    .section-title a {
+      color: #0066cc;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    /* ================= WORKOUT ================= */
+
+    .exercise-list {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 15px;
+    }
+
+    .exercise-card {
+      border: 1px solid #eee;
+
+      border-radius: 14px;
+
+      overflow: hidden;
+
+      background: white;
+    }
+
+    .exercise-name {
+      padding: 13px 14px;
+
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .exercise-image {
+      width: 100%;
+      height: 190px;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .exercise-content {
+      padding: 13px;
+    }
+
+    .start-btn {
+      width: 100%;
+
+      border: none;
+      border-radius: 9px;
+
+      background: #0066cc;
+      color: white;
+
+      padding: 11px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .start-btn:hover {
+      background: #0052a3;
+    }
+
+    /* ================= COMMUNITY ================= */
+
+    .community-card {
+      padding: 15px;
+
+      background: #f8fafc;
+
+      border-radius: 12px;
+
+      margin-bottom: 10px;
+    }
+
+    .community-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .community-card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .community-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ================= JOURNEY ================= */
+
+    .journey-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 13px;
+    }
+
+    .journey-card {
+      padding: 20px;
+
+      border-radius: 14px;
+
+      background: #f8fafc;
+
+      text-decoration: none;
+      color: #111;
+    }
+
+    .journey-card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .journey-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* ================= PROGRESS ================= */
+
+    .progress-row {
+      margin-bottom: 17px;
+    }
+
+    .progress-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 7px;
+
+      font-size: 13px;
+    }
+
+    .progress-bar {
+      height: 9px;
+
+      border-radius: 10px;
+
+      background: #e5e7eb;
+
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+
+      background: #0066cc;
+
+      border-radius: 10px;
+    }
+
+    /* ================= SUBSCRIPTION ================= */
+
+    .subscription {
+      background: #071a33;
+      color: white;
+    }
+
+    .subscription p {
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .subscription-btn {
+      display: inline-block;
+
+      margin-top: 15px;
+
+      background: #2563eb;
+      color: white;
+
+      padding: 11px 18px;
+
+      border-radius: 9px;
+
+      text-decoration: none;
+
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* ================= BOTTOM NAV ================= */
+
+    .bottom-nav {
+      position: fixed;
+
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      height: 72px;
+
+      background: white;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.12);
+
+      z-index: 1500;
+    }
+
+    .nav-item {
+      border: none;
+      background: transparent;
+
+      text-decoration: none;
+
+      color: #777;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 4px;
+
+      cursor: pointer;
+
+      font-size: 11px;
+    }
+
+    .nav-icon {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+
+    /* HOME */
+
+    .home-icon {
+      width: 34px;
+      height: 34px;
+
+      background: #071a33;
+      border-radius: 50%;
+
+      color: white;
+
+      font-size: 17px;
+    }
+
+    /* WORKOUT */
+
+    .dumbbell {
+      width: 28px;
+      height: 10px;
+
+      background: #071a33;
+
+      border-radius: 4px;
+
+      position: relative;
+
+      transform: rotate(12deg);
+    }
+
+    .dumbbell::before,
+    .dumbbell::after {
+      content: "";
+
+      position: absolute;
+
+      width: 7px;
+      height: 17px;
+
+      background: #071a33;
+
+      border-radius: 2px;
+
+      top: -3.5px;
+    }
+
+    .dumbbell::before {
+      left: -3px;
+    }
+
+    .dumbbell::after {
+      right: -3px;
+    }
+
+    /* PROGRESS ICON */
+
+    .bars {
+      width: 29px;
+      height: 25px;
+
+      display: flex;
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      border-bottom: 3px solid #071a33;
+
+      padding: 0 2px;
+    }
+
+    .bars span {
+      width: 5px;
+      background: #071a33;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .bars span:nth-child(1) {
+      height: 8px;
+    }
+
+    .bars span:nth-child(2) {
+      height: 14px;
+    }
+
+    .bars span:nth-child(3) {
+      height: 21px;
+    }
+
+    /* PROFILE ICON */
+
+    .user-icon {
+      width: 28px;
+      height: 28px;
+
+      border: 2px solid #071a33;
+
+      border-radius: 50%;
+
+      position: relative;
+    }
+
+    .user-icon::before {
+      content: "";
+
+      position: absolute;
+
+      width: 7px;
+      height: 7px;
+
+      border: 2px solid #071a33;
+
+      border-radius: 50%;
+
+      top: 4px;
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
+
+    .user-icon::after {
+      content: "";
+
+      position: absolute;
+
+      width: 14px;
+      height: 7px;
+
+      border: 2px solid #071a33;
+      border-bottom: 0;
+
+      border-radius: 12px 12px 0 0;
+
+      bottom: 4px;
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 700px) {
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .exercise-list {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-image {
+        height: 210px;
+      }
+
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .notification-panel {
+        right: 12px;
+        left: 12px;
+        width: auto;
+      }
+
+      .profile-menu {
+        left: 12px;
+        right: 12px;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 430px) {
+
+      main {
+        padding: 18px 12px;
+      }
+
+      .stats-grid {
+        gap: 8px;
+      }
+
+      .stat-card {
+        padding: 13px 7px;
+      }
+
+      .stat-card .number {
+        font-size: 22px;
+      }
+
+      .stat-card .label {
+        font-size: 11px;
+      }
+
+      .section {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <!-- ================= HEADER ================= -->
 
-<div class="logo">
-Body<span>Reset</span>
-</div>
+  <header>
 
-<div class="header-left">
+    <a href="dashboard.html" class="logo">
+      Body<span>Reset</span>
+    </a>
 
-<div class="profile" id="profileBtn">
-?
-</div>
+    <div class="header-left">
 
-<button class="menu-btn">
-☰
-</button>
+      <!-- PROFILE -->
+      <button
+        class="profile-btn"
+        id="profileBtn"
+        aria-label="Profile"
+      >
+        <span id="profileInitial">?</span>
+      </button>
 
-</div>
+      <!-- MENU -->
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-</header>
+    </div>
 
+  </header>
 
-<main class="container">
+  <!-- ================= PROFILE MENU ================= -->
 
+  <div class="profile-menu" id="profileMenu">
 
-<div class="top-area">
+    <div class="profile-top">
 
-<button class="notification">
+      <div class="profile-menu-avatar">
+        <span id="profileMenuInitial">?</span>
+      </div>
 
-<svg viewBox="0 0 24 24">
+      <div class="profile-info">
 
-<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
-</path>
+        <h3 id="profileName">
+          جاري التحميل...
+        </h3>
 
-<path d="M10 21h4">
-</path>
+        <p id="profileEmail">
+          جاري التحميل...
+        </p>
 
-</svg>
+      </div>
 
-</button>
+    </div>
 
-</div>
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      تسجيل الخروج
+    </button>
 
+  </div>
 
-<!-- STATS -->
+  <!-- ================= SIDE MENU OVERLAY ================= -->
 
-<div class="stats">
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
 
-<div class="stat">
+  <!-- ================= SIDE MENU ================= -->
 
-<h3>
-Weekly Activity
-</h3>
+  <aside
+    class="side-menu"
+    id="sideMenu"
+  >
 
-<div class="activity-circles">
+    <div class="side-menu-header">
 
-<div class="activity-circle">
+      <h2>
+        القائمة
+      </h2>
 
-<div class="circle-content">
+      <button
+        class="close-menu"
+        id="closeMenu"
+      >
+        ×
+      </button>
 
-<strong>0</strong>
+    </div>
 
-<span>Progress</span>
+    <a
+      href="dashboard.html"
+      class="side-menu-item"
+    >
+      🏠 الرئيسية
+    </a>
 
-</div>
+    <a
+      href="#workouts"
+      class="side-menu-item"
+    >
+      🏋️ التمارين
+    </a>
 
-</div>
+    <a
+      href="#progress"
+      class="side-menu-item"
+    >
+      📊 التقدم
+    </a>
 
-<div class="activity-circle">
+    <a
+      href="#subscription"
+      class="side-menu-item"
+    >
+      💳 الاشتراك
+    </a>
 
-<div class="circle-content">
+  </aside>
 
-<strong>0%</strong>
+  <!-- ================= MAIN ================= -->
 
-<span>Burn</span>
+  <main>
 
-</div>
+    <!-- WELCOME -->
 
-</div>
+    <section class="welcome-section">
 
-</div>
+      <h1>
+        أهلاً بيك 👋
+      </h1>
 
-</div>
+      <p>
+        جاهز تبدأ تمرينك النهارده؟
+      </p>
 
+    </section>
 
-<div class="stat">
+    <!-- NOTIFICATIONS -->
 
-<h3>
-Calorie Burn
-</h3>
+    <div class="top-actions">
 
-<div class="calorie-number">
+      <button
+        class="notification-btn"
+        id="notificationBtn"
+        aria-label="Notifications"
+      >
+        🔔
 
-<strong>0</strong>
+        <span class="notification-count">
+          3
+        </span>
 
-<span>kcal</span>
+      </button>
 
-</div>
+    </div>
 
-</div>
+    <!-- NOTIFICATION PANEL -->
 
+    <div
+      class="notification-panel"
+      id="notificationPanel"
+    >
 
-<div class="stat">
+      <div class="notification-header">
+        الإشعارات
+      </div>
 
-<h3>
-Weekly Progress
-</h3>
+      <div class="notification-item">
+        💪 عندك تمرين جديد جاهز النهارده.
+      </div>
 
-<div class="weekly-progress">
+      <div class="notification-item">
+        🔥 حافظ على سلسلة التمارين بتاعتك!
+      </div>
 
-<div class="progress-circle">
+      <div class="notification-item">
+        🎯 قربت تحقق هدفك الأسبوعي.
+      </div>
 
-<strong>0%</strong>
+    </div>
 
-</div>
+    <!-- ================= STATS ================= -->
 
-</div>
+    <div class="stats-grid">
 
-</div>
+      <div class="stat-card">
 
-</div>
+        <div class="number">
+          12
+        </div>
 
+        <div class="label">
+          تمرين
+        </div>
 
-<!-- TODAY WORKOUT -->
+      </div>
 
-<div class="section-heading">
+      <div class="stat-card">
 
-<h2>
-Today's Workout
-</h2>
+        <div class="number">
+          8
+        </div>
 
-<a
-href="workout.html?workout=chest"
-class="see-all">
+        <div class="label">
+          أيام متتالية
+        </div>
 
-See All
+      </div>
 
-</a>
+      <div class="stat-card">
 
-</div>
+        <div class="number">
+          4.2k
+        </div>
 
+        <div class="label">
+          سعر حراري
+        </div>
 
-<section class="today-workout">
+      </div>
 
-<div class="workout-title">
-Chest
-</div>
+    </div>
 
+    <!-- ================= TODAY WORKOUT ================= -->
 
-<div class="workout-slider">
+    <section
+      class="section"
+      id="workouts"
+    >
 
+      <div class="section-title">
 
-<!-- BENCH PRESS -->
+        <h2>
+          تمرين النهارده 🏋️
+        </h2>
 
-<div class="exercise-card">
+        <a href="#">
+          عرض الكل
+        </a>
 
-<div class="exercise-name">
+      </div>
 
-<h3>
-Bench Press
-</h3>
+      <div class="exercise-list">
 
-</div>
+        <!-- Exercise 1 -->
 
-<img
-src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-alt="Bench Press">
+        <div class="exercise-card">
 
-<div class="exercise-content">
+          <div class="exercise-name">
+            Bench Press
+          </div>
 
-<a
-href="workout.html?exercise=bench-press"
-class="start-btn">
+          <img
+            class="exercise-image"
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+            alt="Bench Press"
+          />
 
-ابدأ الآن
+          <div class="exercise-content">
 
-</a>
+            <button class="start-btn">
+              ابدأ الآن
+            </button>
 
-</div>
+          </div>
 
-</div>
+        </div>
 
+        <!-- Exercise 2 -->
 
-<!-- INCLINE PRESS -->
+        <div class="exercise-card">
 
-<div class="exercise-card">
+          <div class="exercise-name">
+            Incline Press
+          </div>
 
-<div class="exercise-name">
+          <img
+            class="exercise-image"
+            src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
+            alt="Incline Press"
+          />
 
-<h3>
-Incline Press
-</h3>
+          <div class="exercise-content">
 
-</div>
+            <button class="start-btn">
+              ابدأ الآن
+            </button>
 
-<img
-src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
-alt="Incline Press">
+          </div>
 
-<div class="exercise-content">
+        </div>
 
-<a
-href="workout.html?exercise=incline-press"
-class="start-btn">
+        <!-- Exercise 3 -->
 
-ابدأ الآن
+        <div class="exercise-card">
 
-</a>
+          <div class="exercise-name">
+            Chest Fly
+          </div>
 
-</div>
+          <img
+            class="exercise-image"
+            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+            alt="Chest Fly"
+          />
 
-</div>
+          <div class="exercise-content">
 
+            <button class="start-btn">
+              ابدأ الآن
+            </button>
 
-<!-- CHEST FLY -->
+          </div>
 
-<div class="exercise-card">
+        </div>
 
-<div class="exercise-name">
+        <!-- Exercise 4 -->
 
-<h3>
-Chest Fly
-</h3>
+        <div class="exercise-card">
 
-</div>
+          <div class="exercise-name">
+            Push Ups
+          </div>
 
-<img
-src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
-alt="Chest Fly">
+          <img
+            class="exercise-image"
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
+            alt="Push Ups"
+          />
 
-<div class="exercise-content">
+          <div class="exercise-content">
 
-<a
-href="workout.html?exercise=chest-fly"
-class="start-btn">
+            <button class="start-btn">
+              ابدأ الآن
+            </button>
 
-ابدأ الآن
+          </div>
 
-</a>
+        </div>
 
-</div>
+      </div>
 
-</div>
+    </section>
 
+    <!-- ================= COMMUNITY ================= -->
 
-<!-- PUSH UPS -->
+    <section class="section">
 
-<div class="exercise-card">
+      <div class="section-title">
 
-<div class="exercise-name">
+        <h2>
+          أخبار المجتمع 👥
+        </h2>
 
-<h3>
-Push Ups
-</h3>
+        <a href="#">
+          المزيد
+        </a>
 
-</div>
+      </div>
 
-<img
-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
-alt="Push Ups">
+      <div class="community-card">
 
-<div class="exercise-content">
+        <h3>
+          تحدي الأسبوع 🔥
+        </h3>
 
-<a
-href="workout.html?exercise=push-ups"
-class="start-btn">
+        <p>
+          حاول تكمل 5 تمارين خلال الأسبوع وشوف تقدمك.
+        </p>
 
-ابدأ الآن
+      </div>
 
-</a>
+      <div class="community-card">
 
-</div>
+        <h3>
+          نصيحة اليوم 💡
+        </h3>
 
-</div>
+        <p>
+          اشرب مياه كفاية وحافظ على الراحة بين التمارين.
+        </p>
 
+      </div>
 
-</div>
+    </section>
 
+    <!-- ================= START JOURNEY ================= -->
 
-<div class="workout-dots">
+    <section class="section">
 
-<span class="active"></span>
-<span></span>
-<span></span>
-<span></span>
+      <div class="section-title">
 
-</div>
+        <h2>
+          ابدأ رحلتك 🚀
+        </h2>
 
-</section>
+      </div>
 
+      <div class="journey-grid">
 
-<!-- COMMUNITY -->
+        <a
+          href="#workouts"
+          class="journey-card"
+        >
 
-<div class="section-heading">
+          <h3>
+            خطتك التدريبية
+          </h3>
 
-<h2>
-Community News
-</h2>
+          <p>
+            شوف التمارين الخاصة بيك وابدأ أول تمرين.
+          </p>
 
-<a href="#" class="see-all">
-See All
-</a>
+        </a>
 
-</div>
+        <a
+          href="#progress"
+          class="journey-card"
+        >
 
+          <h3>
+            تابع تقدمك
+          </h3>
 
-<section class="community-card">
+          <p>
+            راقب أداءك وتطورك خلال الفترة الماضية.
+          </p>
 
+        </a>
 
-<div class="news-row">
+      </div>
 
-<div class="news-left">
+    </section>
 
-<div class="news-icon">
-★
-</div>
+    <!-- ================= PROGRESS ================= -->
 
-<div>
+    <section
+      class="section"
+      id="progress"
+    >
 
-<div class="news-title">
-New Class: Neon Spin
-</div>
+      <div class="section-title">
 
-<div class="news-sub">
-New Class is Neon Spin
-</div>
+        <h2>
+          تقدمك 📊
+        </h2>
 
-</div>
+        <a href="#">
+          التفاصيل
+        </a>
 
-</div>
+      </div>
 
-</div>
+      <div class="progress-row">
 
+        <div class="progress-info">
 
-<div class="news-row">
+          <span>
+            الالتزام بالتمارين
+          </span>
 
-<div class="news-left">
+          <span>
+            80%
+          </span>
 
-<div class="news-icon">
-#
-</div>
+        </div>
 
-<div>
+        <div class="progress-bar">
 
-<div class="news-title">
-Leaderboard Update
-</div>
+          <div
+            class="progress-fill"
+            style="width:80%;"
+          ></div>
 
-<div class="news-sub">
-Check your latest ranking
-</div>
+        </div>
 
-</div>
+      </div>
 
-</div>
+      <div class="progress-row">
 
-</div>
+        <div class="progress-info">
 
+          <span>
+            الكارديو
+          </span>
 
-<div class="news-row">
+          <span>
+            65%
+          </span>
 
-<div class="news-left">
+        </div>
 
-<div class="news-icon">
-+
-</div>
+        <div class="progress-bar">
 
-<div>
+          <div
+            class="progress-fill"
+            style="width:65%;"
+          ></div>
 
-<div class="news-title">
-New Challenge
-</div>
+        </div>
 
-<div class="news-sub">
-Join the latest challenge
-</div>
+      </div>
 
-</div>
+      <div class="progress-row">
 
-</div>
+        <div class="progress-info">
 
-</div>
+          <span>
+            القوة
+          </span>
 
+          <span>
+            72%
+          </span>
 
-</section>
+        </div>
 
+        <div class="progress-bar">
 
-<!-- START JOURNEY -->
+          <div
+            class="progress-fill"
+            style="width:72%;"
+          ></div>
 
-<div class="section-heading">
+        </div>
 
-<h2>
-ابدأ رحلتك 💪
-</h2>
+      </div>
 
-</div>
+    </section>
 
+    <!-- ================= SUBSCRIPTION ================= -->
 
-<div class="cards">
+    <section
+      class="section subscription"
+      id="subscription"
+    >
 
+      <div class="section-title">
 
-<div class="card">
+        <h2>
+          اشتراكك 💳
+        </h2>
 
-<div class="icon">
-💪
-</div>
+      </div>
 
-<h3>
-Workout
-</h3>
+      <p>
+        تابع خطة اشتراكك واستمتع بكل مميزات BodyReset.
+      </p>
 
-<p>
-تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
-</p>
+      <a
+        href="#"
+        class="subscription-btn"
+      >
+        إدارة الاشتراك
+      </a>
 
-<a href="workout.html">
-ابدأ التمرين
-</a>
+    </section>
 
-</div>
+  </main>
 
+  <!-- ================= BOTTOM NAV ================= -->
 
-<div class="card">
+  <nav class="bottom-nav">
 
-<div class="icon">
-🥗
-</div>
+    <a
+      href="dashboard.html"
+      class="nav-item"
+    >
 
-<h3>
-Nutrition
-</h3>
+      <div class="nav-icon home-icon">
+        ⌂
+      </div>
 
-<p>
-خطط غذائية تساعدك تختار أكلك حسب هدفك.
-</p>
+      <span>
+        الرئيسية
+      </span>
 
-<a href="nutrition.html">
-خطة التغذية
-</a>
+    </a>
 
-</div>
+    <a
+      href="#workouts"
+      class="nav-item"
+    >
 
-</div>
+      <div class="nav-icon">
 
+        <div class="dumbbell"></div>
 
-<!-- PROGRESS -->
+      </div>
 
-<section class="progress-section">
+      <span>
+        التمارين
+      </span>
 
-<div class="section-heading">
+    </a>
 
-<h2>
-Progress
-</h2>
+    <a
+      href="#progress"
+      class="nav-item"
+    >
 
-<a href="progress.html" class="see-all">
-See All
-</a>
+      <div class="nav-icon">
 
-</div>
+        <div class="bars">
 
+          <span></span>
+          <span></span>
+          <span></span>
 
-<div class="progress-card">
+        </div>
 
-<div class="progress-icon">
-📊
-</div>
+      </div>
 
-<div class="progress-content">
+      <span>
+        التقدم
+      </span>
 
-<h3>
-متابعة التقدم
-</h3>
+    </a>
 
-<p>
-تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
-</p>
+    <button
+      class="nav-item"
+      id="bottomProfileBtn"
+    >
 
-<a href="progress.html">
-شوف التقدم
-</a>
+      <div class="nav-icon">
 
-</div>
+        <div class="user-icon"></div>
 
-</div>
+      </div>
 
-</section>
+      <span>
+        الحساب
+      </span>
 
+    </button>
 
-<!-- SUBSCRIPTIONS -->
+  </nav>
 
-<section>
+  <!-- ================= SUPABASE ================= -->
 
-<div class="section-heading">
+  <script type="module">
 
-<h2>
-الاشتراكات
-</h2>
+    import {
+      createClient
+    } from "https://esm.sh/@supabase/supabase-js@2";
 
-</div>
 
+    const SUPABASE_URL =
+      "https://byodeoaluspphqduxmlh.supabase.co";
 
-<div class="subscription-box">
+    const SUPABASE_KEY =
+      "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
-<h2>
-اشتراكك في BodyReset
-</h2>
 
-<p>
-الباقة الحالية
-</p>
+    const supabase =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
-<div class="plan-price">
-BodyReset
-</div>
 
-</div>
+    /* ================= ELEMENTS ================= */
 
-</section>
+    const profileBtn =
+      document.getElementById("profileBtn");
 
+    const profileMenu =
+      document.getElementById("profileMenu");
 
-<div id="message">
-</div>
+    const profileInitial =
+      document.getElementById("profileInitial");
 
+    const profileMenuInitial =
+      document.getElementById("profileMenuInitial");
 
-</main>
+    const profileName =
+      document.getElementById("profileName");
 
+    const profileEmail =
+      document.getElementById("profileEmail");
 
-<!-- =====================================
-     BOTTOM NAV
-===================================== -->
+    const logoutBtn =
+      document.getElementById("logoutBtn");
 
-<nav class="bottom-nav">
 
+    const menuBtn =
+      document.getElementById("menuBtn");
 
-<!-- HOME -->
+    const sideMenu =
+      document.getElementById("sideMenu");
 
-<a
-href="dashboard.html"
-class="nav-item home-nav">
+    const menuOverlay =
+      document.getElementById("menuOverlay");
 
-<div class="nav-icon">
+    const closeMenu =
+      document.getElementById("closeMenu");
 
-<svg viewBox="0 0 24 24">
 
-<path d="M3 10.5L12 3l9 7.5"></path>
+    const notificationBtn =
+      document.getElementById("notificationBtn");
 
-<path d="M5 9.5V21h14V9.5"></path>
+    const notificationPanel =
+      document.getElementById("notificationPanel");
 
-<path d="M9 21v-6h6v6"></path>
 
-</svg>
+    const bottomProfileBtn =
+      document.getElementById("bottomProfileBtn");
 
-</div>
 
-<span>
-Home
-</span>
+    /* ================= LOAD CURRENT USER ================= */
 
-</a>
+    async function loadUser() {
 
+      const {
+        data,
+        error
+      } = await supabase.auth.getUser();
 
-<!-- WORKOUTS -->
 
-<a
-href="workout.html"
-class="nav-item workout-nav">
+      if (
+        error ||
+        !data ||
+        !data.user
+      ) {
 
-<div class="nav-icon">
+        window.location.href =
+          "auth.html";
 
-<svg viewBox="0 0 24 24">
+        return;
 
-<path d="M6 9v6"></path>
+      }
 
-<path d="M3.5 10v4"></path>
 
-<path d="M18 9v6"></path>
+      const user =
+        data.user;
 
-<path d="M20.5 10v4"></path>
 
-<path d="M6 12h12"></path>
+      /*
+        الاسم بيتاخد من user_metadata
+        لأن auth.html أثناء التسجيل
+        بيخزن username هنا.
+      */
 
-</svg>
+      const username =
+        user.user_metadata?.username ||
+        user.user_metadata?.name ||
+        "User";
 
-</div>
 
-<span>
-Workouts
-</span>
+      const email =
+        user.email ||
+        "";
 
-</a>
 
+      /*
+        أول حرف من الاسم
+      */
 
-<!-- PROGRESS -->
+      const firstLetter =
+        username
+          .trim()
+          .charAt(0)
+          .toUpperCase();
 
-<a
-href="progress.html"
-class="nav-item progress-nav">
 
-<div class="nav-icon">
+      profileInitial.textContent =
+        firstLetter || "?";
 
-<svg viewBox="0 0 24 24">
 
-<!-- خط الأرض -->
+      profileMenuInitial.textContent =
+        firstLetter || "?";
 
-<path d="M3 21H21"></path>
 
-<!-- العمود الأول -->
+      profileName.textContent =
+        username;
 
-<path d="M5 21V14H8V21"></path>
 
-<!-- العمود الثاني -->
+      profileEmail.textContent =
+        email;
 
-<path d="M10.5 21V9H13.5V21"></path>
+    }
 
-<!-- العمود الثالث -->
 
-<path d="M16 21V4H19V21"></path>
+    /* ================= PROFILE ================= */
 
-</svg>
+    profileBtn.addEventListener(
+      "click",
+      function(event) {
 
-</div>
+        event.stopPropagation();
 
-<span>
-Progress
-</span>
+        profileMenu.classList.toggle("show");
 
-</a>
+        notificationPanel.classList.remove("show");
 
+      }
+    );
 
-<!-- PROFILE -->
 
-<a
-href="profile.html"
-class="nav-item profile-nav">
+    bottomProfileBtn.addEventListener(
+      "click",
+      function() {
 
-<div class="nav-icon">
+        profileMenu.classList.toggle("show");
 
-<svg viewBox="0 0 24 24">
+        notificationPanel.classList.remove("show");
 
-<circle
-cx="12"
-cy="7"
-r="4">
-</circle>
+      }
+    );
 
-<path
-d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7">
-</path>
 
-</svg>
+    /* ================= OUTSIDE CLICK ================= */
 
-</div>
+    document.addEventListener(
+      "click",
+      function(event) {
 
-<span>
-Profile
-</span>
+        if (
+          !profileMenu.contains(event.target) &&
+          !profileBtn.contains(event.target) &&
+          !bottomProfileBtn.contains(event.target)
+        ) {
 
-</a>
+          profileMenu.classList.remove("show");
 
+        }
 
-</nav>
 
+        if (
+          !notificationPanel.contains(event.target) &&
+          !notificationBtn.contains(event.target)
+        ) {
+
+          notificationPanel.classList.remove("show");
+
+        }
+
+      }
+    );
+
+
+    /* ================= LOGOUT ================= */
+
+    logoutBtn.addEventListener(
+      "click",
+      async function() {
+
+        logoutBtn.disabled = true;
+
+        logoutBtn.textContent =
+          "جاري تسجيل الخروج...";
+
+
+        const {
+          error
+        } =
+          await supabase.auth.signOut();
+
+
+        if (error) {
+
+          console.error(
+            "Logout error:",
+            error
+          );
+
+          logoutBtn.disabled = false;
+
+          logoutBtn.textContent =
+            "تسجيل الخروج";
+
+          alert(
+            "حصل خطأ أثناء تسجيل الخروج"
+          );
+
+          return;
+
+        }
+
+
+        window.location.href =
+          "auth.html";
+
+      }
+    );
+
+
+    /* ================= SIDE MENU ================= */
+
+    function openSideMenu() {
+
+      sideMenu.classList.add("open");
+
+      menuOverlay.classList.add("show");
+
+    }
+
+
+    function closeSideMenu() {
+
+      sideMenu.classList.remove("open");
+
+      menuOverlay.classList.remove("show");
+
+    }
+
+
+    menuBtn.addEventListener(
+      "click",
+      openSideMenu
+    );
+
+
+    closeMenu.addEventListener(
+      "click",
+      closeSideMenu
+    );
+
+
+    menuOverlay.addEventListener(
+      "click",
+      closeSideMenu
+    );
+
+
+    document
+      .querySelectorAll(".side-menu-item")
+      .forEach(
+        function(item) {
+
+          item.addEventListener(
+            "click",
+            closeSideMenu
+          );
+
+        }
+      );
+
+
+    /* ================= NOTIFICATIONS ================= */
+
+    notificationBtn.addEventListener(
+      "click",
+      function(event) {
+
+        event.stopPropagation();
+
+        notificationPanel.classList.toggle("show");
+
+        profileMenu.classList.remove("show");
+
+      }
+    );
+
+
+    /* ================= START APP ================= */
+
+    loadUser();
+
+  </script>
 
 </body>
-    </html>
+   </html>
