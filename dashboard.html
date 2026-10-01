@@ -60,12 +60,28 @@ font-weight:bold;
 cursor:pointer;
 }
 
+/* ================= MENU BUTTON ================= */
+
 .menu-btn{
 background:none;
 border:none;
-color:#fff;
-font-size:30px;
+width:24px;
+height:22px;
+padding:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:3px;
 cursor:pointer;
+}
+
+.menu-btn span{
+display:block;
+width:17px;
+height:2px;
+background:#fff;
+border-radius:2px;
 }
 
 /* ================= PROFILE MENU ================= */
@@ -158,7 +174,14 @@ left:0;
 display:flex;
 align-items:center;
 justify-content:flex-start;
+gap:14px;
 margin-bottom:25px;
+}
+
+.side-menu-header h2{
+color:#071a33;
+font-size:22px;
+margin:0;
 }
 
 .close-menu{
@@ -170,6 +193,9 @@ border-radius:10px;
 font-size:24px;
 cursor:pointer;
 color:#071a33;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .close-menu:hover{
@@ -460,7 +486,7 @@ font-size:14px;
 font-weight:bold;
 }
 
-/* TODAY WORKOUT */
+/* ================= TODAY WORKOUT ================= */
 
 .today-workout{
 background:#fff;
@@ -490,7 +516,7 @@ scrollbar-width:none;
 display:none;
 }
 
-/* EXERCISE CARD */
+/* ================= EXERCISE CARD ================= */
 
 .exercise-card{
 flex:0 0 280px;
@@ -562,7 +588,7 @@ border-radius:8px;
 background:#2563eb;
 }
 
-/* COMMUNITY */
+/* ================= COMMUNITY ================= */
 
 .community-card{
 background:#fff;
@@ -609,7 +635,7 @@ font-size:12px;
 color:#64748b;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 
 .cards{
 display:grid;
@@ -653,7 +679,7 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* PROGRESS */
+/* ================= PROGRESS ================= */
 
 .progress-section{
 margin-bottom:30px;
@@ -708,7 +734,7 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* SUBSCRIPTIONS */
+/* ================= SUBSCRIPTIONS ================= */
 
 .subscription-box{
 background:#fff;
@@ -742,7 +768,7 @@ text-align:center;
 margin-top:15px;
 }
 
-/* BOTTOM NAV */
+/* ================= BOTTOM NAV ================= */
 
 .bottom-nav{
 position:fixed;
@@ -805,7 +831,7 @@ height:23px;
 stroke:#fff;
 }
 
-/* WORKOUT - DUMBBELL */
+/* WORKOUT */
 
 .workout-nav .nav-icon svg{
 width:32px;
@@ -845,7 +871,7 @@ color:#071a33;
 transform:none;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
@@ -969,22 +995,35 @@ Body<span>Reset</span>
 <span id="profileInitial">?</span>
 </div>
 
-<button class="menu-btn" id="menuBtn">
-☰
+<button
+class="menu-btn"
+id="menuBtn"
+aria-label="فتح القائمة"
+>
+
+<span></span>
+<span></span>
+<span></span>
+
 </button>
 
 </div>
+
 </header>
 
 
-<!-- PROFILE MENU -->
+<!-- ================= PROFILE MENU ================= -->
 
 <div class="profile-menu" id="profileMenu">
 
 <div class="profile-name">
 
 <div class="profile-menu-avatar">
-<span id="profileMenuInitial">?</span>
+
+<span id="profileMenuInitial">
+?
+</span>
+
 </div>
 
 <div>
@@ -1004,17 +1043,32 @@ Email
 </div>
 
 
-<!-- SIDE MENU -->
+<!-- ================= SIDE MENU ================= -->
 
-<div class="menu-overlay" id="menuOverlay"></div>
+<div
+class="menu-overlay"
+id="menuOverlay">
+</div>
 
-<div class="side-menu" id="sideMenu">
+
+<div
+class="side-menu"
+id="sideMenu">
+
 
 <div class="side-menu-header">
 
-<button class="close-menu" id="closeMenu">
+<button
+class="close-menu"
+id="closeMenu"
+aria-label="إغلاق القائمة"
+>
 ×
 </button>
+
+<h2>
+القائمة
+</h2>
 
 </div>
 
@@ -1029,7 +1083,7 @@ Email
 </a>
 
 
-<!-- LANGUAGE -->
+<!-- ================= LANGUAGE ================= -->
 
 <button
 type="button"
@@ -1043,19 +1097,25 @@ id="languageSwitcher"
 
 <!-- A -->
 
-<path d="M4 19L8.5 5L13 19"></path>
+<path d="M4 19L8.5 5L13 19">
+</path>
 
-<path d="M5.5 15H11.5"></path>
+<path d="M5.5 15H11.5">
+</path>
 
-<!-- Language / Translation -->
+<!-- Language -->
 
-<path d="M15 6H21"></path>
+<path d="M15 6H21">
+</path>
 
-<path d="M18 4V6"></path>
+<path d="M18 4V6">
+</path>
 
-<path d="M16 9C17 11.8 18.7 14 21 15.5"></path>
+<path d="M16 9C17 11.8 18.7 14 21 15.5">
+</path>
 
-<path d="M21 9C20 11.8 18.3 14 16 15.5"></path>
+<path d="M21 9C20 11.8 18.3 14 16 15.5">
+</path>
 
 </svg>
 
@@ -1068,7 +1128,7 @@ id="languageSwitcher"
 </button>
 
 
-<!-- LOGOUT -->
+<!-- ================= LOGOUT ================= -->
 
 <button
 class="logout-btn"
@@ -1079,14 +1139,21 @@ id="logoutBtn"
 
 </button>
 
+
 </div>
 
 
+<!-- ================= MAIN ================= -->
+
 <main class="container">
+
 
 <div class="top-area">
 
-<button class="notification" id="notificationBtn">
+<button
+class="notification"
+id="notificationBtn"
+>
 
 <svg viewBox="0 0 24 24">
 
@@ -1103,9 +1170,12 @@ id="logoutBtn"
 </div>
 
 
-<!-- NOTIFICATION PANEL -->
+<!-- ================= NOTIFICATIONS ================= -->
 
-<div class="notification-panel" id="notificationPanel">
+<div
+class="notification-panel"
+id="notificationPanel"
+>
 
 <div class="notification-header">
 Notifications
@@ -1126,9 +1196,10 @@ Notifications
 </div>
 
 
-<!-- STATS -->
+<!-- ================= STATS ================= -->
 
 <div class="stats">
+
 
 <div class="stat">
 
@@ -1138,29 +1209,40 @@ Weekly Activity
 
 <div class="activity-circles">
 
-<div class="activity-circle">
-
-<div class="circle-content">
-
-<strong>0</strong>
-
-<span>Progress</span>
-
-</div>
-
-</div>
 
 <div class="activity-circle">
 
 <div class="circle-content">
 
-<strong>0%</strong>
+<strong>
+0
+</strong>
 
-<span>Burn</span>
+<span>
+Progress
+</span>
 
 </div>
 
 </div>
+
+
+<div class="activity-circle">
+
+<div class="circle-content">
+
+<strong>
+0%
+</strong>
+
+<span>
+Burn
+</span>
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -1175,9 +1257,13 @@ Calorie Burn
 
 <div class="calorie-number">
 
-<strong>0</strong>
+<strong>
+0
+</strong>
 
-<span>kcal</span>
+<span>
+kcal
+</span>
 
 </div>
 
@@ -1194,7 +1280,9 @@ Weekly Progress
 
 <div class="progress-circle">
 
-<strong>0%</strong>
+<strong>
+0%
+</strong>
 
 </div>
 
@@ -1202,10 +1290,11 @@ Weekly Progress
 
 </div>
 
+
 </div>
 
 
-<!-- TODAY WORKOUT -->
+<!-- ================= TODAY WORKOUT ================= -->
 
 <div class="section-heading">
 
@@ -1215,16 +1304,16 @@ Today's Workout
 
 <a
 href="workout.html?workout=chest"
-class="see-all">
-
+class="see-all"
+>
 See All
-
 </a>
 
 </div>
 
 
 <section class="today-workout">
+
 
 <div class="workout-title">
 Chest
@@ -1248,13 +1337,15 @@ Bench Press
 
 <img
 src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-alt="Bench Press">
+alt="Bench Press"
+>
 
 <div class="exercise-content">
 
 <a
 href="workout.html?exercise=bench-press"
-class="start-btn">
+class="start-btn"
+>
 
 ابدأ الآن
 
@@ -1279,13 +1370,15 @@ Incline Press
 
 <img
 src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
-alt="Incline Press">
+alt="Incline Press"
+>
 
 <div class="exercise-content">
 
 <a
 href="workout.html?exercise=incline-press"
-class="start-btn">
+class="start-btn"
+>
 
 ابدأ الآن
 
@@ -1310,13 +1403,15 @@ Chest Fly
 
 <img
 src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
-alt="Chest Fly">
+alt="Chest Fly"
+>
 
 <div class="exercise-content">
 
 <a
 href="workout.html?exercise=chest-fly"
-class="start-btn">
+class="start-btn"
+>
 
 ابدأ الآن
 
@@ -1341,13 +1436,15 @@ Push Ups
 
 <img
 src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
-alt="Push Ups">
+alt="Push Ups"
+>
 
 <div class="exercise-content">
 
 <a
 href="workout.html?exercise=push-ups"
-class="start-btn">
+class="start-btn"
+>
 
 ابدأ الآن
 
@@ -1356,6 +1453,7 @@ class="start-btn">
 </div>
 
 </div>
+
 
 </div>
 
@@ -1369,10 +1467,11 @@ class="start-btn">
 
 </div>
 
+
 </section>
 
 
-<!-- COMMUNITY -->
+<!-- ================= COMMUNITY ================= -->
 
 <div class="section-heading">
 
@@ -1380,7 +1479,10 @@ class="start-btn">
 Community News
 </h2>
 
-<a href="#" class="see-all">
+<a
+href="#"
+class="see-all"
+>
 See All
 </a>
 
@@ -1388,6 +1490,7 @@ See All
 
 
 <section class="community-card">
+
 
 <div class="news-row">
 
@@ -1463,10 +1566,11 @@ Join the latest challenge
 
 </div>
 
+
 </section>
 
 
-<!-- START JOURNEY -->
+<!-- ================= START JOURNEY ================= -->
 
 <div class="section-heading">
 
@@ -1478,6 +1582,7 @@ Join the latest challenge
 
 
 <div class="cards">
+
 
 <div class="card">
 
@@ -1520,12 +1625,14 @@ Nutrition
 
 </div>
 
+
 </div>
 
 
-<!-- PROGRESS -->
+<!-- ================= PROGRESS ================= -->
 
 <section class="progress-section">
+
 
 <div class="section-heading">
 
@@ -1533,7 +1640,10 @@ Nutrition
 Progress
 </h2>
 
-<a href="progress.html" class="see-all">
+<a
+href="progress.html"
+class="see-all"
+>
 See All
 </a>
 
@@ -1545,6 +1655,7 @@ See All
 <div class="progress-icon">
 📊
 </div>
+
 
 <div class="progress-content">
 
@@ -1564,12 +1675,14 @@ See All
 
 </div>
 
+
 </section>
 
 
-<!-- SUBSCRIPTIONS -->
+<!-- ================= SUBSCRIPTIONS ================= -->
 
 <section>
+
 
 <div class="section-heading">
 
@@ -1596,32 +1709,39 @@ BodyReset
 
 </div>
 
+
 </section>
 
 
 <div id="message">
 </div>
 
+
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
 
+
 <a
 href="dashboard.html"
-class="nav-item home-nav">
+class="nav-item home-nav"
+>
 
 <div class="nav-icon">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M3 10.5L12 3l9 7.5"></path>
+<path d="M3 10.5L12 3l9 7.5">
+</path>
 
-<path d="M5 9.5V21h14V9.5"></path>
+<path d="M5 9.5V21h14V9.5">
+</path>
 
-<path d="M9 21v-6h6v6"></path>
+<path d="M9 21v-6h6v6">
+</path>
 
 </svg>
 
@@ -1636,21 +1756,27 @@ Home
 
 <a
 href="workout.html"
-class="nav-item workout-nav">
+class="nav-item workout-nav"
+>
 
 <div class="nav-icon">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M6 9v6"></path>
+<path d="M6 9v6">
+</path>
 
-<path d="M3.5 10v4"></path>
+<path d="M3.5 10v4">
+</path>
 
-<path d="M18 9v6"></path>
+<path d="M18 9v6">
+</path>
 
-<path d="M20.5 10v4"></path>
+<path d="M20.5 10v4">
+</path>
 
-<path d="M6 12h12"></path>
+<path d="M6 12h12">
+</path>
 
 </svg>
 
@@ -1665,19 +1791,24 @@ Workouts
 
 <a
 href="progress.html"
-class="nav-item progress-nav">
+class="nav-item progress-nav"
+>
 
 <div class="nav-icon">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M3 21H21"></path>
+<path d="M3 21H21">
+</path>
 
-<path d="M5 21V14H8V21"></path>
+<path d="M5 21V14H8V21">
+</path>
 
-<path d="M10.5 21V9H13.5V21"></path>
+<path d="M10.5 21V9H13.5V21">
+</path>
 
-<path d="M16 21V4H19V21"></path>
+<path d="M16 21V4H19V21">
+</path>
 
 </svg>
 
@@ -1692,7 +1823,8 @@ Progress
 
 <a
 href="profile.html"
-class="nav-item profile-nav">
+class="nav-item profile-nav"
+>
 
 <div class="nav-icon">
 
@@ -1701,11 +1833,13 @@ class="nav-item profile-nav">
 <circle
 cx="12"
 cy="7"
-r="4">
+r="4"
+>
 </circle>
 
 <path
-d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7">
+d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"
+>
 </path>
 
 </svg>
@@ -1718,6 +1852,7 @@ Profile
 
 </a>
 
+
 </nav>
 
 
@@ -1727,11 +1862,14 @@ Profile
 
 import {
 createClient
-} from "https://esm.sh/@supabase/supabase-js@2";
+}
+from
+"https://esm.sh/@supabase/supabase-js@2";
 
 
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
+
 
 const SUPABASE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
@@ -1747,22 +1885,39 @@ SUPABASE_KEY
 /* ================= PROFILE ================= */
 
 const profileBtn =
-document.getElementById("profileBtn");
+document.getElementById(
+"profileBtn"
+);
+
 
 const profileMenu =
-document.getElementById("profileMenu");
+document.getElementById(
+"profileMenu"
+);
+
 
 const profileInitial =
-document.getElementById("profileInitial");
+document.getElementById(
+"profileInitial"
+);
+
 
 const profileMenuInitial =
-document.getElementById("profileMenuInitial");
+document.getElementById(
+"profileMenuInitial"
+);
+
 
 const profileUsername =
-document.getElementById("profileUsername");
+document.getElementById(
+"profileUsername"
+);
+
 
 const profileEmail =
-document.getElementById("profileEmail");
+document.getElementById(
+"profileEmail"
+);
 
 
 profileBtn.addEventListener(
@@ -1771,9 +1926,13 @@ function(event){
 
 event.stopPropagation();
 
-profileMenu.classList.toggle("show");
+profileMenu.classList.toggle(
+"show"
+);
 
-notificationPanel.classList.remove("show");
+notificationPanel.classList.remove(
+"show"
+);
 
 }
 );
@@ -1790,7 +1949,10 @@ error
 await supabase.auth.getUser();
 
 
-if(error || !data.user){
+if(
+error ||
+!data.user
+){
 
 window.location.href =
 "auth.html";
@@ -1824,11 +1986,14 @@ username
 profileInitial.textContent =
 firstLetter || "?";
 
+
 profileMenuInitial.textContent =
 firstLetter || "?";
 
+
 profileUsername.textContent =
 username;
+
 
 profileEmail.textContent =
 email;
@@ -1842,25 +2007,40 @@ loadUser();
 /* ================= MENU ================= */
 
 const menuBtn =
-document.getElementById("menuBtn");
+document.getElementById(
+"menuBtn"
+);
+
 
 const sideMenu =
-document.getElementById("sideMenu");
+document.getElementById(
+"sideMenu"
+);
+
 
 const menuOverlay =
-document.getElementById("menuOverlay");
+document.getElementById(
+"menuOverlay"
+);
+
 
 const closeMenu =
-document.getElementById("closeMenu");
+document.getElementById(
+"closeMenu"
+);
 
 
 menuBtn.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.add("open");
+sideMenu.classList.add(
+"open"
+);
 
-menuOverlay.classList.add("show");
+menuOverlay.classList.add(
+"show"
+);
 
 }
 );
@@ -1870,9 +2050,13 @@ closeMenu.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.remove("open");
+sideMenu.classList.remove(
+"open"
+);
 
-menuOverlay.classList.remove("show");
+menuOverlay.classList.remove(
+"show"
+);
 
 }
 );
@@ -1882,9 +2066,13 @@ menuOverlay.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.remove("open");
+sideMenu.classList.remove(
+"open"
+);
 
-menuOverlay.classList.remove("show");
+menuOverlay.classList.remove(
+"show"
+);
 
 }
 );
@@ -1893,7 +2081,9 @@ menuOverlay.classList.remove("show");
 /* ================= LANGUAGE SWITCH ================= */
 
 const languageSwitcher =
-document.getElementById("languageSwitcher");
+document.getElementById(
+"languageSwitcher"
+);
 
 
 languageSwitcher.addEventListener(
@@ -1910,7 +2100,9 @@ window.location.href =
 /* ================= LOGOUT ================= */
 
 const logoutBtn =
-document.getElementById("logoutBtn");
+document.getElementById(
+"logoutBtn"
+);
 
 
 logoutBtn.addEventListener(
@@ -1937,10 +2129,15 @@ window.location.href =
 /* ================= NOTIFICATIONS ================= */
 
 const notificationBtn =
-document.getElementById("notificationBtn");
+document.getElementById(
+"notificationBtn"
+);
+
 
 const notificationPanel =
-document.getElementById("notificationPanel");
+document.getElementById(
+"notificationPanel"
+);
 
 
 notificationBtn.addEventListener(
@@ -1949,9 +2146,13 @@ function(event){
 
 event.stopPropagation();
 
-notificationPanel.classList.toggle("show");
+notificationPanel.classList.toggle(
+"show"
+);
 
-profileMenu.classList.remove("show");
+profileMenu.classList.remove(
+"show"
+);
 
 }
 );
@@ -1964,21 +2165,35 @@ document.addEventListener(
 function(event){
 
 if(
-!profileMenu.contains(event.target) &&
-!profileBtn.contains(event.target)
+!profileMenu.contains(
+event.target
+)
+&&
+!profileBtn.contains(
+event.target
+)
 ){
 
-profileMenu.classList.remove("show");
+profileMenu.classList.remove(
+"show"
+);
 
 }
 
 
 if(
-!notificationPanel.contains(event.target) &&
-!notificationBtn.contains(event.target)
+!notificationPanel.contains(
+event.target
+)
+&&
+!notificationBtn.contains(
+event.target
+)
 ){
 
-notificationPanel.classList.remove("show");
+notificationPanel.classList.remove(
+"show"
+);
 
 }
 
