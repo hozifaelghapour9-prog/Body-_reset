@@ -66,6 +66,8 @@ border:none;
 color:#fff;
 font-size:30px;
 cursor:pointer;
+line-height:1;
+padding:3px;
 }
 
 /* ================= PROFILE MENU ================= */
@@ -143,7 +145,7 @@ background:#fff;
 z-index:2500;
 padding:25px 20px;
 box-shadow:-5px 0 25px rgba(0,0,0,.2);
-transition:.3s;
+transition:right .3s ease;
 }
 
 .side-menu.open{
@@ -192,7 +194,7 @@ display:flex;
 align-items:center;
 gap:12px;
 width:100%;
-padding:15px 12px;
+padding:13px 12px;
 margin-bottom:8px;
 border:none;
 border-radius:10px;
@@ -203,6 +205,7 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 text-align:right;
+direction:rtl;
 }
 
 .language-switcher:hover{
@@ -210,17 +213,25 @@ background:#f1f5f9;
 }
 
 .translate-icon{
-width:38px;
-height:38px;
+width:40px;
+height:40px;
+min-width:40px;
 border-radius:10px;
-background:#2563eb;
-color:#fff;
+background:#f1f5f9;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:17px;
-font-weight:bold;
-direction:ltr;
+color:#071a33;
+}
+
+.translate-icon svg{
+width:25px;
+height:25px;
+fill:none;
+stroke:#071a33;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
 /* ================= LOGOUT BUTTON ================= */
@@ -233,6 +244,12 @@ text-align:right;
 font-family:Arial,sans-serif;
 font-size:16px;
 cursor:pointer;
+padding:15px 12px;
+border-radius:10px;
+}
+
+.side-menu .logout-btn:hover{
+background:#f1f5f9;
 }
 
 /* ================= NOTIFICATIONS ================= */
@@ -1016,12 +1033,37 @@ Menu
 </a>
 
 
-<!-- LANGUAGE SWITCH -->
+<!-- LANGUAGE -->
 
-<button class="language-switcher" id="languageSwitcher">
+<button
+type="button"
+class="language-switcher"
+id="languageSwitcher"
+>
 
 <div class="translate-icon">
-文A
+
+<svg
+viewBox="0 0 24 24"
+aria-hidden="true"
+>
+
+<!-- A -->
+<path d="M4 19L8.5 5L13 19"></path>
+
+<path d="M5.5 15H11.5"></path>
+
+<!-- Translation / language -->
+<path d="M15 6H21"></path>
+
+<path d="M18 4V6"></path>
+
+<path d="M16 9C17.1 11.8 18.8 14 21 15.5"></path>
+
+<path d="M21 9C19.9 11.8 18.2 14 16 15.5"></path>
+
+</svg>
+
 </div>
 
 <span>
