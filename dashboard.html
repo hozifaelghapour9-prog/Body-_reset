@@ -420,9 +420,11 @@ font-size:10px;
 color:#64748b;
 }
 
+/* ================= CALORIE BURN ================= */
+
 .calorie-number{
 text-align:center;
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
 .calorie-number strong{
@@ -434,6 +436,47 @@ color:#2563eb;
 font-size:14px;
 color:#64748b;
 }
+
+.calorie-chart{
+width:100%;
+height:115px;
+display:flex;
+align-items:flex-end;
+justify-content:space-between;
+gap:7px;
+direction:ltr;
+padding:0 2px;
+margin-top:5px;
+}
+
+.calorie-day{
+flex:1;
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-end;
+gap:6px;
+min-width:0;
+}
+
+.calorie-bar{
+width:100%;
+max-width:28px;
+min-width:13px;
+border-radius:16px 16px 10px 10px;
+background:linear-gradient(180deg,#18bce8 0%,#2563eb 100%);
+height:var(--bar-height);
+}
+
+.calorie-day span{
+font-size:9px;
+font-weight:bold;
+color:#071a33;
+white-space:nowrap;
+}
+
+/* ================= WEEKLY PROGRESS ================= */
 
 .weekly-progress{
 display:flex;
@@ -976,6 +1019,21 @@ left:-320px;
 left:0;
 }
 
+/* CALORIE CHART MOBILE */
+
+.calorie-chart{
+height:112px;
+gap:5px;
+}
+
+.calorie-bar{
+max-width:24px;
+}
+
+.calorie-day span{
+font-size:8px;
+}
+
 }
 
 </style>
@@ -1197,54 +1255,6 @@ Notifications
 <div class="stats">
 
 
-<!-- WEEKLY PROGRESS -->
-
-<div class="stat">
-
-<h3>
-Weekly Progress
-</h3>
-
-<div class="weekly-progress">
-
-<div class="progress-circle">
-
-<strong>
-0%
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- CALORIE BURN -->
-
-<div class="stat">
-
-<h3>
-Calorie Burn
-</h3>
-
-<div class="calorie-number">
-
-<strong>
-0
-</strong>
-
-<span>
-kcal
-</span>
-
-</div>
-
-</div>
-
-
-<!-- WEEKLY ACTIVITY -->
-
 <div class="stat">
 
 <h3>
@@ -1287,6 +1297,166 @@ Burn
 
 </div>
 
+
+</div>
+
+</div>
+
+
+<!-- ================= CALORIE BURN CARD ================= -->
+
+<div class="stat">
+
+<h3>
+Calorie Burn
+</h3>
+
+<div class="calorie-number">
+
+<strong>
+0
+</strong>
+
+<span>
+kcal
+</span>
+
+</div>
+
+
+<div class="calorie-chart">
+
+<!-- SATURDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:52px;"
+></div>
+
+<span>
+SAT
+</span>
+
+</div>
+
+
+<!-- SUNDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:96px;"
+></div>
+
+<span>
+SUN
+</span>
+
+</div>
+
+
+<!-- MONDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:73px;"
+></div>
+
+<span>
+MON
+</span>
+
+</div>
+
+
+<!-- TUESDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:106px;"
+></div>
+
+<span>
+TUE
+</span>
+
+</div>
+
+
+<!-- WEDNESDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:82px;"
+></div>
+
+<span>
+WED
+</span>
+
+</div>
+
+
+<!-- THURSDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:110px;"
+></div>
+
+<span>
+THU
+</span>
+
+</div>
+
+
+<!-- FRIDAY -->
+
+<div class="calorie-day">
+
+<div
+class="calorie-bar"
+style="--bar-height:91px;"
+></div>
+
+<span>
+FRI
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<h3>
+Weekly Progress
+</h3>
+
+<div class="weekly-progress">
+
+<div class="progress-circle">
+
+<strong>
+0%
+</strong>
+
+</div>
 
 </div>
 
