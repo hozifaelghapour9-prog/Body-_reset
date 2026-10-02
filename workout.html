@@ -78,6 +78,118 @@ margin:auto;
 padding:28px 20px 40px;
 }
 
+/* GOAL SCREEN */
+
+.goal-screen{
+min-height:calc(100vh - 165px);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.goal-box{
+width:100%;
+max-width:850px;
+background:#ffffff;
+border:1px solid #d7dee8;
+border-radius:24px;
+padding:35px;
+box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+
+.goal-header{
+text-align:center;
+margin-bottom:28px;
+}
+
+.goal-header h1{
+font-size:32px;
+color:#071a33;
+margin-bottom:10px;
+}
+
+.goal-header p{
+font-size:15px;
+color:#64748b;
+line-height:1.8;
+}
+
+.goals-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.goal-card{
+border:2px solid #e2e8f0;
+background:#ffffff;
+border-radius:18px;
+padding:25px 20px;
+cursor:pointer;
+text-align:right;
+transition:.25s;
+position:relative;
+}
+
+.goal-card:hover{
+border-color:#2563eb;
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(37,99,235,.12);
+}
+
+.goal-icon{
+width:55px;
+height:55px;
+border-radius:15px;
+background:#eff6ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:27px;
+margin-bottom:15px;
+}
+
+.goal-card h2{
+font-size:21px;
+color:#071a33;
+margin-bottom:7px;
+}
+
+.goal-card p{
+font-size:13px;
+color:#64748b;
+line-height:1.7;
+}
+
+.goal-arrow{
+position:absolute;
+left:18px;
+top:50%;
+transform:translateY(-50%);
+color:#2563eb;
+font-size:22px;
+}
+
+/* CHANGE GOAL */
+
+.change-goal{
+border:none;
+background:#ffffff;
+color:#2563eb;
+padding:10px 15px;
+border-radius:9px;
+font-size:13px;
+font-weight:bold;
+cursor:pointer;
+transition:.2s;
+}
+
+.change-goal:hover{
+background:#eff6ff;
+}
+
+/* PAGE TITLE */
+
 .page-title{
 margin-bottom:25px;
 }
@@ -137,6 +249,22 @@ color:#ffffff;
 padding:10px 15px;
 border-radius:9px;
 font-size:13px;
+}
+
+.goal-info{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+margin-top:20px;
+padding-top:18px;
+border-top:1px solid #e2e8f0;
+}
+
+.current-goal{
+color:#2563eb;
+font-size:14px;
+font-weight:bold;
 }
 
 /* SECTION */
@@ -484,6 +612,12 @@ font-size:21px;
 color:#2563eb;
 }
 
+/* HIDDEN */
+
+.hidden{
+display:none !important;
+}
+
 /* MOBILE */
 
 @media(max-width:600px){
@@ -499,6 +633,40 @@ font-size:21px;
 
 .container{
 padding:20px 14px 30px;
+}
+
+.goal-screen{
+min-height:calc(100vh - 150px);
+}
+
+.goal-box{
+padding:24px 16px;
+border-radius:20px;
+}
+
+.goal-header{
+margin-bottom:22px;
+}
+
+.goal-header h1{
+font-size:27px;
+}
+
+.goal-header p{
+font-size:14px;
+}
+
+.goals-grid{
+grid-template-columns:1fr;
+gap:12px;
+}
+
+.goal-card{
+padding:20px 17px;
+}
+
+.goal-card h2{
+font-size:19px;
 }
 
 .page-title h1{
@@ -519,6 +687,11 @@ font-size:26px;
 
 .today-box p{
 font-size:14px;
+}
+
+.goal-info{
+align-items:flex-start;
+flex-direction:column;
 }
 
 .exercise-card{
@@ -578,7 +751,136 @@ Body<span>Reset</span>
 </header>
 
 
-<main class="container">
+<!-- GOAL SELECTION -->
+
+<section
+class="goal-screen"
+id="goalScreen">
+
+<div class="goal-box">
+
+<div class="goal-header">
+
+<h1>
+اختار هدفك
+</h1>
+
+<p>
+اختار الهدف الأساسي من برنامجك التدريبي، وبعدها هنجهز لك التمارين المناسبة.
+</p>
+
+</div>
+
+
+<div class="goals-grid">
+
+<button
+class="goal-card"
+type="button"
+data-goal="bulk">
+
+<div class="goal-icon">
+💪
+</div>
+
+<h2>
+تضخيم
+</h2>
+
+<p>
+بناء وزيادة الكتلة العضلية مع تمارين مقاومة وأوزان.
+</p>
+
+<span class="goal-arrow">
+‹
+</span>
+
+</button>
+
+
+<button
+class="goal-card"
+type="button"
+data-goal="cut">
+
+<div class="goal-icon">
+🔥
+</div>
+
+<h2>
+تنشيف
+</h2>
+
+<p>
+تقليل الدهون مع الحفاظ على الكتلة العضلية وتمارين مقاومة وكارديو.
+</p>
+
+<span class="goal-arrow">
+‹
+</span>
+
+</button>
+
+
+<button
+class="goal-card"
+type="button"
+data-goal="fitness">
+
+<div class="goal-icon">
+⚡
+</div>
+
+<h2>
+لياقة وحرق دهون
+</h2>
+
+<p>
+رفع اللياقة البدنية وزيادة النشاط وتحسين التحمل.
+</p>
+
+<span class="goal-arrow">
+‹
+</span>
+
+</button>
+
+
+<button
+class="goal-card"
+type="button"
+data-goal="strength">
+
+<div class="goal-icon">
+🏋️
+</div>
+
+<h2>
+زيادة القوة
+</h2>
+
+<p>
+برنامج يعتمد على تمارين المقاومة والتركيز على القوة والأداء.
+</p>
+
+<span class="goal-arrow">
+‹
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WORKOUT CONTENT -->
+
+<main
+class="container hidden"
+id="workoutScreen">
 
 <div class="page-title">
 
@@ -627,6 +929,30 @@ Chest
 Strength
 </span>
 </div>
+
+</div>
+
+
+<div class="goal-info">
+
+<div>
+<span class="current-goal">
+هدفك:
+</span>
+
+<strong id="currentGoalText">
+تضخيم
+</strong>
+</div>
+
+<button
+class="change-goal"
+id="changeGoal"
+type="button">
+
+تغيير الهدف
+
+</button>
 
 </div>
 
@@ -840,18 +1166,29 @@ Profile
 
 <script>
 
-const workouts = {
+/* =========================
+   WORKOUT DATA
+========================= */
 
-chest:{
+const workoutPrograms = {
+
+bulk:{
+
+name:"تضخيم",
+
+description:
+"برنامج مقاومة يركز على بناء الكتلة العضلية وزيادة حجم العضلات.",
+
+level:"Muscle Gain",
+
+duration:"50 دقيقة",
+
+workout:{
 
 title:"Chest",
 
 description:
-"تمرين الصدر اليومي الخاص بخطتك.",
-
-level:"Strength",
-
-duration:"45 دقيقة",
+"تمرين الصدر ضمن برنامج التضخيم.",
 
 exercises:[
 
@@ -862,24 +1199,24 @@ id:"bench-press",
 name:"Bench Press",
 
 description:
-"تمرين أساسي لبناء عضلات الصدر وزيادة القوة.",
+"تمرين أساسي لبناء عضلات الصدر وزيادة الكتلة العضلية.",
 
 image:
 "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85",
 
 sets:"4",
 
-reps:"10",
+reps:"8-10",
 
 warmup:"2 Sets",
 
 rest:"90 ثانية",
 
 how:
-"ثبت جسمك على البنش وحافظ على الكتفين للخلف. امسك البار بقبضة ثابتة، انزله ناحية منتصف الصدر بتحكم ثم ادفعه لأعلى بدون حركة مفاجئة.",
+"ثبت جسمك على البنش وحافظ على الكتفين للخلف. امسك البار بقبضة ثابتة، انزله ناحية منتصف الصدر بتحكم ثم ادفعه لأعلى.",
 
 tips:
-"اختار وزن تقدر تتحكم فيه بالكامل. حافظ على ثبات القدمين والظهر، وتجنب رفع الحوض عن البنش."
+"اختار وزن يسمح لك بالحفاظ على الأداء الصحيح، ولا تضحي بالتحكم في الحركة من أجل وزن أكبر."
 
 },
 
@@ -895,19 +1232,19 @@ description:
 image:
 "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85",
 
-sets:"3",
+sets:"4",
 
-reps:"12",
+reps:"8-12",
 
 warmup:"1 Set",
 
-rest:"75 ثانية",
+rest:"90 ثانية",
 
 how:
-"اضبط البنش على زاوية مناسبة، ابدأ بالأوزان بجانب الصدر ثم ادفع لأعلى مع الحفاظ على التحكم في النزول والصعود.",
+"اضبط البنش على زاوية مناسبة، ابدأ بالأوزان بجانب الصدر ثم ادفع لأعلى مع التحكم في النزول.",
 
 tips:
-"لا تقفل الكوع بالكامل في أعلى الحركة، وحافظ على حركة مستقرة طوال التمرين."
+"حافظ على الكتفين للخلف ولا تستخدم حركة سريعة."
 
 },
 
@@ -918,24 +1255,24 @@ id:"chest-fly",
 name:"Chest Fly",
 
 description:
-"تمرين لعزل عضلات الصدر وتحسين التحكم والانقباض.",
+"تمرين عزل لتحسين انقباض عضلات الصدر.",
 
 image:
 "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85",
 
 sets:"3",
 
-reps:"12",
+reps:"10-12",
 
 warmup:"1 Set",
 
 rest:"60 ثانية",
 
 how:
-"ابدأ والذراعان مفتوحتان، ثم اجمع الذراعين أمام الصدر بحركة بطيئة ومتحكم فيها، وبعدها ارجع لنقطة البداية.",
+"ابدأ والذراعان مفتوحتان، ثم اجمع الذراعين أمام الصدر بحركة بطيئة ومتحكم فيها.",
 
 tips:
-"ركز على انقباض عضلات الصدر ولا تستخدم سرعة عالية أو وزنًا أكبر من قدرتك."
+"ركز على انقباض الصدر ولا تستخدم وزنًا أكبر من قدرتك."
 
 },
 
@@ -946,7 +1283,233 @@ id:"push-ups",
 name:"Push Ups",
 
 description:
-"تمرين بوزن الجسم فعال لتقوية عضلات الصدر والجزء العلوي.",
+"تمرين بوزن الجسم لإنهاء تمرين الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1598971639058-999e7a7b4f0a?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12-15",
+
+warmup:"بدون",
+
+rest:"60 ثانية",
+
+how:
+"حافظ على الجسم في خط مستقيم، انزل بالصدر ناحية الأرض ثم ادفع الجسم لأعلى.",
+
+tips:
+"حافظ على الحوض ثابتًا والأداء متحكمًا."
+
+}
+
+]
+
+}
+
+}
+
+},
+
+
+cut:{
+
+name:"تنشيف",
+
+description:
+"برنامج يجمع بين المقاومة والنشاط البدني للمساعدة على خفض الدهون.",
+
+level:"Fat Loss",
+
+duration:"55 دقيقة",
+
+workout:{
+
+title:"Chest + Cardio",
+
+description:
+"تمرين الصدر مع نشاط كارديو ضمن برنامج التنشيف.",
+
+exercises:[
+
+{
+
+id:"bench-press",
+
+name:"Bench Press",
+
+description:
+"تمرين مقاومة أساسي للحفاظ على قوة وعضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85",
+
+sets:"4",
+
+reps:"10-12",
+
+warmup:"2 Sets",
+
+rest:"60 ثانية",
+
+how:
+"ثبت جسمك على البنش، انزل البار بتحكم ناحية منتصف الصدر ثم ادفعه لأعلى.",
+
+tips:
+"حافظ على الأداء الصحيح واجعل الراحة بين المجموعات قصيرة حسب قدرتك."
+
+},
+
+{
+
+id:"incline-press",
+
+name:"Incline Press",
+
+description:
+"تمرين للجزء العلوي من الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12",
+
+warmup:"1 Set",
+
+rest:"60 ثانية",
+
+how:
+"استخدم البنش المائل وادفع الأوزان لأعلى مع التحكم في النزول.",
+
+tips:
+"ركز على الحركة الكاملة ولا تستخدم وزنًا يسبب فقدان التحكم."
+
+},
+
+{
+
+id:"chest-fly",
+
+name:"Chest Fly",
+
+description:
+"تمرين عزل لعضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12-15",
+
+warmup:"1 Set",
+
+rest:"45 ثانية",
+
+how:
+"اجمع الذراعين أمام الصدر ثم ارجع ببطء إلى نقطة البداية.",
+
+tips:
+"ركز على العضلة ولا تعتمد على سرعة الحركة."
+
+},
+
+{
+
+id:"push-ups",
+
+name:"Push Ups",
+
+description:
+"تمرين بوزن الجسم لرفع شدة تمرين الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1598971639058-999e7a7b4f0a?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"15-20",
+
+warmup:"بدون",
+
+rest:"45 ثانية",
+
+how:
+"حافظ على الجسم مستقيمًا وانزل بالصدر ثم ادفع الجسم لأعلى.",
+
+tips:
+"توقف إذا فقدت القدرة على الحفاظ على الوضع الصحيح."
+
+}
+
+]
+
+}
+
+}
+
+},
+
+
+fitness:{
+
+name:"لياقة وحرق دهون",
+
+description:
+"برنامج لتحسين اللياقة والتحمل وزيادة النشاط البدني.",
+
+level:"Fitness",
+
+duration:"45 دقيقة",
+
+workout:{
+
+title:"Full Body",
+
+description:
+"تمرين شامل لتحسين اللياقة والتحمل.",
+
+exercises:[
+
+{
+
+id:"bench-press",
+
+name:"Bench Press",
+
+description:
+"تمرين مقاومة للجزء العلوي من الجسم.",
+
+image:
+"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12",
+
+warmup:"1 Set",
+
+rest:"60 ثانية",
+
+how:
+"نفذ الحركة بشكل متحكم مع ثبات الكتفين والقدمين.",
+
+tips:
+"لا تسرع في التكرارات وحافظ على التنفس المنتظم."
+
+},
+
+{
+
+id:"push-ups",
+
+name:"Push Ups",
+
+description:
+"تمرين بوزن الجسم لتحسين قوة وتحمل الجزء العلوي.",
 
 image:
 "https://images.unsplash.com/photo-1598971639058-999e7a7b4f0a?auto=format&fit=crop&w=900&q=85",
@@ -957,13 +1520,69 @@ reps:"15",
 
 warmup:"بدون",
 
+rest:"45 ثانية",
+
+how:
+"حافظ على الجسم في خط مستقيم وانزل ثم ادفع لأعلى.",
+
+tips:
+"نفذ التمرين بسرعة مناسبة مع الحفاظ على التقنية."
+
+},
+
+{
+
+id:"chest-fly",
+
+name:"Chest Fly",
+
+description:
+"تمرين عزل خفيف لتحريك عضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"15",
+
+warmup:"بدون",
+
+rest:"45 ثانية",
+
+how:
+"افتح الذراعين ثم اجمعهما أمام الصدر بحركة متحكم فيها.",
+
+tips:
+"استخدم وزنًا مناسبًا ولا تفقد التحكم."
+
+},
+
+{
+
+id:"incline-press",
+
+name:"Incline Press",
+
+description:
+"تمرين للصدر مع تركيز على التحمل.",
+
+image:
+"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"12-15",
+
+warmup:"1 Set",
+
 rest:"60 ثانية",
 
 how:
-"حافظ على الجسم في خط مستقيم، انزل بالصدر ناحية الأرض مع ثبات الجذع ثم ادفع الجسم لأعلى.",
+"ادفع الأوزان لأعلى ثم ارجع ببطء إلى نقطة البداية.",
 
 tips:
-"حافظ على الحوض ثابتًا ولا ترفع الرأس. لو التمرين صعب قلل التكرارات مع الحفاظ على الأداء الصحيح."
+"ركز على التنفس والحركة الكاملة."
 
 }
 
@@ -971,8 +1590,157 @@ tips:
 
 }
 
+}
+
+},
+
+
+strength:{
+
+name:"زيادة القوة",
+
+description:
+"برنامج يركز على تمارين المقاومة والأوزان مع تكرارات أقل.",
+
+level:"Strength",
+
+duration:"50 دقيقة",
+
+workout:{
+
+title:"Chest",
+
+description:
+"تمرين الصدر ضمن برنامج زيادة القوة.",
+
+exercises:[
+
+{
+
+id:"bench-press",
+
+name:"Bench Press",
+
+description:
+"تمرين أساسي لزيادة قوة الدفع للجزء العلوي.",
+
+image:
+"https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85",
+
+sets:"5",
+
+reps:"5-6",
+
+warmup:"3 Sets",
+
+rest:"120 ثانية",
+
+how:
+"ثبت الجسم جيدًا على البنش، انزل البار بتحكم ثم ادفعه بقوة مع الحفاظ على مسار ثابت.",
+
+tips:
+"استخدم وزنًا مناسبًا لمستواك وركز على التقنية قبل زيادة الوزن."
+
+},
+
+{
+
+id:"incline-press",
+
+name:"Incline Press",
+
+description:
+"تمرين مركب لتقوية الجزء العلوي من الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85",
+
+sets:"4",
+
+reps:"6-8",
+
+warmup:"2 Sets",
+
+rest:"120 ثانية",
+
+how:
+"ابدأ من وضع ثابت وادفع الأوزان لأعلى مع التحكم الكامل.",
+
+tips:
+"لا ترفع الوزن إذا تسبب ذلك في فقدان التقنية."
+
+},
+
+{
+
+id:"chest-fly",
+
+name:"Chest Fly",
+
+description:
+"تمرين مساعد لعضلات الصدر.",
+
+image:
+"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"10",
+
+warmup:"1 Set",
+
+rest:"75 ثانية",
+
+how:
+"نفذ الحركة ببطء مع التركيز على الانقباض.",
+
+tips:
+"استخدم وزنًا متوسطًا وحافظ على الكوعين في وضع ثابت."
+
+},
+
+{
+
+id:"push-ups",
+
+name:"Push Ups",
+
+description:
+"تمرين مساعد لتقوية الدفع والتحمل العضلي.",
+
+image:
+"https://images.unsplash.com/photo-1598971639058-999e7a7b4f0a?auto=format&fit=crop&w=900&q=85",
+
+sets:"3",
+
+reps:"10-15",
+
+warmup:"بدون",
+
+rest:"60 ثانية",
+
+how:
+"حافظ على جسم مستقيم وانزل بالصدر ثم ادفع لأعلى.",
+
+tips:
+"حافظ على وضع الجسم الصحيح طوال المجموعة."
+
+}
+
+]
+
+}
+
+}
+
+}
+
 };
 
+
+/* =========================
+   URL PARAMETERS
+========================= */
 
 const params =
 new URLSearchParams(
@@ -987,10 +1755,29 @@ const exerciseName =
 params.get("exercise");
 
 
-const workout =
-workouts[workoutName] ||
-workouts.chest;
+/* =========================
+   ELEMENTS
+========================= */
 
+const goalScreen =
+document.getElementById(
+"goalScreen"
+);
+
+const workoutScreen =
+document.getElementById(
+"workoutScreen"
+);
+
+const currentGoalText =
+document.getElementById(
+"currentGoalText"
+);
+
+const changeGoal =
+document.getElementById(
+"changeGoal"
+);
 
 const workoutTitle =
 document.getElementById(
@@ -1028,6 +1815,57 @@ document.getElementById(
 );
 
 
+/* =========================
+   CURRENT PROGRAM
+========================= */
+
+let selectedGoal =
+localStorage.getItem(
+"bodyresetWorkoutGoal"
+);
+
+
+/* =========================
+   SHOW GOAL SCREEN
+========================= */
+
+function showGoalScreen(){
+
+goalScreen.classList.remove(
+"hidden"
+);
+
+workoutScreen.classList.add(
+"hidden"
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+   LOAD WORKOUT
+========================= */
+
+function loadWorkout(goal){
+
+const program =
+workoutPrograms[goal];
+
+if(!program){
+return;
+}
+
+const workout =
+program.workout;
+
+currentGoalText.textContent =
+program.name;
+
 workoutTitle.textContent =
 workout.title;
 
@@ -1035,16 +1873,87 @@ workoutDescription.textContent =
 workout.description;
 
 workoutLevel.textContent =
-workout.level;
+program.level;
 
 workoutDuration.textContent =
-workout.duration;
+program.duration;
 
 exerciseCount.textContent =
 workout.exercises.length;
 
+goalScreen.classList.add(
+"hidden"
+);
 
-function renderExercises(){
+workoutScreen.classList.remove(
+"hidden"
+);
+
+renderExercises(
+workout.exercises
+);
+
+updateDots();
+
+}
+
+
+/* =========================
+   SELECT GOAL
+========================= */
+
+document
+.querySelectorAll(".goal-card")
+.forEach(
+(card)=>{
+
+card.addEventListener(
+"click",
+()=>{
+
+const goal =
+card.dataset.goal;
+
+localStorage.setItem(
+"bodyresetWorkoutGoal",
+goal
+);
+
+selectedGoal =
+goal;
+
+loadWorkout(
+goal
+);
+
+}
+);
+
+}
+);
+
+
+/* =========================
+   CHANGE GOAL
+========================= */
+
+changeGoal.addEventListener(
+"click",
+()=>{
+
+showGoalScreen();
+
+}
+);
+
+
+/* =========================
+   RENDER EXERCISES
+========================= */
+
+function renderExercises(
+exercises
+){
 
 exerciseSlider.innerHTML =
 "";
@@ -1053,7 +1962,7 @@ dots.innerHTML =
 "";
 
 
-workout.exercises.forEach(
+exercises.forEach(
 (exercise,index)=>{
 
 const card =
@@ -1201,6 +2110,10 @@ dot
 }
 
 
+/* =========================
+   UPDATE DOTS
+========================= */
+
 function updateDots(){
 
 const cards =
@@ -1217,10 +2130,8 @@ if(!cards.length){
 return;
 }
 
-
 const sliderRect =
 exerciseSlider.getBoundingClientRect();
-
 
 let closestIndex =
 0;
@@ -1272,6 +2183,10 @@ index === closestIndex
 
 }
 
+
+/* =========================
+   MODAL
+========================= */
 
 const modal =
 document.getElementById(
@@ -1334,6 +2249,10 @@ document.getElementById(
 );
 
 
+/* =========================
+   OPEN EXERCISE
+========================= */
+
 function openExercise(
 exercise
 ){
@@ -1382,6 +2301,10 @@ document.body.style.overflow =
 
 }
 
+
+/* =========================
+   CLOSE EXERCISE
+========================= */
 
 function closeExercise(){
 
@@ -1447,6 +2370,10 @@ closeExercise();
 );
 
 
+/* =========================
+   SLIDER
+========================= */
+
 exerciseSlider.addEventListener(
 "scroll",
 updateDots,
@@ -1456,35 +2383,19 @@ passive:true
 );
 
 
-renderExercises();
+/* =========================
+   INITIAL LOAD
+========================= */
 
-updateDots();
+if(selectedGoal){
 
-
-/* OPEN SPECIFIC EXERCISE FROM URL */
-
-if(exerciseName){
-
-const selectedExercise =
-workout.exercises.find(
-(item)=>
-item.id === exerciseName
+loadWorkout(
+selectedGoal
 );
 
-if(selectedExercise){
+}else{
 
-setTimeout(
-()=>{
-
-openExercise(
-selectedExercise
-);
-
-},
-250
-);
-
-}
+showGoalScreen();
 
 }
 
