@@ -732,6 +732,48 @@
 
     <section id="goalScreen" class="screen active">
 
+        <div class="section-header">
+            <h2>اختار هدفك</h2>
+        </div>
+
+        <div class="goal-grid">
+
+            <div class="goal-card" onclick="selectGoal('bulk')">
+                <div class="goal-icon">💪</div>
+                <h3>تضخيم</h3>
+                <p>
+                    زيادة الكتلة العضلية وبناء حجم وقوة عضلية.
+                </p>
+            </div>
+
+            <div class="goal-card" onclick="selectGoal('cut')">
+                <div class="goal-icon">🔥</div>
+                <h3>تنشيف</h3>
+                <p>
+                    تقليل الدهون مع الحفاظ على الكتلة العضلية.
+                </p>
+            </div>
+
+            <div class="goal-card" onclick="selectGoal('fitness')">
+                <div class="goal-icon">🏃</div>
+                <h3>لياقة وحرق دهون</h3>
+                <p>
+                    تحسين اللياقة العامة ورفع معدل النشاط.
+                </p>
+            </div>
+
+            <div class="goal-card" onclick="selectGoal('strength')">
+                <div class="goal-icon">🏋️</div>
+                <h3>زيادة القوة</h3>
+                <p>
+                    التركيز على القوة والأوزان والأداء الأساسي.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
 
     <!-- =====================================================
          SCREEN 2 : SYSTEMS
@@ -743,7 +785,13 @@
             <h2 id="systemTitle">أنظمة التدريب</h2>
 
             <button class="small-back" onclick="showGoals()">
-                
+                ← تغيير الهدف
+            </button>
+        </div>
+
+        <div class="system-grid" id="systemGrid"></div>
+
+    </section>
 
 
     <!-- =====================================================
@@ -3897,4 +3945,4 @@
 </script>
 
 </body>
-   </html>
+</html>
