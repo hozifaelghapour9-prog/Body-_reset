@@ -84,7 +84,7 @@ background:#fff;
 border-radius:2px;
 }
 
-/* ================= PROFILE MENU ================= */
+/* ================= PROFILE ================= */
 
 .profile-menu{
 position:fixed;
@@ -153,7 +153,6 @@ display:block;
 position:fixed;
 top:0;
 left:-320px;
-right:auto;
 width:320px;
 height:100vh;
 background:#fff;
@@ -171,7 +170,6 @@ left:0;
 .side-menu-header{
 display:flex;
 align-items:center;
-justify-content:flex-start;
 gap:14px;
 margin-bottom:25px;
 }
@@ -179,7 +177,6 @@ margin-bottom:25px;
 .side-menu-header h2{
 color:#071a33;
 font-size:22px;
-margin:0;
 }
 
 .close-menu{
@@ -191,13 +188,6 @@ border-radius:10px;
 font-size:24px;
 cursor:pointer;
 color:#071a33;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.close-menu:hover{
-background:#e2e8f0;
 }
 
 .side-menu a{
@@ -225,7 +215,6 @@ border:none;
 border-radius:10px;
 background:none;
 color:#071a33;
-font-family:Arial,sans-serif;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
@@ -244,7 +233,6 @@ background:#f1f5f9;
 display:flex;
 align-items:center;
 justify-content:center;
-direction:ltr;
 }
 
 .translate-icon svg{
@@ -263,17 +251,11 @@ border:none;
 background:none;
 color:#dc2626;
 text-align:right;
-font-family:Arial,sans-serif;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
 padding:15px 12px;
 border-radius:10px;
-}
-
-.side-menu .logout-btn:hover{
-background:#fef2f2;
-color:#b91c1c;
 }
 
 /* ================= NOTIFICATIONS ================= */
@@ -300,7 +282,6 @@ padding:15px;
 font-size:17px;
 font-weight:bold;
 border-bottom:1px solid #d7dee8;
-color:#071a33;
 }
 
 .notification-item{
@@ -308,10 +289,6 @@ padding:15px;
 border-bottom:1px solid #d7dee8;
 font-size:14px;
 color:#334155;
-}
-
-.notification-item:last-child{
-border-bottom:none;
 }
 
 /* ================= MAIN ================= */
@@ -348,7 +325,7 @@ fill:none;
 stroke-width:1.8;
 }
 
-/* ================= الاشتراكات ================= */
+/* ================= SUBSCRIPTIONS ================= */
 
 .subscription-title{
 font-size:32px;
@@ -358,7 +335,7 @@ text-align:center;
 margin-bottom:25px;
 }
 
-/* ================= SUBSCRIPTION BOXES ================= */
+/* ================= 3 VERTICAL BOXES ================= */
 
 .subscription-boxes{
 display:grid;
@@ -369,7 +346,7 @@ margin-bottom:38px;
 }
 
 .subscription-box{
-height:170px;
+height:260px;
 background:#fff;
 border:1px solid #d7dee8;
 border-radius:20px;
@@ -478,7 +455,6 @@ flex-direction:column;
 align-items:center;
 justify-content:flex-end;
 gap:6px;
-min-width:0;
 }
 
 .calorie-bar{
@@ -494,7 +470,6 @@ height:var(--bar-height);
 font-size:9px;
 font-weight:bold;
 color:#071a33;
-white-space:nowrap;
 }
 
 .weekly-progress{
@@ -604,7 +579,6 @@ text-align:center;
 .exercise-name h3{
 font-size:19px;
 color:#071a33;
-font-weight:bold;
 }
 
 .exercise-content{
@@ -622,11 +596,6 @@ padding:12px;
 border-radius:9px;
 font-size:14px;
 font-weight:bold;
-transition:0.2s;
-}
-
-.start-btn:hover{
-background:#1d4ed8;
 }
 
 .workout-dots{
@@ -795,11 +764,6 @@ text-decoration:none;
 font-weight:bold;
 }
 
-#message{
-text-align:center;
-margin-top:15px;
-}
-
 /* ================= BOTTOM NAV ================= */
 
 .bottom-nav{
@@ -861,32 +825,11 @@ height:23px;
 stroke:#fff;
 }
 
-.workout-nav .nav-icon svg{
-width:34px;
-height:34px;
-stroke:#071a33;
-stroke-width:2.4;
-}
-
-.progress-nav .nav-icon svg{
-width:29px;
-height:29px;
-stroke:#2563eb;
-stroke-width:2;
-}
-
-.profile-nav .nav-icon svg{
-width:28px;
-height:28px;
-stroke:#2563eb;
-}
-
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:800px){
 
 .container{
-max-width:100%;
 padding-left:18px;
 padding-right:18px;
 }
@@ -896,7 +839,7 @@ gap:14px;
 }
 
 .subscription-box{
-height:140px;
+height:220px;
 }
 
 .stat{
@@ -931,13 +874,13 @@ margin-bottom:20px;
 
 .subscription-boxes{
 grid-template-columns:repeat(3,1fr);
-gap:9px;
+gap:8px;
 margin-bottom:28px;
 }
 
 .subscription-box{
-height:110px;
-border-radius:15px;
+height:180px;
+border-radius:14px;
 }
 
 .stat{
@@ -974,23 +917,9 @@ width:29px;
 height:29px;
 }
 
-.nav-icon svg{
-width:25px;
-height:25px;
-}
-
 .home-nav .nav-icon{
 width:37px;
 height:37px;
-}
-
-.home-nav .nav-icon svg{
-width:21px;
-height:21px;
-}
-
-.workout-nav .nav-icon svg{
-width:32px;
 }
 
 .profile-menu{
@@ -1034,8 +963,6 @@ font-size:8px;
 </head>
 
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -1114,7 +1041,6 @@ id="sideMenu">
 <button
 class="close-menu"
 id="closeMenu"
-aria-label="إغلاق القائمة"
 >
 ×
 </button>
@@ -1147,15 +1073,10 @@ id="languageSwitcher"
 <svg viewBox="0 0 24 24">
 
 <path d="M4 19L8.5 5L13 19"></path>
-
 <path d="M5.5 15H11.5"></path>
-
 <path d="M15 6H21"></path>
-
 <path d="M18 4V6"></path>
-
 <path d="M16 9C17 11.8 18.7 14 21 15.5"></path>
-
 <path d="M21 9C20 11.8 18.3 14 16 15.5"></path>
 
 </svg>
@@ -1184,7 +1105,6 @@ id="logoutBtn"
 <!-- ================= MAIN ================= -->
 
 <main class="container">
-
 
 <div class="top-area">
 
@@ -1239,15 +1159,18 @@ Notifications
 </h2>
 
 
-<!-- ================= 3 HORIZONTAL EMPTY BOXES ================= -->
+<!-- ================= 3 VERTICAL BOXES ================= -->
 
 <div class="subscription-boxes">
 
-<div class="subscription-box"></div>
+<div class="subscription-box">
+</div>
 
-<div class="subscription-box"></div>
+<div class="subscription-box">
+</div>
 
-<div class="subscription-box"></div>
+<div class="subscription-box">
+</div>
 
 </div>
 
@@ -1295,104 +1218,41 @@ kcal
 
 </div>
 
-
 <div class="calorie-chart">
 
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:70px;"
-></div>
-
-<span>
-SAT
-</span>
-
+<div class="calorie-bar" style="--bar-height:70px;"></div>
+<span>SAT</span>
 </div>
 
-
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:110px;"
-></div>
-
-<span>
-SUN
-</span>
-
+<div class="calorie-bar" style="--bar-height:110px;"></div>
+<span>SUN</span>
 </div>
 
-
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:88px;"
-></div>
-
-<span>
-MON
-</span>
-
+<div class="calorie-bar" style="--bar-height:88px;"></div>
+<span>MON</span>
 </div>
 
-
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:120px;"
-></div>
-
-<span>
-TUE
-</span>
-
+<div class="calorie-bar" style="--bar-height:120px;"></div>
+<span>TUE</span>
 </div>
 
-
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:98px;"
-></div>
-
-<span>
-WED
-</span>
-
+<div class="calorie-bar" style="--bar-height:98px;"></div>
+<span>WED</span>
 </div>
 
-
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:125px;"
-></div>
-
-<span>
-THU
-</span>
-
+<div class="calorie-bar" style="--bar-height:125px;"></div>
+<span>THU</span>
 </div>
 
-
 <div class="calorie-day">
-
-<div
-class="calorie-bar"
-style="--bar-height:105px;"
-></div>
-
-<span>
-FRI
-</span>
-
+<div class="calorie-bar" style="--bar-height:105px;"></div>
+<span>FRI</span>
 </div>
 
 </div>
@@ -1472,18 +1332,13 @@ See All
 Chest
 </div>
 
-
 <div class="workout-slider">
 
 
 <div class="exercise-card">
 
 <div class="exercise-name">
-
-<h3>
-Bench Press
-</h3>
-
+<h3>Bench Press</h3>
 </div>
 
 <img
@@ -1508,11 +1363,7 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-
-<h3>
-Incline Press
-</h3>
-
+<h3>Incline Press</h3>
 </div>
 
 <img
@@ -1537,11 +1388,7 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-
-<h3>
-Chest Fly
-</h3>
-
+<h3>Chest Fly</h3>
 </div>
 
 <img
@@ -1566,11 +1413,7 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-
-<h3>
-Push Ups
-</h3>
-
+<h3>Push Ups</h3>
 </div>
 
 <img
@@ -1807,16 +1650,12 @@ See All
 
 </section>
 
-
-<div id="message"></div>
-
 </main>
 
 
 <!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
-
 
 <a
 href="dashboard.html"
@@ -1828,9 +1667,7 @@ class="nav-item home-nav"
 <svg viewBox="0 0 24 24">
 
 <path d="M3 10.5L12 3l9 7.5"></path>
-
 <path d="M5 9.5V21h14V9.5"></path>
-
 <path d="M9 21v-6h6v6"></path>
 
 </svg>
@@ -1854,13 +1691,9 @@ class="nav-item workout-nav"
 <svg viewBox="0 0 24 24">
 
 <path d="M6 9v6"></path>
-
 <path d="M3.5 10v4"></path>
-
 <path d="M18 9v6"></path>
-
 <path d="M20.5 10v4"></path>
-
 <path d="M6 12h12"></path>
 
 </svg>
@@ -1884,11 +1717,8 @@ class="nav-item progress-nav"
 <svg viewBox="0 0 24 24">
 
 <path d="M3 21H21"></path>
-
 <path d="M5 21V14H8V21"></path>
-
 <path d="M10.5 21V9H13.5V21"></path>
-
 <path d="M16 21V4H19V21"></path>
 
 </svg>
