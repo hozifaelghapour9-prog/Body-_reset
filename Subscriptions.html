@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BodyReset - Subscriptions</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(0, 255, 200, 0.10), transparent 35%),
+                radial-gradient(circle at bottom left, rgba(0, 180, 255, 0.08), transparent 35%),
+                #080b10;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            height: 70px;
+            background: rgba(5, 8, 12, 0.92);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: #00e6c3;
+        }
+
+        .header-title {
+            font-size: 14px;
+            color: #9da6b2;
+        }
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        .container {
+            width: min(1100px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 30px 0 100px;
+        }
+
+        .page-title {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: #8f99a6;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        /* =========================
+           GOAL SECTION
+        ========================== */
+
+        .section {
+            margin-bottom: 26px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            color: #89929f;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .goal-card {
+            position: relative;
+            min-height: 155px;
+            padding: 22px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.055),
+                    rgba(255, 255, 255, 0.018)
+                );
+            cursor: pointer;
+            transition: 0.25s ease;
+            overflow: hidden;
+        }
+
+        .goal-card::before {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: rgba(0, 230, 195, 0.08);
+            border-radius: 50%;
+            top: -35px;
+            left: -25px;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 230, 195, 0.35);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .goal-card.active {
+            border-color: #00e6c3;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 230, 195, 0.15),
+                    rgba(0, 230, 195, 0.035)
+                );
+            box-shadow:
+                0 0 0 1px rgba(0, 230, 195, 0.10),
+                0 12px 35px rgba(0, 230, 195, 0.08);
+        }
+
+        .goal-check {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .goal-card.active .goal-check {
+            background: #00e6c3;
+            border-color: #00e6c3;
+            color: #06110f;
+        }
+
+        .goal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: rgba(0, 230, 195, 0.08);
+            margin-bottom: 15px;
+        }
+
+        .goal-name {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .goal-description {
+            color: #89929f;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .stat-label {
+            color: #89929f;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .stat-value span {
+            font-size: 13px;
+            color: #89929f;
+            font-weight: 500;
+            margin-right: 4px;
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: rgba(0, 230, 195, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CALORIE CARD
+        ========================== */
+
+        .calorie-card {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 22px;
+        }
+
+        .calorie-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calorie-title {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .calorie-total {
+            color: #00e6c3;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .calorie-total small {
+            color: #89929f;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .calorie-chart {
+            height: 135px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .chart-day {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bar-area {
+            height: 110px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .bar {
+            width: min(32px, 65%);
+            border-radius: 8px 8px 4px 4px;
+            background: linear-gradient(
+                to top,
+                #007d6b,
+                #00e6c3
+            );
+            min-height: 8px;
+            transition: 0.3s ease;
+        }
+
+        .bar:hover {
+            filter: brightness(1.15);
+            transform: scaleX(1.05);
+        }
+
+        .day-label {
+            color: #737d89;
+            font-size: 11px;
+            margin-top: 9px;
+        }
+
+        /* =========================
+           SUBSCRIPTION INFO
+        ========================== */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-row:first-child {
+            padding-top: 0;
+        }
+
+        .info-label {
+            color: #89929f;
+            font-size: 13px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #00e6c3;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00e6c3;
+            box-shadow: 0 0 10px rgba(0, 230, 195, 0.7);
+        }
+
+        /* =========================
+           SAVE MESSAGE
+        ========================== */
+
+        .save-message {
+            position: fixed;
+            left: 50%;
+            bottom: 92px;
+            transform: translateX(-50%) translateY(20px);
+            background: #10171a;
+            border: 1px solid rgba(0, 230, 195, 0.25);
+            color: #00e6c3;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 13px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s ease;
+            z-index: 300;
+            white-space: nowrap;
+        }
+
+        .save-message.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* =========================
+           BOTTOM NAV
+        ========================== */
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 68px;
+            background: rgba(5, 8, 12, 0.96);
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 55px;
+            z-index: 200;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #737d89;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            transition: 0.2s ease;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #00e6c3;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 850px) {
+            .goals-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                height: 64px;
+                padding: 0 17px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .header-title {
+                font-size: 12px;
+            }
+
+            .container {
+                width: min(100% - 24px, 1100px);
+                padding-top: 24px;
+                padding-bottom: 95px;
+            }
+
+            .page-title {
+                font-size: 25px;
+            }
+
+            .page-subtitle {
+                margin-bottom: 22px;
+            }
+
+            .goals-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .goal-card {
+                min-height: 145px;
+                padding: 17px 14px;
+                border-radius: 16px;
+            }
+
+            .goal-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 21px;
+                margin-bottom: 12px;
+            }
+
+            .goal-name {
+                font-size: 15px;
+            }
+
+            .goal-description {
+                font-size: 11px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calorie-card {
+                padding: 17px;
+            }
+
+            .calorie-chart {
+                height: 130px;
+            }
+
+            .bar-area {
+                height: 105px;
+            }
+
+            .bottom-nav {
+                height: 65px;
+                gap: 30px;
+            }
+
+            .save-message {
+                bottom: 82px;
+                max-width: calc(100% - 30px);
+                white-space: normal;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+        <div class="logo">
+            Body<span>Reset</span>
+        </div>
+
+        <div class="header-title">
+            الاشتراكات
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="container">
+
+        <h1 class="page-title">Subscriptions</h1>
+
+        <p class="page-subtitle">
+            اختار هدفك عشان نجهز لك نظام التمرين المناسب
+        </p>
+
+
+        <!-- =========================
+             GOAL
+        ========================== -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                🎯 هدفك
+            </h2>
+
+            <p class="section-subtitle">
+                اختيار الهدف هيحدد أنظمة التمرين المتاحة ليك في Workout
+            </p>
+
+            <div class="goals-grid">
+
+                <!-- BULK -->
+
+                <div
+                    class="goal-card"
+                    data-goal="bulk"
+                    onclick="selectGoal('bulk')"
+                >
+
+                    <div class="goal-check">
+                        ✓
+                    </div>
+
+                    <div class="goal-icon">
+                        💪
+                    </div>
+
+                    <div class="goal-name">
+                        تضخيم
+                    </div>
+
+                    <div class="goal-description">
+                        زيادة الكتلة العضلية وبناء حجم أكبر
+                    </div>
+
+                </div>
+
+
+                <!-- CUT -->
+
+                <div
+                    class="goal-card"
+                    data-goal="cut"
+                    onclick="selectGoal('cut')"
+                >
+
+                    <div class="goal-check">
+                        ✓
+                    </div>
+
+                    <div class="goal-icon">
+                        🔥
+                    </div>
+
+                    <div class="goal-name">
+                        تنشيف
+                    </div>
+
+                    <div class="goal-description">
+                        تقليل الدهون مع الحفاظ على الكتلة العضلية
+                    </div>
+
+                </div>
+
+
+                <!-- FITNESS -->
+
+                <div
+                    class="goal-card"
+                    data-goal="fitness"
+                    onclick="selectGoal('fitness')"
+                >
+
+                    <div class="goal-check">
+                        ✓
+                    </div>
+
+                    <div class="goal-icon">
+                        ⚡
+                    </div>
+
+                    <div class="goal-name">
+                        لياقة
+                    </div>
+
+                    <div class="goal-description">
+                        تحسين اللياقة والنشاط والحركة اليومية
+                    </div>
+
+                </div>
+
+
+                <!-- STRENGTH -->
+
+                <div
+                    class="goal-card"
+                    data-goal="strength"
+                    onclick="selectGoal('strength')"
+                >
+
+                    <div class="goal-check">
+                        ✓
+                    </div>
+
+                    <div class="goal-icon">
+                        🏋️
+                    </div>
+
+                    <div class="goal-name">
+                        قوة
+                    </div>
+
+                    <div class="goal-description">
+                        زيادة القوة والأداء في التمارين الأساسية
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CALORIES
+        ========================== -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                🔥 نشاطك
+            </h2>
+
+            <p class="section-subtitle">
+                ملخص نشاطك خلال الأسبوع
+            </p>
+
+            <div class="calorie-card">
+
+                <div class="calorie-header">
+
+                    <div class="calorie-title">
+                        السعرات المحروقة
+                    </div>
+
+                    <div class="calorie-total">
+                        3,420
+                        <small>kcal</small>
+                    </div>
+
+                </div>
+
+
+                <div class="calorie-chart">
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:70px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">SAT</div>
+                    </div>
+
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:110px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">SUN</div>
+                    </div>
+
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:88px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">MON</div>
+                    </div>
+
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:120px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">TUE</div>
+                    </div>
+
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:98px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">WED</div>
+                    </div>
+
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:125px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">THU</div>
+                    </div>
+
+
+                    <div class="chart-day">
+                        <div class="bar-area">
+                            <div
+                                class="bar"
+                                style="height:105px;"
+                            ></div>
+                        </div>
+                        <div class="day-label">FRI</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                📊 إحصائياتك
+            </h2>
+
+            <p class="section-subtitle">
+                ملخص بياناتك الحالية
+            </p>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔥
+                    </div>
+
+                    <div class="stat-label">
+                        متوسط السعرات
+                    </div>
+
+                    <div class="stat-value">
+                        489
+                        <span>kcal</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🏃
+                    </div>
+
+                    <div class="stat-label">
+                        التمارين هذا الأسبوع
+                    </div>
+
+                    <div class="stat-value">
+                        5
+                        <span>تمارين</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏱️
+                    </div>
+
+                    <div class="stat-label">
+                        وقت التمرين
+                    </div>
+
+                    <div class="stat-value">
+                        4.8
+                        <span>ساعة</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SUBSCRIPTION INFO
+        ========================== -->
+
+        <section class="section">
+
+            <h2 class="section-title">
+                💳 حالة الاشتراك
+            </h2>
+
+            <p class="section-subtitle">
+                معلومات اشتراكك الحالي
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-card">
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            حالة الاشتراك
+                        </div>
+
+                        <div class="info-value status">
+                            <span class="status-dot"></span>
+                            نشط
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            الباقة
+                        </div>
+
+                        <div class="info-value">
+                            Premium
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            تاريخ البداية
+                        </div>
+
+                        <div class="info-value">
+                            01 / 10 / 2026
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            الهدف الحالي
+                        </div>
+
+                        <div
+                            class="info-value"
+                            id="selectedGoalText"
+                        >
+                            لم يتم الاختيار
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            الأنظمة المتاحة
+                        </div>
+
+                        <div class="info-value">
+                            حسب الهدف
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Workout
+                        </div>
+
+                        <div class="info-value">
+                            متاح
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SAVE MESSAGE
+    ========================== -->
+
+    <div
+        class="save-message"
+        id="saveMessage"
+    >
+        تم حفظ هدفك بنجاح ✓
+    </div>
+
+
+    <!-- =========================
+         BOTTOM NAV
+    ========================== -->
+
+    <nav class="bottom-nav">
+
+        <a
+            href="dashboard.html"
+            class="nav-item"
+        >
+            <span class="nav-icon">⌂</span>
+            <span>الرئيسية</span>
+        </a>
+
+
+        <a
+            href="workout.html"
+            class="nav-item"
+        >
+            <span class="nav-icon">🏋️</span>
+            <span>Workout</span>
+        </a>
+
+
+        <a
+            href="subscriptions.html"
+            class="nav-item active"
+        >
+            <span class="nav-icon">💳</span>
+            <span>Subscriptions</span>
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+         * أسماء الأهداف
+         */
+
+        const goalNames = {
+
+            bulk: "تضخيم",
+
+            cut: "تنشيف",
+
+            fitness: "لياقة",
+
+            strength: "قوة"
+
+        };
+
+
+        /*
+         * قراءة الهدف المحفوظ
+         */
+
+        function loadSelectedGoal() {
+
+            const savedGoal =
+                localStorage.getItem(
+                    "bodyresetSubscriptionGoal"
+                );
+
+
+            if (!savedGoal) {
+                return;
+            }
+
+
+            const goalCard =
+                document.querySelector(
+                    `.goal-card[data-goal="${savedGoal}"]`
+                );
+
+
+            if (goalCard) {
+
+                goalCard.classList.add("active");
+
+            }
+
+
+            const selectedGoalText =
+                document.getElementById(
+                    "selectedGoalText"
+                );
+
+
+            if (
+                selectedGoalText &&
+                goalNames[savedGoal]
+            ) {
+
+                selectedGoalText.textContent =
+                    goalNames[savedGoal];
+
+            }
+
+        }
+
+
+        /*
+         * اختيار الهدف
+         */
+
+        function selectGoal(goalId) {
+
+            /*
+             * حفظ الهدف
+             */
+
+            localStorage.setItem(
+                "bodyresetSubscriptionGoal",
+                goalId
+            );
+
+
+            /*
+             * إزالة التحديد من كل الكروت
+             */
+
+            document
+                .querySelectorAll(".goal-card")
+                .forEach(card => {
+
+                    card.classList.remove("active");
+
+                });
+
+
+            /*
+             * تحديد الهدف الحالي
+             */
+
+            const selectedCard =
+                document.querySelector(
+                    `.goal-card[data-goal="${goalId}"]`
+                );
+
+
+            if (selectedCard) {
+
+                selectedCard.classList.add("active");
+
+            }
+
+
+            /*
+             * تحديث اسم الهدف
+             */
+
+            const selectedGoalText =
+                document.getElementById(
+                    "selectedGoalText"
+                );
+
+
+            if (
+                selectedGoalText &&
+                goalNames[goalId]
+            ) {
+
+                selectedGoalText.textContent =
+                    goalNames[goalId];
+
+            }
+
+
+            /*
+             * رسالة الحفظ
+             */
+
+            showSaveMessage();
+
+        }
+
+
+        /*
+         * رسالة نجاح
+         */
+
+        function showSaveMessage() {
+
+            const message =
+                document.getElementById(
+                    "saveMessage"
+                );
+
+
+            message.classList.add("show");
+
+
+            setTimeout(() => {
+
+                message.classList.remove("show");
+
+            }, 1800);
+
+        }
+
+
+        /*
+         * تشغيل الصفحة
+         */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadSelectedGoal
+        );
+
+    </script>
+
+</body>
+</html>
