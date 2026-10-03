@@ -335,7 +335,7 @@ text-align:center;
 margin-bottom:25px;
 }
 
-/* ================= 3 VERTICAL BOXES ================= */
+/* ================= 3 BOXES ================= */
 
 .subscription-boxes{
 display:grid;
@@ -346,7 +346,7 @@ margin-bottom:38px;
 }
 
 .subscription-box{
-height:260px;
+height:850px;
 background:#fff;
 border:1px solid #d7dee8;
 border-radius:20px;
@@ -839,7 +839,7 @@ gap:14px;
 }
 
 .subscription-box{
-height:220px;
+height:850px;
 }
 
 .stat{
@@ -873,14 +873,12 @@ margin-bottom:20px;
 }
 
 .subscription-boxes{
-grid-template-columns:repeat(3,1fr);
 gap:8px;
 margin-bottom:28px;
 }
 
-/* نفس طول التابلت في التلفون */
 .subscription-box{
-height:220px;
+height:875px;
 border-radius:14px;
 }
 
@@ -960,6 +958,26 @@ font-size:8px;
 
 }
 
+/* ================= ORIENTATION ================= */
+
+/* الموبايل والتابلت بالطول */
+@media(max-width:800px) and (orientation:portrait){
+
+.subscription-boxes{
+grid-template-columns:1fr;
+}
+
+}
+
+/* الموبايل والتابلت بالعرض */
+@media(max-width:800px) and (orientation:landscape){
+
+.subscription-boxes{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
 </style>
 </head>
 
@@ -982,9 +1000,11 @@ class="menu-btn"
 id="menuBtn"
 aria-label="فتح القائمة"
 >
+
 <span></span>
 <span></span>
 <span></span>
+
 </button>
 
 </div>
@@ -1038,6 +1058,7 @@ id="sideMenu">
 class="close-menu"
 id="closeMenu"
 >
+
 ×
 </button>
 
@@ -1066,10 +1087,15 @@ id="languageSwitcher"
 <svg viewBox="0 0 24 24">
 
 <path d="M4 19L8.5 5L13 19"></path>
+
 <path d="M5.5 15H11.5"></path>
+
 <path d="M15 6H21"></path>
+
 <path d="M18 4V6"></path>
+
 <path d="M16 9C17 11.8 18.7 14 21 15.5"></path>
+
 <path d="M21 9C20 11.8 18.3 14 16 15.5"></path>
 
 </svg>
@@ -1086,7 +1112,9 @@ id="languageSwitcher"
 class="logout-btn"
 id="logoutBtn"
 >
+
 تسجيل الخروج
+
 </button>
 
 </div>
@@ -1145,7 +1173,7 @@ Notifications
 الاشتراكات
 </h2>
 
-<!-- ================= 3 VERTICAL BOXES ================= -->
+<!-- ================= 3 BOXES ================= -->
 
 <div class="subscription-boxes">
 
@@ -1205,38 +1233,80 @@ kcal
 <div class="calorie-chart">
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:70px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:70px;">
+</div>
+
 <span>SAT</span>
+
 </div>
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:110px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:110px;">
+</div>
+
 <span>SUN</span>
+
 </div>
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:88px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:88px;">
+</div>
+
 <span>MON</span>
+
 </div>
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:120px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:120px;">
+</div>
+
 <span>TUE</span>
+
 </div>
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:98px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:98px;">
+</div>
+
 <span>WED</span>
+
 </div>
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:125px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:125px;">
+</div>
+
 <span>THU</span>
+
 </div>
 
 <div class="calorie-day">
-<div class="calorie-bar" style="--bar-height:105px;"></div>
+
+<div
+class="calorie-bar"
+style="--bar-height:105px;">
+</div>
+
 <span>FRI</span>
+
 </div>
 
 </div>
@@ -1301,7 +1371,9 @@ Today's Workout
 href="workout.html?workout=chest"
 class="see-all"
 >
+
 See All
+
 </a>
 
 </div>
@@ -1331,7 +1403,9 @@ alt="Bench Press"
 href="workout.html?exercise=bench-press"
 class="start-btn"
 >
+
 ابدأ الآن
+
 </a>
 
 </div>
@@ -1355,7 +1429,9 @@ alt="Incline Press"
 href="workout.html?exercise=incline-press"
 class="start-btn"
 >
+
 ابدأ الآن
+
 </a>
 
 </div>
@@ -1379,7 +1455,9 @@ alt="Chest Fly"
 href="workout.html?exercise=chest-fly"
 class="start-btn"
 >
+
 ابدأ الآن
+
 </a>
 
 </div>
@@ -1403,7 +1481,9 @@ alt="Push Ups"
 href="workout.html?exercise=push-ups"
 class="start-btn"
 >
+
 ابدأ الآن
+
 </a>
 
 </div>
@@ -1435,7 +1515,9 @@ Community News
 href="#"
 class="see-all"
 >
+
 See All
+
 </a>
 
 </div>
@@ -1584,7 +1666,9 @@ Progress
 href="progress.html"
 class="see-all"
 >
+
 See All
+
 </a>
 
 </div>
@@ -1631,7 +1715,9 @@ class="nav-item home-nav"
 <svg viewBox="0 0 24 24">
 
 <path d="M3 10.5L12 3l9 7.5"></path>
+
 <path d="M5 9.5V21h14V9.5"></path>
+
 <path d="M9 21v-6h6v6"></path>
 
 </svg>
@@ -1654,9 +1740,13 @@ class="nav-item workout-nav"
 <svg viewBox="0 0 24 24">
 
 <path d="M6 9v6"></path>
+
 <path d="M3.5 10v4"></path>
+
 <path d="M18 9v6"></path>
+
 <path d="M20.5 10v4"></path>
+
 <path d="M6 12h12"></path>
 
 </svg>
@@ -1679,8 +1769,11 @@ class="nav-item progress-nav"
 <svg viewBox="0 0 24 24">
 
 <path d="M3 21H21"></path>
+
 <path d="M5 21V14H8V21"></path>
+
 <path d="M10.5 21V9H13.5V21"></path>
+
 <path d="M16 21V4H19V21"></path>
 
 </svg>
@@ -1736,21 +1829,17 @@ createClient
 from
 "https://esm.sh/@supabase/supabase-js@2";
 
-
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
-
 const SUPABASE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-
 
 const supabase =
 createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
-
 
 /* ================= PROFILE ================= */
 
@@ -1772,7 +1861,6 @@ document.getElementById("profileUsername");
 const profileEmail =
 document.getElementById("profileEmail");
 
-
 profileBtn.addEventListener(
 "click",
 function(event){
@@ -1786,7 +1874,6 @@ notificationPanel.classList.remove("show");
 }
 );
 
-
 /* ================= LOAD USER ================= */
 
 async function loadUser(){
@@ -1796,7 +1883,6 @@ data,
 error
 } =
 await supabase.auth.getUser();
-
 
 if(
 error ||
@@ -1810,27 +1896,22 @@ return;
 
 }
 
-
 const user =
 data.user;
-
 
 const username =
 user.user_metadata?.username ||
 user.user_metadata?.name ||
 "User";
 
-
 const email =
 user.email || "";
-
 
 const firstLetter =
 username
 .trim()
 .charAt(0)
 .toUpperCase();
-
 
 profileInitial.textContent =
 firstLetter || "?";
@@ -1846,9 +1927,7 @@ email;
 
 }
 
-
 loadUser();
-
 
 /* ================= MENU ================= */
 
@@ -1864,7 +1943,6 @@ document.getElementById("menuOverlay");
 const closeMenu =
 document.getElementById("closeMenu");
 
-
 menuBtn.addEventListener(
 "click",
 function(){
@@ -1875,7 +1953,6 @@ menuOverlay.classList.add("show");
 
 }
 );
-
 
 closeMenu.addEventListener(
 "click",
@@ -1888,7 +1965,6 @@ menuOverlay.classList.remove("show");
 }
 );
 
-
 menuOverlay.addEventListener(
 "click",
 function(){
@@ -1900,14 +1976,12 @@ menuOverlay.classList.remove("show");
 }
 );
 
-
 /* ================= LANGUAGE ================= */
 
 const languageSwitcher =
 document.getElementById(
 "languageSwitcher"
 );
-
 
 languageSwitcher.addEventListener(
 "click",
@@ -1919,12 +1993,10 @@ window.location.href =
 }
 );
 
-
 /* ================= LOGOUT ================= */
 
 const logoutBtn =
 document.getElementById("logoutBtn");
-
 
 logoutBtn.addEventListener(
 "click",
@@ -1935,7 +2007,6 @@ error
 } =
 await supabase.auth.signOut();
 
-
 if(!error){
 
 window.location.href =
@@ -1945,7 +2016,6 @@ window.location.href =
 
 }
 );
-
 
 /* ================= NOTIFICATIONS ================= */
 
@@ -1959,7 +2029,6 @@ document.getElementById(
 "notificationPanel"
 );
 
-
 notificationBtn.addEventListener(
 "click",
 function(event){
@@ -1972,7 +2041,6 @@ profileMenu.classList.remove("show");
 
 }
 );
-
 
 /* ================= OUTSIDE CLICK ================= */
 
@@ -1989,7 +2057,6 @@ if(
 profileMenu.classList.remove("show");
 
 }
-
 
 if(
 !notificationPanel.contains(event.target)
