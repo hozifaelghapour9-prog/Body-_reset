@@ -317,9 +317,9 @@ border-bottom:none;
 /* ================= MAIN ================= */
 
 .container{
-max-width:1100px;
+max-width:1250px;
 margin:auto;
-padding:28px 20px 110px;
+padding:28px 25px 110px;
 }
 
 .top-area{
@@ -351,24 +351,25 @@ stroke-width:1.8;
 /* ================= الاشتراكات ================= */
 
 .subscription-title{
-font-size:30px;
+font-size:32px;
 font-weight:bold;
 color:#fff;
 text-align:center;
-margin-bottom:22px;
+margin-bottom:25px;
 }
 
-/* ================= 3 EMPTY BOXES ================= */
+/* ================= SUBSCRIPTION BOXES ================= */
 
 .subscription-boxes{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin-bottom:35px;
+gap:22px;
+width:100%;
+margin-bottom:38px;
 }
 
 .subscription-box{
-height:150px;
+height:170px;
 background:#fff;
 border:1px solid #d7dee8;
 border-radius:20px;
@@ -378,14 +379,14 @@ border-radius:20px;
 
 .stats{
 display:flex;
-gap:18px;
+gap:20px;
 overflow-x:auto;
 margin-bottom:35px;
 padding-bottom:8px;
 }
 
 .stat{
-flex:0 0 calc((100% - 36px)/3);
+flex:0 0 calc((100% - 40px)/3);
 background:#fff;
 border:1px solid #d7dee8;
 border-radius:20px;
@@ -880,20 +881,14 @@ height:28px;
 stroke:#2563eb;
 }
 
-.nav-item.active{
-color:#071a33;
-}
-
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:800px){
 
-.stat{
-flex:0 0 270px;
-}
-
-.cards{
-grid-template-columns:1fr;
+.container{
+max-width:100%;
+padding-left:18px;
+padding-right:18px;
 }
 
 .subscription-boxes{
@@ -901,7 +896,15 @@ gap:14px;
 }
 
 .subscription-box{
-height:135px;
+height:140px;
+}
+
+.stat{
+flex:0 0 270px;
+}
+
+.cards{
+grid-template-columns:1fr;
 }
 
 }
@@ -928,12 +931,12 @@ margin-bottom:20px;
 
 .subscription-boxes{
 grid-template-columns:repeat(3,1fr);
-gap:10px;
+gap:9px;
 margin-bottom:28px;
 }
 
 .subscription-box{
-height:115px;
+height:110px;
 border-radius:15px;
 }
 
@@ -1229,14 +1232,14 @@ Notifications
 </div>
 
 
-<!-- ================= SUBSCRIPTIONS TITLE ================= -->
+<!-- ================= SUBSCRIPTIONS ================= -->
 
 <h2 class="subscription-title">
 الاشتراكات
 </h2>
 
 
-<!-- ================= 3 EMPTY BOXES ================= -->
+<!-- ================= 3 HORIZONTAL EMPTY BOXES ================= -->
 
 <div class="subscription-boxes">
 
@@ -1252,9 +1255,6 @@ Notifications
 <!-- ================= STATS ================= -->
 
 <div class="stats">
-
-
-<!-- WEEKLY PROGRESS -->
 
 <div class="stat">
 
@@ -1277,8 +1277,6 @@ Weekly Progress
 </div>
 
 
-<!-- CALORIE BURN -->
-
 <div class="stat">
 
 <h3>
@@ -1297,6 +1295,7 @@ kcal
 
 </div>
 
+
 <div class="calorie-chart">
 
 <div class="calorie-day">
@@ -1306,7 +1305,9 @@ class="calorie-bar"
 style="--bar-height:70px;"
 ></div>
 
-<span>SAT</span>
+<span>
+SAT
+</span>
 
 </div>
 
@@ -1318,7 +1319,9 @@ class="calorie-bar"
 style="--bar-height:110px;"
 ></div>
 
-<span>SUN</span>
+<span>
+SUN
+</span>
 
 </div>
 
@@ -1330,7 +1333,9 @@ class="calorie-bar"
 style="--bar-height:88px;"
 ></div>
 
-<span>MON</span>
+<span>
+MON
+</span>
 
 </div>
 
@@ -1342,7 +1347,9 @@ class="calorie-bar"
 style="--bar-height:120px;"
 ></div>
 
-<span>TUE</span>
+<span>
+TUE
+</span>
 
 </div>
 
@@ -1354,7 +1361,9 @@ class="calorie-bar"
 style="--bar-height:98px;"
 ></div>
 
-<span>WED</span>
+<span>
+WED
+</span>
 
 </div>
 
@@ -1366,7 +1375,9 @@ class="calorie-bar"
 style="--bar-height:125px;"
 ></div>
 
-<span>THU</span>
+<span>
+THU
+</span>
 
 </div>
 
@@ -1378,7 +1389,9 @@ class="calorie-bar"
 style="--bar-height:105px;"
 ></div>
 
-<span>FRI</span>
+<span>
+FRI
+</span>
 
 </div>
 
@@ -1386,8 +1399,6 @@ style="--bar-height:105px;"
 
 </div>
 
-
-<!-- WEEKLY ACTIVITY -->
 
 <div class="stat">
 
@@ -1468,7 +1479,11 @@ Chest
 <div class="exercise-card">
 
 <div class="exercise-name">
-<h3>Bench Press</h3>
+
+<h3>
+Bench Press
+</h3>
+
 </div>
 
 <img
@@ -1493,7 +1508,11 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-<h3>Incline Press</h3>
+
+<h3>
+Incline Press
+</h3>
+
 </div>
 
 <img
@@ -1518,7 +1537,11 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-<h3>Chest Fly</h3>
+
+<h3>
+Chest Fly
+</h3>
+
 </div>
 
 <img
@@ -1543,7 +1566,11 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-<h3>Push Ups</h3>
+
+<h3>
+Push Ups
+</h3>
+
 </div>
 
 <img
@@ -1598,7 +1625,6 @@ See All
 
 
 <section class="community-card">
-
 
 <div class="news-row">
 
@@ -1674,7 +1700,6 @@ Join the latest challenge
 
 </div>
 
-
 </section>
 
 
@@ -1690,7 +1715,6 @@ Join the latest challenge
 
 
 <div class="cards">
-
 
 <div class="card">
 
@@ -1732,7 +1756,6 @@ Nutrition
 </a>
 
 </div>
-
 
 </div>
 
