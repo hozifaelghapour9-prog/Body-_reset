@@ -1,1250 +1,2281 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>BodyReset - Subscriptions</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Tahoma, sans-serif;
-            background:
-                radial-gradient(circle at top right, rgba(0, 255, 200, 0.10), transparent 35%),
-                radial-gradient(circle at bottom left, rgba(0, 180, 255, 0.08), transparent 35%),
-                #080b10;
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        /* =========================
-           HEADER
-        ========================== */
-
-        header {
-            height: 70px;
-            background: rgba(5, 8, 12, 0.92);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 28px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .logo span {
-            color: #00e6c3;
-        }
-
-        .header-title {
-            font-size: 14px;
-            color: #9da6b2;
-        }
-
-        /* =========================
-           MAIN
-        ========================== */
-
-        .container {
-            width: min(1100px, calc(100% - 32px));
-            margin: 0 auto;
-            padding: 30px 0 100px;
-        }
-
-        .page-title {
-            font-size: 30px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .page-subtitle {
-            color: #8f99a6;
-            font-size: 14px;
-            margin-bottom: 28px;
-        }
-
-        /* =========================
-           GOAL SECTION
-        ========================== */
-
-        .section {
-            margin-bottom: 26px;
-        }
-
-        .section-title {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 6px;
-        }
-
-        .section-subtitle {
-            color: #89929f;
-            font-size: 13px;
-            margin-bottom: 16px;
-        }
-
-        .goals-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-        }
-
-        .goal-card {
-            position: relative;
-            min-height: 155px;
-            padding: 22px 18px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255, 255, 255, 0.055),
-                    rgba(255, 255, 255, 0.018)
-                );
-            cursor: pointer;
-            transition: 0.25s ease;
-            overflow: hidden;
-        }
-
-        .goal-card::before {
-            content: "";
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            background: rgba(0, 230, 195, 0.08);
-            border-radius: 50%;
-            top: -35px;
-            left: -25px;
-        }
-
-        .goal-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 230, 195, 0.35);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
-        }
-
-        .goal-card.active {
-            border-color: #00e6c3;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 230, 195, 0.15),
-                    rgba(0, 230, 195, 0.035)
-                );
-            box-shadow:
-                0 0 0 1px rgba(0, 230, 195, 0.10),
-                0 12px 35px rgba(0, 230, 195, 0.08);
-        }
-
-        .goal-check {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: transparent;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .goal-card.active .goal-check {
-            background: #00e6c3;
-            border-color: #00e6c3;
-            color: #06110f;
-        }
-
-        .goal-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            background: rgba(0, 230, 195, 0.08);
-            margin-bottom: 15px;
-        }
-
-        .goal-name {
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 6px;
-        }
-
-        .goal-description {
-            color: #89929f;
-            font-size: 12px;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           STATS
-        ========================== */
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.035);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 18px;
-            padding: 20px;
-        }
-
-        .stat-label {
-            color: #89929f;
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .stat-value {
-            font-size: 28px;
-            font-weight: 800;
-        }
-
-        .stat-value span {
-            font-size: 13px;
-            color: #89929f;
-            font-weight: 500;
-            margin-right: 4px;
-        }
-
-        .stat-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 13px;
-            background: rgba(0, 230, 195, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        /* =========================
-           CALORIE CARD
-        ========================== */
-
-        .calorie-card {
-            background: rgba(255, 255, 255, 0.035);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
-            padding: 22px;
-        }
-
-        .calorie-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .calorie-title {
-            font-size: 18px;
-            font-weight: 800;
-        }
-
-        .calorie-total {
-            color: #00e6c3;
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .calorie-total small {
-            color: #89929f;
-            font-size: 11px;
-            font-weight: 500;
-        }
-
-        .calorie-chart {
-            height: 135px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .chart-day {
-            height: 100%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .bar-area {
-            height: 110px;
-            width: 100%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
-
-        .bar {
-            width: min(32px, 65%);
-            border-radius: 8px 8px 4px 4px;
-            background: linear-gradient(
-                to top,
-                #007d6b,
-                #00e6c3
-            );
-            min-height: 8px;
-            transition: 0.3s ease;
-        }
-
-        .bar:hover {
-            filter: brightness(1.15);
-            transform: scaleX(1.05);
-        }
-
-        .day-label {
-            color: #737d89;
-            font-size: 11px;
-            margin-top: 9px;
-        }
-
-        /* =========================
-           SUBSCRIPTION INFO
-        ========================== */
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.035);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 18px;
-            padding: 20px;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.055);
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .info-row:first-child {
-            padding-top: 0;
-        }
-
-        .info-label {
-            color: #89929f;
-            font-size: 13px;
-        }
-
-        .info-value {
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            color: #00e6c3;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #00e6c3;
-            box-shadow: 0 0 10px rgba(0, 230, 195, 0.7);
-        }
-
-        /* =========================
-           SAVE MESSAGE
-        ========================== */
-
-        .save-message {
-            position: fixed;
-            left: 50%;
-            bottom: 92px;
-            transform: translateX(-50%) translateY(20px);
-            background: #10171a;
-            border: 1px solid rgba(0, 230, 195, 0.25);
-            color: #00e6c3;
-            padding: 12px 18px;
-            border-radius: 12px;
-            font-size: 13px;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.25s ease;
-            z-index: 300;
-            white-space: nowrap;
-        }
-
-        .save-message.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* =========================
-           BOTTOM NAV
-        ========================== */
-
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 68px;
-            background: rgba(5, 8, 12, 0.96);
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 55px;
-            z-index: 200;
-            backdrop-filter: blur(12px);
-        }
-
-        .nav-item {
-            text-decoration: none;
-            color: #737d89;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            font-size: 11px;
-            transition: 0.2s ease;
-        }
-
-        .nav-icon {
-            font-size: 20px;
-        }
-
-        .nav-item:hover,
-        .nav-item.active {
-            color: #00e6c3;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================== */
-
-        @media (max-width: 850px) {
-            .goals-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            header {
-                height: 64px;
-                padding: 0 17px;
-            }
-
-            .logo {
-                font-size: 21px;
-            }
-
-            .header-title {
-                font-size: 12px;
-            }
-
-            .container {
-                width: min(100% - 24px, 1100px);
-                padding-top: 24px;
-                padding-bottom: 95px;
-            }
-
-            .page-title {
-                font-size: 25px;
-            }
-
-            .page-subtitle {
-                margin-bottom: 22px;
-            }
-
-            .goals-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .goal-card {
-                min-height: 145px;
-                padding: 17px 14px;
-                border-radius: 16px;
-            }
-
-            .goal-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 21px;
-                margin-bottom: 12px;
-            }
-
-            .goal-name {
-                font-size: 15px;
-            }
-
-            .goal-description {
-                font-size: 11px;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .calorie-card {
-                padding: 17px;
-            }
-
-            .calorie-chart {
-                height: 130px;
-            }
-
-            .bar-area {
-                height: 105px;
-            }
-
-            .bottom-nav {
-                height: 65px;
-                gap: 30px;
-            }
-
-            .save-message {
-                bottom: 82px;
-                max-width: calc(100% - 30px);
-                white-space: normal;
-                text-align: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BodyReset | Dashboard</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
+color:#071a33;
+min-height:100vh;
+}
+
+header{
+height:75px;
+padding:0 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000;
+border-bottom:1px solid #071a33;
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#fff;
+}
+
+.logo span{
+color:#2563eb;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.profile{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#f97316;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+}
+
+.menu-btn{
+background:none;
+border:none;
+width:24px;
+height:22px;
+padding:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:4px;
+cursor:pointer;
+}
+
+.menu-btn span{
+display:block;
+width:17px;
+height:2px;
+background:#fff;
+border-radius:2px;
+}
+
+.profile-menu{
+position:fixed;
+top:68px;
+left:20px;
+width:280px;
+background:#fff;
+border-radius:15px;
+padding:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+display:none;
+z-index:3000;
+}
+
+.profile-menu.show{
+display:block;
+}
+
+.profile-menu h3{
+font-size:18px;
+color:#071a33;
+margin-bottom:8px;
+}
+
+.profile-menu p{
+font-size:14px;
+color:#64748b;
+word-break:break-word;
+}
+
+.profile-menu .profile-name{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:14px;
+}
+
+.profile-menu-avatar{
+width:45px;
+height:45px;
+border-radius:50%;
+background:#f97316;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+font-size:20px;
+}
+
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+display:none;
+z-index:2000;
+}
+
+.menu-overlay.show{
+display:block;
+}
+
+.side-menu{
+position:fixed;
+top:0;
+left:-320px;
+right:auto;
+width:320px;
+height:100vh;
+background:#fff;
+z-index:2500;
+padding:25px 20px;
+box-shadow:5px 0 25px rgba(0,0,0,.2);
+transition:left .3s ease;
+overflow-y:auto;
+}
+
+.side-menu.open{
+left:0;
+}
+
+.side-menu-header{
+display:flex;
+align-items:center;
+justify-content:flex-start;
+gap:14px;
+margin-bottom:25px;
+}
+
+.side-menu-header h2{
+color:#071a33;
+font-size:22px;
+margin:0;
+}
+
+.close-menu{
+background:#f1f5f9;
+border:none;
+width:40px;
+height:40px;
+border-radius:10px;
+font-size:24px;
+cursor:pointer;
+color:#071a33;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.close-menu:hover{
+background:#e2e8f0;
+}
+
+.side-menu a{
+display:block;
+padding:15px 12px;
+margin-bottom:8px;
+border-radius:10px;
+text-decoration:none;
+color:#071a33;
+font-weight:bold;
+}
+
+.side-menu a:hover{
+background:#f1f5f9;
+}
+
+.language-switcher{
+display:flex;
+align-items:center;
+gap:12px;
+width:100%;
+padding:15px 12px;
+margin-bottom:8px;
+border:none;
+border-radius:10px;
+background:none;
+color:#071a33;
+font-family:Arial,sans-serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+text-align:right;
+}
+
+.language-switcher:hover{
+background:#f1f5f9;
+}
+
+.translate-icon{
+width:40px;
+height:40px;
+border-radius:10px;
+background:#f1f5f9;
+display:flex;
+align-items:center;
+justify-content:center;
+direction:ltr;
+}
+
+.translate-icon svg{
+width:27px;
+height:27px;
+fill:none;
+stroke:#071a33;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+.side-menu .logout-btn{
+width:100%;
+border:none;
+background:none;
+color:#dc2626;
+text-align:right;
+font-family:Arial,sans-serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+padding:15px 12px;
+border-radius:10px;
+}
+
+.side-menu .logout-btn:hover{
+background:#fef2f2;
+color:#b91c1c;
+}
+
+.notification-panel{
+position:fixed;
+top:80px;
+right:20px;
+width:300px;
+background:#fff;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+display:none;
+z-index:3000;
+overflow:hidden;
+}
+
+.notification-panel.show{
+display:block;
+}
+
+.notification-header{
+padding:15px;
+font-size:17px;
+font-weight:bold;
+border-bottom:1px solid #d7dee8;
+color:#071a33;
+}
+
+.notification-item{
+padding:15px;
+border-bottom:1px solid #d7dee8;
+font-size:14px;
+color:#334155;
+}
+
+.notification-item:last-child{
+border-bottom:none;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:28px 20px 110px;
+}
+
+.top-area{
+display:flex;
+justify-content:flex-start;
+margin-bottom:25px;
+}
+
+.notification{
+width:44px;
+height:44px;
+border-radius:50%;
+background:#fff;
+border:1px solid #d7dee8;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.notification svg{
+width:21px;
+height:21px;
+stroke:#071a33;
+fill:none;
+stroke-width:1.8;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+display:flex;
+gap:18px;
+overflow-x:auto;
+margin-bottom:35px;
+padding-bottom:8px;
+}
+
+/* ================= SUBSCRIPTION ================= */
+
+.subscription-stat{
+flex:0 0 100%;
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:25px 20px;
+min-height:120px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.subscription-stat h3{
+font-size:22px;
+color:#2563eb;
+}
+
+/* ================= STAT ================= */
+
+.stat{
+flex:0 0 calc((100% - 36px)/3);
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:25px 20px;
+min-height:210px;
+}
+
+.stat h3{
+font-size:17px;
+margin-bottom:20px;
+color:#2563eb;
+}
+
+.activity-circles{
+display:flex;
+justify-content:center;
+gap:18px;
+}
+
+.activity-circle{
+width:82px;
+height:82px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
+position:relative;
+}
+
+.activity-circle:before{
+content:"";
+position:absolute;
+width:62px;
+height:62px;
+background:#fff;
+border-radius:50%;
+}
+
+.circle-content{
+position:relative;
+z-index:2;
+text-align:center;
+}
+
+.circle-content strong{
+display:block;
+color:#2563eb;
+font-size:18px;
+}
+
+.circle-content span{
+font-size:10px;
+color:#64748b;
+}
+
+.calorie-number{
+text-align:center;
+margin-bottom:12px;
+}
+
+.calorie-number strong{
+font-size:32px;
+color:#2563eb;
+}
+
+.calorie-number span{
+font-size:14px;
+color:#64748b;
+}
+
+.calorie-chart{
+width:100%;
+height:135px;
+display:flex;
+align-items:flex-end;
+justify-content:space-between;
+gap:7px;
+direction:ltr;
+padding:0 2px;
+margin-top:5px;
+}
+
+.calorie-day{
+flex:1;
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-end;
+gap:6px;
+min-width:0;
+}
+
+.calorie-bar{
+width:100%;
+max-width:28px;
+min-width:13px;
+border-radius:16px 16px 10px 10px;
+background:linear-gradient(180deg,#18bce8 0%,#2563eb 100%);
+height:var(--bar-height);
+}
+
+.calorie-day span{
+font-size:9px;
+font-weight:bold;
+color:#071a33;
+white-space:nowrap;
+}
+
+.weekly-progress{
+display:flex;
+justify-content:center;
+}
+
+.progress-circle{
+width:125px;
+height:125px;
+border-radius:50%;
+background:conic-gradient(#2563eb 0%,#d7dee8 0%);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.progress-circle:before{
+content:"";
+position:absolute;
+width:95px;
+height:95px;
+background:#fff;
+border-radius:50%;
+}
+
+.progress-circle strong{
+position:relative;
+z-index:2;
+font-size:28px;
+color:#2563eb;
+}
+
+.section-heading{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.section-heading h2{
+font-size:23px;
+color:#fff;
+}
+
+.see-all{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
+}
+
+.today-workout{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:20px;
+margin-bottom:30px;
+}
+
+.workout-title{
+font-size:25px;
+font-weight:bold;
+color:#071a33;
+margin-bottom:20px;
+}
+
+.workout-slider{
+display:flex;
+gap:16px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:8px;
+scrollbar-width:none;
+}
+
+.workout-slider::-webkit-scrollbar{
+display:none;
+}
+
+.exercise-card{
+flex:0 0 280px;
+background:#f8fafc;
+border:1px solid #d7dee8;
+border-radius:16px;
+overflow:hidden;
+}
+
+.exercise-card img{
+width:100%;
+height:190px;
+object-fit:cover;
+display:block;
+}
+
+.exercise-name{
+background:#fff;
+padding:16px 15px;
+text-align:center;
+}
+
+.exercise-name h3{
+font-size:19px;
+color:#071a33;
+font-weight:bold;
+}
+
+.exercise-content{
+padding:15px;
+}
+
+.start-btn{
+display:block;
+width:100%;
+background:#2563eb;
+color:#fff;
+text-align:center;
+text-decoration:none;
+padding:12px;
+border-radius:9px;
+font-size:14px;
+font-weight:bold;
+transition:0.2s;
+}
+
+.start-btn:hover{
+background:#1d4ed8;
+}
+
+.workout-dots{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-top:18px;
+}
+
+.workout-dots span{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#cbd5e1;
+}
+
+.workout-dots span.active{
+width:25px;
+border-radius:8px;
+background:#2563eb;
+}
+
+.community-card{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:10px 20px;
+margin-bottom:30px;
+}
+
+.news-row{
+padding:18px 0;
+border-bottom:1px solid #d7dee8;
+}
+
+.news-row:last-child{
+border-bottom:none;
+}
+
+.news-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.news-icon{
+width:40px;
+height:40px;
+border-radius:10px;
+background:#2563eb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.news-title{
+font-weight:bold;
+color:#071a33;
+margin-bottom:4px;
+}
+
+.news-sub{
+font-size:12px;
+color:#64748b;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:17px;
+margin-bottom:30px;
+}
+
+.card{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:18px;
+padding:23px;
+}
+
+.icon{
+font-size:34px;
+margin-bottom:14px;
+}
+
+.card h3{
+font-size:19px;
+margin-bottom:9px;
+color:#071a33;
+}
+
+.card p{
+color:#334155;
+line-height:1.7;
+font-size:14px;
+margin-bottom:18px;
+}
+
+.card a{
+display:inline-block;
+background:#2563eb;
+color:#fff;
+padding:10px 16px;
+border-radius:9px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.progress-section{
+margin-bottom:30px;
+}
+
+.progress-card{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:28px;
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+.progress-icon{
+width:72px;
+height:72px;
+min-width:72px;
+border-radius:16px;
+background:#2563eb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+}
+
+.progress-content{
+flex:1;
+}
+
+.progress-content h3{
+font-size:21px;
+margin-bottom:8px;
+color:#071a33;
+}
+
+.progress-content p{
+color:#334155;
+line-height:1.7;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.progress-content a{
+background:#2563eb;
+color:#fff;
+padding:10px 17px;
+border-radius:9px;
+text-decoration:none;
+font-weight:bold;
+}
+
+#message{
+text-align:center;
+margin-top:15px;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:72px;
+background:#fff;
+border-top:1px solid #d7dee8;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:1000;
+}
+
+.nav-item{
+width:25%;
+height:72px;
+color:#071a33;
+text-decoration:none;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:4px;
+font-size:11px;
+font-weight:bold;
+}
+
+.nav-icon{
+width:32px;
+height:32px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.nav-icon svg{
+width:27px;
+height:27px;
+fill:none;
+stroke:#2563eb;
+stroke-width:2;
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+.home-nav .nav-icon{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#071a33;
+}
+
+.home-nav .nav-icon svg{
+width:23px;
+height:23px;
+stroke:#fff;
+}
+
+.workout-nav .nav-icon svg{
+width:34px;
+height:34px;
+stroke:#071a33;
+stroke-width:2.4;
+transform:none;
+}
+
+.progress-nav .nav-icon{
+width:32px;
+height:32px;
+}
+
+.progress-nav .nav-icon svg{
+width:29px;
+height:29px;
+stroke:#2563eb;
+stroke-width:2;
+}
+
+.profile-nav .nav-icon svg{
+width:28px;
+height:28px;
+stroke:#2563eb;
+}
+
+.nav-item.active{
+color:#071a33;
+}
+
+.nav-item.active .nav-icon{
+transform:none;
+}
+
+@media(max-width:800px){
+
+.stat{
+flex:0 0 270px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+header{
+height:68px;
+padding:0 16px;
+}
+
+.logo{
+font-size:21px;
+}
+
+.container{
+padding:20px 14px 110px;
+}
+
+.subscription-stat{
+flex:0 0 100%;
+}
+
+.stat{
+flex:0 0 285px;
+}
+
+.today-workout{
+padding:15px;
+}
+
+.exercise-card{
+flex:0 0 82%;
+}
+
+.exercise-card img{
+height:200px;
+}
+
+.progress-card{
+padding:22px 18px;
+}
+
+.bottom-nav{
+height:72px;
+}
+
+.nav-item{
+height:72px;
+font-size:10px;
+}
+
+.nav-icon{
+width:29px;
+height:29px;
+}
+
+.nav-icon svg{
+width:25px;
+height:25px;
+}
+
+.home-nav .nav-icon{
+width:37px;
+height:37px;
+}
+
+.home-nav .nav-icon svg{
+width:21px;
+height:21px;
+}
+
+.workout-nav .nav-icon svg{
+width:32px;
+height:32px;
+transform:none;
+}
+
+.profile-menu{
+left:14px;
+right:14px;
+width:auto;
+}
+
+.notification-panel{
+left:14px;
+right:14px;
+width:auto;
+}
+
+.side-menu{
+width:320px;
+max-width:88vw;
+left:-320px;
+}
+
+.side-menu.open{
+left:0;
+}
+
+.calorie-chart{
+height:130px;
+gap:5px;
+}
+
+.calorie-bar{
+max-width:24px;
+}
+
+.calorie-day span{
+font-size:8px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<header>
 
-    <header>
-        <div class="logo">
-            Body<span>Reset</span>
-        </div>
+<div class="logo">
+Body<span>Reset</span>
+</div>
 
-        <div class="header-title">
-            الاشتراكات
-        </div>
-    </header>
+<div class="header-left">
 
+<div class="profile" id="profileBtn">
+<span id="profileInitial">?</span>
+</div>
 
-    <!-- =========================
-         MAIN
-    ========================== -->
+<button
+class="menu-btn"
+id="menuBtn"
+aria-label="فتح القائمة"
+>
 
-    <main class="container">
+<span></span>
+<span></span>
+<span></span>
 
-        <h1 class="page-title">Subscriptions</h1>
+</button>
 
-        <p class="page-subtitle">
-            اختار هدفك عشان نجهز لك نظام التمرين المناسب
-        </p>
+</div>
 
+</header>
 
-        <!-- =========================
-             GOAL
-        ========================== -->
 
-        <section class="section">
+<!-- ================= PROFILE MENU ================= -->
 
-            <h2 class="section-title">
-                🎯 هدفك
-            </h2>
+<div class="profile-menu" id="profileMenu">
 
-            <p class="section-subtitle">
-                اختيار الهدف هيحدد أنظمة التمرين المتاحة ليك في Workout
-            </p>
+<div class="profile-name">
 
-            <div class="goals-grid">
+<div class="profile-menu-avatar">
 
-                <!-- BULK -->
+<span id="profileMenuInitial">
+?
+</span>
 
-                <div
-                    class="goal-card"
-                    data-goal="bulk"
-                    onclick="selectGoal('bulk')"
-                >
+</div>
 
-                    <div class="goal-check">
-                        ✓
-                    </div>
+<div>
 
-                    <div class="goal-icon">
-                        💪
-                    </div>
+<h3 id="profileUsername">
+Username
+</h3>
 
-                    <div class="goal-name">
-                        تضخيم
-                    </div>
+<p id="profileEmail">
+Email
+</p>
 
-                    <div class="goal-description">
-                        زيادة الكتلة العضلية وبناء حجم أكبر
-                    </div>
+</div>
 
-                </div>
+</div>
 
+</div>
 
-                <!-- CUT -->
 
-                <div
-                    class="goal-card"
-                    data-goal="cut"
-                    onclick="selectGoal('cut')"
-                >
+<!-- ================= SIDE MENU ================= -->
 
-                    <div class="goal-check">
-                        ✓
-                    </div>
+<div
+class="menu-overlay"
+id="menuOverlay">
+</div>
 
-                    <div class="goal-icon">
-                        🔥
-                    </div>
 
-                    <div class="goal-name">
-                        تنشيف
-                    </div>
+<div
+class="side-menu"
+id="sideMenu">
 
-                    <div class="goal-description">
-                        تقليل الدهون مع الحفاظ على الكتلة العضلية
-                    </div>
 
-                </div>
+<div class="side-menu-header">
 
+<button
+class="close-menu"
+id="closeMenu"
+aria-label="إغلاق القائمة"
+>
+×
+</button>
 
-                <!-- FITNESS -->
+<h2>
+القائمة
+</h2>
 
-                <div
-                    class="goal-card"
-                    data-goal="fitness"
-                    onclick="selectGoal('fitness')"
-                >
+</div>
 
-                    <div class="goal-check">
-                        ✓
-                    </div>
 
-                    <div class="goal-icon">
-                        ⚡
-                    </div>
+<a href="calories.html">
+حاسب سعرات الجسم
+</a>
 
-                    <div class="goal-name">
-                        لياقة
-                    </div>
 
-                    <div class="goal-description">
-                        تحسين اللياقة والنشاط والحركة اليومية
-                    </div>
+<a href="subscriptions.html">
+الاشتراكات
+</a>
 
-                </div>
 
+<!-- ================= LANGUAGE ================= -->
 
-                <!-- STRENGTH -->
+<button
+type="button"
+class="language-switcher"
+id="languageSwitcher"
+>
 
-                <div
-                    class="goal-card"
-                    data-goal="strength"
-                    onclick="selectGoal('strength')"
-                >
+<div class="translate-icon">
 
-                    <div class="goal-check">
-                        ✓
-                    </div>
+<svg viewBox="0 0 24 24">
 
-                    <div class="goal-icon">
-                        🏋️
-                    </div>
+<path d="M4 19L8.5 5L13 19">
+</path>
 
-                    <div class="goal-name">
-                        قوة
-                    </div>
+<path d="M5.5 15H11.5">
+</path>
 
-                    <div class="goal-description">
-                        زيادة القوة والأداء في التمارين الأساسية
-                    </div>
+<path d="M15 6H21">
+</path>
 
-                </div>
+<path d="M18 4V6">
+</path>
 
-            </div>
+<path d="M16 9C17 11.8 18.7 14 21 15.5">
+</path>
 
-        </section>
+<path d="M21 9C20 11.8 18.3 14 16 15.5">
+</path>
 
+</svg>
 
-        <!-- =========================
-             CALORIES
-        ========================== -->
+</div>
 
-        <section class="section">
-
-            <h2 class="section-title">
-                🔥 نشاطك
-            </h2>
-
-            <p class="section-subtitle">
-                ملخص نشاطك خلال الأسبوع
-            </p>
+<span>
+العربية
+</span>
 
-            <div class="calorie-card">
+</button>
 
-                <div class="calorie-header">
 
-                    <div class="calorie-title">
-                        السعرات المحروقة
-                    </div>
+<!-- ================= LOGOUT ================= -->
 
-                    <div class="calorie-total">
-                        3,420
-                        <small>kcal</small>
-                    </div>
+<button
+class="logout-btn"
+id="logoutBtn"
+>
 
-                </div>
+تسجيل الخروج
 
+</button>
 
-                <div class="calorie-chart">
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:70px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">SAT</div>
-                    </div>
+</div>
 
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:110px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">SUN</div>
-                    </div>
+<!-- ================= MAIN ================= -->
 
+<main class="container">
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:88px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">MON</div>
-                    </div>
 
+<div class="top-area">
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:120px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">TUE</div>
-                    </div>
+<button
+class="notification"
+id="notificationBtn"
+>
 
+<svg viewBox="0 0 24 24">
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:98px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">WED</div>
-                    </div>
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9">
+</path>
 
+<path d="M10 21h4">
+</path>
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:125px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">THU</div>
-                    </div>
+</svg>
 
+</button>
 
-                    <div class="chart-day">
-                        <div class="bar-area">
-                            <div
-                                class="bar"
-                                style="height:105px;"
-                            ></div>
-                        </div>
-                        <div class="day-label">FRI</div>
-                    </div>
+</div>
 
-                </div>
 
-            </div>
+<!-- ================= NOTIFICATIONS ================= -->
 
-        </section>
+<div
+class="notification-panel"
+id="notificationPanel"
+>
 
+<div class="notification-header">
+Notifications
+</div>
 
-        <!-- =========================
-             STATS
-        ========================== -->
+<div class="notification-item">
+🔔 عندك تمرين جديد جاهز.
+</div>
 
-        <section class="section">
+<div class="notification-item">
+💪 حافظ على استمراريتك في التمرين.
+</div>
 
-            <h2 class="section-title">
-                📊 إحصائياتك
-            </h2>
+<div class="notification-item">
+🔥 استمر في تحقيق أهدافك.
+</div>
 
-            <p class="section-subtitle">
-                ملخص بياناتك الحالية
-            </p>
+</div>
 
-            <div class="stats-grid">
 
-                <div class="stat-card">
+<!-- ================= STATS ================= -->
 
-                    <div class="stat-icon">
-                        🔥
-                    </div>
+<div class="stats">
 
-                    <div class="stat-label">
-                        متوسط السعرات
-                    </div>
 
-                    <div class="stat-value">
-                        489
-                        <span>kcal</span>
-                    </div>
+<!-- ================= SUBSCRIPTION ================= -->
 
-                </div>
+<div class="subscription-stat">
 
+<h3>
+الاشتراك
+</h3>
 
-                <div class="stat-card">
+</div>
 
-                    <div class="stat-icon">
-                        🏃
-                    </div>
 
-                    <div class="stat-label">
-                        التمارين هذا الأسبوع
-                    </div>
+<!-- ================= WEEKLY PROGRESS ================= -->
 
-                    <div class="stat-value">
-                        5
-                        <span>تمارين</span>
-                    </div>
+<div class="stat">
 
-                </div>
+<h3>
+Weekly Progress
+</h3>
 
+<div class="weekly-progress">
 
-                <div class="stat-card">
+<div class="progress-circle">
 
-                    <div class="stat-icon">
-                        ⏱️
-                    </div>
+<strong>
+0%
+</strong>
 
-                    <div class="stat-label">
-                        وقت التمرين
-                    </div>
+</div>
 
-                    <div class="stat-value">
-                        4.8
-                        <span>ساعة</span>
-                    </div>
+</div>
 
-                </div>
+</div>
 
-            </div>
 
-        </section>
+<!-- ================= CALORIE BURN ================= -->
 
+<div class="stat">
 
-        <!-- =========================
-             SUBSCRIPTION INFO
-        ========================== -->
+<h3>
+Calorie Burn
+</h3>
 
-        <section class="section">
+<div class="calorie-number">
 
-            <h2 class="section-title">
-                💳 حالة الاشتراك
-            </h2>
+<strong>
+0
+</strong>
 
-            <p class="section-subtitle">
-                معلومات اشتراكك الحالي
-            </p>
+<span>
+kcal
+</span>
 
-            <div class="info-grid">
+</div>
 
-                <div class="info-card">
 
-                    <div class="info-row">
+<div class="calorie-chart">
 
-                        <div class="info-label">
-                            حالة الاشتراك
-                        </div>
+<div class="calorie-day">
 
-                        <div class="info-value status">
-                            <span class="status-dot"></span>
-                            نشط
-                        </div>
+<div
+class="calorie-bar"
+style="--bar-height:70px;"
+></div>
 
-                    </div>
+<span>
+SAT
+</span>
 
+</div>
 
-                    <div class="info-row">
 
-                        <div class="info-label">
-                            الباقة
-                        </div>
+<div class="calorie-day">
 
-                        <div class="info-value">
-                            Premium
-                        </div>
+<div
+class="calorie-bar"
+style="--bar-height:110px;"
+></div>
 
-                    </div>
+<span>
+SUN
+</span>
 
+</div>
 
-                    <div class="info-row">
 
-                        <div class="info-label">
-                            تاريخ البداية
-                        </div>
+<div class="calorie-day">
 
-                        <div class="info-value">
-                            01 / 10 / 2026
-                        </div>
+<div
+class="calorie-bar"
+style="--bar-height:88px;"
+></div>
 
-                    </div>
+<span>
+MON
+</span>
 
-                </div>
+</div>
 
 
-                <div class="info-card">
+<div class="calorie-day">
 
-                    <div class="info-row">
+<div
+class="calorie-bar"
+style="--bar-height:120px;"
+></div>
 
-                        <div class="info-label">
-                            الهدف الحالي
-                        </div>
+<span>
+TUE
+</span>
 
-                        <div
-                            class="info-value"
-                            id="selectedGoalText"
-                        >
-                            لم يتم الاختيار
-                        </div>
+</div>
 
-                    </div>
 
+<div class="calorie-day">
 
-                    <div class="info-row">
+<div
+class="calorie-bar"
+style="--bar-height:98px;"
+></div>
 
-                        <div class="info-label">
-                            الأنظمة المتاحة
-                        </div>
+<span>
+WED
+</span>
 
-                        <div class="info-value">
-                            حسب الهدف
-                        </div>
+</div>
 
-                    </div>
 
+<div class="calorie-day">
 
-                    <div class="info-row">
+<div
+class="calorie-bar"
+style="--bar-height:125px;"
+></div>
 
-                        <div class="info-label">
-                            Workout
-                        </div>
+<span>
+THU
+</span>
 
-                        <div class="info-value">
-                            متاح
-                        </div>
+</div>
 
-                    </div>
 
-                </div>
+<div class="calorie-day">
 
-            </div>
+<div
+class="calorie-bar"
+style="--bar-height:105px;"
+></div>
 
-        </section>
+<span>
+FRI
+</span>
 
-    </main>
+</div>
 
+</div>
 
-    <!-- =========================
-         SAVE MESSAGE
-    ========================== -->
+</div>
 
-    <div
-        class="save-message"
-        id="saveMessage"
-    >
-        تم حفظ هدفك بنجاح ✓
-    </div>
 
+<!-- ================= WEEKLY ACTIVITY ================= -->
 
-    <!-- =========================
-         BOTTOM NAV
-    ========================== -->
+<div class="stat">
 
-    <nav class="bottom-nav">
+<h3>
+Weekly Activity
+</h3>
 
-        <a
-            href="dashboard.html"
-            class="nav-item"
-        >
-            <span class="nav-icon">⌂</span>
-            <span>الرئيسية</span>
-        </a>
+<div class="activity-circles">
 
 
-        <a
-            href="workout.html"
-            class="nav-item"
-        >
-            <span class="nav-icon">🏋️</span>
-            <span>Workout</span>
-        </a>
+<div class="activity-circle">
 
+<div class="circle-content">
 
-        <a
-            href="subscriptions.html"
-            class="nav-item active"
-        >
-            <span class="nav-icon">💳</span>
-            <span>Subscriptions</span>
-        </a>
+<strong>
+0
+</strong>
 
-    </nav>
+<span>
+Progress
+</span>
 
+</div>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+</div>
 
-    <script>
 
-        /*
-         * أسماء الأهداف
-         */
+<div class="activity-circle">
 
-        const goalNames = {
+<div class="circle-content">
 
-            bulk: "تضخيم",
+<strong>
+0%
+</strong>
 
-            cut: "تنشيف",
+<span>
+Burn
+</span>
 
-            fitness: "لياقة",
+</div>
 
-            strength: "قوة"
+</div>
 
-        };
 
+</div>
 
-        /*
-         * قراءة الهدف المحفوظ
-         */
+</div>
 
-        function loadSelectedGoal() {
 
-            const savedGoal =
-                localStorage.getItem(
-                    "bodyresetSubscriptionGoal"
-                );
+</div>
 
 
-            if (!savedGoal) {
-                return;
-            }
+<!-- ================= TODAY WORKOUT ================= -->
 
+<div class="section-heading">
 
-            const goalCard =
-                document.querySelector(
-                    `.goal-card[data-goal="${savedGoal}"]`
-                );
+<h2>
+Today's Workout
+</h2>
 
+<a
+href="workout.html?workout=chest"
+class="see-all"
+>
+See All
+</a>
 
-            if (goalCard) {
+</div>
 
-                goalCard.classList.add("active");
 
-            }
+<section class="today-workout">
 
 
-            const selectedGoalText =
-                document.getElementById(
-                    "selectedGoalText"
-                );
+<div class="workout-title">
+Chest
+</div>
 
 
-            if (
-                selectedGoalText &&
-                goalNames[savedGoal]
-            ) {
+<div class="workout-slider">
 
-                selectedGoalText.textContent =
-                    goalNames[savedGoal];
 
-            }
+<div class="exercise-card">
 
-        }
+<div class="exercise-name">
 
+<h3>
+Bench Press
+</h3>
 
-        /*
-         * اختيار الهدف
-         */
+</div>
 
-        function selectGoal(goalId) {
+<img
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+alt="Bench Press"
+>
 
-            /*
-             * حفظ الهدف
-             */
+<div class="exercise-content">
 
-            localStorage.setItem(
-                "bodyresetSubscriptionGoal",
-                goalId
-            );
+<a
+href="workout.html?exercise=bench-press"
+class="start-btn"
+>
 
+ابدأ الآن
 
-            /*
-             * إزالة التحديد من كل الكروت
-             */
+</a>
 
-            document
-                .querySelectorAll(".goal-card")
-                .forEach(card => {
+</div>
 
-                    card.classList.remove("active");
+</div>
 
-                });
 
+<div class="exercise-card">
 
-            /*
-             * تحديد الهدف الحالي
-             */
+<div class="exercise-name">
 
-            const selectedCard =
-                document.querySelector(
-                    `.goal-card[data-goal="${goalId}"]`
-                );
+<h3>
+Incline Press
+</h3>
 
+</div>
 
-            if (selectedCard) {
+<img
+src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
+alt="Incline Press"
+>
 
-                selectedCard.classList.add("active");
+<div class="exercise-content">
 
-            }
+<a
+href="workout.html?exercise=incline-press"
+class="start-btn"
+>
 
+ابدأ الآن
 
-            /*
-             * تحديث اسم الهدف
-             */
+</a>
 
-            const selectedGoalText =
-                document.getElementById(
-                    "selectedGoalText"
-                );
+</div>
 
+</div>
 
-            if (
-                selectedGoalText &&
-                goalNames[goalId]
-            ) {
 
-                selectedGoalText.textContent =
-                    goalNames[goalId];
+<div class="exercise-card">
 
-            }
+<div class="exercise-name">
 
+<h3>
+Chest Fly
+</h3>
 
-            /*
-             * رسالة الحفظ
-             */
+</div>
 
-            showSaveMessage();
+<img
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+alt="Chest Fly"
+>
 
-        }
+<div class="exercise-content">
 
+<a
+href="workout.html?exercise=chest-fly"
+class="start-btn"
+>
 
-        /*
-         * رسالة نجاح
-         */
+ابدأ الآن
 
-        function showSaveMessage() {
+</a>
 
-            const message =
-                document.getElementById(
-                    "saveMessage"
-                );
+</div>
 
+</div>
 
-            message.classList.add("show");
 
+<div class="exercise-card">
 
-            setTimeout(() => {
+<div class="exercise-name">
 
-                message.classList.remove("show");
+<h3>
+Push Ups
+</h3>
 
-            }, 1800);
+</div>
 
-        }
+<img
+src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
+alt="Push Ups"
+>
 
+<div class="exercise-content">
 
-        /*
-         * تشغيل الصفحة
-         */
+<a
+href="workout.html?exercise=push-ups"
+class="start-btn"
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            loadSelectedGoal
-        );
+>
 
-    </script>
+ابدأ الآن
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="workout-dots">
+
+<span class="active"></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+</section>
+
+
+<!-- ================= COMMUNITY ================= -->
+
+<div class="section-heading">
+
+<h2>
+Community News
+</h2>
+
+<a
+href="#"
+class="see-all"
+>
+See All
+</a>
+
+</div>
+
+
+<section class="community-card">
+
+
+<div class="news-row">
+
+<div class="news-left">
+
+<div class="news-icon">
+★
+</div>
+
+<div>
+
+<div class="news-title">
+New Class: Neon Spin
+</div>
+
+<div class="news-sub">
+New Class is Neon Spin
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="news-row">
+
+<div class="news-left">
+
+<div class="news-icon">
+#
+</div>
+
+<div>
+
+<div class="news-title">
+Leaderboard Update
+</div>
+
+<div class="news-sub">
+Check your latest ranking
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="news-row">
+
+<div class="news-left">
+
+<div class="news-icon">
++
+</div>
+
+<div>
+
+<div class="news-title">
+New Challenge
+</div>
+
+<div class="news-sub">
+Join the latest challenge
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- ================= START JOURNEY ================= -->
+
+<div class="section-heading">
+
+<h2>
+ابدأ رحلتك 💪
+</h2>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="icon">
+💪
+</div>
+
+<h3>
+Workout
+</h3>
+
+<p>
+تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.
+</p>
+
+<a href="workout.html">
+ابدأ التمرين
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🥗
+</div>
+
+<h3>
+Nutrition
+</h3>
+
+<p>
+خطط غذائية تساعدك تختار أكلك حسب هدفك.
+</p>
+
+<a href="nutrition.html">
+خطة التغذية
+</a>
+
+</div>
+
+
+</div>
+
+
+<!-- ================= PROGRESS ================= -->
+
+<section class="progress-section">
+
+
+<div class="section-heading">
+
+<h2>
+Progress
+</h2>
+
+<a
+href="progress.html"
+class="see-all"
+>
+See All
+</a>
+
+</div>
+
+
+<div class="progress-card">
+
+<div class="progress-icon">
+📊
+</div>
+
+
+<div class="progress-content">
+
+<h3>
+متابعة التقدم
+</h3>
+
+<p>
+تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.
+</p>
+
+<a href="progress.html">
+شوف التقدم
+</a>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<div id="message">
+</div>
+
+
+</main>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+
+<a
+href="dashboard.html"
+class="nav-item home-nav"
+>
+
+<div class="nav-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M3 10.5L12 3l9 7.5">
+</path>
+
+<path d="M5 9.5V21h14V9.5">
+</path>
+
+<path d="M9 21v-6h6v6">
+</path>
+
+</svg>
+
+</div>
+
+<span>
+Home
+</span>
+
+</a>
+
+
+<a
+href="workout.html"
+class="nav-item workout-nav"
+>
+
+<div class="nav-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M6 9v6">
+</path>
+
+<path d="M3.5 10v4">
+</path>
+
+<path d="M18 9v6">
+</path>
+
+<path d="M20.5 10v4">
+</path>
+
+<path d="M6 12h12">
+</path>
+
+</svg>
+
+</div>
+
+<span>
+Workouts
+</span>
+
+</a>
+
+
+<a
+href="progress.html"
+class="nav-item progress-nav"
+>
+
+<div class="nav-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M3 21H21">
+</path>
+
+<path d="M5 21V14H8V21">
+</path>
+
+<path d="M10.5 21V9H13.5V21">
+</path>
+
+<path d="M16 21V4H19V21">
+</path>
+
+</svg>
+
+</div>
+
+<span>
+Progress
+</span>
+
+</a>
+
+
+<a
+href="profile.html"
+class="nav-item profile-nav"
+>
+
+<div class="nav-icon">
+
+<svg viewBox="0 0 24 24">
+
+<circle
+cx="12"
+cy="7"
+r="4"
+>
+</circle>
+
+<path
+d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"
+>
+</path>
+
+</svg>
+
+</div>
+
+<span>
+Profile
+</span>
+
+</a>
+
+
+</nav>
+
+
+<!-- ================= SUPABASE ================= -->
+
+<script type="module">
+
+import {
+createClient
+}
+from
+"https://esm.sh/@supabase/supabase-js@2";
+
+
+const SUPABASE_URL =
+"https://byodeoaluspphqduxmlh.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+
+
+const supabase =
+createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+/* ================= PROFILE ================= */
+
+const profileBtn =
+document.getElementById(
+"profileBtn"
+);
+
+const profileMenu =
+document.getElementById(
+"profileMenu"
+);
+
+const profileInitial =
+document.getElementById(
+"profileInitial"
+);
+
+const profileMenuInitial =
+document.getElementById(
+"profileMenuInitial"
+);
+
+const profileUsername =
+document.getElementById(
+"profileUsername"
+);
+
+const profileEmail =
+document.getElementById(
+"profileEmail"
+);
+
+
+profileBtn.addEventListener(
+"click",
+function(event){
+
+event.stopPropagation();
+
+profileMenu.classList.toggle(
+"show"
+);
+
+notificationPanel.classList.remove(
+"show"
+);
+
+}
+);
+
+
+/* ================= LOAD USER ================= */
+
+async function loadUser(){
+
+const {
+data,
+error
+} =
+await supabase.auth.getUser();
+
+
+if(
+error ||
+!data.user
+){
+
+window.location.href =
+"auth.html";
+
+return;
+
+}
+
+
+const user =
+data.user;
+
+
+const username =
+user.user_metadata?.username ||
+user.user_metadata?.name ||
+"User";
+
+
+const email =
+user.email || "";
+
+
+const firstLetter =
+username
+.trim()
+.charAt(0)
+.toUpperCase();
+
+
+profileInitial.textContent =
+firstLetter || "?";
+
+profileMenuInitial.textContent =
+firstLetter || "?";
+
+profileUsername.textContent =
+username;
+
+profileEmail.textContent =
+email;
+
+}
+
+
+loadUser();
+
+
+/* ================= MENU ================= */
+
+const menuBtn =
+document.getElementById(
+"menuBtn"
+);
+
+const sideMenu =
+document.getElementById(
+"sideMenu"
+);
+
+const menuOverlay =
+document.getElementById(
+"menuOverlay"
+);
+
+const closeMenu =
+document.getElementById(
+"closeMenu"
+);
+
+
+menuBtn.addEventListener(
+"click",
+function(){
+
+sideMenu.classList.add(
+"open"
+);
+
+menuOverlay.classList.add(
+"show"
+);
+
+}
+);
+
+
+closeMenu.addEventListener(
+"click",
+function(){
+
+sideMenu.classList.remove(
+"open"
+);
+
+menuOverlay.classList.remove(
+"show"
+);
+
+}
+);
+
+
+menuOverlay.addEventListener(
+"click",
+function(){
+
+sideMenu.classList.remove(
+"open"
+);
+
+menuOverlay.classList.remove(
+"show"
+);
+
+}
+);
+
+
+/* ================= LANGUAGE SWITCH ================= */
+
+const languageSwitcher =
+document.getElementById(
+"languageSwitcher"
+);
+
+
+languageSwitcher.addEventListener(
+"click",
+function(){
+
+window.location.href =
+"dashboard-en.html";
+
+}
+);
+
+
+/* ================= LOGOUT ================= */
+
+const logoutBtn =
+document.getElementById(
+"logoutBtn"
+);
+
+
+logoutBtn.addEventListener(
+"click",
+async function(){
+
+const {
+error
+} =
+await supabase.auth.signOut();
+
+
+if(!error){
+
+window.location.href =
+"auth.html";
+
+}
+
+}
+);
+
+
+/* ================= NOTIFICATIONS ================= */
+
+const notificationBtn =
+document.getElementById(
+"notificationBtn"
+);
+
+const notificationPanel =
+document.getElementById(
+"notificationPanel"
+);
+
+
+notificationBtn.addEventListener(
+"click",
+function(event){
+
+event.stopPropagation();
+
+notificationPanel.classList.toggle(
+"show"
+);
+
+profileMenu.classList.remove(
+"show"
+);
+
+}
+);
+
+
+/* ================= OUTSIDE CLICK ================= */
+
+document.addEventListener(
+"click",
+function(event){
+
+if(
+!profileMenu.contains(
+event.target
+)
+&&
+!profileBtn.contains(
+event.target
+)
+){
+
+profileMenu.classList.remove(
+"show"
+);
+
+}
+
+
+if(
+!notificationPanel.contains(
+event.target
+)
+&&
+!notificationBtn.contains(
+event.target
+)
+){
+
+notificationPanel.classList.remove(
+"show"
+);
+
+}
+
+}
+);
+
+</script>
 
 </body>
-</html>
+    </html>
