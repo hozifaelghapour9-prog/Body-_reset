@@ -338,12 +338,57 @@ fill:none;
 stroke-width:1.8;
 }
 
+/* ================= STATS ================= */
+
 .stats{
 display:flex;
 gap:18px;
 overflow-x:auto;
 margin-bottom:35px;
 padding-bottom:8px;
+}
+
+/* الاشتراك فوق الإحصائيات */
+
+.subscription-stat{
+flex:0 0 100%;
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:20px;
+padding:25px 20px;
+min-height:180px;
+text-align:center;
+}
+
+.subscription-stat h3{
+font-size:17px;
+margin-bottom:12px;
+color:#2563eb;
+}
+
+.subscription-stat h2{
+font-size:24px;
+color:#071a33;
+margin-bottom:8px;
+}
+
+.subscription-stat p{
+color:#334155;
+font-size:14px;
+margin-bottom:16px;
+line-height:1.7;
+}
+
+.subscription-stat .plan-price{
+color:#2563eb;
+font-size:28px;
+font-weight:bold;
+margin:10px 0 16px;
+}
+
+.subscription-stat .start-btn{
+max-width:220px;
+margin:auto;
 }
 
 .stat{
@@ -746,38 +791,6 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.subscription-box{
-background:#fff;
-border:1px solid #d7dee8;
-border-radius:20px;
-padding:28px;
-text-align:center;
-margin-bottom:30px;
-}
-
-.subscription-box h2{
-font-size:24px;
-color:#071a33;
-margin-bottom:10px;
-}
-
-.subscription-box p{
-color:#334155;
-line-height:1.7;
-}
-
-.plan-price{
-color:#2563eb;
-font-size:34px;
-font-weight:bold;
-margin:16px 0;
-}
-
-.subscription-box .start-btn{
-max-width:220px;
-margin:auto;
-}
-
 #message{
 text-align:center;
 margin-top:15px;
@@ -901,6 +914,10 @@ font-size:21px;
 
 .container{
 padding:20px 14px 110px;
+}
+
+.subscription-stat{
+flex:0 0 100%;
 }
 
 .stat{
@@ -1095,8 +1112,6 @@ aria-label="إغلاق القائمة"
 </a>
 
 
-<!-- الاشتراكات -->
-
 <a href="subscriptions.html">
 الاشتراكات
 </a>
@@ -1216,7 +1231,37 @@ Notifications
 <div class="stats">
 
 
-<!-- WEEKLY PROGRESS -->
+<!-- ================= SUBSCRIPTION ================= -->
+
+<div class="subscription-stat">
+
+<h3>
+الاشتراك
+</h3>
+
+<h2>
+اشتراكك في BodyReset
+</h2>
+
+<p>
+اختار هدفك وخطة اشتراكك
+</p>
+
+<div class="plan-price">
+BodyReset
+</div>
+
+<a
+href="subscriptions.html"
+class="start-btn"
+>
+اختيار الهدف
+</a>
+
+</div>
+
+
+<!-- ================= WEEKLY PROGRESS ================= -->
 
 <div class="stat">
 
@@ -1239,7 +1284,7 @@ Weekly Progress
 </div>
 
 
-<!-- CALORIE BURN -->
+<!-- ================= CALORIE BURN ================= -->
 
 <div class="stat">
 
@@ -1364,7 +1409,7 @@ FRI
 </div>
 
 
-<!-- WEEKLY ACTIVITY -->
+<!-- ================= WEEKLY ACTIVITY ================= -->
 
 <div class="stat">
 
@@ -1373,7 +1418,6 @@ Weekly Activity
 </h3>
 
 <div class="activity-circles">
-
 
 <div class="activity-circle">
 
@@ -1408,7 +1452,6 @@ Burn
 
 </div>
 
-
 </div>
 
 </div>
@@ -1436,7 +1479,6 @@ See All
 
 
 <section class="today-workout">
-
 
 <div class="workout-title">
 Chest
@@ -1467,9 +1509,7 @@ alt="Bench Press"
 href="workout.html?exercise=bench-press"
 class="start-btn"
 >
-
 ابدأ الآن
-
 </a>
 
 </div>
@@ -1498,9 +1538,7 @@ alt="Incline Press"
 href="workout.html?exercise=incline-press"
 class="start-btn"
 >
-
 ابدأ الآن
-
 </a>
 
 </div>
@@ -1529,9 +1567,7 @@ alt="Chest Fly"
 href="workout.html?exercise=chest-fly"
 class="start-btn"
 >
-
 ابدأ الآن
-
 </a>
 
 </div>
@@ -1559,11 +1595,8 @@ alt="Push Ups"
 <a
 href="workout.html?exercise=push-ups"
 class="start-btn"
-
 >
-
 ابدأ الآن
-
 </a>
 
 </div>
@@ -1582,7 +1615,6 @@ class="start-btn"
 <span></span>
 
 </div>
-
 
 </section>
 
@@ -1741,14 +1773,12 @@ Nutrition
 
 </div>
 
-
 </div>
 
 
 <!-- ================= PROGRESS ================= -->
 
 <section class="progress-section">
-
 
 <div class="section-heading">
 
@@ -1790,55 +1820,6 @@ See All
 </div>
 
 </div>
-
-
-</section>
-
-
-<!-- ================= SUBSCRIPTIONS ================= -->
-
-<section>
-
-
-<div class="section-heading">
-
-<h2>
-الاشتراكات
-</h2>
-
-<a
-href="subscriptions.html"
-class="see-all"
->
-عرض الكل
-</a>
-
-</div>
-
-
-<div class="subscription-box">
-
-<h2>
-اشتراكك في BodyReset
-</h2>
-
-<p>
-اختار هدفك وخطة اشتراكك
-</p>
-
-<div class="plan-price">
-BodyReset
-</div>
-
-<a
-href="subscriptions.html"
-class="start-btn"
->
-اختيار الهدف
-</a>
-
-</div>
-
 
 </section>
 
