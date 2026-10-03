@@ -335,8 +335,6 @@ text-align:center;
 margin-bottom:25px;
 }
 
-/* ================= 3 BOXES ================= */
-
 .subscription-boxes{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -839,7 +837,7 @@ gap:14px;
 }
 
 .subscription-box{
-height:850px;
+height:650px;
 }
 
 .stat{
@@ -873,12 +871,12 @@ margin-bottom:20px;
 }
 
 .subscription-boxes{
-gap:8px;
+gap:10px;
 margin-bottom:28px;
 }
 
 .subscription-box{
-height:875px;
+height:650px;
 border-radius:14px;
 }
 
@@ -961,19 +959,34 @@ font-size:8px;
 /* ================= ORIENTATION ================= */
 
 /* الموبايل والتابلت بالطول */
+
 @media(max-width:800px) and (orientation:portrait){
 
 .subscription-boxes{
 grid-template-columns:1fr;
+width:100%;
+}
+
+.subscription-box{
+height:650px;
+width:100%;
 }
 
 }
 
 /* الموبايل والتابلت بالعرض */
+
 @media(max-width:800px) and (orientation:landscape){
 
 .subscription-boxes{
 grid-template-columns:repeat(3,1fr);
+width:100%;
+gap:14px;
+}
+
+.subscription-box{
+height:500px;
+width:100%;
 }
 
 }
@@ -1172,8 +1185,6 @@ Notifications
 <h2 class="subscription-title">
 الاشتراكات
 </h2>
-
-<!-- ================= 3 BOXES ================= -->
 
 <div class="subscription-boxes">
 
