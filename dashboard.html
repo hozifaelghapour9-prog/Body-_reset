@@ -60,8 +60,6 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* ================= MENU BUTTON ================= */
-
 .menu-btn{
 background:none;
 border:none;
@@ -83,8 +81,6 @@ height:2px;
 background:#fff;
 border-radius:2px;
 }
-
-/* ================= PROFILE MENU ================= */
 
 .profile-menu{
 position:fixed;
@@ -135,8 +131,6 @@ font-weight:bold;
 font-size:20px;
 }
 
-/* ================= SIDE MENU ================= */
-
 .menu-overlay{
 position:fixed;
 inset:0;
@@ -167,8 +161,6 @@ overflow-y:auto;
 .side-menu.open{
 left:0;
 }
-
-/* ================= SIDE MENU HEADER ================= */
 
 .side-menu-header{
 display:flex;
@@ -202,8 +194,6 @@ justify-content:center;
 background:#e2e8f0;
 }
 
-/* ================= SIDE MENU LINKS ================= */
-
 .side-menu a{
 display:block;
 padding:15px 12px;
@@ -217,8 +207,6 @@ font-weight:bold;
 .side-menu a:hover{
 background:#f1f5f9;
 }
-
-/* ================= LANGUAGE SWITCH ================= */
 
 .language-switcher{
 display:flex;
@@ -263,8 +251,6 @@ stroke-linecap:round;
 stroke-linejoin:round;
 }
 
-/* ================= LOGOUT BUTTON ================= */
-
 .side-menu .logout-btn{
 width:100%;
 border:none;
@@ -283,8 +269,6 @@ border-radius:10px;
 background:#fef2f2;
 color:#b91c1c;
 }
-
-/* ================= NOTIFICATIONS ================= */
 
 .notification-panel{
 position:fixed;
@@ -420,8 +404,6 @@ font-size:10px;
 color:#64748b;
 }
 
-/* ================= CALORIE BURN ================= */
-
 .calorie-number{
 text-align:center;
 margin-bottom:12px;
@@ -476,8 +458,6 @@ color:#071a33;
 white-space:nowrap;
 }
 
-/* ================= WEEKLY PROGRESS ================= */
-
 .weekly-progress{
 display:flex;
 justify-content:center;
@@ -529,8 +509,6 @@ font-size:14px;
 font-weight:bold;
 }
 
-/* ================= TODAY WORKOUT ================= */
-
 .today-workout{
 background:#fff;
 border:1px solid #d7dee8;
@@ -559,15 +537,12 @@ scrollbar-width:none;
 display:none;
 }
 
-/* ================= EXERCISE CARD ================= */
-
 .exercise-card{
 flex:0 0 280px;
 background:#f8fafc;
 border:1px solid #d7dee8;
 border-radius:16px;
 overflow:hidden;
-scroll-snap-align:start;
 }
 
 .exercise-card img{
@@ -631,8 +606,6 @@ border-radius:8px;
 background:#2563eb;
 }
 
-/* ================= COMMUNITY ================= */
-
 .community-card{
 background:#fff;
 border:1px solid #d7dee8;
@@ -678,8 +651,6 @@ font-size:12px;
 color:#64748b;
 }
 
-/* ================= CARDS ================= */
-
 .cards{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -721,8 +692,6 @@ border-radius:9px;
 text-decoration:none;
 font-weight:bold;
 }
-
-/* ================= PROGRESS ================= */
 
 .progress-section{
 margin-bottom:30px;
@@ -777,8 +746,6 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* ================= SUBSCRIPTIONS ================= */
-
 .subscription-box{
 background:#fff;
 border:1px solid #d7dee8;
@@ -806,12 +773,15 @@ font-weight:bold;
 margin:16px 0;
 }
 
+.subscription-box .start-btn{
+max-width:220px;
+margin:auto;
+}
+
 #message{
 text-align:center;
 margin-top:15px;
 }
-
-/* ================= BOTTOM NAV ================= */
 
 .bottom-nav{
 position:fixed;
@@ -859,8 +829,6 @@ stroke-linecap:round;
 stroke-linejoin:round;
 }
 
-/* HOME */
-
 .home-nav .nav-icon{
 width:40px;
 height:40px;
@@ -874,8 +842,6 @@ height:23px;
 stroke:#fff;
 }
 
-/* WORKOUT */
-
 .workout-nav .nav-icon svg{
 width:34px;
 height:34px;
@@ -883,8 +849,6 @@ stroke:#071a33;
 stroke-width:2.4;
 transform:none;
 }
-
-/* PROGRESS */
 
 .progress-nav .nav-icon{
 width:32px;
@@ -897,8 +861,6 @@ height:29px;
 stroke:#2563eb;
 stroke-width:2;
 }
-
-/* PROFILE */
 
 .profile-nav .nav-icon svg{
 width:28px;
@@ -913,8 +875,6 @@ color:#071a33;
 .nav-item.active .nav-icon{
 transform:none;
 }
-
-/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
@@ -992,8 +952,6 @@ width:21px;
 height:21px;
 }
 
-/* WORKOUT DUMBBELL */
-
 .workout-nav .nav-icon svg{
 width:32px;
 height:32px;
@@ -1021,8 +979,6 @@ left:-320px;
 .side-menu.open{
 left:0;
 }
-
-/* CALORIE CHART MOBILE */
 
 .calorie-chart{
 height:130px;
@@ -1139,8 +1095,10 @@ aria-label="إغلاق القائمة"
 </a>
 
 
-<a href="subscription.html">
-الاشتراك
+<!-- الاشتراكات -->
+
+<a href="subscriptions.html">
+الاشتراكات
 </a>
 
 
@@ -1258,7 +1216,7 @@ Notifications
 <div class="stats">
 
 
-<!-- ================= WEEKLY PROGRESS ================= -->
+<!-- WEEKLY PROGRESS -->
 
 <div class="stat">
 
@@ -1281,7 +1239,7 @@ Weekly Progress
 </div>
 
 
-<!-- ================= CALORIE BURN CARD ================= -->
+<!-- CALORIE BURN -->
 
 <div class="stat">
 
@@ -1304,8 +1262,6 @@ kcal
 
 <div class="calorie-chart">
 
-<!-- SATURDAY -->
-
 <div class="calorie-day">
 
 <div
@@ -1319,8 +1275,6 @@ SAT
 
 </div>
 
-
-<!-- SUNDAY -->
 
 <div class="calorie-day">
 
@@ -1336,8 +1290,6 @@ SUN
 </div>
 
 
-<!-- MONDAY -->
-
 <div class="calorie-day">
 
 <div
@@ -1351,8 +1303,6 @@ MON
 
 </div>
 
-
-<!-- TUESDAY -->
 
 <div class="calorie-day">
 
@@ -1368,8 +1318,6 @@ TUE
 </div>
 
 
-<!-- WEDNESDAY -->
-
 <div class="calorie-day">
 
 <div
@@ -1384,8 +1332,6 @@ WED
 </div>
 
 
-<!-- THURSDAY -->
-
 <div class="calorie-day">
 
 <div
@@ -1399,8 +1345,6 @@ THU
 
 </div>
 
-
-<!-- FRIDAY -->
 
 <div class="calorie-day">
 
@@ -1420,7 +1364,7 @@ FRI
 </div>
 
 
-<!-- ================= WEEKLY ACTIVITY ================= -->
+<!-- WEEKLY ACTIVITY -->
 
 <div class="stat">
 
@@ -1502,8 +1446,6 @@ Chest
 <div class="workout-slider">
 
 
-<!-- BENCH PRESS -->
-
 <div class="exercise-card">
 
 <div class="exercise-name">
@@ -1534,8 +1476,6 @@ class="start-btn"
 
 </div>
 
-
-<!-- INCLINE PRESS -->
 
 <div class="exercise-card">
 
@@ -1568,8 +1508,6 @@ class="start-btn"
 </div>
 
 
-<!-- CHEST FLY -->
-
 <div class="exercise-card">
 
 <div class="exercise-name">
@@ -1601,8 +1539,6 @@ class="start-btn"
 </div>
 
 
-<!-- PUSH UPS -->
-
 <div class="exercise-card">
 
 <div class="exercise-name">
@@ -1623,6 +1559,7 @@ alt="Push Ups"
 <a
 href="workout.html?exercise=push-ups"
 class="start-btn"
+
 >
 
 ابدأ الآن
@@ -1869,6 +1806,13 @@ See All
 الاشتراكات
 </h2>
 
+<a
+href="subscriptions.html"
+class="see-all"
+>
+عرض الكل
+</a>
+
 </div>
 
 
@@ -1879,12 +1823,19 @@ See All
 </h2>
 
 <p>
-الباقة الحالية
+اختار هدفك وخطة اشتراكك
 </p>
 
 <div class="plan-price">
 BodyReset
 </div>
+
+<a
+href="subscriptions.html"
+class="start-btn"
+>
+اختيار الهدف
+</a>
 
 </div>
 
