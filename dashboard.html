@@ -346,7 +346,7 @@ margin-bottom:38px;
 }
 
 .subscription-box{
-height:320px;
+height:850px;
 background:#fff;
 border:1px solid #d7dee8;
 border-radius:20px;
@@ -839,7 +839,7 @@ gap:14px;
 }
 
 .subscription-box{
-height:280px;
+height:850px;
 }
 
 .stat{
@@ -879,7 +879,7 @@ margin-bottom:28px;
 }
 
 .subscription-box{
-height:240px;
+height:875px;
 border-radius:14px;
 }
 
@@ -1209,59 +1209,38 @@ kcal
 <div class="calorie-chart">
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:70px;"></div>
-
 <span>SAT</span>
-
 </div>
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:110px;"></div>
-
 <span>SUN</span>
-
 </div>
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:88px;"></div>
-
 <span>MON</span>
-
 </div>
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:120px;"></div>
-
 <span>TUE</span>
-
 </div>
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:98px;"></div>
-
 <span>WED</span>
-
 </div>
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:125px;"></div>
-
 <span>THU</span>
-
 </div>
 
 <div class="calorie-day">
-
 <div class="calorie-bar" style="--bar-height:105px;"></div>
-
 <span>FRI</span>
-
 </div>
 
 </div>
@@ -1344,9 +1323,7 @@ Chest
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Bench Press</h3>
-
 </div>
 
 <img
@@ -1372,9 +1349,7 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Incline Press</h3>
-
 </div>
 
 <img
@@ -1400,9 +1375,7 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Chest Fly</h3>
-
 </div>
 
 <img
@@ -1428,9 +1401,7 @@ class="start-btn"
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Push Ups</h3>
-
 </div>
 
 <img
@@ -1753,13 +1724,11 @@ class="nav-item profile-nav"
 cx="12"
 cy="7"
 r="4"
->
-</circle>
+></circle>
 
 <path
 d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"
->
-</path>
+></path>
 
 </svg>
 
@@ -1783,21 +1752,17 @@ createClient
 from
 "https://esm.sh/@supabase/supabase-js@2";
 
-
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
-
 const SUPABASE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-
 
 const supabase =
 createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
-
 
 /* ================= PROFILE ================= */
 
@@ -1819,7 +1784,6 @@ document.getElementById("profileUsername");
 const profileEmail =
 document.getElementById("profileEmail");
 
-
 profileBtn.addEventListener(
 "click",
 function(event){
@@ -1833,7 +1797,6 @@ notificationPanel.classList.remove("show");
 }
 );
 
-
 /* ================= LOAD USER ================= */
 
 async function loadUser(){
@@ -1843,7 +1806,6 @@ data,
 error
 } =
 await supabase.auth.getUser();
-
 
 if(
 error ||
@@ -1857,27 +1819,22 @@ return;
 
 }
 
-
 const user =
 data.user;
-
 
 const username =
 user.user_metadata?.username ||
 user.user_metadata?.name ||
 "User";
 
-
 const email =
 user.email || "";
-
 
 const firstLetter =
 username
 .trim()
 .charAt(0)
 .toUpperCase();
-
 
 profileInitial.textContent =
 firstLetter || "?";
@@ -1893,9 +1850,7 @@ email;
 
 }
 
-
 loadUser();
-
 
 /* ================= MENU ================= */
 
@@ -1911,7 +1866,6 @@ document.getElementById("menuOverlay");
 const closeMenu =
 document.getElementById("closeMenu");
 
-
 menuBtn.addEventListener(
 "click",
 function(){
@@ -1922,7 +1876,6 @@ menuOverlay.classList.add("show");
 
 }
 );
-
 
 closeMenu.addEventListener(
 "click",
@@ -1935,7 +1888,6 @@ menuOverlay.classList.remove("show");
 }
 );
 
-
 menuOverlay.addEventListener(
 "click",
 function(){
@@ -1947,14 +1899,12 @@ menuOverlay.classList.remove("show");
 }
 );
 
-
 /* ================= LANGUAGE ================= */
 
 const languageSwitcher =
 document.getElementById(
 "languageSwitcher"
 );
-
 
 languageSwitcher.addEventListener(
 "click",
@@ -1966,12 +1916,10 @@ window.location.href =
 }
 );
 
-
 /* ================= LOGOUT ================= */
 
 const logoutBtn =
 document.getElementById("logoutBtn");
-
 
 logoutBtn.addEventListener(
 "click",
@@ -1982,7 +1930,6 @@ error
 } =
 await supabase.auth.signOut();
 
-
 if(!error){
 
 window.location.href =
@@ -1992,7 +1939,6 @@ window.location.href =
 
 }
 );
-
 
 /* ================= NOTIFICATIONS ================= */
 
@@ -2006,7 +1952,6 @@ document.getElementById(
 "notificationPanel"
 );
 
-
 notificationBtn.addEventListener(
 "click",
 function(event){
@@ -2019,7 +1964,6 @@ profileMenu.classList.remove("show");
 
 }
 );
-
 
 /* ================= OUTSIDE CLICK ================= */
 
@@ -2036,7 +1980,6 @@ if(
 profileMenu.classList.remove("show");
 
 }
-
 
 if(
 !notificationPanel.contains(event.target)
