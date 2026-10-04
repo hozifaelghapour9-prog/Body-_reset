@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BodyReset | Dashboard</title>
@@ -959,7 +962,7 @@ font-size:8px;
 /* ================= ORIENTATION ================= */
 
 /* ================= TABLET PORTRAIT ================= */
-/* نفس مقاس كارت الموبايل بالضبط */
+/* التابلت بالطول: 450px × 740px */
 
 @media(min-width:601px) and (max-width:1024px) and (orientation:portrait){
 
@@ -972,11 +975,11 @@ width:100%;
 }
 
 .subscription-box{
-width:342px;
-height:650px;
-min-width:342px;
-max-width:342px;
-flex:0 0 650px;
+width:450px;
+height:740px;
+min-width:450px;
+max-width:450px;
+flex:0 0 740px;
 border-radius:14px;
 }
 
@@ -1014,10 +1017,10 @@ width:100%;
 }
 
 .subscription-box{
-width:342px;
+width:100%;
 height:650px;
-min-width:342px;
-max-width:342px;
+min-width:0;
+max-width:none;
 flex:0 0 650px;
 border-radius:14px;
 }
@@ -1025,6 +1028,7 @@ border-radius:14px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -1044,11 +1048,12 @@ Body<span>Reset</span>
 <button
 class="menu-btn"
 id="menuBtn"
-aria-label="فتح القائمة"
->
+aria-label="فتح القائمة">
+
 <span></span>
 <span></span>
 <span></span>
+
 </button>
 
 </div>
@@ -1124,10 +1129,15 @@ id="languageSwitcher">
 <svg viewBox="0 0 24 24">
 
 <path d="M4 19L8.5 5L13 19"></path>
+
 <path d="M5.5 15H11.5"></path>
+
 <path d="M15 6H21"></path>
+
 <path d="M18 4V6"></path>
+
 <path d="M16 9C17 11.8 18.7 14 21 15.5"></path>
+
 <path d="M21 9C20 11.8 18.3 14 16 15.5"></path>
 
 </svg>
@@ -1163,6 +1173,7 @@ id="notificationBtn">
 <svg viewBox="0 0 24 24">
 
 <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+
 <path d="M10 21h4"></path>
 
 </svg>
@@ -1204,7 +1215,9 @@ Notifications
 <div class="subscription-boxes">
 
 <div class="subscription-box"></div>
+
 <div class="subscription-box"></div>
+
 <div class="subscription-box"></div>
 
 </div>
@@ -1409,7 +1422,9 @@ Chest
 <div class="exercise-card">
 
 <div class="exercise-name">
+
 <h3>Bench Press</h3>
+
 </div>
 
 <img
@@ -1433,7 +1448,9 @@ class="start-btn">
 <div class="exercise-card">
 
 <div class="exercise-name">
+
 <h3>Incline Press</h3>
+
 </div>
 
 <img
@@ -1457,7 +1474,9 @@ class="start-btn">
 <div class="exercise-card">
 
 <div class="exercise-name">
+
 <h3>Chest Fly</h3>
+
 </div>
 
 <img
@@ -1481,7 +1500,9 @@ class="start-btn">
 <div class="exercise-card">
 
 <div class="exercise-name">
+
 <h3>Push Ups</h3>
+
 </div>
 
 <img
@@ -1507,8 +1528,11 @@ class="start-btn">
 <div class="workout-dots">
 
 <span class="active"></span>
+
 <span></span>
+
 <span></span>
+
 <span></span>
 
 </div>
@@ -1724,7 +1748,9 @@ class="nav-item home-nav">
 <svg viewBox="0 0 24 24">
 
 <path d="M3 10.5L12 3l9 7.5"></path>
+
 <path d="M5 9.5V21h14V9.5"></path>
+
 <path d="M9 21v-6h6v6"></path>
 
 </svg>
@@ -1746,9 +1772,13 @@ class="nav-item workout-nav">
 <svg viewBox="0 0 24 24">
 
 <path d="M6 9v6"></path>
+
 <path d="M3.5 10v4"></path>
+
 <path d="M18 9v6"></path>
+
 <path d="M20.5 10v4"></path>
+
 <path d="M6 12h12"></path>
 
 </svg>
@@ -1770,8 +1800,11 @@ class="nav-item progress-nav">
 <svg viewBox="0 0 24 24">
 
 <path d="M3 21H21"></path>
+
 <path d="M5 21V14H8V21"></path>
+
 <path d="M10.5 21V9H13.5V21"></path>
+
 <path d="M16 21V4H19V21"></path>
 
 </svg>
@@ -2069,4 +2102,5 @@ notificationPanel.classList.remove("show");
 </script>
 
 </body>
+
    </html>
