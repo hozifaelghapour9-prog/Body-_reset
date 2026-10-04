@@ -24,6 +24,7 @@ color:#071a33;
 min-height:100vh;
 }
 
+
 /* ================= HEADER ================= */
 
 header{
@@ -87,6 +88,7 @@ background:#fff;
 border-radius:2px;
 }
 
+
 /* ================= PROFILE ================= */
 
 .profile-menu{
@@ -137,6 +139,7 @@ justify-content:center;
 font-weight:bold;
 font-size:20px;
 }
+
 
 /* ================= SIDE MENU ================= */
 
@@ -261,6 +264,7 @@ padding:15px 12px;
 border-radius:10px;
 }
 
+
 /* ================= NOTIFICATIONS ================= */
 
 .notification-panel{
@@ -293,6 +297,7 @@ border-bottom:1px solid #d7dee8;
 font-size:14px;
 color:#334155;
 }
+
 
 /* ================= MAIN ================= */
 
@@ -328,6 +333,7 @@ fill:none;
 stroke-width:1.8;
 }
 
+
 /* ================= SUBSCRIPTIONS ================= */
 
 .subscription-title{
@@ -346,15 +352,17 @@ width:100%;
 margin-bottom:38px;
 }
 
+
 /* ================= SUBSCRIPTION BOX ================= */
 
 .subscription-box{
 height:850px;
 background:#fff;
-border:5px solid #082F49;
+border:5px solid #6366C7;
 border-radius:20px;
 overflow:hidden;
 }
+
 
 /* ================= STATS ================= */
 
@@ -508,6 +516,7 @@ font-size:28px;
 color:#2563eb;
 }
 
+
 /* ================= SECTIONS ================= */
 
 .section-heading{
@@ -528,6 +537,7 @@ text-decoration:none;
 font-size:14px;
 font-weight:bold;
 }
+
 
 /* ================= TODAY WORKOUT ================= */
 
@@ -622,6 +632,7 @@ border-radius:8px;
 background:#2563eb;
 }
 
+
 /* ================= COMMUNITY ================= */
 
 .community-card{
@@ -669,6 +680,7 @@ font-size:12px;
 color:#64748b;
 }
 
+
 /* ================= CARDS ================= */
 
 .cards{
@@ -712,6 +724,7 @@ border-radius:9px;
 text-decoration:none;
 font-weight:bold;
 }
+
 
 /* ================= PROGRESS ================= */
 
@@ -767,6 +780,7 @@ border-radius:9px;
 text-decoration:none;
 font-weight:bold;
 }
+
 
 /* ================= BOTTOM NAV ================= */
 
@@ -829,6 +843,7 @@ height:23px;
 stroke:#fff;
 }
 
+
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:800px){
@@ -855,6 +870,7 @@ grid-template-columns:1fr;
 }
 
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -886,7 +902,7 @@ margin-bottom:28px;
 .subscription-box{
 height:650px;
 border-radius:14px;
-border:5px solid #082F49;
+border:5px solid #6366C7;
 }
 
 .stat{
@@ -965,6 +981,7 @@ font-size:8px;
 
 }
 
+
 /* ================= TABLET PORTRAIT ================= */
 
 @media(min-width:601px) and (max-width:1024px) and (orientation:portrait){
@@ -985,11 +1002,12 @@ max-width:500px;
 flex:0 0 1000px;
 
 background:#fff;
-border:5px solid #082F49;
+border:5px solid #6366C7;
 border-radius:20px;
 }
 
 }
+
 
 /* ================= TABLET LANDSCAPE ================= */
 
@@ -1007,11 +1025,12 @@ width:100%;
 height:500px;
 
 background:#fff;
-border:5px solid #082F49;
+border:5px solid #6366C7;
 border-radius:20px;
 }
 
 }
+
 
 /* ================= SMALL PHONE PORTRAIT ================= */
 
@@ -1033,7 +1052,7 @@ max-width:none;
 flex:0 0 650px;
 
 background:#fff;
-border:5px solid #082F49;
+border:5px solid #6366C7;
 border-radius:14px;
 }
 
@@ -1044,6 +1063,7 @@ border-radius:14px;
 </head>
 
 <body>
+
 
 <header>
 
@@ -1072,14 +1092,21 @@ aria-label="فتح القائمة">
 
 </header>
 
+
 <!-- ================= PROFILE MENU ================= -->
 
-<div class="profile-menu" id="profileMenu">
+<div
+class="profile-menu"
+id="profileMenu">
 
 <div class="profile-name">
 
 <div class="profile-menu-avatar">
-<span id="profileMenuInitial">?</span>
+
+<span id="profileMenuInitial">
+?
+</span>
+
 </div>
 
 <div>
@@ -1098,12 +1125,14 @@ Email
 
 </div>
 
+
 <!-- ================= SIDE MENU ================= -->
 
 <div
 class="menu-overlay"
 id="menuOverlay">
 </div>
+
 
 <div
 class="side-menu"
@@ -1123,13 +1152,16 @@ id="closeMenu">
 
 </div>
 
+
 <a href="calories.html">
 حاسب سعرات الجسم
 </a>
 
+
 <a href="subscriptions.html">
 الاشتراكات
 </a>
+
 
 <button
 type="button"
@@ -1162,6 +1194,7 @@ id="languageSwitcher">
 
 </button>
 
+
 <button
 class="logout-btn"
 id="logoutBtn">
@@ -1172,9 +1205,11 @@ id="logoutBtn">
 
 </div>
 
+
 <!-- ================= MAIN ================= -->
 
 <main class="container">
+
 
 <div class="top-area">
 
@@ -1193,6 +1228,7 @@ id="notificationBtn">
 </button>
 
 </div>
+
 
 <!-- ================= NOTIFICATIONS ================= -->
 
@@ -1218,25 +1254,32 @@ Notifications
 
 </div>
 
+
 <!-- ================= SUBSCRIPTIONS ================= -->
 
 <h2 class="subscription-title">
 الاشتراكات
 </h2>
 
+
 <div class="subscription-boxes">
 
-<div class="subscription-box"></div>
+<div class="subscription-box">
+</div>
 
-<div class="subscription-box"></div>
+<div class="subscription-box">
+</div>
 
-<div class="subscription-box"></div>
+<div class="subscription-box">
+</div>
 
 </div>
+
 
 <!-- ================= STATS ================= -->
 
 <div class="stats">
+
 
 <div class="stat">
 
@@ -1258,6 +1301,7 @@ Weekly Progress
 
 </div>
 
+
 <div class="stat">
 
 <h3>
@@ -1276,7 +1320,9 @@ kcal
 
 </div>
 
+
 <div class="calorie-chart">
+
 
 <div class="calorie-day">
 
@@ -1289,6 +1335,7 @@ style="--bar-height:70px;">
 
 </div>
 
+
 <div class="calorie-day">
 
 <div
@@ -1299,6 +1346,7 @@ style="--bar-height:110px;">
 <span>SUN</span>
 
 </div>
+
 
 <div class="calorie-day">
 
@@ -1311,6 +1359,7 @@ style="--bar-height:88px;">
 
 </div>
 
+
 <div class="calorie-day">
 
 <div
@@ -1321,6 +1370,7 @@ style="--bar-height:120px;">
 <span>TUE</span>
 
 </div>
+
 
 <div class="calorie-day">
 
@@ -1333,6 +1383,7 @@ style="--bar-height:98px;">
 
 </div>
 
+
 <div class="calorie-day">
 
 <div
@@ -1343,6 +1394,7 @@ style="--bar-height:125px;">
 <span>THU</span>
 
 </div>
+
 
 <div class="calorie-day">
 
@@ -1355,9 +1407,11 @@ style="--bar-height:105px;">
 
 </div>
 
+
 </div>
 
 </div>
+
 
 <div class="stat">
 
@@ -1366,6 +1420,7 @@ Weekly Activity
 </h3>
 
 <div class="activity-circles">
+
 
 <div class="activity-circle">
 
@@ -1383,6 +1438,7 @@ Progress
 
 </div>
 
+
 <div class="activity-circle">
 
 <div class="circle-content">
@@ -1399,13 +1455,16 @@ Burn
 
 </div>
 
-</div>
 
 </div>
 
 </div>
 
-<!-- ================= TODAY WORKOUT ================= -->
+
+</div>
+
+
+<!-- ================= WORKOUT ================= -->
 
 <div class="section-heading">
 
@@ -1423,20 +1482,21 @@ See All
 
 </div>
 
+
 <section class="today-workout">
 
 <div class="workout-title">
 Chest
 </div>
 
+
 <div class="workout-slider">
+
 
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Bench Press</h3>
-
 </div>
 
 <img
@@ -1457,12 +1517,11 @@ class="start-btn">
 
 </div>
 
+
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Incline Press</h3>
-
 </div>
 
 <img
@@ -1483,12 +1542,11 @@ class="start-btn">
 
 </div>
 
+
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Chest Fly</h3>
-
 </div>
 
 <img
@@ -1509,12 +1567,11 @@ class="start-btn">
 
 </div>
 
+
 <div class="exercise-card">
 
 <div class="exercise-name">
-
 <h3>Push Ups</h3>
-
 </div>
 
 <img
@@ -1535,21 +1592,21 @@ class="start-btn">
 
 </div>
 
+
 </div>
+
 
 <div class="workout-dots">
 
 <span class="active"></span>
-
 <span></span>
-
 <span></span>
-
 <span></span>
 
 </div>
 
 </section>
+
 
 <!-- ================= COMMUNITY ================= -->
 
@@ -1569,7 +1626,9 @@ See All
 
 </div>
 
+
 <section class="community-card">
+
 
 <div class="news-row">
 
@@ -1595,6 +1654,7 @@ New Class is Neon Spin
 
 </div>
 
+
 <div class="news-row">
 
 <div class="news-left">
@@ -1618,6 +1678,7 @@ Check your latest ranking
 </div>
 
 </div>
+
 
 <div class="news-row">
 
@@ -1643,9 +1704,11 @@ Join the latest challenge
 
 </div>
 
+
 </section>
 
-<!-- ================= START JOURNEY ================= -->
+
+<!-- ================= JOURNEY ================= -->
 
 <div class="section-heading">
 
@@ -1655,7 +1718,9 @@ Join the latest challenge
 
 </div>
 
+
 <div class="cards">
+
 
 <div class="card">
 
@@ -1677,6 +1742,7 @@ Workout
 
 </div>
 
+
 <div class="card">
 
 <div class="icon">
@@ -1697,11 +1763,14 @@ Nutrition
 
 </div>
 
+
 </div>
+
 
 <!-- ================= PROGRESS ================= -->
 
 <section class="progress-section">
+
 
 <div class="section-heading">
 
@@ -1719,11 +1788,14 @@ See All
 
 </div>
 
+
 <div class="progress-card">
+
 
 <div class="progress-icon">
 📊
 </div>
+
 
 <div class="progress-content">
 
@@ -1741,15 +1813,20 @@ See All
 
 </div>
 
+
 </div>
+
 
 </section>
 
+
 </main>
+
 
 <!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
+
 
 <a
 href="dashboard.html"
@@ -1774,6 +1851,7 @@ Home
 </span>
 
 </a>
+
 
 <a
 href="workout.html"
@@ -1803,6 +1881,7 @@ Workouts
 
 </a>
 
+
 <a
 href="progress.html"
 class="nav-item progress-nav">
@@ -1828,6 +1907,7 @@ Progress
 </span>
 
 </a>
+
 
 <a
 href="profile.html"
@@ -1857,7 +1937,9 @@ Profile
 
 </a>
 
+
 </nav>
+
 
 <!-- ================= SUPABASE ================= -->
 
@@ -1870,10 +1952,9 @@ from
 "https://esm.sh/@supabase/supabase-js@2";
 
 
-/* ================= SUPABASE CONFIG ================= */
-
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
+
 
 const SUPABASE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtU_oOzKvg92";
@@ -1889,46 +1970,74 @@ SUPABASE_KEY
 /* ================= ELEMENTS ================= */
 
 const profileBtn =
-document.getElementById("profileBtn");
+document.getElementById(
+"profileBtn"
+);
 
 const profileMenu =
-document.getElementById("profileMenu");
+document.getElementById(
+"profileMenu"
+);
 
 const profileInitial =
-document.getElementById("profileInitial");
+document.getElementById(
+"profileInitial"
+);
 
 const profileMenuInitial =
-document.getElementById("profileMenuInitial");
+document.getElementById(
+"profileMenuInitial"
+);
 
 const profileUsername =
-document.getElementById("profileUsername");
+document.getElementById(
+"profileUsername"
+);
 
 const profileEmail =
-document.getElementById("profileEmail");
+document.getElementById(
+"profileEmail"
+);
 
 const menuBtn =
-document.getElementById("menuBtn");
+document.getElementById(
+"menuBtn"
+);
 
 const sideMenu =
-document.getElementById("sideMenu");
+document.getElementById(
+"sideMenu"
+);
 
 const menuOverlay =
-document.getElementById("menuOverlay");
+document.getElementById(
+"menuOverlay"
+);
 
 const closeMenu =
-document.getElementById("closeMenu");
+document.getElementById(
+"closeMenu"
+);
 
 const languageSwitcher =
-document.getElementById("languageSwitcher");
+document.getElementById(
+"languageSwitcher"
+);
 
 const logoutBtn =
-document.getElementById("logoutBtn");
+document.getElementById(
+"logoutBtn"
+);
 
 const notificationBtn =
-document.getElementById("notificationBtn");
+document.getElementById(
+"notificationBtn"
+);
 
 const notificationPanel =
-document.getElementById("notificationPanel");
+document.getElementById(
+"notificationPanel"
+);
 
 
 /* ================= LOAD USER ================= */
@@ -1945,21 +2054,15 @@ await supabase.auth.getSession();
 
 
 console.log(
-"SUPABASE SESSION:",
+"SESSION:",
 data.session
 );
 
-
 console.log(
-"SUPABASE ERROR:",
+"SESSION ERROR:",
 error
 );
 
-
-/*
-   لو مفيش Session
-   نرجع لتسجيل الدخول.
-*/
 
 if(
 error ||
@@ -1985,7 +2088,8 @@ user.user_metadata?.name ||
 
 
 const email =
-user.email || "";
+user.email ||
+"";
 
 
 const firstLetter =
@@ -1996,11 +2100,13 @@ username
 
 
 profileInitial.textContent =
-firstLetter || "?";
+firstLetter ||
+"?";
 
 
 profileMenuInitial.textContent =
-firstLetter || "?";
+firstLetter ||
+"?";
 
 
 profileUsername.textContent =
@@ -2034,21 +2140,13 @@ loadUser();
 /* ================= AUTH STATE ================= */
 
 supabase.auth.onAuthStateChange(
-function(
-event,
-session
-){
+function(event){
 
 console.log(
 "AUTH EVENT:",
 event
 );
 
-
-/*
-   لا نعمل Redirect
-   إلا لو المستخدم عمل Logout فعلًا.
-*/
 
 if(
 event === "SIGNED_OUT"
@@ -2157,7 +2255,9 @@ error
 await supabase.auth.signOut();
 
 
-if(!error){
+if(
+!error
+){
 
 window.location.href =
 "auth.html";
@@ -2200,7 +2300,6 @@ profileMenu.classList.remove(
 document.addEventListener(
 "click",
 function(event){
-
 
 if(
 !profileMenu.contains(
