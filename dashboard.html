@@ -966,7 +966,6 @@ font-size:8px;
 }
 
 /* ================= TABLET PORTRAIT ================= */
-/* التابلت بالطول: 500px × 1000px */
 
 @media(min-width:601px) and (max-width:1024px) and (orientation:portrait){
 
@@ -993,7 +992,6 @@ border-radius:20px;
 }
 
 /* ================= TABLET LANDSCAPE ================= */
-/* التابلت بالعرض: 3 كروت جنب بعض */
 
 @media(min-width:601px) and (max-width:1024px) and (orientation:landscape){
 
@@ -1871,11 +1869,15 @@ createClient
 from
 "https://esm.sh/@supabase/supabase-js@2";
 
+
+/* ================= SUPABASE CONFIG ================= */
+
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
 const SUPABASE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtU_oOzKvg92";
+
 
 const supabase =
 createClient(
@@ -1883,7 +1885,8 @@ SUPABASE_URL,
 SUPABASE_KEY
 );
 
-/* ================= PROFILE ================= */
+
+/* ================= ELEMENTS ================= */
 
 const profileBtn =
 document.getElementById("profileBtn");
@@ -1903,76 +1906,6 @@ document.getElementById("profileUsername");
 const profileEmail =
 document.getElementById("profileEmail");
 
-profileBtn.addEventListener(
-"click",
-function(event){
-
-event.stopPropagation();
-
-profileMenu.classList.toggle("show");
-
-notificationPanel.classList.remove("show");
-
-}
-);
-
-/* ================= LOAD USER ================= */
-
-async function loadUser(){
-
-const {
-data,
-error
-} =
-await supabase.auth.getUser();
-
-if(
-error ||
-!data.user
-){
-
-window.location.href =
-"auth.html";
-
-return;
-
-}
-
-const user =
-data.user;
-
-const username =
-user.user_metadata?.username ||
-user.user_metadata?.name ||
-"User";
-
-const email =
-user.email || "";
-
-const firstLetter =
-username
-.trim()
-.charAt(0)
-.toUpperCase();
-
-profileInitial.textContent =
-firstLetter || "?";
-
-profileMenuInitial.textContent =
-firstLetter || "?";
-
-profileUsername.textContent =
-username;
-
-profileEmail.textContent =
-email;
-
-}
-
-loadUser();
-
-/* ================= MENU ================= */
-
 const menuBtn =
 document.getElementById("menuBtn");
 
@@ -1985,45 +1918,221 @@ document.getElementById("menuOverlay");
 const closeMenu =
 document.getElementById("closeMenu");
 
+const languageSwitcher =
+document.getElementById("languageSwitcher");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+const notificationBtn =
+document.getElementById("notificationBtn");
+
+const notificationPanel =
+document.getElementById("notificationPanel");
+
+
+/* ================= LOAD USER ================= */
+
+async function loadUser(){
+
+try{
+
+const {
+data,
+error
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"SUPABASE SESSION:",
+data.session
+);
+
+
+console.log(
+"SUPABASE ERROR:",
+error
+);
+
+
+/*
+   لو مفيش Session
+   نرجع لتسجيل الدخول.
+*/
+
+if(
+error ||
+!data.session
+){
+
+window.location.href =
+"auth.html";
+
+return;
+
+}
+
+
+const user =
+data.session.user;
+
+
+const username =
+user.user_metadata?.username ||
+user.user_metadata?.name ||
+"User";
+
+
+const email =
+user.email || "";
+
+
+const firstLetter =
+username
+.trim()
+.charAt(0)
+.toUpperCase();
+
+
+profileInitial.textContent =
+firstLetter || "?";
+
+
+profileMenuInitial.textContent =
+firstLetter || "?";
+
+
+profileUsername.textContent =
+username;
+
+
+profileEmail.textContent =
+email;
+
+
+}catch(error){
+
+console.error(
+"LOAD USER ERROR:",
+error
+);
+
+window.location.href =
+"auth.html";
+
+}
+
+}
+
+
+/* ================= START ================= */
+
+loadUser();
+
+
+/* ================= AUTH STATE ================= */
+
+supabase.auth.onAuthStateChange(
+function(
+event,
+session
+){
+
+console.log(
+"AUTH EVENT:",
+event
+);
+
+
+/*
+   لا نعمل Redirect
+   إلا لو المستخدم عمل Logout فعلًا.
+*/
+
+if(
+event === "SIGNED_OUT"
+){
+
+window.location.href =
+"auth.html";
+
+}
+
+});
+
+
+/* ================= PROFILE ================= */
+
+profileBtn.addEventListener(
+"click",
+function(event){
+
+event.stopPropagation();
+
+profileMenu.classList.toggle(
+"show"
+);
+
+notificationPanel.classList.remove(
+"show"
+);
+
+}
+);
+
+
+/* ================= MENU ================= */
+
 menuBtn.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.add("open");
+sideMenu.classList.add(
+"open"
+);
 
-menuOverlay.classList.add("show");
+menuOverlay.classList.add(
+"show"
+);
 
 }
 );
+
 
 closeMenu.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.remove("open");
+sideMenu.classList.remove(
+"open"
+);
 
-menuOverlay.classList.remove("show");
+menuOverlay.classList.remove(
+"show"
+);
 
 }
 );
+
 
 menuOverlay.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.remove("open");
+sideMenu.classList.remove(
+"open"
+);
 
-menuOverlay.classList.remove("show");
+menuOverlay.classList.remove(
+"show"
+);
 
 }
 );
 
-/* ================= LANGUAGE ================= */
 
-const languageSwitcher =
-document.getElementById(
-"languageSwitcher"
-);
+/* ================= LANGUAGE ================= */
 
 languageSwitcher.addEventListener(
 "click",
@@ -2035,10 +2144,8 @@ window.location.href =
 }
 );
 
-/* ================= LOGOUT ================= */
 
-const logoutBtn =
-document.getElementById("logoutBtn");
+/* ================= LOGOUT ================= */
 
 logoutBtn.addEventListener(
 "click",
@@ -2049,27 +2156,26 @@ error
 } =
 await supabase.auth.signOut();
 
+
 if(!error){
 
 window.location.href =
 "auth.html";
 
+}else{
+
+console.error(
+"LOGOUT ERROR:",
+error
+);
+
 }
 
 }
 );
+
 
 /* ================= NOTIFICATIONS ================= */
-
-const notificationBtn =
-document.getElementById(
-"notificationBtn"
-);
-
-const notificationPanel =
-document.getElementById(
-"notificationPanel"
-);
 
 notificationBtn.addEventListener(
 "click",
@@ -2077,12 +2183,17 @@ function(event){
 
 event.stopPropagation();
 
-notificationPanel.classList.toggle("show");
+notificationPanel.classList.toggle(
+"show"
+);
 
-profileMenu.classList.remove("show");
+profileMenu.classList.remove(
+"show"
+);
 
 }
 );
+
 
 /* ================= OUTSIDE CLICK ================= */
 
@@ -2090,23 +2201,37 @@ document.addEventListener(
 "click",
 function(event){
 
+
 if(
-!profileMenu.contains(event.target)
+!profileMenu.contains(
+event.target
+)
 &&
-!profileBtn.contains(event.target)
+!profileBtn.contains(
+event.target
+)
 ){
 
-profileMenu.classList.remove("show");
+profileMenu.classList.remove(
+"show"
+);
 
 }
 
+
 if(
-!notificationPanel.contains(event.target)
+!notificationPanel.contains(
+event.target
+)
 &&
-!notificationBtn.contains(event.target)
+!notificationBtn.contains(
+event.target
+)
 ){
 
-notificationPanel.classList.remove("show");
+notificationPanel.classList.remove(
+"show"
+);
 
 }
 
