@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BodyReset - Login</title>
@@ -684,21 +685,17 @@ Gender
 
 <select id="gender">
 
-
 <option value="">
 Select gender
 </option>
-
 
 <option value="male">
 Male
 </option>
 
-
 <option value="female">
 Female
 </option>
-
 
 </select>
 
@@ -808,15 +805,26 @@ class="message">
 
 import {
 createClient
-} from "https://esm.sh/@supabase/supabase-js@2";
+}
+from
+"https://esm.sh/@supabase/supabase-js@2";
 
+
+/* =====================================
+   SUPABASE CONFIG
+===================================== */
 
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
 
+/*
+   مهم جدًا:
+   ده المفتاح الصحيح.
+*/
+
 const SUPABASE_KEY =
-"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtU_oOzKvg92";
 
 
 const supabase =
@@ -835,13 +843,12 @@ new URLSearchParams(
 window.location.search
 );
 
-
 const selectedPlan =
 urlParams.get("plan");
 
 
 /* =====================================
-   GO AFTER AUTH
+   GO TO DASHBOARD
 ===================================== */
 
 function goAfterAuth(){
@@ -850,7 +857,9 @@ if(selectedPlan){
 
 window.location.href =
 "dashboard.html?plan=" +
-encodeURIComponent(selectedPlan);
+encodeURIComponent(
+selectedPlan
+);
 
 }else{
 
@@ -874,7 +883,6 @@ document.getElementById(
 ).style.display =
 "none";
 
-
 document.getElementById(
 "signupForm"
 ).style.display =
@@ -895,7 +903,6 @@ document.getElementById(
 ).style.display =
 "none";
 
-
 document.getElementById(
 "loginForm"
 ).style.display =
@@ -909,27 +916,33 @@ document.getElementById(
 ===================================== */
 
 window.togglePassword =
-function(id,button){
+function(
+id,
+button
+){
 
 const input =
-document.getElementById(id);
-
+document.getElementById(
+id
+);
 
 const svg =
-button.querySelector("svg");
+button.querySelector(
+"svg"
+);
 
 
-if(input.type === "password"){
+if(
+input.type === "password"
+){
 
 input.type =
 "text";
-
 
 button.setAttribute(
 "aria-label",
 "Hide password"
 );
-
 
 svg.innerHTML = `
 
@@ -948,12 +961,10 @@ svg.innerHTML = `
 input.type =
 "password";
 
-
 button.setAttribute(
 "aria-label",
 "Show password"
 );
-
 
 svg.innerHTML = `
 
@@ -968,7 +979,6 @@ r="2.5">
 `;
 
 }
-
 
 updateShowColor(
 input,
@@ -1030,7 +1040,6 @@ input.parentElement
 .querySelector(
 ".show-password"
 );
-
 
 updateShowColor(
 input,
@@ -1163,7 +1172,6 @@ if(
 message.style.color =
 "#dc2626";
 
-
 message.textContent =
 "Please complete all fields.";
 
@@ -1180,7 +1188,6 @@ password.length < 6
 
 message.style.color =
 "#dc2626";
-
 
 message.textContent =
 "Password must be at least 6 characters.";
@@ -1199,7 +1206,6 @@ phone.length < 8
 message.style.color =
 "#dc2626";
 
-
 message.textContent =
 "Please enter a valid phone number.";
 
@@ -1211,13 +1217,12 @@ return;
 message.style.color =
 "#071a33";
 
-
 message.textContent =
 "Creating account...";
 
 
 /* =====================================
-   SUPABASE SIGN UP
+   SIGN UP
 ===================================== */
 
 const {
@@ -1250,14 +1255,18 @@ gender:gender
 
 
 /* =====================================
-   ERROR
+   SIGNUP ERROR
 ===================================== */
 
 if(error){
 
+console.error(
+"SIGNUP ERROR:",
+error
+);
+
 message.style.color =
 "#dc2626";
-
 
 message.textContent =
 error.message;
@@ -1271,12 +1280,10 @@ return;
    SESSION EXISTS
 ===================================== */
 
-if(data.session){
-
-/*
-   الاسم محفوظ هنا:
-   user.user_metadata.username
-*/
+if(
+data &&
+data.session
+){
 
 goAfterAuth();
 
@@ -1286,17 +1293,18 @@ return;
 
 
 /* =====================================
-   CHECK CURRENT USER
+   CHECK SESSION
 ===================================== */
 
 const {
-data:currentUser
+data:sessionData
 } =
-await supabase.auth.getUser();
+await supabase.auth.getSession();
 
 
 if(
-currentUser?.user
+sessionData &&
+sessionData.session
 ){
 
 goAfterAuth();
@@ -1312,7 +1320,6 @@ return;
 
 message.style.color =
 "#16a34a";
-
 
 message.textContent =
 "Account created successfully. Please check your email to continue.";
@@ -1354,7 +1361,6 @@ document.getElementById(
 message.textContent =
 "";
 
-
 forgotButton.style.display =
 "none";
 
@@ -1367,7 +1373,6 @@ if(
 message.style.color =
 "#dc2626";
 
-
 message.textContent =
 "Please enter your username and password.";
 
@@ -1378,7 +1383,6 @@ return;
 
 message.style.color =
 "#071a33";
-
 
 message.textContent =
 "Logging in...";
@@ -1395,16 +1399,21 @@ error:usernameError
 await supabase.rpc(
 "get_email_by_username",
 {
-username_input:username
+username_input:
+username
 }
 );
 
 
 if(usernameError){
 
+console.error(
+"USERNAME RPC ERROR:",
+usernameError
+);
+
 message.style.color =
 "#dc2626";
-
 
 message.textContent =
 "Username lookup error: " +
@@ -1420,7 +1429,6 @@ if(!email){
 message.style.color =
 "#dc2626";
 
-
 message.textContent =
 "Username not found.";
 
@@ -1430,7 +1438,7 @@ return;
 
 
 /* =====================================
-   LOGIN
+   SIGN IN
 ===================================== */
 
 const {
@@ -1448,9 +1456,13 @@ password:password
 
 if(error){
 
+console.error(
+"LOGIN ERROR:",
+error
+);
+
 message.style.color =
 "#dc2626";
-
 
 message.textContent =
 "Login error: " +
@@ -1465,7 +1477,6 @@ error.code +
 ""
 );
 
-
 forgotButton.style.display =
 "block";
 
@@ -1475,10 +1486,46 @@ return;
 
 
 /* =====================================
-   SESSION
+   VERIFY SESSION
 ===================================== */
 
-if(data.session){
+const {
+data:sessionData,
+error:sessionError
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"LOGIN SESSION:",
+sessionData.session
+);
+
+
+if(
+sessionError
+){
+
+console.error(
+"SESSION ERROR:",
+sessionError
+);
+
+message.style.color =
+"#dc2626";
+
+message.textContent =
+"Login succeeded, but the session could not be verified.";
+
+return;
+
+}
+
+
+if(
+sessionData &&
+sessionData.session
+){
 
 goAfterAuth();
 
@@ -1489,7 +1536,6 @@ return;
 
 message.style.color =
 "#dc2626";
-
 
 message.textContent =
 "Login succeeded but no session was returned.";
@@ -1502,7 +1548,25 @@ message.textContent =
 ===================================== */
 
 supabase.auth.onAuthStateChange(
-function(event,session){
+function(
+event,
+session
+){
+
+console.log(
+"AUTH EVENT:",
+event
+);
+
+
+/*
+   مهم:
+   لا نعمل Redirect هنا عند
+   وجود أو عدم وجود Session.
+
+   الـ Redirect يتم فقط بعد
+   نجاح Login من loginUser().
+*/
 
 if(
 event === "SIGNED_OUT"
@@ -1521,4 +1585,4 @@ console.log(
 
 </body>
 
-  </html>
+   </html>
