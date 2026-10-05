@@ -1215,12 +1215,12 @@ border-radius:20px;
 display:flex;
 flex-direction:row;
 align-items:stretch;
-gap:18px;
+gap:16px;
 width:100%;
 overflow-x:auto;
 overflow-y:hidden;
-padding:10px 8px 18px;
-margin-bottom:28px;
+padding:12px 10px 20px;
+margin-bottom:30px;
 scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 scrollbar-width:none;
@@ -1231,17 +1231,20 @@ display:none;
 }
 
 .subscription-box{
-width:520px;
-min-width:520px;
-max-width:520px;
-height:1000px;
-min-height:1000px;
-flex:0 0 520px;
+width:calc(100vw - 40px);
+min-width:calc(100vw - 40px);
+max-width:calc(100vw - 40px);
+height:820px;
+min-height:820px;
+flex:0 0 calc(100vw - 40px);
 background:#fff;
 border:3px solid #082F49;
 border-radius:18px;
-padding:28px 22px;
+padding:30px 24px;
+position:relative;
+overflow:hidden;
 scroll-snap-align:center;
+min-inline-size:0;
 }
 
 .subscription-box legend{
@@ -1249,15 +1252,23 @@ font-size:20px;
 padding:7px 20px;
 border-width:3px;
 border-radius:8px;
+max-width:90%;
+white-space:nowrap;
 }
 
 .plan-content{
-padding-top:25px;
+padding-top:28px;
+width:100%;
+min-width:0;
 }
 
 .plan-name{
 font-size:32px;
 margin-bottom:25px;
+}
+
+.plan-duration{
+width:100%;
 }
 
 .duration-title{
@@ -1268,6 +1279,15 @@ font-size:20px;
 font-size:24px;
 }
 
+.price{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+width:100%;
+}
+
 .current-price{
 font-size:25px;
 }
@@ -1276,20 +1296,33 @@ font-size:25px;
 font-size:18px;
 }
 
+.plan-features{
+width:100%;
+min-width:0;
+}
+
 .plan-features li{
 font-size:18px;
-padding:14px 34px 14px 5px;
+padding:14px 38px 14px 5px;
 line-height:1.8;
+white-space:normal;
+overflow-wrap:anywhere;
+word-break:normal;
+min-width:0;
 }
 
 .plan-features li::before{
 top:14px;
+right:0;
 }
 
 .subscribe-btn{
+width:100%;
 margin-top:32px;
 font-size:18px;
 padding:15px 20px;
+white-space:normal;
+overflow-wrap:anywhere;
 }
 
 }
