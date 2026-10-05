@@ -387,9 +387,6 @@ text-align:center;
 margin-bottom:25px;
 }
 
-
-/* مدة الاشتراك والسعر */
-
 .plan-duration{
 margin-bottom:25px;
 text-align:center;
@@ -1218,28 +1215,86 @@ border-radius:20px;
 display:flex;
 flex-direction:row;
 align-items:stretch;
-gap:14px;
+gap:18px;
 width:100%;
 overflow-x:auto;
+overflow-y:hidden;
+padding:10px 8px 18px;
+margin-bottom:28px;
+
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+scrollbar-width:none;
+}
+
+.subscription-boxes::-webkit-scrollbar{
+display:none;
 }
 
 .subscription-box{
-width:430px;
-height:750px;
-min-width:430px;
-max-width:430px;
-flex:0 0 430px;
+width:520px;
+min-width:520px;
+max-width:520px;
+
+height:1000px;
+min-height:1000px;
+flex:0 0 520px;
+
 background:#fff;
 border:3px solid #082F49;
-border-radius:14px;
-padding:22px 15px;
+border-radius:18px;
+
+padding:28px 22px;
+
+scroll-snap-align:center;
 }
 
 .subscription-box legend{
-font-size:18px;
-padding:6px 16px;
+font-size:20px;
+padding:7px 20px;
 border-width:3px;
-border-radius:7px;
+border-radius:8px;
+}
+
+.plan-content{
+padding-top:25px;
+}
+
+.plan-name{
+font-size:32px;
+margin-bottom:25px;
+}
+
+.duration-title{
+font-size:20px;
+}
+
+.duration-value{
+font-size:24px;
+}
+
+.current-price{
+font-size:25px;
+}
+
+.old-price{
+font-size:18px;
+}
+
+.plan-features li{
+font-size:18px;
+padding:14px 34px 14px 5px;
+line-height:1.8;
+}
+
+.plan-features li::before{
+top:14px;
+}
+
+.subscribe-btn{
+margin-top:32px;
+font-size:18px;
+padding:15px 20px;
 }
 
 }
@@ -1629,7 +1684,6 @@ style="--bar-height:70px;">
 
 </div>
 
-
 <div class="calorie-day">
 
 <div
@@ -1640,7 +1694,6 @@ style="--bar-height:110px;">
 <span>SUN</span>
 
 </div>
-
 
 <div class="calorie-day">
 
@@ -1653,7 +1706,6 @@ style="--bar-height:88px;">
 
 </div>
 
-
 <div class="calorie-day">
 
 <div
@@ -1664,7 +1716,6 @@ style="--bar-height:120px;">
 <span>TUE</span>
 
 </div>
-
 
 <div class="calorie-day">
 
@@ -1677,7 +1728,6 @@ style="--bar-height:98px;">
 
 </div>
 
-
 <div class="calorie-day">
 
 <div
@@ -1688,7 +1738,6 @@ style="--bar-height:125px;">
 <span>THU</span>
 
 </div>
-
 
 <div class="calorie-day">
 
@@ -1729,7 +1778,6 @@ Progress
 </div>
 
 </div>
-
 
 <div class="activity-circle">
 
@@ -1781,7 +1829,6 @@ Chest
 
 <div class="workout-slider">
 
-
 <div class="exercise-card">
 
 <div class="exercise-name">
@@ -1805,7 +1852,6 @@ class="start-btn">
 </div>
 
 </div>
-
 
 <div class="exercise-card">
 
@@ -1831,7 +1877,6 @@ class="start-btn">
 
 </div>
 
-
 <div class="exercise-card">
 
 <div class="exercise-name">
@@ -1855,7 +1900,6 @@ class="start-btn">
 </div>
 
 </div>
-
 
 <div class="exercise-card">
 
@@ -1882,7 +1926,6 @@ class="start-btn">
 </div>
 
 </div>
-
 
 <div class="workout-dots">
 
@@ -1914,9 +1957,7 @@ See All
 
 </div>
 
-
 <section class="community-card">
-
 
 <div class="news-row">
 
@@ -1942,7 +1983,6 @@ New Class is Neon Spin
 
 </div>
 
-
 <div class="news-row">
 
 <div class="news-left">
@@ -1966,7 +2006,6 @@ Check your latest ranking
 </div>
 
 </div>
-
 
 <div class="news-row">
 
@@ -1992,7 +2031,6 @@ Join the latest challenge
 
 </div>
 
-
 </section>
 
 
@@ -2006,9 +2044,7 @@ Join the latest challenge
 
 </div>
 
-
 <div class="cards">
-
 
 <div class="card">
 
@@ -2029,7 +2065,6 @@ Workout
 </a>
 
 </div>
-
 
 <div class="card">
 
@@ -2073,7 +2108,6 @@ See All
 </a>
 
 </div>
-
 
 <div class="progress-card">
 
@@ -2132,7 +2166,6 @@ Home
 
 </a>
 
-
 <a
 href="workout.html"
 class="nav-item workout-nav">
@@ -2161,7 +2194,6 @@ Workouts
 
 </a>
 
-
 <a
 href="progress.html"
 class="nav-item progress-nav">
@@ -2187,7 +2219,6 @@ Progress
 </span>
 
 </a>
-
 
 <a
 href="profile.html"
