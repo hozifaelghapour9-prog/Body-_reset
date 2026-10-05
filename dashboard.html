@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -1151,6 +1151,12 @@ max-width:24px;
 font-size:8px;
 }
 
+/* إخفاء محتوى الاشتراكات على الموبايل فقط */
+
+.subscription-box .plan-content{
+display:none !important;
+}
+
 }
 
 /* TABLET PORTRAIT */
@@ -1242,9 +1248,7 @@ display:none;
 }
 
 
-/* =========================================
-   CARD = 450 × 700 EXACTLY
-========================================= */
+/* CARD = 450 × 700 EXACTLY */
 
 .subscription-box{
 
@@ -1279,9 +1283,7 @@ scroll-snap-align:center;
 }
 
 
-/* =========================================
-   LEGEND
-========================================= */
+/* LEGEND */
 
 .subscription-box legend{
 
@@ -1318,11 +1320,7 @@ text-overflow:ellipsis;
 }
 
 
-/* =========================================
-   CONTENT AREA
-   IMPORTANT:
-   هنا المحتوى نفسه هو اللي بيعمل SCROLL
-========================================= */
+/* CONTENT AREA */
 
 .subscription-box .plan-content{
 
@@ -1355,9 +1353,7 @@ scrollbar-width:thin;
 }
 
 
-/* =========================================
-   منع أي عنصر داخلي من كسر عرض الكارت
-========================================= */
+/* منع أي عنصر داخلي من كسر عرض الكارت */
 
 .subscription-box .plan-content > *{
 
@@ -1370,9 +1366,7 @@ box-sizing:border-box !important;
 }
 
 
-/* =========================================
-   PLAN NAME
-========================================= */
+/* PLAN NAME */
 
 .subscription-box .plan-name{
 
@@ -1403,9 +1397,7 @@ word-break:break-word !important;
 }
 
 
-/* =========================================
-   DURATION
-========================================= */
+/* DURATION */
 
 .subscription-box .plan-duration{
 
@@ -1458,9 +1450,7 @@ word-break:break-word !important;
 }
 
 
-/* =========================================
-   PRICE
-========================================= */
+/* PRICE */
 
 .subscription-box .price{
 
@@ -1515,9 +1505,7 @@ word-break:break-word !important;
 }
 
 
-/* =========================================
-   FEATURES
-========================================= */
+/* FEATURES */
 
 .subscription-box .plan-features{
 
@@ -1592,9 +1580,7 @@ font-size:13px !important;
 }
 
 
-/* =========================================
-   BUTTON
-========================================= */
+/* BUTTON */
 
 .subscription-box .subscribe-btn{
 
@@ -1627,10 +1613,7 @@ word-break:break-word !important;
 }
 
 
-/* =========================================
-   FINAL SAFETY
-   لا يوجد عنصر يكبر عن عرض الكارت
-========================================= */
+/* FINAL SAFETY */
 
 .subscription-box,
 .subscription-box *,
@@ -1646,7 +1629,6 @@ max-width:100% !important;
 }
 
 }
-
 
 /* MOBILE PORTRAIT */
 
