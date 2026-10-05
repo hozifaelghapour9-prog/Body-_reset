@@ -1595,21 +1595,6 @@ max-width:100% !important;
 }
 
 
-/* =================================================
-   إخفاء محتوى الاشتراك على الموبايل
-   Portrait + Landscape
-   التابلت والكمبيوتر لا يتأثران
-================================================= */
-
-@media(max-width:600px){
-
-.subscription-box .plan-content{
-display:none !important;
-}
-
-}
-
-
 /* MOBILE PORTRAIT */
 
 @media(max-width:600px) and (orientation:portrait){
@@ -1659,6 +1644,26 @@ padding:6px 16px;
 border-width:3px;
 
 border-radius:7px;
+
+}
+
+}
+
+
+/* =================================================
+   MOBILE ONLY
+   HIDE SUBSCRIPTION CONTENT
+   PORTRAIT + LANDSCAPE
+   TABLET + DESKTOP UNCHANGED
+================================================= */
+
+@media(max-width:600px){
+
+.subscription-box .plan-content{
+
+display:none !important;
+
+visibility:hidden !important;
 
 }
 
@@ -3123,4 +3128,4 @@ notificationPanel.classList.remove(
 </script>
 
 </body>
- </html>
+   </html>
