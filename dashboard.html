@@ -18,6 +18,7 @@ body{
 background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);
 color:#071a33;
 min-height:100vh;
+overflow-x:hidden;
 }
 
 
@@ -356,6 +357,7 @@ border-radius:20px;
 overflow:visible;
 padding:25px 20px;
 position:relative;
+min-width:0;
 }
 
 .subscription-box legend{
@@ -377,6 +379,7 @@ white-space:nowrap;
 .plan-content{
 padding-top:25px;
 text-align:right;
+min-width:0;
 }
 
 .plan-name{
@@ -385,11 +388,14 @@ font-weight:bold;
 color:#082F49;
 text-align:center;
 margin-bottom:25px;
+min-width:0;
+overflow-wrap:anywhere;
 }
 
 .plan-duration{
 margin-bottom:25px;
 text-align:center;
+min-width:0;
 }
 
 .duration-title{
@@ -412,6 +418,8 @@ align-items:center;
 justify-content:center;
 gap:12px;
 direction:rtl;
+flex-wrap:wrap;
+min-width:0;
 }
 
 .current-price{
@@ -434,6 +442,7 @@ text-decoration:line-through;
 list-style:none;
 padding:0;
 margin:0;
+min-width:0;
 }
 
 .plan-features li{
@@ -443,6 +452,9 @@ font-size:18px;
 line-height:1.7;
 color:#334155;
 border-bottom:1px solid #e2e8f0;
+min-width:0;
+overflow-wrap:anywhere;
+word-break:break-word;
 }
 
 .plan-features li:last-child{
@@ -485,6 +497,7 @@ font-weight:bold;
 cursor:pointer;
 transition:.2s ease;
 box-shadow:0 5px 12px rgba(25,199,189,.22);
+overflow-wrap:anywhere;
 }
 
 .subscribe-btn:hover{
@@ -1033,6 +1046,7 @@ height:650px;
 border-radius:14px;
 border:3px solid #082F49;
 padding:22px 15px;
+min-width:0;
 }
 
 .subscription-box legend{
@@ -1214,19 +1228,19 @@ border-radius:20px;
 .subscription-boxes{
 display:flex !important;
 flex-direction:row !important;
-align-items:flex-start;
+align-items:flex-start !important;
 
-gap:10px;
+gap:10px !important;
 
-width:100%;
-max-width:100%;
+width:100% !important;
+max-width:100% !important;
 
-overflow-x:auto;
-overflow-y:hidden;
+overflow-x:auto !important;
+overflow-y:hidden !important;
 
-padding:0 0 20px;
+padding:0 0 20px !important;
 
-margin-bottom:28px;
+margin-bottom:28px !important;
 
 scroll-snap-type:x mandatory;
 
@@ -1239,17 +1253,16 @@ scrollbar-width:none;
 display:none;
 }
 
+
+/* CARD */
+
 .subscription-box{
-display:block;
+display:block !important;
 
-box-sizing:border-box;
-
-/* نفس عرض كارت الطول */
 width:100% !important;
 min-width:100% !important;
 max-width:100% !important;
 
-/* نفس ارتفاع كارت الطول */
 height:650px !important;
 min-height:650px !important;
 max-height:650px !important;
@@ -1259,197 +1272,287 @@ flex:0 0 100% !important;
 min-inline-size:0 !important;
 inline-size:100% !important;
 
+box-sizing:border-box !important;
+
+padding:22px 15px !important;
+
 background:#fff;
 
 border:3px solid #082F49;
 
 border-radius:14px;
 
-padding:22px 15px;
-
 position:relative;
 
-overflow:hidden;
+overflow:hidden !important;
 
 scroll-snap-align:center;
 }
 
+
+/* LEGEND */
+
 .subscription-box legend{
-box-sizing:border-box;
+display:table !important;
 
-font-size:18px;
+max-width:90% !important;
+width:auto !important;
 
-padding:6px 16px;
+margin:0 auto !important;
+
+padding:6px 16px !important;
+
+box-sizing:border-box !important;
+
+font-size:18px !important;
+line-height:1.2 !important;
 
 border:3px solid #082F49;
 
 border-radius:7px;
 
 background:#082F49;
-
 color:#fff;
 
-max-width:90%;
+white-space:nowrap !important;
 
-white-space:nowrap;
+overflow:hidden;
+
+text-overflow:ellipsis;
 }
 
-.plan-content{
-width:100%;
-max-width:100%;
-min-width:0;
 
-padding-top:18px;
+/* CONTENT */
+
+.subscription-box .plan-content{
+display:block !important;
+
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
+
+box-sizing:border-box !important;
+
+padding:18px 0 0 !important;
 
 text-align:right;
 }
 
-.plan-name{
-width:100%;
 
-font-size:28px;
+/* PLAN NAME */
 
-margin-bottom:20px;
+.subscription-box .plan-name{
+display:block !important;
 
-text-align:center;
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
 
-white-space:normal;
+box-sizing:border-box !important;
 
-overflow-wrap:anywhere;
-}
+font-size:28px !important;
+line-height:1.3 !important;
 
-.plan-duration{
-width:100%;
-max-width:100%;
-min-width:0;
-
-margin-bottom:25px;
+margin:0 0 20px !important;
 
 text-align:center;
+
+white-space:normal !important;
+
+overflow:hidden !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
 }
 
-.duration-title{
-font-size:18px;
+
+/* DURATION */
+
+.subscription-box .plan-duration{
+display:block !important;
+
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
+
+box-sizing:border-box !important;
+
+margin-bottom:20px !important;
+
+text-align:center;
 }
 
-.duration-value{
-font-size:22px;
+.subscription-box .duration-title{
+width:100% !important;
 
-white-space:normal;
+font-size:18px !important;
 
-overflow-wrap:anywhere;
+line-height:1.4 !important;
+
+white-space:normal !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
 }
 
-.price{
-display:flex;
+.subscription-box .duration-value{
+width:100% !important;
+
+font-size:22px !important;
+
+line-height:1.4 !important;
+
+white-space:normal !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
+}
+
+
+/* PRICE */
+
+.subscription-box .price{
+display:flex !important;
+
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
+
+box-sizing:border-box !important;
 
 align-items:center;
-
 justify-content:center;
 
-flex-wrap:wrap;
+flex-wrap:wrap !important;
 
-gap:10px;
+gap:8px !important;
 
-width:100%;
-
-max-width:100%;
-
-min-width:0;
+overflow:hidden !important;
 }
 
-.current-price{
-font-size:23px;
+.subscription-box .current-price{
+max-width:100% !important;
 
-white-space:normal;
+font-size:23px !important;
 
-overflow-wrap:anywhere;
+white-space:normal !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
 }
 
-.old-price{
-font-size:17px;
+.subscription-box .old-price{
+max-width:100% !important;
 
-white-space:normal;
+font-size:17px !important;
 
-overflow-wrap:anywhere;
+white-space:normal !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
 }
 
-.plan-features{
-display:block;
 
-width:100%;
+/* FEATURES */
 
-max-width:100%;
+.subscription-box .plan-features{
+display:block !important;
 
-min-width:0;
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
 
-padding:0;
+box-sizing:border-box !important;
 
-margin:0;
+padding:0 !important;
+margin:0 !important;
 
 list-style:none;
+
+overflow:hidden !important;
 }
 
-.plan-features li{
+.subscription-box .plan-features li{
+display:block !important;
+
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
+
+box-sizing:border-box !important;
+
 position:relative;
 
-width:100%;
+padding:12px 30px 12px 3px !important;
 
-max-width:100%;
+margin:0 !important;
 
-min-width:0;
-
-font-size:16px;
-
-padding:12px 29px 12px 3px;
-
-line-height:1.7;
-
-white-space:normal;
-
-overflow-wrap:anywhere;
-
-word-break:normal;
+font-size:16px !important;
+line-height:1.6 !important;
 
 color:#334155;
 
+white-space:normal !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
+
 border-bottom:1px solid #e2e8f0;
+
+overflow:hidden !important;
 }
 
-.plan-features li::before{
-right:0;
+.subscription-box .plan-features li::before{
+right:0 !important;
+top:12px !important;
 
-top:12px;
+width:22px !important;
+height:22px !important;
+
+font-size:13px !important;
 }
 
-.subscribe-btn{
-display:block;
 
-width:100%;
+/* BUTTON */
 
-max-width:100%;
+.subscription-box .subscribe-btn{
+display:block !important;
 
-min-width:0;
+width:100% !important;
+max-width:100% !important;
+min-width:0 !important;
 
-margin-top:28px;
+box-sizing:border-box !important;
 
-font-size:17px;
+margin-top:24px !important;
 
-padding:14px 15px;
+padding:14px 12px !important;
 
-white-space:normal;
-
-overflow-wrap:anywhere;
+font-size:17px !important;
+line-height:1.4 !important;
 
 text-align:center;
+
+white-space:normal !important;
+
+overflow-wrap:anywhere !important;
+word-break:break-word !important;
+
+overflow:hidden !important;
 }
 
+
+/* FORCE EVERYTHING INSIDE CARD TO STAY INSIDE */
+
+.subscription-box,
 .subscription-box *,
 .subscription-box *::before,
 .subscription-box *::after{
-max-width:100%;
-min-width:0;
-box-sizing:border-box;
+box-sizing:border-box !important;
+
+min-width:0 !important;
+
+max-width:100% !important;
 }
 
 }
