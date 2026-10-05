@@ -1214,9 +1214,9 @@ border-radius:20px;
 .subscription-boxes{
 display:flex !important;
 flex-direction:row !important;
-align-items:stretch;
+align-items:flex-start;
 
-gap:20px;
+gap:10px;
 
 width:100%;
 max-width:100%;
@@ -1224,9 +1224,9 @@ max-width:100%;
 overflow-x:auto;
 overflow-y:hidden;
 
-padding:15px 10px 25px;
+padding:0 0 20px;
 
-margin-bottom:30px;
+margin-bottom:28px;
 
 scroll-snap-type:x mandatory;
 
@@ -1244,25 +1244,28 @@ display:block;
 
 box-sizing:border-box;
 
-width:calc(100vw - 50px) !important;
-min-width:calc(100vw - 50px) !important;
-max-width:calc(100vw - 50px) !important;
+/* نفس عرض كارت الطول */
+width:100% !important;
+min-width:100% !important;
+max-width:100% !important;
 
-height:850px !important;
-min-height:850px !important;
+/* نفس ارتفاع كارت الطول */
+height:650px !important;
+min-height:650px !important;
+max-height:650px !important;
 
-flex:0 0 calc(100vw - 50px) !important;
+flex:0 0 100% !important;
 
 min-inline-size:0 !important;
-inline-size:calc(100vw - 50px) !important;
+inline-size:100% !important;
 
 background:#fff;
 
 border:3px solid #082F49;
 
-border-radius:18px;
+border-radius:14px;
 
-padding:30px 24px;
+padding:22px 15px;
 
 position:relative;
 
@@ -1274,13 +1277,13 @@ scroll-snap-align:center;
 .subscription-box legend{
 box-sizing:border-box;
 
-font-size:20px;
+font-size:18px;
 
-padding:7px 20px;
+padding:6px 16px;
 
 border:3px solid #082F49;
 
-border-radius:8px;
+border-radius:7px;
 
 background:#082F49;
 
@@ -1296,7 +1299,7 @@ width:100%;
 max-width:100%;
 min-width:0;
 
-padding-top:28px;
+padding-top:18px;
 
 text-align:right;
 }
@@ -1304,9 +1307,9 @@ text-align:right;
 .plan-name{
 width:100%;
 
-font-size:32px;
+font-size:28px;
 
-margin-bottom:25px;
+margin-bottom:20px;
 
 text-align:center;
 
@@ -1326,11 +1329,11 @@ text-align:center;
 }
 
 .duration-title{
-font-size:20px;
+font-size:18px;
 }
 
 .duration-value{
-font-size:24px;
+font-size:22px;
 
 white-space:normal;
 
@@ -1356,7 +1359,7 @@ min-width:0;
 }
 
 .current-price{
-font-size:25px;
+font-size:23px;
 
 white-space:normal;
 
@@ -1364,7 +1367,7 @@ overflow-wrap:anywhere;
 }
 
 .old-price{
-font-size:18px;
+font-size:17px;
 
 white-space:normal;
 
@@ -1396,11 +1399,11 @@ max-width:100%;
 
 min-width:0;
 
-font-size:18px;
+font-size:16px;
 
-padding:14px 40px 14px 5px;
+padding:12px 29px 12px 3px;
 
-line-height:1.8;
+line-height:1.7;
 
 white-space:normal;
 
@@ -1416,7 +1419,7 @@ border-bottom:1px solid #e2e8f0;
 .plan-features li::before{
 right:0;
 
-top:14px;
+top:12px;
 }
 
 .subscribe-btn{
@@ -1428,11 +1431,11 @@ max-width:100%;
 
 min-width:0;
 
-margin-top:32px;
+margin-top:28px;
 
-font-size:18px;
+font-size:17px;
 
-padding:15px 20px;
+padding:14px 15px;
 
 white-space:normal;
 
@@ -1445,9 +1448,7 @@ text-align:center;
 .subscription-box *::before,
 .subscription-box *::after{
 max-width:100%;
-
 min-width:0;
-
 box-sizing:border-box;
 }
 
