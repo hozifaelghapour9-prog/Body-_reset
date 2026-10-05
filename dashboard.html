@@ -360,7 +360,22 @@ height:850px;
 background:#fff;
 border:3px solid #082F49;
 border-radius:20px;
-overflow:hidden;
+overflow:visible;
+padding:25px 20px;
+position:relative;
+}
+
+.subscription-box legend{
+padding:6px 18px;
+margin-right:20px;
+border:3px solid #082F49;
+border-radius:8px;
+background:#fff;
+color:#082F49;
+font-size:20px;
+font-weight:400;
+line-height:1.2;
+white-space:nowrap;
 }
 
 
@@ -903,6 +918,15 @@ margin-bottom:28px;
 height:650px;
 border-radius:14px;
 border:3px solid #082F49;
+padding:22px 15px;
+}
+
+.subscription-box legend{
+font-size:18px;
+padding:5px 14px;
+margin-right:12px;
+border-width:3px;
+border-radius:7px;
 }
 
 .stat{
@@ -1054,6 +1078,15 @@ flex:0 0 650px;
 background:#fff;
 border:3px solid #082F49;
 border-radius:14px;
+padding:22px 15px;
+}
+
+.subscription-box legend{
+font-size:18px;
+padding:5px 14px;
+margin-right:12px;
+border-width:3px;
+border-radius:7px;
 }
 
 }
@@ -1265,14 +1298,33 @@ Notifications
 
 <div class="subscription-boxes">
 
-<div class="subscription-box">
-</div>
 
-<div class="subscription-box">
-</div>
+<fieldset class="subscription-box">
 
-<div class="subscription-box">
-</div>
+<legend>
+عرض التغيير
+</legend>
+
+</fieldset>
+
+
+<fieldset class="subscription-box">
+
+<legend>
+عرض التغيير
+</legend>
+
+</fieldset>
+
+
+<fieldset class="subscription-box">
+
+<legend>
+عرض التغيير
+</legend>
+
+</fieldset>
+
 
 </div>
 
@@ -2103,11 +2155,6 @@ console.log(
 "Waiting for Supabase session..."
 );
 
-
-/*
-   أول محاولة
-*/
-
 try{
 
 const {
@@ -2151,11 +2198,6 @@ error
 }
 
 
-/*
-   ننتظر شوية لو الـ session
-   لسه بتتجهز
-*/
-
 return new Promise(
 function(resolve){
 
@@ -2164,8 +2206,6 @@ false;
 
 let timeout;
 
-
-/* ================= FINISH ================= */
 
 function finish(session){
 
@@ -2210,8 +2250,6 @@ null
 }
 
 
-/* ================= AUTH LISTENER ================= */
-
 const {
 data:listener
 } =
@@ -2241,8 +2279,6 @@ session
 }
 );
 
-
-/* ================= RETRY ================= */
 
 setTimeout(
 async function(){
@@ -2284,8 +2320,6 @@ error
 500
 );
 
-
-/* ================= TIMEOUT ================= */
 
 timeout =
 setTimeout(
