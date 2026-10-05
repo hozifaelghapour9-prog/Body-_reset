@@ -818,11 +818,6 @@ const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
 
-/*
-   مهم جدًا:
-   ده المفتاح الصحيح.
-*/
-
 const SUPABASE_KEY =
 "sb_publishable_uB0eFh3HfRwUI9eWS73AtU_oOzKvg92";
 
@@ -853,18 +848,24 @@ urlParams.get("plan");
 
 function goAfterAuth(){
 
+console.log(
+"GOING TO DASHBOARD"
+);
+
 if(selectedPlan){
 
-window.location.href =
+window.location.replace(
 "dashboard.html?plan=" +
 encodeURIComponent(
 selectedPlan
+)
 );
 
 }else{
 
-window.location.href =
-"dashboard.html";
+window.location.replace(
+"dashboard.html"
+);
 
 }
 
@@ -1486,46 +1487,23 @@ return;
 
 
 /* =====================================
-   VERIFY SESSION
+   CHECK SESSION FROM LOGIN RESPONSE
 ===================================== */
 
-const {
-data:sessionData,
-error:sessionError
-} =
-await supabase.auth.getSession();
+console.log(
+"LOGIN RESPONSE SESSION:",
+data?.session
+);
 
+
+if(
+data &&
+data.session
+){
 
 console.log(
-"LOGIN SESSION:",
-sessionData.session
+"LOGIN SUCCESS - SESSION EXISTS"
 );
-
-
-if(
-sessionError
-){
-
-console.error(
-"SESSION ERROR:",
-sessionError
-);
-
-message.style.color =
-"#dc2626";
-
-message.textContent =
-"Login succeeded, but the session could not be verified.";
-
-return;
-
-}
-
-
-if(
-sessionData &&
-sessionData.session
-){
 
 goAfterAuth();
 
@@ -1534,11 +1512,108 @@ return;
 }
 
 
+/* =====================================
+   WAIT FOR SESSION
+===================================== */
+
+message.style.color =
+"#071a33";
+
+message.textContent =
+"Checking login session...";
+
+
+let sessionFound =
+false;
+
+
+for(
+let i = 0;
+i < 10;
+i++
+){
+
+const {
+data:checkData,
+error:checkError
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"SESSION CHECK",
+i + 1,
+checkData?.session
+);
+
+
+if(
+checkError
+){
+
+console.error(
+"SESSION CHECK ERROR:",
+checkError
+);
+
+}
+
+
+if(
+checkData &&
+checkData.session
+){
+
+sessionFound =
+true;
+
+break;
+
+}
+
+
+await new Promise(
+function(resolve){
+
+setTimeout(
+resolve,
+300
+);
+
+}
+);
+
+}
+
+
+/* =====================================
+   SESSION FOUND
+===================================== */
+
+if(
+sessionFound
+){
+
+console.log(
+"SESSION FOUND"
+);
+
+goAfterAuth();
+
+return;
+
+}
+
+
+/* =====================================
+   SESSION FAILED
+===================================== */
+
 message.style.color =
 "#dc2626";
 
 message.textContent =
-"Login succeeded but no session was returned.";
+"Login succeeded, but the session could not be saved. Please try again.";
 
 };
 
@@ -1555,17 +1630,15 @@ session
 
 console.log(
 "AUTH EVENT:",
-event
+event,
+session
 );
 
 
 /*
-   مهم:
-   لا نعمل Redirect هنا عند
-   وجود أو عدم وجود Session.
-
+   لا نعمل Redirect هنا.
    الـ Redirect يتم فقط بعد
-   نجاح Login من loginUser().
+   التأكد من وجود Session.
 */
 
 if(
