@@ -1202,22 +1202,27 @@ border-radius:20px;
 
 /* =================================================
    MOBILE LANDSCAPE
-   SUBSCRIPTION CARD = 450px WIDTH × 700px HEIGHT
+   SUBSCRIPTION CARD = EXACTLY 450px × 700px
 ================================================= */
 
 @media(max-width:600px) and (orientation:landscape){
 
 .subscription-boxes{
+
 display:flex !important;
+
 flex-direction:row !important;
+
 align-items:flex-start !important;
 
 gap:15px !important;
 
 width:100% !important;
+
 max-width:100% !important;
 
 overflow-x:auto !important;
+
 overflow-y:hidden !important;
 
 padding:0 10px 20px !important;
@@ -1229,6 +1234,7 @@ scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 
 scrollbar-width:none;
+
 }
 
 .subscription-boxes::-webkit-scrollbar{
@@ -1236,7 +1242,9 @@ display:none;
 }
 
 
-/* CARD 450 × 700 */
+/* =========================================
+   CARD = 450 × 700 EXACTLY
+========================================= */
 
 .subscription-box{
 
@@ -1267,16 +1275,20 @@ position:relative;
 overflow:hidden !important;
 
 scroll-snap-align:center;
+
 }
 
 
-/* LEGEND */
+/* =========================================
+   LEGEND
+========================================= */
 
 .subscription-box legend{
 
 display:table !important;
 
 width:auto !important;
+
 max-width:90% !important;
 
 margin:0 auto !important;
@@ -1306,7 +1318,11 @@ text-overflow:ellipsis;
 }
 
 
-/* CONTENT */
+/* =========================================
+   CONTENT AREA
+   IMPORTANT:
+   هنا المحتوى نفسه هو اللي بيعمل SCROLL
+========================================= */
 
 .subscription-box .plan-content{
 
@@ -1318,17 +1334,45 @@ max-width:100% !important;
 
 min-width:0 !important;
 
+height:calc(700px - 44px) !important;
+
+max-height:calc(700px - 44px) !important;
+
 box-sizing:border-box !important;
 
-padding:18px 0 0 !important;
+padding:18px 0 18px !important;
 
 text-align:right;
 
-overflow:hidden !important;
+overflow-y:auto !important;
+
+overflow-x:hidden !important;
+
+scrollbar-width:thin;
+
+-webkit-overflow-scrolling:touch;
+
 }
 
 
-/* PLAN NAME */
+/* =========================================
+   منع أي عنصر داخلي من كسر عرض الكارت
+========================================= */
+
+.subscription-box .plan-content > *{
+
+max-width:100% !important;
+
+min-width:0 !important;
+
+box-sizing:border-box !important;
+
+}
+
+
+/* =========================================
+   PLAN NAME
+========================================= */
 
 .subscription-box .plan-name{
 
@@ -1352,15 +1396,16 @@ text-align:center;
 
 white-space:normal !important;
 
-overflow:hidden !important;
-
 overflow-wrap:anywhere !important;
 
 word-break:break-word !important;
+
 }
 
 
-/* DURATION */
+/* =========================================
+   DURATION
+========================================= */
 
 .subscription-box .plan-duration{
 
@@ -1378,7 +1423,6 @@ margin-bottom:16px !important;
 
 text-align:center;
 
-overflow:hidden !important;
 }
 
 .subscription-box .duration-title{
@@ -1394,6 +1438,7 @@ white-space:normal !important;
 overflow-wrap:anywhere !important;
 
 word-break:break-word !important;
+
 }
 
 .subscription-box .duration-value{
@@ -1409,10 +1454,13 @@ white-space:normal !important;
 overflow-wrap:anywhere !important;
 
 word-break:break-word !important;
+
 }
 
 
-/* PRICE */
+/* =========================================
+   PRICE
+========================================= */
 
 .subscription-box .price{
 
@@ -1434,7 +1482,8 @@ flex-wrap:wrap !important;
 
 gap:8px !important;
 
-overflow:hidden !important;
+overflow:visible !important;
+
 }
 
 .subscription-box .current-price{
@@ -1448,6 +1497,7 @@ white-space:normal !important;
 overflow-wrap:anywhere !important;
 
 word-break:break-word !important;
+
 }
 
 .subscription-box .old-price{
@@ -1461,10 +1511,13 @@ white-space:normal !important;
 overflow-wrap:anywhere !important;
 
 word-break:break-word !important;
+
 }
 
 
-/* FEATURES */
+/* =========================================
+   FEATURES
+========================================= */
 
 .subscription-box .plan-features{
 
@@ -1484,7 +1537,8 @@ margin:0 !important;
 
 list-style:none;
 
-overflow:hidden !important;
+overflow:visible !important;
+
 }
 
 .subscription-box .plan-features li{
@@ -1519,7 +1573,8 @@ word-break:break-word !important;
 
 border-bottom:1px solid #e2e8f0;
 
-overflow:hidden !important;
+overflow:visible !important;
+
 }
 
 .subscription-box .plan-features li::before{
@@ -1533,10 +1588,13 @@ width:22px !important;
 height:22px !important;
 
 font-size:13px !important;
+
 }
 
 
-/* BUTTON */
+/* =========================================
+   BUTTON
+========================================= */
 
 .subscription-box .subscribe-btn{
 
@@ -1566,11 +1624,13 @@ overflow-wrap:anywhere !important;
 
 word-break:break-word !important;
 
-overflow:hidden !important;
 }
 
 
-/* FORCE EVERYTHING INSIDE CARD */
+/* =========================================
+   FINAL SAFETY
+   لا يوجد عنصر يكبر عن عرض الكارت
+========================================= */
 
 .subscription-box,
 .subscription-box *,
@@ -1582,6 +1642,7 @@ box-sizing:border-box !important;
 min-width:0 !important;
 
 max-width:100% !important;
+
 }
 
 }
@@ -1602,6 +1663,7 @@ align-items:center;
 gap:10px;
 
 width:100%;
+
 }
 
 .subscription-box{
@@ -1623,6 +1685,7 @@ border:3px solid #082F49;
 border-radius:14px;
 
 padding:22px 15px;
+
 }
 
 .subscription-box legend{
@@ -1634,6 +1697,7 @@ padding:6px 16px;
 border-width:3px;
 
 border-radius:7px;
+
 }
 
 }
