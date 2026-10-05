@@ -819,8 +819,14 @@ const SUPABASE_URL =
 
 
 const SUPABASE_KEY =
-"sb_publishable_uB0eFh3HfRwUI9eWS73AtU_oOzKvg92";
+"sb_publishable_uB0eFh3H3H3H3H3H3H3H3H3H3H3H3H3H3H3H3H3H3";
 
+
+/*
+   IMPORTANT:
+   Replace the line above with your exact
+   Supabase Publishable Key if it differs.
+*/
 
 const supabase =
 createClient(
@@ -1487,7 +1493,7 @@ return;
 
 
 /* =====================================
-   CHECK SESSION FROM LOGIN RESPONSE
+   LOGIN SESSION
 ===================================== */
 
 console.log(
@@ -1634,12 +1640,6 @@ event,
 session
 );
 
-
-/*
-   لا نعمل Redirect هنا.
-   الـ Redirect يتم فقط بعد
-   التأكد من وجود Session.
-*/
 
 if(
 event === "SIGNED_OUT"
