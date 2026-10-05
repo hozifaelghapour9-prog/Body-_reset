@@ -1212,17 +1212,26 @@ border-radius:20px;
 @media(max-width:600px) and (orientation:landscape){
 
 .subscription-boxes{
-display:flex;
-flex-direction:row;
+display:flex !important;
+flex-direction:row !important;
 align-items:stretch;
-gap:16px;
+
+gap:20px;
+
 width:100%;
+max-width:100%;
+
 overflow-x:auto;
 overflow-y:hidden;
-padding:12px 10px 20px;
+
+padding:15px 10px 25px;
+
 margin-bottom:30px;
+
 scroll-snap-type:x mandatory;
+
 -webkit-overflow-scrolling:touch;
+
 scrollbar-width:none;
 }
 
@@ -1231,44 +1240,89 @@ display:none;
 }
 
 .subscription-box{
-width:calc(100vw - 40px);
-min-width:calc(100vw - 40px);
-max-width:calc(100vw - 40px);
-height:820px;
-min-height:820px;
-flex:0 0 calc(100vw - 40px);
+display:block;
+
+box-sizing:border-box;
+
+width:calc(100vw - 50px) !important;
+min-width:calc(100vw - 50px) !important;
+max-width:calc(100vw - 50px) !important;
+
+height:850px !important;
+min-height:850px !important;
+
+flex:0 0 calc(100vw - 50px) !important;
+
+min-inline-size:0 !important;
+inline-size:calc(100vw - 50px) !important;
+
 background:#fff;
+
 border:3px solid #082F49;
+
 border-radius:18px;
+
 padding:30px 24px;
+
 position:relative;
+
 overflow:hidden;
+
 scroll-snap-align:center;
-min-inline-size:0;
 }
 
 .subscription-box legend{
+box-sizing:border-box;
+
 font-size:20px;
+
 padding:7px 20px;
-border-width:3px;
+
+border:3px solid #082F49;
+
 border-radius:8px;
+
+background:#082F49;
+
+color:#fff;
+
 max-width:90%;
+
 white-space:nowrap;
 }
 
 .plan-content{
-padding-top:28px;
 width:100%;
+max-width:100%;
 min-width:0;
+
+padding-top:28px;
+
+text-align:right;
 }
 
 .plan-name{
+width:100%;
+
 font-size:32px;
+
 margin-bottom:25px;
+
+text-align:center;
+
+white-space:normal;
+
+overflow-wrap:anywhere;
 }
 
 .plan-duration{
 width:100%;
+max-width:100%;
+min-width:0;
+
+margin-bottom:25px;
+
+text-align:center;
 }
 
 .duration-title{
@@ -1277,52 +1331,124 @@ font-size:20px;
 
 .duration-value{
 font-size:24px;
+
+white-space:normal;
+
+overflow-wrap:anywhere;
 }
 
 .price{
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 flex-wrap:wrap;
+
 gap:10px;
+
 width:100%;
+
+max-width:100%;
+
+min-width:0;
 }
 
 .current-price{
 font-size:25px;
+
+white-space:normal;
+
+overflow-wrap:anywhere;
 }
 
 .old-price{
 font-size:18px;
+
+white-space:normal;
+
+overflow-wrap:anywhere;
 }
 
 .plan-features{
+display:block;
+
 width:100%;
+
+max-width:100%;
+
 min-width:0;
+
+padding:0;
+
+margin:0;
+
+list-style:none;
 }
 
 .plan-features li{
-font-size:18px;
-padding:14px 38px 14px 5px;
-line-height:1.8;
-white-space:normal;
-overflow-wrap:anywhere;
-word-break:normal;
+position:relative;
+
+width:100%;
+
+max-width:100%;
+
 min-width:0;
+
+font-size:18px;
+
+padding:14px 40px 14px 5px;
+
+line-height:1.8;
+
+white-space:normal;
+
+overflow-wrap:anywhere;
+
+word-break:normal;
+
+color:#334155;
+
+border-bottom:1px solid #e2e8f0;
 }
 
 .plan-features li::before{
-top:14px;
 right:0;
+
+top:14px;
 }
 
 .subscribe-btn{
+display:block;
+
 width:100%;
+
+max-width:100%;
+
+min-width:0;
+
 margin-top:32px;
+
 font-size:18px;
+
 padding:15px 20px;
+
 white-space:normal;
+
 overflow-wrap:anywhere;
+
+text-align:center;
+}
+
+.subscription-box *,
+.subscription-box *::before,
+.subscription-box *::after{
+max-width:100%;
+
+min-width:0;
+
+box-sizing:border-box;
 }
 
 }
