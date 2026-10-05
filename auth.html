@@ -5,7 +5,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>BodyReset - Login</title>
 
@@ -15,392 +16,178 @@
 box-sizing:border-box;
 margin:0;
 padding:0;
-}
-
-html,
-body{
-width:100%;
-min-height:100%;
+font-family:Arial, sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#f1f5f9;
+background:#f5f7fa;
 color:#071a33;
+min-height:100vh;
 }
-
-
-/* =====================================
-   HEADER
-===================================== */
 
 header{
-width:100%;
-height:85px;
+height:70px;
 background:#071a33;
-padding:22px 7%;
-}
-
-.header-content{
-width:100%;
-height:100%;
+color:white;
 display:flex;
 align-items:center;
 justify-content:space-between;
-}
-
-.logo{
-color:white;
-font-size:30px;
-font-weight:bold;
-}
-
-.logo span{
-color:#2563eb;
-}
-
-.home-link{
-color:#2563eb;
-text-decoration:none;
-font-size:17px;
-font-weight:bold;
-}
-
-
-/* =====================================
-   AUTH SECTION
-===================================== */
-
-.auth-section{
-width:100%;
-min-height:calc(100vh - 85px);
-display:flex;
-align-items:flex-start;
-justify-content:center;
-}
-
-.auth-box{
-width:100%;
-max-width:1050px;
-display:grid;
-grid-template-columns:1fr 1fr;
-overflow:hidden;
-border-radius:0 0 20px 20px;
-box-shadow:0 15px 45px rgba(7,26,51,.15);
-}
-
-
-/* =====================================
-   IMAGE
-===================================== */
-
-.auth-image{
-min-height:620px;
-padding:45px;
-color:white;
-display:flex;
-align-items:flex-end;
-justify-content:flex-end;
-text-align:right;
-
-background:
-linear-gradient(
-rgba(7,26,51,.30),
-rgba(7,26,51,.60)
-),
-url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=90")
-center center / cover no-repeat;
-}
-
-.image-content{
-width:100%;
-direction:rtl;
-text-align:right;
-}
-
-.image-content h2{
-font-size:38px;
-margin-bottom:15px;
-color:white;
-}
-
-.image-content p{
-font-size:21px;
-line-height:1.8;
-max-width:430px;
-margin-left:auto;
-color:white;
-}
-
-
-/* =====================================
-   FORM
-===================================== */
-
-.auth-form{
-width:100%;
-padding:50px 45px;
-background:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-}
-
-.input-group{
-margin-bottom:18px;
-}
-
-.input-group label{
-display:block;
-margin-bottom:8px;
-font-weight:bold;
-color:#071a33;
-font-size:15px;
-}
-
-.input-group input,
-.input-group select{
-width:100%;
-padding:14px 15px;
-border:2px solid #071a33;
-border-radius:9px;
-background:#071a33;
-color:white;
-font-size:16px;
-outline:none;
-}
-
-.input-group input::placeholder{
-color:#cbd5e1;
-}
-
-.input-group input:focus,
-.input-group select:focus{
-border-color:#2563eb;
-}
-
-.input-group select option{
-background:#071a33;
-color:white;
-}
-
-
-/* =====================================
-   PASSWORD
-===================================== */
-
-.password-box{
-position:relative;
-width:100%;
-}
-
-.password-box input{
-padding-right:55px;
-user-select:text;
--webkit-user-select:text;
--webkit-touch-callout:default;
-}
-
-.show-password{
-position:absolute;
-right:14px;
-top:50%;
-transform:translateY(-50%);
-background:transparent;
-border:none;
-color:white;
-cursor:pointer;
-padding:4px;
-z-index:2;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.show-password svg{
-width:22px;
-height:22px;
-stroke:currentColor;
-fill:none;
-stroke-width:2;
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-.password-box:has(input:-webkit-autofill) .show-password{
-color:#071a33;
-}
-
-
-/* =====================================
-   MAIN BUTTON
-===================================== */
-
-.main-btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:9px;
-background:#071a33;
-color:white;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-margin-top:5px;
-}
-
-.main-btn:hover{
-background:#0b2547;
-}
-
-
-/* =====================================
-   FORGOT PASSWORD
-===================================== */
-
-.forgot-password{
-display:none;
-width:100%;
-margin-top:13px;
-text-align:center;
-background:none;
-border:none;
-color:#2563eb;
-font-size:15px;
-font-weight:bold;
-cursor:pointer;
-}
-
-
-/* =====================================
-   SWITCH
-===================================== */
-
-.switch{
-text-align:center;
-margin-top:20px;
-color:#64748b;
-font-size:15px;
-}
-
-.switch button{
-background:none;
-border:none;
-color:#2563eb;
-font-weight:bold;
-cursor:pointer;
-font-size:15px;
-}
-
-
-/* =====================================
-   MESSAGE
-===================================== */
-
-.message{
-margin-top:15px;
-text-align:center;
-font-size:14px;
-line-height:1.6;
-}
-
-#signupForm{
-display:none;
-}
-
-
-/* =====================================
-   SIGNUP GRID
-===================================== */
-
-.signup-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-@media(max-width:750px){
-
-header{
-height:75px;
-padding:18px 5%;
-}
-
-.auth-section{
-min-height:calc(100vh - 75px);
-}
-
-.auth-box{
-grid-template-columns:1fr;
-border-radius:0;
-}
-
-.auth-image{
-min-height:300px;
-height:300px;
-padding:30px;
-}
-
-.image-content h2{
-font-size:30px;
-}
-
-.image-content p{
-font-size:19px;
-}
-
-.auth-form{
-padding:35px 25px;
-}
-
-}
-
-
-@media(max-width:500px){
-
-header{
-height:68px;
-padding:16px 5%;
+padding:0 30px;
 }
 
 .logo{
 font-size:25px;
+font-weight:bold;
 }
 
-.home-link{
+.home-btn{
+background:white;
+color:#071a33;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+width:100%;
+max-width:500px;
+margin:50px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:35px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+color:#071a33;
+}
+
+h2{
+margin-bottom:20px;
+color:#071a33;
+}
+
+.form-group{
+margin-bottom:16px;
+}
+
+label{
+display:block;
+margin-bottom:7px;
+font-weight:bold;
+}
+
+input,
+select{
+width:100%;
+padding:13px;
+border:1px solid #d1d5db;
+border-radius:8px;
 font-size:15px;
+outline:none;
 }
 
-.auth-section{
-min-height:calc(100vh - 68px);
+input:focus,
+select:focus{
+border-color:#082F49;
 }
 
-.auth-image{
-min-height:245px;
-height:245px;
-padding:25px;
+.password-box{
+position:relative;
 }
 
-.image-content h2{
-font-size:27px;
+.password-box input{
+padding-right:70px;
 }
 
-.image-content p{
-font-size:18px;
+.show-password{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+border:none;
+background:none;
+cursor:pointer;
+color:#082F49;
+font-weight:bold;
 }
 
-.auth-form{
-padding:30px 20px;
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:9px;
+background:#082F49;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:8px;
 }
 
-.signup-grid{
-grid-template-columns:1fr;
-gap:0;
+.btn:hover{
+background:#0b4568;
+}
+
+.switch{
+text-align:center;
+margin-top:20px;
+}
+
+.switch button{
+border:none;
+background:none;
+color:#082F49;
+font-weight:bold;
+cursor:pointer;
+}
+
+.message{
+margin-top:15px;
+text-align:center;
+font-weight:bold;
+min-height:20px;
+}
+
+.forgot{
+display:none;
+width:100%;
+border:none;
+background:none;
+color:#dc2626;
+font-weight:bold;
+cursor:pointer;
+margin-top:12px;
+}
+
+.hidden{
+display:none;
+}
+
+@media(max-width:600px){
+
+header{
+padding:0 15px;
+}
+
+.logo{
+font-size:21px;
+}
+
+.container{
+margin:25px auto;
+padding:15px;
+}
+
+.card{
+padding:25px 20px;
 }
 
 }
@@ -413,142 +200,69 @@ gap:0;
 <body>
 
 
-<!-- =====================================
-     HEADER
-===================================== -->
-
 <header>
 
-<div class="header-content">
+<div class="logo">
+BodyReset
+</div>
 
 <a
 href="index.html"
-class="home-link">
-
+class="home-btn">
 Home
-
 </a>
-
-
-<div class="logo">
-
-Body<span>Reset</span>
-
-</div>
-
-</div>
 
 </header>
 
 
-<!-- =====================================
-     AUTH SECTION
-===================================== -->
+<div class="container">
 
-<section class="auth-section">
+<div class="card">
 
-
-<div class="auth-box">
+<h1>BodyReset</h1>
 
 
-<!-- =====================================
-     IMAGE
-===================================== -->
+<!-- LOGIN -->
 
-<div class="auth-image">
+<div id="loginSection">
 
-
-<div class="image-content">
-
-<h2>
-ابدأ تغيير جسمك
-</h2>
+<h2>Login</h2>
 
 
-<p>
-التزم بخطتك، تابع تقدمك، وابني نظام حياة صحي يناسب هدفك.
-</p>
+<div class="form-group">
 
-</div>
-
-</div>
-
-
-<!-- =====================================
-     FORM
-===================================== -->
-
-<div class="auth-form">
-
-
-<!-- =====================================
-     LOGIN
-===================================== -->
-
-<div id="loginForm">
-
-
-<div class="input-group">
-
-<label>
+<label for="loginUsername">
 Username
 </label>
-
 
 <input
 type="text"
 id="loginUsername"
-autocomplete="username"
 placeholder="Enter your username"
->
+autocomplete="username">
 
 </div>
 
 
-<div class="input-group">
+<div class="form-group">
 
-<label>
+<label for="loginPassword">
 Password
 </label>
 
-
 <div class="password-box">
-
 
 <input
 type="password"
 id="loginPassword"
-autocomplete="current-password"
 placeholder="Enter your password"
->
-
+autocomplete="current-password">
 
 <button
 type="button"
 class="show-password"
-aria-label="Show password"
-onclick="togglePassword('loginPassword', this)"
->
-
-
-<svg
-viewBox="0 0 24 24"
-aria-hidden="true"
->
-
-<path
-d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z">
-</path>
-
-<circle
-cx="12"
-cy="12"
-r="2.5">
-</circle>
-
-</svg>
-
-
+onclick="togglePassword('loginPassword',this)">
+Show
 </button>
 
 </div>
@@ -557,37 +271,18 @@ r="2.5">
 
 
 <button
-class="main-btn"
+class="btn"
 onclick="loginUser()">
-
 Login
-
 </button>
 
 
 <button
-type="button"
-id="forgotPasswordButton"
-class="forgot-password"
+id="forgotButton"
+class="forgot"
 onclick="forgotPassword()">
-
-Forget password?
-
+Forgot your password?
 </button>
-
-
-<div class="switch">
-
-Don't have an account?
-
-<button
-onclick="showSignup()">
-
-Sign up
-
-</button>
-
-</div>
 
 
 <div
@@ -596,104 +291,101 @@ class="message">
 </div>
 
 
+<div class="switch">
+
+Don't have an account?
+
+<button onclick="showSignup()">
+Create Account
+</button>
+
+</div>
+
 </div>
 
 
-<!-- =====================================
-     SIGNUP
-===================================== -->
+<!-- SIGNUP -->
 
-<div id="signupForm">
+<div
+id="signupSection"
+class="hidden">
+
+<h2>Create Account</h2>
 
 
-<div class="signup-grid">
+<div class="form-group">
 
-
-<div class="input-group">
-
-<label>
+<label for="signupUsername">
 Username
 </label>
 
-
 <input
 type="text"
-id="username"
-placeholder="Username"
-autocomplete="username"
->
+id="signupUsername"
+placeholder="Choose a username">
 
 </div>
 
 
-<div class="input-group">
+<div class="form-group">
 
-<label>
-Email Address
+<label for="signupEmail">
+Email
 </label>
-
 
 <input
 type="email"
 id="signupEmail"
-autocomplete="email"
-placeholder="Email address"
->
+placeholder="Enter your email">
 
 </div>
 
 
-<div class="input-group">
+<div class="form-group">
 
-<label>
-Phone Number
+<label for="signupPhone">
+Phone
 </label>
-
 
 <input
 type="tel"
 id="signupPhone"
-autocomplete="tel"
-placeholder="Phone number"
->
+placeholder="Enter your phone number">
 
 </div>
 
 
-<div class="input-group">
+<div class="form-group">
 
-<label>
+<label for="signupAge">
 Age
 </label>
 
-
 <input
 type="number"
-id="age"
-placeholder="Age"
->
+id="signupAge"
+placeholder="Enter your age">
 
 </div>
 
 
-<div class="input-group">
+<div class="form-group">
 
-<label>
+<label for="signupGender">
 Gender
 </label>
 
-
-<select id="gender">
+<select id="signupGender">
 
 <option value="">
 Select gender
 </option>
 
-<option value="male">
+<option value="Male">
 Male
 </option>
 
-<option value="female">
+<option value="Female">
 Female
 </option>
 
@@ -702,53 +394,24 @@ Female
 </div>
 
 
-</div>
+<div class="form-group">
 
-
-<div class="input-group">
-
-<label>
-Create Password
+<label for="signupPassword">
+Password
 </label>
 
-
 <div class="password-box">
-
 
 <input
 type="password"
 id="signupPassword"
-autocomplete="new-password"
-placeholder="Create password"
->
-
+placeholder="Create a password">
 
 <button
 type="button"
 class="show-password"
-aria-label="Show password"
-onclick="togglePassword('signupPassword', this)"
->
-
-
-<svg
-viewBox="0 0 24 24"
-aria-hidden="true"
->
-
-<path
-d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z">
-</path>
-
-<circle
-cx="12"
-cy="12"
-r="2.5">
-</circle>
-
-</svg>
-
-
+onclick="togglePassword('signupPassword',this)">
+Show
 </button>
 
 </div>
@@ -757,26 +420,10 @@ r="2.5">
 
 
 <button
-class="main-btn"
+class="btn"
 onclick="createAccount()">
-
 Create Account
-
 </button>
-
-
-<div class="switch">
-
-Already have an account?
-
-<button
-onclick="showLogin()">
-
-Login
-
-</button>
-
-</div>
 
 
 <div
@@ -785,21 +432,22 @@ class="message">
 </div>
 
 
+<div class="switch">
+
+Already have an account?
+
+<button onclick="showLogin()">
+Login
+</button>
+
 </div>
 
-
 </div>
 
 </div>
 
 </div>
 
-</section>
-
-
-<!-- =====================================
-     SUPABASE
-===================================== -->
 
 <script type="module">
 
@@ -810,23 +458,17 @@ from
 "https://esm.sh/@supabase/supabase-js@2";
 
 
-/* =====================================
+
+/* =========================
    SUPABASE CONFIG
-===================================== */
+========================= */
 
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
-
 const SUPABASE_KEY =
-"sb_publishable_uB0eFh3H3H3H3H3H3H3H3H3H3H3H3H3H3H3H3H3H3";
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
-
-/*
-   IMPORTANT:
-   Replace the line above with your exact
-   Supabase Publishable Key if it differs.
-*/
 
 const supabase =
 createClient(
@@ -835,9 +477,10 @@ SUPABASE_KEY
 );
 
 
-/* =====================================
+
+/* =========================
    SELECTED PLAN
-===================================== */
+========================= */
 
 const urlParams =
 new URLSearchParams(
@@ -848,23 +491,20 @@ const selectedPlan =
 urlParams.get("plan");
 
 
-/* =====================================
+
+/* =========================
    GO TO DASHBOARD
-===================================== */
+========================= */
 
 function goAfterAuth(){
 
-console.log(
-"GOING TO DASHBOARD"
-);
+console.log("GOING TO DASHBOARD");
 
 if(selectedPlan){
 
 window.location.replace(
 "dashboard.html?plan=" +
-encodeURIComponent(
-selectedPlan
-)
+encodeURIComponent(selectedPlan)
 );
 
 }else{
@@ -878,294 +518,129 @@ window.location.replace(
 }
 
 
-/* =====================================
-   SHOW SIGNUP
-===================================== */
 
-window.showSignup =
-function(){
-
-document.getElementById(
-"loginForm"
-).style.display =
-"none";
-
-document.getElementById(
-"signupForm"
-).style.display =
-"block";
-
-};
-
-
-/* =====================================
+/* =========================
    SHOW LOGIN
-===================================== */
+========================= */
 
 window.showLogin =
 function(){
 
-document.getElementById(
-"signupForm"
-).style.display =
-"none";
-
-document.getElementById(
-"loginForm"
-).style.display =
-"block";
-
-};
-
-
-/* =====================================
-   PASSWORD SHOW / HIDE
-===================================== */
-
-window.togglePassword =
-function(
-id,
-button
-){
-
-const input =
-document.getElementById(
-id
-);
-
-const svg =
-button.querySelector(
-"svg"
-);
-
-
-if(
-input.type === "password"
-){
-
-input.type =
-"text";
-
-button.setAttribute(
-"aria-label",
-"Hide password"
-);
-
-svg.innerHTML = `
-
-<path d="M3 3l18 18"></path>
-
-<path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
-
-<path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a18.2 18.2 0 0 1-3.1 3.8"></path>
-
-<path d="M6.1 6.1C3.5 8.1 2 12 2 12s3.5 7 10 7a10.7 10.7 0 0 0 4.1-.8"></path>
-
-`;
-
-}else{
-
-input.type =
-"password";
-
-button.setAttribute(
-"aria-label",
-"Show password"
-);
-
-svg.innerHTML = `
-
-<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
-
-<circle
-cx="12"
-cy="12"
-r="2.5">
-</circle>
-
-`;
-
-}
-
-updateShowColor(
-input,
-button
-);
-
-};
-
-
-/* =====================================
-   PASSWORD COLOR
-===================================== */
-
-function updateShowColor(
-input,
-button
-){
-
-const background =
-window.getComputedStyle(
-input
-).backgroundColor;
-
-
-if(
-background ===
-"rgb(7, 26, 51)" ||
-
-background ===
-"rgb(11, 37, 71)"
-){
-
-button.style.color =
-"white";
-
-}else{
-
-button.style.color =
-"#071a33";
-
-}
-
-}
-
-
-/* =====================================
-   PASSWORD EVENTS
-===================================== */
+document
+.getElementById("loginSection")
+.classList
+.remove("hidden");
 
 document
-.querySelectorAll(
-".password-box input"
-)
-.forEach(
-function(input){
-
-const button =
-input.parentElement
-.querySelector(
-".show-password"
-);
-
-updateShowColor(
-input,
-button
-);
-
-
-input.addEventListener(
-"input",
-function(){
-
-updateShowColor(
-input,
-button
-);
-
-});
-
-
-input.addEventListener(
-"change",
-function(){
-
-updateShowColor(
-input,
-button
-);
-
-});
-
-
-input.addEventListener(
-"focus",
-function(){
-
-setTimeout(
-function(){
-
-updateShowColor(
-input,
-button
-);
-
-},
-100
-);
-
-});
-
-});
-
-
-/* =====================================
-   FORGOT PASSWORD
-===================================== */
-
-window.forgotPassword =
-function(){
-
-window.location.href =
-"forgot-password.html";
+.getElementById("signupSection")
+.classList
+.add("hidden");
 
 };
 
 
-/* =====================================
+
+/* =========================
+   SHOW SIGNUP
+========================= */
+
+window.showSignup =
+function(){
+
+document
+.getElementById("loginSection")
+.classList
+.add("hidden");
+
+document
+.getElementById("signupSection")
+.classList
+.remove("hidden");
+
+};
+
+
+
+/* =========================
+   TOGGLE PASSWORD
+========================= */
+
+window.togglePassword =
+function(inputId,button){
+
+const input =
+document.getElementById(inputId);
+
+if(input.type === "password"){
+
+input.type = "text";
+
+button.textContent = "Hide";
+
+}else{
+
+input.type = "password";
+
+button.textContent = "Show";
+
+}
+
+};
+
+
+
+/* =========================
    CREATE ACCOUNT
-===================================== */
+========================= */
 
 window.createAccount =
 async function(){
 
 const username =
-document.getElementById(
-"username"
-).value.trim();
-
+document
+.getElementById("signupUsername")
+.value
+.trim();
 
 const email =
-document.getElementById(
-"signupEmail"
-).value.trim();
-
+document
+.getElementById("signupEmail")
+.value
+.trim();
 
 const phone =
-document.getElementById(
-"signupPhone"
-).value.trim();
-
+document
+.getElementById("signupPhone")
+.value
+.trim();
 
 const age =
-document.getElementById(
-"age"
-).value.trim();
-
+document
+.getElementById("signupAge")
+.value
+.trim();
 
 const gender =
-document.getElementById(
-"gender"
-).value;
-
+document
+.getElementById("signupGender")
+.value;
 
 const password =
-document.getElementById(
-"signupPassword"
-).value;
-
+document
+.getElementById("signupPassword")
+.value;
 
 const message =
-document.getElementById(
-"signupMessage"
-);
+document
+.getElementById("signupMessage");
 
 
-message.textContent =
-"";
+message.style.color =
+"#071a33";
 
 
-/* CHECK FIELDS */
+
+/* VALIDATION */
 
 if(
 !username ||
@@ -1180,18 +655,14 @@ message.style.color =
 "#dc2626";
 
 message.textContent =
-"Please complete all fields.";
+"Please fill in all fields.";
 
 return;
 
 }
 
 
-/* PASSWORD */
-
-if(
-password.length < 6
-){
+if(password.length < 6){
 
 message.style.color =
 "#dc2626";
@@ -1204,11 +675,7 @@ return;
 }
 
 
-/* PHONE */
-
-if(
-phone.length < 8
-){
+if(phone.length < 8){
 
 message.style.color =
 "#dc2626";
@@ -1221,16 +688,66 @@ return;
 }
 
 
-message.style.color =
-"#071a33";
 
 message.textContent =
-"Creating account...";
+"Creating your account...";
 
 
-/* =====================================
-   SIGN UP
-===================================== */
+
+try{
+
+
+/* CHECK USERNAME */
+
+const {
+data:usernameData,
+error:usernameError
+} =
+await supabase.rpc(
+"get_email_by_username",
+{
+username_input:username
+}
+);
+
+
+if(usernameError){
+
+console.error(
+"Username check error:",
+usernameError
+);
+
+message.style.color =
+"#dc2626";
+
+message.textContent =
+"Username check failed: " +
+usernameError.message;
+
+return;
+
+}
+
+
+if(
+usernameData &&
+usernameData.length > 0
+){
+
+message.style.color =
+"#dc2626";
+
+message.textContent =
+"Username already exists.";
+
+return;
+
+}
+
+
+
+/* SIGN UP */
 
 const {
 data,
@@ -1243,32 +760,21 @@ email:email,
 password:password,
 
 options:{
-
 data:{
-
 username:username,
-
 phone:phone,
-
 age:age,
-
 gender:gender
-
 }
-
 }
 
 });
 
 
-/* =====================================
-   SIGNUP ERROR
-===================================== */
-
 if(error){
 
 console.error(
-"SIGNUP ERROR:",
+"Signup error:",
 error
 );
 
@@ -1283,140 +789,186 @@ return;
 }
 
 
-/* =====================================
-   SESSION EXISTS
-===================================== */
-
-if(
-data &&
-data.session
-){
-
-goAfterAuth();
-
-return;
-
-}
+console.log(
+"SIGNUP RESPONSE:",
+data
+);
 
 
-/* =====================================
-   CHECK SESSION
-===================================== */
 
-const {
-data:sessionData
-} =
-await supabase.auth.getSession();
+/* SESSION ALREADY EXISTS */
 
-
-if(
-sessionData &&
-sessionData.session
-){
-
-goAfterAuth();
-
-return;
-
-}
-
-
-/* =====================================
-   EMAIL CONFIRMATION
-===================================== */
+if(data && data.session){
 
 message.style.color =
 "#16a34a";
 
 message.textContent =
-"Account created successfully. Please check your email to continue.";
+"Account created successfully.";
 
-};
-
-
-/* =====================================
-   LOGIN
-===================================== */
-
-window.loginUser =
-async function(){
-
-const username =
-document.getElementById(
-"loginUsername"
-).value.trim();
-
-
-const password =
-document.getElementById(
-"loginPassword"
-).value;
-
-
-const message =
-document.getElementById(
-"loginMessage"
-);
-
-
-const forgotButton =
-document.getElementById(
-"forgotPasswordButton"
-);
-
-
-message.textContent =
-"";
-
-forgotButton.style.display =
-"none";
-
-
-if(
-!username ||
-!password
-){
-
-message.style.color =
-"#dc2626";
-
-message.textContent =
-"Please enter your username and password.";
+goAfterAuth();
 
 return;
 
 }
 
 
+
+/* CHECK SESSION */
+
+const {
+data:sessionData,
+error:sessionError
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"SESSION AFTER SIGNUP:",
+sessionData?.session
+);
+
+
+if(sessionError){
+
+console.error(
+"Session error:",
+sessionError
+);
+
+}
+
+
+if(sessionData?.session){
+
+message.style.color =
+"#16a34a";
+
+message.textContent =
+"Account created successfully.";
+
+goAfterAuth();
+
+return;
+
+}
+
+
+
+/* EMAIL CONFIRMATION */
+
+message.style.color =
+"#16a34a";
+
+message.textContent =
+"Account created. Please check your email to confirm your account.";
+
+}catch(error){
+
+console.error(
+"CREATE ACCOUNT ERROR:",
+error
+);
+
+message.style.color =
+"#dc2626";
+
+message.textContent =
+error.message ||
+"Something went wrong.";
+
+}
+
+};
+
+
+
+/* =========================
+   LOGIN
+========================= */
+
+window.loginUser =
+async function(){
+
+const username =
+document
+.getElementById("loginUsername")
+.value
+.trim();
+
+const password =
+document
+.getElementById("loginPassword")
+.value;
+
+const message =
+document
+.getElementById("loginMessage");
+
+const forgotButton =
+document
+.getElementById("forgotButton");
+
+
+forgotButton.style.display =
+"none";
+
+
 message.style.color =
 "#071a33";
 
+
+
+if(!username || !password){
+
+message.style.color =
+"#dc2626";
+
 message.textContent =
-"Logging in...";
+"Please enter username and password.";
+
+return;
+
+}
 
 
-/* =====================================
-   GET EMAIL BY USERNAME
-===================================== */
+message.textContent =
+"Checking username...";
+
+
+
+try{
+
+
+/* =========================
+   GET EMAIL FROM USERNAME
+========================= */
 
 const {
-data:email,
-error:usernameError
+data:emailData,
+error:emailError
 } =
 await supabase.rpc(
 "get_email_by_username",
 {
-username_input:
-username
+username_input:username
 }
 );
 
 
-if(usernameError){
+console.log(
+"USERNAME LOOKUP:",
+emailData,
+emailError
+);
+
+
+
+if(emailError){
 
 console.error(
-"USERNAME RPC ERROR:",
-usernameError
+"Username lookup error:",
+emailError
 );
 
 message.style.color =
@@ -1424,11 +976,58 @@ message.style.color =
 
 message.textContent =
 "Username lookup error: " +
-usernameError.message;
+emailError.message;
 
 return;
 
 }
+
+
+
+let email = null;
+
+
+
+/*
+   RPC can return either:
+   - a string
+   - an object
+   - an array
+*/
+
+if(typeof emailData === "string"){
+
+email = emailData;
+
+}else if(
+Array.isArray(emailData)
+){
+
+if(emailData.length > 0){
+
+if(typeof emailData[0] === "string"){
+
+email =
+emailData[0];
+
+}else if(
+emailData[0]?.email
+){
+
+email =
+emailData[0].email;
+
+}
+
+}
+
+}else if(emailData?.email){
+
+email =
+emailData.email;
+
+}
+
 
 
 if(!email){
@@ -1444,9 +1043,24 @@ return;
 }
 
 
-/* =====================================
-   SIGN IN
-===================================== */
+
+console.log(
+"EMAIL FOUND:",
+email
+);
+
+
+
+/* =========================
+   LOGIN
+========================= */
+
+message.style.color =
+"#071a33";
+
+message.textContent =
+"Logging in...";
+
 
 const {
 data,
@@ -1461,6 +1075,14 @@ password:password
 });
 
 
+console.log(
+"LOGIN RESPONSE:",
+data,
+error
+);
+
+
+
 if(error){
 
 console.error(
@@ -1472,17 +1094,7 @@ message.style.color =
 "#dc2626";
 
 message.textContent =
-"Login error: " +
-error.message +
-(
-error.code
-?
-" (" +
-error.code +
-")"
-:
-""
-);
+error.message;
 
 forgotButton.style.display =
 "block";
@@ -1492,9 +1104,10 @@ return;
 }
 
 
-/* =====================================
-   LOGIN SESSION
-===================================== */
+
+/* =========================
+   CHECK SESSION DIRECTLY
+========================= */
 
 console.log(
 "LOGIN RESPONSE SESSION:",
@@ -1502,10 +1115,7 @@ data?.session
 );
 
 
-if(
-data &&
-data.session
-){
+if(data && data.session){
 
 console.log(
 "LOGIN SUCCESS - SESSION EXISTS"
@@ -1518,9 +1128,10 @@ return;
 }
 
 
-/* =====================================
+
+/* =========================
    WAIT FOR SESSION
-===================================== */
+========================= */
 
 message.style.color =
 "#071a33";
@@ -1553,9 +1164,7 @@ checkData?.session
 );
 
 
-if(
-checkError
-){
+if(checkError){
 
 console.error(
 "SESSION CHECK ERROR:",
@@ -1592,13 +1201,8 @@ resolve,
 }
 
 
-/* =====================================
-   SESSION FOUND
-===================================== */
 
-if(
-sessionFound
-){
+if(sessionFound){
 
 console.log(
 "SESSION FOUND"
@@ -1611,9 +1215,6 @@ return;
 }
 
 
-/* =====================================
-   SESSION FAILED
-===================================== */
 
 message.style.color =
 "#dc2626";
@@ -1621,18 +1222,47 @@ message.style.color =
 message.textContent =
 "Login succeeded, but the session could not be saved. Please try again.";
 
+
+}catch(error){
+
+console.error(
+"LOGIN EXCEPTION:",
+error
+);
+
+message.style.color =
+"#dc2626";
+
+message.textContent =
+error.message ||
+"Something went wrong.";
+
+}
+
 };
 
 
-/* =====================================
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+window.forgotPassword =
+function(){
+
+window.location.href =
+"forgot-password.html";
+
+};
+
+
+
+/* =========================
    AUTH STATE
-===================================== */
+========================= */
 
 supabase.auth.onAuthStateChange(
-function(
-event,
-session
-){
+function(event,session){
 
 console.log(
 "AUTH EVENT:",
@@ -1641,9 +1271,7 @@ session
 );
 
 
-if(
-event === "SIGNED_OUT"
-){
+if(event === "SIGNED_OUT"){
 
 console.log(
 "User signed out."
@@ -1653,6 +1281,43 @@ console.log(
 
 });
 
+
+
+/* =========================
+   INITIAL SESSION CHECK
+========================= */
+
+(async function(){
+
+try{
+
+const {
+data,
+error
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"INITIAL AUTH SESSION:",
+data?.session
+);
+
+console.log(
+"INITIAL AUTH ERROR:",
+error
+);
+
+}catch(error){
+
+console.error(
+"INITIAL SESSION ERROR:",
+error
+);
+
+}
+
+})();
 
 </script>
 
