@@ -112,6 +112,7 @@ display:block;
 font-size:18px;
 color:#071a33;
 margin-bottom:8px;
+font-weight:300;
 }
 
 .profile-menu p{
@@ -183,6 +184,7 @@ margin-bottom:25px;
 .side-menu-header h2{
 color:#071a33;
 font-size:22px;
+font-weight:300;
 }
 
 .close-menu{
@@ -194,6 +196,7 @@ border-radius:10px;
 font-size:24px;
 cursor:pointer;
 color:#071a33;
+font-weight:300;
 }
 
 .side-menu a{
@@ -203,7 +206,7 @@ margin-bottom:8px;
 border-radius:10px;
 text-decoration:none;
 color:#071a33;
-font-weight:bold;
+font-weight:300;
 }
 
 .side-menu a:hover{
@@ -222,7 +225,7 @@ border-radius:10px;
 background:none;
 color:#071a33;
 font-size:16px;
-font-weight:bold;
+font-weight:300;
 cursor:pointer;
 text-align:right;
 }
@@ -338,7 +341,7 @@ stroke-width:1.8;
 
 .subscription-title{
 font-size:32px;
-font-weight:bold;
+font-weight:300;
 color:#fff;
 text-align:center;
 margin-bottom:25px;
@@ -529,13 +532,14 @@ margin-bottom:18px;
 .section-heading h2{
 font-size:23px;
 color:#fff;
+font-weight:300;
 }
 
 .see-all{
 color:#fff;
 text-decoration:none;
 font-size:14px;
-font-weight:bold;
+font-weight:300;
 }
 
 
@@ -551,7 +555,7 @@ margin-bottom:30px;
 
 .workout-title{
 font-size:25px;
-font-weight:bold;
+font-weight:300;
 color:#071a33;
 margin-bottom:20px;
 }
@@ -593,6 +597,7 @@ text-align:center;
 .exercise-name h3{
 font-size:19px;
 color:#071a33;
+font-weight:300;
 }
 
 .exercise-content{
@@ -670,7 +675,7 @@ justify-content:center;
 }
 
 .news-title{
-font-weight:bold;
+font-weight:300;
 color:#071a33;
 margin-bottom:4px;
 }
@@ -706,6 +711,7 @@ margin-bottom:14px;
 font-size:19px;
 margin-bottom:9px;
 color:#071a33;
+font-weight:300;
 }
 
 .card p{
@@ -763,6 +769,7 @@ flex:1;
 font-size:21px;
 margin-bottom:8px;
 color:#071a33;
+font-weight:300;
 }
 
 .progress-content p{
@@ -809,7 +816,7 @@ align-items:center;
 justify-content:center;
 gap:4px;
 font-size:11px;
-font-weight:bold;
+font-weight:300;
 }
 
 .nav-icon{
@@ -1958,7 +1965,7 @@ const SUPABASE_URL =
 
 
 const SUPABASE_KEY =
-"sb_publishable_uB0eFh3HfRwUI9eWS73AtU_oOzKvg92";
+"sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 
 
 const supabase =
@@ -2046,28 +2053,22 @@ document.getElementById(
 function showUser(user){
 
 if(!user){
-
 return;
-
 }
-
 
 console.log(
 "LOGGED USER:",
 user
 );
 
-
 const username =
 user.user_metadata?.username ||
 user.user_metadata?.name ||
 "User";
 
-
 const email =
 user.email ||
 "";
-
 
 const firstLetter =
 username
@@ -2075,20 +2076,16 @@ username
 .charAt(0)
 .toUpperCase();
 
-
 profileInitial.textContent =
 firstLetter ||
 "?";
-
 
 profileMenuInitial.textContent =
 firstLetter ||
 "?";
 
-
 profileUsername.textContent =
 username;
-
 
 profileEmail.textContent =
 email;
@@ -2105,9 +2102,7 @@ console.log(
 );
 
 
-/*
-   أول محاولة
-*/
+/* أول محاولة */
 
 try{
 
@@ -2117,18 +2112,15 @@ error
 } =
 await supabase.auth.getSession();
 
-
 console.log(
 "SESSION CHECK:",
 data?.session
 );
 
-
 console.log(
 "SESSION ERROR:",
 error
 );
-
 
 if(
 data?.session
@@ -2152,10 +2144,7 @@ error
 }
 
 
-/*
-   ننتظر شوية لو الـ session
-   لسه بتتجهز
-*/
+/* انتظار تجهيز الـ session */
 
 return new Promise(
 function(resolve){
@@ -2171,9 +2160,7 @@ let timeout;
 function finish(session){
 
 if(finished){
-
 return;
-
 }
 
 finished =
@@ -2228,7 +2215,6 @@ event,
 session
 );
 
-
 if(
 session
 ){
@@ -2255,12 +2241,10 @@ data
 } =
 await supabase.auth.getSession();
 
-
 console.log(
 "SESSION RETRY:",
 data?.session
 );
-
 
 if(
 data?.session
@@ -2296,7 +2280,6 @@ console.log(
 "Session timeout."
 );
 
-
 try{
 
 listener
@@ -2304,7 +2287,6 @@ listener
 .unsubscribe();
 
 }catch(error){}
-
 
 finish(
 null
@@ -2338,7 +2320,6 @@ console.log(
 event,
 session
 );
-
 
 if(
 event === "SIGNED_OUT"
@@ -2446,7 +2427,6 @@ error
 } =
 await supabase.auth.signOut();
 
-
 if(
 !error
 ){
@@ -2508,7 +2488,6 @@ profileMenu.classList.remove(
 );
 
 }
-
 
 if(
 !notificationPanel.contains(
