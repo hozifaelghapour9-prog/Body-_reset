@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -1151,12 +1151,6 @@ max-width:24px;
 font-size:8px;
 }
 
-/* إخفاء محتوى الاشتراكات على الموبايل فقط */
-
-.subscription-box .plan-content{
-display:none !important;
-}
-
 }
 
 /* TABLET PORTRAIT */
@@ -1247,9 +1241,6 @@ scrollbar-width:none;
 display:none;
 }
 
-
-/* CARD = 450 × 700 EXACTLY */
-
 .subscription-box{
 
 display:block !important;
@@ -1281,9 +1272,6 @@ overflow:hidden !important;
 scroll-snap-align:center;
 
 }
-
-
-/* LEGEND */
 
 .subscription-box legend{
 
@@ -1319,9 +1307,6 @@ text-overflow:ellipsis;
 
 }
 
-
-/* CONTENT AREA */
-
 .subscription-box .plan-content{
 
 display:block !important;
@@ -1352,9 +1337,6 @@ scrollbar-width:thin;
 
 }
 
-
-/* منع أي عنصر داخلي من كسر عرض الكارت */
-
 .subscription-box .plan-content > *{
 
 max-width:100% !important;
@@ -1364,9 +1346,6 @@ min-width:0 !important;
 box-sizing:border-box !important;
 
 }
-
-
-/* PLAN NAME */
 
 .subscription-box .plan-name{
 
@@ -1395,9 +1374,6 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 
 }
-
-
-/* DURATION */
 
 .subscription-box .plan-duration{
 
@@ -1448,9 +1424,6 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 
 }
-
-
-/* PRICE */
 
 .subscription-box .price{
 
@@ -1503,9 +1476,6 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 
 }
-
-
-/* FEATURES */
 
 .subscription-box .plan-features{
 
@@ -1579,9 +1549,6 @@ font-size:13px !important;
 
 }
 
-
-/* BUTTON */
-
 .subscription-box .subscribe-btn{
 
 display:block !important;
@@ -1612,9 +1579,6 @@ word-break:break-word !important;
 
 }
 
-
-/* FINAL SAFETY */
-
 .subscription-box,
 .subscription-box *,
 .subscription-box *::before,
@@ -1629,6 +1593,22 @@ max-width:100% !important;
 }
 
 }
+
+
+/* =================================================
+   إخفاء محتوى الاشتراك على الموبايل
+   Portrait + Landscape
+   التابلت والكمبيوتر لا يتأثران
+================================================= */
+
+@media(max-width:600px){
+
+.subscription-box .plan-content{
+display:none !important;
+}
+
+}
+
 
 /* MOBILE PORTRAIT */
 
@@ -3143,4 +3123,4 @@ notificationPanel.classList.remove(
 </script>
 
 </body>
-   </html>
+ </html>
