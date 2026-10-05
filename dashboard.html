@@ -1951,6 +1951,8 @@ from
 "https://esm.sh/@supabase/supabase-js@2";
 
 
+/* ================= SUPABASE ================= */
+
 const SUPABASE_URL =
 "https://byodeoaluspphqduxmlh.supabase.co";
 
@@ -2039,45 +2041,21 @@ document.getElementById(
 );
 
 
-/* ================= LOAD USER ================= */
+/* ================= SHOW USER ================= */
 
-async function loadUser(){
+function showUser(user){
 
-try{
-
-const {
-data,
-error
-} =
-await supabase.auth.getSession();
-
-
-console.log(
-"SESSION:",
-data.session
-);
-
-console.log(
-"SESSION ERROR:",
-error
-);
-
-
-if(
-error ||
-!data.session
-){
-
-window.location.href =
-"auth.html";
+if(!user){
 
 return;
 
 }
 
 
-const user =
-data.session.user;
+console.log(
+"LOGGED USER:",
+user
+);
 
 
 const username =
@@ -2115,36 +2093,252 @@ username;
 profileEmail.textContent =
 email;
 
+}
+
+
+/* ================= WAIT FOR SESSION ================= */
+
+async function waitForSession(){
+
+console.log(
+"Waiting for Supabase session..."
+);
+
+
+/*
+   أول محاولة
+*/
+
+try{
+
+const {
+data,
+error
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"SESSION CHECK:",
+data?.session
+);
+
+
+console.log(
+"SESSION ERROR:",
+error
+);
+
+
+if(
+data?.session
+){
+
+showUser(
+data.session.user
+);
+
+return data.session;
+
+}
 
 }catch(error){
 
 console.error(
-"LOAD USER ERROR:",
+"INITIAL SESSION ERROR:",
 error
+);
+
+}
+
+
+/*
+   ننتظر شوية لو الـ session
+   لسه بتتجهز
+*/
+
+return new Promise(
+function(resolve){
+
+let finished =
+false;
+
+let timeout;
+
+
+/* ================= FINISH ================= */
+
+function finish(session){
+
+if(finished){
+
+return;
+
+}
+
+finished =
+true;
+
+clearTimeout(
+timeout
+);
+
+if(session){
+
+showUser(
+session.user
+);
+
+resolve(
+session
+);
+
+}else{
+
+console.log(
+"No session found."
 );
 
 window.location.href =
 "auth.html";
 
+resolve(
+null
+);
+
 }
+
+}
+
+
+/* ================= AUTH LISTENER ================= */
+
+const {
+data:listener
+} =
+supabase.auth.onAuthStateChange(
+function(
+event,
+session
+){
+
+console.log(
+"AUTH EVENT:",
+event,
+session
+);
+
+
+if(
+session
+){
+
+finish(
+session
+);
+
+}
+
+}
+);
+
+
+/* ================= RETRY ================= */
+
+setTimeout(
+async function(){
+
+try{
+
+const {
+data
+} =
+await supabase.auth.getSession();
+
+
+console.log(
+"SESSION RETRY:",
+data?.session
+);
+
+
+if(
+data?.session
+){
+
+finish(
+data.session
+);
+
+}
+
+}catch(error){
+
+console.error(
+"SESSION RETRY ERROR:",
+error
+);
+
+}
+
+},
+500
+);
+
+
+/* ================= TIMEOUT ================= */
+
+timeout =
+setTimeout(
+function(){
+
+console.log(
+"Session timeout."
+);
+
+
+try{
+
+listener
+.subscription
+.unsubscribe();
+
+}catch(error){}
+
+
+finish(
+null
+);
+
+},
+5000
+);
+
+}
+);
 
 }
 
 
 /* ================= START ================= */
 
-loadUser();
+waitForSession();
 
 
 /* ================= AUTH STATE ================= */
 
 supabase.auth.onAuthStateChange(
-function(event){
+function(
+event,
+session
+){
 
 console.log(
-"AUTH EVENT:",
-event
+"GLOBAL AUTH EVENT:",
+event,
+session
 );
+
 
 if(
 event === "SIGNED_OUT"
