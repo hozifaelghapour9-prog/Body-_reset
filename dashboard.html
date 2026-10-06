@@ -1651,21 +1651,27 @@ border-radius:7px;
 
 
 /* =================================================
-   MOBILE ONLY
+   MOBILE PHONE ONLY
    HIDE SUBSCRIPTION CONTENT
    PORTRAIT + LANDSCAPE
    TABLET + DESKTOP UNCHANGED
 ================================================= */
 
-@media(max-width:600px){
-
-.subscription-box .plan-content{
+html.mobile-phone .subscription-box .plan-content{
 
 display:none !important;
 
 visibility:hidden !important;
 
-}
+height:0 !important;
+
+max-height:0 !important;
+
+overflow:hidden !important;
+
+padding:0 !important;
+
+margin:0 !important;
 
 }
 
@@ -2594,6 +2600,31 @@ createClient
 }
 from
 "https://esm.sh/@supabase/supabase-js@2";
+
+
+/* =================================================
+   MOBILE PHONE DETECTION
+   يعمل بالطول والعرض
+   ولا يعتمد على max-width
+================================================= */
+
+const isMobilePhone =
+(
+navigator.userAgentData &&
+navigator.userAgentData.mobile === true
+)
+||
+/Android.*Mobile|iPhone|iPod|Windows Phone/i.test(
+navigator.userAgent
+);
+
+if(isMobilePhone){
+
+document.documentElement.classList.add(
+"mobile-phone"
+);
+
+}
 
 
 /* SUPABASE */
