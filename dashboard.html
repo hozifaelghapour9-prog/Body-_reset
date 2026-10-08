@@ -5,32 +5,47 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>BodyReset Dashboard</title>
+<title>BodyReset | Dashboard</title>
 
 <style>
 
+/* =========================================================
+   GENERAL
+========================================================= */
+
 *{
 box-sizing:border-box;
-margin:0;
-padding:0;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial,Tahoma,sans-serif;
-background:#f5f7f9;
+
+margin:0;
+
+font-family:
+Arial,
+Tahoma,
+sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#0f766e,
+#06b6d4
+);
+
 color:#082F49;
+
 min-height:100vh;
-}
 
-button,
-a{
-font-family:inherit;
-}
+overflow-x:hidden;
 
-button{
-cursor:pointer;
 }
 
 
@@ -39,130 +54,115 @@ cursor:pointer;
 ========================================================= */
 
 header{
-height:76px;
-background:#082F49;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 30px;
+
+height:70px;
+
+background:#000;
+
 color:#fff;
-position:relative;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 20px;
+
+position:sticky;
+
+top:0;
+
 z-index:1000;
+
 }
 
 .logo{
+
 font-size:25px;
-font-weight:900;
+
+font-weight:bold;
+
 letter-spacing:.5px;
+
 }
 
 .logo span{
-color:#3ECF8E;
+
+color:#14b8a6;
+
 }
 
 .header-left{
+
 display:flex;
+
 align-items:center;
-gap:15px;
+
+gap:14px;
+
 }
 
 .profile{
+
 width:42px;
+
 height:42px;
+
 border-radius:50%;
-background:#3ECF8E;
-color:#082F49;
+
+background:#14b8a6;
+
+color:#fff;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
-font-weight:900;
-font-size:18px;
+
+font-size:20px;
+
+font-weight:bold;
+
 cursor:pointer;
+
 }
 
 .menu-btn{
+
 width:42px;
+
 height:42px;
-border:none;
+
+border:0;
+
 background:transparent;
+
 display:flex;
+
 flex-direction:column;
-justify-content:center;
+
 align-items:center;
+
+justify-content:center;
+
 gap:5px;
+
+cursor:pointer;
+
 }
 
 .menu-btn span{
-display:block;
+
 width:25px;
+
 height:3px;
-border-radius:3px;
+
 background:#fff;
-}
 
+border-radius:4px;
 
-/* =========================================================
-   PROFILE MENU
-========================================================= */
-
-.profile-menu{
-position:absolute;
-top:68px;
-left:20px;
-width:260px;
-background:#fff;
-border-radius:14px;
-box-shadow:0 10px 30px rgba(0,0,0,.18);
-padding:18px;
-display:none;
-z-index:2000;
-}
-
-.profile-menu.active{
-display:block;
-}
-
-.profile-info{
-display:flex;
-align-items:center;
-gap:12px;
-padding-bottom:15px;
-border-bottom:1px solid #eee;
-}
-
-.profile-avatar{
-width:45px;
-height:45px;
-border-radius:50%;
-background:#082F49;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-}
-
-.profile-text{
-min-width:0;
-}
-
-.profile-text strong{
-display:block;
-font-size:15px;
-color:#082F49;
-margin-bottom:4px;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:nowrap;
-}
-
-.profile-text span{
-display:block;
-font-size:12px;
-color:#777;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:nowrap;
 }
 
 
@@ -171,242 +171,375 @@ white-space:nowrap;
 ========================================================= */
 
 .menu-overlay{
+
 position:fixed;
+
 inset:0;
-background:rgba(0,0,0,.45);
+
+background:rgba(0,0,0,.5);
+
+z-index:1500;
+
 display:none;
-z-index:3000;
+
 }
 
 .menu-overlay.active{
+
 display:block;
+
 }
 
 .side-menu{
+
 position:fixed;
+
 top:0;
-right:-320px;
-width:300px;
+
+right:-300px;
+
+width:280px;
+
 height:100%;
+
 background:#fff;
-z-index:3100;
-transition:right .3s ease;
+
+z-index:1600;
+
 padding:25px 20px;
-box-shadow:-5px 0 25px rgba(0,0,0,.18);
+
+transition:.3s ease;
+
+box-shadow:-5px 0 20px rgba(0,0,0,.2);
+
 }
 
 .side-menu.active{
+
 right:0;
+
 }
 
 .side-menu h3{
-font-size:22px;
-margin-bottom:25px;
+
+margin-top:0;
+
 color:#082F49;
+
 }
 
-.side-menu a{
-display:block;
-padding:14px 10px;
-margin-bottom:7px;
-border-radius:10px;
-color:#082F49;
-text-decoration:none;
-font-weight:bold;
-}
+.side-menu button{
 
-.side-menu a:hover{
-background:#eef8f4;
-}
-
-.close-menu{
-position:absolute;
-top:15px;
-left:15px;
-width:38px;
-height:38px;
-border:none;
-border-radius:50%;
-background:#f1f3f5;
-color:#082F49;
-font-size:22px;
-}
-
-
-/* =========================================================
-   LANGUAGE
-========================================================= */
-
-.language-switch{
-margin-top:20px;
-padding-top:20px;
-border-top:1px solid #eee;
-}
-
-.language-switch button{
 width:100%;
-border:none;
+
+padding:13px;
+
+margin-bottom:10px;
+
+border:0;
+
+border-radius:8px;
+
 background:#082F49;
+
 color:#fff;
-padding:12px;
-border-radius:10px;
-font-weight:bold;
+
+cursor:pointer;
+
+font-size:15px;
+
 }
 
 
 /* =========================================================
-   MAIN CONTAINER
+   PROFILE MENU
 ========================================================= */
 
-.container{
+.profile-menu{
+
+position:fixed;
+
+top:78px;
+
+right:15px;
+
+background:#fff;
+
+border-radius:12px;
+
+box-shadow:0 8px 30px rgba(0,0,0,.2);
+
+width:220px;
+
+padding:15px;
+
+display:none;
+
+z-index:1400;
+
+}
+
+.profile-menu.active{
+
+display:block;
+
+}
+
+.profile-menu button{
+
 width:100%;
-max-width:1200px;
-margin:auto;
-padding:30px 28px 110px;
+
+border:0;
+
+padding:11px;
+
+background:#082F49;
+
+color:#fff;
+
+border-radius:7px;
+
+cursor:pointer;
+
 }
 
 
 /* =========================================================
-   SUBSCRIPTION TITLE
+   NOTIFICATION
+========================================================= */
+
+.notification-panel{
+
+position:fixed;
+
+top:78px;
+
+left:15px;
+
+width:280px;
+
+background:#fff;
+
+border-radius:12px;
+
+box-shadow:0 8px 30px rgba(0,0,0,.2);
+
+padding:15px;
+
+display:none;
+
+z-index:1400;
+
+}
+
+.notification-panel.active{
+
+display:block;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+
+width:100%;
+
+max-width:1200px;
+
+margin:auto;
+
+padding:25px 18px 100px;
+
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome{
+
+background:rgba(255,255,255,.95);
+
+border-radius:16px;
+
+padding:22px;
+
+margin-bottom:20px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+}
+
+.welcome h1{
+
+margin:0 0 8px;
+
+font-size:27px;
+
+}
+
+.welcome p{
+
+margin:0;
+
+color:#475569;
+
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title{
+
+font-size:23px;
+
+font-weight:bold;
+
+margin:25px 0 15px;
+
+color:#fff;
+
+}
+
+
+/* =========================================================
+   SUBSCRIPTION
 ========================================================= */
 
 .subscription-title{
-font-size:32px;
-font-weight:900;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:#fff;
+
 text-align:center;
-margin-bottom:28px;
-color:#082F49;
+
+margin:25px 0 15px;
+
 }
 
-
-/* =========================================================
-   SUBSCRIPTION BOXES
-========================================================= */
-
 .subscription-boxes{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px;
+
+display:flex;
+
+gap:15px;
+
 width:100%;
-margin-bottom:35px;
+
+align-items:stretch;
+
 }
 
 .subscription-box{
-width:100%;
-height:500px;
+
 background:#fff;
+
 border:3px solid #082F49;
-border-radius:20px;
-padding:25px 18px;
-overflow:hidden;
+
+border-radius:14px;
+
+padding:22px 15px;
+
 position:relative;
+
+overflow:hidden;
+
+flex:1;
+
+min-width:0;
+
 }
 
 .subscription-box legend{
-margin:auto;
-padding:7px 18px;
-background:#082F49;
-color:#fff;
+
+display:table;
+
+width:auto;
+
+max-width:90%;
+
+margin:0 auto;
+
+padding:6px 16px;
+
+box-sizing:border-box;
+
+font-size:18px;
+
+line-height:1.2;
+
 border:3px solid #082F49;
-border-radius:8px;
-font-size:19px;
-font-weight:bold;
+
+border-radius:7px;
+
+background:#082F49;
+
+color:#fff;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
 }
 
 .plan-content{
-height:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
+
+padding-top:20px;
+
 }
 
-.plan-name{
-font-size:30px;
-font-weight:900;
-margin-top:10px;
-margin-bottom:20px;
-color:#082F49;
+.plan-content h3{
+
+margin-top:0;
+
+font-size:22px;
+
 }
 
-.plan-duration{
+.plan-content p{
+
+line-height:1.8;
+
+}
+
+.plan-content ul{
+
+padding-right:20px;
+
+line-height:2;
+
+}
+
+.plan-button{
+
 width:100%;
-text-align:center;
-margin-bottom:20px;
-}
 
-.duration-title{
-font-size:15px;
-color:#777;
-margin-bottom:5px;
-}
+padding:12px;
 
-.duration-value{
-font-size:25px;
-font-weight:900;
-margin-bottom:10px;
-}
+border:0;
 
-.price{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-direction:rtl;
-}
+border-radius:8px;
 
-.current-price{
-font-size:30px;
-font-weight:900;
-color:#3ECF8E;
-}
+background:#14b8a6;
 
-.old-price{
-font-size:17px;
-color:#999;
-text-decoration:line-through;
-}
-
-.plan-features{
-list-style:none;
-width:100%;
-margin-top:5px;
-margin-bottom:20px;
-}
-
-.plan-features li{
-font-size:15px;
-padding:8px 0;
-border-bottom:1px solid #eee;
-line-height:1.5;
-}
-
-.plan-features li::before{
-content:"✓";
-display:inline-block;
-margin-left:8px;
-color:#3ECF8E;
-font-weight:900;
-}
-
-.subscribe-btn{
-display:flex;
-align-items:center;
-justify-content:center;
-width:100%;
-padding:14px;
-border-radius:10px;
-background:#082F49;
 color:#fff;
-text-decoration:none;
-font-weight:900;
-font-size:17px;
-margin-top:auto;
-transition:.2s;
-}
 
-.subscribe-btn:hover{
-background:#3ECF8E;
-color:#082F49;
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
 }
 
 
@@ -415,94 +548,156 @@ color:#082F49;
 ========================================================= */
 
 .stats{
-display:flex;
-gap:14px;
-overflow-x:auto;
-margin-bottom:35px;
-scrollbar-width:none;
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:15px;
+
+margin-top:25px;
+
 }
 
-.stats::-webkit-scrollbar{
-display:none;
-}
+.stat-card{
 
-.stat{
-flex:1 0 220px;
 background:#fff;
-border-radius:16px;
-padding:22px;
+
+border-radius:14px;
+
+padding:20px;
+
 text-align:center;
-box-shadow:0 5px 20px rgba(8,47,73,.07);
+
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+
 }
 
-.stat-number{
-font-size:30px;
-font-weight:900;
-color:#082F49;
+.stat-card strong{
+
+display:block;
+
+font-size:28px;
+
+color:#0f766e;
+
 margin-bottom:7px;
+
 }
 
-.stat-title{
-font-size:14px;
-color:#777;
+.stat-card span{
+
+color:#64748b;
+
 }
 
 
 /* =========================================================
-   WORKOUT CARDS
+   WORKOUT
 ========================================================= */
 
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-margin-bottom:35px;
-}
+.workout-card{
 
-.card{
 background:#fff;
-border-radius:18px;
-padding:24px;
-box-shadow:0 5px 20px rgba(8,47,73,.07);
+
+border-radius:15px;
+
+padding:20px;
+
+margin-top:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+
 }
 
-.card h3{
-font-size:21px;
-margin-bottom:10px;
+.workout-card h3{
+
+margin-top:0;
+
 }
 
-.card p{
+.exercise{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:12px 0;
+
+border-bottom:1px solid #e2e8f0;
+
+}
+
+.exercise:last-child{
+
+border-bottom:0;
+
+}
+
+.exercise-name{
+
+font-weight:bold;
+
+}
+
+.exercise-info{
+
+color:#64748b;
+
 font-size:14px;
-line-height:1.7;
-color:#666;
+
 }
 
 
 /* =========================================================
-   COMMUNITY NEWS
+   COMMUNITY
 ========================================================= */
 
 .community{
-background:#fff;
-border-radius:18px;
-padding:24px;
-margin-bottom:35px;
-box-shadow:0 5px 20px rgba(8,47,73,.07);
-}
 
-.community h3{
-font-size:22px;
-margin-bottom:15px;
+background:#fff;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-top:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+
 }
 
 .news-item{
-padding:13px 0;
-border-bottom:1px solid #eee;
-font-size:14px;
+
+padding:12px 0;
+
+border-bottom:1px solid #e2e8f0;
+
 }
 
 .news-item:last-child{
-border-bottom:none;
+
+border-bottom:0;
+
+}
+
+.news-item strong{
+
+display:block;
+
+margin-bottom:5px;
+
+}
+
+.news-item span{
+
+color:#64748b;
+
+font-size:14px;
+
 }
 
 
@@ -511,29 +706,48 @@ border-bottom:none;
 ========================================================= */
 
 .journey{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-bottom:35px;
+
+background:#fff;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-top:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+
 }
 
-.journey-card{
-background:#082F49;
-color:#fff;
-border-radius:18px;
-padding:22px;
-min-height:150px;
+.progress-line{
+
+height:12px;
+
+background:#e2e8f0;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-top:12px;
+
 }
 
-.journey-card h3{
-margin-bottom:10px;
-font-size:19px;
-}
+.progress-fill{
 
-.journey-card p{
-font-size:14px;
-line-height:1.7;
-color:#e4edf2;
+height:100%;
+
+width:65%;
+
+background:
+linear-gradient(
+90deg,
+#0f766e,
+#14b8a6
+);
+
+border-radius:20px;
+
 }
 
 
@@ -541,30 +755,36 @@ color:#e4edf2;
    PROGRESS
 ========================================================= */
 
-.progress-section{
+.progress-card{
+
 background:#fff;
-border-radius:18px;
-padding:24px;
-box-shadow:0 5px 20px rgba(8,47,73,.07);
+
+border-radius:15px;
+
+padding:20px;
+
+margin-top:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+
 }
 
-.progress-section h3{
-font-size:22px;
-margin-bottom:18px;
+.progress-row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:10px 0;
+
+border-bottom:1px solid #e2e8f0;
+
 }
 
-.progress-bar{
-height:12px;
-background:#e8edf0;
-border-radius:20px;
-overflow:hidden;
-}
+.progress-row:last-child{
 
-.progress-fill{
-height:100%;
-width:60%;
-background:#3ECF8E;
-border-radius:20px;
+border-bottom:0;
+
 }
 
 
@@ -573,71 +793,40 @@ border-radius:20px;
 ========================================================= */
 
 .bottom-nav{
+
 position:fixed;
+
 bottom:0;
-right:0;
+
 left:0;
-height:70px;
-background:#fff;
-border-top:1px solid #ddd;
+
+right:0;
+
+height:65px;
+
+background:#000;
+
 display:flex;
+
 align-items:center;
+
 justify-content:space-around;
-z-index:1500;
+
+z-index:1200;
+
 }
 
-.bottom-nav a{
-text-decoration:none;
-color:#082F49;
+.bottom-nav button{
+
+background:transparent;
+
+border:0;
+
+color:#fff;
+
 font-size:13px;
-font-weight:bold;
-text-align:center;
-}
 
-.bottom-nav a.active{
-color:#3ECF8E;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:800px){
-
-.container{
-padding-left:18px;
-padding-right:18px;
-}
-
-.subscription-boxes{
-gap:14px;
-}
-
-.subscription-box{
-height:650px;
-}
-
-.stat{
-flex:0 0 270px;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-}
-
-
-/* =========================================================
-   TABLET PORTRAIT
-========================================================= */
-
-@media(min-width:601px)
-and (max-width:1024px)
-and (orientation:portrait){
-
-.subscription-boxes{
+cursor:pointer;
 
 display:flex;
 
@@ -645,113 +834,40 @@ flex-direction:column;
 
 align-items:center;
 
-gap:14px;
-
-width:100%;
+gap:4px;
 
 }
 
-.subscription-box{
+.bottom-nav button span{
 
-width:500px;
-
-height:850px;
-
-min-width:500px;
-
-max-width:500px;
-
-flex:0 0 850px;
-
-background:#fff;
-
-border:3px solid #082F49;
-
-border-radius:20px;
-
-}
+font-size:20px;
 
 }
 
 
 /* =========================================================
-   TABLET LANDSCAPE
+   TABLET
 ========================================================= */
 
-@media(min-width:601px)
-and (max-width:1024px)
-and (orientation:landscape){
+@media(max-width:900px){
+
+.stats{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
 
 .subscription-boxes{
 
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-width:100%;
-
-gap:14px;
+flex-wrap:wrap;
 
 }
 
 .subscription-box{
 
-width:100%;
+flex:1 1 calc(50% - 10px);
 
-height:500px;
-
-background:#fff;
-
-border:3px solid #082F49;
-
-border-radius:20px;
-
-}
-
-}
-
-
-/* =========================================================
-   MOBILE BASE
-========================================================= */
-
-@media(max-width:600px){
-
-header{
-height:68px;
-padding:0 16px;
-}
-
-.logo{
-font-size:21px;
-}
-
-.container{
-padding:20px 14px 110px;
-}
-
-.subscription-title{
-font-size:27px;
-margin-bottom:20px;
-}
-
-.subscription-boxes{
-gap:10px;
-margin-bottom:28px;
-}
-
-.subscription-box{
-height:650px;
-border-radius:14px;
-border:3px solid #082F49;
-padding:22px 15px;
-}
-
-.subscription-box legend{
-font-size:18px;
-padding:6px 16px;
-border-width:3px;
-border-radius:7px;
 }
 
 }
@@ -759,11 +875,10 @@ border-radius:7px;
 
 /* =========================================================
    MOBILE PORTRAIT
-   الموبايل بالطول = الكروت تحت بعض
+   الكروت تحت بعض
 ========================================================= */
 
-@media(max-width:600px)
-and (orientation:portrait){
+@media(max-width:600px) and (orientation:portrait){
 
 .subscription-boxes{
 
@@ -773,11 +888,11 @@ flex-direction:column !important;
 
 align-items:center !important;
 
+gap:10px !important;
+
 width:100% !important;
 
 max-width:100% !important;
-
-gap:10px !important;
 
 overflow:visible !important;
 
@@ -805,11 +920,15 @@ flex:0 0 650px !important;
 
 box-sizing:border-box !important;
 
+background:#fff;
+
 border:3px solid #082F49;
 
 border-radius:14px;
 
 padding:22px 15px !important;
+
+position:relative;
 
 overflow:hidden !important;
 
@@ -826,6 +945,8 @@ max-width:90% !important;
 margin:0 auto !important;
 
 padding:6px 16px !important;
+
+box-sizing:border-box !important;
 
 font-size:18px !important;
 
@@ -852,11 +973,10 @@ text-overflow:ellipsis;
 
 /* =========================================================
    MOBILE LANDSCAPE
-   الموبايل بالعرض = إخفاء الاشتراكات بالكامل
+   إخفاء كروت الاشتراك عند قلب الهاتف بالعرض
 ========================================================= */
 
-@media(max-width:600px)
-and (orientation:landscape){
+@media(max-width:600px) and (orientation:landscape){
 
 .subscription-title{
 
@@ -874,8 +994,7 @@ display:none !important;
 
 
 /* =========================================================
-   MOBILE ONLY
-   إخفاء محتوى الاشتراك
+   إخفاء محتوى الكروت على الموبايل
 ========================================================= */
 
 @media(max-width:600px){
@@ -904,53 +1023,175 @@ margin:0 !important;
 
 
 /* =========================================================
-   SMALL MOBILE
+   MOBILE BOX SIZING
 ========================================================= */
 
-@media(max-width:380px){
+@media(max-width:600px){
 
-.subscription-title{
-font-size:24px;
-}
+.subscription-box,
+.subscription-box *,
+.subscription-box *::before,
+.subscription-box *::after{
 
-.profile-menu{
-width:240px;
-left:10px;
+box-sizing:border-box !important;
+
+min-width:0 !important;
+
+max-width:100% !important;
+
 }
 
 }
 
 
 /* =========================================================
-   NOTIFICATIONS
+   SMALL MOBILE
 ========================================================= */
 
-.notification{
+@media(max-width:380px){
 
-position:fixed;
+main{
 
-top:85px;
+padding-left:12px;
 
-right:20px;
-
-background:#082F49;
-
-color:#fff;
-
-padding:14px 18px;
-
-border-radius:10px;
-
-display:none;
-
-z-index:5000;
-
-box-shadow:0 8px 25px rgba(0,0,0,.2);
+padding-right:12px;
 
 }
 
-.notification.show{
-display:block;
+.welcome h1{
+
+font-size:23px;
+
+}
+
+.stats{
+
+gap:8px;
+
+}
+
+.stat-card{
+
+padding:14px 8px;
+
+}
+
+.stat-card strong{
+
+font-size:23px;
+
+}
+
+}
+
+
+/* =========================================================
+   LANDSCAPE GENERAL MOBILE
+========================================================= */
+
+@media(max-width:600px) and (orientation:landscape){
+
+main{
+
+padding-top:15px;
+
+padding-bottom:80px;
+
+}
+
+.stats{
+
+grid-template-columns:
+repeat(4,1fr);
+
+}
+
+.stat-card{
+
+padding:12px 8px;
+
+}
+
+.stat-card strong{
+
+font-size:21px;
+
+}
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:901px){
+
+.bottom-nav{
+
+display:none;
+
+}
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+header{
+
+height:60px;
+
+padding:0 12px;
+
+}
+
+.logo{
+
+font-size:21px;
+
+}
+
+.profile{
+
+width:37px;
+
+height:37px;
+
+font-size:17px;
+
+}
+
+.menu-btn{
+
+width:38px;
+
+height:38px;
+
+}
+
+main{
+
+padding:18px 12px 85px;
+
+}
+
+.section-title{
+
+font-size:20px;
+
+}
+
+.subscription-title{
+
+font-size:21px;
+
+}
+
 }
 
 
@@ -959,7 +1200,9 @@ display:block;
 ========================================================= */
 
 .hidden{
+
 display:none !important;
+
 }
 
 </style>
@@ -970,7 +1213,9 @@ display:none !important;
 <body>
 
 
-<!-- HEADER -->
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
 <header>
 
@@ -978,11 +1223,17 @@ display:none !important;
 Body<span>Reset</span>
 </div>
 
+
 <div class="header-left">
 
-<div class="profile" id="profileBtn">
+<div
+class="profile"
+id="profileBtn">
+
 <span id="profileInitial">?</span>
+
 </div>
+
 
 <button
 class="menu-btn"
@@ -1000,34 +1251,34 @@ aria-label="فتح القائمة">
 </header>
 
 
-<!-- PROFILE MENU -->
 
-<div class="profile-menu" id="profileMenu">
+<!-- =======================================================
+     PROFILE MENU
+======================================================= -->
 
-<div class="profile-info">
+<div
+class="profile-menu"
+id="profileMenu">
 
-<div class="profile-avatar" id="profileAvatar">
-?
-</div>
+<strong>الحساب الشخصي</strong>
 
-<div class="profile-text">
+<br><br>
 
-<strong id="profileUsername">
-المستخدم
-</strong>
+<p id="profileEmail">
+جاري التحميل...
+</p>
 
-<span id="profileEmail">
--
-</span>
-
-</div>
-
-</div>
+<button id="logoutBtn">
+تسجيل الخروج
+</button>
 
 </div>
 
 
-<!-- SIDE MENU -->
+
+<!-- =======================================================
+     SIDE MENU
+======================================================= -->
 
 <div
 class="menu-overlay"
@@ -1035,79 +1286,100 @@ id="menuOverlay">
 </div>
 
 
-<aside
+<div
 class="side-menu"
 id="sideMenu">
-
-<button
-class="close-menu"
-id="closeMenu">
-
-×
-
-</button>
-
 
 <h3>
 BodyReset
 </h3>
 
 
-<a href="dashboard.html">
+<button>
 الرئيسية
-</a>
+</button>
 
 
-<a href="calories.html">
-حساب السعرات
-</a>
+<button>
+التمارين
+</button>
 
 
-<a href="subscriptions.html">
-الاشتراكات
-</a>
+<button>
+التغذية
+</button>
 
 
-<div class="language-switch">
+<button>
+التقدم
+</button>
 
-<button id="languageBtn">
-English
+
+<button>
+المجتمع
 </button>
 
 </div>
 
 
-<a href="#" id="logoutBtn">
-تسجيل الخروج
-</a>
 
-</aside>
-
-
-<!-- NOTIFICATION -->
+<!-- =======================================================
+     NOTIFICATION PANEL
+======================================================= -->
 
 <div
-class="notification"
-id="notification">
+class="notification-panel"
+id="notificationPanel">
 
-تم التحديث بنجاح
+<strong>
+الإشعارات
+</strong>
+
+<p>
+لا توجد إشعارات جديدة.
+</p>
 
 </div>
 
 
-<!-- MAIN -->
 
-<main class="container">
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
-
-<!-- SUBSCRIPTIONS -->
-
-<h2 class="subscription-title">
-الاشتراكات
-</h2>
+<main>
 
 
-<div class="subscription-boxes">
+<!-- WELCOME -->
+
+<section class="welcome">
+
+<h1>
+أهلاً بك في BodyReset 👋
+</h1>
+
+<p>
+تابع تقدمك، تمرينك، ورحلتك الصحية من مكان واحد.
+</p>
+
+</section>
+
+
+
+<!-- =======================================================
+     SUBSCRIPTIONS
+======================================================= -->
+
+<div
+class="subscription-title">
+
+خطط الاشتراك
+
+</div>
+
+
+<div
+class="subscription-boxes">
 
 
 <!-- BASIC -->
@@ -1115,315 +1387,513 @@ id="notification">
 <fieldset class="subscription-box">
 
 <legend>
-عرض التغيير
+Basic
 </legend>
 
 
 <div class="plan-content">
 
-<div class="plan-name">
-Basic
-</div>
+<h3>
+الخطة الأساسية
+</h3>
 
 
-<div class="plan-duration">
-
-<div class="duration-title">
-مدة الاشتراك
-</div>
-
-<div class="duration-value">
-٣ شهور
-</div>
+<p>
+ابدأ رحلتك الرياضية بخطة بسيطة ومناسبة للمبتدئين.
+</p>
 
 
-<div class="price">
-
-<span class="current-price">
-999 جنيه
-</span>
-
-<span class="old-price">
-1500 جنيه
-</span>
-
-</div>
-
-</div>
-
-
-<ul class="plan-features">
+<ul>
 
 <li>
-نظام تمارين للبيت والجيم
+متابعة التمارين
 </li>
 
 <li>
-أطعمة محسوبة بالسعرات
+متابعة التقدم
 </li>
 
 <li>
-متابعة أسبوعية من مدرب متخصص
+إحصائيات أساسية
 </li>
 
 <li>
-نظام أكل على حسب ميزانيتك
-</li>
-
-<li>
-دعم كامل على واتساب طوال مدة الاشتراك
+الوصول للمجتمع
 </li>
 
 </ul>
 
 
-<a
-href="subscriptions.html?plan=basic"
-class="subscribe-btn">
+<button
+class="plan-button">
 
 اشترك الآن
 
-</a>
+</button>
 
 </div>
 
 </fieldset>
 
 
-<!-- PLAN 2 -->
+
+<!-- PREMIUM -->
 
 <fieldset class="subscription-box">
 
 <legend>
-عرض التغيير
+Premium
 </legend>
+
+
+<div class="plan-content">
+
+<h3>
+الخطة المتقدمة
+</h3>
+
+
+<p>
+مميزات أكثر وبرنامج تدريبي متقدم.
+</p>
+
+
+<ul>
+
+<li>
+خطط تدريب متقدمة
+</li>
+
+<li>
+متابعة تفصيلية
+</li>
+
+<li>
+إحصائيات متقدمة
+</li>
+
+</ul>
+
+
+<button
+class="plan-button">
+
+اشترك الآن
+
+</button>
+
+</div>
 
 </fieldset>
 
 
-<!-- PLAN 3 -->
+
+<!-- PRO -->
 
 <fieldset class="subscription-box">
 
 <legend>
-عرض التغيير
+Pro
 </legend>
+
+
+<div class="plan-content">
+
+<h3>
+الخطة الاحترافية
+</h3>
+
+
+<p>
+تجربة BodyReset الكاملة للمستخدمين المتقدمين.
+</p>
+
+
+<ul>
+
+<li>
+برنامج احترافي
+</li>
+
+<li>
+تحليل كامل للتقدم
+</li>
+
+<li>
+مميزات حصرية
+</li>
+
+</ul>
+
+
+<button
+class="plan-button">
+
+اشترك الآن
+
+</button>
+
+</div>
 
 </fieldset>
 
+</div>
+
+
+
+<!-- =======================================================
+     STATS
+======================================================= -->
+
+<h2 class="section-title">
+إحصائياتك
+</h2>
+
+
+<section class="stats">
+
+
+<div class="stat-card">
+
+<strong>
+12
+</strong>
+
+<span>
+تمرين
+</span>
 
 </div>
 
 
-<!-- STATS -->
+<div class="stat-card">
 
-<div class="stats">
+<strong>
+8
+</strong>
 
-
-<div class="stat">
-
-<div class="stat-number">
-0
-</div>
-
-<div class="stat-title">
-أيام الالتزام
-</div>
+<span>
+أيام متتالية
+</span>
 
 </div>
 
 
-<div class="stat">
+<div class="stat-card">
 
-<div class="stat-number">
-0
-</div>
+<strong>
+4.2
+</strong>
 
-<div class="stat-title">
-تمارين مكتملة
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-number">
-0
-</div>
-
-<div class="stat-title">
-كيلو تم فقده
-</div>
+<span>
+كيلو متغير
+</span>
 
 </div>
 
 
+<div class="stat-card">
+
+<strong>
+65%
+</strong>
+
+<span>
+التقدم
+</span>
+
 </div>
 
-
-<!-- WORKOUT -->
-
-<div class="cards">
+</section>
 
 
-<div class="card">
+
+<!-- =======================================================
+     TODAY WORKOUT
+======================================================= -->
+
+<section class="workout-card">
 
 <h3>
 تمرين اليوم
 </h3>
 
-<p>
-ابدأ تمرينك اليوم وحافظ على استمراريتك لتحقيق هدفك.
-</p>
+
+<div class="exercise">
+
+<div>
+
+<div class="exercise-name">
+Push Ups
+</div>
+
+<div class="exercise-info">
+3 مجموعات × 12
+</div>
+
+</div>
+
+<strong>
+12
+</strong>
 
 </div>
 
 
-<div class="card">
+
+<div class="exercise">
+
+<div>
+
+<div class="exercise-name">
+Squats
+</div>
+
+<div class="exercise-info">
+3 مجموعات × 15
+</div>
+
+</div>
+
+<strong>
+15
+</strong>
+
+</div>
+
+
+
+<div class="exercise">
+
+<div>
+
+<div class="exercise-name">
+Plank
+</div>
+
+<div class="exercise-info">
+3 × 45 ثانية
+</div>
+
+</div>
+
+<strong>
+45s
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     COMMUNITY
+======================================================= -->
+
+<section class="community">
 
 <h3>
-وجبة اليوم
-</h3>
-
-<p>
-التزم بالخطة الغذائية الخاصة بك واحرص على شرب كمية كافية من المياه.
-</p>
-
-</div>
-
-
-</div>
-
-
-<!-- COMMUNITY -->
-
-<div class="community">
-
-<h3>
-آخر الأخبار
+آخر أخبار المجتمع
 </h3>
 
 
 <div class="news-item">
-استمرارية بسيطة كل يوم تصنع فرقًا كبيرًا.
+
+<strong>
+تم إضافة تحدي جديد 🔥
+</strong>
+
+<span>
+شارك في تحدي 30 يوم.
+</span>
+
 </div>
 
 
 <div class="news-item">
-تابع تقدمك ولا تقارن نفسك بالآخرين.
+
+<strong>
+إنجاز جديد لأحد الأعضاء 🏆
+</strong>
+
+<span>
+عضو جديد وصل إلى 100 تمرين.
+</span>
+
 </div>
 
 
 <div class="news-item">
-خطوة صغيرة اليوم أفضل من انتظار الوقت المثالي.
+
+<strong>
+نصيحة اليوم 💡
+</strong>
+
+<span>
+حافظ على شرب المياه طوال اليوم.
+</span>
+
 </div>
 
-
-</div>
-
-
-<!-- JOURNEY -->
-
-<div class="journey">
+</section>
 
 
-<div class="journey-card">
+
+<!-- =======================================================
+     JOURNEY
+======================================================= -->
+
+<section class="journey">
 
 <h3>
-ابدأ رحلتك
+رحلتك
 </h3>
+
 
 <p>
-حدد هدفك وابدأ أول خطوة نحو جسم أفضل.
+أنت في منتصف الطريق تقريبًا للوصول لهدفك.
 </p>
 
-</div>
 
-
-<div class="journey-card">
-
-<h3>
-التزم
-</h3>
-
-<p>
-الاستمرارية أهم من الكمال. حافظ على روتينك.
-</p>
-
-</div>
-
-
-<div class="journey-card">
-
-<h3>
-حقق هدفك
-</h3>
-
-<p>
-تابع نتائجك وعدّل خطتك للوصول لأفضل نسخة منك.
-</p>
-
-</div>
-
-
-</div>
-
-
-<!-- PROGRESS -->
-
-<div class="progress-section">
-
-<h3>
-نسبة التقدم
-</h3>
-
-<div class="progress-bar">
+<div class="progress-line">
 
 <div class="progress-fill">
 </div>
 
 </div>
 
+</section>
+
+
+
+<!-- =======================================================
+     PROGRESS
+======================================================= -->
+
+<section class="progress-card">
+
+<h3>
+ملخص التقدم
+</h3>
+
+
+<div class="progress-row">
+
+<span>
+التمارين
+</span>
+
+<strong>
+12
+</strong>
+
 </div>
+
+
+<div class="progress-row">
+
+<span>
+الأيام المتتالية
+</span>
+
+<strong>
+8
+</strong>
+
+</div>
+
+
+<div class="progress-row">
+
+<span>
+نسبة الإنجاز
+</span>
+
+<strong>
+65%
+</strong>
+
+</div>
+
+
+<div class="progress-row">
+
+<span>
+الهدف الحالي
+</span>
+
+<strong>
+قيد التنفيذ
+</strong>
+
+</div>
+
+</section>
 
 
 </main>
 
 
-<!-- BOTTOM NAV -->
+
+<!-- =======================================================
+     BOTTOM NAV
+======================================================= -->
 
 <nav class="bottom-nav">
 
 
-<a
-href="dashboard.html"
-class="active">
+<button>
+
+<span>
+⌂
+</span>
 
 الرئيسية
 
-</a>
+</button>
 
 
-<a href="calories.html">
-السعرات
-</a>
+<button>
+
+<span>
+🏋️
+</span>
+
+التمارين
+
+</button>
 
 
-<a href="subscriptions.html">
-الاشتراكات
-</a>
+<button>
+
+<span>
+📊
+</span>
+
+التقدم
+
+</button>
 
 
-<a href="#">
-حسابي
-</a>
+<button>
+
+<span>
+👥
+</span>
+
+المجتمع
+
+</button>
 
 
 </nav>
 
 
-<!-- SUPABASE -->
+
+<!-- =======================================================
+     SUPABASE
+======================================================= -->
 
 <script type="module">
 
@@ -1449,174 +1919,125 @@ SUPABASE_KEY
 );
 
 
-/* =========================================================
+
+/* =======================================================
    ELEMENTS
-========================================================= */
+======================================================= */
 
 const profileBtn =
-document.getElementById("profileBtn");
+document.getElementById(
+"profileBtn"
+);
 
 const profileMenu =
-document.getElementById("profileMenu");
+document.getElementById(
+"profileMenu"
+);
 
 const menuBtn =
-document.getElementById("menuBtn");
-
-const sideMenu =
-document.getElementById("sideMenu");
+document.getElementById(
+"menuBtn"
+);
 
 const menuOverlay =
-document.getElementById("menuOverlay");
+document.getElementById(
+"menuOverlay"
+);
 
-const closeMenu =
-document.getElementById("closeMenu");
-
-const languageBtn =
-document.getElementById("languageBtn");
+const sideMenu =
+document.getElementById(
+"sideMenu"
+);
 
 const logoutBtn =
-document.getElementById("logoutBtn");
-
-const profileUsername =
-document.getElementById("profileUsername");
-
-const profileEmail =
-document.getElementById("profileEmail");
+document.getElementById(
+"logoutBtn"
+);
 
 const profileInitial =
-document.getElementById("profileInitial");
+document.getElementById(
+"profileInitial"
+);
 
-const profileAvatar =
-document.getElementById("profileAvatar");
+const profileEmail =
+document.getElementById(
+"profileEmail"
+);
 
 
-/* =========================================================
-   PROFILE MENU
-========================================================= */
+
+/* =======================================================
+   PROFILE
+======================================================= */
 
 profileBtn.addEventListener(
 "click",
 function(){
 
-profileMenu.classList.toggle("active");
+profileMenu.classList.toggle(
+"active"
+);
 
 }
 );
 
 
-/* =========================================================
-   SIDE MENU OPEN
-========================================================= */
+
+/* =======================================================
+   SIDE MENU
+======================================================= */
 
 menuBtn.addEventListener(
 "click",
 function(){
 
-sideMenu.classList.add("active");
+sideMenu.classList.add(
+"active"
+);
 
-menuOverlay.classList.add("active");
+menuOverlay.classList.add(
+"active"
+);
 
 }
 );
 
-
-/* =========================================================
-   SIDE MENU CLOSE
-========================================================= */
-
-function closeSideMenu(){
-
-sideMenu.classList.remove("active");
-
-menuOverlay.classList.remove("active");
-
-}
-
-
-closeMenu.addEventListener(
-"click",
-function(){
-
-closeSideMenu();
-
-}
-);
 
 
 menuOverlay.addEventListener(
 "click",
 function(){
 
-closeSideMenu();
+sideMenu.classList.remove(
+"active"
+);
+
+menuOverlay.classList.remove(
+"active"
+);
 
 }
 );
 
 
-/* =========================================================
-   LANGUAGE
-========================================================= */
 
-languageBtn.addEventListener(
-"click",
-function(){
-
-window.location.href =
-"dashboard-en.html";
-
-}
-);
-
-
-/* =========================================================
-   NOTIFICATION
-========================================================= */
-
-function showNotification(message){
-
-const notification =
-document.getElementById("notification");
-
-notification.textContent =
-message;
-
-notification.classList.add("show");
-
-setTimeout(
-function(){
-
-notification.classList.remove("show");
-
-},
-2500
-);
-
-}
-
-
-/* =========================================================
-   USER PROFILE
-========================================================= */
+/* =======================================================
+   GET USER
+======================================================= */
 
 async function loadUser(){
-
-try{
 
 const {
 data,
 error
-} =
-await supabase.auth.getSession();
+}
+=
+await supabase.auth.getUser();
 
 
-if(
-error ||
-!data ||
-!data.session
-){
+if(error){
 
-window.location.href =
-"auth.html";
+console.error(error);
 
 return;
 
@@ -1624,144 +2045,110 @@ return;
 
 
 const user =
-data.session.user;
+data.user;
 
 
-const metadata =
-user.user_metadata || {};
+if(!user){
 
+return;
 
-const username =
-metadata.username ||
-metadata.name ||
-metadata.full_name ||
-"المستخدم";
+}
 
 
 const email =
-user.email ||
-"-";
-
-
-profileUsername.textContent =
-username;
+user.email || "";
 
 
 profileEmail.textContent =
 email;
 
 
-const firstLetter =
-username
-.trim()
+if(email){
+
+profileInitial.textContent =
+email
 .charAt(0)
 .toUpperCase();
 
-
-profileInitial.textContent =
-firstLetter;
-
-
-profileAvatar.textContent =
-firstLetter;
-
-
-}
-catch(error){
-
-console.error(
-"Session error:",
-error
-);
-
 }
 
 }
 
 
-/* =========================================================
-   AUTH STATE
-========================================================= */
-
-supabase.auth.onAuthStateChange(
-(event, session) => {
-
-if(
-!session
-){
-
-window.location.href =
-"auth.html";
-
-}
-
-}
-);
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-logoutBtn.addEventListener(
-"click",
-async function(e){
-
-e.preventDefault();
-
-try{
-
-await supabase.auth.signOut();
-
-window.location.href =
-"auth.html";
-
-}
-catch(error){
-
-console.error(
-"Logout error:",
-error
-);
-
-showNotification(
-"حدث خطأ أثناء تسجيل الخروج"
-);
-
-}
-
-}
-);
-
-
-/* =========================================================
-   CLOSE PROFILE MENU
-========================================================= */
-
-document.addEventListener(
-"click",
-function(e){
-
-if(
-!profileBtn.contains(e.target) &&
-!profileMenu.contains(e.target)
-){
-
-profileMenu.classList.remove("active");
-
-}
-
-}
-);
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
 
 loadUser();
 
+
+
+/* =======================================================
+   AUTH STATE
+======================================================= */
+
+supabase.auth.onAuthStateChange(
+(event, session)=>{
+
+if(session){
+
+const email =
+session.user.email || "";
+
+
+profileEmail.textContent =
+email;
+
+
+if(email){
+
+profileInitial.textContent =
+email
+.charAt(0)
+.toUpperCase();
+
+}
+
+}
+
+}
+);
+
+
+
+/* =======================================================
+   LOGOUT
+======================================================= */
+
+logoutBtn.addEventListener(
+"click",
+async function(){
+
+const {
+error
+}
+=
+await supabase.auth.signOut();
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"حدث خطأ أثناء تسجيل الخروج"
+);
+
+return;
+
+}
+
+
+window.location.href =
+"index.html";
+
+}
+);
+
 </script>
+
 
 </body>
 
