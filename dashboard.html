@@ -1200,14 +1200,14 @@ border-radius:20px;
 }
 
 
-/* =================================================
-   MOBILE LANDSCAPE
-   SAME CARD SIZE AS MOBILE PORTRAIT
-================================================= */
+/* =========================================================
+   PHONE ONLY
+   IMPORTANT:
+   ده مش مربوط بعرض الشاشة.
+   بيتطبق على الموبايل حتى لو بالعرض وعرض CSS أكبر من 600px.
+========================================================= */
 
-@media(max-width:600px) and (orientation:landscape){
-
-.subscription-boxes{
+html.mobile-phone .subscription-boxes{
 
 display:flex !important;
 
@@ -1237,22 +1237,19 @@ scrollbar-width:none;
 
 }
 
-.subscription-boxes::-webkit-scrollbar{
+html.mobile-phone .subscription-boxes::-webkit-scrollbar{
 display:none;
 }
 
 
-/* نفس ارتفاع كارت الطول */
+/* =========================================================
+   كارت الموبايل بالعرض
+   نفس ارتفاع كارت الموبايل بالطول
+========================================================= */
 
-.subscription-box{
+html.mobile-phone .subscription-box{
 
 display:block !important;
-
-width:100% !important;
-
-min-width:100% !important;
-
-max-width:100% !important;
 
 height:650px !important;
 
@@ -1260,7 +1257,18 @@ min-height:650px !important;
 
 max-height:650px !important;
 
-flex:0 0 100% !important;
+/*
+نستخدم ارتفاع الشاشة بالعرض لتحديد عرض الكارت،
+وبالتالي يفضل قريب من مقاس كارت الطول.
+*/
+
+width:calc(100svh - 28px) !important;
+
+min-width:calc(100svh - 28px) !important;
+
+max-width:calc(100svh - 28px) !important;
+
+flex:0 0 calc(100svh - 28px) !important;
 
 box-sizing:border-box !important;
 
@@ -1281,9 +1289,38 @@ scroll-snap-align:center;
 }
 
 
-/* LEGEND */
+/* =========================================================
+   لو الموبايل بالطول
+========================================================= */
 
-.subscription-box legend{
+@media(max-width:600px) and (orientation:portrait){
+
+html.mobile-phone .subscription-box{
+
+width:100% !important;
+
+min-width:0 !important;
+
+max-width:none !important;
+
+flex:0 0 100% !important;
+
+height:650px !important;
+
+min-height:650px !important;
+
+max-height:650px !important;
+
+}
+
+}
+
+
+/* =========================================================
+   عنوان الكارت
+========================================================= */
+
+html.mobile-phone .subscription-box legend{
 
 display:table !important;
 
@@ -1318,107 +1355,9 @@ text-overflow:ellipsis;
 }
 
 
-/* CONTENT HIDDEN */
-
-.subscription-box .plan-content{
-
-display:none !important;
-
-visibility:hidden !important;
-
-height:0 !important;
-
-max-height:0 !important;
-
-overflow:hidden !important;
-
-padding:0 !important;
-
-margin:0 !important;
-
-}
-
-
-/* SAFETY */
-
-.subscription-box,
-.subscription-box *,
-.subscription-box *::before,
-.subscription-box *::after{
-
-box-sizing:border-box !important;
-
-min-width:0 !important;
-
-max-width:100% !important;
-
-}
-
-}
-
-
-/* =================================================
-   MOBILE PORTRAIT
-================================================= */
-
-@media(max-width:600px) and (orientation:portrait){
-
-.subscription-boxes{
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-gap:10px;
-
-width:100%;
-
-}
-
-.subscription-box{
-
-width:100%;
-
-height:650px;
-
-min-width:0;
-
-max-width:none;
-
-flex:0 0 650px;
-
-background:#fff;
-
-border:3px solid #082F49;
-
-border-radius:14px;
-
-padding:22px 15px;
-
-}
-
-.subscription-box legend{
-
-font-size:18px;
-
-padding:6px 16px;
-
-border-width:3px;
-
-border-radius:7px;
-
-}
-
-}
-
-
-/* =================================================
-   MOBILE PHONE ONLY
-   HIDE SUBSCRIPTION CONTENT
-   WORKS PORTRAIT + LANDSCAPE
-================================================= */
+/* =========================================================
+   إخفاء كل محتوى الاشتراك على الهاتف
+========================================================= */
 
 html.mobile-phone .subscription-box .plan-content{
 
@@ -1428,13 +1367,39 @@ visibility:hidden !important;
 
 height:0 !important;
 
+min-height:0 !important;
+
 max-height:0 !important;
+
+width:0 !important;
+
+min-width:0 !important;
+
+max-width:0 !important;
 
 overflow:hidden !important;
 
 padding:0 !important;
 
 margin:0 !important;
+
+}
+
+
+/* =========================================================
+   حماية مقاس الكارت
+========================================================= */
+
+html.mobile-phone .subscription-box,
+html.mobile-phone .subscription-box *,
+html.mobile-phone .subscription-box *::before,
+html.mobile-phone .subscription-box *::after{
+
+box-sizing:border-box !important;
+
+min-width:0 !important;
+
+max-width:100% !important;
 
 }
 
@@ -2366,11 +2331,11 @@ from
 
 
 /* =================================================
-   MOBILE PHONE DETECTION
-   يعمل بالطول والعرض
+   DETECT REAL PHONE
+   لا يعتمد على عرض الشاشة
 ================================================= */
 
-const isMobilePhone =
+const isPhone =
 (
 navigator.userAgentData &&
 navigator.userAgentData.mobile === true
@@ -2380,7 +2345,7 @@ navigator.userAgentData.mobile === true
 navigator.userAgent
 );
 
-if(isMobilePhone){
+if(isPhone){
 
 document.documentElement.classList.add(
 "mobile-phone"
@@ -2407,74 +2372,46 @@ SUPABASE_KEY
 /* ELEMENTS */
 
 const profileBtn =
-document.getElementById(
-"profileBtn"
-);
+document.getElementById("profileBtn");
 
 const profileMenu =
-document.getElementById(
-"profileMenu"
-);
+document.getElementById("profileMenu");
 
 const profileInitial =
-document.getElementById(
-"profileInitial"
-);
+document.getElementById("profileInitial");
 
 const profileMenuInitial =
-document.getElementById(
-"profileMenuInitial"
-);
+document.getElementById("profileMenuInitial");
 
 const profileUsername =
-document.getElementById(
-"profileUsername"
-);
+document.getElementById("profileUsername");
 
 const profileEmail =
-document.getElementById(
-"profileEmail"
-);
+document.getElementById("profileEmail");
 
 const menuBtn =
-document.getElementById(
-"menuBtn"
-);
+document.getElementById("menuBtn");
 
 const sideMenu =
-document.getElementById(
-"sideMenu"
-);
+document.getElementById("sideMenu");
 
 const menuOverlay =
-document.getElementById(
-"menuOverlay"
-);
+document.getElementById("menuOverlay");
 
 const closeMenu =
-document.getElementById(
-"closeMenu"
-);
+document.getElementById("closeMenu");
 
 const languageSwitcher =
-document.getElementById(
-"languageSwitcher"
-);
+document.getElementById("languageSwitcher");
 
 const logoutBtn =
-document.getElementById(
-"logoutBtn"
-);
+document.getElementById("logoutBtn");
 
 const notificationBtn =
-document.getElementById(
-"notificationBtn"
-);
+document.getElementById("notificationBtn");
 
 const notificationPanel =
-document.getElementById(
-"notificationPanel"
-);
+document.getElementById("notificationPanel");
 
 
 /* SHOW USER */
@@ -2564,7 +2501,6 @@ error
 
 }
 
-
 return new Promise(
 function(resolve){
 
@@ -2572,7 +2508,6 @@ let finished =
 false;
 
 let timeout;
-
 
 function finish(session){
 
@@ -2614,7 +2549,6 @@ null
 
 }
 
-
 const {
 data:listener
 } =
@@ -2640,7 +2574,6 @@ session
 
 }
 );
-
 
 setTimeout(
 async function(){
@@ -2679,7 +2612,6 @@ error
 },
 500
 );
-
 
 timeout =
 setTimeout(
@@ -2780,7 +2712,6 @@ menuOverlay.classList.add(
 }
 );
 
-
 closeMenu.addEventListener(
 "click",
 function(){
@@ -2795,7 +2726,6 @@ menuOverlay.classList.remove(
 
 }
 );
-
 
 menuOverlay.addEventListener(
 "click",
@@ -2884,13 +2814,9 @@ document.addEventListener(
 function(event){
 
 if(
-!profileMenu.contains(
-event.target
-)
+!profileMenu.contains(event.target)
 &&
-!profileBtn.contains(
-event.target
-)
+!profileBtn.contains(event.target)
 ){
 
 profileMenu.classList.remove(
@@ -2900,13 +2826,9 @@ profileMenu.classList.remove(
 }
 
 if(
-!notificationPanel.contains(
-event.target
-)
+!notificationPanel.contains(event.target)
 &&
-!notificationBtn.contains(
-event.target
-)
+!notificationBtn.contains(event.target)
 ){
 
 notificationPanel.classList.remove(
