@@ -1170,42 +1170,50 @@ border-radius:20px;
 }
 }
 
-/* =================================================
-MOBILE LANDSCAPE
-SUBSCRIPTION CARD = EXACTLY 600px × 700px
-================================================= */
-
+/* MOBILE LANDSCAPE
+   الكارت عرضه 1000px مع تمرير أفقي */
 @media(max-width:600px) and (orientation:landscape){
 
 .subscription-boxes{
 display:flex !important;
 flex-direction:row !important;
 align-items:flex-start !important;
-gap:15px !important;
+justify-content:flex-start !important;
+gap:20px !important;
+
 width:100% !important;
-max-width:100% !important;
+max-width:none !important;
+min-width:0 !important;
+
 overflow-x:auto !important;
 overflow-y:hidden !important;
+
 padding:0 10px 20px !important;
-margin-bottom:28px !important;
+margin:0 0 28px !important;
+
+box-sizing:border-box !important;
 scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 scrollbar-width:none;
+touch-action:pan-x pan-y;
 }
 
 .subscription-boxes::-webkit-scrollbar{
 display:none;
 }
 
-.subscription-box{
+.subscription-boxes .subscription-box{
 display:block !important;
-width:750px !important;
-min-width:750px !important;
-max-width:750px !important;
+
+width:1000px !important;
+min-width:1000px !important;
+max-width:none !important;
+
+flex:0 0 1000px !important;
 height:700px !important;
 min-height:700px !important;
 max-height:700px !important;
-flex:0 0 750px !important;
+
 box-sizing:border-box !important;
 padding:22px 15px !important;
 background:#fff;
@@ -1213,10 +1221,10 @@ border:3px solid #082F49;
 border-radius:14px;
 position:relative;
 overflow:hidden !important;
-scroll-snap-align:center;
+scroll-snap-align:start;
 }
 
-.subscription-box legend{
+.subscription-boxes .subscription-box legend{
 display:table !important;
 width:auto !important;
 max-width:90% !important;
@@ -1234,10 +1242,11 @@ overflow:hidden !important;
 text-overflow:ellipsis;
 }
 
-.subscription-box .plan-content{
+.subscription-boxes .subscription-box .plan-content{
 display:block !important;
+visibility:visible !important;
 width:100% !important;
-max-width:100% !important;
+max-width:none !important;
 min-width:0 !important;
 height:calc(700px - 44px) !important;
 max-height:calc(700px - 44px) !important;
@@ -1250,13 +1259,13 @@ scrollbar-width:thin;
 -webkit-overflow-scrolling:touch;
 }
 
-.subscription-box .plan-content > *{
+.subscription-boxes .subscription-box .plan-content > *{
 max-width:100% !important;
 min-width:0 !important;
 box-sizing:border-box !important;
 }
 
-.subscription-box .plan-name{
+.subscription-boxes .subscription-box .plan-name{
 display:block !important;
 width:100% !important;
 max-width:100% !important;
@@ -1271,7 +1280,7 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 }
 
-.subscription-box .plan-duration{
+.subscription-boxes .subscription-box .plan-duration{
 display:block !important;
 width:100% !important;
 max-width:100% !important;
@@ -1281,7 +1290,7 @@ margin-bottom:16px !important;
 text-align:center;
 }
 
-.subscription-box .duration-title{
+.subscription-boxes .subscription-box .duration-title{
 width:100% !important;
 font-size:18px !important;
 line-height:1.4 !important;
@@ -1290,7 +1299,7 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 }
 
-.subscription-box .duration-value{
+.subscription-boxes .subscription-box .duration-value{
 width:100% !important;
 font-size:22px !important;
 line-height:1.4 !important;
@@ -1299,7 +1308,7 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 }
 
-.subscription-box .price{
+.subscription-boxes .subscription-box .price{
 display:flex !important;
 width:100% !important;
 max-width:100% !important;
@@ -1312,7 +1321,7 @@ gap:8px !important;
 overflow:visible !important;
 }
 
-.subscription-box .current-price{
+.subscription-boxes .subscription-box .current-price{
 max-width:100% !important;
 font-size:23px !important;
 white-space:normal !important;
@@ -1320,7 +1329,7 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 }
 
-.subscription-box .old-price{
+.subscription-boxes .subscription-box .old-price{
 max-width:100% !important;
 font-size:17px !important;
 white-space:normal !important;
@@ -1328,7 +1337,7 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 }
 
-.subscription-box .plan-features{
+.subscription-boxes .subscription-box .plan-features{
 display:block !important;
 width:100% !important;
 max-width:100% !important;
@@ -1340,7 +1349,7 @@ list-style:none;
 overflow:visible !important;
 }
 
-.subscription-box .plan-features li{
+.subscription-boxes .subscription-box .plan-features li{
 display:block !important;
 width:100% !important;
 max-width:100% !important;
@@ -1359,7 +1368,7 @@ border-bottom:1px solid #e2e8f0;
 overflow:visible !important;
 }
 
-.subscription-box .plan-features li::before{
+.subscription-boxes .subscription-box .plan-features li::before{
 right:0 !important;
 top:10px !important;
 width:22px !important;
@@ -1367,7 +1376,7 @@ height:22px !important;
 font-size:13px !important;
 }
 
-.subscription-box .subscribe-btn{
+.subscription-boxes .subscription-box .subscribe-btn{
 display:block !important;
 width:100% !important;
 max-width:100% !important;
@@ -1383,15 +1392,12 @@ overflow-wrap:anywhere !important;
 word-break:break-word !important;
 }
 
-.subscription-box,
-.subscription-box *,
-.subscription-box *::before,
-.subscription-box *::after{
+.subscription-boxes .subscription-box,
+.subscription-boxes .subscription-box *,
+.subscription-boxes .subscription-box *::before,
+.subscription-boxes .subscription-box *::after{
 box-sizing:border-box !important;
-min-width:0 !important;
-max-width:100% !important;
 }
-
 }
 
 /* MOBILE PORTRAIT */
@@ -1436,10 +1442,9 @@ padding:0 !important;
 margin:0 !important;
 }
 </style>
-   </head>
-   <body>
-
-<header>
+</head>
+<body>
+   <header>
 <div class="logo">
 Body<span>Reset</span>
 </div>
