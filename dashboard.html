@@ -1170,7 +1170,7 @@ border-radius:20px;
 }
 }
 
-/* MOBILE LANDSCAPE - كروت عريضة مع سحب أفقي */
+/* MOBILE LANDSCAPE - عرض 750px مع سحب أفقي */
 @media(max-width:600px) and (orientation:landscape){
 
 .subscription-boxes{
@@ -1182,10 +1182,10 @@ justify-content:flex-start !important;
 gap:20px !important;
 
 width:100% !important;
-max-width:100% !important;
+max-width:none !important;
 min-width:0 !important;
 
-overflow-x:scroll !important;
+overflow-x:auto !important;
 overflow-y:hidden !important;
 
 padding:0 10px 20px !important;
@@ -1213,11 +1213,11 @@ border-radius:10px;
 direction:rtl !important;
 display:block !important;
 
-width:1000px !important;
-min-width:1000px !important;
+width:750px !important;
+min-width:750px !important;
 max-width:none !important;
 
-flex:0 0 1000px !important;
+flex:0 0 750px !important;
 flex-shrink:0 !important;
 
 height:700px !important;
@@ -1453,11 +1453,10 @@ padding:0 !important;
 margin:0 !important;
 }
 }
-   </style>
-   </head>
+</style>
+</head>
 <body>
-
-<header>
+ <header>
 <div class="logo">
 Body<span>Reset</span>
 </div>
@@ -2202,4 +2201,4 @@ notificationPanel.classList.remove("show");
 </script>
 
 </body>
-   </html>
+            </html>  
