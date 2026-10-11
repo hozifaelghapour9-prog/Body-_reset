@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -173,7 +174,7 @@ header{height:68px;padding:0 16px}
 .subscription-box{width:100%;height:500px;background:#fff;border:3px solid #082F49;border-radius:20px}
 }
 
-/* MOBILE LANDSCAPE: كروت بعرض 750px مع سحب أفقي */
+/* MOBILE LANDSCAPE: عرض الكارت 450px مع السحب الأفقي */
 @media (orientation:landscape) and (max-height:600px){
 .subscription-boxes{
 display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
@@ -189,8 +190,8 @@ overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:thin
 .subscription-boxes::-webkit-scrollbar-thumb{background:rgba(8,47,73,.45);border-radius:10px}
 .subscription-boxes .subscription-box{
 direction:rtl!important;display:block!important;
-width:750px!important;min-width:750px!important;max-width:none!important;
-flex:0 0 750px!important;flex-shrink:0!important;
+width:450px!important;min-width:450px!important;max-width:none!important;
+flex:0 0 450px!important;flex-shrink:0!important;
 height:700px!important;min-height:700px!important;max-height:700px!important;
 box-sizing:border-box!important;padding:22px 15px!important;background:#fff!important;
 border:3px solid #082F49!important;border-radius:14px!important;position:relative!important;
@@ -273,6 +274,7 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo">Body<span>Reset</span></div>
 <div class="header-left">
@@ -440,7 +442,7 @@ const isMobilePhone =
 /Android.*Mobile|iPhone|iPod|Windows Phone/i.test(navigator.userAgent);
 
 if(isMobilePhone){
-document.documentElement.classList.add("mobile-phone");
+  document.documentElement.classList.add("mobile-phone");
 }
 
 const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
@@ -465,129 +467,129 @@ const notificationBtn = document.getElementById("notificationBtn");
 const notificationPanel = document.getElementById("notificationPanel");
 
 function showUser(user){
-if(!user)return;
-console.log("LOGGED USER:",user);
-const username = user.user_metadata?.username || user.user_metadata?.name || "User";
-const email = user.email || "";
-const firstLetter = username.trim().charAt(0).toUpperCase();
-profileInitial.textContent = firstLetter || "?";
-profileMenuInitial.textContent = firstLetter || "?";
-profileUsername.textContent = username;
-profileEmail.textContent = email;
+  if(!user)return;
+  console.log("LOGGED USER:",user);
+  const username = user.user_metadata?.username || user.user_metadata?.name || "User";
+  const email = user.email || "";
+  const firstLetter = username.trim().charAt(0).toUpperCase();
+  profileInitial.textContent = firstLetter || "?";
+  profileMenuInitial.textContent = firstLetter || "?";
+  profileUsername.textContent = username;
+  profileEmail.textContent = email;
 }
 
 async function waitForSession(){
-console.log("Waiting for Supabase session...");
-try{
-const {data,error} = await supabase.auth.getSession();
-console.log("SESSION CHECK:",data?.session);
-console.log("SESSION ERROR:",error);
-if(data?.session){
-showUser(data.session.user);
-return data.session;
-}
-}catch(error){
-console.error("INITIAL SESSION ERROR:",error);
-}
+  console.log("Waiting for Supabase session...");
+  try{
+    const {data,error} = await supabase.auth.getSession();
+    console.log("SESSION CHECK:",data?.session);
+    console.log("SESSION ERROR:",error);
+    if(data?.session){
+      showUser(data.session.user);
+      return data.session;
+    }
+  }catch(error){
+    console.error("INITIAL SESSION ERROR:",error);
+  }
 
-return new Promise(function(resolve){
-let finished = false;
-let timeout;
+  return new Promise(function(resolve){
+    let finished = false;
+    let timeout;
 
-function finish(session){
-if(finished)return;
-finished = true;
-clearTimeout(timeout);
-if(session){
-showUser(session.user);
-resolve(session);
-}else{
-console.log("No session found.");
-window.location.href = "auth.html";
-resolve(null);
-}
-}
+    function finish(session){
+      if(finished)return;
+      finished = true;
+      clearTimeout(timeout);
+      if(session){
+        showUser(session.user);
+        resolve(session);
+      }else{
+        console.log("No session found.");
+        window.location.href = "auth.html";
+        resolve(null);
+      }
+    }
 
-const {data:listener} = supabase.auth.onAuthStateChange(function(event,session){
-console.log("AUTH EVENT:",event,session);
-if(session)finish(session);
-});
+    const {data:listener} = supabase.auth.onAuthStateChange(function(event,session){
+      console.log("AUTH EVENT:",event,session);
+      if(session)finish(session);
+    });
 
-setTimeout(async function(){
-try{
-const {data} = await supabase.auth.getSession();
-console.log("SESSION RETRY:",data?.session);
-if(data?.session)finish(data.session);
-}catch(error){
-console.error("SESSION RETRY ERROR:",error);
-}
-},500);
+    setTimeout(async function(){
+      try{
+        const {data} = await supabase.auth.getSession();
+        console.log("SESSION RETRY:",data?.session);
+        if(data?.session)finish(data.session);
+      }catch(error){
+        console.error("SESSION RETRY ERROR:",error);
+      }
+    },500);
 
-timeout = setTimeout(function(){
-console.log("Session timeout.");
-try{listener.subscription.unsubscribe();}catch(error){}
-finish(null);
-},5000);
-});
+    timeout = setTimeout(function(){
+      console.log("Session timeout.");
+      try{listener.subscription.unsubscribe();}catch(error){}
+      finish(null);
+    },5000);
+  });
 }
 
 waitForSession();
 
 supabase.auth.onAuthStateChange(function(event,session){
-console.log("GLOBAL AUTH EVENT:",event,session);
-if(event === "SIGNED_OUT"){
-window.location.href = "auth.html";
-}
+  console.log("GLOBAL AUTH EVENT:",event,session);
+  if(event === "SIGNED_OUT"){
+    window.location.href = "auth.html";
+  }
 });
 
 profileBtn.addEventListener("click",function(event){
-event.stopPropagation();
-profileMenu.classList.toggle("show");
-notificationPanel.classList.remove("show");
+  event.stopPropagation();
+  profileMenu.classList.toggle("show");
+  notificationPanel.classList.remove("show");
 });
 
 menuBtn.addEventListener("click",function(){
-sideMenu.classList.add("open");
-menuOverlay.classList.add("show");
+  sideMenu.classList.add("open");
+  menuOverlay.classList.add("show");
 });
 
 closeMenu.addEventListener("click",function(){
-sideMenu.classList.remove("open");
-menuOverlay.classList.remove("show");
+  sideMenu.classList.remove("open");
+  menuOverlay.classList.remove("show");
 });
 
 menuOverlay.addEventListener("click",function(){
-sideMenu.classList.remove("open");
-menuOverlay.classList.remove("show");
+  sideMenu.classList.remove("open");
+  menuOverlay.classList.remove("show");
 });
 
 languageSwitcher.addEventListener("click",function(){
-window.location.href = "dashboard-en.html";
+  window.location.href = "dashboard-en.html";
 });
 
 logoutBtn.addEventListener("click",async function(){
-const {error} = await supabase.auth.signOut();
-if(!error){
-window.location.href = "auth.html";
-}else{
-console.error("LOGOUT ERROR:",error);
-}
+  const {error} = await supabase.auth.signOut();
+  if(!error){
+    window.location.href = "auth.html";
+  }else{
+    console.error("LOGOUT ERROR:",error);
+  }
 });
 
 notificationBtn.addEventListener("click",function(event){
-event.stopPropagation();
-notificationPanel.classList.toggle("show");
-profileMenu.classList.remove("show");
+  event.stopPropagation();
+  notificationPanel.classList.toggle("show");
+  profileMenu.classList.remove("show");
 });
 
 document.addEventListener("click",function(event){
-if(!profileMenu.contains(event.target) && !profileBtn.contains(event.target)){
-profileMenu.classList.remove("show");
-}
-if(!notificationPanel.contains(event.target) && !notificationBtn.contains(event.target)){
-notificationPanel.classList.remove("show");
-}
+  if(!profileMenu.contains(event.target) && !profileBtn.contains(event.target)){
+    profileMenu.classList.remove("show");
+  }
+  if(!notificationPanel.contains(event.target) && !notificationBtn.contains(event.target)){
+    notificationPanel.classList.remove("show");
+  }
 });
 </script>
 </body>
- </html>
+</html>
