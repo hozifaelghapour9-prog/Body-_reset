@@ -5,39 +5,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BodyReset | Dashboard</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:linear-gradient(135deg,#0066cc 0%,#00a6b2 100%);color:#071a33;min-height:100vh;overflow-x:hidden}
+body{background:linear-gradient(135deg,#0066cc,#00a6b2);color:#071a33;min-height:100vh;overflow-x:hidden}
 header{height:75px;padding:0 25px;display:flex;justify-content:space-between;align-items:center;background:#000;border-bottom:1px solid #071a33}
-.logo{font-size:25px;font-weight:bold;color:#fff}
-.logo span{color:#2563eb}
+.logo{font-size:25px;font-weight:bold;color:#fff}.logo span{color:#2563eb}
 .header-left{display:flex;align-items:center;gap:18px}
 .profile{width:40px;height:40px;border-radius:50%;background:#f97316;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;cursor:pointer}
 .menu-btn{background:none;border:none;width:24px;height:22px;padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;cursor:pointer}
 .menu-btn span{display:block;width:17px;height:2px;background:#fff;border-radius:2px}
-.profile-menu{position:fixed;top:68px;left:20px;width:280px;background:#fff;border-radius:15px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:none;z-index:3000}
-.profile-menu.show{display:block}
-.profile-menu h3{font-size:18px;color:#071a33;margin-bottom:8px}
-.profile-menu p{font-size:14px;color:#64748b;word-break:break-word}
-.profile-menu .profile-name{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.profile-menu-avatar{width:45px;height:45px;border-radius:50%;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px}
-.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:2000}
-.menu-overlay.show{display:block}
-.side-menu{position:fixed;top:0;left:-320px;width:320px;height:100vh;background:#fff;z-index:2500;padding:25px 20px;box-shadow:5px 0 25px rgba(0,0,0,.2);transition:left .3s ease;overflow-y:auto}
-.side-menu.open{left:0}
-.side-menu-header{display:flex;align-items:center;gap:14px;margin-bottom:25px}
-.side-menu-header h2{color:#071a33;font-size:22px}
-.close-menu{background:#f1f5f9;border:none;width:40px;height:40px;border-radius:10px;font-size:24px;cursor:pointer;color:#071a33}
+.profile-menu{position:fixed;top:68px;left:20px;width:280px;background:#fff;border-radius:15px;padding:18px;box-shadow:0 10px 30px #0004;display:none;z-index:3000}
+.profile-menu.show{display:block}.profile-menu h3{font-size:18px;margin-bottom:8px}.profile-menu p{font-size:14px;color:#64748b;word-break:break-word}
+.profile-name{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.profile-menu-avatar{width:45px;height:45px;border-radius:50%;background:#f97316;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px}
+.menu-overlay{position:fixed;inset:0;background:#0007;display:none;z-index:2000}.menu-overlay.show{display:block}
+.side-menu{position:fixed;top:0;left:-320px;width:320px;height:100vh;background:#fff;z-index:2500;padding:25px 20px;box-shadow:5px 0 25px #0003;transition:left .3s;overflow-y:auto}
+.side-menu.open{left:0}.side-menu-header{display:flex;align-items:center;gap:14px;margin-bottom:25px}
+.side-menu-header h2{font-size:22px}.close-menu{background:#f1f5f9;border:0;width:40px;height:40px;border-radius:10px;font-size:24px;cursor:pointer}
 .side-menu a{display:block;padding:15px 12px;margin-bottom:8px;border-radius:10px;text-decoration:none;color:#071a33;font-weight:bold}
 .side-menu a:hover,.language-switcher:hover{background:#f1f5f9}
-.language-switcher{display:flex;align-items:center;gap:12px;width:100%;padding:15px 12px;margin-bottom:8px;border:none;border-radius:10px;background:none;color:#071a33;font-size:16px;font-weight:bold;cursor:pointer;text-align:right}
+.language-switcher{display:flex;align-items:center;gap:12px;width:100%;padding:15px 12px;margin-bottom:8px;border:0;border-radius:10px;background:none;color:#071a33;font-size:16px;font-weight:bold;cursor:pointer;text-align:right}
 .translate-icon{width:40px;height:40px;border-radius:10px;background:#f1f5f9;display:flex;align-items:center;justify-content:center}
 .translate-icon svg{width:27px;height:27px;fill:none;stroke:#071a33;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.side-menu .logout-btn{width:100%;border:none;background:none;color:#dc2626;text-align:right;font-size:16px;font-weight:bold;cursor:pointer;padding:15px 12px;border-radius:10px}
-.notification-panel{position:fixed;top:80px;right:20px;width:300px;background:#fff;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:none;z-index:3000;overflow:hidden}
-.notification-panel.show{display:block}
-.notification-header{padding:15px;font-size:17px;font-weight:bold;border-bottom:1px solid #d7dee8}
+.side-menu .logout-btn{width:100%;border:0;background:none;color:#dc2626;text-align:right;font-size:16px;font-weight:bold;cursor:pointer;padding:15px 12px;border-radius:10px}
+.notification-panel{position:fixed;top:80px;right:20px;width:300px;background:#fff;border-radius:15px;box-shadow:0 10px 30px #0004;display:none;z-index:3000;overflow:hidden}
+.notification-panel.show{display:block}.notification-header{padding:15px;font-size:17px;font-weight:bold;border-bottom:1px solid #d7dee8}
 .notification-item{padding:15px;border-bottom:1px solid #d7dee8;font-size:14px;color:#334155}
 .container{max-width:1250px;margin:auto;padding:28px 25px 110px}
 .top-area{display:flex;justify-content:flex-start;margin-bottom:25px}
@@ -50,7 +42,7 @@ header{height:75px;padding:0 25px;display:flex;justify-content:space-between;ali
 .plan-content{padding-top:25px;text-align:right;min-width:0}
 .plan-name{font-size:32px;font-weight:bold;color:#082F49;text-align:center;margin-bottom:25px;min-width:0;overflow-wrap:anywhere}
 .plan-duration{margin-bottom:25px;text-align:center;min-width:0}
-.duration-title{font-size:20px;font-weight:bold;color:#071a33;margin-bottom:8px}
+.duration-title{font-size:20px;font-weight:bold;margin-bottom:8px}
 .duration-value{font-size:24px;font-weight:bold;color:#082F49;margin-bottom:10px}
 .price{display:flex;align-items:center;justify-content:center;gap:12px;direction:rtl;flex-wrap:wrap;min-width:0}
 .current-price{font-size:25px;font-weight:bold;color:#16a085}
@@ -59,62 +51,52 @@ header{height:75px;padding:0 25px;display:flex;justify-content:space-between;ali
 .plan-features li{position:relative;padding:14px 32px 14px 5px;font-size:18px;line-height:1.7;color:#334155;border-bottom:1px solid #e2e8f0;min-width:0;overflow-wrap:anywhere;word-break:break-word}
 .plan-features li:last-child{border-bottom:none}
 .plan-features li::before{content:"✓";position:absolute;right:0;top:14px;width:23px;height:23px;border-radius:50%;background:#082F49;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold}
-.subscribe-btn{display:block;width:100%;margin-top:32px;padding:15px 20px;background:linear-gradient(135deg,#72d8f2 0%,#19c7bd 100%);color:#fff;border:none;border-radius:10px;text-align:center;text-decoration:none;font-size:18px;font-weight:bold;cursor:pointer;transition:.2s ease;box-shadow:0 5px 12px rgba(25,199,189,.22);overflow-wrap:anywhere}
-.subscribe-btn:hover{background:linear-gradient(135deg,#5fcbe8 0%,#12b7ad 100%);transform:translateY(-1px)}
+.subscribe-btn{display:block;width:100%;margin-top:32px;padding:15px 20px;background:linear-gradient(135deg,#72d8f2,#19c7bd);color:#fff;border:0;border-radius:10px;text-align:center;text-decoration:none;font-size:18px;font-weight:bold;cursor:pointer;transition:.2s;box-shadow:0 5px 12px #19c7bd38;overflow-wrap:anywhere}
+.subscribe-btn:hover{background:linear-gradient(135deg,#5fcbe8,#12b7ad);transform:translateY(-1px)}
 .stats{display:flex;gap:20px;overflow-x:auto;margin-bottom:35px;padding-bottom:8px}
 .stat{flex:0 0 calc((100% - 40px)/3);background:#fff;border:1px solid #d7dee8;border-radius:20px;padding:25px 20px;min-height:210px}
 .stat h3{font-size:17px;margin-bottom:20px;color:#2563eb}
 .activity-circles{display:flex;justify-content:center;gap:18px}
 .activity-circle{width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:conic-gradient(#2563eb 0%,#d7dee8 0%);position:relative}
 .activity-circle:before{content:"";position:absolute;width:62px;height:62px;background:#fff;border-radius:50%}
-.circle-content{position:relative;z-index:2;text-align:center}
-.circle-content strong{display:block;color:#2563eb;font-size:18px}
-.circle-content span{font-size:10px;color:#64748b}
-.calorie-number{text-align:center;margin-bottom:12px}
-.calorie-number strong{font-size:32px;color:#2563eb}
-.calorie-number span{font-size:14px;color:#64748b}
+.circle-content{position:relative;z-index:2;text-align:center}.circle-content strong{display:block;color:#2563eb;font-size:18px}.circle-content span{font-size:10px;color:#64748b}
+.calorie-number{text-align:center;margin-bottom:12px}.calorie-number strong{font-size:32px;color:#2563eb}.calorie-number span{font-size:14px;color:#64748b}
 .calorie-chart{width:100%;height:135px;display:flex;align-items:flex-end;justify-content:space-between;gap:7px;direction:ltr;padding:0 2px;margin-top:5px}
 .calorie-day{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px}
-.calorie-bar{width:100%;max-width:28px;min-width:13px;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,#18bce8 0%,#2563eb 100%);height:var(--bar-height)}
-.calorie-day span{font-size:9px;font-weight:bold;color:#071a33}
+.calorie-bar{width:100%;max-width:28px;min-width:13px;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,#18bce8,#2563eb);height:var(--bar-height)}
+.calorie-day span{font-size:9px;font-weight:bold}
 .weekly-progress{display:flex;justify-content:center}
 .progress-circle{width:125px;height:125px;border-radius:50%;background:conic-gradient(#2563eb 0%,#d7dee8 0%);display:flex;align-items:center;justify-content:center;position:relative}
 .progress-circle:before{content:"";position:absolute;width:95px;height:95px;background:#fff;border-radius:50%}
 .progress-circle strong{position:relative;z-index:2;font-size:28px;color:#2563eb}
 .section-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.section-heading h2{font-size:23px;color:#fff}
-.see-all{color:#fff;text-decoration:none;font-size:14px;font-weight:bold}
+.section-heading h2{font-size:23px;color:#fff}.see-all{color:#fff;text-decoration:none;font-size:14px;font-weight:bold}
 .today-workout{background:#fff;border:1px solid #d7dee8;border-radius:20px;padding:20px;margin-bottom:30px}
-.workout-title{font-size:25px;font-weight:bold;color:#071a33;margin-bottom:20px}
+.workout-title{font-size:25px;font-weight:bold;margin-bottom:20px}
 .workout-slider{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
 .workout-slider::-webkit-scrollbar{display:none}
 .exercise-card{flex:0 0 280px;background:#f8fafc;border:1px solid #d7dee8;border-radius:16px;overflow:hidden}
 .exercise-card img{width:100%;height:190px;object-fit:cover;display:block}
-.exercise-name{background:#fff;padding:16px 15px;text-align:center}
-.exercise-name h3{font-size:19px;color:#071a33}
+.exercise-name{background:#fff;padding:16px 15px;text-align:center}.exercise-name h3{font-size:19px}
 .exercise-content{padding:15px}
 .start-btn{display:block;width:100%;background:#2563eb;color:#fff;text-align:center;text-decoration:none;padding:12px;border-radius:9px;font-size:14px;font-weight:bold}
 .workout-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
 .workout-dots span{width:8px;height:8px;border-radius:50%;background:#cbd5e1}
 .workout-dots span.active{width:25px;border-radius:8px;background:#2563eb}
 .community-card{background:#fff;border:1px solid #d7dee8;border-radius:20px;padding:10px 20px;margin-bottom:30px}
-.news-row{padding:18px 0;border-bottom:1px solid #d7dee8}
-.news-row:last-child{border-bottom:none}
+.news-row{padding:18px 0;border-bottom:1px solid #d7dee8}.news-row:last-child{border-bottom:none}
 .news-left{display:flex;align-items:center;gap:12px}
 .news-icon{width:40px;height:40px;border-radius:10px;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center}
-.news-title{font-weight:bold;color:#071a33;margin-bottom:4px}
-.news-sub{font-size:12px;color:#64748b}
+.news-title{font-weight:bold;margin-bottom:4px}.news-sub{font-size:12px;color:#64748b}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:17px;margin-bottom:30px}
 .card{background:#fff;border:1px solid #d7dee8;border-radius:18px;padding:23px}
-.icon{font-size:34px;margin-bottom:14px}
-.card h3{font-size:19px;margin-bottom:9px;color:#071a33}
+.icon{font-size:34px;margin-bottom:14px}.card h3{font-size:19px;margin-bottom:9px}
 .card p{color:#334155;line-height:1.7;font-size:14px;margin-bottom:18px}
 .card a{display:inline-block;background:#2563eb;color:#fff;padding:10px 16px;border-radius:9px;text-decoration:none;font-weight:bold}
 .progress-section{margin-bottom:30px}
 .progress-card{background:#fff;border:1px solid #d7dee8;border-radius:20px;padding:28px;display:flex;align-items:center;gap:25px}
 .progress-icon{width:72px;height:72px;min-width:72px;border-radius:16px;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px}
-.progress-content{flex:1}
-.progress-content h3{font-size:21px;margin-bottom:8px;color:#071a33}
+.progress-content{flex:1}.progress-content h3{font-size:21px;margin-bottom:8px}
 .progress-content p{color:#334155;line-height:1.7;font-size:14px;margin-bottom:15px}
 .progress-content a{background:#2563eb;color:#fff;padding:10px 17px;border-radius:9px;text-decoration:none;font-weight:bold}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;height:72px;background:#fff;border-top:1px solid #d7dee8;display:flex;justify-content:space-around;align-items:center;z-index:1000}
@@ -126,44 +108,31 @@ header{height:75px;padding:0 25px;display:flex;justify-content:space-between;ali
 
 @media(max-width:800px){
 .container{padding-left:18px;padding-right:18px}
-.subscription-boxes{gap:14px}
-.subscription-box{height:650px}
-.stat{flex:0 0 270px}
-.cards{grid-template-columns:1fr}
+.subscription-boxes{gap:14px}.subscription-box{height:650px}
+.stat{flex:0 0 270px}.cards{grid-template-columns:1fr}
 }
 @media(max-width:600px){
-header{height:68px;padding:0 16px}
-.logo{font-size:21px}
+header{height:68px;padding:0 16px}.logo{font-size:21px}
 .container{padding:20px 14px 110px}
 .subscription-title{font-size:27px;margin-bottom:20px}
 .subscription-boxes{gap:10px;margin-bottom:28px}
 .subscription-box{height:650px;border-radius:14px;border:3px solid #082F49;padding:22px 15px}
 .subscription-box legend{font-size:18px;padding:6px 16px;border-width:3px;border-radius:7px}
-.plan-content{padding-top:18px}
-.plan-name{font-size:28px;margin-bottom:20px}
-.duration-title{font-size:18px}
-.duration-value{font-size:22px}
-.current-price{font-size:23px}
-.old-price{font-size:17px}
+.plan-content{padding-top:18px}.plan-name{font-size:28px;margin-bottom:20px}
+.duration-title{font-size:18px}.duration-value{font-size:22px}
+.current-price{font-size:23px}.old-price{font-size:17px}
 .plan-features li{font-size:16px;padding:12px 29px 12px 3px}
 .plan-features li::before{top:12px}
 .subscribe-btn{margin-top:28px;font-size:17px;padding:14px 15px}
-.stat{flex:0 0 285px}
-.today-workout{padding:15px}
-.exercise-card{flex:0 0 82%}
-.exercise-card img{height:200px}
-.progress-card{padding:22px 18px}
-.bottom-nav,.nav-item{height:72px}
-.nav-item{font-size:10px}
-.nav-icon{width:29px;height:29px}
+.stat{flex:0 0 285px}.today-workout{padding:15px}
+.exercise-card{flex:0 0 82%}.exercise-card img{height:200px}
+.progress-card{padding:22px 18px}.bottom-nav,.nav-item{height:72px}
+.nav-item{font-size:10px}.nav-icon{width:29px;height:29px}
 .home-nav .nav-icon{width:37px;height:37px}
 .profile-menu{left:14px;right:14px;width:auto}
 .notification-panel{left:14px;right:14px;width:auto}
-.side-menu{width:320px;max-width:88vw;left:-320px}
-.side-menu.open{left:0}
-.calorie-chart{height:130px;gap:5px}
-.calorie-bar{max-width:24px}
-.calorie-day span{font-size:8px}
+.side-menu{width:320px;max-width:88vw;left:-320px}.side-menu.open{left:0}
+.calorie-chart{height:130px;gap:5px}.calorie-bar{max-width:24px}.calorie-day span{font-size:8px}
 }
 @media(min-width:601px) and (max-width:1024px) and (orientation:portrait){
 .subscription-boxes{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
@@ -174,7 +143,7 @@ header{height:68px;padding:0 16px}
 .subscription-box{width:100%;height:500px;background:#fff;border:3px solid #082F49;border-radius:20px}
 }
 
-/* MOBILE LANDSCAPE: عرض الكارت 450px مع السحب الأفقي */
+/* MOBILE LANDSCAPE: عرض الكارت 300px مع السحب الأفقي */
 @media (orientation:landscape) and (max-height:600px){
 .subscription-boxes{
 display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
@@ -187,11 +156,11 @@ scroll-snap-type:none!important;-webkit-overflow-scrolling:touch!important;
 overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:thin
 }
 .subscription-boxes::-webkit-scrollbar{height:5px}
-.subscription-boxes::-webkit-scrollbar-thumb{background:rgba(8,47,73,.45);border-radius:10px}
+.subscription-boxes::-webkit-scrollbar-thumb{background:#082f7340;border-radius:10px}
 .subscription-boxes .subscription-box{
 direction:rtl!important;display:block!important;
-width:450px!important;min-width:450px!important;max-width:none!important;
-flex:0 0 450px!important;flex-shrink:0!important;
+width:300px!important;min-width:300px!important;max-width:none!important;
+flex:0 0 300px!important;flex-shrink:0!important;
 height:700px!important;min-height:700px!important;max-height:700px!important;
 box-sizing:border-box!important;padding:22px 15px!important;background:#fff!important;
 border:3px solid #082F49!important;border-radius:14px!important;position:relative!important;
@@ -200,8 +169,7 @@ overflow:hidden!important;scroll-snap-align:none!important
 .subscription-boxes .subscription-box legend{
 display:table!important;width:auto!important;max-width:90%!important;margin:0 auto!important;
 padding:6px 16px!important;box-sizing:border-box!important;font-size:18px!important;line-height:1.2!important;
-border:3px solid #082F49!important;border-radius:7px!important;background:#082F49!important;
-color:#fff!important;white-space:nowrap!important
+border:3px solid #082F49!important;border-radius:7px!important;background:#082F49!important;color:#fff!important;white-space:nowrap!important
 }
 .subscription-boxes .subscription-box .plan-content{
 display:block!important;visibility:visible!important;width:100%!important;max-width:none!important;min-width:0!important;
@@ -221,15 +189,13 @@ box-sizing:border-box!important;margin-bottom:16px!important;text-align:center!i
 }
 .subscription-boxes .subscription-box .duration-title,
 .subscription-boxes .subscription-box .duration-value{
-width:100%!important;line-height:1.4!important;white-space:normal!important;
-overflow-wrap:anywhere!important;word-break:break-word!important
+width:100%!important;line-height:1.4!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important
 }
 .subscription-boxes .subscription-box .duration-title{font-size:18px!important}
 .subscription-boxes .subscription-box .duration-value{font-size:22px!important}
 .subscription-boxes .subscription-box .price{
 display:flex!important;width:100%!important;max-width:100%!important;min-width:0!important;
-box-sizing:border-box!important;align-items:center!important;justify-content:center!important;
-flex-wrap:wrap!important;gap:8px!important;overflow:visible!important
+box-sizing:border-box!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:8px!important;overflow:visible!important
 }
 .subscription-boxes .subscription-box .current-price,
 .subscription-boxes .subscription-box .old-price{
@@ -248,9 +214,7 @@ margin:0!important;font-size:16px!important;line-height:1.5!important;color:#334
 white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important;
 border-bottom:1px solid #e2e8f0!important;overflow:visible!important
 }
-.subscription-boxes .subscription-box .plan-features li::before{
-right:0!important;top:10px!important;width:22px!important;height:22px!important;font-size:13px!important
-}
+.subscription-boxes .subscription-box .plan-features li::before{right:0!important;top:10px!important;width:22px!important;height:22px!important;font-size:13px!important}
 .subscription-boxes .subscription-box .subscribe-btn{
 display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
 box-sizing:border-box!important;margin-top:20px!important;padding:13px 12px!important;
@@ -262,7 +226,6 @@ white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-w
 .subscription-boxes .subscription-box *::before,
 .subscription-boxes .subscription-box *::after{box-sizing:border-box!important}
 }
-
 @media(max-width:600px) and (orientation:portrait){
 .subscription-boxes{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
 .subscription-box{width:100%;height:650px;min-width:0;max-width:none;flex:0 0 650px;background:#fff;border:3px solid #082F49;border-radius:14px;padding:22px 15px}
@@ -274,7 +237,6 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 </style>
 </head>
 <body>
-
 <header>
 <div class="logo">Body<span>Reset</span></div>
 <div class="header-left">
@@ -296,20 +258,13 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 <a href="calories.html">حاسب سعرات الجسم</a>
 <a href="subscriptions.html">الاشتراكات</a>
 <button type="button" class="language-switcher" id="languageSwitcher">
-<div class="translate-icon">
-<svg viewBox="0 0 24 24"><path d="M4 19L8.5 5L13 19"></path><path d="M5.5 15H11.5"></path><path d="M15 6H21"></path><path d="M18 4V6"></path><path d="M16 9C17 11.8 18.7 14 21 15.5"></path><path d="M21 9C20 11.8 18.3 14 16 15.5"></path></svg>
-</div><span>العربية</span>
+<div class="translate-icon"><svg viewBox="0 0 24 24"><path d="M4 19L8.5 5L13 19"></path><path d="M5.5 15H11.5"></path><path d="M15 6H21"></path><path d="M18 4V6"></path><path d="M16 9C17 11.8 18.7 14 21 15.5"></path><path d="M21 9C20 11.8 18.3 14 16 15.5"></path></svg></div><span>العربية</span>
 </button>
 <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
 </div>
 
 <main class="container">
-<div class="top-area">
-<button class="notification" id="notificationBtn">
-<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg>
-</button>
-</div>
-
+<div class="top-area"><button class="notification" id="notificationBtn"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg></button></div>
 <div class="notification-panel" id="notificationPanel">
 <div class="notification-header">Notifications</div>
 <div class="notification-item">🔔 عندك تمرين جديد جاهز.</div>
@@ -343,56 +298,31 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 </div>
 
 <div class="stats">
+<div class="stat"><h3>Weekly Progress</h3><div class="weekly-progress"><div class="progress-circle"><strong>0%</strong></div></div></div>
 <div class="stat">
-<h3>Weekly Progress</h3>
-<div class="weekly-progress"><div class="progress-circle"><strong>0%</strong></div></div>
-</div>
-<div class="stat">
-<h3>Calorie Burn</h3>
-<div class="calorie-number"><strong>0</strong><span>kcal</span></div>
+<h3>Calorie Burn</h3><div class="calorie-number"><strong>0</strong><span>kcal</span></div>
 <div class="calorie-chart">
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:70px;"></div><span>SAT</span></div>
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:110px;"></div><span>SUN</span></div>
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:88px;"></div><span>MON</span></div>
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:120px;"></div><span>TUE</span></div>
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:98px;"></div><span>WED</span></div>
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:125px;"></div><span>THU</span></div>
-<div class="calorie-day"><div class="calorie-bar" style="--bar-height:105px;"></div><span>FRI</span></div>
-</div>
-</div>
-<div class="stat">
-<h3>Weekly Activity</h3>
-<div class="activity-circles">
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:70px"></div><span>SAT</span></div>
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:110px"></div><span>SUN</span></div>
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:88px"></div><span>MON</span></div>
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:120px"></div><span>TUE</span></div>
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:98px"></div><span>WED</span></div>
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:125px"></div><span>THU</span></div>
+<div class="calorie-day"><div class="calorie-bar" style="--bar-height:105px"></div><span>FRI</span></div>
+</div></div>
+<div class="stat"><h3>Weekly Activity</h3><div class="activity-circles">
 <div class="activity-circle"><div class="circle-content"><strong>0</strong><span>Progress</span></div></div>
 <div class="activity-circle"><div class="circle-content"><strong>0%</strong><span>Burn</span></div></div>
-</div>
-</div>
+</div></div>
 </div>
 
 <div class="section-heading"><h2>Today's Workout</h2><a href="workout.html?workout=chest" class="see-all">See All</a></div>
 <section class="today-workout">
-<div class="workout-title">Chest</div>
-<div class="workout-slider">
-<div class="exercise-card">
-<div class="exercise-name"><h3>Bench Press</h3></div>
-<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85" alt="Bench Press">
-<div class="exercise-content"><a href="workout.html?exercise=bench-press" class="start-btn">ابدأ الآن</a></div>
-</div>
-<div class="exercise-card">
-<div class="exercise-name"><h3>Incline Press</h3></div>
-<img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85" alt="Incline Press">
-<div class="exercise-content"><a href="workout.html?exercise=incline-press" class="start-btn">ابدأ الآن</a></div>
-</div>
-<div class="exercise-card">
-<div class="exercise-name"><h3>Chest Fly</h3></div>
-<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85" alt="Chest Fly">
-<div class="exercise-content"><a href="workout.html?exercise=chest-fly" class="start-btn">ابدأ الآن</a></div>
-</div>
-<div class="exercise-card">
-<div class="exercise-name"><h3>Push Ups</h3></div>
-<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85" alt="Push Ups">
-<div class="exercise-content"><a href="workout.html?exercise=push-ups" class="start-btn">ابدأ الآن</a></div>
-</div>
+<div class="workout-title">Chest</div><div class="workout-slider">
+<div class="exercise-card"><div class="exercise-name"><h3>Bench Press</h3></div><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85" alt="Bench Press"><div class="exercise-content"><a href="workout.html?exercise=bench-press" class="start-btn">ابدأ الآن</a></div></div>
+<div class="exercise-card"><div class="exercise-name"><h3>Incline Press</h3></div><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85" alt="Incline Press"><div class="exercise-content"><a href="workout.html?exercise=incline-press" class="start-btn">ابدأ الآن</a></div></div>
+<div class="exercise-card"><div class="exercise-name"><h3>Chest Fly</h3></div><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85" alt="Chest Fly"><div class="exercise-content"><a href="workout.html?exercise=chest-fly" class="start-btn">ابدأ الآن</a></div></div>
+<div class="exercise-card"><div class="exercise-name"><h3>Push Ups</h3></div><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85" alt="Push Ups"><div class="exercise-content"><a href="workout.html?exercise=push-ups" class="start-btn">ابدأ الآن</a></div></div>
 </div>
 <div class="workout-dots"><span class="active"></span><span></span><span></span><span></span></div>
 </section>
@@ -412,26 +342,15 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 
 <section class="progress-section">
 <div class="section-heading"><h2>Progress</h2><a href="progress.html" class="see-all">See All</a></div>
-<div class="progress-card">
-<div class="progress-icon">📊</div>
-<div class="progress-content"><h3>متابعة التقدم</h3><p>تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.</p><a href="progress.html">شوف التقدم</a></div>
-</div>
+<div class="progress-card"><div class="progress-icon">📊</div><div class="progress-content"><h3>متابعة التقدم</h3><p>تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.</p><a href="progress.html">شوف التقدم</a></div></div>
 </section>
 </main>
 
 <nav class="bottom-nav">
-<a href="dashboard.html" class="nav-item home-nav">
-<div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M9 21v-6h6v6"></path></svg></div><span>Home</span>
-</a>
-<a href="workout.html" class="nav-item workout-nav">
-<div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 9v6"></path><path d="M3.5 10v4"></path><path d="M18 9v6"></path><path d="M20.5 10v4"></path><path d="M6 12h12"></path></svg></div><span>Workouts</span>
-</a>
-<a href="progress.html" class="nav-item progress-nav">
-<div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21H21"></path><path d="M5 21V14H8V21"></path><path d="M10.5 21V9H13.5V21"></path><path d="M16 21V4H19V21"></path></svg></div><span>Progress</span>
-</a>
-<a href="profile.html" class="nav-item profile-nav">
-<div class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"></circle><path d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"></path></svg></div><span>Profile</span>
-</a>
+<a href="dashboard.html" class="nav-item home-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M9 21v-6h6v6"></path></svg></div><span>Home</span></a>
+<a href="workout.html" class="nav-item workout-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 9v6"></path><path d="M3.5 10v4"></path><path d="M18 9v6"></path><path d="M20.5 10v4"></path><path d="M6 12h12"></path></svg></div><span>Workouts</span></a>
+<a href="progress.html" class="nav-item progress-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21H21"></path><path d="M5 21V14H8V21"></path><path d="M10.5 21V9H13.5V21"></path><path d="M16 21V4H19V21"></path></svg></div><span>Progress</span></a>
+<a href="profile.html" class="nav-item profile-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"></circle><path d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"></path></svg></div><span>Profile</span></a>
 </nav>
 
 <script type="module">
@@ -441,9 +360,7 @@ const isMobilePhone =
 (navigator.userAgentData && navigator.userAgentData.mobile === true) ||
 /Android.*Mobile|iPhone|iPod|Windows Phone/i.test(navigator.userAgent);
 
-if(isMobilePhone){
-  document.documentElement.classList.add("mobile-phone");
-}
+if(isMobilePhone) document.documentElement.classList.add("mobile-phone");
 
 const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
 const SUPABASE_KEY = "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
@@ -455,140 +372,94 @@ const profileInitial = document.getElementById("profileInitial");
 const profileMenuInitial = document.getElementById("profileMenuInitial");
 const profileUsername = document.getElementById("profileUsername");
 const profileEmail = document.getElementById("profileEmail");
-
 const menuBtn = document.getElementById("menuBtn");
 const sideMenu = document.getElementById("sideMenu");
 const menuOverlay = document.getElementById("menuOverlay");
 const closeMenu = document.getElementById("closeMenu");
-
 const languageSwitcher = document.getElementById("languageSwitcher");
 const logoutBtn = document.getElementById("logoutBtn");
 const notificationBtn = document.getElementById("notificationBtn");
 const notificationPanel = document.getElementById("notificationPanel");
 
 function showUser(user){
-  if(!user)return;
-  console.log("LOGGED USER:",user);
-  const username = user.user_metadata?.username || user.user_metadata?.name || "User";
-  const email = user.email || "";
-  const firstLetter = username.trim().charAt(0).toUpperCase();
-  profileInitial.textContent = firstLetter || "?";
-  profileMenuInitial.textContent = firstLetter || "?";
-  profileUsername.textContent = username;
-  profileEmail.textContent = email;
+if(!user)return;
+const username = user.user_metadata?.username || user.user_metadata?.name || "User";
+const email = user.email || "";
+const firstLetter = username.trim().charAt(0).toUpperCase();
+profileInitial.textContent = firstLetter || "?";
+profileMenuInitial.textContent = firstLetter || "?";
+profileUsername.textContent = username;
+profileEmail.textContent = email;
 }
 
 async function waitForSession(){
-  console.log("Waiting for Supabase session...");
-  try{
-    const {data,error} = await supabase.auth.getSession();
-    console.log("SESSION CHECK:",data?.session);
-    console.log("SESSION ERROR:",error);
-    if(data?.session){
-      showUser(data.session.user);
-      return data.session;
-    }
-  }catch(error){
-    console.error("INITIAL SESSION ERROR:",error);
-  }
+try{
+const {data} = await supabase.auth.getSession();
+if(data?.session){showUser(data.session.user);return data.session;}
+}catch(error){console.error("INITIAL SESSION ERROR:",error);}
 
-  return new Promise(function(resolve){
-    let finished = false;
-    let timeout;
-
-    function finish(session){
-      if(finished)return;
-      finished = true;
-      clearTimeout(timeout);
-      if(session){
-        showUser(session.user);
-        resolve(session);
-      }else{
-        console.log("No session found.");
-        window.location.href = "auth.html";
-        resolve(null);
-      }
-    }
-
-    const {data:listener} = supabase.auth.onAuthStateChange(function(event,session){
-      console.log("AUTH EVENT:",event,session);
-      if(session)finish(session);
-    });
-
-    setTimeout(async function(){
-      try{
-        const {data} = await supabase.auth.getSession();
-        console.log("SESSION RETRY:",data?.session);
-        if(data?.session)finish(data.session);
-      }catch(error){
-        console.error("SESSION RETRY ERROR:",error);
-      }
-    },500);
-
-    timeout = setTimeout(function(){
-      console.log("Session timeout.");
-      try{listener.subscription.unsubscribe();}catch(error){}
-      finish(null);
-    },5000);
-  });
+return new Promise(function(resolve){
+let finished = false;
+let timeout;
+function finish(session){
+if(finished)return;
+finished = true;
+clearTimeout(timeout);
+if(session){showUser(session.user);resolve(session);}
+else{window.location.href = "auth.html";resolve(null);}
 }
-
+const {data:listener} = supabase.auth.onAuthStateChange(function(event,session){
+if(session)finish(session);
+});
+setTimeout(async function(){
+try{
+const {data} = await supabase.auth.getSession();
+if(data?.session)finish(data.session);
+}catch(error){console.error("SESSION RETRY ERROR:",error);}
+},500);
+timeout = setTimeout(function(){
+try{listener.subscription.unsubscribe();}catch(error){}
+finish(null);
+},5000);
+});
+}
 waitForSession();
 
-supabase.auth.onAuthStateChange(function(event,session){
-  console.log("GLOBAL AUTH EVENT:",event,session);
-  if(event === "SIGNED_OUT"){
-    window.location.href = "auth.html";
-  }
+supabase.auth.onAuthStateChange(function(event){
+if(event === "SIGNED_OUT")window.location.href = "auth.html";
 });
 
 profileBtn.addEventListener("click",function(event){
-  event.stopPropagation();
-  profileMenu.classList.toggle("show");
-  notificationPanel.classList.remove("show");
+event.stopPropagation();
+profileMenu.classList.toggle("show");
+notificationPanel.classList.remove("show");
 });
-
 menuBtn.addEventListener("click",function(){
-  sideMenu.classList.add("open");
-  menuOverlay.classList.add("show");
+sideMenu.classList.add("open");
+menuOverlay.classList.add("show");
 });
-
-closeMenu.addEventListener("click",function(){
-  sideMenu.classList.remove("open");
-  menuOverlay.classList.remove("show");
-});
-
-menuOverlay.addEventListener("click",function(){
-  sideMenu.classList.remove("open");
-  menuOverlay.classList.remove("show");
-});
-
+function closeSideMenu(){
+sideMenu.classList.remove("open");
+menuOverlay.classList.remove("show");
+}
+closeMenu.addEventListener("click",closeSideMenu);
+menuOverlay.addEventListener("click",closeSideMenu);
 languageSwitcher.addEventListener("click",function(){
-  window.location.href = "dashboard-en.html";
+window.location.href = "dashboard-en.html";
 });
-
 logoutBtn.addEventListener("click",async function(){
-  const {error} = await supabase.auth.signOut();
-  if(!error){
-    window.location.href = "auth.html";
-  }else{
-    console.error("LOGOUT ERROR:",error);
-  }
+const {error} = await supabase.auth.signOut();
+if(!error)window.location.href = "auth.html";
+else console.error("LOGOUT ERROR:",error);
 });
-
 notificationBtn.addEventListener("click",function(event){
-  event.stopPropagation();
-  notificationPanel.classList.toggle("show");
-  profileMenu.classList.remove("show");
+event.stopPropagation();
+notificationPanel.classList.toggle("show");
+profileMenu.classList.remove("show");
 });
-
 document.addEventListener("click",function(event){
-  if(!profileMenu.contains(event.target) && !profileBtn.contains(event.target)){
-    profileMenu.classList.remove("show");
-  }
-  if(!notificationPanel.contains(event.target) && !notificationBtn.contains(event.target)){
-    notificationPanel.classList.remove("show");
-  }
+if(!profileMenu.contains(event.target) && !profileBtn.contains(event.target))profileMenu.classList.remove("show");
+if(!notificationPanel.contains(event.target) && !notificationBtn.contains(event.target))notificationPanel.classList.remove("show");
 });
 </script>
 </body>
