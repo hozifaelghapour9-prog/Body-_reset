@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BodyReset | Dashboard</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 body{background:linear-gradient(135deg,#0066cc,#00a6b2);color:#071a33;min-height:100vh;overflow-x:hidden}
@@ -36,6 +37,66 @@ header{height:75px;padding:0 25px;display:flex;justify-content:space-between;ali
 .notification{width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #d7dee8;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .notification svg{width:21px;height:21px;stroke:#071a33;fill:none;stroke-width:1.8}
 .subscription-title{font-size:32px;font-weight:bold;color:#fff;text-align:center;margin-bottom:25px}
+
+/* مقدمة BodyReset الجديدة */
+.welcome-hero{
+background:#fff;
+border:1px solid #d7dee8;
+border-radius:22px;
+padding:34px 30px;
+margin-bottom:30px;
+text-align:right;
+box-shadow:0 10px 25px #071a3310;
+}
+.welcome-hero h1{
+font-size:clamp(25px,3vw,36px);
+line-height:1.5;
+color:#082F49;
+margin-bottom:8px;
+}
+.welcome-hero .welcome-highlight{
+font-size:clamp(20px,2.5vw,27px);
+font-weight:bold;
+color:#089b91;
+margin-bottom:16px;
+line-height:1.7;
+}
+.welcome-hero .welcome-description{
+font-size:16px;
+line-height:2;
+color:#334155;
+margin-bottom:12px;
+}
+.welcome-benefits{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+margin:22px 0;
+}
+.welcome-benefit{
+background:#f0fdfa;
+border:1px solid #ccfbf1;
+border-radius:12px;
+padding:14px;
+font-size:15px;
+font-weight:bold;
+line-height:1.8;
+color:#134e4a;
+}
+.welcome-cta{
+display:inline-block;
+margin-top:8px;
+padding:14px 24px;
+border-radius:11px;
+background:linear-gradient(135deg,#72d8f2,#19c7bd);
+color:#fff;
+font-size:17px;
+font-weight:bold;
+text-decoration:none;
+transition:.2s;
+}
+.welcome-cta:hover{transform:translateY(-2px)}
+
 .subscription-boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%;margin-bottom:38px}
 .subscription-box{height:850px;background:#fff;border:3px solid #082F49;border-radius:20px;overflow:visible;padding:25px 20px;position:relative;min-width:0}
 .subscription-box legend{margin:0 auto;padding:7px 20px;border:3px solid #082F49;border-radius:8px;background:#082F49;color:#fff;font-size:20px;font-weight:400;line-height:1.2;white-space:nowrap}
@@ -133,6 +194,13 @@ header{height:68px;padding:0 16px}.logo{font-size:21px}
 .notification-panel{left:14px;right:14px;width:auto}
 .side-menu{width:320px;max-width:88vw;left:-320px}.side-menu.open{left:0}
 .calorie-chart{height:130px;gap:5px}.calorie-bar{max-width:24px}.calorie-day span{font-size:8px}
+
+/* تنسيق المقدمة على الموبايل */
+.welcome-hero{padding:24px 18px;border-radius:17px}
+.welcome-hero .welcome-description{font-size:15px}
+.welcome-benefits{grid-template-columns:1fr;gap:9px;margin:18px 0}
+.welcome-benefit{padding:12px}
+.welcome-cta{display:block;text-align:center;line-height:1.8}
 }
 @media(min-width:601px) and (max-width:1024px) and (orientation:portrait){
 .subscription-boxes{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
@@ -236,6 +304,7 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 }
 </style>
 </head>
+
 <body>
 <header>
 <div class="logo">Body<span>Reset</span></div>
@@ -264,7 +333,12 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 </div>
 
 <main class="container">
-<div class="top-area"><button class="notification" id="notificationBtn"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg></button></div>
+<div class="top-area">
+<button class="notification" id="notificationBtn">
+<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg>
+</button>
+</div>
+
 <div class="notification-panel" id="notificationPanel">
 <div class="notification-header">Notifications</div>
 <div class="notification-item">🔔 عندك تمرين جديد جاهز.</div>
@@ -272,7 +346,41 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 <div class="notification-item">🔥 استمر في تحقيق أهدافك.</div>
 </div>
 
+<!-- مقدمة BodyReset الجديدة -->
+<section class="welcome-hero">
+<h1>بتبدأ ومبتكملش؟</h1>
+
+<div class="welcome-highlight">
+المرة دي هتكون مختلفة 💚
+</div>
+
+<p class="welcome-description">
+هنساعدك تلتزم بنظامك الغذائي، وتبني عادات صحية تقدر تستمر عليها،
+لحد ما تبدأ تشوف نتيجة تعبك.
+</p>
+
+<p class="welcome-description">
+مهما كان يومك زحمة، أو حاولت قبل كده ومكملتش، مش مطلوب منك تكون
+مثالي؛ المطلوب إنك تبدأ وتكمل خطوة بخطوة.
+</p>
+
+<p class="welcome-description">
+مع <strong>BodyReset</strong>، هتلاقي خطة تناسب هدفك،
+ومتابعة تساعدك تستمر، وتشجيع في الأيام اللي بتكون فيها محتاج دفعة.
+</p>
+
+<div class="welcome-benefits">
+<div class="welcome-benefit">✅ تابع تقدمك وشوف تطورك</div>
+<div class="welcome-benefit">💬 متابعة ودعم يشجعوك على الاستمرار</div>
+</div>
+
+<a href="progress.html" class="welcome-cta">
+🔥 ابدأ رحلتك دلوقتي — والتغيير يبدأ بخطوة
+</a>
+</section>
+
 <h2 class="subscription-title">الاشتراكات</h2>
+
 <div class="subscription-boxes">
 <fieldset class="subscription-box">
 <legend>عرض التغيير</legend>
@@ -293,14 +401,20 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 <a href="subscriptions.html?plan=basic" class="subscribe-btn">اشترك الآن</a>
 </div>
 </fieldset>
+
 <fieldset class="subscription-box"><legend>عرض التغيير</legend></fieldset>
 <fieldset class="subscription-box"><legend>عرض التغيير</legend></fieldset>
 </div>
 
 <div class="stats">
-<div class="stat"><h3>Weekly Progress</h3><div class="weekly-progress"><div class="progress-circle"><strong>0%</strong></div></div></div>
 <div class="stat">
-<h3>Calorie Burn</h3><div class="calorie-number"><strong>0</strong><span>kcal</span></div>
+<h3>Weekly Progress</h3>
+<div class="weekly-progress"><div class="progress-circle"><strong>0%</strong></div></div>
+</div>
+
+<div class="stat">
+<h3>Calorie Burn</h3>
+<div class="calorie-number"><strong>0</strong><span>kcal</span></div>
 <div class="calorie-chart">
 <div class="calorie-day"><div class="calorie-bar" style="--bar-height:70px"></div><span>SAT</span></div>
 <div class="calorie-day"><div class="calorie-bar" style="--bar-height:110px"></div><span>SUN</span></div>
@@ -309,48 +423,110 @@ html.mobile-phone .subscription-box .plan-content{display:none!important;visibil
 <div class="calorie-day"><div class="calorie-bar" style="--bar-height:98px"></div><span>WED</span></div>
 <div class="calorie-day"><div class="calorie-bar" style="--bar-height:125px"></div><span>THU</span></div>
 <div class="calorie-day"><div class="calorie-bar" style="--bar-height:105px"></div><span>FRI</span></div>
-</div></div>
-<div class="stat"><h3>Weekly Activity</h3><div class="activity-circles">
+</div>
+</div>
+
+<div class="stat">
+<h3>Weekly Activity</h3>
+<div class="activity-circles">
 <div class="activity-circle"><div class="circle-content"><strong>0</strong><span>Progress</span></div></div>
 <div class="activity-circle"><div class="circle-content"><strong>0%</strong><span>Burn</span></div></div>
-</div></div>
+</div>
+</div>
 </div>
 
 <div class="section-heading"><h2>Today's Workout</h2><a href="workout.html?workout=chest" class="see-all">See All</a></div>
+
 <section class="today-workout">
-<div class="workout-title">Chest</div><div class="workout-slider">
-<div class="exercise-card"><div class="exercise-name"><h3>Bench Press</h3></div><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85" alt="Bench Press"><div class="exercise-content"><a href="workout.html?exercise=bench-press" class="start-btn">ابدأ الآن</a></div></div>
-<div class="exercise-card"><div class="exercise-name"><h3>Incline Press</h3></div><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85" alt="Incline Press"><div class="exercise-content"><a href="workout.html?exercise=incline-press" class="start-btn">ابدأ الآن</a></div></div>
-<div class="exercise-card"><div class="exercise-name"><h3>Chest Fly</h3></div><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85" alt="Chest Fly"><div class="exercise-content"><a href="workout.html?exercise=chest-fly" class="start-btn">ابدأ الآن</a></div></div>
-<div class="exercise-card"><div class="exercise-name"><h3>Push Ups</h3></div><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85" alt="Push Ups"><div class="exercise-content"><a href="workout.html?exercise=push-ups" class="start-btn">ابدأ الآن</a></div></div>
+<div class="workout-title">Chest</div>
+<div class="workout-slider">
+<div class="exercise-card">
+<div class="exercise-name"><h3>Bench Press</h3></div>
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85" alt="Bench Press">
+<div class="exercise-content"><a href="workout.html?exercise=bench-press" class="start-btn">ابدأ الآن</a></div>
 </div>
+
+<div class="exercise-card">
+<div class="exercise-name"><h3>Incline Press</h3></div>
+<img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85" alt="Incline Press">
+<div class="exercise-content"><a href="workout.html?exercise=incline-press" class="start-btn">ابدأ الآن</a></div>
+</div>
+
+<div class="exercise-card">
+<div class="exercise-name"><h3>Chest Fly</h3></div>
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85" alt="Chest Fly">
+<div class="exercise-content"><a href="workout.html?exercise=chest-fly" class="start-btn">ابدأ الآن</a></div>
+</div>
+
+<div class="exercise-card">
+<div class="exercise-name"><h3>Push Ups</h3></div>
+<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85" alt="Push Ups">
+<div class="exercise-content"><a href="workout.html?exercise=push-ups" class="start-btn">ابدأ الآن</a></div>
+</div>
+</div>
+
 <div class="workout-dots"><span class="active"></span><span></span><span></span><span></span></div>
 </section>
 
 <div class="section-heading"><h2>Community News</h2><a href="#" class="see-all">See All</a></div>
+
 <section class="community-card">
-<div class="news-row"><div class="news-left"><div class="news-icon">★</div><div><div class="news-title">New Class: Neon Spin</div><div class="news-sub">New Class is Neon Spin</div></div></div></div>
-<div class="news-row"><div class="news-left"><div class="news-icon">#</div><div><div class="news-title">Leaderboard Update</div><div class="news-sub">Check your latest ranking</div></div></div></div>
-<div class="news-row"><div class="news-left"><div class="news-icon">+</div><div><div class="news-title">New Challenge</div><div class="news-sub">Join the latest challenge</div></div></div></div>
+<div class="news-row">
+<div class="news-left"><div class="news-icon">★</div><div><div class="news-title">New Class: Neon Spin</div><div class="news-sub">New Class is Neon Spin</div></div></div>
+</div>
+<div class="news-row">
+<div class="news-left"><div class="news-icon">#</div><div><div class="news-title">Leaderboard Update</div><div class="news-sub">Check your latest ranking</div></div></div>
+</div>
+<div class="news-row">
+<div class="news-left"><div class="news-icon">+</div><div><div class="news-title">New Challenge</div><div class="news-sub">Join the latest challenge</div></div></div>
+</div>
 </section>
 
 <div class="section-heading"><h2>ابدأ رحلتك 💪</h2></div>
+
 <div class="cards">
-<div class="card"><div class="icon">💪</div><h3>Workout</h3><p>تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.</p><a href="workout.html">ابدأ التمرين</a></div>
-<div class="card"><div class="icon">🥗</div><h3>Nutrition</h3><p>خطط غذائية تساعدك تختار أكلك حسب هدفك.</p><a href="nutrition.html">خطة التغذية</a></div>
+<div class="card">
+<div class="icon">💪</div><h3>Workout</h3>
+<p>تمارين منظمة تساعدك تبني جسم أقوى وتحقق هدفك.</p>
+<a href="workout.html">ابدأ التمرين</a>
+</div>
+<div class="card">
+<div class="icon">🥗</div><h3>Nutrition</h3>
+<p>خطط غذائية تساعدك تختار أكلك حسب هدفك.</p>
+<a href="nutrition.html">خطة التغذية</a>
+</div>
 </div>
 
 <section class="progress-section">
 <div class="section-heading"><h2>Progress</h2><a href="progress.html" class="see-all">See All</a></div>
-<div class="progress-card"><div class="progress-icon">📊</div><div class="progress-content"><h3>متابعة التقدم</h3><p>تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.</p><a href="progress.html">شوف التقدم</a></div></div>
+<div class="progress-card">
+<div class="progress-icon">📊</div>
+<div class="progress-content">
+<h3>متابعة التقدم</h3>
+<p>تابع تقدمك وشوف تطورك مع الوقت وحافظ على استمراريتك في رحلتك.</p>
+<a href="progress.html">شوف التقدم</a>
+</div>
+</div>
 </section>
 </main>
 
 <nav class="bottom-nav">
-<a href="dashboard.html" class="nav-item home-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M9 21v-6h6v6"></path></svg></div><span>Home</span></a>
-<a href="workout.html" class="nav-item workout-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 9v6"></path><path d="M3.5 10v4"></path><path d="M18 9v6"></path><path d="M20.5 10v4"></path><path d="M6 12h12"></path></svg></div><span>Workouts</span></a>
-<a href="progress.html" class="nav-item progress-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21H21"></path><path d="M5 21V14H8V21"></path><path d="M10.5 21V9H13.5V21"></path><path d="M16 21V4H19V21"></path></svg></div><span>Progress</span></a>
-<a href="profile.html" class="nav-item profile-nav"><div class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"></circle><path d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"></path></svg></div><span>Profile</span></a>
+<a href="dashboard.html" class="nav-item home-nav">
+<div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M9 21v-6h6v6"></path></svg></div>
+<span>Home</span>
+</a>
+<a href="workout.html" class="nav-item workout-nav">
+<div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 9v6"></path><path d="M3.5 10v4"></path><path d="M18 9v6"></path><path d="M20.5 10v4"></path><path d="M6 12h12"></path></svg></div>
+<span>Workouts</span>
+</a>
+<a href="progress.html" class="nav-item progress-nav">
+<div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21H21"></path><path d="M5 21V14H8V21"></path><path d="M10.5 21V9H13.5V21"></path><path d="M16 21V4H19V21"></path></svg></div>
+<span>Progress</span>
+</a>
+<a href="profile.html" class="nav-item profile-nav">
+<div class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"></circle><path d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"></path></svg></div>
+<span>Profile</span>
+</a>
 </nav>
 
 <script type="module">
@@ -434,29 +610,36 @@ event.stopPropagation();
 profileMenu.classList.toggle("show");
 notificationPanel.classList.remove("show");
 });
+
 menuBtn.addEventListener("click",function(){
 sideMenu.classList.add("open");
 menuOverlay.classList.add("show");
 });
+
 function closeSideMenu(){
 sideMenu.classList.remove("open");
 menuOverlay.classList.remove("show");
 }
+
 closeMenu.addEventListener("click",closeSideMenu);
 menuOverlay.addEventListener("click",closeSideMenu);
+
 languageSwitcher.addEventListener("click",function(){
 window.location.href = "dashboard-en.html";
 });
+
 logoutBtn.addEventListener("click",async function(){
 const {error} = await supabase.auth.signOut();
 if(!error)window.location.href = "auth.html";
 else console.error("LOGOUT ERROR:",error);
 });
+
 notificationBtn.addEventListener("click",function(event){
 event.stopPropagation();
 notificationPanel.classList.toggle("show");
 profileMenu.classList.remove("show");
 });
+
 document.addEventListener("click",function(event){
 if(!profileMenu.contains(event.target) && !profileBtn.contains(event.target))profileMenu.classList.remove("show");
 if(!notificationPanel.contains(event.target) && !notificationBtn.contains(event.target))notificationPanel.classList.remove("show");
