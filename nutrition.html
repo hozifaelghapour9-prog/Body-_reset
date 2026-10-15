@@ -1,1593 +1,482 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReset | التغذية الصحية</title>
-
-  <style>
-    :root {
-      --bg: #f5f7f4;
-      --card: #ffffff;
-      --primary: #277a58;
-      --primary-dark: #18573d;
-      --text: #20342a;
-      --muted: #708076;
-      --border: #e1e9e2;
-      --shadow: 0 8px 28px rgba(24, 64, 43, 0.08);
-      --radius: 18px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Tahoma, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    .container {
-      width: min(1150px, 92%);
-      margin: auto;
-    }
-
-    header {
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-      padding: 12px 0;
-    }
-
-    .brand {
-      font-size: 25px;
-      font-weight: bold;
-      color: var(--primary);
-    }
-
-    .brand span {
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      padding: 7px 12px;
-      border-radius: 10px;
-    }
-
-    .nav-links a:hover {
-      background: #eaf4ed;
-      color: var(--primary);
-    }
-
-    .hero {
-      padding: 48px 0 32px;
-    }
-
-    .hero-content {
-      background: linear-gradient(135deg, #e2f2e7, #f7fbf5);
-      border: 1px solid #d7e8dc;
-      border-radius: 25px;
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 43px);
-      line-height: 1.35;
-      margin: 0 0 15px;
-    }
-
-    .hero p {
-      color: #53675a;
-      margin: 0 0 20px;
-    }
-
-    .hero-visual {
-      min-height: 200px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #b8ddc1, #e9f5e9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 82px;
-    }
-
-    .btn {
-      display: inline-block;
-      border: 0;
-      border-radius: 12px;
-      background: var(--primary);
-      color: white;
-      padding: 11px 18px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-secondary {
-      background: #edf4ee;
-      color: var(--primary-dark);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: #dfeee2;
-    }
-
-    section {
-      padding: 24px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-      font-size: 27px;
-      margin: 0 0 5px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .toolbar {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .toolbar input,
-    .toolbar select,
-    .form-control {
-      min-width: 0;
-      padding: 11px 13px;
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 12px;
-      color: var(--text);
-      width: 100%;
-    }
-
-    .toolbar input {
-      flex: 1 1 240px;
-    }
-
-    .toolbar select {
-      flex: 0 1 190px;
-    }
-
-    .food-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .food-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .food-visual {
-      height: 145px;
-      background: #e9f4eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 58px;
-    }
-
-    .food-content {
-      padding: 17px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .food-content h3 {
-      margin: 0 0 5px;
-      font-size: 19px;
-    }
-
-    .food-content p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .food-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 13px;
-    }
-
-    .tag {
-      background: #edf5ef;
-      color: #2a6746;
-      border-radius: 20px;
-      padding: 4px 9px;
-      font-size: 12px;
-    }
-
-    .food-content .btn {
-      margin-top: auto;
-      width: 100%;
-    }
-
-    .empty-state {
-      text-align: center;
-      color: var(--muted);
-      background: white;
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      display: none;
-    }
-
-    .calculator,
-    .info-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .calculator-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .field label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
-
-    .field {
-      min-width: 0;
-    }
-
-    .calculator button {
-      margin-top: 18px;
-    }
-
-    .result {
-      display: none;
-      margin-top: 20px;
-      padding: 17px;
-      background: #edf7ef;
-      border: 1px solid #d4e8d9;
-      border-radius: 14px;
-    }
-
-    .result strong {
-      color: var(--primary-dark);
-    }
-
-    .nutrition-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .nutrient-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 17px;
-    }
-
-    .nutrient-card h3 {
-      margin: 0 0 7px;
-      font-size: 17px;
-    }
-
-    .nutrient-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer {
-      margin-top: 35px;
-      padding: 28px 0;
-      text-align: center;
-      color: var(--muted);
-      background: white;
-      border-top: 1px solid var(--border);
-    }
-
-    /* نافذة تفاصيل الوجبة */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      padding: 20px;
-      overflow-y: auto;
-      background: rgba(12, 28, 18, 0.65);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal.open {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      width: min(760px, 100%);
-      max-height: 92vh;
-      overflow-y: auto;
-      border-radius: 20px;
-      padding: 24px;
-      position: relative;
-    }
-
-    .modal-close {
-      position: sticky;
-      top: 0;
-      float: left;
-      border: 0;
-      border-radius: 9px;
-      padding: 5px 12px;
-      font-size: 23px;
-      color: var(--text);
-      background: #edf3ee;
-      z-index: 2;
-    }
-
-    .modal-content h2 {
-      margin-top: 10px;
-    }
-
-    .detail-list {
-      padding-right: 22px;
-    }
-
-    .detail-list li {
-      margin-bottom: 6px;
-    }
-
-    .recipe-video {
-      margin-top: 24px;
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
-    }
-
-    .recipe-video h3 {
-      margin: 0 0 12px;
-    }
-
-    .video-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 14px;
-      background: #101010;
-    }
-
-    .video-frame iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .video-fallback {
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .video-fallback a {
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    @media (max-width: 850px) {
-      .food-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .nutrition-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        min-height: 150px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .food-grid,
-      .nutrition-grid,
-      .calculator-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-content {
-        padding: 22px;
-      }
-
-      .modal-content {
-        padding: 17px;
-      }
-
-      .nav {
-        align-items: flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyReset | التغذية الصحية</title>
+<style>
+:root{--bg:#f5f7f4;--card:#fff;--primary:#277a58;--primary-dark:#18573d;--text:#20342a;--muted:#708076;--border:#e1e9e2;--shadow:0 8px 28px rgba(24,64,43,.08);--radius:18px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+button,input,select{font:inherit}button{cursor:pointer}
+.container{width:min(1150px,92%);margin:auto}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:12px 0}
+.brand{font-size:25px;font-weight:bold;color:var(--primary)}.brand span{color:var(--text)}
+.nav-links{display:flex;gap:10px;flex-wrap:wrap}.nav-links a{color:var(--text);text-decoration:none;padding:7px 12px;border-radius:10px}.nav-links a:hover{background:#eaf4ed;color:var(--primary)}
+.hero{padding:48px 0 32px}.hero-content{background:linear-gradient(135deg,#e2f2e7,#f7fbf5);border:1px solid #d7e8dc;border-radius:25px;padding:32px;display:grid;grid-template-columns:1.4fr 1fr;gap:25px;align-items:center}
+.hero h1{font-size:clamp(28px,4vw,43px);line-height:1.35;margin:0 0 15px}.hero p{color:#53675a;margin:0 0 20px}.hero-visual{min-height:200px;border-radius:20px;background:linear-gradient(145deg,#b8ddc1,#e9f5e9);display:flex;align-items:center;justify-content:center;font-size:82px}
+.btn{display:inline-block;border:0;border-radius:12px;background:var(--primary);color:white;padding:11px 18px;text-decoration:none;font-weight:bold}.btn:hover{background:var(--primary-dark)}
+.btn-secondary{background:#edf4ee;color:var(--primary-dark);border:1px solid var(--border)}.btn-secondary:hover{background:#dfeee2}
+section{padding:24px 0}.section-heading{margin-bottom:20px}.section-heading h2{font-size:27px;margin:0 0 5px}.section-heading p{color:var(--muted);margin:0}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}.toolbar input,.toolbar select,.form-control{min-width:0;padding:11px 13px;border:1px solid var(--border);background:white;border-radius:12px;color:var(--text);width:100%}
+.toolbar input{flex:1 1 240px}.toolbar select{flex:0 1 190px}
+.food-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.food-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.food-visual{height:145px;background:#e9f4eb;display:flex;align-items:center;justify-content:center;font-size:58px}
+.food-content{padding:17px;display:flex;flex-direction:column;flex:1}.food-content h3{margin:0 0 5px;font-size:19px}.food-content p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.food-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}.tag{background:#edf5ef;color:#2a6746;border-radius:20px;padding:4px 9px;font-size:12px}
+.food-content .btn{margin-top:auto;width:100%}.empty-state{text-align:center;color:var(--muted);background:white;border:1px dashed var(--border);border-radius:var(--radius);padding:28px;display:none}
+.calculator,.info-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.calculator-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field label{display:block;font-weight:bold;margin-bottom:6px}.field{min-width:0}.calculator button{margin-top:18px}
+.result{display:none;margin-top:20px;padding:17px;background:#edf7ef;border:1px solid #d4e8d9;border-radius:14px}.result strong{color:var(--primary-dark)}
+.nutrition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.nutrient-card{background:white;border:1px solid var(--border);border-radius:15px;padding:17px}.nutrient-card h3{margin:0 0 7px;font-size:17px}.nutrient-card p{margin:0;color:var(--muted);font-size:14px}
+footer{margin-top:35px;padding:28px 0;text-align:center;color:var(--muted);background:white;border-top:1px solid var(--border)}
+.modal{display:none;position:fixed;inset:0;z-index:100;padding:20px;overflow-y:auto;background:rgba(12,28,18,.65);align-items:center;justify-content:center}.modal.open{display:flex}
+.modal-content{background:white;width:min(760px,100%);max-height:92vh;overflow-y:auto;border-radius:20px;padding:24px;position:relative}
+.modal-close{position:sticky;top:0;float:left;border:0;border-radius:9px;padding:5px 12px;font-size:23px;color:var(--text);background:#edf3ee;z-index:2}
+.modal-content h2{margin-top:10px}.detail-list{padding-right:22px}.detail-list li{margin-bottom:6px}
+.recipe-video{margin-top:24px;border-top:1px solid var(--border);padding-top:18px}.recipe-video h3{margin:0 0 12px}
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:#101010}
+.video-frame iframe,.video-frame video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-fallback{margin-top:10px;font-size:14px;color:var(--muted)}.video-fallback a{color:var(--primary);font-weight:bold}
+.video-manager{margin-top:22px;padding:17px;background:#f6faf6;border:1px solid var(--border);border-radius:15px}
+.video-manager h3{margin-top:0}.video-manager p{font-size:14px;color:var(--muted)}
+.video-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.video-actions .btn{font-size:14px}
+.file-input{display:block;width:100%;padding:12px;background:white;border:1px dashed #a8c8b2;border-radius:12px}
+.status-message{margin-top:10px;font-size:14px;font-weight:bold}
+@media(max-width:850px){.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nutrition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-content{grid-template-columns:1fr}.hero-visual{min-height:150px}}
+@media(max-width:560px){.food-grid,.nutrition-grid,.calculator-grid{grid-template-columns:1fr}.hero-content{padding:22px}.modal-content{padding:17px}.nav{align-items:flex-start}}
+</style>
 </head>
-
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">Body<span>Reset</span></div>
-
-      <nav class="nav-links" aria-label="التنقل الرئيسي">
-        <a href="#foods">الأطعمة</a>
-        <a href="#calculator">حاسبة السعرات</a>
-        <a href="#nutrients">الفيتامينات والمعادن</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <div class="container hero">
-      <div class="hero-content">
-        <div>
-          <h1>ابدأ رحلة غذائية صحية مع BodyReset</h1>
-          <p>
-            اكتشف الأطعمة وقيمها الغذائية، وتعرّف على طرق التحضير،
-            واحسب احتياجك اليومي التقريبي من السعرات الحرارية.
-          </p>
-          <a href="#foods" class="btn">اكتشف الأطعمة</a>
-          <a href="#calculator" class="btn btn-secondary">احسب سعراتك</a>
-        </div>
-
-        <div class="hero-visual" aria-label="أطعمة صحية">🥗</div>
-      </div>
-    </div>
-
-    <section id="foods">
-      <div class="container">
-        <div class="section-heading">
-          <h2>الأطعمة والوصفات</h2>
-          <p>ابحث عن الطعام وافتح تفاصيله لمعرفة قيمه الغذائية وطريقة تحضيره.</p>
-        </div>
-
-        <div class="toolbar">
-          <input
-            type="search"
-            id="foodSearch"
-            placeholder="ابحث باسم الطعام..."
-            aria-label="البحث عن الطعام"
-          >
-
-          <select id="categoryFilter" aria-label="تصفية حسب نوع الطعام">
-            <option value="all">كل التصنيفات</option>
-            <option value="protein">بروتين</option>
-            <option value="carbs">كربوهيدرات</option>
-            <option value="vegetables">خضروات</option>
-            <option value="fruits">فواكه</option>
-            <option value="dairy">ألبان</option>
-            <option value="fats">دهون صحية</option>
-          </select>
-        </div>
-
-        <div class="food-grid" id="foodGrid"></div>
-        <div class="empty-state" id="emptyState">
-          لم يتم العثور على أطعمة مطابقة لبحثك.
-        </div>
-      </div>
-    </section>
-
-    <section id="calculator">
-      <div class="container">
-        <div class="section-heading">
-          <h2>حاسبة السعرات الحرارية</h2>
-          <p>احسب تقديرًا لاحتياجك اليومي بناءً على بياناتك ومستوى نشاطك.</p>
-        </div>
-
-        <div class="calculator">
-          <form id="calorieForm">
-            <div class="calculator-grid">
-              <div class="field">
-                <label for="age">العمر (بالسنوات)</label>
-                <input class="form-control" id="age" type="number" min="15" max="100" required>
-              </div>
-
-              <div class="field">
-                <label for="gender">الجنس</label>
-                <select class="form-control" id="gender" required>
-                  <option value="male">ذكر</option>
-                  <option value="female">أنثى</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="weight">الوزن (كجم)</label>
-                <input class="form-control" id="weight" type="number" min="25" max="350" step="0.1" required>
-              </div>
-
-              <div class="field">
-                <label for="height">الطول (سم)</label>
-                <input class="form-control" id="height" type="number" min="100" max="250" step="0.1" required>
-              </div>
-
-              <div class="field">
-                <label for="activity">مستوى النشاط</label>
-                <select class="form-control" id="activity" required>
-                  <option value="1.2">قليل الحركة</option>
-                  <option value="1.375">نشاط خفيف (1–3 أيام أسبوعيًا)</option>
-                  <option value="1.55">نشاط متوسط (3–5 أيام أسبوعيًا)</option>
-                  <option value="1.725">نشاط مرتفع (6–7 أيام أسبوعيًا)</option>
-                  <option value="1.9">نشاط شديد جدًا</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="goal">هدفك</label>
-                <select class="form-control" id="goal" required>
-                  <option value="lose">خسارة الوزن</option>
-                  <option value="maintain">الحفاظ على الوزن</option>
-                  <option value="gain">زيادة الوزن</option>
-                </select>
-              </div>
-            </div>
-
-            <button type="submit" class="btn">احسب احتياجي</button>
-          </form>
-
-          <div class="result" id="calorieResult" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="nutrients">
-      <div class="container">
-        <div class="section-heading">
-          <h2>الفيتامينات والمعادن</h2>
-          <p>معلومات مختصرة عن بعض العناصر الغذائية المهمة ووظائفها.</p>
-        </div>
-
-        <div class="nutrition-grid" id="nutrientGrid"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <strong>BodyReset</strong>
-      <p>المعلومات الغذائية تقديرية ولا تغني عن استشارة مختص عند الحاجة.</p>
-    </div>
-  </footer>
-
-  <!-- نافذة تفاصيل الطعام -->
-  <div
-    class="modal"
-    id="foodModal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modalTitle"
-  >
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose" type="button" aria-label="إغلاق">×</button>
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <script>
-    /*
-      يمكنك إضافة videoId لأي طعام تريد عرض فيديو له.
-      استخدم معرّف الفيديو الموجود بعد v= في رابط يوتيوب.
-    */
-
-    const foods = [
-      {
-        id: 1,
-        name: "صدور دجاج مشوية",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🍗",
-        serving: "100 جرام",
-        calories: 165,
-        protein: 31,
-        carbs: 0,
-        fat: 3.6,
-        description: "مصدر غني بالبروتين وملائم للوجبات المتوازنة.",
-        ingredients: [
-          "200 جرام صدور دجاج",
-          "ملعقة صغيرة زيت زيتون",
-          "عصير نصف ليمونة",
-          "ثوم مفروم",
-          "ملح وفلفل وبهارات حسب الرغبة"
-        ],
-        instructions: [
-          "نظّف صدور الدجاج وجففها.",
-          "اخلط الليمون والثوم والبهارات وزيت الزيتون.",
-          "تبّل الدجاج واتركه لمدة 20–30 دقيقة إن أمكن.",
-          "اشوه على مقلاة ساخنة أو شواية حتى ينضج تمامًا.",
-          "تأكد من وصول درجة الحرارة الداخلية إلى 74 درجة مئوية.",
-          "قدّمه مع الخضروات أو الأرز حسب احتياجك."
-        ],
-        videoId: "cn-vUCAgM2E"
-      },
-      {
-        id: 2,
-        name: "البيض المسلوق",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🥚",
-        serving: "بيضة كبيرة",
-        calories: 78,
-        protein: 6.3,
-        carbs: 0.6,
-        fat: 5.3,
-        description: "يحتوي على البروتين والكولين وعدد من الفيتامينات.",
-        ingredients: ["بيض", "ماء", "قليل من الملح اختياري"],
-        instructions: [
-          "ضع البيض في إناء وغطّه بالماء.",
-          "ارفعه على النار حتى يغلي الماء.",
-          "اتركه نحو 9–12 دقيقة حسب درجة التماسك المطلوبة.",
-          "برّده في ماء بارد ثم قشّره."
-        ]
-      },
-      {
-        id: 3,
-        name: "الشوفان",
-        category: "carbs",
-        categoryName: "كربوهيدرات",
-        emoji: "🥣",
-        serving: "40 جرام جاف",
-        calories: 152,
-        protein: 5.3,
-        carbs: 27,
-        fat: 2.7,
-        description: "مصدر للكربوهيدرات والألياف، ومنها بيتا جلوكان.",
-        ingredients: ["40 جرام شوفان", "ماء أو حليب", "قرفة حسب الرغبة"],
-        instructions: [
-          "ضع الشوفان في إناء صغير.",
-          "أضف الماء أو الحليب.",
-          "اطهه على نار هادئة مع التقليب حتى يصبح القوام مناسبًا.",
-          "أضف القرفة أو الفاكهة حسب الرغبة."
-        ]
-      },
-      {
-        id: 4,
-        name: "الأرز المطبوخ",
-        category: "carbs",
-        categoryName: "كربوهيدرات",
-        emoji: "🍚",
-        serving: "100 جرام",
-        calories: 130,
-        protein: 2.7,
-        carbs: 28,
-        fat: 0.3,
-        description: "مصدر للكربوهيدرات ويمكن تناوله ضمن وجبة متوازنة.",
-        ingredients: ["أرز", "ماء", "ملح اختياري"],
-        instructions: [
-          "اغسل الأرز جيدًا.",
-          "أضف الماء المناسب لنوع الأرز.",
-          "اطهه على نار هادئة حتى ينضج.",
-          "اتركه يرتاح عدة دقائق قبل التقديم."
-        ]
-      },
-      {
-        id: 5,
-        name: "البطاطا الحلوة",
-        category: "carbs",
-        categoryName: "كربوهيدرات",
-        emoji: "🍠",
-        serving: "100 جرام",
-        calories: 86,
-        protein: 1.6,
-        carbs: 20.1,
-        fat: 0.1,
-        description: "تحتوي على الكربوهيدرات والبيتا كاروتين.",
-        ingredients: ["بطاطا حلوة"],
-        instructions: [
-          "اغسل البطاطا جيدًا.",
-          "اخبزها في الفرن حتى تلين.",
-          "اتركها تبرد قليلًا ثم قدّمها."
-        ]
-      },
-      {
-        id: 6,
-        name: "البروكلي",
-        category: "vegetables",
-        categoryName: "خضروات",
-        emoji: "🥦",
-        serving: "100 جرام",
-        calories: 34,
-        protein: 2.8,
-        carbs: 6.6,
-        fat: 0.4,
-        description: "يوفر الألياف وفيتامين C والفولات.",
-        ingredients: ["بروكلي", "ماء", "ليمون اختياري"],
-        instructions: [
-          "اغسل البروكلي وقطّعه.",
-          "اطهه بالبخار أو اسلقه لفترة قصيرة.",
-          "تجنّب الإفراط في الطهي للمحافظة على القوام.",
-          "أضف الليمون حسب الرغبة."
-        ]
-      },
-      {
-        id: 7,
-        name: "السبانخ",
-        category: "vegetables",
-        categoryName: "خضروات",
-        emoji: "🥬",
-        serving: "100 جرام",
-        calories: 23,
-        protein: 2.9,
-        carbs: 3.6,
-        fat: 0.4,
-        description: "تحتوي على الفولات وفيتامين K والكاروتينات.",
-        ingredients: ["سبانخ", "ثوم", "ملعقة صغيرة زيت اختياري"],
-        instructions: [
-          "اغسل السبانخ جيدًا.",
-          "شوّح الثوم بكمية صغيرة من الزيت إن رغبت.",
-          "أضف السبانخ وقلّبها حتى تذبل وتنضج."
-        ]
-      },
-      {
-        id: 8,
-        name: "الخيار",
-        category: "vegetables",
-        categoryName: "خضروات",
-        emoji: "🥒",
-        serving: "100 جرام",
-        calories: 15,
-        protein: 0.7,
-        carbs: 3.6,
-        fat: 0.1,
-        description: "خضار غني بالماء ومنخفض السعرات.",
-        ingredients: ["خيار", "ليمون اختياري"],
-        instructions: [
-          "اغسل الخيار جيدًا.",
-          "قطّعه إلى شرائح أو مكعبات.",
-          "قدّمه في السلطة أو كوجبة جانبية."
-        ]
-      },
-      {
-        id: 9,
-        name: "الطماطم",
-        category: "vegetables",
-        categoryName: "خضروات",
-        emoji: "🍅",
-        serving: "100 جرام",
-        calories: 18,
-        protein: 0.9,
-        carbs: 3.9,
-        fat: 0.2,
-        description: "مصدر لفيتامين C والليكوبين.",
-        ingredients: ["طماطم", "خيار اختياري", "ليمون اختياري"],
-        instructions: [
-          "اغسل الخضروات جيدًا.",
-          "قطّع الطماطم وأضف الخضروات التي تفضلها.",
-          "تبّل السلطة حسب الرغبة."
-        ]
-      },
-      {
-        id: 10,
-        name: "التفاح",
-        category: "fruits",
-        categoryName: "فواكه",
-        emoji: "🍎",
-        serving: "100 جرام",
-        calories: 52,
-        protein: 0.3,
-        carbs: 13.8,
-        fat: 0.2,
-        description: "يوفر الألياف والماء ضمن وجبة خفيفة.",
-        ingredients: ["تفاح طازج"],
-        instructions: [
-          "اغسل التفاح جيدًا.",
-          "قطّعه إذا رغبت.",
-          "تناوله بالقشر بعد غسله جيدًا."
-        ]
-      },
-      {
-        id: 11,
-        name: "الموز",
-        category: "fruits",
-        categoryName: "فواكه",
-        emoji: "🍌",
-        serving: "100 جرام",
-        calories: 89,
-        protein: 1.1,
-        carbs: 22.8,
-        fat: 0.3,
-        description: "يحتوي على الكربوهيدرات والبوتاسيوم.",
-        ingredients: ["موز طازج"],
-        instructions: [
-          "قشّر الموز.",
-          "تناوله كما هو أو أضفه إلى الشوفان."
-        ]
-      },
-      {
-        id: 12,
-        name: "البرتقال",
-        category: "fruits",
-        categoryName: "فواكه",
-        emoji: "🍊",
-        serving: "100 جرام",
-        calories: 47,
-        protein: 0.9,
-        carbs: 11.8,
-        fat: 0.1,
-        description: "مصدر لفيتامين C والماء.",
-        ingredients: ["برتقال طازج"],
-        instructions: [
-          "اغسل البرتقال.",
-          "قشّره وتناوله كاملًا للاستفادة من الألياف."
-        ]
-      },
-      {
-        id: 13,
-        name: "الفراولة",
-        category: "fruits",
-        categoryName: "فواكه",
-        emoji: "🍓",
-        serving: "100 جرام",
-        calories: 32,
-        protein: 0.7,
-        carbs: 7.7,
-        fat: 0.3,
-        description: "فاكهة تحتوي على فيتامين C ومركبات نباتية.",
-        ingredients: ["فراولة طازجة"],
-        instructions: [
-          "اغسل الفراولة جيدًا.",
-          "أزل الجزء الأخضر عند الحاجة.",
-          "قدّمها كاملة أو مقطعة."
-        ]
-      },
-      {
-        id: 14,
-        name: "الزبادي الطبيعي",
-        category: "dairy",
-        categoryName: "ألبان",
-        emoji: "🥛",
-        serving: "100 جرام",
-        calories: 61,
-        protein: 3.5,
-        carbs: 4.7,
-        fat: 3.3,
-        description: "يوفر البروتين والكالسيوم، وقد يحتوي على بكتيريا نافعة.",
-        ingredients: ["زبادي طبيعي غير محلى"],
-        instructions: [
-          "قدّم الزبادي باردًا.",
-          "يمكن إضافة الفاكهة أو الشوفان دون سكر مضاف."
-        ]
-      },
-      {
-        id: 15,
-        name: "الجبن القريش",
-        category: "dairy",
-        categoryName: "ألبان",
-        emoji: "🧀",
-        serving: "100 جرام",
-        calories: 98,
-        protein: 11,
-        carbs: 3.4,
-        fat: 4.3,
-        description: "قد يكون مصدرًا جيدًا للبروتين بحسب نوعه وطريقة تحضيره.",
-        ingredients: ["جبن قريش", "طماطم أو خيار اختياري"],
-        instructions: [
-          "ضع الجبن في طبق.",
-          "أضف الخضروات المفضلة.",
-          "انتبه لكمية الملح حسب احتياجك."
-        ]
-      },
-      {
-        id: 16,
-        name: "الحليب",
-        category: "dairy",
-        categoryName: "ألبان",
-        emoji: "🥛",
-        serving: "100 مل",
-        calories: 61,
-        protein: 3.2,
-        carbs: 4.8,
-        fat: 3.3,
-        description: "يوفر البروتين والكالسيوم، وتختلف القيم حسب نسبة الدسم.",
-        ingredients: ["حليب"],
-        instructions: [
-          "اختر الحليب المناسب لاحتياجك.",
-          "احفظه مبردًا واتبع تعليمات العبوة."
-        ]
-      },
-      {
-        id: 17,
-        name: "اللوز",
-        category: "fats",
-        categoryName: "دهون صحية",
-        emoji: "🌰",
-        serving: "28 جرام",
-        calories: 164,
-        protein: 6,
-        carbs: 6.1,
-        fat: 14.2,
-        description: "يحتوي على الدهون غير المشبعة وفيتامين E.",
-        ingredients: ["لوز غير مملح"],
-        instructions: [
-          "تناول كمية مناسبة كوجبة خفيفة.",
-          "انتبه إلى حجم الحصة لأن المكسرات مرتفعة السعرات."
-        ]
-      },
-      {
-        id: 18,
-        name: "الجوز",
-        category: "fats",
-        categoryName: "دهون صحية",
-        emoji: "🥜",
-        serving: "28 جرام",
-        calories: 185,
-        protein: 4.3,
-        carbs: 3.9,
-        fat: 18.5,
-        description: "يحتوي على دهون غير مشبعة وأحماض أوميغا 3 النباتية.",
-        ingredients: ["جوز غير مملح"],
-        instructions: [
-          "تناول كمية صغيرة حسب احتياجك.",
-          "يمكن إضافته إلى الشوفان أو السلطة."
-        ]
-      },
-      {
-        id: 19,
-        name: "زيت الزيتون",
-        category: "fats",
-        categoryName: "دهون صحية",
-        emoji: "🫒",
-        serving: "ملعقة كبيرة",
-        calories: 119,
-        protein: 0,
-        carbs: 0,
-        fat: 13.5,
-        description: "مصدر للدهون الأحادية غير المشبعة.",
-        ingredients: ["زيت زيتون"],
-        instructions: [
-          "استخدم كمية محسوبة في السلطة أو الطهي.",
-          "تذكّر أن الزيت مرتفع السعرات حتى لو كان مصدرًا لدهون غير مشبعة."
-        ]
-      },
-      {
-        id: 20,
-        name: "العدس المطبوخ",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🍲",
-        serving: "100 جرام",
-        calories: 116,
-        protein: 9,
-        carbs: 20,
-        fat: 0.4,
-        description: "مصدر نباتي للبروتين والألياف والفولات.",
-        ingredients: ["عدس", "ماء", "بصل اختياري", "كمون"],
-        instructions: [
-          "اغسل العدس وأزل أي شوائب.",
-          "اطهه في الماء حتى يلين.",
-          "أضف التوابل والخضروات حسب الرغبة.",
-          "تأكد من نضجه قبل التقديم."
-        ]
-      },
-      {
-        id: 21,
-        name: "الحمص المطبوخ",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🫘",
-        serving: "100 جرام",
-        calories: 164,
-        protein: 8.9,
-        carbs: 27.4,
-        fat: 2.6,
-        description: "يوفر البروتين النباتي والألياف والكربوهيدرات.",
-        ingredients: ["حمص", "ماء", "ليمون", "كمون اختياري"],
-        instructions: [
-          "انقع الحمص الجاف حسب تعليمات التحضير.",
-          "اسلقه حتى يصبح طريًا.",
-          "أضف الليمون والتوابل حسب الرغبة."
-        ]
-      },
-      {
-        id: 22,
-        name: "التونة المصفاة",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🐟",
-        serving: "100 جرام",
-        calories: 116,
-        protein: 25.5,
-        carbs: 0,
-        fat: 0.8,
-        description: "مصدر للبروتين؛ تختلف القيم باختلاف النوع وطريقة الحفظ.",
-        ingredients: ["تونة مصفاة", "ليمون", "خضروات اختيارية"],
-        instructions: [
-          "صفِّ التونة جيدًا.",
-          "أضف الليمون والخضروات.",
-          "راجع كمية الصوديوم على الملصق الغذائي."
-        ]
-      },
-      {
-        id: 23,
-        name: "السلمون",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🐟",
-        serving: "100 جرام",
-        calories: 208,
-        protein: 20,
-        carbs: 0,
-        fat: 13,
-        description: "يوفر البروتين وأحماض أوميغا 3.",
-        ingredients: ["قطعة سلمون", "ليمون", "فلفل أسود", "أعشاب"],
-        instructions: [
-          "تبّل السلمون بالليمون والأعشاب.",
-          "اخبزه أو اطهه في مقلاة حتى ينضج.",
-          "تأكد من نضجه الكامل قبل التقديم."
-        ]
-      },
-      {
-        id: 24,
-        name: "اللحم البقري قليل الدهن",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🥩",
-        serving: "100 جرام مطهو",
-        calories: 217,
-        protein: 26,
-        carbs: 0,
-        fat: 12,
-        description: "يوفر البروتين والحديد وفيتامين B12؛ تختلف القيم حسب القطعة.",
-        ingredients: ["لحم بقري قليل الدهن", "بهارات", "خضروات اختيارية"],
-        instructions: [
-          "أزل الدهون الظاهرة عند الحاجة.",
-          "اطهه بطريقة مناسبة حتى يصل إلى درجة الأمان الغذائي.",
-          "قدّمه مع الخضروات وحصة مناسبة من الكربوهيدرات."
-        ]
-      },
-      {
-        id: 25,
-        name: "الفاصوليا المطبوخة",
-        category: "protein",
-        categoryName: "بروتين",
-        emoji: "🫘",
-        serving: "100 جرام",
-        calories: 127,
-        protein: 8.7,
-        carbs: 22.8,
-        fat: 0.5,
-        description: "توفر الألياف والبروتين النباتي.",
-        ingredients: ["فاصوليا", "ماء", "طماطم اختياري", "توابل"],
-        instructions: [
-          "حضّر الفاصوليا الجافة حسب تعليمات النوع.",
-          "اطهها جيدًا حتى تصبح طرية.",
-          "أضف الطماطم والتوابل حسب الرغبة."
-        ]
-      },
-      {
-        id: 26,
-        name: "الخبز الأسمر",
-        category: "carbs",
-        categoryName: "كربوهيدرات",
-        emoji: "🍞",
-        serving: "شريحة 30 جرام",
-        calories: 75,
-        protein: 3.5,
-        carbs: 13,
-        fat: 1,
-        description: "قد يوفر الألياف أكثر من الخبز المصنوع من الدقيق المكرر.",
-        ingredients: ["خبز حبوب كاملة"],
-        instructions: [
-          "اختر خبزًا يذكر الحبوب الكاملة ضمن المكونات الأولى.",
-          "وازن الكمية مع احتياجك اليومي."
-        ]
-      },
-      {
-        id: 27,
-        name: "الأفوكادو",
-        category: "fats",
-        categoryName: "دهون صحية",
-        emoji: "🥑",
-        serving: "100 جرام",
-        calories: 160,
-        protein: 2,
-        carbs: 8.5,
-        fat: 14.7,
-        description: "يحتوي على دهون أحادية غير مشبعة وألياف.",
-        ingredients: ["أفوكادو", "ليمون اختياري"],
-        instructions: [
-          "اقطع الأفوكادو وأزل النواة.",
-          "استخدمه في السلطة أو اهرسه مع الليمون.",
-          "انتبه لحجم الحصة لأنه مرتفع السعرات نسبيًا."
-        ]
-      },
-      {
-        id: 28,
-        name: "الجزر",
-        category: "vegetables",
-        categoryName: "خضروات",
-        emoji: "🥕",
-        serving: "100 جرام",
-        calories: 41,
-        protein: 0.9,
-        carbs: 9.6,
-        fat: 0.2,
-        description: "مصدر للبيتا كاروتين الذي يحوله الجسم إلى فيتامين A.",
-        ingredients: ["جزر طازج"],
-        instructions: [
-          "اغسل الجزر جيدًا.",
-          "قشّره عند الحاجة.",
-          "تناوله نيئًا أو اطهه حتى يصبح بالقوام المناسب."
-        ]
-      }
-    ];
-
-    const nutrients = [
-      {
-        name: "فيتامين A",
-        function: "يساهم في الرؤية الطبيعية ووظيفة المناعة وصحة الأنسجة.",
-        sources: "الجزر، البطاطا الحلوة، السبانخ."
-      },
-      {
-        name: "فيتامين B1",
-        function: "يساعد في استقلاب الطاقة ووظيفة الجهاز العصبي.",
-        sources: "الحبوب الكاملة، البقوليات، المكسرات."
-      },
-      {
-        name: "فيتامين B2",
-        function: "يساهم في إنتاج الطاقة ووظائف الخلايا.",
-        sources: "الحليب، البيض، اللحوم."
-      },
-      {
-        name: "فيتامين B3",
-        function: "يدخل في تفاعلات إنتاج الطاقة داخل الخلايا.",
-        sources: "الدجاج، السمك، الفول السوداني."
-      },
-      {
-        name: "فيتامين B5",
-        function: "يساهم في استقلاب الدهون والكربوهيدرات.",
-        sources: "البيض، اللحوم، الحبوب الكاملة."
-      },
-      {
-        name: "فيتامين B6",
-        function: "يدعم استقلاب البروتين ووظائف الجهاز العصبي.",
-        sources: "الدجاج، السمك، البطاطا."
-      },
-      {
-        name: "فيتامين B7",
-        function: "يساهم في استقلاب المغذيات الكبرى.",
-        sources: "البيض المطهو، المكسرات، بعض البقوليات."
-      },
-      {
-        name: "فيتامين B9",
-        function: "ضروري لتكوين الحمض النووي وانقسام الخلايا.",
-        sources: "العدس، السبانخ، الخضروات الورقية."
-      },
-      {
-        name: "فيتامين B12",
-        function: "ضروري لتكوين خلايا الدم الحمراء ووظيفة الأعصاب.",
-        sources: "اللحوم، السمك، البيض، الألبان."
-      },
-      {
-        name: "فيتامين C",
-        function: "يساهم في تكوين الكولاجين وامتصاص الحديد من المصادر النباتية.",
-        sources: "البرتقال، الفراولة، البروكلي."
-      },
-      {
-        name: "فيتامين D",
-        function: "يساعد على امتصاص الكالسيوم والحفاظ على صحة العظام.",
-        sources: "الأسماك الدهنية والأطعمة المدعمة؛ ويساهم التعرض الآمن للشمس في تكوينه."
-      },
-      {
-        name: "فيتامين E",
-        function: "مضاد أكسدة يساهم في حماية الخلايا.",
-        sources: "اللوز، البذور، الزيوت النباتية."
-      },
-      {
-        name: "فيتامين K",
-        function: "ضروري لتخثر الدم الطبيعي ويساهم في صحة العظام.",
-        sources: "السبانخ، البروكلي، الخضروات الورقية."
-      },
-      {
-        name: "الكالسيوم",
-        function: "ضروري للعظام والأسنان وعمل العضلات.",
-        sources: "الحليب، الزبادي، بعض الأطعمة المدعمة."
-      },
-      {
-        name: "الحديد",
-        function: "يساعد على نقل الأكسجين في الدم.",
-        sources: "اللحوم، العدس، الفاصوليا، السبانخ."
-      },
-      {
-        name: "المغنيسيوم",
-        function: "يدعم عمل العضلات والأعصاب وتفاعلات إنتاج الطاقة.",
-        sources: "المكسرات، البقوليات، الحبوب الكاملة."
-      },
-      {
-        name: "البوتاسيوم",
-        function: "يساهم في توازن السوائل ووظيفة العضلات والأعصاب.",
-        sources: "الموز، البطاطا، البقوليات."
-      },
-      {
-        name: "الزنك",
-        function: "يدعم المناعة والتئام الجروح ووظائف الإنزيمات.",
-        sources: "اللحوم، الألبان، البقوليات."
-      },
-      {
-        name: "الفوسفور",
-        function: "يساهم في صحة العظام وإنتاج الطاقة.",
-        sources: "الألبان، اللحوم، البقوليات."
-      },
-      {
-        name: "اليود",
-        function: "ضروري لتكوين هرمونات الغدة الدرقية.",
-        sources: "الملح المدعم باليود وبعض المأكولات البحرية."
-      },
-      {
-        name: "السيلينيوم",
-        function: "يدخل في عمل إنزيمات مضادة للأكسدة ووظائف الغدة الدرقية.",
-        sources: "السمك، البيض، اللحوم."
-      },
-      {
-        name: "النحاس",
-        function: "يساهم في استقلاب الحديد وتكوين الأنسجة.",
-        sources: "المكسرات، البذور، البقوليات."
-      },
-      {
-        name: "المنغنيز",
-        function: "يدخل في عمل إنزيمات مرتبطة باستقلاب المغذيات.",
-        sources: "الحبوب الكاملة، المكسرات، البقوليات."
-      },
-      {
-        name: "الصوديوم",
-        function: "يساهم في توازن السوائل ووظيفة الأعصاب والعضلات.",
-        sources: "ملح الطعام؛ يُفضّل عدم الإفراط في تناوله."
-      },
-      {
-        name: "الكلوريد",
-        function: "يساهم في توازن السوائل وتكوين حمض المعدة.",
-        sources: "ملح الطعام."
-      },
-      {
-        name: "الكولين",
-        function: "يدعم وظائف الخلايا والأعصاب واستقلاب الدهون.",
-        sources: "البيض، السمك، اللحوم."
-      },
-      {
-        name: "أوميغا 3",
-        function: "أحماض دهنية تساهم في وظائف الخلايا والصحة العامة.",
-        sources: "السلمون والأسماك الدهنية؛ والجوز يوفر نوعًا نباتيًا."
-      }
-    ];
-
-    const foodGrid = document.getElementById("foodGrid");
-    const foodSearch = document.getElementById("foodSearch");
-    const categoryFilter = document.getElementById("categoryFilter");
-    const emptyState = document.getElementById("emptyState");
-
-    const modal = document.getElementById("foodModal");
-    const modalBody = document.getElementById("modalBody");
-    const modalClose = document.getElementById("modalClose");
-
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, function (character) {
-        const entities = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;"
-        };
-        return entities[character];
-      });
-    }
-
-    function renderFoods() {
-      const searchTerm = foodSearch.value.trim().toLowerCase();
-      const category = categoryFilter.value;
-
-      const filteredFoods = foods.filter(function (food) {
-        const matchesSearch =
-          food.name.toLowerCase().includes(searchTerm) ||
-          food.description.toLowerCase().includes(searchTerm);
-
-        const matchesCategory =
-          category === "all" || food.category === category;
-
-        return matchesSearch && matchesCategory;
-      });
-
-      foodGrid.innerHTML = filteredFoods.map(function (food) {
-        return `
-          <article class="food-card">
-            <div class="food-visual" aria-hidden="true">${food.emoji}</div>
-
-            <div class="food-content">
-              <h3>${escapeHTML(food.name)}</h3>
-              <p>${escapeHTML(food.description)}</p>
-
-              <div class="food-meta">
-                <span class="tag">${escapeHTML(food.categoryName)}</span>
-                <span class="tag">${food.calories} سعرة</span>
-                <span class="tag">${escapeHTML(food.serving)}</span>
-              </div>
-
-              <button
-                class="btn"
-                type="button"
-                data-food-id="${food.id}"
-              >
-                تفاصيل وطريقة التحضير
-              </button>
-            </div>
-          </article>
-        `;
-      }).join("");
-
-      emptyState.style.display = filteredFoods.length ? "none" : "block";
-    }
-
-    function showDetail(food) {
-      const ingredientsHTML = food.ingredients.map(function (ingredient) {
-        return `<li>${escapeHTML(ingredient)}</li>`;
-      }).join("");
-
-      const instructionsHTML = food.instructions.map(function (step) {
-        return `<li>${escapeHTML(step)}</li>`;
-      }).join("");
-
-      /*
-        إذا كان للطعام videoId، يظهر مشغل الفيديو بعد المكونات
-        وطريقة التحضير. الأطعمة الأخرى لن تعرض قسم الفيديو.
-      */
-
-      const videoHTML = food.videoId
-        ? `
-          <div class="recipe-video">
-            <h3>🎥 فيديو طريقة التحضير</h3>
-
-            <div class="video-frame">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(food.videoId)}"
-                title="فيديو طريقة تحضير ${escapeHTML(food.name)}"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-
-            <p class="video-fallback">
-              لو الفيديو لم يعمل داخل الصفحة،
-              <a
-                href="https://www.youtube.com/watch?v=${encodeURIComponent(food.videoId)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >شاهده مباشرة على يوتيوب</a>.
-            </p>
-          </div>
-        `
-        : "";
-
-      modalBody.innerHTML = `
-        <div style="font-size:52px">${food.emoji}</div>
-
-        <h2 id="modalTitle">${escapeHTML(food.name)}</h2>
-
-        <p>${escapeHTML(food.description)}</p>
-
-        <div class="food-meta">
-          <span class="tag">${food.calories} سعرة حرارية</span>
-          <span class="tag">بروتين: ${food.protein} جم</span>
-          <span class="tag">كربوهيدرات: ${food.carbs} جم</span>
-          <span class="tag">دهون: ${food.fat} جم</span>
-        </div>
-
-        <p>
-          <strong>حجم الحصة:</strong>
-          ${escapeHTML(food.serving)}
-        </p>
-
-        <p>
-          <strong>القيم الغذائية:</strong>
-          لكل ${escapeHTML(food.serving)} تقريبًا.
-        </p>
-
-        <h3>المكونات</h3>
-        <ul class="detail-list">
-          ${ingredientsHTML}
-        </ul>
-
-        <h3>طريقة التحضير</h3>
-        <ol class="detail-list">
-          ${instructionsHTML}
-        </ol>
-
-        ${videoHTML}
-      `;
-
-      modal.classList.add("open");
-      document.body.style.overflow = "hidden";
-      modalClose.focus();
-    }
-
-    foodGrid.addEventListener("click", function (event) {
-      const button = event.target.closest("[data-food-id]");
-      if (!button) return;
-
-      const foodId = Number(button.dataset.foodId);
-      const food = foods.find(function (item) {
-        return item.id === foodId;
-      });
-
-      if (food) showDetail(food);
-    });
-
-    function closeModal() {
-      modal.classList.remove("open");
-      document.body.style.overflow = "";
-      modalBody.innerHTML = "";
-    }
-
-    modalClose.addEventListener("click", closeModal);
-
-    modal.addEventListener("click", function (event) {
-      if (event.target === modal) closeModal();
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && modal.classList.contains("open")) {
-        closeModal();
-      }
-    });
-
-    foodSearch.addEventListener("input", renderFoods);
-    categoryFilter.addEventListener("change", renderFoods);
-
-    /* حاسبة السعرات باستخدام معادلة Mifflin–St Jeor */
-    document.getElementById("calorieForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const age = Number(document.getElementById("age").value);
-      const weight = Number(document.getElementById("weight").value);
-      const height = Number(document.getElementById("height").value);
-      const gender = document.getElementById("gender").value;
-      const activity = Number(document.getElementById("activity").value);
-      const goal = document.getElementById("goal").value;
-
-      if (
-        !Number.isFinite(age) ||
-        !Number.isFinite(weight) ||
-        !Number.isFinite(height) ||
-        age <= 0 ||
-        weight <= 0 ||
-        height <= 0
-      ) {
-        alert("من فضلك أدخل بيانات صحيحة.");
-        return;
-      }
-
-      const bmr = gender === "male"
-        ? 10 * weight + 6.25 * height - 5 * age + 5
-        : 10 * weight + 6.25 * height - 5 * age - 161;
-
-      const maintenance = bmr * activity;
-
-      let target = maintenance;
-      let goalText = "للحفاظ على الوزن";
-
-      if (goal === "lose") {
-        target = maintenance - 400;
-        goalText = "لخسارة الوزن تدريجيًا";
-      } else if (goal === "gain") {
-        target = maintenance + 300;
-        goalText = "لزيادة الوزن تدريجيًا";
-      }
-
-      target = Math.max(1200, Math.round(target));
-
-      const result = document.getElementById("calorieResult");
-
-      result.innerHTML = `
-        <h3>نتيجة الحساب</h3>
-        <p>
-          معدل الأيض الأساسي التقديري:
-          <strong>${Math.round(bmr)} سعرة/يوم</strong>
-        </p>
-        <p>
-          سعرات الحفاظ على الوزن:
-          <strong>${Math.round(maintenance)} سعرة/يوم</strong>
-        </p>
-        <p>
-          هدفك ${goalText}:
-          <strong>${target} سعرة/يوم تقريبًا</strong>
-        </p>
-        <p>
-          هذه نتيجة تقديرية وليست قياسًا طبيًا. قد تحتاج إلى تعديلها
-          وفق تغير الوزن ومستوى النشاط والحالة الصحية.
-        </p>
-      `;
-
-      result.style.display = "block";
-    });
-
-    /* عرض الفيتامينات والمعادن */
-    const nutrientGrid = document.getElementById("nutrientGrid");
-
-    nutrientGrid.innerHTML = nutrients.map(function (nutrient) {
-      return `
-        <article class="nutrient-card">
-          <h3>${escapeHTML(nutrient.name)}</h3>
-          <p>${escapeHTML(nutrient.function)}</p>
-          <p style="margin-top:9px">
-            <strong>مصادر غذائية:</strong>
-            ${escapeHTML(nutrient.sources)}
-          </p>
-        </article>
-      `;
-    }).join("");
-
-    /* بدء عرض الأطعمة */
-    renderFoods();
-  </script>
+<header><div class="container nav">
+<div class="brand">Body<span>Reset</span></div>
+<nav class="nav-links" aria-label="التنقل الرئيسي">
+<a href="#foods">الأطعمة</a><a href="#calculator">حاسبة السعرات</a><a href="#nutrients">الفيتامينات والمعادن</a>
+</nav>
+</div></header>
+
+<main>
+<div class="container hero"><div class="hero-content"><div>
+<h1>ابدأ رحلة غذائية صحية مع BodyReset</h1>
+<p>اكتشف الأطعمة وقيمها الغذائية، وتعرّف على طرق التحضير، واحسب احتياجك اليومي التقريبي من السعرات الحرارية.</p>
+<a href="#foods" class="btn">اكتشف الأطعمة</a>
+<a href="#calculator" class="btn btn-secondary">احسب سعراتك</a>
+</div><div class="hero-visual" aria-label="أطعمة صحية">🥗</div></div></div>
+
+<section id="foods"><div class="container">
+<div class="section-heading"><h2>الأطعمة والوصفات</h2><p>ابحث عن الطعام وافتح تفاصيله لمعرفة قيمه الغذائية وطريقة تحضيره، وأضف فيديو خاصًا بكل وجبة.</p></div>
+<div class="toolbar">
+<input type="search" id="foodSearch" placeholder="ابحث باسم الطعام..." aria-label="البحث عن الطعام">
+<select id="categoryFilter" aria-label="تصفية حسب نوع الطعام">
+<option value="all">كل التصنيفات</option><option value="protein">بروتين</option><option value="carbs">كربوهيدرات</option><option value="vegetables">خضروات</option><option value="fruits">فواكه</option><option value="dairy">ألبان</option><option value="fats">دهون صحية</option>
+</select></div>
+<div class="food-grid" id="foodGrid"></div><div class="empty-state" id="emptyState">لم يتم العثور على أطعمة مطابقة لبحثك.</div>
+</div></section>
+
+<section id="calculator"><div class="container">
+<div class="section-heading"><h2>حاسبة السعرات الحرارية</h2><p>احسب تقديرًا لاحتياجك اليومي بناءً على بياناتك ومستوى نشاطك.</p></div>
+<div class="calculator"><form id="calorieForm">
+<div class="calculator-grid">
+<div class="field"><label for="age">العمر (بالسنوات)</label><input class="form-control" id="age" type="number" min="15" max="100" required></div>
+<div class="field"><label for="gender">الجنس</label><select class="form-control" id="gender" required><option value="male">ذكر</option><option value="female">أنثى</option></select></div>
+<div class="field"><label for="weight">الوزن (كجم)</label><input class="form-control" id="weight" type="number" min="25" max="350" step="0.1" required></div>
+<div class="field"><label for="height">الطول (سم)</label><input class="form-control" id="height" type="number" min="100" max="250" step="0.1" required></div>
+<div class="field"><label for="activity">مستوى النشاط</label><select class="form-control" id="activity" required>
+<option value="1.2">قليل الحركة</option><option value="1.375">نشاط خفيف (1–3 أيام أسبوعيًا)</option><option value="1.55">نشاط متوسط (3–5 أيام أسبوعيًا)</option><option value="1.725">نشاط مرتفع (6–7 أيام أسبوعيًا)</option><option value="1.9">نشاط شديد جدًا</option>
+</select></div>
+<div class="field"><label for="goal">هدفك</label><select class="form-control" id="goal" required><option value="lose">خسارة الوزن</option><option value="maintain">الحفاظ على الوزن</option><option value="gain">زيادة الوزن</option></select></div>
+</div><button type="submit" class="btn">احسب احتياجي</button>
+</form><div class="result" id="calorieResult" aria-live="polite"></div></div>
+</div></section>
+
+<section id="nutrients"><div class="container">
+<div class="section-heading"><h2>الفيتامينات والمعادن</h2><p>معلومات مختصرة عن العناصر الغذائية المهمة ووظائفها.</p></div>
+<div class="nutrition-grid" id="nutrientGrid"></div>
+</div></section>
+</main>
+
+<footer><div class="container"><strong>BodyReset</strong><p>المعلومات الغذائية تقديرية ولا تغني عن استشارة مختص عند الحاجة.</p></div></footer>
+
+<div class="modal" id="foodModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal-content">
+<button class="modal-close" id="modalClose" type="button" aria-label="إغلاق">×</button>
+<div id="modalBody"></div>
+</div></div>
+
+<script>
+const foods = [
+{id:1,name:"صدور دجاج مشوية",category:"protein",categoryName:"بروتين",emoji:"🍗",serving:"100 جرام",calories:165,protein:31,carbs:0,fat:3.6,description:"مصدر غني بالبروتين وملائم للوجبات المتوازنة.",ingredients:["200 جرام صدور دجاج","ملعقة صغيرة زيت زيتون","عصير نصف ليمونة","ثوم مفروم","ملح وفلفل وبهارات حسب الرغبة"],instructions:["نظّف صدور الدجاج وجففها.","اخلط الليمون والثوم والبهارات وزيت الزيتون.","تبّل الدجاج واتركه 20–30 دقيقة إن أمكن.","اشوه حتى ينضج تمامًا.","تأكد من وصول الحرارة الداخلية إلى 74 درجة مئوية.","قدّمه مع الخضروات أو الأرز."],videoId:"cn-vUCAgM2E"},
+{id:2,name:"البيض المسلوق",category:"protein",categoryName:"بروتين",emoji:"🥚",serving:"بيضة كبيرة",calories:78,protein:6.3,carbs:0.6,fat:5.3,description:"يحتوي على البروتين والكولين وعدد من الفيتامينات.",ingredients:["بيض","ماء","قليل من الملح اختياري"],instructions:["ضع البيض في إناء وغطّه بالماء.","اترك الماء يغلي ثم اترك البيض 9–12 دقيقة.","برّده في ماء بارد ثم قشّره."]},
+{id:3,name:"الشوفان",category:"carbs",categoryName:"كربوهيدرات",emoji:"🥣",serving:"40 جرام جاف",calories:152,protein:5.3,carbs:27,fat:2.7,description:"مصدر للكربوهيدرات والألياف ومنها بيتا جلوكان.",ingredients:["40 جرام شوفان","ماء أو حليب","قرفة حسب الرغبة"],instructions:["ضع الشوفان في إناء.","أضف الماء أو الحليب.","اطهه على نار هادئة مع التقليب.","أضف القرفة أو الفاكهة."]},
+{id:4,name:"الأرز المطبوخ",category:"carbs",categoryName:"كربوهيدرات",emoji:"🍚",serving:"100 جرام",calories:130,protein:2.7,carbs:28,fat:0.3,description:"مصدر للكربوهيدرات ضمن وجبة متوازنة.",ingredients:["أرز","ماء","ملح اختياري"],instructions:["اغسل الأرز.","أضف الماء المناسب لنوعه.","اطهه على نار هادئة حتى ينضج."]},
+{id:5,name:"البطاطا الحلوة",category:"carbs",categoryName:"كربوهيدرات",emoji:"🍠",serving:"100 جرام",calories:86,protein:1.6,carbs:20.1,fat:0.1,description:"تحتوي على الكربوهيدرات والبيتا كاروتين.",ingredients:["بطاطا حلوة"],instructions:["اغسل البطاطا.","اخبزها في الفرن حتى تلين."]},
+{id:6,name:"البروكلي",category:"vegetables",categoryName:"خضروات",emoji:"🥦",serving:"100 جرام",calories:34,protein:2.8,carbs:6.6,fat:0.4,description:"يوفر الألياف وفيتامين C والفولات.",ingredients:["بروكلي","ماء","ليمون اختياري"],instructions:["اغسل البروكلي وقطّعه.","اطهه بالبخار أو اسلقه لفترة قصيرة.","أضف الليمون."]},
+{id:7,name:"السبانخ",category:"vegetables",categoryName:"خضروات",emoji:"🥬",serving:"100 جرام",calories:23,protein:2.9,carbs:3.6,fat:0.4,description:"تحتوي على الفولات وفيتامين K والكاروتينات.",ingredients:["سبانخ","ثوم","زيت اختياري"],instructions:["اغسل السبانخ.","شوّح الثوم إن رغبت.","أضف السبانخ وقلّبها حتى تذبل."]},
+{id:8,name:"الخيار",category:"vegetables",categoryName:"خضروات",emoji:"🥒",serving:"100 جرام",calories:15,protein:0.7,carbs:3.6,fat:0.1,description:"خضار غني بالماء ومنخفض السعرات.",ingredients:["خيار","ليمون اختياري"],instructions:["اغسل الخيار.","قطّعه وقدّمه في السلطة."]},
+{id:9,name:"الطماطم",category:"vegetables",categoryName:"خضروات",emoji:"🍅",serving:"100 جرام",calories:18,protein:0.9,carbs:3.9,fat:0.2,description:"مصدر لفيتامين C والليكوبين.",ingredients:["طماطم","خيار اختياري","ليمون اختياري"],instructions:["اغسل الخضروات.","قطّع الطماطم وأضف ما تفضله.","تبّل السلطة."]},
+{id:10,name:"التفاح",category:"fruits",categoryName:"فواكه",emoji:"🍎",serving:"100 جرام",calories:52,protein:0.3,carbs:13.8,fat:0.2,description:"يوفر الألياف والماء.",ingredients:["تفاح طازج"],instructions:["اغسل التفاح جيدًا.","تناوله بالقشر بعد غسله."]},
+{id:11,name:"الموز",category:"fruits",categoryName:"فواكه",emoji:"🍌",serving:"100 جرام",calories:89,protein:1.1,carbs:22.8,fat:0.3,description:"يحتوي على الكربوهيدرات والبوتاسيوم.",ingredients:["موز طازج"],instructions:["قشّر الموز.","تناوله أو أضفه إلى الشوفان."]},
+{id:12,name:"البرتقال",category:"fruits",categoryName:"فواكه",emoji:"🍊",serving:"100 جرام",calories:47,protein:0.9,carbs:11.8,fat:0.1,description:"مصدر لفيتامين C والماء.",ingredients:["برتقال طازج"],instructions:["اغسل البرتقال.","قشّره وتناوله كاملًا."]},
+{id:13,name:"الفراولة",category:"fruits",categoryName:"فواكه",emoji:"🍓",serving:"100 جرام",calories:32,protein:0.7,carbs:7.7,fat:0.3,description:"تحتوي على فيتامين C ومركبات نباتية.",ingredients:["فراولة طازجة"],instructions:["اغسل الفراولة جيدًا.","قدّمها كاملة أو مقطعة."]},
+{id:14,name:"الزبادي الطبيعي",category:"dairy",categoryName:"ألبان",emoji:"🥛",serving:"100 جرام",calories:61,protein:3.5,carbs:4.7,fat:3.3,description:"يوفر البروتين والكالسيوم.",ingredients:["زبادي طبيعي غير محلى"],instructions:["قدّم الزبادي باردًا.","يمكن إضافة الفاكهة أو الشوفان."]},
+{id:15,name:"الجبن القريش",category:"dairy",categoryName:"ألبان",emoji:"🧀",serving:"100 جرام",calories:98,protein:11,carbs:3.4,fat:4.3,description:"مصدر للبروتين بحسب نوعه وطريقة تحضيره.",ingredients:["جبن قريش","طماطم أو خيار"],instructions:["ضع الجبن في طبق.","أضف الخضروات وانتبه لكمية الملح."]},
+{id:16,name:"الحليب",category:"dairy",categoryName:"ألبان",emoji:"🥛",serving:"100 مل",calories:61,protein:3.2,carbs:4.8,fat:3.3,description:"يوفر البروتين والكالسيوم وتختلف قيمه حسب الدسم.",ingredients:["حليب"],instructions:["اختر الحليب المناسب.","احفظه مبردًا واتبع تعليمات العبوة."]},
+{id:17,name:"اللوز",category:"fats",categoryName:"دهون صحية",emoji:"🌰",serving:"28 جرام",calories:164,protein:6,carbs:6.1,fat:14.2,description:"يحتوي على الدهون غير المشبعة وفيتامين E.",ingredients:["لوز غير مملح"],instructions:["تناول كمية مناسبة.","انتبه لحجم الحصة لأن المكسرات مرتفعة السعرات."]},
+{id:18,name:"الجوز",category:"fats",categoryName:"دهون صحية",emoji:"🥜",serving:"28 جرام",calories:185,protein:4.3,carbs:3.9,fat:18.5,description:"يحتوي على دهون غير مشبعة وأوميغا 3 النباتية.",ingredients:["جوز غير مملح"],instructions:["تناول كمية مناسبة.","أضفه إلى الشوفان أو السلطة."]},
+{id:19,name:"زيت الزيتون",category:"fats",categoryName:"دهون صحية",emoji:"🫒",serving:"ملعقة كبيرة",calories:119,protein:0,carbs:0,fat:13.5,description:"مصدر للدهون الأحادية غير المشبعة.",ingredients:["زيت زيتون"],instructions:["استخدم كمية محسوبة.","تذكّر أن الزيت مرتفع السعرات."]},
+{id:20,name:"العدس المطبوخ",category:"protein",categoryName:"بروتين",emoji:"🍲",serving:"100 جرام",calories:116,protein:9,carbs:20,fat:0.4,description:"مصدر نباتي للبروتين والألياف والفولات.",ingredients:["عدس","ماء","بصل اختياري","كمون"],instructions:["اغسل العدس.","اطهه في الماء حتى يلين.","أضف التوابل."]},
+{id:21,name:"الحمص المطبوخ",category:"protein",categoryName:"بروتين",emoji:"🫘",serving:"100 جرام",calories:164,protein:8.9,carbs:27.4,fat:2.6,description:"يوفر البروتين النباتي والألياف والكربوهيدرات.",ingredients:["حمص","ماء","ليمون","كمون"],instructions:["انقع الحمص الجاف.","اسلقه حتى يصبح طريًا.","أضف الليمون والتوابل."]},
+{id:22,name:"التونة المصفاة",category:"protein",categoryName:"بروتين",emoji:"🐟",serving:"100 جرام",calories:116,protein:25.5,carbs:0,fat:0.8,description:"مصدر للبروتين وتختلف القيم حسب النوع.",ingredients:["تونة مصفاة","ليمون","خضروات"],instructions:["صفِّ التونة.","أضف الليمون والخضروات.","راجع كمية الصوديوم على العبوة."]},
+{id:23,name:"السلمون",category:"protein",categoryName:"بروتين",emoji:"🐟",serving:"100 جرام",calories:208,protein:20,carbs:0,fat:13,description:"يوفر البروتين وأحماض أوميغا 3.",ingredients:["سلمون","ليمون","فلفل أسود","أعشاب"],instructions:["تبّل السلمون.","اخبزه أو اطهه حتى ينضج.","تأكد من نضجه قبل التقديم."]},
+{id:24,name:"اللحم البقري قليل الدهن",category:"protein",categoryName:"بروتين",emoji:"🥩",serving:"100 جرام مطهو",calories:217,protein:26,carbs:0,fat:12,description:"يوفر البروتين والحديد وفيتامين B12.",ingredients:["لحم بقري قليل الدهن","بهارات"],instructions:["أزل الدهون الظاهرة عند الحاجة.","اطهه حتى يصل إلى درجة الأمان الغذائي."]},
+{id:25,name:"الفاصوليا المطبوخة",category:"protein",categoryName:"بروتين",emoji:"🫘",serving:"100 جرام",calories:127,protein:8.7,carbs:22.8,fat:0.5,description:"توفر الألياف والبروتين النباتي.",ingredients:["فاصوليا","ماء","طماطم","توابل"],instructions:["حضّر الفاصوليا الجافة حسب التعليمات.","اطهها جيدًا حتى تصبح طرية."]},
+{id:26,name:"الخبز الأسمر",category:"carbs",categoryName:"كربوهيدرات",emoji:"🍞",serving:"شريحة 30 جرام",calories:75,protein:3.5,carbs:13,fat:1,description:"قد يوفر الألياف أكثر من الخبز المكرر.",ingredients:["خبز حبوب كاملة"],instructions:["اختر خبزًا تكون الحبوب الكاملة من مكوناته الأولى.","وازن الكمية مع احتياجك."]},
+{id:27,name:"الأفوكادو",category:"fats",categoryName:"دهون صحية",emoji:"🥑",serving:"100 جرام",calories:160,protein:2,carbs:8.5,fat:14.7,description:"يحتوي على دهون أحادية غير مشبعة وألياف.",ingredients:["أفوكادو","ليمون"],instructions:["اقطع الأفوكادو وأزل النواة.","استخدمه في السلطة أو اهرسه مع الليمون."]},
+{id:28,name:"الجزر",category:"vegetables",categoryName:"خضروات",emoji:"🥕",serving:"100 جرام",calories:41,protein:0.9,carbs:9.6,fat:0.2,description:"مصدر للبيتا كاروتين الذي يحوله الجسم إلى فيتامين A.",ingredients:["جزر طازج"],instructions:["اغسل الجزر.","قشّره عند الحاجة.","تناوله نيئًا أو مطهوًا."]}
+];
+
+const nutrients=[
+{name:"فيتامين A",function:"يساهم في الرؤية الطبيعية والمناعة وصحة الأنسجة.",sources:"الجزر والبطاطا الحلوة والسبانخ."},
+{name:"فيتامين B1",function:"يساعد في استقلاب الطاقة ووظيفة الأعصاب.",sources:"الحبوب الكاملة والبقوليات والمكسرات."},
+{name:"فيتامين B2",function:"يساهم في إنتاج الطاقة ووظائف الخلايا.",sources:"الحليب والبيض واللحوم."},
+{name:"فيتامين B3",function:"يدخل في تفاعلات إنتاج الطاقة داخل الخلايا.",sources:"الدجاج والسمك والفول السوداني."},
+{name:"فيتامين B5",function:"يساهم في استقلاب الدهون والكربوهيدرات.",sources:"البيض واللحوم والحبوب الكاملة."},
+{name:"فيتامين B6",function:"يدعم استقلاب البروتين ووظائف الجهاز العصبي.",sources:"الدجاج والسمك والبطاطا."},
+{name:"فيتامين B7",function:"يساهم في استقلاب المغذيات الكبرى.",sources:"البيض المطهو والمكسرات والبقوليات."},
+{name:"فيتامين B9",function:"ضروري لتكوين الحمض النووي وانقسام الخلايا.",sources:"العدس والسبانخ والخضروات الورقية."},
+{name:"فيتامين B12",function:"ضروري لخلايا الدم الحمراء ووظيفة الأعصاب.",sources:"اللحوم والسمك والبيض والألبان."},
+{name:"فيتامين C",function:"يساهم في تكوين الكولاجين وامتصاص الحديد النباتي.",sources:"البرتقال والفراولة والبروكلي."},
+{name:"فيتامين D",function:"يساعد على امتصاص الكالسيوم وصحة العظام.",sources:"الأسماك الدهنية والأطعمة المدعمة."},
+{name:"فيتامين E",function:"مضاد أكسدة يساهم في حماية الخلايا.",sources:"اللوز والبذور والزيوت النباتية."},
+{name:"فيتامين K",function:"ضروري لتخثر الدم الطبيعي وصحة العظام.",sources:"السبانخ والبروكلي والخضروات الورقية."},
+{name:"الكالسيوم",function:"ضروري للعظام والأسنان وعمل العضلات.",sources:"الحليب والزبادي والأطعمة المدعمة."},
+{name:"الحديد",function:"يساعد على نقل الأكسجين في الدم.",sources:"اللحوم والعدس والفاصوليا والسبانخ."},
+{name:"المغنيسيوم",function:"يدعم عمل العضلات والأعصاب وإنتاج الطاقة.",sources:"المكسرات والبقوليات والحبوب الكاملة."},
+{name:"البوتاسيوم",function:"يساهم في توازن السوائل ووظائف العضلات والأعصاب.",sources:"الموز والبطاطا والبقوليات."},
+{name:"الزنك",function:"يدعم المناعة والتئام الجروح ووظائف الإنزيمات.",sources:"اللحوم والألبان والبقوليات."},
+{name:"الفوسفور",function:"يساهم في صحة العظام وإنتاج الطاقة.",sources:"الألبان واللحوم والبقوليات."},
+{name:"اليود",function:"ضروري لتكوين هرمونات الغدة الدرقية.",sources:"الملح المدعم باليود وبعض المأكولات البحرية."},
+{name:"السيلينيوم",function:"يدخل في عمل إنزيمات مضادة للأكسدة ووظائف الغدة الدرقية.",sources:"السمك والبيض واللحوم."},
+{name:"النحاس",function:"يساهم في استقلاب الحديد وتكوين الأنسجة.",sources:"المكسرات والبذور والبقوليات."},
+{name:"المنغنيز",function:"يدخل في عمل إنزيمات استقلاب المغذيات.",sources:"الحبوب الكاملة والمكسرات والبقوليات."},
+{name:"الصوديوم",function:"يساهم في توازن السوائل ووظيفة الأعصاب والعضلات.",sources:"ملح الطعام؛ يُفضّل عدم الإفراط."},
+{name:"الكلوريد",function:"يساهم في توازن السوائل وتكوين حمض المعدة.",sources:"ملح الطعام."},
+{name:"الكولين",function:"يدعم وظائف الخلايا والأعصاب واستقلاب الدهون.",sources:"البيض والسمك واللحوم."},
+{name:"أوميغا 3",function:"أحماض دهنية تساهم في وظائف الخلايا والصحة العامة.",sources:"السلمون والأسماك الدهنية والجوز."}
+];
+
+const foodGrid=document.getElementById("foodGrid");
+const foodSearch=document.getElementById("foodSearch");
+const categoryFilter=document.getElementById("categoryFilter");
+const emptyState=document.getElementById("emptyState");
+const modal=document.getElementById("foodModal");
+const modalBody=document.getElementById("modalBody");
+const modalClose=document.getElementById("modalClose");
+
+/* تحويل النص إلى HTML آمن */
+function escapeHTML(value){
+return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+/* قاعدة بيانات IndexedDB لحفظ ملفات الفيديو محليًا */
+const DB_NAME="BodyResetVideoDB";
+const DB_VERSION=1;
+const STORE_NAME="mealVideos";
+let db=null;
+let currentFoodId=null;
+let temporaryVideoURL=null;
+let currentVideoElement=null;
+
+function openVideoDB(){
+return new Promise((resolve,reject)=>{
+if(!("indexedDB" in window)){reject(new Error("المتصفح لا يدعم التخزين المحلي."));return;}
+const request=indexedDB.open(DB_NAME,DB_VERSION);
+request.onupgradeneeded=()=>{
+const database=request.result;
+if(!database.objectStoreNames.contains(STORE_NAME)){
+database.createObjectStore(STORE_NAME,{keyPath:"foodId"});
+}
+};
+request.onsuccess=()=>{db=request.result;resolve(db);};
+request.onerror=()=>reject(request.error||new Error("تعذر فتح قاعدة البيانات."));
+});
+}
+
+function getVideo(foodId){
+return new Promise((resolve,reject)=>{
+if(!db){reject(new Error("قاعدة البيانات غير جاهزة."));return;}
+const tx=db.transaction(STORE_NAME,"readonly");
+const request=tx.objectStore(STORE_NAME).get(Number(foodId));
+request.onsuccess=()=>resolve(request.result||null);
+request.onerror=()=>reject(request.error);
+});
+}
+
+function saveVideo(foodId,file){
+return new Promise((resolve,reject)=>{
+if(!db){reject(new Error("قاعدة البيانات غير جاهزة."));return;}
+const tx=db.transaction(STORE_NAME,"readwrite");
+tx.objectStore(STORE_NAME).put({
+foodId:Number(foodId),
+name:file.name,
+type:file.type||"video/mp4",
+size:file.size,
+blob:file,
+savedAt:Date.now()
+});
+tx.oncomplete=()=>resolve();
+tx.onerror=()=>reject(tx.error||new Error("فشل حفظ الفيديو."));
+tx.onabort=()=>reject(tx.error||new Error("تم إلغاء الحفظ."));
+});
+}
+
+function deleteVideo(foodId){
+return new Promise((resolve,reject)=>{
+if(!db){reject(new Error("قاعدة البيانات غير جاهزة."));return;}
+const tx=db.transaction(STORE_NAME,"readwrite");
+tx.objectStore(STORE_NAME).delete(Number(foodId));
+tx.oncomplete=()=>resolve();
+tx.onerror=()=>reject(tx.error||new Error("فشل حذف الفيديو."));
+});
+}
+
+function formatSize(bytes){
+if(!Number.isFinite(bytes)||bytes<0)return "";
+if(bytes<1024*1024)return (bytes/1024).toFixed(1)+" كيلوبايت";
+return (bytes/(1024*1024)).toFixed(1)+" ميجابايت";
+}
+
+function showStatus(message,isError=false){
+const status=document.getElementById("videoStatus");
+if(!status)return;
+status.textContent=message;
+status.style.color=isError?"#b42318":"#18573d";
+}
+
+function revokeTemporaryURL(){
+if(temporaryVideoURL){
+URL.revokeObjectURL(temporaryVideoURL);
+temporaryVideoURL=null;
+}
+currentVideoElement=null;
+}
+
+function renderFoods(){
+const term=foodSearch.value.trim().toLowerCase();
+const category=categoryFilter.value;
+const filtered=foods.filter(food=>
+(food.name.toLowerCase().includes(term)||food.description.toLowerCase().includes(term))&&
+(category==="all"||food.category===category)
+);
+foodGrid.innerHTML=filtered.map(food=>`
+<article class="food-card">
+<div class="food-visual" aria-hidden="true">${food.emoji}</div>
+<div class="food-content">
+<h3>${escapeHTML(food.name)}</h3><p>${escapeHTML(food.description)}</p>
+<div class="food-meta">
+<span class="tag">${escapeHTML(food.categoryName)}</span>
+<span class="tag">${food.calories} سعرة</span>
+<span class="tag">${escapeHTML(food.serving)}</span>
+</div>
+<button class="btn" type="button" data-food-id="${food.id}">تفاصيل وطريقة التحضير</button>
+</div></article>`).join("");
+emptyState.style.display=filtered.length?"none":"block";
+}
+
+async function renderPersonalVideo(foodId){
+const area=document.getElementById("personalVideoArea");
+if(!area)return;
+area.innerHTML="<p>جارٍ تحميل حالة الفيديو...</p>";
+try{
+const saved=await getVideo(foodId);
+if(!area.isConnected||currentFoodId!==foodId)return;
+if(!saved){
+area.innerHTML=`
+<h3>🎬 فيديو خاص بالوجبة</h3>
+<p>يمكنك رفع فيديو من جهازك وحفظه لهذه الوجبة. سيظل محفوظًا في هذا المتصفح حتى تحذفيه أو تمسحي بيانات الموقع.</p>
+<label for="mealVideoFile"><strong>اختاري ملف فيديو</strong></label>
+<input class="file-input" id="mealVideoFile" type="file" accept="video/*">
+<div class="video-actions"><button class="btn" id="saveMealVideo" type="button">رفع وحفظ الفيديو</button></div>
+<div class="status-message" id="videoStatus" role="status"></div>`;
+}else{
+area.innerHTML=`
+<h3>🎬 الفيديو المحفوظ لهذه الوجبة</h3>
+<p>اسم الملف: <strong>${escapeHTML(saved.name||"فيديو الوجبة")}</strong></p>
+<p>حجم الملف: ${formatSize(saved.size)}</p>
+<div class="video-frame"><video id="savedMealVideo" controls playsinline preload="metadata"></video></div>
+<div class="video-actions">
+<label class="btn btn-secondary" for="replaceMealVideo">اختيار فيديو بديل</label>
+<input id="replaceMealVideo" type="file" accept="video/*" hidden>
+<button class="btn" id="replaceVideoButton" type="button">استبدال الفيديو</button>
+<button class="btn" id="deleteMealVideo" type="button" style="background:#a83232">حذف الفيديو</button>
+</div>
+<div class="status-message" id="videoStatus" role="status"></div>`;
+const player=document.getElementById("savedMealVideo");
+temporaryVideoURL=URL.createObjectURL(saved.blob);
+player.src=temporaryVideoURL;
+currentVideoElement=player;
+}
+}catch(error){
+area.innerHTML=`<p role="alert">تعذر تحميل الفيديو. ${escapeHTML(error.message||"")}</p>`;
+}
+}
+
+async function handleVideoSave(){
+const input=document.getElementById("mealVideoFile");
+const file=input&&input.files&&input.files[0];
+if(!file){showStatus("اختاري ملف فيديو أولًا.",true);return;}
+if(!file.type.startsWith("video/")){showStatus("الملف المختار ليس ملف فيديو.",true);return;}
+const button=document.getElementById("saveMealVideo");
+button.disabled=true;
+showStatus("جارٍ حفظ الفيديو...");
+try{
+await saveVideo(currentFoodId,file);
+await renderPersonalVideo(currentFoodId);
+showStatus("تم حفظ الفيديو بنجاح.");
+}catch(error){
+showStatus("تعذر الحفظ. قد تكون مساحة التخزين غير كافية أو الملف كبيرًا. "+(error.message||""),true);
+if(button.isConnected)button.disabled=false;
+}
+}
+
+async function handleVideoReplace(){
+const input=document.getElementById("replaceMealVideo");
+const file=input&&input.files&&input.files[0];
+if(!file){showStatus("اختاري الفيديو الجديد أولًا.",true);return;}
+if(!file.type.startsWith("video/")){showStatus("الملف المختار ليس فيديو.",true);return;}
+if(!confirm("هل تريدين استبدال الفيديو الحالي بالفيديو الجديد؟"))return;
+try{
+await saveVideo(currentFoodId,file);
+revokeTemporaryURL();
+await renderPersonalVideo(currentFoodId);
+showStatus("تم استبدال الفيديو وحفظ النسخة الجديدة.");
+}catch(error){
+showStatus("تعذر استبدال الفيديو: "+(error.message||""),true);
+}
+}
+
+async function handleVideoDelete(){
+if(!confirm("هل أنتِ متأكدة من حذف الفيديو المحفوظ لهذه الوجبة؟"))return;
+try{
+await deleteVideo(currentFoodId);
+revokeTemporaryURL();
+await renderPersonalVideo(currentFoodId);
+showStatus("تم حذف الفيديو.");
+}catch(error){
+showStatus("تعذر حذف الفيديو: "+(error.message||""),true);
+}
+}
+
+function showDetail(food){
+revokeTemporaryURL();
+currentFoodId=food.id;
+const ingredients=food.ingredients.map(item=>`<li>${escapeHTML(item)}</li>`).join("");
+const instructions=food.instructions.map(item=>`<li>${escapeHTML(item)}</li>`).join("");
+const youtubeHTML=food.videoId?`
+<div class="recipe-video">
+<h3>🎥 فيديو طريقة التحضير من يوتيوب</h3>
+<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(food.videoId)}" title="طريقة تحضير ${escapeHTML(food.name)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<p class="video-fallback">إذا لم يعمل الفيديو، <a href="https://www.youtube.com/watch?v=${encodeURIComponent(food.videoId)}" target="_blank" rel="noopener noreferrer">شاهديه على يوتيوب</a>.</p>
+</div>`:"";
+modalBody.innerHTML=`
+<div style="font-size:52px">${food.emoji}</div>
+<h2 id="modalTitle">${escapeHTML(food.name)}</h2>
+<p>${escapeHTML(food.description)}</p>
+<div class="food-meta">
+<span class="tag">${food.calories} سعرة حرارية</span>
+<span class="tag">بروتين: ${food.protein} جم</span>
+<span class="tag">كربوهيدرات: ${food.carbs} جم</span>
+<span class="tag">دهون: ${food.fat} جم</span>
+</div>
+<p><strong>حجم الحصة:</strong> ${escapeHTML(food.serving)}</p>
+<p><strong>القيم الغذائية:</strong> تقديرية لكل ${escapeHTML(food.serving)}.</p>
+<h3>المكونات</h3><ul class="detail-list">${ingredients}</ul>
+<h3>طريقة التحضير</h3><ol class="detail-list">${instructions}</ol>
+${youtubeHTML}
+<div class="video-manager" id="personalVideoArea"><h3>🎬 فيديو خاص بالوجبة</h3><p>جارٍ تجهيز مساحة الفيديو...</p></div>`;
+modal.classList.add("open");
+document.body.style.overflow="hidden";
+modalClose.focus();
+renderPersonalVideo(food.id);
+}
+
+foodGrid.addEventListener("click",event=>{
+const button=event.target.closest("[data-food-id]");
+if(!button)return;
+const food=foods.find(item=>item.id===Number(button.dataset.foodId));
+if(food)showDetail(food);
+});
+
+modalBody.addEventListener("click",event=>{
+if(event.target.closest("#saveMealVideo"))handleVideoSave();
+if(event.target.closest("#replaceVideoButton"))handleVideoReplace();
+if(event.target.closest("#deleteMealVideo"))handleVideoDelete();
+});
+
+modalBody.addEventListener("change",event=>{
+if(event.target.id==="replaceMealVideo"){
+const button=document.getElementById("replaceVideoButton");
+if(button)button.textContent=event.target.files.length?"استبدال بالفيديو المختار":"استبدال الفيديو";
+}
+});
+
+function closeModal(){
+modal.classList.remove("open");
+document.body.style.overflow="";
+revokeTemporaryURL();
+modalBody.innerHTML="";
+currentFoodId=null;
+}
+modalClose.addEventListener("click",closeModal);
+modal.addEventListener("click",event=>{if(event.target===modal)closeModal();});
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&modal.classList.contains("open"))closeModal();});
+foodSearch.addEventListener("input",renderFoods);
+categoryFilter.addEventListener("change",renderFoods);
+
+/* حاسبة السعرات: معادلة Mifflin–St Jeor */
+document.getElementById("calorieForm").addEventListener("submit",event=>{
+event.preventDefault();
+const age=Number(document.getElementById("age").value);
+const weight=Number(document.getElementById("weight").value);
+const height=Number(document.getElementById("height").value);
+const gender=document.getElementById("gender").value;
+const activity=Number(document.getElementById("activity").value);
+const goal=document.getElementById("goal").value;
+if(!Number.isFinite(age)||!Number.isFinite(weight)||!Number.isFinite(height)||age<15||age>100||weight<25||weight>350||height<100||height>250){
+alert("من فضلك أدخلي بيانات صحيحة ضمن الحدود الموضحة.");return;
+}
+const bmr=gender==="male"?10*weight+6.25*height-5*age+5:10*weight+6.25*height-5*age-161;
+const maintenance=bmr*activity;
+let target=maintenance;
+let goalText="للحفاظ على الوزن";
+if(goal==="lose"){target=maintenance-400;goalText="لخسارة الوزن تدريجيًا";}
+else if(goal==="gain"){target=maintenance+300;goalText="لزيادة الوزن تدريجيًا";}
+target=Math.round(target);
+const result=document.getElementById("calorieResult");
+result.innerHTML=`
+<h3>نتيجة الحساب</h3>
+<p>معدل الأيض الأساسي التقديري: <strong>${Math.round(bmr)} سعرة/يوم</strong></p>
+<p>سعرات الحفاظ على الوزن: <strong>${Math.round(maintenance)} سعرة/يوم</strong></p>
+<p>هدفك ${goalText}: <strong>${target} سعرة/يوم تقريبًا</strong></p>
+<p>هذه نتيجة تقديرية وليست قياسًا طبيًا. تجنبي خفض السعرات بشدة، واستشيري مختصًا عند وجود حالة صحية أو احتياجات خاصة.</p>`;
+result.style.display="block";
+});
+
+/* عرض الفيتامينات والمعادن */
+document.getElementById("nutrientGrid").innerHTML=nutrients.map(n=>`
+<article class="nutrient-card">
+<h3>${escapeHTML(n.name)}</h3>
+<p>${escapeHTML(n.function)}</p>
+<p style="margin-top:9px"><strong>مصادر غذائية:</strong> ${escapeHTML(n.sources)}</p>
+</article>`).join("");
+
+renderFoods();
+openVideoDB().catch(error=>{
+console.error("BodyReset video database:",error);
+});
+</script>
 </body>
-  </html>
+</html>
