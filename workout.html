@@ -5,321 +5,70 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BODYRESET | Workout</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #101712;
-  color: #f5f7f5;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 24px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 25px;
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: #7ce5a1;
-}
-
-.tag {
-  color: #7ce5a1;
-  background: #1c3024;
-  padding: 9px 14px;
-  border-radius: 25px;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 22px;
-  align-items: center;
-  padding: 26px;
-  background: linear-gradient(130deg, #203b2a, #17221a);
-  border: 1px solid #304938;
-  border-radius: 20px;
-  margin-bottom: 28px;
-}
-
-.hero h1 {
-  font-size: clamp(26px, 4vw, 42px);
-  margin: 0 0 12px;
-}
-
-.hero p {
-  color: #c2d0c5;
-  line-height: 1.9;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.stat {
-  background: #101b14;
-  border-radius: 13px;
-  padding: 16px 8px;
-  text-align: center;
-}
-
-.stat strong {
-  display: block;
-  color: #7ce5a1;
-  font-size: 23px;
-  margin-bottom: 6px;
-}
-
-.heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 26px 0 16px;
-}
-
-.heading h2 {
-  margin: 0;
-  font-size: 23px;
-}
-
-.heading p {
-  color: #a9b9ad;
-}
-
-.filters {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
-}
-
-.filter {
-  padding: 11px 15px;
-  border-radius: 10px;
-  border: 1px solid #34473a;
-  background: #1b271f;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.filter.active,
-.filter:hover {
-  background: #7ce5a1;
-  color: #102016;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 17px;
-}
-
-.card {
-  min-width: 0;
-  overflow: hidden;
-  background: #19221b;
-  border: 1px solid #2e3b31;
-  border-radius: 17px;
-  transition: border-color 0.2s;
-}
-
-.card:hover {
-  border-color: #7ce5a1;
-}
-
-.video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #080b09;
-  overflow: hidden;
-}
-
-.video video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.content {
-  padding: 16px;
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.muscle {
-  background: #21392a;
-  color: #7ce5a1;
-  padding: 6px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.duration {
-  font-size: 12px;
-  color: #b9c7bc;
-}
-
-.content h3 {
-  font-size: 18px;
-  margin: 0 0 9px;
-}
-
-.content p {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #b5c2b8;
-  margin: 0 0 13px;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-  border-top: 1px solid #304035;
-  padding-top: 12px;
-  font-size: 12px;
-}
-
-.info span:last-child {
-  color: #7ce5a1;
-}
-
-.schedule {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
-}
-
-.day {
-  padding: 16px;
-  background: #19221b;
-  border: 1px solid #2e3b31;
-  border-radius: 14px;
-}
-
-.day h3 {
-  color: #7ce5a1;
-  margin: 0 0 9px;
-}
-
-.day p {
-  color: #b5c2b8;
-  line-height: 1.8;
-  font-size: 14px;
-  margin: 0;
-}
-
-.note {
-  margin-top: 24px;
-  padding: 16px;
-  background: #1d2c21;
-  border-radius: 13px;
-  line-height: 1.9;
-  color: #c8d7cc;
-}
-
-.note strong {
-  color: #7ce5a1;
-}
-
-#empty {
-  display: none;
-  color: #c2d0c5;
-}
-
-footer {
-  margin-top: 28px;
-  padding: 18px 0;
-  border-top: 1px solid #2e3b31;
-  color: #93a498;
-  text-align: center;
-  font-size: 13px;
-}
-
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .schedule {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 620px) {
-  .container {
-    padding: 14px;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 19px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .content {
-    padding: 11px;
-  }
-
-  .content h3 {
-    font-size: 16px;
-  }
-
-  .content p {
-    font-size: 13px;
-  }
-
-  .schedule {
-    gap: 9px;
-  }
-
-  .day {
-    padding: 12px;
-  }
-}
-
-@media (max-width: 360px) {
-  .grid,
-  .schedule {
-    grid-template-columns: 1fr;
-  }
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#101712;color:#f5f7f5}
+.container{max-width:1200px;margin:auto;padding:24px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:25px}
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#7ce5a1}
+.tag{color:#7ce5a1;background:#1c3024;padding:9px 14px;border-radius:25px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:26px;background:linear-gradient(130deg,#203b2a,#17221a);border:1px solid #304938;border-radius:20px;margin-bottom:28px}
+.hero h1{font-size:clamp(26px,4vw,42px);margin:0 0 12px}
+.hero p{color:#c2d0c5;line-height:1.9}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{background:#101b14;border-radius:13px;padding:16px 8px;text-align:center}
+.stat strong{display:block;color:#7ce5a1;font-size:23px;margin-bottom:6px}
+.heading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0 16px}
+.heading h2{margin:0;font-size:23px}
+.heading p{color:#a9b9ad}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+button{font-family:inherit}
+.filter,.btn{padding:11px 15px;border-radius:10px;border:1px solid #34473a;background:#1b271f;color:white;cursor:pointer;font-size:14px}
+.filter.active,.filter:hover{background:#7ce5a1;color:#102016}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{min-width:0;overflow:hidden;background:#19221b;border:1px solid #2e3b31;border-radius:17px;transition:border-color .2s}
+.card:hover{border-color:#7ce5a1}
+.video{width:100%;aspect-ratio:16/9;background:#080b09;overflow:hidden}
+.video video,.video iframe{display:block;width:100%;height:100%;border:0;object-fit:contain}
+.content{padding:16px}
+.card-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px}
+.muscle{background:#21392a;color:#7ce5a1;padding:6px 10px;border-radius:20px;font-size:12px}
+.duration{font-size:12px;color:#b9c7bc}
+.content h3{font-size:18px;margin:0 0 9px}
+.content p{font-size:14px;line-height:1.8;color:#b5c2b8;margin:0 0 13px}
+.info{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid #304035;padding-top:12px;font-size:12px}
+.info span:last-child{color:#7ce5a1}
+.schedule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.day{padding:16px;background:#19221b;border:1px solid #2e3b31;border-radius:14px}
+.day h3{color:#7ce5a1;margin:0 0 9px}
+.day p{color:#b5c2b8;line-height:1.8;font-size:14px;margin:0}
+.note{margin-top:24px;padding:16px;background:#1d2c21;border-radius:13px;line-height:1.9;color:#c8d7cc}
+.note strong{color:#7ce5a1}
+footer{margin-top:28px;padding:18px 0;border-top:1px solid #2e3b31;color:#93a498;text-align:center;font-size:13px}
+.panel{margin:24px 0;padding:20px;background:#17231a;border:1px solid #36533d;border-radius:17px}
+.panel h2,.panel h3{margin-top:0}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+input,select,textarea{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;background:#101712;color:white;font:inherit;min-width:0}
+textarea{min-height:80px;resize:vertical}
+.btn{background:#7ce5a1;color:#102016;border:0;font-weight:bold;margin:4px 2px}
+.btn.secondary{background:#26382b;color:white;border:1px solid #405545}
+.btn.danger{background:#632d2d;color:white}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.status{line-height:1.8;color:#bfe8ca;overflow-wrap:anywhere}
+.status.error{color:#ffaaa5}
+.admin-actions{display:flex;gap:7px;flex-wrap:wrap}
+.admin-card-actions{padding:0 12px 12px}
+.small{font-size:12px;color:#a9b9ad;line-height:1.8}
+#empty{display:none;color:#c2d0c5}
+.hidden{display:none!important}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.schedule{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.container{padding:14px}.hero{grid-template-columns:1fr;padding:19px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.content{padding:11px}.content h3{font-size:16px}.content p{font-size:13px}.schedule{gap:9px}.day{padding:12px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(max-width:360px){.grid,.schedule{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -334,27 +83,106 @@ footer {
 <section class="hero">
   <div>
     <h1>قوّي جسمك، تمرين ورا تمرين 🔥</h1>
-    <p>
-      اختار مجموعة العضلات اللي عايز تتمرنها، وشاهد فيديوهات التمارين.
-      ابدأ بالتدريج واهتم بالأداء الصحيح قبل زيادة الأوزان.
-    </p>
+    <p>اختار مجموعة العضلات اللي عايز تتمرنها، وشاهد فيديوهات التمارين. ابدأ بالتدريج واهتم بالأداء الصحيح قبل زيادة الأوزان.</p>
     <div class="tag">ابدأ بمستواك وطور نفسك كل أسبوع</div>
   </div>
-
   <div class="stats">
-    <div class="stat">
-      <strong>6</strong>
-      <small>تمارين</small>
-    </div>
-    <div class="stat">
-      <strong>3</strong>
-      <small>أيام تدريب</small>
-    </div>
-    <div class="stat">
-      <strong>45</strong>
-      <small>دقيقة تقريبًا</small>
-    </div>
+    <div class="stat"><strong id="videoCount">6</strong><small>تمارين</small></div>
+    <div class="stat"><strong>3</strong><small>أيام تدريب</small></div>
+    <div class="stat"><strong>45</strong><small>دقيقة تقريبًا</small></div>
   </div>
+</section>
+
+<!-- لوحة الدخول -->
+<section class="panel" id="loginPanel">
+  <h2>دخول الإدارة</h2>
+  <p class="small">القسم ده مخصص للأدمن فقط. تسجيل الدخول لا يمنح الصلاحيات إلا للحسابات المضافة إلى قائمة الأدمن في قاعدة البيانات.</p>
+  <form id="loginForm">
+    <div class="form-grid">
+      <label class="field">البريد الإلكتروني
+        <input id="email" type="email" autocomplete="username" required>
+      </label>
+      <label class="field">كلمة المرور
+        <input id="password" type="password" autocomplete="current-password" required>
+      </label>
+    </div>
+    <button class="btn" type="submit" id="loginButton">تسجيل الدخول</button>
+  </form>
+  <p id="loginStatus" class="status" role="status"></p>
+</section>
+
+<!-- لوحة الإدارة -->
+<section class="panel hidden" id="adminPanel">
+  <div class="heading">
+    <h2>لوحة إدارة التمارين</h2>
+    <button class="btn secondary" id="logoutButton" type="button">تسجيل الخروج</button>
+  </div>
+
+  <p class="small">تقدر تضيف فيديو من يوتيوب أو رابط فيديو مباشر أو ترفع ملف MP4. الفيديوهات تُحفظ في قاعدة بيانات Supabase.</p>
+
+  <form id="videoForm">
+    <input id="editId" type="hidden">
+
+    <div class="form-grid">
+      <label class="field">اسم التمرين
+        <input id="title" maxlength="150" required placeholder="مثال: تمرين ضغط الصدر">
+      </label>
+
+      <label class="field">مجموعة العضلات
+        <select id="muscle" required>
+          <option value="chest">الصدر</option>
+          <option value="back">الظهر</option>
+          <option value="legs">الرجل</option>
+          <option value="arms">الذراع</option>
+          <option value="shoulders">الأكتاف</option>
+          <option value="core">البطن</option>
+          <option value="full_body">الجسم بالكامل</option>
+        </select>
+      </label>
+
+      <label class="field full">وصف التمرين
+        <textarea id="description" maxlength="1000" placeholder="اكتب شرحًا مختصرًا للتمرين"></textarea>
+      </label>
+
+      <label class="field">نوع الفيديو
+        <select id="sourceType" required>
+          <option value="youtube">رابط يوتيوب</option>
+          <option value="direct">رابط فيديو مباشر</option>
+          <option value="upload">رفع ملف MP4</option>
+        </select>
+      </label>
+
+      <label class="field" id="urlField">رابط الفيديو
+        <input id="videoUrl" type="url" placeholder="https://...">
+      </label>
+
+      <label class="field hidden" id="fileField">ملف الفيديو
+        <input id="videoFile" type="file" accept="video/mp4,video/webm,video/ogg">
+      </label>
+
+      <label class="field">عدد المجموعات
+        <input id="sets" type="number" min="1" max="20" value="3" required>
+      </label>
+
+      <label class="field">عدد التكرارات
+        <input id="reps" maxlength="50" value="8–12 تكرار" required>
+      </label>
+
+      <label class="field">الراحة بين المجموعات
+        <input id="rest" maxlength="50" value="راحة 60 ثانية" required>
+      </label>
+
+      <label class="field">ترتيب العرض
+        <input id="sortOrder" type="number" min="0" max="100000" value="0">
+      </label>
+    </div>
+
+    <div class="admin-actions" style="margin-top:14px">
+      <button class="btn" id="saveButton" type="submit">حفظ التمرين</button>
+      <button class="btn secondary hidden" id="cancelEditButton" type="button">إلغاء التعديل</button>
+    </div>
+  </form>
+  <p id="adminStatus" class="status" role="status"></p>
 </section>
 
 <section>
@@ -364,218 +192,611 @@ footer {
   </div>
 
   <div class="filters">
-    <button class="filter active" data-filter="all">الكل</button>
-    <button class="filter" data-filter="chest">الصدر</button>
-    <button class="filter" data-filter="back">الظهر</button>
-    <button class="filter" data-filter="legs">الرجل</button>
-    <button class="filter" data-filter="arms">الذراع</button>
+    <button class="filter active" data-filter="all" type="button">الكل</button>
+    <button class="filter" data-filter="chest" type="button">الصدر</button>
+    <button class="filter" data-filter="back" type="button">الظهر</button>
+    <button class="filter" data-filter="legs" type="button">الرجل</button>
+    <button class="filter" data-filter="arms" type="button">الذراع</button>
+    <button class="filter" data-filter="shoulders" type="button">الأكتاف</button>
+    <button class="filter" data-filter="core" type="button">البطن</button>
+    <button class="filter" data-filter="full_body" type="button">الجسم بالكامل</button>
   </div>
 
   <div class="grid" id="workouts">
+    <!-- فيديوهات احتياطية تظهر إذا لم توجد فيديوهات في قاعدة البيانات -->
 
-    <!-- تمرين الصدر 1: غيّر اسم ملف الفيديو -->
     <article class="card" data-muscle="chest">
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="videos/chest-workout.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+      <div class="video"><video controls playsinline preload="metadata"><source src="videos/chest-workout.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
       <div class="content">
-        <div class="card-top">
-          <span class="muscle">الصدر</span>
-          <span class="duration">3 مجموعات</span>
-        </div>
+        <div class="card-top"><span class="muscle">الصدر</span><span class="duration">3 مجموعات</span></div>
         <h3>تمرين الصدر</h3>
         <p>نفّذ الحركة بتحكم، وحافظ على وضع جسمك الصحيح طوال التمرين.</p>
-        <div class="info">
-          <span>8–12 تكرار</span>
-          <span>راحة 60 ثانية</span>
-        </div>
+        <div class="info"><span>8–12 تكرار</span><span>راحة 60 ثانية</span></div>
       </div>
     </article>
 
-    <!-- تمرين الظهر -->
     <article class="card" data-muscle="back">
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="videos/back-workout.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+      <div class="video"><video controls playsinline preload="metadata"><source src="videos/back-workout.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
       <div class="content">
-        <div class="card-top">
-          <span class="muscle">الظهر</span>
-          <span class="duration">3 مجموعات</span>
-        </div>
+        <div class="card-top"><span class="muscle">الظهر</span><span class="duration">3 مجموعات</span></div>
         <h3>تمرين الظهر</h3>
         <p>حافظ على ظهرك في وضع مناسب وتجنب استخدام الزخم أثناء الحركة.</p>
-        <div class="info">
-          <span>8–12 تكرار</span>
-          <span>راحة 90 ثانية</span>
-        </div>
+        <div class="info"><span>8–12 تكرار</span><span>راحة 90 ثانية</span></div>
       </div>
     </article>
 
-    <!-- تمرين الرجل -->
     <article class="card" data-muscle="legs">
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="videos/legs-workout.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+      <div class="video"><video controls playsinline preload="metadata"><source src="videos/legs-workout.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
       <div class="content">
-        <div class="card-top">
-          <span class="muscle">الرجل</span>
-          <span class="duration">3 مجموعات</span>
-        </div>
+        <div class="card-top"><span class="muscle">الرجل</span><span class="duration">3 مجموعات</span></div>
         <h3>تمرين الرجل</h3>
         <p>ابدأ بإحماء جيد، وتحرك بمدى مريح مع الحفاظ على التوازن.</p>
-        <div class="info">
-          <span>10–15 تكرار</span>
-          <span>راحة 60 ثانية</span>
-        </div>
+        <div class="info"><span>10–15 تكرار</span><span>راحة 60 ثانية</span></div>
       </div>
     </article>
 
-    <!-- تمرين الذراع -->
     <article class="card" data-muscle="arms">
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="videos/arms-workout.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+      <div class="video"><video controls playsinline preload="metadata"><source src="videos/arms-workout.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
       <div class="content">
-        <div class="card-top">
-          <span class="muscle">الذراع</span>
-          <span class="duration">3 مجموعات</span>
-        </div>
+        <div class="card-top"><span class="muscle">الذراع</span><span class="duration">3 مجموعات</span></div>
         <h3>تمرين الذراع</h3>
         <p>استخدم وزنًا مناسبًا، وحافظ على التحكم في الرفع والنزول.</p>
-        <div class="info">
-          <span>10–12 تكرار</span>
-          <span>راحة 60 ثانية</span>
-        </div>
+        <div class="info"><span>10–12 تكرار</span><span>راحة 60 ثانية</span></div>
       </div>
     </article>
 
-    <!-- تمرين صدر إضافي -->
     <article class="card" data-muscle="chest">
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="videos/chest-workout-2.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+      <div class="video"><video controls playsinline preload="metadata"><source src="videos/chest-workout-2.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
       <div class="content">
-        <div class="card-top">
-          <span class="muscle">الصدر</span>
-          <span class="duration">3 مجموعات</span>
-        </div>
+        <div class="card-top"><span class="muscle">الصدر</span><span class="duration">3 مجموعات</span></div>
         <h3>تمرين صدر إضافي</h3>
         <p>ركز على ثبات الحركة واستخدم وزنًا تستطيع التحكم فيه.</p>
-        <div class="info">
-          <span>8–12 تكرار</span>
-          <span>راحة 90 ثانية</span>
-        </div>
+        <div class="info"><span>8–12 تكرار</span><span>راحة 90 ثانية</span></div>
       </div>
     </article>
 
-    <!-- تمرين رجل إضافي -->
     <article class="card" data-muscle="legs">
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="videos/legs-workout-2.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
-        </video>
-      </div>
+      <div class="video"><video controls playsinline preload="metadata"><source src="videos/legs-workout-2.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
       <div class="content">
-        <div class="card-top">
-          <span class="muscle">الرجل</span>
-          <span class="duration">3 مجموعات</span>
-        </div>
+        <div class="card-top"><span class="muscle">الرجل</span><span class="duration">3 مجموعات</span></div>
         <h3>تمرين رجل إضافي</h3>
         <p>نفّذ التمرين ببطء وتحكم، وتوقف لو شعرت بألم حاد.</p>
-        <div class="info">
-          <span>10–12 تكرار</span>
-          <span>راحة 60 ثانية</span>
-        </div>
+        <div class="info"><span>10–12 تكرار</span><span>راحة 60 ثانية</span></div>
       </div>
     </article>
-
   </div>
-
   <p id="empty">لا توجد تمارين في القسم ده حاليًا.</p>
+  <p id="loadStatus" class="small" role="status"></p>
 </section>
 
 <section>
-  <div class="heading">
-    <h2>جدول أسبوعي مقترح</h2>
-    <p>نظّم تمرينك واستشفاءك</p>
-  </div>
-
+  <div class="heading"><h2>جدول أسبوعي مقترح</h2><p>نظّم تمرينك واستشفاءك</p></div>
   <div class="schedule">
-    <div class="day">
-      <h3>اليوم الأول</h3>
-      <p>صدر وذراع<br>3 مجموعات لكل تمرين<br>اهتم بالتكنيك</p>
-    </div>
-    <div class="day">
-      <h3>اليوم الثاني</h3>
-      <p>ظهر وذراع<br>3 مجموعات لكل تمرين<br>راحة بين المجموعات</p>
-    </div>
-    <div class="day">
-      <h3>اليوم الثالث</h3>
-      <p>رجل<br>3 مجموعات لكل تمرين<br>ابدأ بإحماء جيد</p>
-    </div>
-    <div class="day">
-      <h3>أيام الراحة</h3>
-      <p>مشي خفيف أو راحة<br>نوم كفاية<br>اشرب مياه بانتظام</p>
-    </div>
+    <div class="day"><h3>اليوم الأول</h3><p>صدر وذراع<br>3 مجموعات لكل تمرين<br>اهتم بالتكنيك</p></div>
+    <div class="day"><h3>اليوم الثاني</h3><p>ظهر وذراع<br>3 مجموعات لكل تمرين<br>راحة بين المجموعات</p></div>
+    <div class="day"><h3>اليوم الثالث</h3><p>رجل<br>3 مجموعات لكل تمرين<br>ابدأ بإحماء جيد</p></div>
+    <div class="day"><h3>أيام الراحة</h3><p>مشي خفيف أو راحة<br>نوم كفاية<br>اشرب مياه بانتظام</p></div>
   </div>
 </section>
 
-<aside class="note">
-  <strong>مهم قبل التمرين:</strong>
-  اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه.
-  أوقف التمرين لو شعرت بألم حاد أو دوخة.
-</aside>
+<aside class="note"><strong>مهم قبل التمرين:</strong> اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه. أوقف التمرين لو شعرت بألم حاد أو دوخة.</aside>
 
-<footer>
-  BODYRESET — استمر، وتقدم خطوة كل يوم 💚
-</footer>
-
+<footer>BODYRESET — استمر، وتقدم خطوة كل يوم 💚</footer>
 </main>
 
 <script>
-const buttons = document.querySelectorAll(".filter");
-const cards = document.querySelectorAll(".card");
-const empty = document.getElementById("empty");
+/*
+  إعدادات Supabase:
+  ضع الـ Project URL والـ Publishable key الخاصين بمشروعك هنا.
+  لا تستخدم service_role أو Secret key في ملف HTML.
+*/
+const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
+const SUPABASE_KEY = "ضع_هنا_الـ_Publishable_key_الصحيح_من_Supabase";
 
-buttons.forEach(button => {
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const $ = id => document.getElementById(id);
+
+const loginPanel = $("loginPanel");
+const adminPanel = $("adminPanel");
+const loginForm = $("loginForm");
+const videoForm = $("videoForm");
+const workouts = $("workouts");
+const empty = $("empty");
+const sourceType = $("sourceType");
+const urlField = $("urlField");
+const fileField = $("fileField");
+const videoFile = $("videoFile");
+const saveButton = $("saveButton");
+
+let currentUser = null;
+let isAdmin = false;
+let activeFilter = "all";
+let dbVideos = [];
+let usingDatabaseVideos = false;
+
+const muscleNames = {
+  chest: "الصدر",
+  back: "الظهر",
+  legs: "الرجل",
+  arms: "الذراع",
+  shoulders: "الأكتاف",
+  core: "البطن",
+  full_body: "الجسم بالكامل"
+};
+
+function setStatus(id, message, error = false) {
+  const el = $(id);
+  el.textContent = message || "";
+  el.classList.toggle("error", error);
+}
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function validHttpUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+function getYouTubeId(value) {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.replace(/^www\./, "").toLowerCase();
+
+    if (host === "youtu.be") {
+      return url.pathname.split("/").filter(Boolean)[0] || null;
+    }
+
+    if (
+      host === "youtube.com" ||
+      host === "m.youtube.com" ||
+      host === "youtube-nocookie.com"
+    ) {
+      if (url.pathname === "/watch") return url.searchParams.get("v");
+      const parts = url.pathname.split("/").filter(Boolean);
+      if (["embed", "shorts", "live"].includes(parts[0])) return parts[1] || null;
+    }
+  } catch {}
+  return null;
+}
+
+function renderVideoMedia(video) {
+  const type = video.source_type;
+  const url = video.video_url || "";
+
+  if (type === "youtube") {
+    const id = getYouTubeId(url);
+    if (!id) {
+      return '<div style="padding:18px;color:#ffaaa5">رابط يوتيوب غير صالح.</div>';
+    }
+    return `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}" title="${escapeHTML(video.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  }
+
+  if (!validHttpUrl(url)) {
+    return '<div style="padding:18px;color:#ffaaa5">رابط الفيديو غير صالح.</div>';
+  }
+
+  return `<video controls playsinline preload="metadata"><source src="${escapeHTML(url)}">متصفحك لا يدعم تشغيل الفيديو.</video>`;
+}
+
+function renderDbCard(video) {
+  const title = escapeHTML(video.title);
+  const description = escapeHTML(video.description || "");
+  const muscle = muscleNames[video.muscle_group] || "تمرين";
+  const sets = Number(video.sets) || 3;
+  const reps = escapeHTML(video.reps || "حسب البرنامج");
+  const rest = escapeHTML(video.rest || "راحة حسب الحاجة");
+
+  let adminButtons = "";
+  if (isAdmin) {
+    adminButtons = `
+      <div class="admin-card-actions">
+        <button class="btn secondary" type="button" data-edit="${escapeHTML(video.id)}">تعديل</button>
+        <button class="btn danger" type="button" data-delete="${escapeHTML(video.id)}">حذف</button>
+      </div>`;
+  }
+
+  return `
+    <article class="card" data-muscle="${escapeHTML(video.muscle_group)}">
+      <div class="video">${renderVideoMedia(video)}</div>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">${escapeHTML(muscle)}</span>
+          <span class="duration">${sets} مجموعات</span>
+        </div>
+        <h3>${title}</h3>
+        <p>${description}</p>
+        <div class="info"><span>${reps}</span><span>${rest}</span></div>
+      </div>
+      ${adminButtons}
+    </article>`;
+}
+
+function applyFilter() {
+  const cards = workouts.querySelectorAll(".card");
+  let count = 0;
+
+  cards.forEach(card => {
+    const show = activeFilter === "all" || card.dataset.muscle === activeFilter;
+    card.style.display = show ? "" : "none";
+    if (show) count++;
+  });
+
+  empty.style.display = count ? "none" : "block";
+
+  document.querySelectorAll(".filter").forEach(button => {
+    button.classList.toggle("active", button.dataset.filter === activeFilter);
+  });
+}
+
+document.querySelectorAll(".filter").forEach(button => {
   button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-    let count = 0;
-
-    buttons.forEach(item => {
-      item.classList.toggle("active", item === button);
-    });
-
-    cards.forEach(card => {
-      const show =
-        filter === "all" ||
-        card.dataset.muscle === filter;
-
-      card.style.display = show ? "" : "none";
-
-      if (show) count++;
-    });
-
-    empty.style.display = count ? "none" : "block";
+    activeFilter = button.dataset.filter;
+    applyFilter();
   });
 });
-</script>
 
+function updateVideoCount() {
+  $("videoCount").textContent = usingDatabaseVideos
+    ? dbVideos.length
+    : workouts.querySelectorAll(".card").length;
+}
+
+async function loadVideos() {
+  setStatus("loadStatus", "جارٍ تحميل الفيديوهات...");
+
+  const { data, error } = await supabaseClient
+    .from("workout_videos")
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    setStatus("loadStatus", "تعذر تحميل فيديوهات Supabase. سيتم عرض الفيديوهات المحلية الحالية. تحقق من الاتصال وسياسات القراءة.", true);
+    usingDatabaseVideos = false;
+    updateVideoCount();
+    applyFilter();
+    return;
+  }
+
+  dbVideos = data || [];
+
+  /*
+    نحتفظ بالفيديوهات المحلية كخطة احتياطية عندما تكون قاعدة البيانات فارغة.
+    بمجرد إضافة فيديوهات في قاعدة البيانات، تصبح هي القائمة المعروضة.
+  */
+  if (dbVideos.length > 0) {
+    usingDatabaseVideos = true;
+    workouts.innerHTML = dbVideos.map(renderDbCard).join("");
+    setStatus("loadStatus", `تم تحميل ${dbVideos.length} فيديو من قاعدة البيانات.`);
+  } else {
+    usingDatabaseVideos = false;
+    setStatus("loadStatus", "لا توجد فيديوهات محفوظة في قاعدة البيانات حتى الآن. يتم عرض الفيديوهات المحلية.");
+  }
+
+  updateVideoCount();
+  applyFilter();
+}
+
+async function refreshAdminState() {
+  const { data: sessionData, error: sessionError } =
+    await supabaseClient.auth.getSession();
+
+  if (sessionError) {
+    setStatus("loginStatus", "تعذر التحقق من جلسة الدخول: " + sessionError.message, true);
+    return;
+  }
+
+  const user = sessionData.session?.user || null;
+  currentUser = user;
+  isAdmin = false;
+
+  if (user) {
+    const { data, error } = await supabaseClient
+      .from("workout_admins")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (!error && data) {
+      isAdmin = true;
+    } else if (error) {
+      setStatus("loginStatus", "تم تسجيل الدخول لكن تعذر التحقق من صلاحيات الأدمن. راجع سياسات RLS وجدول workout_admins.", true);
+    }
+  }
+
+  loginPanel.classList.toggle("hidden", isAdmin);
+  adminPanel.classList.toggle("hidden", !isAdmin);
+
+  if (isAdmin) {
+    setStatus("loginStatus", "");
+    setStatus("adminStatus", "تم تسجيل الدخول بصلاحيات الأدمن.");
+  } else if (user) {
+    setStatus("loginStatus", "الحساب مسجل الدخول لكنه ليس ضمن قائمة الأدمن. تأكد من إضافة UID إلى workout_admins.", true);
+  }
+
+  // إعادة رسم الفيديوهات حتى تظهر أزرار الإدارة للأدمن فقط
+  if (dbVideos.length) {
+    workouts.innerHTML = dbVideos.map(renderDbCard).join("");
+    usingDatabaseVideos = true;
+    updateVideoCount();
+    applyFilter();
+  }
+}
+
+loginForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  setStatus("loginStatus", "جارٍ تسجيل الدخول...");
+  $("loginButton").disabled = true;
+
+  try {
+    const { error } = await supabaseClient.auth.signInWithPassword({
+      email: $("email").value.trim(),
+      password: $("password").value
+    });
+
+    if (error) throw error;
+
+    await refreshAdminState();
+
+    if (isAdmin) {
+      setStatus("adminStatus", "تم تسجيل الدخول بنجاح.");
+      await loadVideos();
+    }
+  } catch (error) {
+    setStatus("loginStatus", "فشل تسجيل الدخول: " + error.message, true);
+  } finally {
+    $("loginButton").disabled = false;
+  }
+});
+
+$("logoutButton").addEventListener("click", async () => {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    setStatus("adminStatus", "تعذر تسجيل الخروج: " + error.message, true);
+    return;
+  }
+
+  currentUser = null;
+  isAdmin = false;
+  adminPanel.classList.add("hidden");
+  loginPanel.classList.remove("hidden");
+  setStatus("loginStatus", "تم تسجيل الخروج.");
+  await loadVideos();
+});
+
+sourceType.addEventListener("change", () => {
+  const type = sourceType.value;
+  urlField.classList.toggle("hidden", type === "upload");
+  fileField.classList.toggle("hidden", type !== "upload");
+  $("videoUrl").required = type !== "upload";
+  videoFile.required = type === "upload" && !$("editId").value;
+});
+
+function resetVideoForm() {
+  videoForm.reset();
+  $("editId").value = "";
+  $("sets").value = "3";
+  $("reps").value = "8–12 تكرار";
+  $("rest").value = "راحة 60 ثانية";
+  $("sortOrder").value = "0";
+  $("saveButton").textContent = "حفظ التمرين";
+  $("cancelEditButton").classList.add("hidden");
+  videoFile.value = "";
+  sourceType.dispatchEvent(new Event("change"));
+}
+
+$("cancelEditButton").addEventListener("click", resetVideoForm);
+
+async function uploadVideoFile(file) {
+  if (!file) throw new Error("اختار ملف فيديو أولًا.");
+
+  const allowedTypes = ["video/mp4", "video/webm", "video/ogg"];
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error("نوع الملف غير مدعوم. اختار MP4 أو WebM أو Ogg.");
+  }
+
+  // الحد الافتراضي 100 ميجابايت لتجنب رفع ملفات كبيرة بالخطأ.
+  if (file.size > 100 * 1024 * 1024) {
+    throw new Error("حجم الملف أكبر من 100 ميجابايت. استخدم ملفًا أصغر أو إعداد رفع مناسبًا في Supabase.");
+  }
+
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+  const path = `${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+
+  const { error } = await supabaseClient.storage
+    .from("workout-videos")
+    .upload(path, file, {
+      upsert: false,
+      contentType: file.type
+    });
+
+  if (error) throw error;
+
+  const { data } = supabaseClient.storage
+    .from("workout-videos")
+    .getPublicUrl(path);
+
+  if (!data?.publicUrl) {
+    throw new Error("تم رفع الملف لكن تعذر الحصول على رابطه العام.");
+  }
+
+  return data.publicUrl;
+}
+
+videoForm.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!isAdmin || !currentUser) {
+    setStatus("adminStatus", "سجّل الدخول بحساب أدمن أولًا.", true);
+    return;
+  }
+
+  saveButton.disabled = true;
+  setStatus("adminStatus", "جارٍ حفظ التمرين...");
+
+  try {
+    const editId = $("editId").value;
+    const type = sourceType.value;
+    let videoUrl = $("videoUrl").value.trim();
+
+    if (type === "upload") {
+      if (videoFile.files[0]) {
+        videoUrl = await uploadVideoFile(videoFile.files[0]);
+      } else if (!editId) {
+        throw new Error("اختار ملف فيديو للرفع.");
+      } else {
+        const oldVideo = dbVideos.find(video => String(video.id) === editId);
+        if (!oldVideo || oldVideo.source_type !== "upload") {
+          throw new Error("اختار ملف الفيديو الجديد.");
+        }
+        videoUrl = oldVideo.video_url;
+      }
+    } else {
+      if (!validHttpUrl(videoUrl)) {
+        throw new Error("أدخل رابطًا صحيحًا يبدأ بـ http أو https.");
+      }
+
+      if (type === "youtube" && !getYouTubeId(videoUrl)) {
+        throw new Error("رابط يوتيوب غير صالح. استخدم رابط فيديو عادي أو Shorts.");
+      }
+    }
+
+    const record = {
+      title: $("title").value.trim(),
+      description: $("description").value.trim(),
+      muscle_group: $("muscle").value,
+      source_type: type,
+      video_url: videoUrl,
+      sets: Number($("sets").value),
+      reps: $("reps").value.trim(),
+      rest: $("rest").value.trim(),
+      sort_order: Number($("sortOrder").value || 0),
+      updated_at: new Date().toISOString()
+    };
+
+    if (!record.title) throw new Error("اكتب اسم التمرين.");
+    if (!Number.isFinite(record.sets) || record.sets < 1) throw new Error("عدد المجموعات غير صحيح.");
+
+    let result;
+
+    if (editId) {
+      result = await supabaseClient
+        .from("workout_videos")
+        .update(record)
+        .eq("id", editId)
+        .select()
+        .single();
+    } else {
+      result = await supabaseClient
+        .from("workout_videos")
+        .insert(record)
+        .select()
+        .single();
+    }
+
+    if (result.error) throw result.error;
+
+    resetVideoForm();
+    setStatus("adminStatus", editId ? "تم تعديل التمرين بنجاح." : "تمت إضافة التمرين بنجاح.");
+    await loadVideos();
+    await refreshAdminState();
+  } catch (error) {
+    setStatus("adminStatus", "تعذر الحفظ: " + error.message, true);
+  } finally {
+    saveButton.disabled = false;
+  }
+});
+
+workouts.addEventListener("click", async event => {
+  const editButton = event.target.closest("[data-edit]");
+  const deleteButton = event.target.closest("[data-delete]");
+
+  if (!isAdmin) return;
+
+  if (editButton) {
+    const video = dbVideos.find(item => String(item.id) === editButton.dataset.edit);
+    if (!video) return;
+
+    $("editId").value = video.id;
+    $("title").value = video.title || "";
+    $("description").value = video.description || "";
+    $("muscle").value = video.muscle_group || "chest";
+    $("sourceType").value = video.source_type || "youtube";
+    $("videoUrl").value = video.video_url || "";
+    $("sets").value = video.sets || 3;
+    $("reps").value = video.reps || "8–12 تكرار";
+    $("rest").value = video.rest || "راحة 60 ثانية";
+    $("sortOrder").value = video.sort_order || 0;
+
+    videoFile.value = "";
+    sourceType.dispatchEvent(new Event("change"));
+    videoFile.required = false;
+    $("saveButton").textContent = "حفظ التعديلات";
+    $("cancelEditButton").classList.remove("hidden");
+    setStatus("adminStatus", "عدّل البيانات ثم اضغط حفظ التعديلات.");
+    $("videoForm").scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  if (deleteButton) {
+    const id = deleteButton.dataset.delete;
+    const video = dbVideos.find(item => String(item.id) === id);
+    if (!video) return;
+
+    if (!confirm(`متأكد إنك عايز تحذف "${video.title}"؟`)) return;
+
+    setStatus("adminStatus", "جارٍ حذف التمرين...");
+
+    const { error } = await supabaseClient
+      .from("workout_videos")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      setStatus("adminStatus", "تعذر حذف التمرين: " + error.message, true);
+      return;
+    }
+
+    setStatus("adminStatus", "تم حذف سجل التمرين.");
+    await loadVideos();
+  }
+});
+
+supabaseClient.auth.onAuthStateChange(() => {
+  // تأخير بسيط لتجنب استدعاءات متداخلة أثناء تحديث جلسة المصادقة.
+  setTimeout(() => refreshAdminState(), 0);
+});
+
+(async function init() {
+  if (
+    !SUPABASE_URL.startsWith("https://") ||
+    SUPABASE_KEY.includes("ضع_هنا")
+  ) {
+    setStatus("loginStatus", "أضف Publishable key الصحيح في إعدادات الكود قبل تسجيل الدخول.", true);
+    await loadVideos();
+    return;
+  }
+
+  await loadVideos();
+  await refreshAdminState();
+})();
+</script>
 </body>
 </html>
