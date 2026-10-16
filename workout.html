@@ -3,14 +3,14 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BODYRESET | Workout</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#101712;color:#f5f7f5}
 .container{max-width:1200px;margin:auto;padding:24px}
-header,.heading,.card-top,.admin-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header,.heading,.admin-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 header{margin-bottom:25px}
 .logo{font-size:26px;font-weight:bold}.logo span{color:#7ce5a1}
 .tag{color:#7ce5a1;background:#1c3024;padding:9px 14px;border-radius:25px}
@@ -29,9 +29,7 @@ button{font-family:inherit}
 .card{min-width:0;overflow:hidden;background:#19221b;border:1px solid #2e3b31;border-radius:17px}
 .card:hover{border-color:#7ce5a1}
 .video{width:100%;aspect-ratio:16/9;background:#080b09;overflow:hidden}
-.video video,.video iframe{display:block;width:100%;height:100%;border:0;object-fit:contain}
-.video-link{display:flex;width:100%;height:100%;align-items:center;justify-content:center;color:white;text-decoration:none;background:#18241b}
-.video-link span{background:#d92727;padding:13px 18px;border-radius:10px}
+.video video{display:block;width:100%;height:100%;border:0;object-fit:contain}
 .admin-card-actions{padding:10px}
 .schedule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
 .day{padding:16px;background:#19221b;border:1px solid #2e3b31;border-radius:14px}
@@ -44,6 +42,7 @@ footer{margin-top:28px;padding:18px 0;border-top:1px solid #2e3b31;color:#93a498
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .field{display:flex;flex-direction:column;gap:7px}
 input,select{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;background:#101712;color:white;font:inherit;min-width:0}
+input[type=file]{padding:10px}
 .btn{background:#7ce5a1;color:#102016;border:0;font-weight:bold;margin:4px 2px}
 .btn.secondary{background:#26382b;color:white;border:1px solid #405545}
 .btn.danger{background:#632d2d;color:white}
@@ -79,7 +78,6 @@ input,select{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;
   </div>
 </section>
 
-<!-- زر دخول الإدارة فقط؛ لوحة الدخول مخفية افتراضيًا -->
 <div style="text-align:left">
   <button class="btn secondary admin-toggle" id="showLoginButton" type="button">دخول الأدمن</button>
 </div>
@@ -103,10 +101,10 @@ input,select{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;
 
 <section class="panel hidden" id="adminPanel">
   <div class="heading">
-    <h2>إدارة الفيديوهات</h2>
+    <h2>رفع فيديو تمرين</h2>
     <button class="btn secondary" id="logoutButton" type="button">تسجيل الخروج</button>
   </div>
-  <p class="small">اختار ملف فيديو أو أدخل رابط يوتيوب. العميل هيشوف الفيديو فقط.</p>
+  <p class="small">اختار مجموعة العضلات ثم اختار ملف الفيديو واضغط رفع الفيديو. العميل هيشوف الفيديو فقط.</p>
 
   <form id="videoForm">
     <input id="editId" type="hidden">
@@ -122,22 +120,12 @@ input,select{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;
           <option value="full_body">الجسم بالكامل</option>
         </select>
       </label>
-      <label class="field">نوع الفيديو
-        <select id="sourceType" required>
-          <option value="youtube">يوتيوب — فتح على يوتيوب مباشرة</option>
-          <option value="upload">رفع ملف فيديو</option>
-          <option value="direct">رابط فيديو مباشر</option>
-        </select>
-      </label>
-      <label class="field" id="urlField">رابط الفيديو
-        <input id="videoUrl" type="url" placeholder="https://youtube.com/watch?v=..." >
-      </label>
-      <label class="field hidden" id="fileField">ملف الفيديو
-        <input id="videoFile" type="file" accept="video/mp4,video/webm,video/ogg">
+      <label class="field">اختار ملف الفيديو
+        <input id="videoFile" type="file" accept="video/*" required>
       </label>
     </div>
     <div class="admin-actions" style="margin-top:14px">
-      <button class="btn" id="saveButton" type="submit">إضافة الفيديو</button>
+      <button class="btn" id="saveButton" type="submit">رفع الفيديو</button>
       <button class="btn secondary hidden" id="cancelEditButton" type="button">إلغاء التعديل</button>
     </div>
   </form>
@@ -182,14 +170,13 @@ input,select{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;
 const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
 const SUPABASE_KEY = "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-const $ = id => document.getElementById(id);
 
+const $ = id => document.getElementById(id);
 const loginPanel = $("loginPanel");
 const adminPanel = $("adminPanel");
 const loginForm = $("loginForm");
 const videoForm = $("videoForm");
 const workouts = $("workouts");
-const sourceType = $("sourceType");
 const videoFile = $("videoFile");
 const saveButton = $("saveButton");
 
@@ -213,52 +200,24 @@ function escapeHTML(value){
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[c]);
 }
-function validHttpUrl(value){
-  try{
-    const u=new URL(value);
-    return u.protocol==="https:"||u.protocol==="http:";
-  }catch{return false}
-}
-function getYouTubeId(value){
-  try{
-    const u=new URL(value);
-    const host=u.hostname.replace(/^www\./,"").toLowerCase();
-    if(host==="youtu.be") return u.pathname.split("/").filter(Boolean)[0]||null;
-    if(["youtube.com","m.youtube.com","youtube-nocookie.com"].includes(host)){
-      if(u.pathname==="/watch") return u.searchParams.get("v");
-      const parts=u.pathname.split("/").filter(Boolean);
-      if(["embed","shorts","live"].includes(parts[0])) return parts[1]||null;
-    }
-  }catch{}
-  return null;
-}
 
-/* العميل يرى عنصر الفيديو فقط؛ لا اسم تمرين ولا وصف ولا عدات */
-function renderVideoMedia(video){
-  const url=video.video_url||"";
-  if(video.source_type==="youtube"){
-    if(!getYouTubeId(url)){
-      return '<div style="padding:18px;color:#ffaaa5">رابط الفيديو غير صالح.</div>';
-    }
-    return `<a class="video-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" aria-label="شاهد الفيديو على يوتيوب"><span>▶ شاهد على يوتيوب</span></a>`;
-  }
-  if(!validHttpUrl(url)){
-    return '<div style="padding:18px;color:#ffaaa5">رابط الفيديو غير صالح.</div>';
-  }
-  return `<video controls playsinline preload="metadata"><source src="${escapeHTML(url)}">متصفحك لا يدعم تشغيل الفيديو.</video>`;
-}
 function renderCard(video){
-  let adminButtons="";
-  if(isAdmin){
-    adminButtons=`<div class="admin-card-actions">
-      <button class="btn secondary" type="button" data-edit="${escapeHTML(video.id)}">تعديل الفيديو</button>
+  const url=video.video_url||"";
+  const media=url
+    ? `<video controls playsinline preload="metadata"><source src="${escapeHTML(url)}">المتصفح لا يدعم تشغيل الفيديو.</video>`
+    : `<div style="padding:18px">الفيديو غير متاح.</div>`;
+
+  const actions=isAdmin?`
+    <div class="admin-card-actions">
+      <button class="btn secondary" type="button" data-edit="${escapeHTML(video.id)}">استبدال الفيديو</button>
       <button class="btn danger" type="button" data-delete="${escapeHTML(video.id)}">حذف الفيديو</button>
-    </div>`;
-  }
+    </div>`:"";
+
   return `<article class="card" data-muscle="${escapeHTML(video.muscle_group)}">
-    <div class="video">${renderVideoMedia(video)}</div>${adminButtons}
+    <div class="video">${media}</div>${actions}
   </article>`;
 }
+
 function applyFilter(){
   let count=0;
   workouts.querySelectorAll(".card").forEach(card=>{
@@ -267,47 +226,60 @@ function applyFilter(){
     if(show) count++;
   });
   $("empty").style.display=count?"none":"block";
-  document.querySelectorAll(".filter").forEach(b=>
-    b.classList.toggle("active",b.dataset.filter===activeFilter)
-  );
+  document.querySelectorAll(".filter").forEach(button=>{
+    button.classList.toggle("active",button.dataset.filter===activeFilter);
+  });
 }
+
 document.querySelectorAll(".filter").forEach(button=>{
   button.addEventListener("click",()=>{
     activeFilter=button.dataset.filter;
     applyFilter();
   });
 });
+
 function renderAll(){
   workouts.innerHTML=dbVideos.map(renderCard).join("");
   $("videoCount").textContent=dbVideos.length;
   applyFilter();
 }
+
 async function loadVideos(){
   setStatus("loadStatus","جارٍ تحميل الفيديوهات...");
-  const {data,error}=await supabaseClient.from("workout_videos")
-    .select("*").order("sort_order",{ascending:true})
+  const {data,error}=await supabaseClient
+    .from("workout_videos")
+    .select("*")
+    .order("sort_order",{ascending:true})
     .order("created_at",{ascending:false});
+
   if(error){
     dbVideos=[];
     renderAll();
-    setStatus("loadStatus","تعذر تحميل الفيديوهات. راجع اتصال Supabase وسياسات القراءة.",true);
+    setStatus("loadStatus","تعذر تحميل الفيديوهات. راجع جدول Supabase وسياسات القراءة.",true);
     return;
   }
   dbVideos=data||[];
   renderAll();
   setStatus("loadStatus",dbVideos.length?`تم تحميل ${dbVideos.length} فيديو.`:"لا توجد فيديوهات مضافة حاليًا.");
 }
+
 async function refreshAdminState(){
   const {data,error}=await supabaseClient.auth.getSession();
   if(error){
     setStatus("loginStatus","تعذر التحقق من الدخول: "+error.message,true);
     return;
   }
+
   currentUser=data.session?.user||null;
   isAdmin=false;
+
   if(currentUser){
-    const result=await supabaseClient.from("workout_admins")
-      .select("user_id").eq("user_id",currentUser.id).maybeSingle();
+    const result=await supabaseClient
+      .from("workout_admins")
+      .select("user_id")
+      .eq("user_id",currentUser.id)
+      .maybeSingle();
+
     if(result.data&&!result.error) isAdmin=true;
     if(result.error) setStatus("loginStatus","تعذر التحقق من صلاحيات الأدمن.",true);
   }
@@ -315,6 +287,7 @@ async function refreshAdminState(){
   loginPanel.classList.toggle("hidden",isAdmin);
   adminPanel.classList.toggle("hidden",!isAdmin);
   $("showLoginButton").classList.toggle("hidden",isAdmin);
+
   if(isAdmin){
     setStatus("loginStatus","");
     setStatus("adminStatus","تم تسجيل الدخول بصلاحيات الأدمن.");
@@ -325,118 +298,121 @@ async function refreshAdminState(){
   }
   renderAll();
 }
+
 $("showLoginButton").addEventListener("click",()=>{
   loginPanel.classList.remove("hidden");
   $("showLoginButton").classList.add("hidden");
 });
+
 $("hideLoginButton").addEventListener("click",()=>{
   if(!isAdmin){
     loginPanel.classList.add("hidden");
     $("showLoginButton").classList.remove("hidden");
   }
 });
-loginForm.addEventListener("submit",async e=>{
-  e.preventDefault();
+
+loginForm.addEventListener("submit",async event=>{
+  event.preventDefault();
   setStatus("loginStatus","جارٍ تسجيل الدخول...");
   $("loginButton").disabled=true;
+
   try{
     const {error}=await supabaseClient.auth.signInWithPassword({
-      email:$("email").value.trim(),password:$("password").value
+      email:$("email").value.trim(),
+      password:$("password").value
     });
     if(error) throw error;
+
     await refreshAdminState();
     if(isAdmin){
       setStatus("adminStatus","تم تسجيل الدخول بنجاح.");
       await loadVideos();
     }
-  }catch(err){
-    setStatus("loginStatus","فشل تسجيل الدخول: "+err.message,true);
-  }finally{$("loginButton").disabled=false}
+  }catch(error){
+    setStatus("loginStatus","فشل تسجيل الدخول: "+error.message,true);
+  }finally{
+    $("loginButton").disabled=false;
+  }
 });
+
 $("logoutButton").addEventListener("click",async()=>{
   const {error}=await supabaseClient.auth.signOut();
   if(error){
     setStatus("adminStatus","تعذر تسجيل الخروج: "+error.message,true);
     return;
   }
-  currentUser=null;isAdmin=false;
+
+  currentUser=null;
+  isAdmin=false;
   adminPanel.classList.add("hidden");
   loginPanel.classList.add("hidden");
   $("showLoginButton").classList.remove("hidden");
-  resetVideoForm();
-  await loadVideos();
+  resetForm();
+  renderAll();
 });
-function updateSourceFields(){
-  const type=sourceType.value;
-  $("urlField").classList.toggle("hidden",type==="upload");
-  $("fileField").classList.toggle("hidden",type!=="upload");
-  $("videoUrl").required=type!=="upload";
-  videoFile.required=type==="upload"&&!$("editId").value;
-}
-sourceType.addEventListener("change",updateSourceFields);
-function resetVideoForm(){
+
+function resetForm(){
   videoForm.reset();
   $("editId").value="";
   videoFile.value="";
-  $("saveButton").textContent="إضافة الفيديو";
+  saveButton.textContent="رفع الفيديو";
   $("cancelEditButton").classList.add("hidden");
-  updateSourceFields();
+  videoFile.required=true;
 }
-$("cancelEditButton").addEventListener("click",resetVideoForm);
+$("cancelEditButton").addEventListener("click",resetForm);
 
 async function uploadVideoFile(file){
-  if(!file) throw new Error("اختار ملف فيديو.");
-  if(!["video/mp4","video/webm","video/ogg"].includes(file.type))
-    throw new Error("اختار ملف MP4 أو WebM أو Ogg.");
-  if(file.size>100*1024*1024)
-    throw new Error("حجم الفيديو أكبر من 100 ميجابايت.");
-  const name=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-  const path=`${Date.now()}-${crypto.randomUUID()}-${name}`;
-  const {error}=await supabaseClient.storage.from("workout-videos")
+  if(!file) throw new Error("اختار ملف فيديو أولًا.");
+  if(!file.type.startsWith("video/")) throw new Error("الملف المختار لازم يكون فيديو.");
+  if(file.size>100*1024*1024) throw new Error("حجم الفيديو أكبر من 100 ميجابايت.");
+
+  const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+  const path=`${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+
+  const {error}=await supabaseClient.storage
+    .from("workout-videos")
     .upload(path,file,{upsert:false,contentType:file.type});
+
   if(error) throw error;
+
   const {data}=supabaseClient.storage.from("workout-videos").getPublicUrl(path);
   if(!data?.publicUrl) throw new Error("تعذر الحصول على رابط الفيديو.");
+
   return data.publicUrl;
 }
-videoForm.addEventListener("submit",async e=>{
-  e.preventDefault();
+
+videoForm.addEventListener("submit",async event=>{
+  event.preventDefault();
+
   if(!isAdmin||!currentUser){
     setStatus("adminStatus","سجّل الدخول بحساب الأدمن أولًا.",true);
     return;
   }
+
   saveButton.disabled=true;
-  setStatus("adminStatus","جارٍ حفظ الفيديو...");
+  setStatus("adminStatus","جارٍ رفع الفيديو، انتظر حتى يكتمل الرفع...");
+
   try{
     const editId=$("editId").value;
-    const type=sourceType.value;
-    let videoUrl=$("videoUrl").value.trim();
+    const group=$("muscle").value;
+    const file=videoFile.files[0];
+    let videoUrl;
 
-    if(type==="upload"){
-      if(videoFile.files[0]){
-        videoUrl=await uploadVideoFile(videoFile.files[0]);
-      }else if(editId){
-        const old=dbVideos.find(v=>String(v.id)===editId);
-        if(!old||old.source_type!=="upload") throw new Error("اختار ملف الفيديو.");
-        videoUrl=old.video_url;
-      }else throw new Error("اختار ملف الفيديو.");
+    if(file){
+      videoUrl=await uploadVideoFile(file);
+    }else if(editId){
+      const old=dbVideos.find(video=>String(video.id)===editId);
+      if(!old) throw new Error("لم يتم العثور على الفيديو القديم.");
+      videoUrl=old.video_url;
     }else{
-      if(!validHttpUrl(videoUrl)) throw new Error("أدخل رابط فيديو صحيح.");
-      if(type==="youtube"&&!getYouTubeId(videoUrl))
-        throw new Error("رابط يوتيوب غير صالح.");
+      throw new Error("اختار ملف الفيديو أولًا.");
     }
 
-    /*
-      حقول قاعدة البيانات القديمة ما زالت موجودة:
-      نخزن عنوانًا تلقائيًا داخليًا للحفاظ على توافق الجدول،
-      لكنه لا يظهر للعميل.
-    */
-    const group=$("muscle").value;
     const record={
       title:"فيديو "+muscleNames[group],
       description:"",
       muscle_group:group,
-      source_type:type,
+      source_type:"upload",
       video_url:videoUrl,
       sets:1,
       reps:"",
@@ -444,6 +420,7 @@ videoForm.addEventListener("submit",async e=>{
       sort_order:0,
       updated_at:new Date().toISOString()
     };
+
     let result;
     if(editId){
       result=await supabaseClient.from("workout_videos")
@@ -452,55 +429,67 @@ videoForm.addEventListener("submit",async e=>{
       result=await supabaseClient.from("workout_videos")
         .insert(record).select().single();
     }
+
     if(result.error) throw result.error;
-    resetVideoForm();
-    setStatus("adminStatus",editId?"تم تعديل الفيديو.":"تمت إضافة الفيديو.");
+
+    resetForm();
+    setStatus("adminStatus",editId?"تم استبدال الفيديو بنجاح.":"تم رفع الفيديو وإضافته بنجاح.");
     await loadVideos();
-  }catch(err){
-    setStatus("adminStatus","تعذر الحفظ: "+err.message,true);
-  }finally{saveButton.disabled=false}
+  }catch(error){
+    setStatus("adminStatus","تعذر رفع الفيديو: "+error.message,true);
+  }finally{
+    saveButton.disabled=false;
+  }
 });
-workouts.addEventListener("click",async e=>{
+
+workouts.addEventListener("click",async event=>{
   if(!isAdmin) return;
-  const edit=e.target.closest("[data-edit]");
-  const del=e.target.closest("[data-delete]");
-  if(edit){
-    const v=dbVideos.find(x=>String(x.id)===edit.dataset.edit);
-    if(!v) return;
-    $("editId").value=v.id;
-    $("muscle").value=v.muscle_group||"chest";
-    $("sourceType").value=v.source_type||"youtube";
-    $("videoUrl").value=v.video_url||"";
+
+  const editButton=event.target.closest("[data-edit]");
+  const deleteButton=event.target.closest("[data-delete]");
+
+  if(editButton){
+    const video=dbVideos.find(item=>String(item.id)===editButton.dataset.edit);
+    if(!video) return;
+
+    $("editId").value=video.id;
+    $("muscle").value=video.muscle_group||"chest";
     videoFile.value="";
-    updateSourceFields();
     videoFile.required=false;
-    $("saveButton").textContent="حفظ التعديل";
+    saveButton.textContent="استبدال الفيديو";
     $("cancelEditButton").classList.remove("hidden");
     $("videoForm").scrollIntoView({behavior:"smooth",block:"start"});
-    setStatus("adminStatus","عدّل الرابط أو اختار ملفًا جديدًا، ثم احفظ.");
+    setStatus("adminStatus","اختار ملفًا جديدًا لاستبدال الفيديو، أو غيّر القسم ثم احفظ.");
     return;
   }
-  if(del){
-    const v=dbVideos.find(x=>String(x.id)===del.dataset.delete);
-    if(!v||!confirm("متأكد إنك عايز تحذف الفيديو؟")) return;
+
+  if(deleteButton){
+    const video=dbVideos.find(item=>String(item.id)===deleteButton.dataset.delete);
+    if(!video||!confirm("متأكد إنك عايز تحذف الفيديو؟")) return;
+
     setStatus("adminStatus","جارٍ الحذف...");
-    const {error}=await supabaseClient.from("workout_videos")
-      .delete().eq("id",v.id);
+    const {error}=await supabaseClient
+      .from("workout_videos")
+      .delete()
+      .eq("id",video.id);
+
     if(error){
       setStatus("adminStatus","تعذر الحذف: "+error.message,true);
       return;
     }
-    setStatus("adminStatus","تم حذف الفيديو.");
+
+    setStatus("adminStatus","تم حذف الفيديو من القائمة.");
     await loadVideos();
   }
 });
+
 supabaseClient.auth.onAuthStateChange(()=>{
   setTimeout(()=>refreshAdminState(),0);
 });
+
 (async function init(){
   await loadVideos();
   await refreshAdminState();
-  updateSourceFields();
 })();
 </script>
 </body>
