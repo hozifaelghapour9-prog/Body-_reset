@@ -2,590 +2,580 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Workout | خطة التمرين</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BODYRESET | Workout</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101712;
-      color: #f5f7f5;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101712;
+  color: #f5f7f5;
+}
 
-    .container {
-      width: min(1200px, 100%);
-      margin: auto;
-      padding: 24px;
-    }
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
 
-    .brand {
-      font-size: 27px;
-      font-weight: 800;
-    }
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
 
-    .brand span {
-      color: #7ce5a1;
-    }
+.logo span {
+  color: #7ce5a1;
+}
 
-    .tag {
-      color: #7ce5a1;
-      background: #1c3024;
-      border: 1px solid #31563e;
-      padding: 9px 14px;
-      border-radius: 30px;
-    }
+.tag {
+  color: #7ce5a1;
+  background: #1c3024;
+  padding: 9px 14px;
+  border-radius: 25px;
+}
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 24px;
-      padding: 28px;
-      background: linear-gradient(130deg, #203b2a, #17221a);
-      border: 1px solid #304938;
-      border-radius: 22px;
-      margin-bottom: 28px;
-    }
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  align-items: center;
+  padding: 26px;
+  background: linear-gradient(130deg, #203b2a, #17221a);
+  border: 1px solid #304938;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
 
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 44px);
-      margin: 0 0 12px;
-    }
+.hero h1 {
+  font-size: clamp(26px, 4vw, 42px);
+  margin: 0 0 12px;
+}
 
-    .hero p {
-      color: #c2d0c5;
-      line-height: 1.9;
-      margin: 0 0 20px;
-    }
+.hero p {
+  color: #c2d0c5;
+  line-height: 1.9;
+}
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
 
-    .stat {
-      background: #101b14;
-      border-radius: 14px;
-      padding: 16px 10px;
-      text-align: center;
-    }
+.stat {
+  background: #101b14;
+  border-radius: 13px;
+  padding: 16px 8px;
+  text-align: center;
+}
 
-    .stat strong {
-      display: block;
-      color: #7ce5a1;
-      font-size: 23px;
-      margin-bottom: 6px;
-    }
+.stat strong {
+  display: block;
+  color: #7ce5a1;
+  font-size: 23px;
+  margin-bottom: 6px;
+}
 
-    .stat small {
-      color: #b4c2b7;
-    }
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 26px 0 16px;
+}
 
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 28px 0 16px;
-    }
+.heading h2 {
+  margin: 0;
+  font-size: 23px;
+}
 
-    .section-heading h2 {
-      font-size: 23px;
-      margin: 0;
-    }
+.heading p {
+  color: #a9b9ad;
+}
 
-    .section-heading p {
-      color: #a9b9ad;
-      margin: 0;
-    }
+.filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
 
-    .filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
+.filter {
+  padding: 11px 15px;
+  border-radius: 10px;
+  border: 1px solid #34473a;
+  background: #1b271f;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
 
-    .filter-btn {
-      color: #e8f0ea;
-      background: #1b271f;
-      border: 1px solid #34473a;
-      border-radius: 10px;
-      padding: 11px 16px;
-      cursor: pointer;
-      font-size: 14px;
-    }
+.filter.active,
+.filter:hover {
+  background: #7ce5a1;
+  color: #102016;
+}
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: #7ce5a1;
-      color: #102016;
-      border-color: #7ce5a1;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
 
-    .workout-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
+.card {
+  min-width: 0;
+  overflow: hidden;
+  background: #19221b;
+  border: 1px solid #2e3b31;
+  border-radius: 17px;
+  transition: border-color 0.2s;
+}
 
-    .workout-card {
-      overflow: hidden;
-      min-width: 0;
-      background: #19221b;
-      border: 1px solid #2e3b31;
-      border-radius: 18px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
+.card:hover {
+  border-color: #7ce5a1;
+}
 
-    .workout-card:hover {
-      transform: translateY(-3px);
-      border-color: #7ce5a1;
-    }
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #080b09;
+  overflow: hidden;
+}
 
-    .video-wrap {
-      position: relative;
-      background: #080b09;
-      aspect-ratio: 16 / 9;
-    }
+.video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-    .video-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      position: absolute;
-      inset: 0;
-    }
+.content {
+  padding: 16px;
+}
 
-    .card-content {
-      padding: 17px;
-    }
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
+.muscle {
+  background: #21392a;
+  color: #7ce5a1;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
 
-    .muscle {
-      color: #7ce5a1;
-      background: #21392a;
-      border-radius: 20px;
-      padding: 6px 10px;
-      font-size: 12px;
-    }
+.duration {
+  font-size: 12px;
+  color: #b9c7bc;
+}
 
-    .duration {
-      color: #b9c7bc;
-      font-size: 12px;
-    }
+.content h3 {
+  font-size: 18px;
+  margin: 0 0 9px;
+}
 
-    .card-content h3 {
-      margin: 0 0 9px;
-      font-size: 19px;
-    }
+.content p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #b5c2b8;
+  margin: 0 0 13px;
+}
 
-    .card-content p {
-      color: #b5c2b8;
-      line-height: 1.7;
-      font-size: 14px;
-      margin: 0 0 14px;
-    }
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px solid #304035;
+  padding-top: 12px;
+  font-size: 12px;
+}
 
-    .exercise-info {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      border-top: 1px solid #304035;
-      padding-top: 13px;
-      color: #dce6de;
-      font-size: 13px;
-    }
+.info span:last-child {
+  color: #7ce5a1;
+}
 
-    .exercise-info span:last-child {
-      color: #7ce5a1;
-    }
+.schedule {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
 
-    .schedule {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
+.day {
+  padding: 16px;
+  background: #19221b;
+  border: 1px solid #2e3b31;
+  border-radius: 14px;
+}
 
-    .day {
-      background: #19221b;
-      border: 1px solid #2e3b31;
-      border-radius: 15px;
-      padding: 18px;
-    }
+.day h3 {
+  color: #7ce5a1;
+  margin: 0 0 9px;
+}
 
-    .day h3 {
-      margin: 0 0 10px;
-      color: #7ce5a1;
-    }
+.day p {
+  color: #b5c2b8;
+  line-height: 1.8;
+  font-size: 14px;
+  margin: 0;
+}
 
-    .day p {
-      color: #b5c2b8;
-      line-height: 1.8;
-      margin: 0;
-      font-size: 14px;
-    }
+.note {
+  margin-top: 24px;
+  padding: 16px;
+  background: #1d2c21;
+  border-radius: 13px;
+  line-height: 1.9;
+  color: #c8d7cc;
+}
 
-    .note {
-      margin-top: 24px;
-      padding: 17px;
-      border-radius: 14px;
-      background: #1d2c21;
-      color: #c8d7cc;
-      line-height: 1.9;
-    }
+.note strong {
+  color: #7ce5a1;
+}
 
-    .note strong {
-      color: #7ce5a1;
-    }
+#empty {
+  display: none;
+  color: #c2d0c5;
+}
 
-    .empty {
-      display: none;
-      color: #c2d0c5;
-      padding: 20px 0;
-    }
+footer {
+  margin-top: 28px;
+  padding: 18px 0;
+  border-top: 1px solid #2e3b31;
+  color: #93a498;
+  text-align: center;
+  font-size: 13px;
+}
 
-    @media (max-width: 900px) {
-      .workout-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-      .schedule {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+  .schedule {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-    @media (max-width: 620px) {
-      .container {
-        padding: 15px;
-      }
+@media (max-width: 620px) {
+  .container {
+    padding: 14px;
+  }
 
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 19px;
+  }
 
-      .workout-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
 
-      .card-content {
-        padding: 12px;
-      }
+  .content {
+    padding: 11px;
+  }
 
-      .card-content h3 {
-        font-size: 16px;
-      }
+  .content h3 {
+    font-size: 16px;
+  }
 
-      .card-content p {
-        font-size: 13px;
-      }
+  .content p {
+    font-size: 13px;
+  }
 
-      .schedule {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
+  .schedule {
+    gap: 9px;
+  }
 
-      .day {
-        padding: 13px;
-      }
+  .day {
+    padding: 12px;
+  }
+}
 
-      .exercise-info {
-        flex-wrap: wrap;
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .workout-grid,
-      .schedule {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@media (max-width: 360px) {
+  .grid,
+  .schedule {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
-  <main class="container">
+<main class="container">
 
-    <header class="header">
-      <div class="brand">BODY<span>RESET</span> / WORKOUT</div>
-      <div class="tag">💪 وقت التمرين</div>
-    </header>
+<header>
+  <div class="logo">BODY<span>RESET</span> / WORKOUT</div>
+  <div class="tag">💪 وقت التمرين</div>
+</header>
 
-    <section class="hero">
-      <div>
-        <h1>قوّي جسمك، تمرين ورا تمرين 🔥</h1>
-        <p>
-          اختار العضلة اللي عايز تتمرنها، شوف فيديو توضيحي لكل تمرين،
-          وابدأ بالتدريج. اهتم بالأداء الصحيح قبل زيادة الأوزان.
-        </p>
-        <div class="tag">ابدأ بمستواك وطور نفسك كل أسبوع</div>
+<section class="hero">
+  <div>
+    <h1>قوّي جسمك، تمرين ورا تمرين 🔥</h1>
+    <p>
+      اختار مجموعة العضلات اللي عايز تتمرنها، وشاهد فيديوهات التمارين.
+      ابدأ بالتدريج واهتم بالأداء الصحيح قبل زيادة الأوزان.
+    </p>
+    <div class="tag">ابدأ بمستواك وطور نفسك كل أسبوع</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <strong>6</strong>
+      <small>تمارين</small>
+    </div>
+    <div class="stat">
+      <strong>3</strong>
+      <small>أيام تدريب</small>
+    </div>
+    <div class="stat">
+      <strong>45</strong>
+      <small>دقيقة تقريبًا</small>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="heading">
+    <h2>فيديوهات التمارين</h2>
+    <p>اختار مجموعة العضلات</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">الكل</button>
+    <button class="filter" data-filter="chest">الصدر</button>
+    <button class="filter" data-filter="back">الظهر</button>
+    <button class="filter" data-filter="legs">الرجل</button>
+    <button class="filter" data-filter="arms">الذراع</button>
+  </div>
+
+  <div class="grid" id="workouts">
+
+    <!-- تمرين الصدر 1: غيّر اسم ملف الفيديو -->
+    <article class="card" data-muscle="chest">
+      <div class="video">
+        <video controls playsinline preload="metadata">
+          <source src="videos/chest-workout.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
       </div>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>6</strong>
-          <small>تمارين</small>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">الصدر</span>
+          <span class="duration">3 مجموعات</span>
         </div>
-        <div class="stat">
-          <strong>3</strong>
-          <small>أيام تدريب</small>
-        </div>
-        <div class="stat">
-          <strong>45</strong>
-          <small>دقيقة تقريبًا</small>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-heading">
-        <h2>فيديوهات التمارين</h2>
-        <p>اختار مجموعة العضلات</p>
-      </div>
-
-      <div class="filters" aria-label="تصفية التمارين">
-        <button class="filter-btn active" data-filter="all">الكل</button>
-        <button class="filter-btn" data-filter="chest">الصدر</button>
-        <button class="filter-btn" data-filter="back">الظهر</button>
-        <button class="filter-btn" data-filter="legs">الرجل</button>
-        <button class="filter-btn" data-filter="arms">الذراع</button>
-      </div>
-
-      <div class="workout-grid" id="workoutGrid">
-
-        <article class="workout-card" data-muscle="chest">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/IODxDxX7oi4"
-              title="Push-ups tutorial"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-content">
-            <div class="card-top">
-              <span class="muscle">الصدر</span>
-              <span class="duration">3 مجموعات</span>
-            </div>
-            <h3>تمرين الضغط</h3>
-            <p>حافظ على جسمك في خط مستقيم، وانزل بتحكم وادفع للأعلى.</p>
-            <div class="exercise-info">
-              <span>8–12 تكرار</span>
-              <span>راحة 60 ثانية</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="workout-card" data-muscle="back">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/eGo4IYlbE5g"
-              title="Pull-up tutorial"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-content">
-            <div class="card-top">
-              <span class="muscle">الظهر</span>
-              <span class="duration">3 مجموعات</span>
-            </div>
-            <h3>العقلة</h3>
-            <p>اسحب جسمك للأعلى بتحكم. استخدم مساعدة إذا كنت مبتدئًا.</p>
-            <div class="exercise-info">
-              <span>حسب قدرتك</span>
-              <span>راحة 90 ثانية</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="workout-card" data-muscle="legs">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/aclHkVaku9U"
-              title="Squat tutorial"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-content">
-            <div class="card-top">
-              <span class="muscle">الرجل</span>
-              <span class="duration">3 مجموعات</span>
-            </div>
-            <h3>Squats — السكوات</h3>
-            <p>انزل كأنك بتقعد على كرسي، وخلي الركبتين في اتجاه أصابع القدم.</p>
-            <div class="exercise-info">
-              <span>10–15 تكرار</span>
-              <span>راحة 60 ثانية</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="workout-card" data-muscle="arms">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/ykJmrZ5v0Oo"
-              title="Biceps curl tutorial"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-content">
-            <div class="card-top">
-              <span class="muscle">الذراع</span>
-              <span class="duration">3 مجموعات</span>
-            </div>
-            <h3>Biceps Curl</h3>
-            <p>اثنِ الكوع لرفع الوزن، وثبّت الجزء العلوي من الذراع من غير تأرجح.</p>
-            <div class="exercise-info">
-              <span>10–12 تكرار</span>
-              <span>راحة 60 ثانية</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="workout-card" data-muscle="chest">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/rT7DgCr-3pg"
-              title="Bench press tutorial"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-content">
-            <div class="card-top">
-              <span class="muscle">الصدر</span>
-              <span class="duration">3 مجموعات</span>
-            </div>
-            <h3>Bench Press</h3>
-            <p>استخدم وزنًا مناسبًا، وحافظ على التحكم في النزول والرفع.</p>
-            <div class="exercise-info">
-              <span>8–12 تكرار</span>
-              <span>راحة 90 ثانية</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="workout-card" data-muscle="legs">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/2SHsk9AzdjA"
-              title="Lunge tutorial"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="card-content">
-            <div class="card-top">
-              <span class="muscle">الرجل</span>
-              <span class="duration">3 مجموعات</span>
-            </div>
-            <h3>Lunges — الاندفاع</h3>
-            <p>خذ خطوة مناسبة، وانزل بتحكم مع الحفاظ على توازنك.</p>
-            <div class="exercise-info">
-              <span>8–10 لكل رجل</span>
-              <span>راحة 60 ثانية</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <p class="empty" id="emptyMessage">مفيش تمارين في القسم ده حاليًا.</p>
-    </section>
-
-    <section>
-      <div class="section-heading">
-        <h2>جدول أسبوعي مقترح</h2>
-        <p>ابدأ تدريجيًا وخد وقتك في الاستشفاء</p>
-      </div>
-
-      <div class="schedule">
-        <div class="day">
-          <h3>اليوم الأول</h3>
-          <p>صدر وذراع<br>3–4 تمارين<br>راحة بين المجموعات</p>
-        </div>
-        <div class="day">
-          <h3>اليوم الثاني</h3>
-          <p>ظهر وذراع<br>3–4 تمارين<br>اهتم بالتكنيك</p>
-        </div>
-        <div class="day">
-          <h3>اليوم الثالث</h3>
-          <p>رجل<br>3–4 تمارين<br>ابدأ بإحماء جيد</p>
-        </div>
-        <div class="day">
-          <h3>أيام الراحة</h3>
-          <p>مشي خفيف أو راحة<br>نوم كفاية<br>اشرب مياه بانتظام</p>
+        <h3>تمرين الصدر</h3>
+        <p>نفّذ الحركة بتحكم، وحافظ على وضع جسمك الصحيح طوال التمرين.</p>
+        <div class="info">
+          <span>8–12 تكرار</span>
+          <span>راحة 60 ثانية</span>
         </div>
       </div>
-    </section>
+    </article>
 
-    <aside class="note">
-      <strong>مهم قبل التمرين:</strong>
-      اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه.
-      أوقف التمرين لو شعرت بألم حاد أو دوخة. بعض الفيديوهات قد لا تعمل
-      داخل الصفحة بسبب إعدادات يوتيوب؛ وقتها افتح الفيديو من يوتيوب مباشرة.
-    </aside>
+    <!-- تمرين الظهر -->
+    <article class="card" data-muscle="back">
+      <div class="video">
+        <video controls playsinline preload="metadata">
+          <source src="videos/back-workout.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">الظهر</span>
+          <span class="duration">3 مجموعات</span>
+        </div>
+        <h3>تمرين الظهر</h3>
+        <p>حافظ على ظهرك في وضع مناسب وتجنب استخدام الزخم أثناء الحركة.</p>
+        <div class="info">
+          <span>8–12 تكرار</span>
+          <span>راحة 90 ثانية</span>
+        </div>
+      </div>
+    </article>
 
-  </main>
+    <!-- تمرين الرجل -->
+    <article class="card" data-muscle="legs">
+      <div class="video">
+        <video controls playsinline preload="metadata">
+          <source src="videos/legs-workout.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">الرجل</span>
+          <span class="duration">3 مجموعات</span>
+        </div>
+        <h3>تمرين الرجل</h3>
+        <p>ابدأ بإحماء جيد، وتحرك بمدى مريح مع الحفاظ على التوازن.</p>
+        <div class="info">
+          <span>10–15 تكرار</span>
+          <span>راحة 60 ثانية</span>
+        </div>
+      </div>
+    </article>
 
-  <script>
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const workoutCards = document.querySelectorAll(".workout-card");
-    const emptyMessage = document.getElementById("emptyMessage");
+    <!-- تمرين الذراع -->
+    <article class="card" data-muscle="arms">
+      <div class="video">
+        <video controls playsinline preload="metadata">
+          <source src="videos/arms-workout.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">الذراع</span>
+          <span class="duration">3 مجموعات</span>
+        </div>
+        <h3>تمرين الذراع</h3>
+        <p>استخدم وزنًا مناسبًا، وحافظ على التحكم في الرفع والنزول.</p>
+        <div class="info">
+          <span>10–12 تكرار</span>
+          <span>راحة 60 ثانية</span>
+        </div>
+      </div>
+    </article>
 
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
-        let visibleCount = 0;
+    <!-- تمرين صدر إضافي -->
+    <article class="card" data-muscle="chest">
+      <div class="video">
+        <video controls playsinline preload="metadata">
+          <source src="videos/chest-workout-2.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">الصدر</span>
+          <span class="duration">3 مجموعات</span>
+        </div>
+        <h3>تمرين صدر إضافي</h3>
+        <p>ركز على ثبات الحركة واستخدم وزنًا تستطيع التحكم فيه.</p>
+        <div class="info">
+          <span>8–12 تكرار</span>
+          <span>راحة 90 ثانية</span>
+        </div>
+      </div>
+    </article>
 
-        filterButtons.forEach((item) => {
-          item.classList.toggle("active", item === button);
-        });
+    <!-- تمرين رجل إضافي -->
+    <article class="card" data-muscle="legs">
+      <div class="video">
+        <video controls playsinline preload="metadata">
+          <source src="videos/legs-workout-2.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+      <div class="content">
+        <div class="card-top">
+          <span class="muscle">الرجل</span>
+          <span class="duration">3 مجموعات</span>
+        </div>
+        <h3>تمرين رجل إضافي</h3>
+        <p>نفّذ التمرين ببطء وتحكم، وتوقف لو شعرت بألم حاد.</p>
+        <div class="info">
+          <span>10–12 تكرار</span>
+          <span>راحة 60 ثانية</span>
+        </div>
+      </div>
+    </article>
 
-        workoutCards.forEach((card) => {
-          const visible =
-            filter === "all" || card.dataset.muscle === filter;
+  </div>
 
-          card.style.display = visible ? "" : "none";
+  <p id="empty">لا توجد تمارين في القسم ده حاليًا.</p>
+</section>
 
-          if (visible) visibleCount++;
-        });
+<section>
+  <div class="heading">
+    <h2>جدول أسبوعي مقترح</h2>
+    <p>نظّم تمرينك واستشفاءك</p>
+  </div>
 
-        emptyMessage.style.display =
-          visibleCount === 0 ? "block" : "none";
-      });
+  <div class="schedule">
+    <div class="day">
+      <h3>اليوم الأول</h3>
+      <p>صدر وذراع<br>3 مجموعات لكل تمرين<br>اهتم بالتكنيك</p>
+    </div>
+    <div class="day">
+      <h3>اليوم الثاني</h3>
+      <p>ظهر وذراع<br>3 مجموعات لكل تمرين<br>راحة بين المجموعات</p>
+    </div>
+    <div class="day">
+      <h3>اليوم الثالث</h3>
+      <p>رجل<br>3 مجموعات لكل تمرين<br>ابدأ بإحماء جيد</p>
+    </div>
+    <div class="day">
+      <h3>أيام الراحة</h3>
+      <p>مشي خفيف أو راحة<br>نوم كفاية<br>اشرب مياه بانتظام</p>
+    </div>
+  </div>
+</section>
+
+<aside class="note">
+  <strong>مهم قبل التمرين:</strong>
+  اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه.
+  أوقف التمرين لو شعرت بألم حاد أو دوخة.
+</aside>
+
+<footer>
+  BODYRESET — استمر، وتقدم خطوة كل يوم 💚
+</footer>
+
+</main>
+
+<script>
+const buttons = document.querySelectorAll(".filter");
+const cards = document.querySelectorAll(".card");
+const empty = document.getElementById("empty");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    let count = 0;
+
+    buttons.forEach(item => {
+      item.classList.toggle("active", item === button);
     });
-  </script>
+
+    cards.forEach(card => {
+      const show =
+        filter === "all" ||
+        card.dataset.muscle === filter;
+
+      card.style.display = show ? "" : "none";
+
+      if (show) count++;
+    });
+
+    empty.style.display = count ? "none" : "block";
+  });
+});
+</script>
+
 </body>
 </html>
