@@ -1,3948 +1,591 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Workout - BodyReset</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Tahoma, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #0f766e);
-            min-height: 100vh;
-            color: #fff;
-            padding-bottom: 90px;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            height: 75px;
-            background: #050505;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 35px;
-            border-bottom: 1px solid rgba(255,255,255,.08);
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-
-        .logo span {
-            color: #14b8a6;
-        }
-
-        .back-btn {
-            border: none;
-            background: rgba(255,255,255,.08);
-            color: #fff;
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: .2s;
-        }
-
-        .back-btn:hover {
-            background: #14b8a6;
-        }
-
-        /* ================= CONTAINER ================= */
-
-        .container {
-            width: min(1100px, calc(100% - 30px));
-            margin: 35px auto;
-        }
-
-        .page-title {
-            margin-bottom: 25px;
-        }
-
-        .page-title h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-        .page-title p {
-            color: #cbd5e1;
-            font-size: 15px;
-        }
-
-        /* ================= SCREEN ================= */
-
-        .screen {
-            display: none;
-        }
-
-        .screen.active {
-            display: block;
-            animation: fadeIn .25s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ================= SECTION HEADER ================= */
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            gap: 15px;
-        }
-
-        .section-header h2 {
-            font-size: 22px;
-        }
-
-        .small-back {
-            border: 1px solid rgba(255,255,255,.15);
-            background: rgba(0,0,0,.15);
-            color: #fff;
-            padding: 9px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .small-back:hover {
-            background: rgba(20,184,166,.25);
-        }
-
-        /* ================= GOALS ================= */
-
-        .goal-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .goal-card {
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 20px;
-            padding: 28px 20px;
-            cursor: pointer;
-            transition: .25s;
-            text-align: center;
-            backdrop-filter: blur(8px);
-        }
-
-        .goal-card:hover {
-            transform: translateY(-5px);
-            background: rgba(20,184,166,.15);
-            border-color: rgba(20,184,166,.5);
-        }
-
-        .goal-icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 15px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(20,184,166,.16);
-            font-size: 30px;
-        }
-
-        .goal-card h3 {
-            font-size: 20px;
-            margin-bottom: 9px;
-        }
-
-        .goal-card p {
-            color: #cbd5e1;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        /* ================= SYSTEMS ================= */
-
-        .system-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .system-card {
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 18px;
-            padding: 22px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .system-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(20,184,166,.55);
-            background: rgba(20,184,166,.12);
-        }
-
-        .system-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 13px;
-        }
-
-        .system-name {
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .system-badge {
-            background: rgba(20,184,166,.18);
-            color: #5eead4;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 11px;
-        }
-
-        .system-card p {
-            color: #cbd5e1;
-            line-height: 1.7;
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-
-        .system-days-preview {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-
-        .day-mini {
-            padding: 6px 9px;
-            border-radius: 7px;
-            background: rgba(0,0,0,.18);
-            font-size: 11px;
-            color: #e2e8f0;
-        }
-
-        /* ================= DAYS ================= */
-
-        .days-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .day-card {
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 18px;
-            padding: 20px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .day-card:hover {
-            transform: translateY(-4px);
-            background: rgba(20,184,166,.12);
-            border-color: rgba(20,184,166,.5);
-        }
-
-        .day-number {
-            font-size: 12px;
-            color: #5eead4;
-            margin-bottom: 7px;
-        }
-
-        .day-card h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
-        }
-
-        .day-card p {
-            color: #cbd5e1;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .day-meta {
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            color: #94a3b8;
-            font-size: 12px;
-        }
-
-        /* ================= TODAY ================= */
-
-        .today-box {
-            background: rgba(0,0,0,.2);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 22px;
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-
-        .today-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .today-title h2 {
-            font-size: 26px;
-            margin-bottom: 8px;
-        }
-
-        .today-title p {
-            color: #cbd5e1;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        .today-badge {
-            background: #14b8a6;
-            color: #042f2e;
-            font-weight: 800;
-            padding: 8px 13px;
-            border-radius: 9px;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-
-        .today-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .stat {
-            background: rgba(255,255,255,.06);
-            border-radius: 10px;
-            padding: 10px 14px;
-            color: #cbd5e1;
-            font-size: 12px;
-        }
-
-        .stat strong {
-            color: #fff;
-        }
-
-        /* ================= EXERCISES ================= */
-
-        .exercise-slider {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding-bottom: 10px;
-        }
-
-        .exercise-slider::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .exercise-slider::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,.18);
-            border-radius: 10px;
-        }
-
-        .exercise-card {
-            min-width: 285px;
-            max-width: 285px;
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 18px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .exercise-image {
-            height: 165px;
-            background: linear-gradient(135deg, #134e4a, #0f172a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-        }
-
-        .exercise-content {
-            padding: 18px;
-        }
-
-        .exercise-number {
-            color: #5eead4;
-            font-size: 11px;
-            margin-bottom: 6px;
-        }
-
-        .exercise-content h3 {
-            font-size: 18px;
-            margin-bottom: 7px;
-        }
-
-        .exercise-content p {
-            color: #cbd5e1;
-            font-size: 12px;
-            line-height: 1.7;
-            min-height: 41px;
-        }
-
-        .exercise-info {
-            display: flex;
-            gap: 8px;
-            margin: 14px 0;
-        }
-
-        .exercise-info span {
-            background: rgba(0,0,0,.2);
-            padding: 7px 9px;
-            border-radius: 7px;
-            font-size: 11px;
-            color: #dbeafe;
-        }
-
-        .start-btn {
-            width: 100%;
-            border: none;
-            background: #14b8a6;
-            color: #042f2e;
-            padding: 11px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 800;
-            transition: .2s;
-        }
-
-        .start-btn:hover {
-            background: #2dd4bf;
-        }
-
-        /* ================= DOTS ================= */
-
-        .dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 15px;
-        }
-
-        .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.25);
-        }
-
-        .dot.active {
-            background: #14b8a6;
-            width: 20px;
-            border-radius: 8px;
-        }
-
-        /* ================= MODAL ================= */
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.78);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 999;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-box {
-            width: min(650px, 100%);
-            max-height: 90vh;
-            overflow-y: auto;
-            background: #0f172a;
-            border: 1px solid rgba(255,255,255,.12);
-            border-radius: 22px;
-            padding: 24px;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 35px;
-            height: 35px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255,255,255,.08);
-            color: #fff;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .modal-image {
-            height: 220px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #134e4a, #0f172a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 65px;
-            margin-bottom: 20px;
-        }
-
-        .modal-box h2 {
-            margin-bottom: 8px;
-        }
-
-        .modal-description {
-            color: #cbd5e1;
-            line-height: 1.8;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .modal-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-
-        .modal-stat {
-            background: rgba(255,255,255,.06);
-            padding: 13px;
-            border-radius: 10px;
-            color: #cbd5e1;
-            font-size: 13px;
-        }
-
-        .modal-stat strong {
-            display: block;
-            color: #fff;
-            margin-top: 4px;
-        }
-
-        .modal-section {
-            margin-top: 18px;
-        }
-
-        .modal-section h4 {
-            color: #5eead4;
-            margin-bottom: 7px;
-        }
-
-        .modal-section p {
-            color: #cbd5e1;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .done-btn {
-            width: 100%;
-            margin-top: 22px;
-            padding: 13px;
-            border: none;
-            border-radius: 11px;
-            background: #14b8a6;
-            color: #042f2e;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        /* ================= BOTTOM NAV ================= */
-
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            height: 72px;
-            background: rgba(5,5,5,.95);
-            border-top: 1px solid rgba(255,255,255,.08);
-            display: flex;
-            justify-content: center;
-            gap: 45px;
-            align-items: center;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-        }
-
-        .nav-item {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            transition: .2s;
-        }
-
-        .nav-item span:first-child {
-            font-size: 21px;
-        }
-
-        .nav-item.active,
-        .nav-item:hover {
-            color: #14b8a6;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 900px) {
-
-            .goal-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .days-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            header {
-                height: 68px;
-                padding: 0 18px;
-            }
-
-            .logo {
-                font-size: 21px;
-            }
-
-            .container {
-                width: min(100% - 20px, 1100px);
-                margin: 25px auto;
-            }
-
-            .page-title h1 {
-                font-size: 26px;
-            }
-
-            .goal-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .goal-card {
-                padding: 20px 12px;
-                border-radius: 16px;
-            }
-
-            .goal-icon {
-                width: 52px;
-                height: 52px;
-                font-size: 25px;
-            }
-
-            .goal-card h3 {
-                font-size: 16px;
-            }
-
-            .goal-card p {
-                font-size: 11px;
-            }
-
-            .system-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .days-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 18px;
-            }
-
-            .today-box {
-                padding: 18px;
-            }
-
-            .today-top {
-                flex-direction: column;
-            }
-
-            .exercise-card {
-                min-width: 270px;
-                max-width: 270px;
-            }
-
-            .bottom-nav {
-                gap: 30px;
-            }
-
-            .modal-box {
-                padding: 18px;
-            }
-
-            .modal-image {
-                height: 180px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout | خطة التمرين</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101712;
+      color: #f5f7f5;
+    }
+
+    .container {
+      width: min(1200px, 100%);
+      margin: auto;
+      padding: 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .brand span {
+      color: #7ce5a1;
+    }
+
+    .tag {
+      color: #7ce5a1;
+      background: #1c3024;
+      border: 1px solid #31563e;
+      padding: 9px 14px;
+      border-radius: 30px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 24px;
+      padding: 28px;
+      background: linear-gradient(130deg, #203b2a, #17221a);
+      border: 1px solid #304938;
+      border-radius: 22px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      color: #c2d0c5;
+      line-height: 1.9;
+      margin: 0 0 20px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat {
+      background: #101b14;
+      border-radius: 14px;
+      padding: 16px 10px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      color: #7ce5a1;
+      font-size: 23px;
+      margin-bottom: 6px;
+    }
+
+    .stat small {
+      color: #b4c2b7;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 28px 0 16px;
+    }
+
+    .section-heading h2 {
+      font-size: 23px;
+      margin: 0;
+    }
+
+    .section-heading p {
+      color: #a9b9ad;
+      margin: 0;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .filter-btn {
+      color: #e8f0ea;
+      background: #1b271f;
+      border: 1px solid #34473a;
+      border-radius: 10px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #7ce5a1;
+      color: #102016;
+      border-color: #7ce5a1;
+    }
+
+    .workout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .workout-card {
+      overflow: hidden;
+      min-width: 0;
+      background: #19221b;
+      border: 1px solid #2e3b31;
+      border-radius: 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .workout-card:hover {
+      transform: translateY(-3px);
+      border-color: #7ce5a1;
+    }
+
+    .video-wrap {
+      position: relative;
+      background: #080b09;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      position: absolute;
+      inset: 0;
+    }
+
+    .card-content {
+      padding: 17px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .muscle {
+      color: #7ce5a1;
+      background: #21392a;
+      border-radius: 20px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .duration {
+      color: #b9c7bc;
+      font-size: 12px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 9px;
+      font-size: 19px;
+    }
+
+    .card-content p {
+      color: #b5c2b8;
+      line-height: 1.7;
+      font-size: 14px;
+      margin: 0 0 14px;
+    }
+
+    .exercise-info {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid #304035;
+      padding-top: 13px;
+      color: #dce6de;
+      font-size: 13px;
+    }
+
+    .exercise-info span:last-child {
+      color: #7ce5a1;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .day {
+      background: #19221b;
+      border: 1px solid #2e3b31;
+      border-radius: 15px;
+      padding: 18px;
+    }
+
+    .day h3 {
+      margin: 0 0 10px;
+      color: #7ce5a1;
+    }
+
+    .day p {
+      color: #b5c2b8;
+      line-height: 1.8;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 24px;
+      padding: 17px;
+      border-radius: 14px;
+      background: #1d2c21;
+      color: #c8d7cc;
+      line-height: 1.9;
+    }
+
+    .note strong {
+      color: #7ce5a1;
+    }
+
+    .empty {
+      display: none;
+      color: #c2d0c5;
+      padding: 20px 0;
+    }
+
+    @media (max-width: 900px) {
+      .workout-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .schedule {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        padding: 15px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .workout-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .card-content {
+        padding: 12px;
+      }
+
+      .card-content h3 {
+        font-size: 16px;
+      }
+
+      .card-content p {
+        font-size: 13px;
+      }
+
+      .schedule {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .day {
+        padding: 13px;
+      }
+
+      .exercise-info {
+        flex-wrap: wrap;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .workout-grid,
+      .schedule {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="container">
 
-<header>
-    <div class="logo">
-        Body<span>Reset</span>
-    </div>
+    <header class="header">
+      <div class="brand">BODY<span>RESET</span> / WORKOUT</div>
+      <div class="tag">💪 وقت التمرين</div>
+    </header>
 
-    <button class="back-btn" onclick="goBack()">←</button>
-</header>
-
-<div class="container">
-
-    <div class="page-title">
-        <h1>Workout</h1>
-        <p id="pageSubtitle">اختار هدفك وابدأ برنامج التمرين</p>
-    </div>
-
-    <!-- =====================================================
-         SCREEN 1 : GOALS
-    ====================================================== -->
-
-    <section id="goalScreen" class="screen active">
-
-        <div class="section-header">
-            <h2>اختار هدفك</h2>
-        </div>
-
-        <div class="goal-grid">
-
-            <div class="goal-card" onclick="selectGoal('bulk')">
-                <div class="goal-icon">💪</div>
-                <h3>تضخيم</h3>
-                <p>
-                    زيادة الكتلة العضلية وبناء حجم وقوة عضلية.
-                </p>
-            </div>
-
-            <div class="goal-card" onclick="selectGoal('cut')">
-                <div class="goal-icon">🔥</div>
-                <h3>تنشيف</h3>
-                <p>
-                    تقليل الدهون مع الحفاظ على الكتلة العضلية.
-                </p>
-            </div>
-
-            <div class="goal-card" onclick="selectGoal('fitness')">
-                <div class="goal-icon">🏃</div>
-                <h3>لياقة وحرق دهون</h3>
-                <p>
-                    تحسين اللياقة العامة ورفع معدل النشاط.
-                </p>
-            </div>
-
-            <div class="goal-card" onclick="selectGoal('strength')">
-                <div class="goal-icon">🏋️</div>
-                <h3>زيادة القوة</h3>
-                <p>
-                    التركيز على القوة والأوزان والأداء الأساسي.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SCREEN 2 : SYSTEMS
-    ====================================================== -->
-
-    <section id="systemScreen" class="screen">
-
-        <div class="section-header">
-            <h2 id="systemTitle">أنظمة التدريب</h2>
-
-            <button class="small-back" onclick="showGoals()">
-                ← تغيير الهدف
-            </button>
-        </div>
-
-        <div class="system-grid" id="systemGrid"></div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SCREEN 3 : DAYS
-    ====================================================== -->
-
-    <section id="daysScreen" class="screen">
-
-        <div class="section-header">
-            <h2 id="daysTitle">أيام البرنامج</h2>
-
-            <button class="small-back" onclick="showSystems()">
-                ← تغيير النظام
-            </button>
-        </div>
-
-        <div class="days-grid" id="daysGrid"></div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SCREEN 4 : WORKOUT
-    ====================================================== -->
-
-    <section id="workoutScreen" class="screen">
-
-        <div class="section-header">
-            <h2>تمرين اليوم</h2>
-
-            <button class="small-back" onclick="showDays()">
-                ← أيام البرنامج
-            </button>
-        </div>
-
-        <div class="today-box">
-
-            <div class="today-top">
-
-                <div class="today-title">
-                    <h2 id="todayTitle">Chest</h2>
-                    <p id="todayDescription">
-                        تمرين الصدر اليوم.
-                    </p>
-                </div>
-
-                <div class="today-badge" id="todayBadge">
-                    تضخيم
-                </div>
-
-            </div>
-
-            <div class="today-stats">
-
-                <div class="stat">
-                    التمارين:
-                    <strong id="exerciseCount">0</strong>
-                </div>
-
-                <div class="stat">
-                    المدة:
-                    <strong id="workoutDuration">45 دقيقة</strong>
-                </div>
-
-                <div class="stat">
-                    المستوى:
-                    <strong id="workoutLevel">متوسط</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="exercise-slider" id="exerciseSlider"></div>
-
-        <div class="dots" id="dots"></div>
-
-    </section>
-
-</div>
-
-
-<!-- =====================================================
-     EXERCISE MODAL
-====================================================== -->
-
-<div class="modal" id="exerciseModal">
-
-    <div class="modal-box">
-
-        <button class="close-modal" onclick="closeModal()">×</button>
-
-        <div class="modal-image" id="modalImage">
-            🏋️
-        </div>
-
-        <h2 id="modalTitle">
-            Bench Press
-        </h2>
-
-        <p class="modal-description" id="modalDescription">
-            تمرين أساسي لتطوير عضلات الصدر.
+    <section class="hero">
+      <div>
+        <h1>قوّي جسمك، تمرين ورا تمرين 🔥</h1>
+        <p>
+          اختار العضلة اللي عايز تتمرنها، شوف فيديو توضيحي لكل تمرين،
+          وابدأ بالتدريج. اهتم بالأداء الصحيح قبل زيادة الأوزان.
         </p>
+        <div class="tag">ابدأ بمستواك وطور نفسك كل أسبوع</div>
+      </div>
 
-        <div class="modal-stats">
-
-            <div class="modal-stat">
-                Sets
-                <strong id="modalSets">4</strong>
-            </div>
-
-            <div class="modal-stat">
-                Reps
-                <strong id="modalReps">8-12</strong>
-            </div>
-
-            <div class="modal-stat">
-                Rest
-                <strong id="modalRest">90 sec</strong>
-            </div>
-
-            <div class="modal-stat">
-                Level
-                <strong id="modalLevel">Intermediate</strong>
-            </div>
-
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>6</strong>
+          <small>تمارين</small>
         </div>
-
-        <div class="modal-section">
-            <h4>🔥 الإحماء</h4>
-            <p id="modalWarmup">
-                قم بالإحماء لمدة 5 إلى 10 دقائق قبل البدء.
-            </p>
+        <div class="stat">
+          <strong>3</strong>
+          <small>أيام تدريب</small>
         </div>
-
-        <div class="modal-section">
-            <h4>📌 طريقة الأداء</h4>
-            <p id="modalHow">
-                حافظ على التحكم في الحركة ولا تستخدم سرعة زائدة.
-            </p>
+        <div class="stat">
+          <strong>45</strong>
+          <small>دقيقة تقريبًا</small>
         </div>
+      </div>
+    </section>
 
-        <div class="modal-section">
-            <h4>💡 نصائح</h4>
-            <p id="modalTips">
-                ركز على الحركة الصحيحة والتنفس.
-            </p>
+    <section>
+      <div class="section-heading">
+        <h2>فيديوهات التمارين</h2>
+        <p>اختار مجموعة العضلات</p>
+      </div>
+
+      <div class="filters" aria-label="تصفية التمارين">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="chest">الصدر</button>
+        <button class="filter-btn" data-filter="back">الظهر</button>
+        <button class="filter-btn" data-filter="legs">الرجل</button>
+        <button class="filter-btn" data-filter="arms">الذراع</button>
+      </div>
+
+      <div class="workout-grid" id="workoutGrid">
+
+        <article class="workout-card" data-muscle="chest">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/IODxDxX7oi4"
+              title="Push-ups tutorial"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="card-content">
+            <div class="card-top">
+              <span class="muscle">الصدر</span>
+              <span class="duration">3 مجموعات</span>
+            </div>
+            <h3>تمرين الضغط</h3>
+            <p>حافظ على جسمك في خط مستقيم، وانزل بتحكم وادفع للأعلى.</p>
+            <div class="exercise-info">
+              <span>8–12 تكرار</span>
+              <span>راحة 60 ثانية</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="workout-card" data-muscle="back">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/eGo4IYlbE5g"
+              title="Pull-up tutorial"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="card-content">
+            <div class="card-top">
+              <span class="muscle">الظهر</span>
+              <span class="duration">3 مجموعات</span>
+            </div>
+            <h3>العقلة</h3>
+            <p>اسحب جسمك للأعلى بتحكم. استخدم مساعدة إذا كنت مبتدئًا.</p>
+            <div class="exercise-info">
+              <span>حسب قدرتك</span>
+              <span>راحة 90 ثانية</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="workout-card" data-muscle="legs">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/aclHkVaku9U"
+              title="Squat tutorial"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="card-content">
+            <div class="card-top">
+              <span class="muscle">الرجل</span>
+              <span class="duration">3 مجموعات</span>
+            </div>
+            <h3>Squats — السكوات</h3>
+            <p>انزل كأنك بتقعد على كرسي، وخلي الركبتين في اتجاه أصابع القدم.</p>
+            <div class="exercise-info">
+              <span>10–15 تكرار</span>
+              <span>راحة 60 ثانية</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="workout-card" data-muscle="arms">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/ykJmrZ5v0Oo"
+              title="Biceps curl tutorial"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="card-content">
+            <div class="card-top">
+              <span class="muscle">الذراع</span>
+              <span class="duration">3 مجموعات</span>
+            </div>
+            <h3>Biceps Curl</h3>
+            <p>اثنِ الكوع لرفع الوزن، وثبّت الجزء العلوي من الذراع من غير تأرجح.</p>
+            <div class="exercise-info">
+              <span>10–12 تكرار</span>
+              <span>راحة 60 ثانية</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="workout-card" data-muscle="chest">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/rT7DgCr-3pg"
+              title="Bench press tutorial"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="card-content">
+            <div class="card-top">
+              <span class="muscle">الصدر</span>
+              <span class="duration">3 مجموعات</span>
+            </div>
+            <h3>Bench Press</h3>
+            <p>استخدم وزنًا مناسبًا، وحافظ على التحكم في النزول والرفع.</p>
+            <div class="exercise-info">
+              <span>8–12 تكرار</span>
+              <span>راحة 90 ثانية</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="workout-card" data-muscle="legs">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/2SHsk9AzdjA"
+              title="Lunge tutorial"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="card-content">
+            <div class="card-top">
+              <span class="muscle">الرجل</span>
+              <span class="duration">3 مجموعات</span>
+            </div>
+            <h3>Lunges — الاندفاع</h3>
+            <p>خذ خطوة مناسبة، وانزل بتحكم مع الحفاظ على توازنك.</p>
+            <div class="exercise-info">
+              <span>8–10 لكل رجل</span>
+              <span>راحة 60 ثانية</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="empty" id="emptyMessage">مفيش تمارين في القسم ده حاليًا.</p>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>جدول أسبوعي مقترح</h2>
+        <p>ابدأ تدريجيًا وخد وقتك في الاستشفاء</p>
+      </div>
+
+      <div class="schedule">
+        <div class="day">
+          <h3>اليوم الأول</h3>
+          <p>صدر وذراع<br>3–4 تمارين<br>راحة بين المجموعات</p>
         </div>
-
-        <button class="done-btn" onclick="closeModal()">
-            ✓ خلصت التمرين
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     BOTTOM NAV
-====================================================== -->
-
-<nav class="bottom-nav">
-
-    <a href="dashboard.html" class="nav-item">
-        <span>⌂</span>
-        <span>الرئيسية</span>
-    </a>
-
-    <a href="workout.html" class="nav-item active">
-        <span>🏋️</span>
-        <span>Workout</span>
-    </a>
-
-    <a href="progress.html" class="nav-item">
-        <span>📊</span>
-        <span>Progress</span>
-    </a>
-
-    <a href="profile.html" class="nav-item">
-        <span>👤</span>
-        <span>Profile</span>
-    </a>
-
-</nav>
-
-
-<script>
-
-    /* =====================================================
-       PROGRAM DATA
-    ====================================================== */
-
-    const programs = {
-
-        /* ================= BULK ================= */
-
-        bulk: {
-
-            title: "تضخيم",
-
-            systems: {
-
-                ppl: {
-
-                    name: "Push Pull Legs",
-                    badge: "PPL",
-                    description:
-                        "نظام مقسم إلى Push و Pull و Legs، مناسب لتوزيع حجم التمرين على العضلات خلال الأسبوع.",
-
-                    days: [
-
-                        {
-                            id: "push",
-                            name: "Push",
-                            description: "صدر + أكتاف + ترايسبس",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين أساسي لتطوير عضلات الصدر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "5-10 دقائق إحماء للكتف والصدر.",
-                                    how: "انزل بالبار بتحكم ثم ادفعه لأعلى مع ثبات الكتفين.",
-                                    tips: "لا ترفع الوزن على حساب مدى الحركة الصحيح."
-                                },
-                                {
-                                    id: "incline-press",
-                                    name: "Incline Dumbbell Press",
-                                    icon: "💪",
-                                    description: "تمرين يستهدف الجزء العلوي من الصدر.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "حرك الكتفين والذراعين قبل البدء.",
-                                    how: "حافظ على الكوعين في وضع مريح وادفع الدمبل لأعلى.",
-                                    tips: "استخدم وزن يسمح لك بالتحكم الكامل."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "🏋️",
-                                    description: "تمرين أساسي لتطوير عضلات الأكتاف.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "حرك مفصل الكتف جيداً.",
-                                    how: "ابدأ من مستوى الكتف وادفع الوزن للأعلى.",
-                                    tips: "تجنب تقويس أسفل الظهر."
-                                },
-                                {
-                                    id: "lateral-raise",
-                                    name: "Lateral Raise",
-                                    icon: "💪",
-                                    description: "لعزل الجزء الجانبي من عضلة الكتف.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة قبل الوزن الأساسي.",
-                                    how: "ارفع الذراعين للجانب حتى مستوى الكتف تقريباً.",
-                                    tips: "لا تستخدم التأرجح."
-                                },
-                                {
-                                    id: "triceps-pushdown",
-                                    name: "Triceps Pushdown",
-                                    icon: "🔥",
-                                    description: "تمرين مباشر لعضلة الترايسبس.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ثبت الكوعين بجانب الجسم وادفع المقبض لأسفل.",
-                                    tips: "ركز على فرد الكوع بالكامل."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "pull",
-                            name: "Pull",
-                            description: "ظهر + بايسبس + كتف خلفي",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "تمرين أساسي لعضلات الظهر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة لتنشيط الظهر.",
-                                    how: "اسحب المقبض باتجاه أعلى الصدر مع الحفاظ على الظهر ثابتاً.",
-                                    tips: "لا تعتمد على حركة الجسم."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Cable Row",
-                                    icon: "💪",
-                                    description: "لتطوير سمك عضلات الظهر.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض نحو البطن مع ضم لوحي الكتف.",
-                                    tips: "تحكم في الرجوع."
-                                },
-                                {
-                                    id: "face-pull",
-                                    name: "Face Pull",
-                                    icon: "🔥",
-                                    description: "يستهدف الكتف الخلفي وأعلى الظهر.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "60 ثانية",
-                                    warmup: "حركة خفيفة للكتف.",
-                                    how: "اسحب الحبل باتجاه الوجه مع فتح الكوعين.",
-                                    tips: "حافظ على الحركة بطيئة."
-                                },
-                                {
-                                    id: "barbell-curl",
-                                    name: "Barbell Curl",
-                                    icon: "💪",
-                                    description: "تمرين أساسي للبايسبس.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الكوع وارفع البار بدون تحريك الجسم.",
-                                    tips: "لا تستخدم التأرجح."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "legs",
-                            name: "Legs",
-                            description: "أرجل + Glutes + Calves",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Barbell Squat",
-                                    icon: "🏋️",
-                                    description: "تمرين أساسي لبناء عضلات الرجل.",
-                                    sets: "4",
-                                    reps: "6-10",
-                                    rest: "120 ثانية",
-                                    warmup: "10 دقائق إحماء وحركات للورك والكاحل.",
-                                    how: "انزل مع ثبات الجذع ثم ادفع الأرض للعودة.",
-                                    tips: "حافظ على الركبة والقدم في اتجاه مناسب."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "تمرين قوي للفخذين.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة بدون قفل الركبة بقوة.",
-                                    tips: "لا تقلل مدى الحركة بسبب الوزن."
-                                },
-                                {
-                                    id: "leg-curl",
-                                    name: "Leg Curl",
-                                    icon: "🦵",
-                                    description: "يستهدف عضلات الفخذ الخلفية.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الركبة واسحب الوزن بتحكم.",
-                                    tips: "ركز على الانقباض."
-                                },
-                                {
-                                    id: "calf-raise",
-                                    name: "Calf Raise",
-                                    icon: "🦶",
-                                    description: "تمرين عضلات السمانة.",
-                                    sets: "4",
-                                    reps: "12-20",
-                                    rest: "45 ثانية",
-                                    warmup: "حركة خفيفة للكاحل.",
-                                    how: "ارفع الكعب لأعلى ثم انزل ببطء.",
-                                    tips: "استخدم مدى حركة كامل."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                upperLower: {
-
-                    name: "Upper / Lower",
-                    badge: "4 Days",
-                    description:
-                        "تقسيم الجزء العلوي والسفلي على أربعة أيام مع حجم تمرين مناسب للتضخيم.",
-
-                    days: [
-
-                        {
-                            id: "upper-a",
-                            name: "Upper A",
-                            description: "صدر + ظهر + أكتاف + ذراع",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين الصدر الأساسي.",
-                                    sets: "4",
-                                    reps: "8-10",
-                                    rest: "90 ثانية",
-                                    warmup: "إحماء للصدر والكتف.",
-                                    how: "ادفع البار لأعلى مع تحكم كامل.",
-                                    tips: "ثبت الكتفين."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "تمرين الظهر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض نحو الصدر.",
-                                    tips: "لا تستخدم التأرجح."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "تمرين الأكتاف.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "تحريك الكتف.",
-                                    how: "ادفع الوزن للأعلى من مستوى الكتف.",
-                                    tips: "ثبت الجذع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "lower-a",
-                            name: "Lower A",
-                            description: "Quads + Hamstrings + Calves",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "تمرين الرجل الأساسي.",
-                                    sets: "4",
-                                    reps: "6-10",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء للرجل والورك.",
-                                    how: "انزل بتحكم ثم ادفع الأرض.",
-                                    tips: "حافظ على ثبات الجذع."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "تمرين الفخذ.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة بتحكم.",
-                                    tips: "لا تقفل الركبة."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "upper-b",
-                            name: "Upper B",
-                            description: "صدر + ظهر + أكتاف + ذراع",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "incline-press",
-                                    name: "Incline Press",
-                                    icon: "💪",
-                                    description: "الجزء العلوي من الصدر.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء الكتف.",
-                                    how: "ادفع الدمبل لأعلى.",
-                                    tips: "تحكم في النزول."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "🏋️",
-                                    description: "سمك الظهر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للبطن.",
-                                    tips: "ضم لوحي الكتف."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "lower-b",
-                            name: "Lower B",
-                            description: "Glutes + Hamstrings + Quads",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "romanian-deadlift",
-                                    name: "Romanian Deadlift",
-                                    icon: "🏋️",
-                                    description: "تمرين للفخذ الخلفي والـ Glutes.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "حركة للورك والفخذ الخلفي.",
-                                    how: "ادفع الورك للخلف مع ظهر ثابت.",
-                                    tips: "لا تحول الحركة إلى Squat."
-                                },
-                                {
-                                    id: "leg-curl",
-                                    name: "Leg Curl",
-                                    icon: "🦵",
-                                    description: "عزل الفخذ الخلفي.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الركبة بتحكم.",
-                                    tips: "ركز على الانقباض."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                broSplit: {
-
-                    name: "Bro Split",
-                    badge: "5 Days",
-                    description:
-                        "كل يوم يركز على مجموعة عضلية رئيسية، مع حجم تمرين أكبر لكل عضلة.",
-
-                    days: [
-
-                        {
-                            id: "chest-day",
-                            name: "Chest",
-                            description: "تركيز كامل على الصدر",
-                            duration: "50 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين الصدر الأساسي.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "إحماء للصدر والكتف.",
-                                    how: "ادفع البار لأعلى بتحكم.",
-                                    tips: "ثبت لوحي الكتف."
-                                },
-                                {
-                                    id: "incline-press",
-                                    name: "Incline Dumbbell Press",
-                                    icon: "💪",
-                                    description: "الجزء العلوي من الصدر.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع الدمبل لأعلى.",
-                                    tips: "تحكم في النزول."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "back-day",
-                            name: "Back",
-                            description: "تركيز كامل على الظهر",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "تمرين الظهر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للصدر.",
-                                    tips: "تحكم في الرجوع."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "💪",
-                                    description: "سمك الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء بسيط.",
-                                    how: "اسحب المقبض نحو البطن.",
-                                    tips: "ضم الكتفين للخلف."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "shoulders-day",
-                            name: "Shoulders",
-                            description: "أكتاف أمامية وجانبية وخلفية",
-                            duration: "45 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "🏋️",
-                                    description: "تمرين أساسي للأكتاف.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء للكتف.",
-                                    how: "ادفع الوزن للأعلى.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "lateral-raise",
-                                    name: "Lateral Raise",
-                                    icon: "💪",
-                                    description: "الكتف الجانبي.",
-                                    sets: "4",
-                                    reps: "12-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ارفع الذراعين للجانب.",
-                                    tips: "لا تستخدم التأرجح."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "arms-day",
-                            name: "Arms",
-                            description: "بايسبس + ترايسبس",
-                            duration: "45 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "barbell-curl",
-                                    name: "Barbell Curl",
-                                    icon: "💪",
-                                    description: "تمرين البايسبس.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الكوع وارفع البار.",
-                                    tips: "بدون تأرجح."
-                                },
-                                {
-                                    id: "triceps-pushdown",
-                                    name: "Triceps Pushdown",
-                                    icon: "🔥",
-                                    description: "تمرين الترايسبس.",
-                                    sets: "4",
-                                    reps: "10-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المقبض لأسفل.",
-                                    tips: "ثبت الكوع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "legs-day",
-                            name: "Legs",
-                            description: "تمرين الرجل بالكامل",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "تمرين أساسي للرجل.",
-                                    sets: "4",
-                                    reps: "6-10",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء جيد للرجل.",
-                                    how: "انزل بتحكم ثم ادفع الأرض.",
-                                    tips: "ثبت الركبة والجذع."
-                                },
-                                {
-                                    id: "leg-curl",
-                                    name: "Leg Curl",
-                                    icon: "🦵",
-                                    description: "الفخذ الخلفي.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الركبة بتحكم.",
-                                    tips: "لا تستخدم السرعة."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                arnold: {
-
-                    name: "Arnold Split",
-                    badge: "6 Days",
-                    description:
-                        "تقسيم كلاسيكي يجمع الصدر مع الظهر، والأكتاف مع الذراع، والرجل في يوم مستقل.",
-
-                    days: [
-
-                        {
-                            id: "chest-back",
-                            name: "Chest + Back",
-                            description: "صدر + ظهر",
-                            duration: "65 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين الصدر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "إحماء جيد.",
-                                    how: "ادفع البار لأعلى.",
-                                    tips: "تحكم في الوزن."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "تمرين الظهر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للصدر.",
-                                    tips: "ثبت الجذع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "shoulders-arms",
-                            name: "Shoulders + Arms",
-                            description: "أكتاف + بايسبس + ترايسبس",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "🏋️",
-                                    description: "الأكتاف.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء الكتف.",
-                                    how: "ادفع الوزن لأعلى.",
-                                    tips: "لا تقوس ظهرك."
-                                },
-                                {
-                                    id: "barbell-curl",
-                                    name: "Barbell Curl",
-                                    icon: "💪",
-                                    description: "البايسبس.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ارفع البار بدون تأرجح.",
-                                    tips: "ثبت الكوع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "legs",
-                            name: "Legs",
-                            description: "الرجل بالكامل",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "الرجل.",
-                                    sets: "4",
-                                    reps: "6-10",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء الرجل.",
-                                    how: "انزل ثم ادفع الأرض.",
-                                    tips: "تحكم في الحركة."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "الفخذ.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة.",
-                                    tips: "لا تقفل الركبة."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "chest-back-2",
-                            name: "Chest + Back 2",
-                            description: "صدر + ظهر",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "incline-press",
-                                    name: "Incline Press",
-                                    icon: "💪",
-                                    description: "الصدر العلوي.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع الدمبل لأعلى.",
-                                    tips: "تحكم في النزول."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "🏋️",
-                                    description: "الظهر.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للبطن.",
-                                    tips: "ضم لوحي الكتف."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "shoulders-arms-2",
-                            name: "Shoulders + Arms 2",
-                            description: "أكتاف + ذراع",
-                            duration: "55 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "lateral-raise",
-                                    name: "Lateral Raise",
-                                    icon: "💪",
-                                    description: "الكتف الجانبي.",
-                                    sets: "4",
-                                    reps: "12-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ارفع الذراعين للجانب.",
-                                    tips: "بدون تأرجح."
-                                },
-                                {
-                                    id: "triceps-pushdown",
-                                    name: "Triceps Pushdown",
-                                    icon: "🔥",
-                                    description: "الترايسبس.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المقبض لأسفل.",
-                                    tips: "ثبت الكوع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "legs-2",
-                            name: "Legs 2",
-                            description: "رجل + Glutes",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "romanian-deadlift",
-                                    name: "Romanian Deadlift",
-                                    icon: "🏋️",
-                                    description: "الفخذ الخلفي والـ Glutes.",
-                                    sets: "4",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "إحماء للورك.",
-                                    how: "ادفع الورك للخلف.",
-                                    tips: "حافظ على ظهر ثابت."
-                                }
-                            ]
-                        }
-
-                    ]
-                }
-
-            }
-        },
-
-
-        /* ================= CUT ================= */
-
-        cut: {
-
-            title: "تنشيف",
-
-            systems: {
-
-                pplCardio: {
-
-                    name: "PPL + Cardio",
-                    badge: "PPL",
-                    description:
-                        "تقسيم Push Pull Legs مع إضافة نشاط كارديو لدعم حرق السعرات.",
-
-                    days: [
-
-                        {
-                            id: "push-cardio",
-                            name: "Push + Cardio",
-                            description: "صدر + أكتاف + ترايسبس + كارديو",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين الصدر الأساسي.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "5-10 دقائق إحماء.",
-                                    how: "ادفع البار لأعلى بتحكم.",
-                                    tips: "حافظ على التقنية."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "تمرين الأكتاف.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "تحريك الكتف.",
-                                    how: "ادفع الوزن للأعلى.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "triceps-pushdown",
-                                    name: "Triceps Pushdown",
-                                    icon: "🔥",
-                                    description: "الترايسبس.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "45 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المقبض لأسفل.",
-                                    tips: "تحكم في الحركة."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "نشاط كارديو متوسط الشدة.",
-                                    sets: "1",
-                                    reps: "15-20 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ بسرعة منخفضة.",
-                                    how: "حافظ على شدة يمكنك الاستمرار عليها.",
-                                    tips: "اضبط الشدة حسب مستواك."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "pull-cardio",
-                            name: "Pull + Cardio",
-                            description: "ظهر + بايسبس + كارديو",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "تمرين الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للصدر.",
-                                    tips: "تحكم في النزول."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "💪",
-                                    description: "سمك الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للبطن.",
-                                    tips: "ضم لوحي الكتف."
-                                },
-                                {
-                                    id: "barbell-curl",
-                                    name: "Barbell Curl",
-                                    icon: "💪",
-                                    description: "البايسبس.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "45 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ارفع البار بدون تأرجح.",
-                                    tips: "ثبت الكوع."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو متوسط الشدة.",
-                                    sets: "1",
-                                    reps: "15-20 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "حافظ على إيقاع ثابت.",
-                                    tips: "اشرب ماء."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "legs-cardio",
-                            name: "Legs + Cardio",
-                            description: "رجل + كارديو",
-                            duration: "65 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "الرجل.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "إحماء الرجل.",
-                                    how: "انزل بتحكم واصعد.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "الفخذ.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة.",
-                                    tips: "تحكم في النزول."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو بعد تمرين الرجل.",
-                                    sets: "1",
-                                    reps: "10-15 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ بهدوء.",
-                                    how: "حافظ على إيقاع مناسب.",
-                                    tips: "لا تبالغ في الشدة."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                upperLowerCardio: {
-
-                    name: "Upper / Lower + Cardio",
-                    badge: "4 Days",
-                    description:
-                        "تمارين Upper Lower مع جلسات كارديو منظمة.",
-
-                    days: [
-
-                        {
-                            id: "upper",
-                            name: "Upper",
-                            description: "الجزء العلوي + كارديو",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "الصدر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع البار.",
-                                    tips: "تحكم في الحركة."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو متوسط الشدة.",
-                                    sets: "1",
-                                    reps: "15 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "حافظ على سرعة ثابتة.",
-                                    tips: "اضبط الشدة حسب مستواك."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "lower",
-                            name: "Lower",
-                            description: "الجزء السفلي + كارديو",
-                            duration: "60 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "الرجل.",
-                                    sets: "3",
-                                    reps: "8-12",
-                                    rest: "90 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "انزل واصعد بتحكم.",
-                                    tips: "ثبت القدم."
-                                },
-                                {
-                                    id: "leg-curl",
-                                    name: "Leg Curl",
-                                    icon: "🦵",
-                                    description: "الفخذ الخلفي.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الركبة.",
-                                    tips: "تحكم في الحركة."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو.",
-                                    sets: "1",
-                                    reps: "10-15 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "إيقاع ثابت.",
-                                    tips: "لا تبالغ."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "upper-2",
-                            name: "Upper 2",
-                            description: "الجزء العلوي",
-                            duration: "50 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "incline-press",
-                                    name: "Incline Press",
-                                    icon: "💪",
-                                    description: "الصدر العلوي.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع الدمبل.",
-                                    tips: "تحكم في النزول."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "🏋️",
-                                    description: "الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب للمعدة.",
-                                    tips: "ضم لوحي الكتف."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "lower-2",
-                            name: "Lower 2",
-                            description: "الجزء السفلي",
-                            duration: "55 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "romanian-deadlift",
-                                    name: "Romanian Deadlift",
-                                    icon: "🏋️",
-                                    description: "Hamstrings + Glutes.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "90 ثانية",
-                                    warmup: "حركة للورك.",
-                                    how: "ادفع الورك للخلف.",
-                                    tips: "ظهر ثابت."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "الفخذ.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة.",
-                                    tips: "لا تقفل الركبة."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                fullBodyCardio: {
-
-                    name: "Full Body + Cardio",
-                    badge: "3 Days",
-                    description:
-                        "تمرين كامل للجسم مع إضافة كارديو في نفس الجلسة.",
-
-                    days: [
-
-                        {
-                            id: "full-body-a",
-                            name: "Full Body A",
-                            description: "جسم كامل + كارديو",
-                            duration: "55 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "الرجل.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "انزل واصعد بتحكم.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "💪",
-                                    description: "الصدر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع البار.",
-                                    tips: "تحكم في الوزن."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب للمقدمة.",
-                                    tips: "لا تتأرجح."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو.",
-                                    sets: "1",
-                                    reps: "15 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "إيقاع ثابت.",
-                                    tips: "راقب مستوى التعب."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "full-body-b",
-                            name: "Full Body B",
-                            description: "جسم كامل + نشاط",
-                            duration: "55 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "romanian-deadlift",
-                                    name: "Romanian Deadlift",
-                                    icon: "🏋️",
-                                    description: "Hamstrings + Glutes.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "75 ثانية",
-                                    warmup: "حركة للورك.",
-                                    how: "ادفع الورك للخلف.",
-                                    tips: "ظهر ثابت."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "الأكتاف.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "تحريك الكتف.",
-                                    how: "ادفع الوزن لأعلى.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "🏋️",
-                                    description: "الظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض.",
-                                    tips: "ضم الكتف."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو.",
-                                    sets: "1",
-                                    reps: "15 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "حافظ على الإيقاع.",
-                                    tips: "اشرب ماء."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "full-body-c",
-                            name: "Full Body C",
-                            description: "جسم كامل",
-                            duration: "50 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "الرجل.",
-                                    sets: "3",
-                                    reps: "12-15",
-                                    rest: "75 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة.",
-                                    tips: "تحكم في النزول."
-                                },
-                                {
-                                    id: "incline-press",
-                                    name: "Incline Press",
-                                    icon: "💪",
-                                    description: "الصدر العلوي.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع الدمبل.",
-                                    tips: "تحكم في الحركة."
-                                }
-                            ]
-                        }
-
-                    ]
-                }
-
-            }
-        },
-
-
-        /* ================= FITNESS ================= */
-
-        fitness: {
-
-            title: "لياقة وحرق دهون",
-
-            systems: {
-
-                fullBody: {
-
-                    name: "Full Body",
-                    badge: "3 Days",
-                    description:
-                        "تمارين الجسم بالكامل ثلاث مرات أسبوعياً مع التركيز على الحركة واللياقة.",
-
-                    days: [
-
-                        {
-                            id: "fitness-a",
-                            name: "Full Body A",
-                            description: "جسم كامل",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Bodyweight Squat",
-                                    icon: "🦵",
-                                    description: "سكوات بوزن الجسم.",
-                                    sets: "3",
-                                    reps: "15",
-                                    rest: "45 ثانية",
-                                    warmup: "5 دقائق حركة خفيفة.",
-                                    how: "انزل واصعد بتحكم.",
-                                    tips: "حافظ على الركبة والقدم في اتجاه مناسب."
-                                },
-                                {
-                                    id: "push-up",
-                                    name: "Push Up",
-                                    icon: "💪",
-                                    description: "تمرين ضغط للجسم العلوي.",
-                                    sets: "3",
-                                    reps: "8-15",
-                                    rest: "45 ثانية",
-                                    warmup: "حرك الكتف والرسغ.",
-                                    how: "انزل بالجسم كوحدة واحدة ثم ادفع الأرض.",
-                                    tips: "حافظ على الجذع ثابتاً."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Walking Cardio",
-                                    icon: "🏃",
-                                    description: "مشي سريع.",
-                                    sets: "1",
-                                    reps: "20 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ بمشي خفيف.",
-                                    how: "ارفع السرعة تدريجياً.",
-                                    tips: "حافظ على وتيرة يمكنك الاستمرار عليها."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "fitness-b",
-                            name: "Full Body B",
-                            description: "جسم كامل + حركة",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "lunges",
-                                    name: "Lunges",
-                                    icon: "🦵",
-                                    description: "تمرين للرجل والتوازن.",
-                                    sets: "3",
-                                    reps: "10 لكل رجل",
-                                    rest: "45 ثانية",
-                                    warmup: "حركة للكاحل والورك.",
-                                    how: "خذ خطوة للأمام وانزل بتحكم.",
-                                    tips: "حافظ على التوازن."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "الأكتاف.",
-                                    sets: "3",
-                                    reps: "12",
-                                    rest: "45 ثانية",
-                                    warmup: "حركة للكتف.",
-                                    how: "ادفع الوزن للأعلى.",
-                                    tips: "لا تقوس الظهر."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "نشاط هوائي.",
-                                    sets: "1",
-                                    reps: "20 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "حافظ على شدة متوسطة.",
-                                    tips: "اشرب ماء."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "fitness-c",
-                            name: "Full Body C",
-                            description: "جسم كامل",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "step-up",
-                                    name: "Step Up",
-                                    icon: "🦵",
-                                    description: "تمرين حركة للرجل.",
-                                    sets: "3",
-                                    reps: "12 لكل رجل",
-                                    rest: "45 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "اصعد على المنصة بتحكم.",
-                                    tips: "ثبت القدم."
-                                },
-                                {
-                                    id: "push-up",
-                                    name: "Push Up",
-                                    icon: "💪",
-                                    description: "ضغط.",
-                                    sets: "3",
-                                    reps: "8-15",
-                                    rest: "45 ثانية",
-                                    warmup: "إحماء للكتف.",
-                                    how: "انزل وادفع الأرض.",
-                                    tips: "الجسم في خط واحد."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Cardio",
-                                    icon: "🏃",
-                                    description: "كارديو.",
-                                    sets: "1",
-                                    reps: "20 دقيقة",
-                                    rest: "-",
-                                    warmup: "ابدأ بهدوء.",
-                                    how: "إيقاع مستمر.",
-                                    tips: "اضبط السرعة حسب مستواك."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                circuit: {
-
-                    name: "Circuit Training",
-                    badge: "3 Days",
-                    description:
-                        "دوائر تدريب تجمع تمارين متعددة مع فترات راحة قصيرة.",
-
-                    days: [
-
-                        {
-                            id: "circuit-a",
-                            name: "Circuit A",
-                            description: "دائرة كاملة للجسم",
-                            duration: "40 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🦵",
-                                    description: "سكوات.",
-                                    sets: "3",
-                                    reps: "15",
-                                    rest: "20 ثانية",
-                                    warmup: "إحماء 5 دقائق.",
-                                    how: "انزل واصعد بتحكم.",
-                                    tips: "حافظ على التقنية."
-                                },
-                                {
-                                    id: "push-up",
-                                    name: "Push Up",
-                                    icon: "💪",
-                                    description: "ضغط.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "20 ثانية",
-                                    warmup: "تحريك الكتف.",
-                                    how: "انزل وادفع الأرض.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "High Knees",
-                                    icon: "🏃",
-                                    description: "رفع الركبتين بسرعة.",
-                                    sets: "3",
-                                    reps: "30 ثانية",
-                                    rest: "30 ثانية",
-                                    warmup: "ابدأ ببطء.",
-                                    how: "ارفع الركبتين بالتبادل.",
-                                    tips: "حافظ على التحكم."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "circuit-b",
-                            name: "Circuit B",
-                            description: "دائرة لياقة",
-                            duration: "40 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "lunges",
-                                    name: "Lunges",
-                                    icon: "🦵",
-                                    description: "Lunges.",
-                                    sets: "3",
-                                    reps: "10 لكل رجل",
-                                    rest: "20 ثانية",
-                                    warmup: "حركة للورك.",
-                                    how: "خطوة وانزل.",
-                                    tips: "حافظ على التوازن."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "أكتاف.",
-                                    sets: "3",
-                                    reps: "12",
-                                    rest: "20 ثانية",
-                                    warmup: "تحريك الكتف.",
-                                    how: "ادفع الوزن.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Jumping Jacks",
-                                    icon: "🏃",
-                                    description: "تمرين كارديو سريع.",
-                                    sets: "3",
-                                    reps: "30 ثانية",
-                                    rest: "30 ثانية",
-                                    warmup: "ابدأ تدريجياً.",
-                                    how: "حركة متكررة للذراعين والرجلين.",
-                                    tips: "اهبط بهدوء."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "circuit-c",
-                            name: "Circuit C",
-                            description: "دائرة جسم كامل",
-                            duration: "40 دقيقة",
-                            level: "متوسط",
-                            exercises: [
-                                {
-                                    id: "step-up",
-                                    name: "Step Up",
-                                    icon: "🦵",
-                                    description: "تمرين الرجل.",
-                                    sets: "3",
-                                    reps: "12 لكل رجل",
-                                    rest: "20 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "اصعد وانزل بتحكم.",
-                                    tips: "ثبت القدم."
-                                },
-                                {
-                                    id: "push-up",
-                                    name: "Push Up",
-                                    icon: "💪",
-                                    description: "ضغط.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "20 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "انزل وادفع.",
-                                    tips: "جسم مستقيم."
-                                },
-                                {
-                                    id: "cardio",
-                                    name: "Mountain Climbers",
-                                    icon: "🏃",
-                                    description: "كارديو للجسم بالكامل.",
-                                    sets: "3",
-                                    reps: "30 ثانية",
-                                    rest: "30 ثانية",
-                                    warmup: "ابدأ ببطء.",
-                                    how: "بدل الركبتين للأمام.",
-                                    tips: "ثبت الكتفين."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                upperLower: {
-
-                    name: "Upper / Lower",
-                    badge: "4 Days",
-                    description:
-                        "تقسيم علوي وسفلي مناسب لتحسين القوة واللياقة مع حجم متوسط.",
-
-                    days: [
-
-                        {
-                            id: "upper-fitness",
-                            name: "Upper",
-                            description: "الجزء العلوي",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "push-up",
-                                    name: "Push Up",
-                                    icon: "💪",
-                                    description: "صدر وذراع.",
-                                    sets: "3",
-                                    reps: "10-15",
-                                    rest: "45 ثانية",
-                                    warmup: "تحريك الكتف.",
-                                    how: "انزل وادفع.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "ظهر.",
-                                    sets: "3",
-                                    reps: "10-12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض.",
-                                    tips: "لا تتأرجح."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "lower-fitness",
-                            name: "Lower",
-                            description: "الجزء السفلي",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🦵",
-                                    description: "رجل.",
-                                    sets: "3",
-                                    reps: "15",
-                                    rest: "45 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "انزل واصعد.",
-                                    tips: "ثبات الركبة."
-                                },
-                                {
-                                    id: "lunges",
-                                    name: "Lunges",
-                                    icon: "🦵",
-                                    description: "رجل وتوازن.",
-                                    sets: "3",
-                                    reps: "10 لكل رجل",
-                                    rest: "45 ثانية",
-                                    warmup: "حركة للورك.",
-                                    how: "خطوة وانزل.",
-                                    tips: "حافظ على التوازن."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "upper-fitness-2",
-                            name: "Upper 2",
-                            description: "الجزء العلوي",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "أكتاف.",
-                                    sets: "3",
-                                    reps: "12",
-                                    rest: "45 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع الوزن.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "🏋️",
-                                    description: "ظهر.",
-                                    sets: "3",
-                                    reps: "12",
-                                    rest: "60 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض.",
-                                    tips: "ضم لوحي الكتف."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "lower-fitness-2",
-                            name: "Lower 2",
-                            description: "الجزء السفلي",
-                            duration: "45 دقيقة",
-                            level: "مبتدئ",
-                            exercises: [
-                                {
-                                    id: "step-up",
-                                    name: "Step Up",
-                                    icon: "🦵",
-                                    description: "رجل.",
-                                    sets: "3",
-                                    reps: "12 لكل رجل",
-                                    rest: "45 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "اصعد وانزل.",
-                                    tips: "ثبت القدم."
-                                },
-                                {
-                                    id: "calf-raise",
-                                    name: "Calf Raise",
-                                    icon: "🦶",
-                                    description: "سمانة.",
-                                    sets: "3",
-                                    reps: "15-20",
-                                    rest: "30 ثانية",
-                                    warmup: "حركة للكاحل.",
-                                    how: "ارفع الكعب.",
-                                    tips: "مدى حركة كامل."
-                                }
-                            ]
-                        }
-
-                    ]
-                }
-
-            }
-        },
-
-
-        /* ================= STRENGTH ================= */
-
-        strength: {
-
-            title: "زيادة القوة",
-
-            systems: {
-
-                strengthPPL: {
-
-                    name: "Strength PPL",
-                    badge: "PPL",
-                    description:
-                        "نظام Push Pull Legs مع تركيز أكبر على التمارين المركبة والقوة.",
-
-                    days: [
-
-                        {
-                            id: "strength-push",
-                            name: "Push",
-                            description: "صدر + أكتاف + ترايسبس",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين قوة أساسي للصدر.",
-                                    sets: "5",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي مع زيادة الوزن.",
-                                    how: "ثبت الجسم وادفع البار في مسار ثابت.",
-                                    tips: "لا تبدأ بالوزن الثقيل مباشرة."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "تمرين قوة للأكتاف.",
-                                    sets: "4",
-                                    reps: "4-6",
-                                    rest: "120 ثانية",
-                                    warmup: "مجموعات إحماء.",
-                                    how: "ادفع الوزن لأعلى مع ثبات الجذع.",
-                                    tips: "تجنب الحركة الزائدة."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-pull",
-                            name: "Pull",
-                            description: "ظهر + بايسبس",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "deadlift",
-                                    name: "Deadlift",
-                                    icon: "🏋️",
-                                    description: "تمرين مركب للقوة.",
-                                    sets: "4",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "ادفع الأرض مع الحفاظ على ظهر ثابت.",
-                                    tips: "التكنيك أهم من الوزن."
-                                },
-                                {
-                                    id: "barbell-curl",
-                                    name: "Barbell Curl",
-                                    icon: "💪",
-                                    description: "تمرين للبايسبس.",
-                                    sets: "3",
-                                    reps: "6-8",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ارفع البار بدون تأرجح.",
-                                    tips: "تحكم في النزول."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-legs",
-                            name: "Legs",
-                            description: "Squat + Legs",
-                            duration: "65 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Barbell Squat",
-                                    icon: "🏋️",
-                                    description: "تمرين قوة أساسي للرجل.",
-                                    sets: "5",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "انزل بتحكم واصعد بقوة.",
-                                    tips: "حافظ على وضع القدم والركبة."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "تمرين مساعد للرجل.",
-                                    sets: "3",
-                                    reps: "6-8",
-                                    rest: "120 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة.",
-                                    tips: "لا تقفل الركبة."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                strengthUpperLower: {
-
-                    name: "Strength Upper / Lower",
-                    badge: "4 Days",
-                    description:
-                        "تقسيم علوي وسفلي مع تركيز على الحركات الأساسية والقوة.",
-
-                    days: [
-
-                        {
-                            id: "strength-upper-a",
-                            name: "Upper A",
-                            description: "Bench + Row + Press",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "Bench Press للقوة.",
-                                    sets: "5",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "ادفع البار بثبات.",
-                                    tips: "لا تضحي بالتكنيك."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "🏋️",
-                                    description: "تمرين سحب للظهر.",
-                                    sets: "4",
-                                    reps: "5-8",
-                                    rest: "120 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للخلف.",
-                                    tips: "حافظ على التحكم."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-lower-a",
-                            name: "Lower A",
-                            description: "Squat + Legs",
-                            duration: "65 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "Squat للقوة.",
-                                    sets: "5",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "انزل واصعد بتحكم.",
-                                    tips: "التكنيك أولاً."
-                                },
-                                {
-                                    id: "leg-curl",
-                                    name: "Leg Curl",
-                                    icon: "🦵",
-                                    description: "عضلات الفخذ الخلفية.",
-                                    sets: "3",
-                                    reps: "6-10",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اثنِ الركبة.",
-                                    tips: "تحكم في الحركة."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-upper-b",
-                            name: "Upper B",
-                            description: "Press + Pull",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "قوة الأكتاف.",
-                                    sets: "4",
-                                    reps: "4-6",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع الوزن.",
-                                    tips: "ثبت الجذع."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "سحب للظهر.",
-                                    sets: "4",
-                                    reps: "5-8",
-                                    rest: "120 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض للصدر.",
-                                    tips: "لا تتأرجح."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-lower-b",
-                            name: "Lower B",
-                            description: "Deadlift + Legs",
-                            duration: "65 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "deadlift",
-                                    name: "Deadlift",
-                                    icon: "🏋️",
-                                    description: "تمرين مركب للقوة.",
-                                    sets: "4",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "ارفع الوزن مع ظهر ثابت.",
-                                    tips: "لا تبدأ بوزن ثقيل."
-                                },
-                                {
-                                    id: "leg-press",
-                                    name: "Leg Press",
-                                    icon: "🦵",
-                                    description: "تمرين مساعد.",
-                                    sets: "3",
-                                    reps: "6-8",
-                                    rest: "120 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "ادفع المنصة.",
-                                    tips: "تحكم في الحركة."
-                                }
-                            ]
-                        }
-
-                    ]
-                },
-
-                fullBodyStrength: {
-
-                    name: "Full Body Strength",
-                    badge: "3 Days",
-                    description:
-                        "ثلاثة أيام جسم كامل مع تركيز على الحركات المركبة الأساسية.",
-
-                    days: [
-
-                        {
-                            id: "strength-full-a",
-                            name: "Full Body A",
-                            description: "Squat + Bench + Row",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "تمرين الرجل الأساسي.",
-                                    sets: "4",
-                                    reps: "4-6",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "انزل واصعد بثبات.",
-                                    tips: "التكنيك أولاً."
-                                },
-                                {
-                                    id: "bench-press",
-                                    name: "Bench Press",
-                                    icon: "🏋️",
-                                    description: "تمرين الصدر.",
-                                    sets: "4",
-                                    reps: "4-6",
-                                    rest: "120 ثانية",
-                                    warmup: "مجموعات خفيفة.",
-                                    how: "ادفع البار.",
-                                    tips: "ثبت الكتفين."
-                                },
-                                {
-                                    id: "seated-row",
-                                    name: "Seated Row",
-                                    icon: "💪",
-                                    description: "تمرين الظهر.",
-                                    sets: "3",
-                                    reps: "6-8",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض.",
-                                    tips: "تحكم في الرجوع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-full-b",
-                            name: "Full Body B",
-                            description: "Deadlift + Press",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "deadlift",
-                                    name: "Deadlift",
-                                    icon: "🏋️",
-                                    description: "قوة الجسم بالكامل.",
-                                    sets: "4",
-                                    reps: "3-5",
-                                    rest: "150 ثانية",
-                                    warmup: "إحماء تدريجي.",
-                                    how: "ارفع الوزن مع ظهر ثابت.",
-                                    tips: "ركز على التقنية."
-                                },
-                                {
-                                    id: "shoulder-press",
-                                    name: "Shoulder Press",
-                                    icon: "💪",
-                                    description: "قوة الأكتاف.",
-                                    sets: "4",
-                                    reps: "4-6",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "ادفع الوزن لأعلى.",
-                                    tips: "ثبت الجذع."
-                                }
-                            ]
-                        },
-
-                        {
-                            id: "strength-full-c",
-                            name: "Full Body C",
-                            description: "Squat + Pull + Press",
-                            duration: "60 دقيقة",
-                            level: "متقدم",
-                            exercises: [
-                                {
-                                    id: "squat",
-                                    name: "Squat",
-                                    icon: "🏋️",
-                                    description: "الرجل.",
-                                    sets: "4",
-                                    reps: "4-6",
-                                    rest: "120 ثانية",
-                                    warmup: "إحماء.",
-                                    how: "انزل واصعد.",
-                                    tips: "حافظ على الثبات."
-                                },
-                                {
-                                    id: "lat-pulldown",
-                                    name: "Lat Pulldown",
-                                    icon: "🏋️",
-                                    description: "الظهر.",
-                                    sets: "4",
-                                    reps: "6-8",
-                                    rest: "90 ثانية",
-                                    warmup: "مجموعة خفيفة.",
-                                    how: "اسحب المقبض.",
-                                    tips: "لا تتأرجح."
-                                }
-                            ]
-                        }
-
-                    ]
-                }
-
-            }
-        }
-
-    };
-
-
-    /* =====================================================
-       STATE
-    ====================================================== */
-
-    let currentGoal = null;
-    let currentSystem = null;
-    let currentDay = null;
-
-    let history = [];
-
-
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
-
-    const goalScreen = document.getElementById("goalScreen");
-    const systemScreen = document.getElementById("systemScreen");
-    const daysScreen = document.getElementById("daysScreen");
-    const workoutScreen = document.getElementById("workoutScreen");
-
-    const systemGrid = document.getElementById("systemGrid");
-    const daysGrid = document.getElementById("daysGrid");
-
-    const exerciseSlider = document.getElementById("exerciseSlider");
-    const dots = document.getElementById("dots");
-
-
-    /* =====================================================
-       SCREEN HELPERS
-    ====================================================== */
-
-    function hideAllScreens() {
-
-        goalScreen.classList.remove("active");
-        systemScreen.classList.remove("active");
-        daysScreen.classList.remove("active");
-        workoutScreen.classList.remove("active");
-
-    }
-
-
-    function showGoals() {
-
-        hideAllScreens();
-
-        goalScreen.classList.add("active");
-
-        document.getElementById("pageSubtitle").textContent =
-            "اختار هدفك وابدأ برنامج التمرين";
-
-        currentSystem = null;
-        currentDay = null;
-
-    }
-
-
-    function showSystems() {
-
-        if (!currentGoal) {
-            showGoals();
-            return;
-        }
-
-        hideAllScreens();
-
-        systemScreen.classList.add("active");
-
-        document.getElementById("pageSubtitle").textContent =
-            "اختار نظام التدريب المناسب لهدفك";
-
-        renderSystems();
-
-    }
-
-
-    function showDays() {
-
-        if (!currentGoal || !currentSystem) {
-            showSystems();
-            return;
-        }
-
-        hideAllScreens();
-
-        daysScreen.classList.add("active");
-
-        document.getElementById("pageSubtitle").textContent =
-            "اختار يوم التمرين";
-
-        renderDays();
-
-    }
-
-
-    function showWorkout() {
-
-        if (!currentGoal || !currentSystem || !currentDay) {
-            showDays();
-            return;
-        }
-
-        hideAllScreens();
-
-        workoutScreen.classList.add("active");
-
-        document.getElementById("pageSubtitle").textContent =
-            `${programs[currentGoal].title} • ${programs[currentGoal].systems[currentSystem].name}`;
-
-        renderWorkout();
-
-    }
-
-
-    /* =====================================================
-       GOAL
-    ====================================================== */
-
-    function selectGoal(goalId) {
-
-        if (!programs[goalId]) return;
-
-        currentGoal = goalId;
-        currentSystem = null;
-        currentDay = null;
-
-        localStorage.setItem(
-            "bodyresetWorkoutGoal",
-            goalId
-        );
-
-        localStorage.removeItem(
-            "bodyresetWorkoutSystem"
-        );
-
-        localStorage.removeItem(
-            "bodyresetWorkoutDay"
-        );
-
-        showSystems();
-
-    }
-
-
-    /* =====================================================
-       SYSTEMS
-    ====================================================== */
-
-    function renderSystems() {
-
-        const goal = programs[currentGoal];
-
-        document.getElementById("systemTitle").textContent =
-            `أنظمة ${goal.title}`;
-
-        systemGrid.innerHTML = "";
-
-        Object.entries(goal.systems).forEach(([systemId, system]) => {
-
-            const card = document.createElement("div");
-
-            card.className = "system-card";
-
-            const daysPreview = system.days
-                .slice(0, 6)
-                .map(day => `
-                    <span class="day-mini">
-                        ${day.name}
-                    </span>
-                `)
-                .join("");
-
-            card.innerHTML = `
-
-                <div class="system-top">
-
-                    <div class="system-name">
-                        ${system.name}
-                    </div>
-
-                    <div class="system-badge">
-                        ${system.badge}
-                    </div>
-
-                </div>
-
-                <p>
-                    ${system.description}
-                </p>
-
-                <div class="system-days-preview">
-                    ${daysPreview}
-                </div>
-
-            `;
-
-            card.addEventListener("click", () => {
-                selectSystem(systemId);
-            });
-
-            systemGrid.appendChild(card);
-
+        <div class="day">
+          <h3>اليوم الثاني</h3>
+          <p>ظهر وذراع<br>3–4 تمارين<br>اهتم بالتكنيك</p>
+        </div>
+        <div class="day">
+          <h3>اليوم الثالث</h3>
+          <p>رجل<br>3–4 تمارين<br>ابدأ بإحماء جيد</p>
+        </div>
+        <div class="day">
+          <h3>أيام الراحة</h3>
+          <p>مشي خفيف أو راحة<br>نوم كفاية<br>اشرب مياه بانتظام</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="note">
+      <strong>مهم قبل التمرين:</strong>
+      اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه.
+      أوقف التمرين لو شعرت بألم حاد أو دوخة. بعض الفيديوهات قد لا تعمل
+      داخل الصفحة بسبب إعدادات يوتيوب؛ وقتها افتح الفيديو من يوتيوب مباشرة.
+    </aside>
+
+  </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const workoutCards = document.querySelectorAll(".workout-card");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        let visibleCount = 0;
+
+        filterButtons.forEach((item) => {
+          item.classList.toggle("active", item === button);
         });
 
-    }
+        workoutCards.forEach((card) => {
+          const visible =
+            filter === "all" || card.dataset.muscle === filter;
 
+          card.style.display = visible ? "" : "none";
 
-    function selectSystem(systemId) {
-
-        if (!currentGoal) return;
-
-        const system =
-            programs[currentGoal].systems[systemId];
-
-        if (!system) return;
-
-        currentSystem = systemId;
-        currentDay = null;
-
-        localStorage.setItem(
-            "bodyresetWorkoutSystem",
-            systemId
-        );
-
-        localStorage.removeItem(
-            "bodyresetWorkoutDay"
-        );
-
-        showDays();
-
-    }
-
-
-    /* =====================================================
-       DAYS
-    ====================================================== */
-
-    function renderDays() {
-
-        const system =
-            programs[currentGoal].systems[currentSystem];
-
-        document.getElementById("daysTitle").textContent =
-            `${system.name} • الأيام`;
-
-        daysGrid.innerHTML = "";
-
-        system.days.forEach((day, index) => {
-
-            const card = document.createElement("div");
-
-            card.className = "day-card";
-
-            card.innerHTML = `
-
-                <div class="day-number">
-                    DAY ${index + 1}
-                </div>
-
-                <h3>
-                    ${day.name}
-                </h3>
-
-                <p>
-                    ${day.description}
-                </p>
-
-                <div class="day-meta">
-                    <span>
-                        ⏱ ${day.duration}
-                    </span>
-
-                    <span>
-                        ${day.exercises.length} تمارين
-                    </span>
-                </div>
-
-            `;
-
-            card.addEventListener("click", () => {
-                selectDay(day.id);
-            });
-
-            daysGrid.appendChild(card);
-
+          if (visible) visibleCount++;
         });
 
-    }
-
-
-    function selectDay(dayId) {
-
-        const system =
-            programs[currentGoal].systems[currentSystem];
-
-        const day =
-            system.days.find(item => item.id === dayId);
-
-        if (!day) return;
-
-        currentDay = dayId;
-
-        localStorage.setItem(
-            "bodyresetWorkoutDay",
-            dayId
-        );
-
-        showWorkout();
-
-    }
-
-
-    /* =====================================================
-       WORKOUT
-    ====================================================== */
-
-    function renderWorkout() {
-
-        const goal =
-            programs[currentGoal];
-
-        const system =
-            goal.systems[currentSystem];
-
-        const day =
-            system.days.find(item => item.id === currentDay);
-
-        if (!day) return;
-
-        document.getElementById("todayTitle").textContent =
-            day.name;
-
-        document.getElementById("todayDescription").textContent =
-            day.description;
-
-        document.getElementById("todayBadge").textContent =
-            goal.title;
-
-        document.getElementById("exerciseCount").textContent =
-            day.exercises.length;
-
-        document.getElementById("workoutDuration").textContent =
-            day.duration;
-
-        document.getElementById("workoutLevel").textContent =
-            day.level;
-
-        exerciseSlider.innerHTML = "";
-        dots.innerHTML = "";
-
-        day.exercises.forEach((exercise, index) => {
-
-            const card =
-                document.createElement("div");
-
-            card.className = "exercise-card";
-
-            card.innerHTML = `
-
-                <div class="exercise-image">
-                    ${exercise.icon}
-                </div>
-
-                <div class="exercise-content">
-
-                    <div class="exercise-number">
-                        EXERCISE ${index + 1}
-                    </div>
-
-                    <h3>
-                        ${exercise.name}
-                    </h3>
-
-                    <p>
-                        ${exercise.description}
-                    </p>
-
-                    <div class="exercise-info">
-
-                        <span>
-                            ${exercise.sets} Sets
-                        </span>
-
-                        <span>
-                            ${exercise.reps} Reps
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="start-btn"
-                        onclick="openExercise('${exercise.id}')"
-                    >
-                        ابدأ التمرين
-                    </button>
-
-                </div>
-
-            `;
-
-            exerciseSlider.appendChild(card);
-
-
-            const dot =
-                document.createElement("div");
-
-            dot.className =
-                "dot" + (index === 0 ? " active" : "");
-
-            dots.appendChild(dot);
-
-        });
-
-        setupSliderDots();
-
-    }
-
-
-    /* =====================================================
-       SLIDER DOTS
-    ====================================================== */
-
-    function setupSliderDots() {
-
-        const cards =
-            exerciseSlider.querySelectorAll(".exercise-card");
-
-        const allDots =
-            dots.querySelectorAll(".dot");
-
-        if (!cards.length) return;
-
-        exerciseSlider.onscroll = () => {
-
-            let closestIndex = 0;
-            let closestDistance = Infinity;
-
-            cards.forEach((card, index) => {
-
-                const distance =
-                    Math.abs(
-                        card.offsetLeft -
-                        exerciseSlider.scrollLeft
-                    );
-
-                if (distance < closestDistance) {
-
-                    closestDistance = distance;
-                    closestIndex = index;
-
-                }
-
-            });
-
-            allDots.forEach((dot, index) => {
-
-                dot.classList.toggle(
-                    "active",
-                    index === closestIndex
-                );
-
-            });
-
-        };
-
-    }
-
-
-    /* =====================================================
-       EXERCISE MODAL
-    ====================================================== */
-
-    function openExercise(exerciseId) {
-
-        const day =
-            programs[currentGoal]
-                .systems[currentSystem]
-                .days
-                .find(item => item.id === currentDay);
-
-        if (!day) return;
-
-        const exercise =
-            day.exercises.find(
-                item => item.id === exerciseId
-            );
-
-        if (!exercise) return;
-
-        document.getElementById("modalImage").textContent =
-            exercise.icon;
-
-        document.getElementById("modalTitle").textContent =
-            exercise.name;
-
-        document.getElementById("modalDescription").textContent =
-            exercise.description;
-
-        document.getElementById("modalSets").textContent =
-            exercise.sets;
-
-        document.getElementById("modalReps").textContent =
-            exercise.reps;
-
-        document.getElementById("modalRest").textContent =
-            exercise.rest;
-
-        document.getElementById("modalLevel").textContent =
-            day.level;
-
-        document.getElementById("modalWarmup").textContent =
-            exercise.warmup;
-
-        document.getElementById("modalHow").textContent =
-            exercise.how;
-
-        document.getElementById("modalTips").textContent =
-            exercise.tips;
-
-        document
-            .getElementById("exerciseModal")
-            .classList.add("active");
-
-        history.push("modal");
-
-    }
-
-
-    function closeModal() {
-
-        document
-            .getElementById("exerciseModal")
-            .classList.remove("active");
-
-        if (
-            history.length &&
-            history[history.length - 1] === "modal"
-        ) {
-            history.pop();
-        }
-
-    }
-
-
-    /* =====================================================
-       BACK BUTTON
-    ====================================================== */
-
-    function goBack() {
-
-        if (
-            document
-                .getElementById("exerciseModal")
-                .classList.contains("active")
-        ) {
-
-            closeModal();
-            return;
-
-        }
-
-        if (workoutScreen.classList.contains("active")) {
-
-            showDays();
-            return;
-
-        }
-
-        if (daysScreen.classList.contains("active")) {
-
-            showSystems();
-            return;
-
-        }
-
-        if (systemScreen.classList.contains("active")) {
-
-            showGoals();
-            return;
-
-        }
-
-        window.history.back();
-
-    }
-
-
-    /* =====================================================
-       CLOSE MODAL WHEN CLICK OUTSIDE
-    ====================================================== */
-
-    document
-        .getElementById("exerciseModal")
-        .addEventListener("click", function(e) {
-
-            if (e.target === this) {
-                closeModal();
-            }
-
-        });
-
-
-    /* =====================================================
-       LOAD SAVED DATA
-    ====================================================== */
-
-    function loadSavedWorkout() {
-
-        const savedGoal =
-            localStorage.getItem(
-                "bodyresetWorkoutGoal"
-            );
-
-        const savedSystem =
-            localStorage.getItem(
-                "bodyresetWorkoutSystem"
-            );
-
-        const savedDay =
-            localStorage.getItem(
-                "bodyresetWorkoutDay"
-            );
-
-        if (
-            savedGoal &&
-            programs[savedGoal]
-        ) {
-
-            currentGoal = savedGoal;
-
-        }
-
-        if (
-            savedSystem &&
-            currentGoal &&
-            programs[currentGoal].systems[savedSystem]
-        ) {
-
-            currentSystem = savedSystem;
-
-        }
-
-        if (
-            savedDay &&
-            currentGoal &&
-            currentSystem
-        ) {
-
-            const system =
-                programs[currentGoal].systems[currentSystem];
-
-            const exists =
-                system.days.some(
-                    day => day.id === savedDay
-                );
-
-            if (exists) {
-                currentDay = savedDay;
-            }
-
-        }
-
-    }
-
-
-    /* =====================================================
-       URL SUPPORT
-    ====================================================== */
-
-    function handleURL() {
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        const exerciseId =
-            params.get("exercise");
-
-        const workout =
-            params.get("workout");
-
-
-        /*
-         * لو جاي من dashboard بالـ exercise
-         * نحاول نفتح التمرين مباشرة.
-         */
-
-        if (exerciseId) {
-
-            if (!currentGoal) {
-                currentGoal = "bulk";
-            }
-
-            if (!currentSystem) {
-                currentSystem = "ppl";
-            }
-
-            if (
-                programs[currentGoal] &&
-                programs[currentGoal].systems[currentSystem]
-            ) {
-
-                const system =
-                    programs[currentGoal].systems[currentSystem];
-
-                let foundDay = null;
-
-                system.days.forEach(day => {
-
-                    const found =
-                        day.exercises.find(
-                            ex => ex.id === exerciseId
-                        );
-
-                    if (found) {
-                        foundDay = day;
-                    }
-
-                });
-
-                if (foundDay) {
-
-                    currentDay = foundDay.id;
-
-                    showWorkout();
-
-                    setTimeout(() => {
-                        openExercise(exerciseId);
-                    }, 100);
-
-                    return;
-
-                }
-
-            }
-
-        }
-
-
-        /*
-         * لو جاي ?workout=chest
-         * نفتح صفحة الهدف/الأنظمة.
-         */
-
-        if (workout) {
-
-            if (
-                currentGoal &&
-                currentSystem &&
-                currentDay
-            ) {
-
-                showWorkout();
-
-            } else if (
-                currentGoal &&
-                currentSystem
-            ) {
-
-                showDays();
-
-            } else if (currentGoal) {
-
-                showSystems();
-
-            } else {
-
-                showGoals();
-
-            }
-
-            return;
-
-        }
-
-
-        /*
-         * لو فيه اختيار محفوظ:
-         * افتح آخر مكان وصل له المستخدم.
-         */
-
-        if (
-            currentGoal &&
-            currentSystem &&
-            currentDay
-        ) {
-
-            showWorkout();
-
-        } else if (
-            currentGoal &&
-            currentSystem
-        ) {
-
-            showDays();
-
-        } else if (currentGoal) {
-
-            showSystems();
-
-        } else {
-
-            showGoals();
-
-        }
-
-    }
-
-
-    /* =====================================================
-       INITIALIZE
-    ====================================================== */
-
-    loadSavedWorkout();
-
-    handleURL();
-
-</script>
-
+        emptyMessage.style.display =
+          visibleCount === 0 ? "block" : "none";
+      });
+    });
+  </script>
 </body>
 </html>
