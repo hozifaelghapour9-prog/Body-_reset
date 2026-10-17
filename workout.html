@@ -7,80 +7,104 @@
 <title>BODYRESET | Workout</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#101712;color:#f5f7f5}
-.container{max-width:1200px;margin:auto;padding:24px}
-header,.heading,.admin-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-header{margin-bottom:25px}
-.logo{font-size:26px;font-weight:bold}.logo span{color:#7ce5a1}
-.tag{color:#7ce5a1;background:#1c3024;padding:9px 14px;border-radius:25px}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:26px;background:linear-gradient(130deg,#203b2a,#17221a);border:1px solid #304938;border-radius:20px;margin-bottom:28px}
-.hero h1{font-size:clamp(26px,4vw,42px);margin:0 0 12px}
-.hero p{color:#c2d0c5;line-height:1.9}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.stat{background:#101b14;border-radius:13px;padding:16px 8px;text-align:center}
-.stat strong{display:block;color:#7ce5a1;font-size:23px;margin-bottom:6px}
-.heading{margin:26px 0 16px}.heading h2{margin:0;font-size:23px}.heading p{color:#a9b9ad}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
-button{font-family:inherit}
-.filter,.btn{padding:11px 15px;border-radius:10px;border:1px solid #34473a;background:#1b271f;color:white;cursor:pointer;font-size:14px}
-.filter.active,.filter:hover{background:#7ce5a1;color:#102016}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.card{min-width:0;overflow:hidden;background:#19221b;border:1px solid #2e3b31;border-radius:17px}
-.card:hover{border-color:#7ce5a1}
-.video{width:100%;aspect-ratio:16/9;background:#080b09;overflow:hidden}
-.video video{display:block;width:100%;height:100%;border:0;object-fit:contain}
-.admin-card-actions{padding:10px}
-.schedule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.day{padding:16px;background:#19221b;border:1px solid #2e3b31;border-radius:14px}
-.day h3{color:#7ce5a1;margin:0 0 9px}.day p{color:#b5c2b8;line-height:1.8;font-size:14px;margin:0}
-.note{margin-top:24px;padding:16px;background:#1d2c21;border-radius:13px;line-height:1.9;color:#c8d7cc}
-.note strong{color:#7ce5a1}
-footer{margin-top:28px;padding:18px 0;border-top:1px solid #2e3b31;color:#93a498;text-align:center;font-size:13px}
-.panel{margin:24px 0;padding:20px;background:#17231a;border:1px solid #36533d;border-radius:17px}
-.panel h2{margin-top:0}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.field{display:flex;flex-direction:column;gap:7px}
-input,select{width:100%;padding:12px;border:1px solid #405545;border-radius:9px;background:#101712;color:white;font:inherit;min-width:0}
-input[type=file]{padding:10px}
-.btn{background:#7ce5a1;color:#102016;border:0;font-weight:bold;margin:4px 2px}
-.btn.secondary{background:#26382b;color:white;border:1px solid #405545}
-.btn.danger{background:#632d2d;color:white}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.status{line-height:1.8;color:#bfe8ca;overflow-wrap:anywhere}
-.status.error{color:#ffaaa5}
-.small{font-size:12px;color:#a9b9ad;line-height:1.8}
-.hidden{display:none!important}
-#empty{display:none;color:#c2d0c5}
-.admin-toggle{font-size:12px;padding:7px 10px;opacity:.8}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.schedule{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.container{padding:14px}.hero{grid-template-columns:1fr;padding:19px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.schedule{gap:9px}.day{padding:12px}.form-grid{grid-template-columns:1fr}}
-@media(max-width:360px){.grid,.schedule{grid-template-columns:1fr}}
+:root {
+  --bg: #ffffff;
+  --text: #171717;
+  --muted: #737373;
+  --line: #e5e5e5;
+  --card: #f7f7f7;
+  --accent: #00a878;
+  --accent-hover: #07845f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+.container { max-width: 1200px; margin: auto; padding: 24px; }
+header, .heading, .admin-actions {
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 12px; flex-wrap: wrap;
+}
+header { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.logo { font-size: 26px; font-weight: bold; }
+.logo span { color: var(--accent); }
+.heading { margin: 24px 0 16px; }
+.heading h2 { margin: 0; font-size: 23px; }
+.heading p { color: var(--muted); margin: 0; }
+button, input, select { font-family: inherit; }
+button { cursor: pointer; }
+.btn, .filter {
+  padding: 11px 15px; border-radius: 10px;
+  border: 1px solid var(--line); background: white;
+  color: var(--text); font-size: 14px;
+}
+.btn { background: var(--accent); color: white; border: 0; font-weight: bold; margin: 4px 2px; }
+.btn:hover { background: var(--accent-hover); }
+.btn.secondary { background: #ededed; color: #222; border: 1px solid var(--line); }
+.btn.danger { background: #b42318; color: white; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.filters { display: flex; gap: 9px; flex-wrap: wrap; margin: 14px 0 18px; }
+.filter.active, .filter:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.search-row { display: flex; gap: 10px; margin: 16px 0; }
+.search-row input { flex: 1; min-width: 0; }
+input, select {
+  width: 100%; min-width: 0; padding: 12px;
+  border: 1px solid #d4d4d4; border-radius: 9px;
+  background: white; color: var(--text); font-size: 15px;
+}
+input:focus, select:focus { outline: 2px solid #00a87830; border-color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+.card { min-width: 0; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.card:hover { border-color: #a4dfcc; }
+.video { width: 100%; aspect-ratio: 16 / 9; background: #111; overflow: hidden; }
+.video video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.admin-card-actions { padding: 10px; border-top: 1px solid var(--line); }
+.panel { margin: 24px 0; padding: 20px; background: white; border: 1px solid var(--line); border-radius: 16px; }
+.panel h2 { margin-top: 0; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.status { line-height: 1.8; color: var(--accent-hover); overflow-wrap: anywhere; }
+.status.error { color: #b42318; }
+.small { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.hidden { display: none !important; }
+#empty { display: none; color: var(--muted); padding: 24px; background: var(--card); border-radius: 12px; text-align: center; }
+.admin-toggle { font-size: 12px; padding: 7px 10px; }
+.schedule { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
+.day { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.day h3 { color: var(--accent-hover); margin: 0 0 9px; }
+.day p { color: #555; line-height: 1.8; font-size: 14px; margin: 0; }
+.note { margin-top: 24px; padding: 16px; background: #f1faf6; border: 1px solid #d7f0e6; border-radius: 13px; line-height: 1.9; color: #424242; }
+.note strong { color: var(--accent-hover); }
+footer { margin-top: 28px; padding: 18px 0; border-top: 1px solid var(--line); color: #777; text-align: center; font-size: 13px; }
+@media(max-width:900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .schedule { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media(max-width:620px) {
+  .container { padding: 14px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .schedule { gap: 9px; }
+  .day { padding: 12px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .panel { padding: 15px; }
+  .search-row { flex-wrap: wrap; }
+  .search-row input { flex-basis: 100%; }
+}
+@media(max-width:360px) {
+  .grid, .schedule { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 <main class="container">
+
 <header>
   <div class="logo">BODY<span>RESET</span> / WORKOUT</div>
-  <div class="tag">💪 وقت التمرين</div>
-</header>
-
-<section class="hero">
-  <div>
-    <h1>قوّي جسمك، تمرين ورا تمرين 🔥</h1>
-    <p>اختار مجموعة العضلات اللي عايز تتمرنها وشاهد فيديو التمرين. ابدأ بالتدريج واهتم بالأداء الصحيح.</p>
-    <div class="tag">ابدأ بمستواك وطور نفسك كل أسبوع</div>
-  </div>
-  <div class="stats">
-    <div class="stat"><strong id="videoCount">0</strong><small>فيديو</small></div>
-    <div class="stat"><strong>3</strong><small>أيام تدريب</small></div>
-    <div class="stat"><strong>45</strong><small>دقيقة تقريبًا</small></div>
-  </div>
-</section>
-
-<div style="text-align:left">
   <button class="btn secondary admin-toggle" id="showLoginButton" type="button">دخول الأدمن</button>
-</div>
+</header>
 
 <section class="panel hidden" id="loginPanel">
   <h2>دخول الإدارة</h2>
@@ -104,8 +128,7 @@ input[type=file]{padding:10px}
     <h2>رفع فيديو تمرين</h2>
     <button class="btn secondary" id="logoutButton" type="button">تسجيل الخروج</button>
   </div>
-  <p class="small">اختار مجموعة العضلات ثم اختار ملف الفيديو واضغط رفع الفيديو. العميل هيشوف الفيديو فقط.</p>
-
+  <p class="small">اختار مجموعة العضلات ثم ملف الفيديو. العميل هيشوف الفيديو فقط.</p>
   <form id="videoForm">
     <input id="editId" type="hidden">
     <div class="form-grid">
@@ -134,10 +157,16 @@ input[type=file]{padding:10px}
 
 <section>
   <div class="heading">
-    <h2>فيديوهات التمارين</h2>
-    <p>اختار مجموعة العضلات</p>
+    <h2>كل التمارين</h2>
+    <p id="videoCountLabel" class="small">جارٍ تحميل الفيديوهات…</p>
   </div>
-  <div class="filters">
+
+  <div class="search-row">
+    <input id="exerciseSearch" type="search" placeholder="ابحث في جميع التمارين…" aria-label="البحث في جميع التمارين">
+    <button class="btn secondary" id="clearSearch" type="button">مسح البحث</button>
+  </div>
+
+  <div class="filters" aria-label="تصفية حسب مجموعة العضلات">
     <button class="filter active" data-filter="all" type="button">الكل</button>
     <button class="filter" data-filter="chest" type="button">الصدر</button>
     <button class="filter" data-filter="back" type="button">الظهر</button>
@@ -147,13 +176,17 @@ input[type=file]{padding:10px}
     <button class="filter" data-filter="core" type="button">البطن</button>
     <button class="filter" data-filter="full_body" type="button">الجسم بالكامل</button>
   </div>
+
   <div class="grid" id="workouts"></div>
-  <p id="empty">مفيش فيديوهات في القسم ده حاليًا.</p>
+  <p id="empty">مفيش فيديوهات مطابقة للبحث أو الفلتر ده حاليًا.</p>
   <p id="loadStatus" class="small" role="status"></p>
 </section>
 
 <section>
-  <div class="heading"><h2>جدول أسبوعي مقترح</h2><p>نظّم تمرينك واستشفاءك</p></div>
+  <div class="heading">
+    <h2>جدول أسبوعي مقترح</h2>
+    <p>نظّم تمرينك واستشفاءك</p>
+  </div>
   <div class="schedule">
     <div class="day"><h3>اليوم الأول</h3><p>صدر وذراع<br>اهتم بالتكنيك</p></div>
     <div class="day"><h3>اليوم الثاني</h3><p>ظهر وذراع<br>راحة بين المجموعات</p></div>
@@ -162,8 +195,12 @@ input[type=file]{padding:10px}
   </div>
 </section>
 
-<aside class="note"><strong>مهم قبل التمرين:</strong> اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه. أوقف التمرين لو شعرت بألم حاد أو دوخة.</aside>
-<footer>BODYRESET — استمر، وتقدم خطوة كل يوم 💚</footer>
+<aside class="note">
+  <strong>مهم قبل التمرين:</strong>
+  اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه. أوقف التمرين لو شعرت بألم حاد أو دوخة.
+</aside>
+
+<footer>BODYRESET — استمر، وتقدم خطوة كل يوم</footer>
 </main>
 
 <script>
@@ -172,322 +209,340 @@ const SUPABASE_KEY = "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const $ = id => document.getElementById(id);
-const loginPanel = $("loginPanel");
-const adminPanel = $("adminPanel");
-const loginForm = $("loginForm");
-const videoForm = $("videoForm");
-const workouts = $("workouts");
-const videoFile = $("videoFile");
-const saveButton = $("saveButton");
-
 let currentUser = null;
 let isAdmin = false;
 let activeFilter = "all";
 let dbVideos = [];
 
 const muscleNames = {
-  chest:"الصدر",back:"الظهر",legs:"الرجل",arms:"الذراع",
-  shoulders:"الأكتاف",core:"البطن",full_body:"الجسم بالكامل"
+  chest:"الصدر", back:"الظهر", legs:"الرجل", arms:"الذراع",
+  shoulders:"الأكتاف", core:"البطن", full_body:"الجسم بالكامل"
 };
 
-function setStatus(id,message,error=false){
-  const el=$(id);
-  el.textContent=message||"";
-  el.classList.toggle("error",error);
+function setStatus(id, message, error = false) {
+  const el = $(id);
+  el.textContent = message || "";
+  el.classList.toggle("error", error);
 }
-function escapeHTML(value){
-  return String(value??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
   })[c]);
 }
 
-function renderCard(video){
-  const url=video.video_url||"";
-  const media=url
+function renderCard(video) {
+  const url = video.video_url || "";
+  const media = url
     ? `<video controls playsinline preload="metadata"><source src="${escapeHTML(url)}">المتصفح لا يدعم تشغيل الفيديو.</video>`
-    : `<div style="padding:18px">الفيديو غير متاح.</div>`;
+    : `<div style="padding:18px;color:white">الفيديو غير متاح.</div>`;
 
-  const actions=isAdmin?`
+  const actions = isAdmin ? `
     <div class="admin-card-actions">
       <button class="btn secondary" type="button" data-edit="${escapeHTML(video.id)}">استبدال الفيديو</button>
       <button class="btn danger" type="button" data-delete="${escapeHTML(video.id)}">حذف الفيديو</button>
-    </div>`:"";
+    </div>` : "";
 
-  return `<article class="card" data-muscle="${escapeHTML(video.muscle_group)}">
-    <div class="video">${media}</div>${actions}
+  const searchText = [
+    muscleNames[video.muscle_group] || "",
+    video.title || "",
+    video.description || ""
+  ].join(" ");
+
+  return `<article class="card"
+    data-muscle="${escapeHTML(video.muscle_group)}"
+    data-search="${escapeHTML(searchText)}">
+    <div class="video">${media}</div>
+    ${actions}
   </article>`;
 }
 
-function applyFilter(){
-  let count=0;
-  workouts.querySelectorAll(".card").forEach(card=>{
-    const show=activeFilter==="all"||card.dataset.muscle===activeFilter;
-    card.style.display=show?"":"none";
-    if(show) count++;
+function applyFilters() {
+  const query = $("exerciseSearch").value.trim().toLocaleLowerCase("ar");
+  let count = 0;
+
+  document.querySelectorAll("#workouts .card").forEach(card => {
+    const groupMatch = activeFilter === "all" || card.dataset.muscle === activeFilter;
+    const searchMatch = !query || card.dataset.search.toLocaleLowerCase("ar").includes(query);
+    const visible = groupMatch && searchMatch;
+    card.classList.toggle("hidden", !visible);
+    if (visible) count++;
   });
-  $("empty").style.display=count?"none":"block";
-  document.querySelectorAll(".filter").forEach(button=>{
-    button.classList.toggle("active",button.dataset.filter===activeFilter);
+
+  $("empty").style.display = count ? "none" : "block";
+  $("videoCountLabel").textContent = `${count} فيديو`;
+
+  document.querySelectorAll(".filter").forEach(button => {
+    button.classList.toggle("active", button.dataset.filter === activeFilter);
   });
 }
 
-document.querySelectorAll(".filter").forEach(button=>{
-  button.addEventListener("click",()=>{
-    activeFilter=button.dataset.filter;
-    applyFilter();
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    applyFilters();
   });
 });
 
-function renderAll(){
-  workouts.innerHTML=dbVideos.map(renderCard).join("");
-  $("videoCount").textContent=dbVideos.length;
-  applyFilter();
+$("exerciseSearch").addEventListener("input", applyFilters);
+
+$("clearSearch").addEventListener("click", () => {
+  $("exerciseSearch").value = "";
+  applyFilters();
+  $("exerciseSearch").focus();
+});
+
+function renderAll() {
+  $("workouts").innerHTML = dbVideos.map(renderCard).join("");
+  applyFilters();
 }
 
-async function loadVideos(){
-  setStatus("loadStatus","جارٍ تحميل الفيديوهات...");
-  const {data,error}=await supabaseClient
+async function loadVideos() {
+  setStatus("loadStatus", "جارٍ تحميل الفيديوهات…");
+
+  const { data, error } = await supabaseClient
     .from("workout_videos")
     .select("*")
-    .order("sort_order",{ascending:true})
-    .order("created_at",{ascending:false});
+    .order("sort_order", { ascending: true })
+    .order("created_at", { ascending: false });
 
-  if(error){
-    dbVideos=[];
+  if (error) {
+    dbVideos = [];
     renderAll();
-    setStatus("loadStatus","تعذر تحميل الفيديوهات. راجع جدول Supabase وسياسات القراءة.",true);
+    setStatus("loadStatus", "تعذر تحميل الفيديوهات. راجع جدول Supabase وسياسات القراءة.", true);
     return;
   }
-  dbVideos=data||[];
+
+  dbVideos = data || [];
   renderAll();
-  setStatus("loadStatus",dbVideos.length?`تم تحميل ${dbVideos.length} فيديو.`:"لا توجد فيديوهات مضافة حاليًا.");
+  setStatus("loadStatus", dbVideos.length ? `تم تحميل ${dbVideos.length} فيديو.` : "لا توجد فيديوهات مضافة حاليًا.");
 }
 
-async function refreshAdminState(){
-  const {data,error}=await supabaseClient.auth.getSession();
-  if(error){
-    setStatus("loginStatus","تعذر التحقق من الدخول: "+error.message,true);
+async function refreshAdminState() {
+  const { data, error } = await supabaseClient.auth.getSession();
+
+  if (error) {
+    setStatus("loginStatus", "تعذر التحقق من الدخول: " + error.message, true);
     return;
   }
 
-  currentUser=data.session?.user||null;
-  isAdmin=false;
+  currentUser = data.session?.user || null;
+  isAdmin = false;
 
-  if(currentUser){
-    const result=await supabaseClient
+  if (currentUser) {
+    const result = await supabaseClient
       .from("workout_admins")
       .select("user_id")
-      .eq("user_id",currentUser.id)
+      .eq("user_id", currentUser.id)
       .maybeSingle();
 
-    if(result.data&&!result.error) isAdmin=true;
-    if(result.error) setStatus("loginStatus","تعذر التحقق من صلاحيات الأدمن.",true);
+    if (result.data && !result.error) isAdmin = true;
+    if (result.error) setStatus("loginStatus", "تعذر التحقق من صلاحيات الأدمن.", true);
   }
 
-  loginPanel.classList.toggle("hidden",isAdmin);
-  adminPanel.classList.toggle("hidden",!isAdmin);
-  $("showLoginButton").classList.toggle("hidden",isAdmin);
+  $("loginPanel").classList.toggle("hidden", isAdmin);
+  $("adminPanel").classList.toggle("hidden", !isAdmin);
+  $("showLoginButton").classList.toggle("hidden", isAdmin);
 
-  if(isAdmin){
-    setStatus("loginStatus","");
-    setStatus("adminStatus","تم تسجيل الدخول بصلاحيات الأدمن.");
-  }else if(currentUser){
-    loginPanel.classList.remove("hidden");
+  if (isAdmin) {
+    setStatus("loginStatus", "");
+    setStatus("adminStatus", "تم تسجيل الدخول بصلاحيات الأدمن.");
+  } else if (currentUser) {
+    $("loginPanel").classList.remove("hidden");
     $("showLoginButton").classList.add("hidden");
-    setStatus("loginStatus","الحساب ده مش مضاف لقائمة الأدمن.",true);
+    setStatus("loginStatus", "الحساب ده مش مضاف لقائمة الأدمن.", true);
   }
+
   renderAll();
 }
 
-$("showLoginButton").addEventListener("click",()=>{
-  loginPanel.classList.remove("hidden");
+$("showLoginButton").addEventListener("click", () => {
+  $("loginPanel").classList.remove("hidden");
   $("showLoginButton").classList.add("hidden");
 });
 
-$("hideLoginButton").addEventListener("click",()=>{
-  if(!isAdmin){
-    loginPanel.classList.add("hidden");
+$("hideLoginButton").addEventListener("click", () => {
+  if (!isAdmin) {
+    $("loginPanel").classList.add("hidden");
     $("showLoginButton").classList.remove("hidden");
   }
 });
 
-loginForm.addEventListener("submit",async event=>{
+$("loginForm").addEventListener("submit", async event => {
   event.preventDefault();
-  setStatus("loginStatus","جارٍ تسجيل الدخول...");
-  $("loginButton").disabled=true;
+  setStatus("loginStatus", "جارٍ تسجيل الدخول…");
+  $("loginButton").disabled = true;
 
-  try{
-    const {error}=await supabaseClient.auth.signInWithPassword({
-      email:$("email").value.trim(),
-      password:$("password").value
+  try {
+    const { error } = await supabaseClient.auth.signInWithPassword({
+      email: $("email").value.trim(),
+      password: $("password").value
     });
-    if(error) throw error;
+    if (error) throw error;
 
     await refreshAdminState();
-    if(isAdmin){
-      setStatus("adminStatus","تم تسجيل الدخول بنجاح.");
+
+    if (isAdmin) {
+      setStatus("adminStatus", "تم تسجيل الدخول بنجاح.");
       await loadVideos();
     }
-  }catch(error){
-    setStatus("loginStatus","فشل تسجيل الدخول: "+error.message,true);
-  }finally{
-    $("loginButton").disabled=false;
+  } catch (error) {
+    setStatus("loginStatus", "فشل تسجيل الدخول: " + error.message, true);
+  } finally {
+    $("loginButton").disabled = false;
   }
 });
 
-$("logoutButton").addEventListener("click",async()=>{
-  const {error}=await supabaseClient.auth.signOut();
-  if(error){
-    setStatus("adminStatus","تعذر تسجيل الخروج: "+error.message,true);
+$("logoutButton").addEventListener("click", async () => {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    setStatus("adminStatus", "تعذر تسجيل الخروج: " + error.message, true);
     return;
   }
 
-  currentUser=null;
-  isAdmin=false;
-  adminPanel.classList.add("hidden");
-  loginPanel.classList.add("hidden");
+  currentUser = null;
+  isAdmin = false;
+  $("adminPanel").classList.add("hidden");
+  $("loginPanel").classList.add("hidden");
   $("showLoginButton").classList.remove("hidden");
   resetForm();
   renderAll();
 });
 
-function resetForm(){
-  videoForm.reset();
-  $("editId").value="";
-  videoFile.value="";
-  saveButton.textContent="رفع الفيديو";
+function resetForm() {
+  $("videoForm").reset();
+  $("editId").value = "";
+  $("videoFile").value = "";
+  $("saveButton").textContent = "رفع الفيديو";
   $("cancelEditButton").classList.add("hidden");
-  videoFile.required=true;
+  $("videoFile").required = true;
 }
-$("cancelEditButton").addEventListener("click",resetForm);
 
-async function uploadVideoFile(file){
-  if(!file) throw new Error("اختار ملف فيديو أولًا.");
-  if(!file.type.startsWith("video/")) throw new Error("الملف المختار لازم يكون فيديو.");
-  if(file.size>100*1024*1024) throw new Error("حجم الفيديو أكبر من 100 ميجابايت.");
+$("cancelEditButton").addEventListener("click", resetForm);
 
-  const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-  const path=`${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+async function uploadVideoFile(file) {
+  if (!file) throw new Error("اختار ملف فيديو أولًا.");
+  if (!file.type.startsWith("video/")) throw new Error("الملف المختار لازم يكون فيديو.");
+  if (file.size > 100 * 1024 * 1024) throw new Error("حجم الفيديو أكبر من 100 ميجابايت.");
 
-  const {error}=await supabaseClient.storage
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+  const path = `${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+
+  const { error } = await supabaseClient.storage
     .from("workout-videos")
-    .upload(path,file,{upsert:false,contentType:file.type});
+    .upload(path, file, { upsert: false, contentType: file.type });
 
-  if(error) throw error;
+  if (error) throw error;
 
-  const {data}=supabaseClient.storage.from("workout-videos").getPublicUrl(path);
-  if(!data?.publicUrl) throw new Error("تعذر الحصول على رابط الفيديو.");
+  const { data } = supabaseClient.storage.from("workout-videos").getPublicUrl(path);
+  if (!data?.publicUrl) throw new Error("تعذر الحصول على رابط الفيديو.");
 
   return data.publicUrl;
 }
 
-videoForm.addEventListener("submit",async event=>{
+$("videoForm").addEventListener("submit", async event => {
   event.preventDefault();
 
-  if(!isAdmin||!currentUser){
-    setStatus("adminStatus","سجّل الدخول بحساب الأدمن أولًا.",true);
+  if (!isAdmin || !currentUser) {
+    setStatus("adminStatus", "سجّل الدخول بحساب الأدمن أولًا.", true);
     return;
   }
 
-  saveButton.disabled=true;
-  setStatus("adminStatus","جارٍ رفع الفيديو، انتظر حتى يكتمل الرفع...");
+  $("saveButton").disabled = true;
+  setStatus("adminStatus", "جارٍ رفع الفيديو، انتظر حتى يكتمل الرفع…");
 
-  try{
-    const editId=$("editId").value;
-    const group=$("muscle").value;
-    const file=videoFile.files[0];
+  try {
+    const editId = $("editId").value;
+    const group = $("muscle").value;
+    const file = $("videoFile").files[0];
     let videoUrl;
 
-    if(file){
-      videoUrl=await uploadVideoFile(file);
-    }else if(editId){
-      const old=dbVideos.find(video=>String(video.id)===editId);
-      if(!old) throw new Error("لم يتم العثور على الفيديو القديم.");
-      videoUrl=old.video_url;
-    }else{
+    if (file) {
+      videoUrl = await uploadVideoFile(file);
+    } else if (editId) {
+      const old = dbVideos.find(video => String(video.id) === editId);
+      if (!old) throw new Error("لم يتم العثور على الفيديو القديم.");
+      videoUrl = old.video_url;
+    } else {
       throw new Error("اختار ملف الفيديو أولًا.");
     }
 
-    const record={
-      title:"فيديو "+muscleNames[group],
-      description:"",
-      muscle_group:group,
-      source_type:"upload",
-      video_url:videoUrl,
-      sets:1,
-      reps:"",
-      rest:"",
-      sort_order:0,
-      updated_at:new Date().toISOString()
+    const record = {
+      title: "فيديو " + muscleNames[group],
+      description: "",
+      muscle_group: group,
+      source_type: "upload",
+      video_url: videoUrl,
+      sets: 1,
+      reps: "",
+      rest: "",
+      sort_order: 0,
+      updated_at: new Date().toISOString()
     };
 
-    let result;
-    if(editId){
-      result=await supabaseClient.from("workout_videos")
-        .update(record).eq("id",editId).select().single();
-    }else{
-      result=await supabaseClient.from("workout_videos")
-        .insert(record).select().single();
-    }
+    const result = editId
+      ? await supabaseClient.from("workout_videos").update(record).eq("id", editId).select().single()
+      : await supabaseClient.from("workout_videos").insert(record).select().single();
 
-    if(result.error) throw result.error;
+    if (result.error) throw result.error;
 
     resetForm();
-    setStatus("adminStatus",editId?"تم استبدال الفيديو بنجاح.":"تم رفع الفيديو وإضافته بنجاح.");
+    setStatus("adminStatus", editId ? "تم استبدال الفيديو بنجاح." : "تم رفع الفيديو وإضافته بنجاح.");
     await loadVideos();
-  }catch(error){
-    setStatus("adminStatus","تعذر رفع الفيديو: "+error.message,true);
-  }finally{
-    saveButton.disabled=false;
+  } catch (error) {
+    setStatus("adminStatus", "تعذر رفع الفيديو: " + error.message, true);
+  } finally {
+    $("saveButton").disabled = false;
   }
 });
 
-workouts.addEventListener("click",async event=>{
-  if(!isAdmin) return;
+$("workouts").addEventListener("click", async event => {
+  if (!isAdmin) return;
 
-  const editButton=event.target.closest("[data-edit]");
-  const deleteButton=event.target.closest("[data-delete]");
+  const edit = event.target.closest("[data-edit]");
+  const del = event.target.closest("[data-delete]");
 
-  if(editButton){
-    const video=dbVideos.find(item=>String(item.id)===editButton.dataset.edit);
-    if(!video) return;
+  if (edit) {
+    const video = dbVideos.find(item => String(item.id) === edit.dataset.edit);
+    if (!video) return;
 
-    $("editId").value=video.id;
-    $("muscle").value=video.muscle_group||"chest";
-    videoFile.value="";
-    videoFile.required=false;
-    saveButton.textContent="استبدال الفيديو";
+    $("editId").value = video.id;
+    $("muscle").value = video.muscle_group || "chest";
+    $("videoFile").value = "";
+    $("videoFile").required = false;
+    $("saveButton").textContent = "استبدال الفيديو";
     $("cancelEditButton").classList.remove("hidden");
-    $("videoForm").scrollIntoView({behavior:"smooth",block:"start"});
-    setStatus("adminStatus","اختار ملفًا جديدًا لاستبدال الفيديو، أو غيّر القسم ثم احفظ.");
+    $("videoForm").scrollIntoView({ behavior: "smooth", block: "start" });
+    setStatus("adminStatus", "اختار ملفًا جديدًا لاستبدال الفيديو.");
     return;
   }
 
-  if(deleteButton){
-    const video=dbVideos.find(item=>String(item.id)===deleteButton.dataset.delete);
-    if(!video||!confirm("متأكد إنك عايز تحذف الفيديو؟")) return;
+  if (del) {
+    const video = dbVideos.find(item => String(item.id) === del.dataset.delete);
+    if (!video || !confirm("متأكد إنك عايز تحذف الفيديو؟")) return;
 
-    setStatus("adminStatus","جارٍ الحذف...");
-    const {error}=await supabaseClient
+    setStatus("adminStatus", "جارٍ الحذف…");
+    const { error } = await supabaseClient
       .from("workout_videos")
       .delete()
-      .eq("id",video.id);
+      .eq("id", video.id);
 
-    if(error){
-      setStatus("adminStatus","تعذر الحذف: "+error.message,true);
+    if (error) {
+      setStatus("adminStatus", "تعذر الحذف: " + error.message, true);
       return;
     }
 
-    setStatus("adminStatus","تم حذف الفيديو من القائمة.");
+    setStatus("adminStatus", "تم حذف الفيديو من القائمة.");
     await loadVideos();
   }
 });
 
-supabaseClient.auth.onAuthStateChange(()=>{
-  setTimeout(()=>refreshAdminState(),0);
+supabaseClient.auth.onAuthStateChange(() => {
+  setTimeout(() => refreshAdminState(), 0);
 });
 
-(async function init(){
+(async function init() {
   await loadVideos();
   await refreshAdminState();
 })();
