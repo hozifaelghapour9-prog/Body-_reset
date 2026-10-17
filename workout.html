@@ -2,550 +2,810 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BODYRESET | Workout</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root {
-  --bg: #ffffff;
-  --text: #171717;
-  --muted: #737373;
-  --line: #e5e5e5;
-  --card: #f7f7f7;
-  --accent: #00a878;
-  --accent-hover: #07845f;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-.container { max-width: 1200px; margin: auto; padding: 24px; }
-header, .heading, .admin-actions {
-  display: flex; justify-content: space-between;
-  align-items: center; gap: 12px; flex-wrap: wrap;
-}
-header { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-.logo { font-size: 26px; font-weight: bold; }
-.logo span { color: var(--accent); }
-.heading { margin: 24px 0 16px; }
-.heading h2 { margin: 0; font-size: 23px; }
-.heading p { color: var(--muted); margin: 0; }
-button, input, select { font-family: inherit; }
-button { cursor: pointer; }
-.btn, .filter {
-  padding: 11px 15px; border-radius: 10px;
-  border: 1px solid var(--line); background: white;
-  color: var(--text); font-size: 14px;
-}
-.btn { background: var(--accent); color: white; border: 0; font-weight: bold; margin: 4px 2px; }
-.btn:hover { background: var(--accent-hover); }
-.btn.secondary { background: #ededed; color: #222; border: 1px solid var(--line); }
-.btn.danger { background: #b42318; color: white; }
-.btn:disabled { opacity: .5; cursor: not-allowed; }
-.filters { display: flex; gap: 9px; flex-wrap: wrap; margin: 14px 0 18px; }
-.filter.active, .filter:hover { background: var(--accent); color: white; border-color: var(--accent); }
-.search-row { display: flex; gap: 10px; margin: 16px 0; }
-.search-row input { flex: 1; min-width: 0; }
-input, select {
-  width: 100%; min-width: 0; padding: 12px;
-  border: 1px solid #d4d4d4; border-radius: 9px;
-  background: white; color: var(--text); font-size: 15px;
-}
-input:focus, select:focus { outline: 2px solid #00a87830; border-color: var(--accent); }
-.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
-.card { min-width: 0; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
-.card:hover { border-color: #a4dfcc; }
-.video { width: 100%; aspect-ratio: 16 / 9; background: #111; overflow: hidden; }
-.video video { display: block; width: 100%; height: 100%; object-fit: contain; }
-.admin-card-actions { padding: 10px; border-top: 1px solid var(--line); }
-.panel { margin: 24px 0; padding: 20px; background: white; border: 1px solid var(--line); border-radius: 16px; }
-.panel h2 { margin-top: 0; }
-.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.field { display: flex; flex-direction: column; gap: 7px; }
-.status { line-height: 1.8; color: var(--accent-hover); overflow-wrap: anywhere; }
-.status.error { color: #b42318; }
-.small { font-size: 12px; color: var(--muted); line-height: 1.8; }
-.hidden { display: none !important; }
-#empty { display: none; color: var(--muted); padding: 24px; background: var(--card); border-radius: 12px; text-align: center; }
-.admin-toggle { font-size: 12px; padding: 7px 10px; }
-.schedule { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
-.day { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
-.day h3 { color: var(--accent-hover); margin: 0 0 9px; }
-.day p { color: #555; line-height: 1.8; font-size: 14px; margin: 0; }
-.note { margin-top: 24px; padding: 16px; background: #f1faf6; border: 1px solid #d7f0e6; border-radius: 13px; line-height: 1.9; color: #424242; }
-.note strong { color: var(--accent-hover); }
-footer { margin-top: 28px; padding: 18px 0; border-top: 1px solid var(--line); color: #777; text-align: center; font-size: 13px; }
-@media(max-width:900px) {
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .schedule { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media(max-width:620px) {
-  .container { padding: 14px; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .schedule { gap: 9px; }
-  .day { padding: 12px; }
-  .form-grid { grid-template-columns: 1fr; }
-  .panel { padding: 15px; }
-  .search-row { flex-wrap: wrap; }
-  .search-row input { flex-basis: 100%; }
-}
-@media(max-width:360px) {
-  .grid, .schedule { grid-template-columns: 1fr; }
-}
-</style>
-</head>
-<body>
-<main class="container">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout | BODYRESET</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #fff;
+      --text: #fff;
+      --muted: #e0e0e0;
+      --panel: rgba(20, 20, 20, .78);
+      --border: rgba(255, 255, 255, .18);
+      --accent: #d6d6d6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Cairo", sans-serif;
+      color: var(--text);
+      background: linear-gradient(
+        180deg,
+        #000000 0%,
+        #3a3a3a 50%,
+        #a0a0a0 100%
+      );
+      background-attachment: fixed;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button { cursor: pointer; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(0, 0, 0, .35);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .logo span { color: #aaa; }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.08);
+      color: white;
+      transition: .2s;
+    }
+
+    .btn:hover { background: rgba(255,255,255,.17); }
+
+    .btn.light {
+      color: #111;
+      background: #fff;
+      border-color: white;
+      font-weight: 700;
+    }
+
+    main { padding: 30px 0 60px; }
+
+    .page-title {
+      margin: 0 0 5px;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+    }
+
+    .subtitle {
+      color: #e1e1e1;
+      margin: 0 0 26px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.35);
+      margin-bottom: 18px;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 0;
+      color: white;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      padding: 12px;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #c8c8c8;
+    }
+
+    .filters {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin: 0 0 24px;
+    }
+
+    .filter {
+      border: 1px solid var(--border);
+      color: white;
+      background: rgba(0,0,0,.22);
+      border-radius: 999px;
+      padding: 9px 15px;
+    }
+
+    .filter.active {
+      background: white;
+      color: #111;
+      border-color: white;
+      font-weight: 700;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 24px 0 16px;
+    }
+
+    .section-heading h2 { margin: 0; font-size: 22px; }
+
+    .count {
+      color: #eee;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(18,18,18,.82);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
+      background: #090909;
+    }
+
+    .card-body { padding: 16px; }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.08);
+      color: #eee;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    .description {
+      color: #dedede;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .empty, .loading, .error {
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      padding: 30px 16px;
+      text-align: center;
+      color: #f1f1f1;
+      grid-column: 1 / -1;
+    }
+
+    .admin-panel {
+      background: rgba(0,0,0,.55);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .admin-panel h2 { margin: 0 0 14px; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field label { font-size: 14px; color: #eee; }
+
+    .field input, .field textarea, .field select {
+      width: 100%;
+      color: white;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    .field select option { color: #111; }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    .admin-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .hidden { display: none !important; }
+
+    .notice {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #eee;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      color: #eee;
+      text-align: center;
+      font-size: 13px;
+      background: rgba(0,0,0,.15);
+    }
+
+    @media (max-width: 850px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .grid, .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .nav { padding: 12px 0; align-items: flex-start; flex-direction: column; }
+      .page-title { font-size: 29px; }
+      main { padding-top: 24px; }
+    }
+  </style>
+</head>
+
+<body>
 <header>
-  <div class="logo">BODY<span>RESET</span> / WORKOUT</div>
-  <button class="btn secondary admin-toggle" id="showLoginButton" type="button">دخول الأدمن</button>
+  <div class="container nav">
+    <a class="logo" href="#">BODY<span>RESET</span></a>
+    <div class="nav-actions">
+      <button class="btn" id="adminToggle" type="button">دخول الأدمن</button>
+      <button class="btn hidden" id="logoutBtn" type="button">تسجيل الخروج</button>
+    </div>
+  </div>
 </header>
 
-<section class="panel hidden" id="loginPanel">
-  <h2>دخول الإدارة</h2>
-  <form id="loginForm">
-    <div class="form-grid">
-      <label class="field">البريد الإلكتروني
-        <input id="email" type="email" autocomplete="username" required>
-      </label>
-      <label class="field">كلمة المرور
-        <input id="password" type="password" autocomplete="current-password" required>
-      </label>
-    </div>
-    <button class="btn" type="submit" id="loginButton">تسجيل الدخول</button>
-    <button class="btn secondary" id="hideLoginButton" type="button">إغلاق</button>
-  </form>
-  <p id="loginStatus" class="status" role="status"></p>
-</section>
+<main class="container">
+  <h1 class="page-title">Workout</h1>
+  <p class="subtitle">اختار العضلة وابحث عن التمرين المناسب ليك.</p>
 
-<section class="panel hidden" id="adminPanel">
-  <div class="heading">
-    <h2>رفع فيديو تمرين</h2>
-    <button class="btn secondary" id="logoutButton" type="button">تسجيل الخروج</button>
-  </div>
-  <p class="small">اختار مجموعة العضلات ثم ملف الفيديو. العميل هيشوف الفيديو فقط.</p>
-  <form id="videoForm">
-    <input id="editId" type="hidden">
-    <div class="form-grid">
-      <label class="field">مجموعة العضلات
-        <select id="muscle" required>
-          <option value="chest">الصدر</option>
-          <option value="back">الظهر</option>
-          <option value="legs">الرجل</option>
-          <option value="arms">الذراع</option>
-          <option value="shoulders">الأكتاف</option>
-          <option value="core">البطن</option>
-          <option value="full_body">الجسم بالكامل</option>
-        </select>
-      </label>
-      <label class="field">اختار ملف الفيديو
-        <input id="videoFile" type="file" accept="video/*" required>
-      </label>
-    </div>
-    <div class="admin-actions" style="margin-top:14px">
-      <button class="btn" id="saveButton" type="submit">رفع الفيديو</button>
-      <button class="btn secondary hidden" id="cancelEditButton" type="button">إلغاء التعديل</button>
-    </div>
-  </form>
-  <p id="adminStatus" class="status" role="status"></p>
-</section>
+  <section class="admin-panel hidden" id="adminPanel">
+    <h2 id="adminHeading">إدارة فيديوهات التمارين</h2>
 
-<section>
-  <div class="heading">
-    <h2>كل التمارين</h2>
-    <p id="videoCountLabel" class="small">جارٍ تحميل الفيديوهات…</p>
-  </div>
+    <form id="videoForm">
+      <div class="form-grid">
+        <div class="field">
+          <label for="videoTitle">اسم التمرين</label>
+          <input id="videoTitle" maxlength="120" placeholder="مثال: تمرين الصدر" required>
+        </div>
 
-  <div class="search-row">
-    <input id="exerciseSearch" type="search" placeholder="ابحث في جميع التمارين…" aria-label="البحث في جميع التمارين">
-    <button class="btn secondary" id="clearSearch" type="button">مسح البحث</button>
+        <div class="field">
+          <label for="muscleGroup">العضلة</label>
+          <select id="muscleGroup" required>
+            <option value="chest">الصدر</option>
+            <option value="back">الظهر</option>
+            <option value="shoulders">الأكتاف</option>
+            <option value="arms">الذراعين</option>
+            <option value="legs">الرجلين</option>
+            <option value="abs">البطن</option>
+            <option value="cardio">كارديو</option>
+            <option value="fullbody">الجسم بالكامل</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="videoDescription">وصف التمرين</label>
+          <textarea id="videoDescription" maxlength="1000" placeholder="اكتب وصفًا مختصرًا للتمرين"></textarea>
+        </div>
+
+        <div class="field full">
+          <label for="videoFile">ملف الفيديو</label>
+          <input id="videoFile" type="file" accept="video/*">
+          <small>اختار فيديو جديدًا، أو اترك الحقل فارغًا عند تعديل الاسم والوصف فقط.</small>
+        </div>
+      </div>
+
+      <div class="admin-buttons">
+        <button class="btn light" type="submit" id="saveVideoBtn">حفظ الفيديو</button>
+        <button class="btn hidden" type="button" id="cancelEditBtn">إلغاء التعديل</button>
+      </div>
+      <p class="notice" id="adminMessage" role="status"></p>
+    </form>
+  </section>
+
+  <div class="search-box">
+    <span aria-hidden="true">⌕</span>
+    <input id="searchInput" type="search" placeholder="ابحث باسم التمرين أو العضلة..." aria-label="البحث عن تمرين">
+    <button class="btn" id="clearSearch" type="button">مسح</button>
   </div>
 
-  <div class="filters" aria-label="تصفية حسب مجموعة العضلات">
-    <button class="filter active" data-filter="all" type="button">الكل</button>
-    <button class="filter" data-filter="chest" type="button">الصدر</button>
-    <button class="filter" data-filter="back" type="button">الظهر</button>
-    <button class="filter" data-filter="legs" type="button">الرجل</button>
-    <button class="filter" data-filter="arms" type="button">الذراع</button>
-    <button class="filter" data-filter="shoulders" type="button">الأكتاف</button>
-    <button class="filter" data-filter="core" type="button">البطن</button>
-    <button class="filter" data-filter="full_body" type="button">الجسم بالكامل</button>
+  <div class="filters" id="filters">
+    <button class="filter active" data-muscle="all">الكل</button>
+    <button class="filter" data-muscle="chest">الصدر</button>
+    <button class="filter" data-muscle="back">الظهر</button>
+    <button class="filter" data-muscle="shoulders">الأكتاف</button>
+    <button class="filter" data-muscle="arms">الذراعين</button>
+    <button class="filter" data-muscle="legs">الرجلين</button>
+    <button class="filter" data-muscle="abs">البطن</button>
+    <button class="filter" data-muscle="cardio">كارديو</button>
+    <button class="filter" data-muscle="fullbody">الجسم بالكامل</button>
   </div>
 
-  <div class="grid" id="workouts"></div>
-  <p id="empty">مفيش فيديوهات مطابقة للبحث أو الفلتر ده حاليًا.</p>
-  <p id="loadStatus" class="small" role="status"></p>
-</section>
-
-<section>
-  <div class="heading">
-    <h2>جدول أسبوعي مقترح</h2>
-    <p>نظّم تمرينك واستشفاءك</p>
+  <div class="section-heading">
+    <h2>فيديوهات التمارين</h2>
+    <span class="count" id="videoCount">0 فيديو</span>
   </div>
-  <div class="schedule">
-    <div class="day"><h3>اليوم الأول</h3><p>صدر وذراع<br>اهتم بالتكنيك</p></div>
-    <div class="day"><h3>اليوم الثاني</h3><p>ظهر وذراع<br>راحة بين المجموعات</p></div>
-    <div class="day"><h3>اليوم الثالث</h3><p>رجل<br>ابدأ بإحماء جيد</p></div>
-    <div class="day"><h3>أيام الراحة</h3><p>مشي خفيف أو راحة<br>نوم كفاية واشرب مياه</p></div>
-  </div>
-</section>
 
-<aside class="note">
-  <strong>مهم قبل التمرين:</strong>
-  اعمل إحماء من 5 إلى 10 دقائق، واختار وزنًا تقدر تتحكم فيه. أوقف التمرين لو شعرت بألم حاد أو دوخة.
-</aside>
-
-<footer>BODYRESET — استمر، وتقدم خطوة كل يوم</footer>
+  <section class="grid" id="videoGrid" aria-live="polite">
+    <div class="loading">جاري تحميل التمارين...</div>
+  </section>
 </main>
 
+<footer>
+  BODYRESET — تمرّن بانتظام، وتقدّم خطوة بخطوة.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
-const SUPABASE_KEY = "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  // إعدادات Supabase المستخدمة في النسخة السابقة
+  const SUPABASE_URL = "https://byodeoaluspphqduxmlh.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
+  const TABLE = "workout_videos";
+  const BUCKET = "workout-videos";
 
-const $ = id => document.getElementById(id);
-let currentUser = null;
-let isAdmin = false;
-let activeFilter = "all";
-let dbVideos = [];
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-const muscleNames = {
-  chest:"الصدر", back:"الظهر", legs:"الرجل", arms:"الذراع",
-  shoulders:"الأكتاف", core:"البطن", full_body:"الجسم بالكامل"
-};
+  const muscleNames = {
+    chest: "الصدر",
+    back: "الظهر",
+    shoulders: "الأكتاف",
+    arms: "الذراعين",
+    legs: "الرجلين",
+    abs: "البطن",
+    cardio: "كارديو",
+    fullbody: "الجسم بالكامل"
+  };
 
-function setStatus(id, message, error = false) {
-  const el = $(id);
-  el.textContent = message || "";
-  el.classList.toggle("error", error);
-}
+  const grid = document.getElementById("videoGrid");
+  const count = document.getElementById("videoCount");
+  const searchInput = document.getElementById("searchInput");
+  const adminPanel = document.getElementById("adminPanel");
+  const adminToggle = document.getElementById("adminToggle");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const adminMessage = document.getElementById("adminMessage");
+  const videoForm = document.getElementById("videoForm");
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-  })[c]);
-}
+  let videos = [];
+  let activeMuscle = "all";
+  let editingVideo = null;
+  let isAdmin = false;
 
-function renderCard(video) {
-  const url = video.video_url || "";
-  const media = url
-    ? `<video controls playsinline preload="metadata"><source src="${escapeHTML(url)}">المتصفح لا يدعم تشغيل الفيديو.</video>`
-    : `<div style="padding:18px;color:white">الفيديو غير متاح.</div>`;
-
-  const actions = isAdmin ? `
-    <div class="admin-card-actions">
-      <button class="btn secondary" type="button" data-edit="${escapeHTML(video.id)}">استبدال الفيديو</button>
-      <button class="btn danger" type="button" data-delete="${escapeHTML(video.id)}">حذف الفيديو</button>
-    </div>` : "";
-
-  const searchText = [
-    muscleNames[video.muscle_group] || "",
-    video.title || "",
-    video.description || ""
-  ].join(" ");
-
-  return `<article class="card"
-    data-muscle="${escapeHTML(video.muscle_group)}"
-    data-search="${escapeHTML(searchText)}">
-    <div class="video">${media}</div>
-    ${actions}
-  </article>`;
-}
-
-function applyFilters() {
-  const query = $("exerciseSearch").value.trim().toLocaleLowerCase("ar");
-  let count = 0;
-
-  document.querySelectorAll("#workouts .card").forEach(card => {
-    const groupMatch = activeFilter === "all" || card.dataset.muscle === activeFilter;
-    const searchMatch = !query || card.dataset.search.toLocaleLowerCase("ar").includes(query);
-    const visible = groupMatch && searchMatch;
-    card.classList.toggle("hidden", !visible);
-    if (visible) count++;
-  });
-
-  $("empty").style.display = count ? "none" : "block";
-  $("videoCountLabel").textContent = `${count} فيديو`;
-
-  document.querySelectorAll(".filter").forEach(button => {
-    button.classList.toggle("active", button.dataset.filter === activeFilter);
-  });
-}
-
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    applyFilters();
-  });
-});
-
-$("exerciseSearch").addEventListener("input", applyFilters);
-
-$("clearSearch").addEventListener("click", () => {
-  $("exerciseSearch").value = "";
-  applyFilters();
-  $("exerciseSearch").focus();
-});
-
-function renderAll() {
-  $("workouts").innerHTML = dbVideos.map(renderCard).join("");
-  applyFilters();
-}
-
-async function loadVideos() {
-  setStatus("loadStatus", "جارٍ تحميل الفيديوهات…");
-
-  const { data, error } = await supabaseClient
-    .from("workout_videos")
-    .select("*")
-    .order("sort_order", { ascending: true })
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    dbVideos = [];
-    renderAll();
-    setStatus("loadStatus", "تعذر تحميل الفيديوهات. راجع جدول Supabase وسياسات القراءة.", true);
-    return;
+  function normalize(value) {
+    return String(value || "").trim().toLocaleLowerCase("ar");
   }
 
-  dbVideos = data || [];
-  renderAll();
-  setStatus("loadStatus", dbVideos.length ? `تم تحميل ${dbVideos.length} فيديو.` : "لا توجد فيديوهات مضافة حاليًا.");
-}
-
-async function refreshAdminState() {
-  const { data, error } = await supabaseClient.auth.getSession();
-
-  if (error) {
-    setStatus("loginStatus", "تعذر التحقق من الدخول: " + error.message, true);
-    return;
+  function setAdminMessage(message) {
+    adminMessage.textContent = message;
   }
 
-  currentUser = data.session?.user || null;
-  isAdmin = false;
-
-  if (currentUser) {
-    const result = await supabaseClient
-      .from("workout_admins")
-      .select("user_id")
-      .eq("user_id", currentUser.id)
-      .maybeSingle();
-
-    if (result.data && !result.error) isAdmin = true;
-    if (result.error) setStatus("loginStatus", "تعذر التحقق من صلاحيات الأدمن.", true);
+  function escapeText(value) {
+    return String(value ?? "");
   }
 
-  $("loginPanel").classList.toggle("hidden", isAdmin);
-  $("adminPanel").classList.toggle("hidden", !isAdmin);
-  $("showLoginButton").classList.toggle("hidden", isAdmin);
+  async function loadVideos() {
+    grid.innerHTML = '<div class="loading">جاري تحميل التمارين...</div>';
 
-  if (isAdmin) {
-    setStatus("loginStatus", "");
-    setStatus("adminStatus", "تم تسجيل الدخول بصلاحيات الأدمن.");
-  } else if (currentUser) {
-    $("loginPanel").classList.remove("hidden");
-    $("showLoginButton").classList.add("hidden");
-    setStatus("loginStatus", "الحساب ده مش مضاف لقائمة الأدمن.", true);
+    const { data, error } = await supabaseClient
+      .from(TABLE)
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      grid.innerHTML = '<div class="error">تعذر تحميل الفيديوهات. راجع إعدادات الجدول وصلاحيات القراءة في Supabase.</div>';
+      count.textContent = "—";
+      console.error(error);
+      return;
+    }
+
+    videos = data || [];
+    renderVideos();
   }
 
-  renderAll();
-}
-
-$("showLoginButton").addEventListener("click", () => {
-  $("loginPanel").classList.remove("hidden");
-  $("showLoginButton").classList.add("hidden");
-});
-
-$("hideLoginButton").addEventListener("click", () => {
-  if (!isAdmin) {
-    $("loginPanel").classList.add("hidden");
-    $("showLoginButton").classList.remove("hidden");
+  function getVideoUrl(video) {
+    // يدعم أسماء الحقول الشائعة المستخدمة لتخزين رابط الفيديو
+    return video.video_url || video.url || video.public_url || "";
   }
-});
 
-$("loginForm").addEventListener("submit", async event => {
-  event.preventDefault();
-  setStatus("loginStatus", "جارٍ تسجيل الدخول…");
-  $("loginButton").disabled = true;
+  function getMuscle(video) {
+    return video.muscle_group || video.muscle || video.category || "";
+  }
 
-  try {
-    const { error } = await supabaseClient.auth.signInWithPassword({
-      email: $("email").value.trim(),
-      password: $("password").value
+  function renderVideos() {
+    const query = normalize(searchInput.value);
+
+    const filtered = videos.filter(video => {
+      const muscle = getMuscle(video);
+      const title = video.title || video.name || "";
+      const description = video.description || "";
+
+      const matchesMuscle =
+        activeMuscle === "all" || muscle === activeMuscle;
+
+      const searchContent = normalize(
+        title + " " +
+        description + " " +
+        (muscleNames[muscle] || muscle)
+      );
+
+      return matchesMuscle && (!query || searchContent.includes(query));
     });
-    if (error) throw error;
+
+    count.textContent = filtered.length + " فيديو";
+
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="empty">مفيش فيديوهات مطابقة للبحث حاليًا.</div>';
+      return;
+    }
+
+    grid.innerHTML = "";
+
+    filtered.forEach(video => {
+      const url = getVideoUrl(video);
+      const muscle = getMuscle(video);
+      const title = video.title || video.name || "تمرين";
+      const description = video.description || "";
+
+      const card = document.createElement("article");
+      card.className = "video-card";
+
+      if (url) {
+        const player = document.createElement("video");
+        player.controls = true;
+        player.preload = "metadata";
+        player.playsInline = true;
+        player.src = url;
+        player.setAttribute("aria-label", title);
+        card.appendChild(player);
+      } else {
+        const missing = document.createElement("div");
+        missing.className = "empty";
+        missing.textContent = "رابط الفيديو غير متوفر";
+        card.appendChild(missing);
+      }
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = muscleNames[muscle] || muscle || "تمرين";
+
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+
+      const desc = document.createElement("p");
+      desc.className = "description";
+      desc.textContent = description;
+
+      body.append(tag, heading, desc);
+
+      if (isAdmin) {
+        const controls = document.createElement("div");
+        controls.className = "admin-buttons";
+
+        const editBtn = document.createElement("button");
+        editBtn.type = "button";
+        editBtn.className = "btn";
+        editBtn.textContent = "تعديل";
+        editBtn.addEventListener("click", () => startEdit(video));
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.type = "button";
+        deleteBtn.className = "btn";
+        deleteBtn.textContent = "حذف";
+        deleteBtn.addEventListener("click", () => deleteVideo(video));
+
+        controls.append(editBtn, deleteBtn);
+        body.appendChild(controls);
+      }
+
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+  }
+
+  document.getElementById("filters").addEventListener("click", event => {
+    const button = event.target.closest("[data-muscle]");
+    if (!button) return;
+
+    activeMuscle = button.dataset.muscle;
+
+    document.querySelectorAll(".filter").forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+
+    renderVideos();
+  });
+
+  searchInput.addEventListener("input", renderVideos);
+
+  document.getElementById("clearSearch").addEventListener("click", () => {
+    searchInput.value = "";
+    renderVideos();
+    searchInput.focus();
+  });
+
+  async function refreshAdminState() {
+    const { data } = await supabaseClient.auth.getSession();
+    const session = data?.session;
+
+    isAdmin = false;
+
+    if (session?.user) {
+      const { data: admin, error } = await supabaseClient
+        .from("workout_admins")
+        .select("user_id")
+        .eq("user_id", session.user.id)
+        .maybeSingle();
+
+      isAdmin = !error && !!admin;
+    }
+
+    adminPanel.classList.toggle("hidden", !isAdmin);
+    logoutBtn.classList.toggle("hidden", !session);
+    adminToggle.classList.toggle("hidden", !!session);
+
+    renderVideos();
+  }
+
+  adminToggle.addEventListener("click", async () => {
+    const email = prompt("اكتب إيميل الأدمن:");
+    if (!email) return;
+
+    const password = prompt("اكتب كلمة المرور:");
+    if (!password) return;
+
+    const { error } = await supabaseClient.auth.signInWithPassword({
+      email: email.trim(),
+      password
+    });
+
+    if (error) {
+      alert("فشل تسجيل الدخول: " + error.message);
+      return;
+    }
 
     await refreshAdminState();
 
-    if (isAdmin) {
-      setStatus("adminStatus", "تم تسجيل الدخول بنجاح.");
-      await loadVideos();
+    if (!isAdmin) {
+      alert("الحساب ده مش موجود في قائمة الأدمن.");
     }
-  } catch (error) {
-    setStatus("loginStatus", "فشل تسجيل الدخول: " + error.message, true);
-  } finally {
-    $("loginButton").disabled = false;
-  }
-});
+  });
 
-$("logoutButton").addEventListener("click", async () => {
-  const { error } = await supabaseClient.auth.signOut();
-
-  if (error) {
-    setStatus("adminStatus", "تعذر تسجيل الخروج: " + error.message, true);
-    return;
-  }
-
-  currentUser = null;
-  isAdmin = false;
-  $("adminPanel").classList.add("hidden");
-  $("loginPanel").classList.add("hidden");
-  $("showLoginButton").classList.remove("hidden");
-  resetForm();
-  renderAll();
-});
-
-function resetForm() {
-  $("videoForm").reset();
-  $("editId").value = "";
-  $("videoFile").value = "";
-  $("saveButton").textContent = "رفع الفيديو";
-  $("cancelEditButton").classList.add("hidden");
-  $("videoFile").required = true;
-}
-
-$("cancelEditButton").addEventListener("click", resetForm);
-
-async function uploadVideoFile(file) {
-  if (!file) throw new Error("اختار ملف فيديو أولًا.");
-  if (!file.type.startsWith("video/")) throw new Error("الملف المختار لازم يكون فيديو.");
-  if (file.size > 100 * 1024 * 1024) throw new Error("حجم الفيديو أكبر من 100 ميجابايت.");
-
-  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-  const path = `${Date.now()}-${crypto.randomUUID()}-${safeName}`;
-
-  const { error } = await supabaseClient.storage
-    .from("workout-videos")
-    .upload(path, file, { upsert: false, contentType: file.type });
-
-  if (error) throw error;
-
-  const { data } = supabaseClient.storage.from("workout-videos").getPublicUrl(path);
-  if (!data?.publicUrl) throw new Error("تعذر الحصول على رابط الفيديو.");
-
-  return data.publicUrl;
-}
-
-$("videoForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  if (!isAdmin || !currentUser) {
-    setStatus("adminStatus", "سجّل الدخول بحساب الأدمن أولًا.", true);
-    return;
-  }
-
-  $("saveButton").disabled = true;
-  setStatus("adminStatus", "جارٍ رفع الفيديو، انتظر حتى يكتمل الرفع…");
-
-  try {
-    const editId = $("editId").value;
-    const group = $("muscle").value;
-    const file = $("videoFile").files[0];
-    let videoUrl;
-
-    if (file) {
-      videoUrl = await uploadVideoFile(file);
-    } else if (editId) {
-      const old = dbVideos.find(video => String(video.id) === editId);
-      if (!old) throw new Error("لم يتم العثور على الفيديو القديم.");
-      videoUrl = old.video_url;
-    } else {
-      throw new Error("اختار ملف الفيديو أولًا.");
-    }
-
-    const record = {
-      title: "فيديو " + muscleNames[group],
-      description: "",
-      muscle_group: group,
-      source_type: "upload",
-      video_url: videoUrl,
-      sets: 1,
-      reps: "",
-      rest: "",
-      sort_order: 0,
-      updated_at: new Date().toISOString()
-    };
-
-    const result = editId
-      ? await supabaseClient.from("workout_videos").update(record).eq("id", editId).select().single()
-      : await supabaseClient.from("workout_videos").insert(record).select().single();
-
-    if (result.error) throw result.error;
-
+  logoutBtn.addEventListener("click", async () => {
+    await supabaseClient.auth.signOut();
+    isAdmin = false;
+    adminPanel.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+    adminToggle.classList.remove("hidden");
     resetForm();
-    setStatus("adminStatus", editId ? "تم استبدال الفيديو بنجاح." : "تم رفع الفيديو وإضافته بنجاح.");
-    await loadVideos();
-  } catch (error) {
-    setStatus("adminStatus", "تعذر رفع الفيديو: " + error.message, true);
-  } finally {
-    $("saveButton").disabled = false;
-  }
-});
+    renderVideos();
+  });
 
-$("workouts").addEventListener("click", async event => {
-  if (!isAdmin) return;
+  function startEdit(video) {
+    editingVideo = video;
 
-  const edit = event.target.closest("[data-edit]");
-  const del = event.target.closest("[data-delete]");
+    document.getElementById("videoTitle").value =
+      video.title || video.name || "";
 
-  if (edit) {
-    const video = dbVideos.find(item => String(item.id) === edit.dataset.edit);
-    if (!video) return;
+    document.getElementById("videoDescription").value =
+      video.description || "";
 
-    $("editId").value = video.id;
-    $("muscle").value = video.muscle_group || "chest";
-    $("videoFile").value = "";
-    $("videoFile").required = false;
-    $("saveButton").textContent = "استبدال الفيديو";
-    $("cancelEditButton").classList.remove("hidden");
-    $("videoForm").scrollIntoView({ behavior: "smooth", block: "start" });
-    setStatus("adminStatus", "اختار ملفًا جديدًا لاستبدال الفيديو.");
-    return;
+    document.getElementById("muscleGroup").value =
+      getMuscle(video) || "chest";
+
+    document.getElementById("saveVideoBtn").textContent =
+      "حفظ التعديلات";
+
+    document.getElementById("cancelEditBtn").classList.remove("hidden");
+    document.getElementById("adminHeading").textContent = "تعديل التمرين";
+
+    adminPanel.scrollIntoView({ behavior: "smooth" });
   }
 
-  if (del) {
-    const video = dbVideos.find(item => String(item.id) === del.dataset.delete);
-    if (!video || !confirm("متأكد إنك عايز تحذف الفيديو؟")) return;
+  function resetForm() {
+    videoForm.reset();
+    editingVideo = null;
+    document.getElementById("saveVideoBtn").textContent = "حفظ الفيديو";
+    document.getElementById("cancelEditBtn").classList.add("hidden");
+    document.getElementById("adminHeading").textContent =
+      "إدارة فيديوهات التمارين";
+    setAdminMessage("");
+  }
 
-    setStatus("adminStatus", "جارٍ الحذف…");
+  document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
+
+  videoForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    if (!isAdmin) {
+      setAdminMessage("سجّل دخولك كأدمن أولًا.");
+      return;
+    }
+
+    const title = document.getElementById("videoTitle").value.trim();
+    const description = document.getElementById("videoDescription").value.trim();
+    const muscle_group = document.getElementById("muscleGroup").value;
+    const file = document.getElementById("videoFile").files[0];
+
+    if (!title) {
+      setAdminMessage("اكتب اسم التمرين.");
+      return;
+    }
+
+    if (!editingVideo && !file) {
+      setAdminMessage("اختار ملف الفيديو أولًا.");
+      return;
+    }
+
+    if (file && !file.type.startsWith("video/")) {
+      setAdminMessage("الملف لازم يكون فيديو.");
+      return;
+    }
+
+    if (file && file.size > 100 * 1024 * 1024) {
+      setAdminMessage("حجم الفيديو أكبر من 100 ميجابايت.");
+      return;
+    }
+
+    const saveButton = document.getElementById("saveVideoBtn");
+    saveButton.disabled = true;
+    setAdminMessage("جاري الحفظ...");
+
+    try {
+      let videoUrl = editingVideo ? getVideoUrl(editingVideo) : "";
+
+      if (file) {
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+        const filePath = Date.now() + "_" + safeName;
+
+        const { error: uploadError } = await supabaseClient.storage
+          .from(BUCKET)
+          .upload(filePath, file, {
+            cacheControl: "3600",
+            upsert: false
+          });
+
+        if (uploadError) throw uploadError;
+
+        const { data: publicData } = supabaseClient.storage
+          .from(BUCKET)
+          .getPublicUrl(filePath);
+
+        videoUrl = publicData.publicUrl;
+      }
+
+      const payload = {
+        title,
+        description,
+        muscle_group,
+        video_url: videoUrl
+      };
+
+      let result;
+
+      if (editingVideo) {
+        result = await supabaseClient
+          .from(TABLE)
+          .update(payload)
+          .eq("id", editingVideo.id);
+      } else {
+        result = await supabaseClient
+          .from(TABLE)
+          .insert(payload);
+      }
+
+      if (result.error) throw result.error;
+
+      setAdminMessage("تم الحفظ بنجاح.");
+      resetForm();
+      await loadVideos();
+    } catch (error) {
+      console.error(error);
+      setAdminMessage(
+        "تعذر الحفظ: " + (error.message || "راجع إعدادات Supabase.")
+      );
+    } finally {
+      saveButton.disabled = false;
+    }
+  });
+
+  async function deleteVideo(video) {
+    if (!isAdmin) return;
+
+    const confirmed = confirm("متأكد إنك عايز تحذف التمرين ده؟");
+    if (!confirmed) return;
+
     const { error } = await supabaseClient
-      .from("workout_videos")
+      .from(TABLE)
       .delete()
       .eq("id", video.id);
 
     if (error) {
-      setStatus("adminStatus", "تعذر الحذف: " + error.message, true);
+      alert("تعذر حذف التمرين: " + error.message);
       return;
     }
 
-    setStatus("adminStatus", "تم حذف الفيديو من القائمة.");
     await loadVideos();
   }
-});
 
-supabaseClient.auth.onAuthStateChange(() => {
-  setTimeout(() => refreshAdminState(), 0);
-});
+  supabaseClient.auth.onAuthStateChange(() => {
+    setTimeout(refreshAdminState, 0);
+  });
 
-(async function init() {
-  await loadVideos();
-  await refreshAdminState();
-})();
+  (async function init() {
+    await refreshAdminState();
+    await loadVideos();
+  })();
 </script>
 </body>
 </html>
