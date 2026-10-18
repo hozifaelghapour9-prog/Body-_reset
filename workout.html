@@ -7,116 +7,429 @@
 <title>Workout | BODYRESET</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--line:rgba(255,255,255,.2)}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Cairo,sans-serif;color:#fff;background:linear-gradient(180deg,#000 0%,#3a3a3a 50%,#a0a0a0 100%);background-attachment:fixed}
-button,input,select{font:inherit}button{cursor:pointer}
-.container{width:min(1100px,92%);margin:auto}
-header{background:rgba(0,0,0,.35);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:23px;font-weight:800;color:#fff;text-decoration:none}.logo span{color:#aaa}
-.btn{border:1px solid var(--line);border-radius:12px;padding:9px 14px;background:rgba(255,255,255,.08);color:#fff}
-.btn:hover{background:rgba(255,255,255,.16)}.btn.light{background:#fff;color:#111;font-weight:700}
-main{padding:28px 0 55px}.page-title{font-size:clamp(28px,5vw,40px);margin:0}
-.subtitle{margin:4px 0 22px;color:#e5e5e5}
-.search{display:flex;gap:8px;align-items:center;padding:7px;border:1px solid var(--line);border-radius:15px;background:rgba(0,0,0,.3);margin-bottom:20px}
-.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:11px}
-.search input::placeholder{color:#ccc}
-.daybar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 22px}
-.chip{border:1px solid var(--line);border-radius:999px;padding:8px 13px;background:rgba(0,0,0,.2);color:#fff}
-.chip.active{background:#fff;color:#111;font-weight:700}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 13px}
-.section-head h2{font-size:21px;margin:0}.muted{color:#eee;font-size:13px}
-.exercise-list{display:grid;grid-template-columns:1fr;gap:13px}
-.exercise{display:grid;grid-template-columns:190px minmax(0,1fr);gap:15px;padding:12px;border-radius:17px;border:1px solid var(--line);background:rgba(15,15,15,.78);overflow:hidden}
-.thumb{position:relative;border:0;padding:0;background:#050505;border-radius:12px;overflow:hidden;min-height:125px;color:#fff}
-.thumb video{display:block;width:100%;height:100%;min-height:125px;max-height:175px;object-fit:cover}
-.playmark{position:absolute;inset:auto 10px 10px auto;background:rgba(0,0,0,.7);border-radius:999px;padding:5px 10px}
-.exercise h3{margin:2px 0 5px;font-size:19px}
-.meta{display:flex;gap:7px;flex-wrap:wrap}.meta span{font-size:12px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;background:rgba(255,255,255,.07)}
-.empty,.loading,.error{padding:25px;text-align:center;border:1px dashed var(--line);border-radius:15px;color:#fff;overflow-wrap:anywhere}
-.admin{background:rgba(0,0,0,.6);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:22px}
-.admin h2{margin:0 0 12px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}
-.field label{font-size:13px;color:#eee}
-.field input,.field select{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;outline:0}
-.field select option{color:#111}
-.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.hidden{display:none!important}.notice{font-size:13px;color:#eee;overflow-wrap:anywhere;white-space:pre-wrap}
-footer{text-align:center;padding:20px;border-top:1px solid var(--line);background:rgba(0,0,0,.15);font-size:13px;color:#eee}
-.player-modal{position:fixed;inset:0;z-index:50;background:#000;display:none;flex-direction:column}
-.player-modal.open{display:flex}
-.player-top{position:absolute;top:12px;right:12px;left:12px;display:flex;justify-content:space-between;z-index:2;pointer-events:none}
-.player-top button{pointer-events:auto;border:0;border-radius:13px;background:rgba(255,255,255,.82);color:#111;width:48px;height:48px;font-size:25px}
-.player-area{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#000}
-.player-area video{width:100%;height:100%;object-fit:contain}
-.player-info{background:#fff;color:#111;padding:20px 7% 32px;min-height:105px}
-.player-info h2{font-size:22px;margin:0}
-@media(max-width:650px){.nav{padding:12px 0;align-items:flex-start;flex-direction:column}.exercise{grid-template-columns:1fr}.thumb{min-height:190px}.thumb video{height:210px;max-height:none}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.player-info{padding:17px 20px 25px}.player-info h2{font-size:20px}}
+:root {
+  --line: rgba(190,230,245,.18);
+  --ice: #b8e8f2;
+  --navy: #071426;
+  --card: rgba(8,23,40,.82);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Cairo,sans-serif;
+  color: #f4fbff;
+  background:
+    radial-gradient(ellipse at 18% 5%,
+      rgba(190,235,248,.24) 0%,
+      rgba(125,215,230,.15) 24%,
+      rgba(70,170,195,.06) 43%,
+      transparent 60%),
+    radial-gradient(ellipse at 90% 35%,
+      rgba(100,195,220,.13) 0%,
+      transparent 48%),
+    radial-gradient(ellipse at 45% 100%,
+      rgba(20,70,105,.15) 0%,
+      transparent 55%),
+    linear-gradient(145deg,#061426 0%,#0a1d33 48%,#071321 100%);
+  background-attachment: fixed;
+}
+button,input,select { font: inherit; }
+button { cursor: pointer; }
+.container { width: min(1100px,92%); margin: auto; }
+
+header {
+  background: rgba(5,17,31,.65);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+.nav {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.logo {
+  font-size: 23px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+}
+.logo span { color: var(--ice); }
+
+.btn {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 14px;
+  background: rgba(180,225,240,.08);
+  color: #f4fbff;
+  transition: background .2s,border-color .2s;
+}
+.btn:hover {
+  background: rgba(180,225,240,.16);
+  border-color: rgba(190,230,245,.35);
+}
+.btn.light {
+  background: #d8f3fa;
+  color: #071426;
+  font-weight: 800;
+  border-color: #d8f3fa;
+}
+.btn:disabled { opacity: .55; cursor: wait; }
+
+main { padding: 28px 0 55px; }
+.page-title {
+  font-size: clamp(28px,5vw,40px);
+  margin: 0;
+  color: #f3fbff;
+  text-shadow: 0 0 28px rgba(150,220,240,.13);
+}
+.subtitle { margin: 4px 0 22px; color: #c8dce8; }
+
+.search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: rgba(5,18,32,.58);
+  margin-bottom: 20px;
+  backdrop-filter: blur(12px);
+}
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  padding: 11px;
+}
+.search input::placeholder { color: #9fb8c8; }
+
+.daybar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0 22px;
+}
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: rgba(5,18,32,.45);
+  color: #dcecf4;
+  transition: .2s;
+}
+.chip:hover {
+  border-color: rgba(184,232,242,.55);
+  background: rgba(140,210,225,.10);
+}
+.chip.active {
+  background: #cceef5;
+  color: #071426;
+  border-color: #cceef5;
+  font-weight: 800;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 13px;
+}
+.section-head h2 { font-size: 21px; margin: 0; }
+.muted { color: #b7ccd9; font-size: 13px; }
+
+.exercise-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 13px;
+}
+.exercise {
+  display: grid;
+  grid-template-columns: 190px minmax(0,1fr);
+  gap: 15px;
+  padding: 12px;
+  border-radius: 17px;
+  border: 1px solid rgba(190,230,245,.19);
+  background: rgba(8,23,40,.79);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.12);
+  transition: border-color .2s,transform .2s,background .2s;
+}
+.exercise:hover {
+  border-color: rgba(175,230,245,.35);
+  background: rgba(11,31,51,.88);
+}
+.thumb {
+  position: relative;
+  border: 1px solid rgba(190,230,245,.13);
+  padding: 0;
+  background: #06111f;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 125px;
+  color: #fff;
+}
+.thumb video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 125px;
+  max-height: 175px;
+  object-fit: cover;
+}
+.playmark {
+  position: absolute;
+  inset: auto 10px 10px auto;
+  background: rgba(4,15,27,.83);
+  border: 1px solid rgba(190,230,245,.18);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #d8f5fc;
+}
+.exercise h3 { margin: 2px 0 8px; font-size: 19px; }
+.meta { display: flex; gap: 7px; flex-wrap: wrap; }
+.meta span {
+  font-size: 12px;
+  border: 1px solid rgba(190,230,245,.16);
+  border-radius: 8px;
+  padding: 4px 8px;
+  background: rgba(150,220,240,.07);
+  color: #d8eaf2;
+}
+.empty,.loading,.error {
+  padding: 25px;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 15px;
+  color: #e4f3f8;
+  overflow-wrap: anywhere;
+  background: rgba(8,23,40,.5);
+}
+.error { color: #ffcaca; }
+
+.admin {
+  background: rgba(6,20,36,.84);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(14px);
+}
+.admin h2 { margin: 0 0 12px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field.full { grid-column: 1/-1; }
+.field label { font-size: 13px; color: #d8eaf2; }
+.field input,.field select {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(180,225,240,.07);
+  color: #fff;
+  outline: 0;
+}
+.field input:focus,.field select:focus {
+  border-color: rgba(184,232,242,.65);
+  box-shadow: 0 0 0 3px rgba(130,210,230,.08);
+}
+.field select option { color: #111; }
+.field small { color: #a9c3d1; }
+.admin-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.hidden { display: none!important; }
+.notice {
+  font-size: 13px;
+  color: #c5e8f2;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--line);
+  background: rgba(5,17,31,.45);
+  font-size: 13px;
+  color: #a9c3d1;
+}
+.player-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #020811;
+  display: none;
+  flex-direction: column;
+}
+.player-modal.open { display: flex; }
+.player-top {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: 12px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+.player-top button {
+  pointer-events: auto;
+  border: 1px solid rgba(190,230,245,.25);
+  border-radius: 13px;
+  background: rgba(220,245,252,.9);
+  color: #071426;
+  width: 48px;
+  height: 48px;
+  font-size: 25px;
+}
+.player-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020811;
+}
+.player-area video { width: 100%; height: 100%; object-fit: contain; }
+.player-info {
+  background: #e5f6fb;
+  color: #071426;
+  padding: 20px 7% 32px;
+  min-height: 105px;
+}
+.player-info h2 { font-size: 22px; margin: 0; }
+
+@media(max-width:650px) {
+  .nav { padding: 12px 0; align-items: flex-start; flex-direction: column; }
+  .exercise { grid-template-columns: 1fr; }
+  .thumb { min-height: 190px; }
+  .thumb video { height: 210px; max-height: none; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: auto; }
+  .player-info { padding: 17px 20px 25px; }
+  .player-info h2 { font-size: 20px; }
+}
 </style>
 </head>
 <body>
-<header><div class="container nav">
-<a class="logo" href="#">BODY<span>RESET</span></a>
-<div>
-<button class="btn" id="adminToggle" type="button">دخول الأدمن</button>
-<button class="btn hidden" id="logoutBtn" type="button">تسجيل الخروج</button>
-</div>
-</div></header>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">BODY<span>RESET</span></a>
+    <div>
+      <button class="btn" id="adminToggle" type="button">دخول الأدمن</button>
+      <button class="btn hidden" id="logoutBtn" type="button">تسجيل الخروج</button>
+    </div>
+  </div>
+</header>
 
 <main class="container">
-<h1 class="page-title">Workout</h1>
-<p class="subtitle">اختار يوم التمرين وابحث عن أي تمرين في المكتبة.</p>
+  <h1 class="page-title">Workout</h1>
+  <p class="subtitle">اختار يوم التمرين وابحث عن أي تمرين في المكتبة.</p>
 
-<section class="admin hidden" id="adminPanel">
-<h2 id="adminHeading">إدارة التمارين والخطة</h2>
-<form id="exerciseForm">
-<div class="form-grid">
-<div class="field"><label for="title">اسم التمرين</label><input id="title" maxlength="120" required placeholder="مثال: Bench Sit Ups"></div>
-<div class="field"><label for="muscle">الجزء المستهدف</label>
-<select id="muscle">
-<option value="chest">الصدر</option><option value="back">الظهر</option><option value="shoulders">الأكتاف</option><option value="arms">الذراعين</option><option value="legs">الرجلين</option><option value="abs">البطن</option><option value="cardio">كارديو</option><option value="fullbody">الجسم بالكامل</option>
-</select></div>
-<div class="field"><label for="day">يوم التمرين</label>
-<select id="day">
-<option value="saturday">السبت</option><option value="sunday">الأحد</option><option value="monday">الاثنين</option><option value="tuesday">الثلاثاء</option><option value="wednesday">الأربعاء</option><option value="thursday">الخميس</option><option value="friday">الجمعة / راحة</option>
-</select></div>
-<div class="field"><label for="sets">عدد المجموعات</label><input id="sets" type="number" min="1" max="20" value="3" required></div>
-<div class="field"><label for="reps">التكرارات / المدة</label><input id="reps" maxlength="50" value="10–12 تكرار" required></div>
-<div class="field"><label for="rest">الراحة بين المجموعات (ثانية)</label><input id="rest" type="number" min="0" max="900" value="90" required></div>
-<div class="field full"><label for="videoFile">ملف الفيديو</label><input id="videoFile" type="file" accept="video/*"><small>اختار فيديو جديدًا، أو اترك الحقل فارغًا عند تعديل بيانات التمرين فقط.</small></div>
-</div>
-<div class="admin-actions">
-<button class="btn light" id="saveBtn" type="submit">حفظ التمرين</button>
-<button class="btn hidden" id="cancelBtn" type="button">إلغاء التعديل</button>
-</div>
-<p class="notice" id="adminMessage" role="status"></p>
-</form>
-</section>
+  <section class="admin hidden" id="adminPanel">
+    <h2 id="adminHeading">إدارة التمارين والخطة</h2>
+    <form id="exerciseForm">
+      <div class="form-grid">
+        <div class="field">
+          <label for="title">اسم التمرين</label>
+          <input id="title" maxlength="120" required placeholder="مثال: Bench Sit Ups">
+        </div>
+        <div class="field">
+          <label for="muscle">الجزء المستهدف</label>
+          <select id="muscle">
+            <option value="chest">الصدر</option>
+            <option value="back">الظهر</option>
+            <option value="shoulders">الأكتاف</option>
+            <option value="arms">الذراعين</option>
+            <option value="legs">الرجلين</option>
+            <option value="abs">البطن</option>
+            <option value="cardio">كارديو</option>
+            <option value="fullbody">الجسم بالكامل</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="day">يوم التمرين</label>
+          <select id="day">
+            <option value="saturday">السبت</option>
+            <option value="sunday">الأحد</option>
+            <option value="monday">الاثنين</option>
+            <option value="tuesday">الثلاثاء</option>
+            <option value="wednesday">الأربعاء</option>
+            <option value="thursday">الخميس</option>
+            <option value="friday">الجمعة / راحة</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sets">عدد المجموعات</label>
+          <input id="sets" type="number" min="1" max="20" value="3" required>
+        </div>
+        <div class="field">
+          <label for="reps">التكرارات / المدة</label>
+          <input id="reps" maxlength="50" value="10–12 تكرار" required>
+        </div>
+        <div class="field">
+          <label for="rest">الراحة بين المجموعات (ثانية)</label>
+          <input id="rest" type="number" min="0" max="900" value="90" required>
+        </div>
+        <div class="field full">
+          <label for="videoFile">ملف الفيديو</label>
+          <input id="videoFile" type="file" accept="video/*">
+          <small>اختار فيديو جديدًا، أو اترك الحقل فارغًا عند تعديل بيانات التمرين فقط.</small>
+        </div>
+      </div>
+      <div class="admin-actions">
+        <button class="btn light" id="saveBtn" type="submit">حفظ التمرين</button>
+        <button class="btn hidden" id="cancelBtn" type="button">إلغاء التعديل</button>
+      </div>
+      <p class="notice" id="adminMessage" role="status"></p>
+    </form>
+  </section>
 
-<div class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="ابحث في كل التمارين بالاسم أو الجزء المستهدف..." aria-label="البحث في كل التمارين"><button class="btn" id="clearSearch" type="button">مسح</button></div>
+  <div class="search">
+    <span aria-hidden="true">⌕</span>
+    <input id="search" type="search" placeholder="ابحث في كل التمارين بالاسم أو الجزء المستهدف..." aria-label="البحث في كل التمارين">
+    <button class="btn" id="clearSearch" type="button">مسح</button>
+  </div>
 
-<div class="daybar" id="dayFilters">
-<button class="chip active" data-day="all" type="button">كل الأيام</button>
-<button class="chip" data-day="saturday" type="button">السبت</button>
-<button class="chip" data-day="sunday" type="button">الأحد</button>
-<button class="chip" data-day="monday" type="button">الاثنين</button>
-<button class="chip" data-day="tuesday" type="button">الثلاثاء</button>
-<button class="chip" data-day="wednesday" type="button">الأربعاء</button>
-<button class="chip" data-day="thursday" type="button">الخميس</button>
-<button class="chip" data-day="friday" type="button">الجمعة / راحة</button>
-</div>
+  <div class="daybar" id="dayFilters">
+    <button class="chip active" data-day="all" type="button">كل الأيام</button>
+    <button class="chip" data-day="saturday" type="button">السبت</button>
+    <button class="chip" data-day="sunday" type="button">الأحد</button>
+    <button class="chip" data-day="monday" type="button">الاثنين</button>
+    <button class="chip" data-day="tuesday" type="button">الثلاثاء</button>
+    <button class="chip" data-day="wednesday" type="button">الأربعاء</button>
+    <button class="chip" data-day="thursday" type="button">الخميس</button>
+    <button class="chip" data-day="friday" type="button">الجمعة / راحة</button>
+  </div>
 
-<div class="section-head"><h2 id="listTitle">كل التمارين</h2><span class="muted" id="count">0 تمرين</span></div>
-<section class="exercise-list" id="exerciseList" aria-live="polite"><div class="loading">جاري تحميل التمارين...</div></section>
+  <div class="section-head">
+    <h2 id="listTitle">كل التمارين</h2>
+    <span class="muted" id="count">0 تمرين</span>
+  </div>
+  <section class="exercise-list" id="exerciseList" aria-live="polite">
+    <div class="loading">جاري تحميل التمارين...</div>
+  </section>
 </main>
 
 <footer>BODYRESET — تمرّن بانتظام، وتقدّم خطوة بخطوة.</footer>
 
 <div class="player-modal" id="playerModal" role="dialog" aria-modal="true" aria-label="مشغل التمرين">
-<div class="player-top"><button id="backPlayer" aria-label="رجوع" type="button">←</button><button id="mutePlayer" aria-label="كتم الصوت" type="button">🔊</button></div>
-<div class="player-area"><video id="mainPlayer" controls playsinline></video></div>
-<div class="player-info"><h2 id="playerTitle"></h2></div>
+  <div class="player-top">
+    <button id="backPlayer" aria-label="رجوع" type="button">←</button>
+    <button id="mutePlayer" aria-label="كتم الصوت" type="button">🔊</button>
+  </div>
+  <div class="player-area"><video id="mainPlayer" controls playsinline></video></div>
+  <div class="player-info"><h2 id="playerTitle"></h2></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -126,17 +439,30 @@ const SUPABASE_KEY="sb_publishable_uB0eFh3HfRwUI9eWS73AtA_uOzKvg92";
 const TABLE="workout_videos", BUCKET="workout-videos";
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-const muscles={chest:"الصدر",back:"الظهر",shoulders:"الأكتاف",arms:"الذراعين",legs:"الرجلين",abs:"البطن",cardio:"كارديو",fullbody:"الجسم بالكامل"};
-const days={saturday:"السبت",sunday:"الأحد",monday:"الاثنين",tuesday:"الثلاثاء",wednesday:"الأربعاء",thursday:"الخميس",friday:"الجمعة / راحة"};
+const muscles={
+  chest:"الصدر",back:"الظهر",shoulders:"الأكتاف",
+  arms:"الذراعين",legs:"الرجلين",abs:"البطن",
+  cardio:"كارديو",fullbody:"الجسم بالكامل"
+};
+const days={
+  saturday:"السبت",sunday:"الأحد",monday:"الاثنين",
+  tuesday:"الثلاثاء",wednesday:"الأربعاء",
+  thursday:"الخميس",friday:"الجمعة / راحة"
+};
 let exercises=[],activeDay="all",isAdmin=false,editing=null;
 const $=id=>document.getElementById(id);
+
 function norm(v){return String(v??"").trim().toLocaleLowerCase("ar")}
 function muscleOf(x){return x.muscle_group||x.muscle||x.category||""}
 function urlOf(x){return x.video_url||x.url||x.public_url||""}
 function dayOf(x){return x.workout_day||x.day||""}
 function restOf(x){return Number(x.rest_seconds??x.rest??90)}
 function msg(t){$("adminMessage").textContent=t}
-function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function escapeHtml(v){
+  return String(v??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
 
 async function loadExercises(){
   $("exerciseList").innerHTML='<div class="loading">جاري تحميل التمارين...</div>';
@@ -160,25 +486,46 @@ function render(){
   });
   $("count").textContent=results.length+" تمرين";
   $("listTitle").textContent=q?"نتائج البحث":activeDay==="all"?"كل التمارين":"تمارين يوم "+(days[activeDay]||"");
-  if(!results.length){$("exerciseList").innerHTML='<div class="empty">مفيش تمارين مطابقة للبحث أو اليوم المختار.</div>';return}
+  if(!results.length){
+    $("exerciseList").innerHTML='<div class="empty">مفيش تمارين مطابقة للبحث أو اليوم المختار.</div>';
+    return;
+  }
   $("exerciseList").innerHTML="";
   results.forEach(x=>{
     const title=x.title||x.name||"تمرين",url=urlOf(x),muscle=muscleOf(x),day=dayOf(x);
     const card=document.createElement("article");card.className="exercise";
-    const thumb=document.createElement("button");thumb.className="thumb";thumb.type="button";thumb.setAttribute("aria-label","شاهد "+title);
+    const thumb=document.createElement("button");
+    thumb.className="thumb";thumb.type="button";
+    thumb.setAttribute("aria-label","شاهد "+title);
     if(url){
-      const v=document.createElement("video");v.src=url;v.preload="metadata";v.muted=true;v.playsInline=true;v.setAttribute("aria-hidden","true");thumb.appendChild(v);
-      const mark=document.createElement("span");mark.className="playmark";mark.textContent="▶ شاهد التمرين";thumb.appendChild(mark);
+      const v=document.createElement("video");
+      v.src=url;v.preload="metadata";v.muted=true;v.playsInline=true;
+      v.setAttribute("aria-hidden","true");thumb.appendChild(v);
+      const mark=document.createElement("span");
+      mark.className="playmark";mark.textContent="▶ شاهد التمرين";
+      thumb.appendChild(mark);
       thumb.addEventListener("click",()=>openPlayer(x));
-    }else{thumb.textContent="الفيديو غير متاح";thumb.disabled=true}
+    }else{
+      thumb.textContent="الفيديو غير متاح";thumb.disabled=true;
+    }
     const body=document.createElement("div"),h=document.createElement("h3"),meta=document.createElement("div");
     h.textContent=title;meta.className="meta";
-    [muscles[muscle]||muscle,days[day]||day,(x.sets??3)+" مجموعات",x.reps||"10–12 تكرار","راحة "+restOf(x)+" ثانية"].filter(Boolean).forEach(t=>{const b=document.createElement("span");b.textContent=t;meta.appendChild(b)});
+    [
+      muscles[muscle]||muscle,days[day]||day,
+      (x.sets??3)+" مجموعات",x.reps||"10–12 تكرار",
+      "راحة "+restOf(x)+" ثانية"
+    ].filter(Boolean).forEach(t=>{
+      const b=document.createElement("span");b.textContent=t;meta.appendChild(b);
+    });
     body.append(h,meta);
     if(isAdmin){
       const actions=document.createElement("div");actions.className="admin-actions";
-      const edit=document.createElement("button");edit.className="btn";edit.type="button";edit.textContent="تعديل";edit.onclick=()=>startEdit(x);
-      const del=document.createElement("button");del.className="btn";del.type="button";del.textContent="حذف";del.onclick=()=>deleteExercise(x);
+      const edit=document.createElement("button");
+      edit.className="btn";edit.type="button";edit.textContent="تعديل";
+      edit.onclick=()=>startEdit(x);
+      const del=document.createElement("button");
+      del.className="btn";del.type="button";del.textContent="حذف";
+      del.onclick=()=>deleteExercise(x);
       actions.append(edit,del);body.appendChild(actions);
     }
     card.append(thumb,body);$("exerciseList").appendChild(card);
@@ -187,32 +534,47 @@ function render(){
 
 function openPlayer(x){
   const url=urlOf(x);if(!url)return;
-  const p=$("mainPlayer");p.src=url;p.muted=true;p.currentTime=0;
+  const p=$("mainPlayer");
+  p.src=url;p.muted=true;p.currentTime=0;
   $("playerTitle").textContent=x.title||x.name||"تمرين";
-  $("mutePlayer").textContent="🔇";$("playerModal").classList.add("open");document.body.style.overflow="hidden";p.play().catch(()=>{});
+  $("mutePlayer").textContent="🔇";
+  $("playerModal").classList.add("open");
+  document.body.style.overflow="hidden";
+  p.play().catch(()=>{});
 }
 function closePlayer(){
   const p=$("mainPlayer");p.pause();p.removeAttribute("src");p.load();
-  $("playerModal").classList.remove("open");document.body.style.overflow="";
+  $("playerModal").classList.remove("open");
+  document.body.style.overflow="";
 }
 $("backPlayer").onclick=closePlayer;
-$("mutePlayer").onclick=()=>{const p=$("mainPlayer");p.muted=!p.muted;$("mutePlayer").textContent=p.muted?"🔇":"🔊"};
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closePlayer()});
+$("mutePlayer").onclick=()=>{
+  const p=$("mainPlayer");p.muted=!p.muted;
+  $("mutePlayer").textContent=p.muted?"🔇":"🔊";
+};
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closePlayer();
+});
 $("search").addEventListener("input",render);
-$("clearSearch").onclick=()=>{$("search").value="";render();$("search").focus()};
+$("clearSearch").onclick=()=>{
+  $("search").value="";render();$("search").focus();
+};
 $("dayFilters").onclick=e=>{
   const b=e.target.closest("[data-day]");if(!b)return;
   activeDay=b.dataset.day;
-  document.querySelectorAll("#dayFilters [data-day]").forEach(x=>x.classList.toggle("active",x===b));
+  document.querySelectorAll("#dayFilters [data-day]").forEach(x=>{
+    x.classList.toggle("active",x===b);
+  });
   render();
 };
 
 async function refreshAdmin(){
-  const {data,error:sessionError}=await sb.auth.getSession();
+  const {data}=await sb.auth.getSession();
   const session=data?.session;
   isAdmin=false;
   if(session?.user){
-    const {data:admin,error}=await sb.from("workout_admins").select("user_id").eq("user_id",session.user.id).maybeSingle();
+    const {data:admin,error}=await sb.from("workout_admins")
+      .select("user_id").eq("user_id",session.user.id).maybeSingle();
     isAdmin=!!admin&&!error;
     if(error)console.error("Admin check:",error);
   }
@@ -226,37 +588,47 @@ $("adminToggle").onclick=async()=>{
   const email=prompt("إيميل الأدمن:");if(!email)return;
   const password=prompt("كلمة المرور:");if(!password)return;
   const {error}=await sb.auth.signInWithPassword({email:email.trim(),password});
-  if(error){alert("فشل تسجيل الدخول: "+error.message);return}
+  if(error){alert("فشل تسجيل الدخول: "+error.message);return;}
   await refreshAdmin();
   if(!isAdmin)alert("الحساب غير مسجل كأدمن في workout_admins.");
 };
-$("logoutBtn").onclick=async()=>{await sb.auth.signOut();isAdmin=false;resetForm();await refreshAdmin()};
+$("logoutBtn").onclick=async()=>{
+  await sb.auth.signOut();isAdmin=false;resetForm();await refreshAdmin();
+};
 
 function startEdit(x){
-  editing=x;$("title").value=x.title||x.name||"";
-  $("muscle").value=muscleOf(x)||"chest";$("day").value=dayOf(x)||"saturday";
-  $("sets").value=x.sets??3;$("reps").value=x.reps||"10–12 تكرار";$("rest").value=restOf(x);
-  $("saveBtn").textContent="حفظ التعديلات";$("cancelBtn").classList.remove("hidden");
-  $("adminHeading").textContent="تعديل التمرين";$("adminPanel").scrollIntoView({behavior:"smooth"});
+  editing=x;
+  $("title").value=x.title||x.name||"";
+  $("muscle").value=muscleOf(x)||"chest";
+  $("day").value=dayOf(x)||"saturday";
+  $("sets").value=x.sets??3;
+  $("reps").value=x.reps||"10–12 تكرار";
+  $("rest").value=restOf(x);
+  $("saveBtn").textContent="حفظ التعديلات";
+  $("cancelBtn").classList.remove("hidden");
+  $("adminHeading").textContent="تعديل التمرين";
+  $("adminPanel").scrollIntoView({behavior:"smooth"});
 }
 function resetForm(){
-  $("exerciseForm").reset();editing=null;$("sets").value=3;$("reps").value="10–12 تكرار";$("rest").value=90;
-  $("saveBtn").textContent="حفظ التمرين";$("cancelBtn").classList.add("hidden");
-  $("adminHeading").textContent="إدارة التمارين والخطة";msg("");
+  $("exerciseForm").reset();editing=null;
+  $("sets").value=3;$("reps").value="10–12 تكرار";$("rest").value=90;
+  $("saveBtn").textContent="حفظ التمرين";
+  $("cancelBtn").classList.add("hidden");
+  $("adminHeading").textContent="إدارة التمارين والخطة";
+  msg("");
 }
 $("cancelBtn").onclick=resetForm;
 
-/* الحفظ: لا تظهر رسالة نجاح إلا بعد رجوع سجل من قاعدة البيانات */
 $("exerciseForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  if(!isAdmin){msg("سجّل دخولك كأدمن أولًا.");return}
+  if(!isAdmin){msg("سجّل دخولك كأدمن أولًا.");return;}
 
   const file=$("videoFile").files[0];
   const title=$("title").value.trim();
-  if(!title){msg("اكتب اسم التمرين.");return}
-  if(!editing&&!file){msg("اختار ملف الفيديو أولًا.");return}
-  if(file&&!file.type.startsWith("video/")){msg("الملف لازم يكون فيديو.");return}
-  if(file&&file.size>100*1024*1024){msg("حجم الفيديو أكبر من 100 ميجابايت.");return}
+  if(!title){msg("اكتب اسم التمرين.");return;}
+  if(!editing&&!file){msg("اختار ملف الفيديو أولًا.");return;}
+  if(file&&!file.type.startsWith("video/")){msg("الملف لازم يكون فيديو.");return;}
+  if(file&&file.size>100*1024*1024){msg("حجم الفيديو أكبر من 100 ميجابايت.");return;}
 
   const button=$("saveBtn");
   button.disabled=true;
@@ -268,7 +640,8 @@ $("exerciseForm").addEventListener("submit",async e=>{
     if(file){
       const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
       const path=(crypto.randomUUID?crypto.randomUUID():String(Date.now()))+"_"+safeName;
-      const {error:uploadError}=await sb.storage.from(BUCKET).upload(path,file,{cacheControl:"3600",upsert:false});
+      const {error:uploadError}=await sb.storage.from(BUCKET)
+        .upload(path,file,{cacheControl:"3600",upsert:false});
       if(uploadError)throw new Error("فشل رفع الفيديو: "+uploadError.message);
       video_url=sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
     }
@@ -284,7 +657,6 @@ $("exerciseForm").addEventListener("submit",async e=>{
     };
 
     let result;
-
     if(editing){
       if(editing.id==null)throw new Error("التمرين لا يحتوي على id صالح للتعديل.");
       result=await sb.from(TABLE).update(payload).eq("id",editing.id).select("id").maybeSingle();
@@ -310,11 +682,14 @@ $("exerciseForm").addEventListener("submit",async e=>{
 async function deleteExercise(x){
   if(!isAdmin||!confirm("متأكد من حذف التمرين؟"))return;
   const {error}=await sb.from(TABLE).delete().eq("id",x.id);
-  if(error){alert("تعذر الحذف: "+error.message);return}
+  if(error){alert("تعذر الحذف: "+error.message);return;}
   await loadExercises();
 }
 sb.auth.onAuthStateChange(()=>setTimeout(refreshAdmin,0));
-(async()=>{await refreshAdmin();await loadExercises()})();
+(async()=>{
+  await refreshAdmin();
+  await loadExercises();
+})();
 </script>
 </body>
 </html>
