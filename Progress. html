@@ -4,796 +4,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BodyReset | Body Progress</title>
-
+<title>BodyReset | Progress</title>
 <style>
-:root {
-  --bg:#071c21;
-  --panel:#102c32;
-  --panel2:#163940;
-  --border:#285058;
-  --teal:#35d6c2;
-  --text:#f0fbfa;
-  --muted:#9ebdc1;
-  --red:#ff8585;
-  --gold:#ffd18a;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Tahoma,Arial,sans-serif;
-  line-height:1.8;
-}
-button,input,select { font:inherit; }
-button { cursor:pointer; }
-header {
-  padding:18px 15px;
-  background:#0a272d;
-  border-bottom:1px solid var(--border);
-}
-.container { width:min(100% - 28px,950px); margin:auto; }
-.brand { font-size:25px; font-weight:bold; color:var(--teal); }
-header p { margin:0; color:var(--muted); font-size:13px; }
-h1 { font-size:clamp(23px,5vw,32px); margin:25px 0 4px; }
-h2 { font-size:20px; margin:0 0 12px; }
-h3 { font-size:17px; margin:0 0 10px; }
-.muted { color:var(--muted); font-size:13px; }
-.panel {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:17px;
-  margin:17px 0;
-}
-.grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-.stats {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-  margin:18px 0;
-}
-.stat {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:13px;
-  min-width:0;
-}
-.stat span { display:block; font-size:12px; color:var(--muted); }
-.stat strong { color:var(--teal); font-size:24px; overflow-wrap:anywhere; }
-.stat small { display:block; color:var(--muted); font-size:12px; }
-label { display:block; font-size:13px; margin-bottom:5px; color:#dceeed; }
-input,select {
-  width:100%;
-  min-width:0;
-  color:var(--text);
-  background:#091f24;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:11px;
-  outline:none;
-}
-input:focus,select:focus { border-color:var(--teal); }
-input[type="file"] { font-size:12px; padding:8px; }
-.btn {
-  border:0;
-  border-radius:10px;
-  padding:10px 14px;
-  font-weight:bold;
-}
-.primary { background:var(--teal); color:#062b2c; }
-.secondary { background:var(--panel2); color:var(--text); border:1px solid var(--border); }
-.danger { background:#47292d; color:#ffc2c2; border:1px solid #754047; }
-.actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
-.actions button { flex:1; }
-.section-head {
-  display:flex; align-items:center; justify-content:space-between;
-  gap:10px; flex-wrap:wrap; margin-bottom:12px;
-}
-.section-head h2 { margin:0; }
-.chart-wrap {
-  width:100%; overflow:hidden; background:#0a2227;
-  border:1px solid var(--border); border-radius:12px; padding:8px;
-}
-svg { display:block; width:100%; height:auto; }
-.legend { font-size:12px; color:var(--muted); margin-top:8px; }
-.record {
-  background:#0b252b; border:1px solid var(--border);
-  border-radius:12px; padding:13px; margin-top:10px;
-}
-.record-top { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
-.record-title { font-weight:bold; }
-.record-metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:10px; }
-.metric { background:var(--panel); border-radius:8px; padding:7px; }
-.metric span { display:block; color:var(--muted); font-size:11px; }
-.metric strong { font-size:14px; overflow-wrap:anywhere; }
-.photo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-.photo-card { background:#0b252b; border:1px solid var(--border); padding:9px; border-radius:12px; }
-.photo-card img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:8px; }
-.photo-card p { font-size:12px; color:var(--muted); margin:5px 0; }
-.empty { color:var(--muted); font-size:13px; padding:10px 0; }
-.notice {
-  padding:12px; border:1px solid #625335; border-radius:10px;
-  color:var(--gold); background:#302b20; font-size:12px;
-}
-footer { text-align:center; color:var(--muted); font-size:12px; padding:24px 12px; }
-@media(min-width:650px) {
-  .stats { grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .photo-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-}
-@media(max-width:380px) {
-  .grid { grid-template-columns:1fr; }
-  .record-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .panel { padding:12px; }
-}
+*{box-sizing:border-box}
+body{margin:0;padding:20px;font-family:Arial,sans-serif;background:#073b40;color:#fff}
+header,main{max-width:950px;margin:20px auto}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+a{color:#65e6d4;text-decoration:none}
+.card{background:#104f54;border:1px solid #24777a;border-radius:18px;padding:20px;margin:18px 0}
+h1,h2{margin-top:0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stat{background:#083f44;padding:16px;border-radius:12px}
+.stat span{display:block;color:#a8d5d3;font-size:14px}
+.stat strong{display:block;font-size:24px;margin-top:10px}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+label{display:block;font-size:14px}
+input,textarea{width:100%;margin-top:7px;padding:12px;border-radius:9px;border:1px solid #39858a;background:#073b40;color:white;font:inherit}
+button{padding:12px 16px;border:0;border-radius:9px;background:#31d6bd;color:#06383b;font-weight:bold;font-size:15px;cursor:pointer}
+button.delete{background:#ffdddd;color:#8a1616}
+.full{grid-column:1/-1}
+canvas{width:100%;height:240px;display:block}
+.record{padding:14px;border:1px solid #398085;border-radius:12px;margin-top:12px;overflow-wrap:anywhere}
+.record p{color:#c2e4e1;line-height:1.8}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions button{font-size:13px;padding:9px}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:15px}
+.photo{padding:8px;border:1px solid #398085;border-radius:12px;overflow:hidden}
+.photo img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+small{color:#b7d9d6;line-height:1.8}
+.empty{color:#b7d9d6;text-align:center;padding:20px}
+@media(max-width:550px){body{padding:12px}.stats{grid-template-columns:1fr}form{grid-template-columns:1fr}.full{grid-column:auto}.card{padding:15px}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="container">
-    <div class="brand">BodyReset</div>
-    <p>BODY PROGRESS · تابع تطور جسمك خطوة بخطوة</p>
-  </div>
+  <h1>📊 Progress</h1>
+  <a href="index.html">← الرئيسية</a>
 </header>
 
-<main class="container">
-  <h1>متابعة تطور الجسم</h1>
-  <p class="muted">سجل قياساتك، راقب التغيرات، وقارن نتائجك بمرور الوقت.</p>
-
+<main>
   <section class="stats">
-    <div class="stat">
-      <span>الوزن الحالي</span>
-      <strong id="currentWeight">—</strong>
-      <small>كيلوجرام</small>
-    </div>
-    <div class="stat">
-      <span>التغير في الوزن</span>
-      <strong id="weightChange">—</strong>
-      <small>من أول قياس لآخر قياس</small>
-    </div>
-    <div class="stat">
-      <span>نسبة الدهون الحالية</span>
-      <strong id="currentFat">—</strong>
-      <small>نسبة مئوية</small>
-    </div>
-    <div class="stat">
-      <span>تغير الخصر</span>
-      <strong id="waistChange">—</strong>
-      <small>سم · من أول قياس لآخر قياس</small>
-    </div>
+    <div class="stat"><span>آخر وزن</span><strong id="current">--</strong></div>
+    <div class="stat"><span>تغير الوزن</span><strong id="change">--</strong></div>
+    <div class="stat"><span>عدد التسجيلات</span><strong id="count">0</strong></div>
   </section>
 
-  <section class="panel">
-    <h2 id="formTitle">إضافة قياس جديد</h2>
-    <p class="muted">اكتب القياسات المتاحة. الحقول غير المطلوبة يمكن تركها فارغة.</p>
-
-    <form id="measurementForm">
-      <input type="hidden" id="editId">
-
-      <div class="grid">
-        <div>
-          <label for="date">تاريخ القياس *</label>
-          <input type="date" id="date" required>
-        </div>
-        <div>
-          <label for="weight">الوزن (كجم) *</label>
-          <input type="number" id="weight" min="1" max="500" step="0.1" required placeholder="مثال: 82.5">
-        </div>
-        <div>
-          <label for="fat">نسبة الدهون (%)</label>
-          <input type="number" id="fat" min="1" max="75" step="0.1" placeholder="مثال: 24">
-        </div>
-        <div>
-          <label for="waist">محيط الخصر (سم)</label>
-          <input type="number" id="waist" min="1" max="300" step="0.1">
-        </div>
-        <div>
-          <label for="chest">محيط الصدر (سم)</label>
-          <input type="number" id="chest" min="1" max="300" step="0.1">
-        </div>
-        <div>
-          <label for="arm">محيط الذراع (سم)</label>
-          <input type="number" id="arm" min="1" max="150" step="0.1">
-        </div>
-        <div>
-          <label for="thigh">محيط الفخذ (سم)</label>
-          <input type="number" id="thigh" min="1" max="200" step="0.1">
-        </div>
-        <div>
-          <label for="notes">ملاحظات</label>
-          <input type="text" id="notes" maxlength="300" placeholder="مثال: بداية الأسبوع الثالث">
-        </div>
-      </div>
-
-      <div class="actions">
-        <button class="btn primary" type="submit" id="saveButton">حفظ القياس</button>
-        <button class="btn secondary" type="button" id="cancelEdit" hidden>إلغاء التعديل</button>
-      </div>
+  <section class="card">
+    <h2>➕ سجل تقدمك</h2>
+    <form id="form">
+      <label>التاريخ<input type="date" id="date" required></label>
+      <label>الوزن (كجم)<input type="number" id="weight" min="1" max="500" step="0.1" required placeholder="75.5"></label>
+      <label>نسبة الدهون (%)<input type="number" id="fat" min="0" max="100" step="0.1"></label>
+      <label>محيط الخصر (سم)<input type="number" id="waist" min="1" step="0.1"></label>
+      <label>محيط الصدر (سم)<input type="number" id="chest" min="1" step="0.1"></label>
+      <label>محيط الذراع (سم)<input type="number" id="arm" min="1" step="0.1"></label>
+      <label>محيط الفخذ (سم)<input type="number" id="thigh" min="1" step="0.1"></label>
+      <label class="full">ملاحظات<textarea id="notes" rows="3" placeholder="اكتب ملاحظاتك..."></textarea></label>
+      <button class="full" id="submit" type="submit">حفظ التقدم</button>
+      <button class="full" id="cancel" type="button" hidden>إلغاء التعديل</button>
     </form>
+    <small>بياناتك تُحفظ في المتصفح على هذا الجهاز.</small>
   </section>
 
-  <section class="panel">
-    <div class="section-head">
-      <h2>تطور الوزن</h2>
-      <select id="chartRange" aria-label="الفترة الزمنية" style="width:auto">
-        <option value="all">كل السجل</option>
-        <option value="30">آخر 30 يومًا</option>
-        <option value="90">آخر 90 يومًا</option>
-      </select>
-    </div>
-    <div class="chart-wrap">
-      <svg id="weightChart" viewBox="0 0 600 250" role="img" aria-label="رسم بياني لتغير الوزن"></svg>
-    </div>
-    <p class="legend">كل نقطة تمثل قياسًا مسجلًا. الرسم يوضح الوزن بالكيلوجرام.</p>
+  <section class="card">
+    <h2>📈 رسم تطور الوزن</h2>
+    <canvas id="chart"></canvas>
   </section>
 
-  <section class="panel">
-    <h2>سجل القياسات</h2>
-    <p class="muted">تقدر تعدل أي سجل سابق أو تحذفه.</p>
+  <section class="card">
+    <h2>📷 صور التقدم</h2>
+    <label>اختر صورة<input type="file" id="photoFile" accept="image/*"></label>
+    <label style="display:block;margin-top:12px">تاريخ الصورة<input type="date" id="photoDate"></label>
+    <button type="button" id="addPhoto" style="margin-top:12px">إضافة الصورة</button>
+    <div class="photos" id="photos"></div>
+  </section>
+
+  <section class="card">
+    <h2>🗓️ سجل التقدم</h2>
     <div id="records"></div>
-  </section>
-
-  <section class="panel">
-    <h2>صور تطور الجسم</h2>
-    <p class="muted">ارفع صورًا لمقارنة تقدمك بصريًا. الصور تحفظ على هذا المتصفح فقط.</p>
-
-    <div class="grid">
-      <div>
-        <label for="photoDate">تاريخ الصورة</label>
-        <input type="date" id="photoDate">
-      </div>
-      <div>
-        <label for="photoType">نوع الصورة</label>
-        <select id="photoType">
-          <option value="قبل">قبل</option>
-          <option value="أثناء">أثناء المتابعة</option>
-          <option value="بعد">بعد</option>
-        </select>
-      </div>
+    <div class="actions" style="margin-top:15px">
+      <button type="button" id="export">تصدير نسخة احتياطية</button>
+      <button type="button" id="importBtn">استيراد نسخة</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden>
     </div>
-
-    <div style="margin-top:12px">
-      <label for="photoInput">اختيار صورة</label>
-      <input type="file" id="photoInput" accept="image/*">
-    </div>
-    <div class="actions">
-      <button class="btn primary" id="savePhoto" type="button">حفظ الصورة</button>
-    </div>
-    <p class="muted">لتقليل مساحة التخزين، الصور تُضغط قبل الحفظ.</p>
-    <div class="photo-grid" id="photos"></div>
-  </section>
-
-  <section class="panel">
-    <h2>نسخة احتياطية</h2>
-    <p class="muted">صدّر القياسات والصور المحفوظة إلى ملف JSON للاحتفاظ بنسخة احتياطية.</p>
-    <div class="actions">
-      <button class="btn secondary" id="exportData" type="button">تصدير البيانات</button>
-      <button class="btn secondary" id="importButton" type="button">استيراد نسخة احتياطية</button>
-      <input type="file" id="importInput" accept=".json,application/json" hidden>
-    </div>
-    <p class="notice">البيانات محلية وغير متزامنة مع خادم. مسح بيانات المتصفح قد يؤدي إلى فقدانها؛ صدّر نسخة احتياطية دوريًا.</p>
   </section>
 </main>
 
-<footer>BodyReset · استمرارية صغيرة تصنع فرقًا كبيرًا</footer>
-
 <script>
-"use strict";
+(() => {
+  const KEY = "bodyreset_progress_v1";
+  const PHOTO_KEY = "bodyreset_progress_photos_v1";
+  const $ = id => document.getElementById(id);
 
-const STORAGE_KEY = "bodyreset_progress_v1";
-const PHOTO_KEY = "bodyreset_progress_photos_v1";
-
-let measurements = loadJSON(STORAGE_KEY, []);
-let photos = loadJSON(PHOTO_KEY, []);
-
-const $ = id => document.getElementById(id);
-
-function loadJSON(key, fallback) {
-  try {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function saveMeasurements() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(measurements));
-}
-
-function savePhotos() {
-  localStorage.setItem(PHOTO_KEY, JSON.stringify(photos));
-}
-
-function today() {
-  const now = new Date();
-  const offset = now.getTimezoneOffset();
-  return new Date(now.getTime() - offset * 60000)
-    .toISOString().slice(0, 10);
-}
-
-function uid() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
-}
-
-function num(value) {
-  if (value === "" || value == null) return null;
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-}
-
-function fmt(value, suffix = "") {
-  return value == null || !Number.isFinite(value)
-    ? "—"
-    : value.toLocaleString("ar-EG", { maximumFractionDigits: 1 }) + suffix;
-}
-
-function sortedMeasurements() {
-  return [...measurements].sort((a, b) =>
-    a.date.localeCompare(b.date) || a.createdAt - b.createdAt
-  );
-}
-
-function validOptional(value, min, max) {
-  return value == null || (value >= min && value <= max);
-}
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;",
-    '"': "&quot;", "'": "&#39;"
-  })[char]);
-}
-
-function delta(first, last, suffix = "") {
-  if (first == null || last == null) return "—";
-  const difference = last - first;
-  return (difference > 0 ? "+" : "") + fmt(difference, suffix);
-}
-
-function renderSummary() {
-  const list = sortedMeasurements();
-  const first = list[0];
-  const last = list[list.length - 1];
-
-  $("currentWeight").textContent = last ? fmt(last.weight) : "—";
-  $("weightChange").textContent = first && last && list.length > 1
-    ? delta(first.weight, last.weight)
-    : "—";
-  $("currentFat").textContent = last && last.fat != null
-    ? fmt(last.fat, "%")
-    : "—";
-
-  $("waistChange").textContent =
-    first && last && list.length > 1 &&
-    first.waist != null && last.waist != null
-      ? delta(first.waist, last.waist, " سم")
-      : "—";
-}
-
-function renderChart() {
-  const svg = $("weightChart");
-  const range = $("chartRange").value;
-  let list = sortedMeasurements().filter(item => item.weight != null);
-
-  if (range !== "all" && list.length) {
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - Number(range));
-    const cutoffDate = cutoff.toISOString().slice(0, 10);
-    list = list.filter(item => item.date >= cutoffDate);
+  function read(key) {
+    try {
+      const data = JSON.parse(localStorage.getItem(key) || "[]");
+      return Array.isArray(data) ? data : [];
+    } catch { return []; }
   }
 
-  if (!list.length) {
-    svg.innerHTML = `
-      <text x="300" y="125" text-anchor="middle"
-        fill="#9ebdc1" font-size="15">
-        أضف قياسات لعرض تطور الوزن
-      </text>`;
-    return;
+  let records = read(KEY);
+  let photos = read(PHOTO_KEY);
+  let editing = null;
+  let selectedPhoto = null;
+
+  const today = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  };
+
+  const val = id => $(id).value.trim();
+  const num = id => val(id) === "" ? null : Number(val(id));
+  const fmt = n => n == null ? "—" : Number(n).toLocaleString("ar-EG");
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2);
+  const safe = s => String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
+
+  function save() {
+    localStorage.setItem(KEY, JSON.stringify(records));
+    localStorage.setItem(PHOTO_KEY, JSON.stringify(photos));
   }
 
-  const W = 600, H = 250;
-  const left = 55, right = 20, top = 25, bottom = 48;
-  const plotW = W - left - right;
-  const plotH = H - top - bottom;
-  const weights = list.map(item => item.weight);
-  let min = Math.min(...weights);
-  let max = Math.max(...weights);
-
-  if (min === max) { min -= 1; max += 1; }
-  const padding = (max - min) * 0.15;
-  min -= padding;
-  max += padding;
-
-  const x = index => list.length === 1
-    ? left + plotW / 2
-    : left + index * plotW / (list.length - 1);
-  const y = weight => top + (max - weight) / (max - min) * plotH;
-
-  let content = "";
-
-  for (let i = 0; i < 5; i++) {
-    const val = min + (max - min) * i / 4;
-    const yy = y(val);
-    content += `
-      <line x1="${left}" y1="${yy}" x2="${W-right}" y2="${yy}"
-        stroke="#285058" stroke-dasharray="4 5"/>
-      <text x="${left-8}" y="${yy+4}" text-anchor="end"
-        fill="#9ebdc1" font-size="11">${val.toFixed(1)}</text>`;
+  function sorted() {
+    return [...records].sort((a,b) => a.date.localeCompare(b.date));
   }
 
-  const points = list.map((item, i) => `${x(i)},${y(item.weight)}`).join(" ");
-
-  if (list.length > 1) {
-    content += `<polyline points="${points}" fill="none"
-      stroke="#35d6c2" stroke-width="3" stroke-linecap="round"
-      stroke-linejoin="round"/>`;
-  }
-
-  list.forEach((item, i) => {
-    content += `
-      <circle cx="${x(i)}" cy="${y(item.weight)}" r="5"
-        fill="#35d6c2" stroke="#071c21" stroke-width="2">
-        <title>${escapeHTML(item.date)}: ${item.weight} kg</title>
-      </circle>`;
-
-    if (list.length <= 8 || i === 0 || i === list.length - 1) {
-      content += `
-        <text x="${x(i)}" y="${H-20}" text-anchor="middle"
-          fill="#9ebdc1" font-size="10">${escapeHTML(item.date.slice(5))}</text>`;
-    }
-  });
-
-  svg.innerHTML = content;
-}
-
-function renderRecords() {
-  const container = $("records");
-  const list = sortedMeasurements().reverse();
-
-  if (!list.length) {
-    container.innerHTML = '<p class="empty">لسه مفيش قياسات. أضف أول قياس من النموذج بالأعلى.</p>';
-    return;
-  }
-
-  container.innerHTML = list.map(item => `
-    <article class="record">
-      <div class="record-top">
-        <span class="record-title">${escapeHTML(item.date)}</span>
-        <span class="muted">الوزن: ${fmt(item.weight)} كجم</span>
-      </div>
-
-      <div class="record-metrics">
-        <div class="metric"><span>الدهون</span><strong>${fmt(item.fat, "%")}</strong></div>
-        <div class="metric"><span>الخصر</span><strong>${fmt(item.waist, " سم")}</strong></div>
-        <div class="metric"><span>الصدر</span><strong>${fmt(item.chest, " سم")}</strong></div>
-        <div class="metric"><span>الذراع</span><strong>${fmt(item.arm, " سم")}</strong></div>
-        <div class="metric"><span>الفخذ</span><strong>${fmt(item.thigh, " سم")}</strong></div>
-      </div>
-
-      ${item.notes ? `<p class="muted">${escapeHTML(item.notes)}</p>` : ""}
-
-      <div class="actions">
-        <button class="btn secondary" data-edit="${item.id}">تعديل</button>
-        <button class="btn danger" data-delete="${item.id}">حذف</button>
-      </div>
-    </article>
-  `).join("");
-}
-
-function renderPhotos() {
-  const container = $("photos");
-  const list = [...photos].sort((a, b) => b.date.localeCompare(a.date));
-
-  if (!list.length) {
-    container.innerHTML = '<p class="empty">لم تتم إضافة صور حتى الآن.</p>';
-    return;
-  }
-
-  container.innerHTML = list.map(photo => `
-    <article class="photo-card">
-      <img src="${photo.data}" alt="صورة تقدم الجسم بتاريخ ${escapeHTML(photo.date)}">
-      <p>${escapeHTML(photo.type)} · ${escapeHTML(photo.date)}</p>
-      <button class="btn danger" data-photo-delete="${photo.id}" style="width:100%">
-        حذف الصورة
-      </button>
-    </article>
-  `).join("");
-}
-
-function renderAll() {
-  renderSummary();
-  renderChart();
-  renderRecords();
-  renderPhotos();
-}
-
-function resetForm() {
-  $("measurementForm").reset();
-  $("editId").value = "";
-  $("date").value = today();
-  $("formTitle").textContent = "إضافة قياس جديد";
-  $("saveButton").textContent = "حفظ القياس";
-  $("cancelEdit").hidden = true;
-}
-
-$("measurementForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const id = $("editId").value;
-  const weight = num($("weight").value);
-  const fat = num($("fat").value);
-  const waist = num($("waist").value);
-  const chest = num($("chest").value);
-  const arm = num($("arm").value);
-  const thigh = num($("thigh").value);
-
-  if (weight == null || weight < 1 || weight > 500) {
-    alert("اكتب وزنًا صحيحًا.");
-    return;
-  }
-
-  const checks = [
-    [fat, 1, 75, "نسبة الدهون"],
-    [waist, 1, 300, "الخصر"],
-    [chest, 1, 300, "الصدر"],
-    [arm, 1, 150, "الذراع"],
-    [thigh, 1, 200, "الفخذ"]
-  ];
-
-  for (const [value, min, max, name] of checks) {
-    if (!validOptional(value, min, max)) {
-      alert(`تحقق من قيمة ${name}.`);
+  function renderStats() {
+    const list = sorted();
+    $("count").textContent = list.length;
+    if (!list.length) {
+      $("current").textContent = "--";
+      $("change").textContent = "--";
       return;
     }
+    $("current").textContent = fmt(list[list.length-1].weight) + " كجم";
+    const diff = list[list.length-1].weight - list[0].weight;
+    $("change").textContent = (diff > 0 ? "+" : "") + fmt(Math.round(diff*10)/10) + " كجم";
   }
 
-  const existing = id ? measurements.find(item => item.id === id) : null;
-  const record = {
-    id: id || uid(),
-    date: $("date").value,
-    weight, fat, waist, chest, arm, thigh,
-    notes: $("notes").value.trim(),
-    createdAt: existing ? existing.createdAt : Date.now()
-  };
+  function drawChart() {
+    const canvas = $("chart");
+    const ctx = canvas.getContext("2d");
+    const w = canvas.clientWidth || 300, h = 240;
+    const ratio = window.devicePixelRatio || 1;
+    canvas.width = w * ratio;
+    canvas.height = h * ratio;
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+    ctx.clearRect(0,0,w,h);
 
-  if (!record.date) {
-    alert("اختار تاريخ القياس.");
-    return;
-  }
-
-  if (existing) {
-    measurements = measurements.map(item => item.id === id ? record : item);
-  } else {
-    measurements.push(record);
-  }
-
-  try {
-    saveMeasurements();
-    resetForm();
-    renderAll();
-  } catch {
-    alert("تعذر الحفظ. قد تكون مساحة المتصفح ممتلئة.");
-  }
-});
-
-$("records").addEventListener("click", event => {
-  const editButton = event.target.closest("[data-edit]");
-  const deleteButton = event.target.closest("[data-delete]");
-
-  if (editButton) {
-    const item = measurements.find(record => record.id === editButton.dataset.edit);
-    if (!item) return;
-
-    $("editId").value = item.id;
-    $("date").value = item.date;
-    $("weight").value = item.weight ?? "";
-    $("fat").value = item.fat ?? "";
-    $("waist").value = item.waist ?? "";
-    $("chest").value = item.chest ?? "";
-    $("arm").value = item.arm ?? "";
-    $("thigh").value = item.thigh ?? "";
-    $("notes").value = item.notes ?? "";
-
-    $("formTitle").textContent = "تعديل القياس";
-    $("saveButton").textContent = "حفظ التعديل";
-    $("cancelEdit").hidden = false;
-    $("measurementForm").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  if (deleteButton) {
-    if (!confirm("هل أنت متأكد من حذف هذا القياس؟")) return;
-
-    measurements = measurements.filter(item => item.id !== deleteButton.dataset.delete);
-    saveMeasurements();
-
-    if ($("editId").value === deleteButton.dataset.delete) resetForm();
-    renderAll();
-  }
-});
-
-$("cancelEdit").addEventListener("click", resetForm);
-$("chartRange").addEventListener("change", renderChart);
-
-function compressImage(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onerror = () => reject(new Error("تعذرت قراءة الصورة."));
-    reader.onload = () => {
-      const img = new Image();
-      img.onerror = () => reject(new Error("الملف ليس صورة صالحة."));
-      img.onload = () => {
-        const maxSide = 900;
-        const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.max(1, Math.round(img.width * scale));
-        canvas.height = Math.max(1, Math.round(img.height * scale));
-
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL("image/jpeg", 0.75));
-      };
-      img.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-$("savePhoto").addEventListener("click", async () => {
-  const input = $("photoInput");
-  const file = input.files[0];
-
-  if (!file) {
-    alert("اختار صورة الأول.");
-    return;
-  }
-
-  if (!file.type.startsWith("image/")) {
-    alert("اختار ملف صورة صالح.");
-    return;
-  }
-
-  if (file.size > 15 * 1024 * 1024) {
-    alert("حجم الصورة الأصلي كبير جدًا. اختار صورة أقل من 15 ميجابايت.");
-    return;
-  }
-
-  const button = $("savePhoto");
-  button.disabled = true;
-  button.textContent = "جارٍ تجهيز الصورة...";
-
-  try {
-    const data = await compressImage(file);
-    const photo = {
-      id: uid(),
-      date: $("photoDate").value || today(),
-      type: $("photoType").value,
-      data
-    };
-
-    photos.push(photo);
-    savePhotos();
-    input.value = "";
-    renderPhotos();
-  } catch (error) {
-    alert(error.message || "تعذر حفظ الصورة. قد تكون مساحة التخزين ممتلئة.");
-  } finally {
-    button.disabled = false;
-    button.textContent = "حفظ الصورة";
-  }
-});
-
-$("photos").addEventListener("click", event => {
-  const button = event.target.closest("[data-photo-delete]");
-  if (!button) return;
-
-  if (!confirm("هل تريد حذف الصورة نهائيًا من هذا المتصفح؟")) return;
-
-  photos = photos.filter(photo => photo.id !== button.dataset.photoDelete);
-  try {
-    savePhotos();
-    renderPhotos();
-  } catch {
-    alert("تعذر تحديث التخزين.");
-  }
-});
-
-$("exportData").addEventListener("click", () => {
-  const backup = {
-    app: "BodyReset",
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    measurements,
-    photos
-  };
-
-  const blob = new Blob([JSON.stringify(backup, null, 2)], {
-    type: "application/json"
-  });
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `bodyreset-backup-${today()}.json`;
-  link.click();
-  URL.revokeObjectURL(url);
-});
-
-$("importButton").addEventListener("click", () => $("importInput").click());
-
-$("importInput").addEventListener("change", async event => {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  try {
-    const backup = JSON.parse(await file.text());
-
-    if (!backup || !Array.isArray(backup.measurements) ||
-        !Array.isArray(backup.photos)) {
-      throw new Error("صيغة النسخة الاحتياطية غير صحيحة.");
-    }
-
-    if (!confirm("استيراد النسخة سيستبدل السجلات والصور الحالية. هل تريد المتابعة؟")) {
+    const list = sorted();
+    if (!list.length) {
+      ctx.fillStyle = "#b7d9d6";
+      ctx.font = "15px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("سجّل وزنك عشان يظهر الرسم",w/2,h/2);
       return;
     }
 
-    // تحقق أساسي قبل تخزين بيانات النسخة المستوردة.
-    const validMeasurements = backup.measurements.every(item =>
-      item && typeof item.id === "string" &&
-      typeof item.date === "string" &&
-      Number.isFinite(item.weight) &&
-      item.weight > 0 && item.weight <= 500
-    );
+    const values = list.map(x => Number(x.weight));
+    const min = Math.min(...values), max = Math.max(...values);
+    const margin = Math.max(2,(max-min)*0.25);
+    const low = min-margin, high = max+margin;
+    const left = 38, right = 18, top = 22, bottom = 35;
+    const pw = Math.max(1,w-left-right), ph = h-top-bottom;
 
-    const validPhotos = backup.photos.every(item =>
-      item && typeof item.id === "string" &&
-      typeof item.date === "string" &&
-      typeof item.data === "string" &&
-      item.data.startsWith("data:image/")
-    );
-
-    if (!validMeasurements || !validPhotos) {
-      throw new Error("النسخة تحتوي على بيانات غير صالحة.");
+    ctx.font = "11px Arial";
+    ctx.textAlign = "left";
+    for(let i=0;i<4;i++){
+      const y = top+ph*i/3;
+      ctx.strokeStyle = "#28676a";
+      ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-right,y);ctx.stroke();
+      ctx.fillStyle = "#b7d9d6";
+      ctx.fillText((high-(high-low)*i/3).toFixed(1),2,y-4);
     }
 
-    const oldMeasurements = measurements;
-    const oldPhotos = photos;
+    const pts = values.map((v,i)=>({
+      x: list.length===1 ? w/2 : left+pw*i/(list.length-1),
+      y: top+(high-v)/(high-low)*ph
+    }));
 
-    measurements = backup.measurements;
-    photos = backup.photos;
+    ctx.strokeStyle = "#31d6bd";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    pts.forEach((p,i)=>i ? ctx.lineTo(p.x,p.y) : ctx.moveTo(p.x,p.y));
+    ctx.stroke();
+
+    pts.forEach(p=>{
+      ctx.fillStyle="#31d6bd";
+      ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fill();
+    });
+
+    ctx.fillStyle="#b7d9d6";
+    ctx.textAlign="center";
+    ctx.fillText(list[0].date,pts[0].x,h-10);
+    if(list.length>1)ctx.fillText(list[list.length-1].date,pts[pts.length-1].x,h-10);
+  }
+
+  function renderRecords() {
+    const box = $("records");
+    const list = [...records].sort((a,b)=>b.date.localeCompare(a.date));
+    if(!list.length){
+      box.innerHTML='<div class="empty">لسه مفيش تسجيلات. ابدأ سجل تقدمك 💪</div>';
+      return;
+    }
+
+    box.innerHTML = list.map(r=>`
+      <article class="record">
+        <strong>${safe(r.date)} — ${fmt(r.weight)} كجم</strong>
+        <p>
+          الدهون: ${fmt(r.fat)}% · الخصر: ${fmt(r.waist)} سم · الصدر: ${fmt(r.chest)} سم<br>
+          الذراع: ${fmt(r.arm)} سم · الفخذ: ${fmt(r.thigh)} سم<br>
+          ${safe(r.notes || "بدون ملاحظات")}
+        </p>
+        <div class="actions">
+          <button type="button" data-edit="${r.id}">تعديل</button>
+          <button type="button" class="delete" data-delete="${r.id}">حذف</button>
+        </div>
+      </article>`).join("");
+  }
+
+  function renderPhotos() {
+    $("photos").innerHTML = photos.length ? photos.map(p=>`
+      <div class="photo">
+        <img src="${p.data}" alt="صورة تقدم ${safe(p.date)}">
+        <p>${safe(p.date)}</p>
+        <button type="button" class="delete" data-photo="${p.id}">حذف الصورة</button>
+      </div>`).join("") : '<p class="empty">مفيش صور لحد دلوقتي.</p>';
+  }
+
+  function render() {
+    renderStats();
+    renderRecords();
+    renderPhotos();
+    drawChart();
+  }
+
+  function reset() {
+    editing = null;
+    $("form").reset();
+    $("date").value = today();
+    $("submit").textContent = "حفظ التقدم";
+    $("cancel").hidden = true;
+  }
+
+  $("form").addEventListener("submit", e=>{
+    e.preventDefault();
+    const weight = num("weight");
+    if(!val("date") || !Number.isFinite(weight) || weight<=0){
+      alert("اكتب تاريخ ووزن صحيح.");
+      return;
+    }
+
+    const entry = {
+      id: editing || uid(),
+      date: val("date"),
+      weight,
+      fat: num("fat"),
+      waist: num("waist"),
+      chest: num("chest"),
+      arm: num("arm"),
+      thigh: num("thigh"),
+      notes: val("notes")
+    };
+
+    const old = records;
+    records = editing
+      ? records.map(r=>r.id===editing ? entry : r)
+      : [...records,entry];
 
     try {
-      saveMeasurements();
-      savePhotos();
-    } catch (error) {
-      measurements = oldMeasurements;
-      photos = oldPhotos;
-      saveMeasurements();
-      savePhotos();
-      throw new Error("مساحة التخزين غير كافية لاستيراد النسخة.");
+      localStorage.setItem(KEY,JSON.stringify(records));
+      reset();
+      render();
+    } catch {
+      records=old;
+      alert("مساحة التخزين ممتلئة، تعذّر حفظ البيانات.");
+    }
+  });
+
+  $("cancel").addEventListener("click",reset);
+
+  $("records").addEventListener("click",e=>{
+    const edit = e.target.closest("[data-edit]");
+    const del = e.target.closest("[data-delete]");
+
+    if(edit){
+      const r=records.find(x=>x.id===edit.dataset.edit);
+      if(!r)return;
+      editing=r.id;
+      ["date","weight","fat","waist","chest","arm","thigh","notes"]
+        .forEach(k=>$(k).value=r[k] ?? "");
+      $("submit").textContent="حفظ التعديلات";
+      $("cancel").hidden=false;
+      $("form").scrollIntoView({behavior:"smooth"});
     }
 
-    resetForm();
-    renderAll();
-    alert("تم استيراد النسخة الاحتياطية.");
-  } catch (error) {
-    alert(error.message || "تعذر قراءة ملف النسخة الاحتياطية.");
-  } finally {
-    event.target.value = "";
-  }
-});
+    if(del && confirm("متأكد إنك عايز تحذف التسجيل؟")){
+      const old=records;
+      records=records.filter(r=>r.id!==del.dataset.delete);
+      try{localStorage.setItem(KEY,JSON.stringify(records));render();}
+      catch{records=old;alert("تعذّر الحفظ.");}
+    }
+  });
 
-$("date").value = today();
-$("photoDate").value = today();
-renderAll();
+  $("photoDate").value=today();
+  $("photoFile").addEventListener("change",e=>selectedPhoto=e.target.files[0]||null);
+
+  $("addPhoto").addEventListener("click",()=>{
+    if(!selectedPhoto){alert("اختار صورة الأول.");return;}
+    if(!selectedPhoto.type.startsWith("image/")){alert("اختار صورة صحيحة.");return;}
+    if(selectedPhoto.size>12*1024*1024){alert("اختار صورة أقل من 12 ميجابايت.");return;}
+
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        const c=document.createElement("canvas");
+        const scale=Math.min(1,1000/Math.max(img.width,img.height));
+        c.width=Math.round(img.width*scale);
+        c.height=Math.round(img.height*scale);
+        c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+
+        const old=photos;
+        photos=[...photos,{
+          id:uid(),
+          date:val("photoDate")||today(),
+          data:c.toDataURL("image/jpeg",0.75)
+        }];
+
+        try{
+          localStorage.setItem(PHOTO_KEY,JSON.stringify(photos));
+          selectedPhoto=null;
+          $("photoFile").value="";
+          renderPhotos();
+        }catch{
+          photos=old;
+          alert("مساحة الصور ممتلئة. احذف بعض الصور وحاول تاني.");
+        }
+      };
+      img.onerror=()=>alert("تعذرت قراءة الصورة.");
+      img.src=reader.result;
+    };
+    reader.readAsDataURL(selectedPhoto);
+  });
+
+  $("photos").addEventListener("click",e=>{
+    const b=e.target.closest("[data-photo]");
+    if(!b||!confirm("تحذف الصورة؟"))return;
+    const old=photos;
+    photos=photos.filter(p=>p.id!==b.dataset.photo);
+    try{localStorage.setItem(PHOTO_KEY,JSON.stringify(photos));renderPhotos();}
+    catch{photos=old;alert("تعذّر الحفظ.");}
+  });
+
+  $("export").addEventListener("click",()=>{
+    const blob=new Blob([JSON.stringify({records,photos},null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;a.download="bodyreset-progress.json";a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+
+  $("importBtn").addEventListener("click",()=>$("importFile").click());
+  $("importFile").addEventListener("change",async e=>{
+    const file=e.target.files[0];
+    if(!file)return;
+    try{
+      const data=JSON.parse(await file.text());
+      if(!Array.isArray(data.records)||!Array.isArray(data.photos))throw Error();
+      if(!confirm("النسخة هتستبدل بياناتك الحالية. تكمل؟"))return;
+      const oldR=records,oldP=photos;
+      records=data.records;photos=data.photos;
+      try{
+        localStorage.setItem(KEY,JSON.stringify(records));
+        localStorage.setItem(PHOTO_KEY,JSON.stringify(photos));
+        render();
+        alert("تم استيراد النسخة بنجاح.");
+      }catch{
+        records=oldR;photos=oldP;
+        localStorage.setItem(KEY,JSON.stringify(records));
+        localStorage.setItem(PHOTO_KEY,JSON.stringify(photos));
+        throw Error();
+      }
+    }catch{alert("ملف النسخة غير صالح أو مساحة التخزين ممتلئة.");}
+    finally{e.target.value="";}
+  });
+
+  window.addEventListener("resize",drawChart);
+  reset();
+  render();
+})();
 </script>
 </body>
 </html>
