@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,6 +12,7 @@ body{margin:0;padding:20px;font-family:Arial,sans-serif;background:#073b40;color
 header,main{max-width:950px;margin:20px auto}
 header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 a{color:#65e6d4;text-decoration:none}
+a:hover{text-decoration:underline}
 .card{background:#104f54;border:1px solid #24777a;border-radius:18px;padding:20px;margin:18px 0}
 h1,h2{margin-top:0}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
@@ -38,13 +40,14 @@ small{color:#b7d9d6;line-height:1.8}
 .empty{color:#b7d9d6;text-align:center;padding:20px}
 .notice{padding:12px;border-radius:10px;background:#083f44;color:#c2e4e1;line-height:1.8}
 [hidden]{display:none!important}
+
 @media(max-width:550px){
- body{padding:12px}
- .stats{grid-template-columns:1fr}
- form{grid-template-columns:1fr}
- .full{grid-column:auto}
- .card{padding:15px}
- header h1{font-size:24px}
+  body{padding:12px}
+  .stats{grid-template-columns:1fr}
+  form{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .card{padding:15px}
+  header h1{font-size:24px}
 }
 </style>
 </head>
@@ -52,46 +55,65 @@ small{color:#b7d9d6;line-height:1.8}
 <body>
 <header>
   <h1>📊 Progress</h1>
-  <a href="index.html">← الرئيسية</a>
+  <a href="./dashboard.html">← الرئيسية</a>
 </header>
 
 <main>
   <section class="stats">
-    <div class="stat"><span>آخر وزن مسجل</span><strong id="current">—</strong></div>
-    <div class="stat"><span>تغير الوزن</span><strong id="change">—</strong></div>
-    <div class="stat"><span>عدد التسجيلات</span><strong id="count">0</strong></div>
+    <div class="stat">
+      <span>آخر وزن مسجل</span>
+      <strong id="current">—</strong>
+    </div>
+    <div class="stat">
+      <span>تغير الوزن</span>
+      <strong id="change">—</strong>
+    </div>
+    <div class="stat">
+      <span>عدد التسجيلات</span>
+      <strong id="count">0</strong>
+    </div>
   </section>
 
   <section class="card">
     <h2>➕ سجل تقدمك</h2>
+
     <form id="form">
       <label>التاريخ
         <input type="date" id="date" required>
       </label>
+
       <label>الوزن (كجم)
         <input type="number" id="weight" min="1" max="500" step="0.1" required placeholder="75.5">
       </label>
+
       <label>نسبة الدهون (%)
         <input type="number" id="fat" min="0" max="100" step="0.1">
       </label>
+
       <label>محيط الخصر (سم)
         <input type="number" id="waist" min="1" max="500" step="0.1">
       </label>
+
       <label>محيط الصدر (سم)
         <input type="number" id="chest" min="1" max="500" step="0.1">
       </label>
+
       <label>محيط الذراع (سم)
         <input type="number" id="arm" min="1" max="200" step="0.1">
       </label>
+
       <label>محيط الفخذ (سم)
         <input type="number" id="thigh" min="1" max="300" step="0.1">
       </label>
+
       <label class="full">ملاحظات
         <textarea id="notes" rows="3" maxlength="3000" placeholder="اكتب ملاحظاتك..."></textarea>
       </label>
+
       <button class="full" id="submit" type="submit">حفظ التقدم</button>
       <button class="full" id="cancel" type="button" hidden>إلغاء التعديل</button>
     </form>
+
     <small>بياناتك محفوظة محليًا في المتصفح على هذا الجهاز. يُنصح بتصدير نسخة احتياطية دوريًا.</small>
   </section>
 
@@ -102,13 +124,17 @@ small{color:#b7d9d6;line-height:1.8}
 
   <section class="card">
     <h2>📷 صور التقدم</h2>
+
     <label>اختر صورة
       <input type="file" id="photoFile" accept="image/*">
     </label>
+
     <label style="display:block;margin-top:12px">تاريخ الصورة
       <input type="date" id="photoDate">
     </label>
+
     <button type="button" id="addPhoto" style="margin-top:12px">إضافة الصورة</button>
+
     <p class="notice">يتم تصغير الصور قبل حفظها لتقليل استهلاك مساحة المتصفح.</p>
     <div class="photos" id="photos"></div>
   </section>
@@ -116,6 +142,7 @@ small{color:#b7d9d6;line-height:1.8}
   <section class="card">
     <h2>🗓️ سجل التقدم</h2>
     <div id="records"></div>
+
     <div class="actions" style="margin-top:15px">
       <button type="button" id="export">تصدير نسخة احتياطية</button>
       <button type="button" id="importBtn">استيراد نسخة</button>
@@ -158,9 +185,13 @@ small{color:#b7d9d6;line-height:1.8}
 
   const val = id => $(id).value.trim();
   const num = id => val(id) === "" ? null : Number(val(id));
-  const fmt = n => n == null || !Number.isFinite(Number(n))
-    ? "—"
-    : Number(n).toLocaleString("ar-EG", { maximumFractionDigits: 1 });
+
+  const fmt = n =>
+    n == null || !Number.isFinite(Number(n))
+      ? "—"
+      : Number(n).toLocaleString("ar-EG", {
+          maximumFractionDigits: 1
+        });
 
   const uid = () =>
     Date.now().toString(36) + Math.random().toString(36).slice(2);
@@ -175,8 +206,11 @@ small{color:#b7d9d6;line-height:1.8}
 
   function validDate(s) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(String(s))) return false;
+
     const d = new Date(s + "T00:00:00Z");
-    return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s;
+
+    return !Number.isNaN(d.getTime()) &&
+      d.toISOString().slice(0, 10) === s;
   }
 
   function persistRecords(next) {
@@ -217,8 +251,13 @@ small{color:#b7d9d6;line-height:1.8}
       return;
     }
 
-    $("current").textContent = fmt(list[list.length - 1].weight) + " كجم";
-    const diff = Number(list[list.length - 1].weight) - Number(list[0].weight);
+    $("current").textContent =
+      fmt(list[list.length - 1].weight) + " كجم";
+
+    const diff =
+      Number(list[list.length - 1].weight) -
+      Number(list[0].weight);
+
     $("change").textContent =
       (diff > 0 ? "+" : "") + fmt(diff) + " كجم";
   }
@@ -226,6 +265,7 @@ small{color:#b7d9d6;line-height:1.8}
   function drawChart() {
     const canvas = $("chart");
     const ctx = canvas.getContext("2d");
+
     if (!ctx) return;
 
     const w = Math.max(280, canvas.clientWidth || 300);
@@ -234,10 +274,13 @@ small{color:#b7d9d6;line-height:1.8}
 
     canvas.width = Math.round(w * ratio);
     canvas.height = Math.round(h * ratio);
+
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.clearRect(0, 0, w, h);
 
-    const list = sorted().filter(r => Number.isFinite(Number(r.weight)));
+    const list = sorted().filter(
+      r => Number.isFinite(Number(r.weight))
+    );
 
     if (!list.length) {
       ctx.fillStyle = "#b7d9d6";
@@ -254,7 +297,11 @@ small{color:#b7d9d6;line-height:1.8}
     const low = Math.max(0, min - margin);
     const high = max + margin;
 
-    const left = 42, right = 18, top = 22, bottom = 38;
+    const left = 42;
+    const right = 18;
+    const top = 22;
+    const bottom = 38;
+
     const pw = Math.max(1, w - left - right);
     const ph = h - top - bottom;
 
@@ -263,6 +310,7 @@ small{color:#b7d9d6;line-height:1.8}
 
     for (let i = 0; i < 4; i++) {
       const y = top + ph * i / 3;
+
       ctx.strokeStyle = "#28676a";
       ctx.beginPath();
       ctx.moveTo(left, y);
@@ -270,19 +318,26 @@ small{color:#b7d9d6;line-height:1.8}
       ctx.stroke();
 
       ctx.fillStyle = "#b7d9d6";
+
       const label = (high - (high - low) * i / 3).toFixed(1);
       ctx.fillText(label, 2, y - 4);
     }
 
     const points = values.map((v, i) => ({
-      x: list.length === 1 ? left + pw / 2 : left + pw * i / (list.length - 1),
+      x: list.length === 1
+        ? left + pw / 2
+        : left + pw * i / (list.length - 1),
       y: top + (high - v) / (high - low || 1) * ph
     }));
 
     ctx.strokeStyle = "#31d6bd";
     ctx.lineWidth = 3;
     ctx.beginPath();
-    points.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+
+    points.forEach((p, i) =>
+      i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)
+    );
+
     ctx.stroke();
 
     points.forEach((p, i) => {
@@ -303,16 +358,24 @@ small{color:#b7d9d6;line-height:1.8}
     ctx.fillText(list[0].date, points[0].x, h - 10);
 
     if (list.length > 1) {
-      ctx.fillText(list[list.length - 1].date, points[points.length - 1].x, h - 10);
+      ctx.fillText(
+        list[list.length - 1].date,
+        points[points.length - 1].x,
+        h - 10
+      );
     }
   }
 
   function renderRecords() {
     const box = $("records");
-    const list = [...records].sort((a, b) => b.date.localeCompare(a.date));
+
+    const list = [...records].sort(
+      (a, b) => b.date.localeCompare(a.date)
+    );
 
     if (!list.length) {
-      box.innerHTML = '<div class="empty">لسه مفيش تسجيلات. ابدأ سجل تقدمك 💪</div>';
+      box.innerHTML =
+        '<div class="empty">لسه مفيش تسجيلات. ابدأ سجل تقدمك 💪</div>';
       return;
     }
 
@@ -361,8 +424,12 @@ small{color:#b7d9d6;line-height:1.8}
 
   function validMeasurement(id, min, max) {
     const value = num(id);
+
     if (value === null) return true;
-    return Number.isFinite(value) && value >= min && value <= max;
+
+    return Number.isFinite(value) &&
+      value >= min &&
+      value <= max;
   }
 
   $("form").addEventListener("submit", e => {
@@ -371,7 +438,12 @@ small{color:#b7d9d6;line-height:1.8}
     const date = val("date");
     const weight = num("weight");
 
-    if (!validDate(date) || !Number.isFinite(weight) || weight < 1 || weight > 500) {
+    if (
+      !validDate(date) ||
+      !Number.isFinite(weight) ||
+      weight < 1 ||
+      weight > 500
+    ) {
       alert("اكتب تاريخ ووزن صحيحين.");
       return;
     }
@@ -384,15 +456,17 @@ small{color:#b7d9d6;line-height:1.8}
       thigh: [1, 300]
     };
 
+    const labels = {
+      fat: "نسبة الدهون",
+      waist: "محيط الخصر",
+      chest: "محيط الصدر",
+      arm: "محيط الذراع",
+      thigh: "محيط الفخذ"
+    };
+
     for (const [id, range] of Object.entries(limits)) {
       if (!validMeasurement(id, range[0], range[1])) {
-        alert("راجع قيمة: " + ({
-          fat: "نسبة الدهون",
-          waist: "محيط الخصر",
-          chest: "محيط الصدر",
-          arm: "محيط الذراع",
-          thigh: "محيط الفخذ"
-        })[id]);
+        alert("راجع قيمة: " + labels[id]);
         return;
       }
     }
@@ -409,7 +483,10 @@ small{color:#b7d9d6;line-height:1.8}
       notes: val("notes")
     };
 
-    const duplicate = records.find(r => r.date === date && r.id !== editing);
+    const duplicate = records.find(
+      r => r.date === date && r.id !== editing
+    );
+
     if (duplicate) {
       alert("فيه تسجيل موجود بالتاريخ ده. استخدم زر تعديل لتحديثه.");
       return;
@@ -437,16 +514,24 @@ small{color:#b7d9d6;line-height:1.8}
       if (!r) return;
 
       editing = r.id;
+
       ["date", "weight", "fat", "waist", "chest", "arm", "thigh", "notes"]
         .forEach(k => $(k).value = r[k] ?? "");
 
       $("submit").textContent = "حفظ التعديلات";
       $("cancel").hidden = false;
-      $("form").scrollIntoView({ behavior: "smooth", block: "start" });
+
+      $("form").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
 
     if (del && confirm("متأكد إنك عايز تحذف التسجيل؟")) {
-      const next = records.filter(r => r.id !== del.dataset.delete);
+      const next = records.filter(
+        r => r.id !== del.dataset.delete
+      );
+
       if (persistRecords(next)) {
         if (editing === del.dataset.delete) reset();
         render();
@@ -487,12 +572,17 @@ small{color:#b7d9d6;line-height:1.8}
 
       img.onload = () => {
         const c = document.createElement("canvas");
-        const scale = Math.min(1, 900 / Math.max(img.width, img.height));
+
+        const scale = Math.min(
+          1,
+          900 / Math.max(img.width, img.height)
+        );
 
         c.width = Math.max(1, Math.round(img.width * scale));
         c.height = Math.max(1, Math.round(img.height * scale));
 
         const ctx = c.getContext("2d");
+
         if (!ctx) {
           alert("المتصفح لم يستطع معالجة الصورة.");
           return;
@@ -501,6 +591,7 @@ small{color:#b7d9d6;line-height:1.8}
         ctx.drawImage(img, 0, 0, c.width, c.height);
 
         let data;
+
         try {
           data = c.toDataURL("image/jpeg", 0.7);
         } catch {
@@ -509,12 +600,17 @@ small{color:#b7d9d6;line-height:1.8}
         }
 
         const date = val("photoDate") || today();
+
         if (!validDate(date)) {
           alert("اختار تاريخ صورة صحيح.");
           return;
         }
 
-        const next = [...photos, { id: uid(), date, data }];
+        const next = [...photos, {
+          id: uid(),
+          date,
+          data
+        }];
 
         if (persistPhotos(next)) {
           selectedPhoto = null;
@@ -532,9 +628,13 @@ small{color:#b7d9d6;line-height:1.8}
 
   $("photos").addEventListener("click", e => {
     const btn = e.target.closest("[data-photo]");
+
     if (!btn || !confirm("تحذف الصورة؟")) return;
 
-    const next = photos.filter(p => p.id !== btn.dataset.photo);
+    const next = photos.filter(
+      p => p.id !== btn.dataset.photo
+    );
+
     if (persistPhotos(next)) renderPhotos();
   });
 
@@ -547,11 +647,14 @@ small{color:#b7d9d6;line-height:1.8}
 
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
+
       a.href = url;
       a.download = "bodyreset-progress.json";
+
       document.body.appendChild(a);
       a.click();
       a.remove();
+
       setTimeout(() => URL.revokeObjectURL(url), 1500);
     } catch (error) {
       console.error(error);
@@ -559,25 +662,48 @@ small{color:#b7d9d6;line-height:1.8}
     }
   });
 
-  $("importBtn").addEventListener("click", () => $("importFile").click());
+  $("importBtn").addEventListener("click", () => {
+    $("importFile").click();
+  });
 
   function validRecord(r) {
-    return r && typeof r === "object" &&
+    return r &&
+      typeof r === "object" &&
       typeof r.id === "string" &&
       validDate(r.date) &&
       Number.isFinite(Number(r.weight)) &&
       Number(r.weight) >= 1 &&
       Number(r.weight) <= 500 &&
-      (r.fat == null || (Number.isFinite(Number(r.fat)) && Number(r.fat) >= 0 && Number(r.fat) <= 100)) &&
-      (r.waist == null || (Number.isFinite(Number(r.waist)) && Number(r.waist) > 0)) &&
-      (r.chest == null || (Number.isFinite(Number(r.chest)) && Number(r.chest) > 0)) &&
-      (r.arm == null || (Number.isFinite(Number(r.arm)) && Number(r.arm) > 0)) &&
-      (r.thigh == null || (Number.isFinite(Number(r.thigh)) && Number(r.thigh) > 0)) &&
+      (
+        r.fat == null ||
+        (
+          Number.isFinite(Number(r.fat)) &&
+          Number(r.fat) >= 0 &&
+          Number(r.fat) <= 100
+        )
+      ) &&
+      (
+        r.waist == null ||
+        (Number.isFinite(Number(r.waist)) && Number(r.waist) > 0)
+      ) &&
+      (
+        r.chest == null ||
+        (Number.isFinite(Number(r.chest)) && Number(r.chest) > 0)
+      ) &&
+      (
+        r.arm == null ||
+        (Number.isFinite(Number(r.arm)) && Number(r.arm) > 0)
+      ) &&
+      (
+        r.thigh == null ||
+        (Number.isFinite(Number(r.thigh)) && Number(r.thigh) > 0)
+      ) &&
       typeof (r.notes ?? "") === "string";
   }
 
   function validPhoto(p) {
-    return p && typeof p === "object" &&
+    return p &&
+      typeof p === "object" &&
       typeof p.id === "string" &&
       validDate(p.date) &&
       typeof p.data === "string" &&
@@ -586,6 +712,7 @@ small{color:#b7d9d6;line-height:1.8}
 
   $("importFile").addEventListener("change", async e => {
     const file = e.target.files[0];
+
     if (!file) return;
 
     try {
@@ -595,23 +722,38 @@ small{color:#b7d9d6;line-height:1.8}
 
       const data = JSON.parse(await file.text());
 
-      if (!data || !Array.isArray(data.records) || !Array.isArray(data.photos)) {
+      if (
+        !data ||
+        !Array.isArray(data.records) ||
+        !Array.isArray(data.photos)
+      ) {
         throw new Error("شكل ملف النسخة غير صحيح.");
       }
 
-      if (!data.records.every(validRecord) || !data.photos.every(validPhoto)) {
+      if (
+        !data.records.every(validRecord) ||
+        !data.photos.every(validPhoto)
+      ) {
         throw new Error("النسخة تحتوي على بيانات غير صالحة.");
       }
 
-      if (new Set(data.records.map(r => r.id)).size !== data.records.length) {
+      if (
+        new Set(data.records.map(r => r.id)).size !==
+        data.records.length
+      ) {
         throw new Error("يوجد تكرار في معرّفات التسجيلات.");
       }
 
-      if (new Set(data.photos.map(p => p.id)).size !== data.photos.length) {
+      if (
+        new Set(data.photos.map(p => p.id)).size !==
+        data.photos.length
+      ) {
         throw new Error("يوجد تكرار في معرّفات الصور.");
       }
 
-      if (!confirm("النسخة الاحتياطية هتستبدل البيانات الحالية. صدّرت نسخة من بياناتك الحالية؟ تكمل؟")) {
+      if (!confirm(
+        "النسخة الاحتياطية هتستبدل البيانات الحالية. صدّرت نسخة من بياناتك الحالية؟ تكمل؟"
+      )) {
         return;
       }
 
@@ -622,25 +764,35 @@ small{color:#b7d9d6;line-height:1.8}
         localStorage.setItem(KEY, JSON.stringify(data.records));
         localStorage.setItem(PHOTO_KEY, JSON.stringify(data.photos));
       } catch (error) {
-        if (oldR === null) localStorage.removeItem(KEY);
-        else localStorage.setItem(KEY, oldR);
+        try {
+          if (oldR === null) localStorage.removeItem(KEY);
+          else localStorage.setItem(KEY, oldR);
 
-        if (oldP === null) localStorage.removeItem(PHOTO_KEY);
-        else localStorage.setItem(PHOTO_KEY, oldP);
+          if (oldP === null) localStorage.removeItem(PHOTO_KEY);
+          else localStorage.setItem(PHOTO_KEY, oldP);
+        } catch (restoreError) {
+          console.error("تعذرت استعادة البيانات السابقة:", restoreError);
+        }
 
         throw error;
       }
 
       records = data.records;
       photos = data.photos;
+
       reset();
       render();
+
       alert("تم استيراد النسخة بنجاح.");
     } catch (error) {
       console.error(error);
-      alert(error.message && error.message !== "Unexpected end of JSON input"
-        ? error.message
-        : "ملف النسخة غير صالح أو مساحة التخزين ممتلئة.");
+
+      alert(
+        error.message &&
+        error.message !== "Unexpected end of JSON input"
+          ? error.message
+          : "ملف النسخة غير صالح أو مساحة التخزين ممتلئة."
+      );
     } finally {
       e.target.value = "";
     }
